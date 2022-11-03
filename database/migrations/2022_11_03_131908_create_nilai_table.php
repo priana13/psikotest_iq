@@ -16,6 +16,7 @@ class CreateNilaiTable extends Migration
         Schema::create('nilai', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('users');
+            $table->foreignId('tes_id')->constrained('tes');
             $table->integer('benar');
             $table->integer('salah');
             $table->integer('kosong');
