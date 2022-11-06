@@ -14,18 +14,14 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home_page');
 });
 
 Route::view('page', [ App\Http\Controllers\HomeController::class, 'page'])->middleware('auth');
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('dashboard');
 
 //Route Hooks - Do not delete//
 	Route::view('tes', 'livewire.tes.index')->middleware('auth');
