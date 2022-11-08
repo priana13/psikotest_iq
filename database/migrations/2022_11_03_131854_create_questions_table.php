@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSoalTable extends Migration
+class CreateQuestionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreateSoalTable extends Migration
      */
     public function up()
     {
-        Schema::create('soal', function (Blueprint $table) {
+        Schema::create('questions', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('tes_id')->constrained('tes');
+            $table->foreignId('exam_id')->constrained('exams');
             $table->string('soal');
             $table->string('a');
             $table->string('b');
@@ -36,6 +36,6 @@ class CreateSoalTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('soal');
+        Schema::dropIfExists('questions');
     }
 }

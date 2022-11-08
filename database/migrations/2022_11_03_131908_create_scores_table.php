@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateNilaiTable extends Migration
+class CreateScoresTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreateNilaiTable extends Migration
      */
     public function up()
     {
-        Schema::create('nilai', function (Blueprint $table) {
+        Schema::create('scores', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('users');
-            $table->foreignId('tes_id')->constrained('tes');
+            $table->foreignId('exam_id')->constrained('exams');
             $table->integer('benar');
             $table->integer('salah');
             $table->integer('kosong');
@@ -33,6 +33,6 @@ class CreateNilaiTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('nilai');
+        Schema::dropIfExists('scores');
     }
 }
