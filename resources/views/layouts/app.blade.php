@@ -37,6 +37,24 @@
                     <ul class="navbar-nav mr-auto">
 						<!--Nav Bar Hooks - Do not delete!!-->
 						<li class="nav-item">
+                            <a href="{{ url('/transactions') }}" class="nav-link"><i class="fab fa-laravel text-info"></i> Transactions</a> 
+                        </li>
+						<li class="nav-item">
+                            <a href="{{ url('/payment_methods') }}" class="nav-link"><i class="fab fa-laravel text-info"></i> Payment_methods</a> 
+                        </li>
+						<li class="nav-item">
+                            <a href="{{ url('/users') }}" class="nav-link"><i class="fab fa-laravel text-info"></i> Users</a> 
+                        </li>
+						<li class="nav-item">
+                            <a href="{{ url('/settings') }}" class="nav-link"><i class="fab fa-laravel text-info"></i> Settings</a> 
+                        </li>
+						<li class="nav-item">
+                            <a href="{{ url('/scores') }}" class="nav-link"><i class="fab fa-laravel text-info"></i> Scores</a> 
+                        </li>
+						<li class="nav-item">
+                            <a href="{{ url('/questions') }}" class="nav-link"><i class="fab fa-laravel text-info"></i> Questions</a> 
+                        </li>
+						<li class="nav-item">
                             <a href="{{ url('/exams') }}" class="nav-link"><i class="fab fa-laravel text-info"></i> Exams</a> 
                         </li>
                     </ul>

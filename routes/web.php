@@ -24,4 +24,10 @@ Auth::routes();
 Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('dashboard');
 
 //Route Hooks - Do not delete//
+	Route::view('transactions', 'livewire.transactions.index')->middleware('auth');
+	Route::view('payment_methods', 'livewire.payment-methods.index')->middleware('auth');
+	Route::view('users', 'livewire.users.index')->middleware('auth');
+	Route::view('settings', 'livewire.settings.index')->middleware('auth');
+	Route::view('scores', 'livewire.scores.index')->middleware('auth');
+	Route::view('questions', 'livewire.questions.index')->middleware('auth');
 	Route::view('exams', 'livewire.exams.index')->middleware('auth');

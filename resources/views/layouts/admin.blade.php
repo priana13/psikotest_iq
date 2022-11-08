@@ -57,7 +57,7 @@
 
         <!-- Nav Item - Profile -->
         <li class="nav-item {{ Nav::isRoute('profile') }}">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="/exams">
                 <i class="fas fa-fw fa-user"></i>
                 <span>{{ __('Test') }}</span>
             </a>
