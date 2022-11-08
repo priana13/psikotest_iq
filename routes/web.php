@@ -24,4 +24,4 @@ Auth::routes();
 Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('dashboard');
 
 //Route Hooks - Do not delete//
-	Route::view('tes', 'livewire.tes.index')->middleware('auth');
+	Route::view('exams', 'livewire.exams.index')->middleware('auth');

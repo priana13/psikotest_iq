@@ -4,9 +4,9 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 use Livewire\WithPagination;
-use App\Models\Te;
+use App\Models\Exam;
 
-class Tes extends Component
+class Exams extends Component
 {
     use WithPagination;
 
@@ -17,8 +17,8 @@ class Tes extends Component
     public function render()
     {
 		$keyWord = '%'.$this->keyWord .'%';
-        return view('livewire.tes.view', [
-            'tes' => Te::latest()
+        return view('livewire.exams.view', [
+            'exams' => Exam::latest()
 						->orWhere('nama_tes', 'LIKE', $keyWord)
 						->orWhere('waktu', 'LIKE', $keyWord)
 						->orWhere('nilai_min', 'LIKE', $keyWord)
@@ -50,7 +50,7 @@ class Tes extends Component
 		'peraturan' => 'required',
         ]);
 
-        Te::create([ 
+        Exam::create([ 
 			'nama_tes' => $this-> nama_tes,
 			'waktu' => $this-> waktu,
 			'nilai_min' => $this-> nilai_min,
@@ -59,12 +59,12 @@ class Tes extends Component
         
         $this->resetInput();
 		$this->emit('closeModal');
-		session()->flash('message', 'Te Successfully created.');
+		session()->flash('message', 'Exam Successfully created.');
     }
 
     public function edit($id)
     {
-        $record = Te::findOrFail($id);
+        $record = Exam::findOrFail($id);
 
         $this->selected_id = $id; 
 		$this->nama_tes = $record-> nama_tes;
@@ -85,7 +85,7 @@ class Tes extends Component
         ]);
 
         if ($this->selected_id) {
-			$record = Te::find($this->selected_id);
+			$record = Exam::find($this->selected_id);
             $record->update([ 
 			'nama_tes' => $this-> nama_tes,
 			'waktu' => $this-> waktu,
@@ -95,14 +95,14 @@ class Tes extends Component
 
             $this->resetInput();
             $this->updateMode = false;
-			session()->flash('message', 'Te Successfully updated.');
+			session()->flash('message', 'Exam Successfully updated.');
         }
     }
 
     public function destroy($id)
     {
         if ($id) {
-            $record = Te::where('id', $id);
+            $record = Exam::where('id', $id);
             $record->delete();
         }
     }

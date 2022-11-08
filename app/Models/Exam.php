@@ -5,30 +5,30 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Te extends Model
+class Exam extends Model
 {
 	use HasFactory;
 	
     public $timestamps = true;
 
-    protected $table = 'tes';
+    protected $table = 'exams';
 
     protected $fillable = ['nama_tes','waktu','nilai_min','peraturan'];
 	
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function nilais()
+    public function questions()
     {
-        return $this->hasMany('App\Models\Nilai', 'tes_id', 'id');
+        return $this->hasMany('App\Models\Question', 'exam_id', 'id');
     }
     
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function soals()
+    public function scores()
     {
-        return $this->hasMany('App\Models\Soal', 'tes_id', 'id');
+        return $this->hasMany('App\Models\Score', 'exam_id', 'id');
     }
     
     /**
@@ -36,7 +36,7 @@ class Te extends Model
      */
     public function transactions()
     {
-        return $this->hasMany('App\Models\Transaction', 'tes_id', 'id');
+        return $this->hasMany('App\Models\Transaction', 'exam_id', 'id');
     }
     
 }
