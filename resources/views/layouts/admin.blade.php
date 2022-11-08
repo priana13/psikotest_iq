@@ -21,6 +21,7 @@
 
     <!-- Favicon -->
     <link href="{{ asset('img/favicon.png') }}" rel="icon" type="image/png">
+    @livewireStyles
 </head>
 <body id="page-top">
 
@@ -324,10 +325,19 @@
     </div>
 </div>
 
+@livewireScripts
+
 <!-- Scripts -->
 <script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
 <script src="{{ asset('vendor/bootstrap/js/bootstrap.min.js') }}"></script>
 <script src="{{ asset('vendor/jquery-easing/jquery.easing.min.js') }}"></script>
 <script src="{{ asset('js/sb-admin-2.min.js') }}"></script>
+
+<script type="text/javascript">
+	window.livewire.on('closeModal', () => {
+		$('#createDataModal').modal('hide');
+	});
+</script>
+
 </body>
 </html>
