@@ -49,15 +49,13 @@
       <nav id="navbar" class="navbar">
         <ul>
           <li><a class="active " href="index.html">Home</a></li>
-          <li><a href="features.html">Features</a></li>
-          <li><a href="pricing.html">Pricing</a></li>          
-          <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
-            <ul>
-              <li><a href="#">Drop Down 1</a></li>
-              <li class="dropdown"><a href="#"><span>Deep Drop Down</span></a></li>
-              <li><a href="#">Drop Down 2</a></li>
-              <li><a href="#">Drop Down 3</a></li>
-              <li><a href="#">Drop Down 4</a></li>
+          <li><a href="features.html">Fitur</a></li>
+          <li><a href="pricing.html">Harga</a></li>          
+          <li class="dropdown"><a href="#"><span>Psikotes</span> <i class="bi bi-chevron-down"></i></a>
+            <ul>                      
+              <li><a href="#">Soal Kecerdasarn</a></li>
+              <li><a href="#">Soal Kecermatan</a></li>
+             
             </ul>
           </li>
           <li><a href="{{route('login')}}">Login</a></li>
