@@ -23,6 +23,12 @@ Auth::routes();
 
 Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('dashboard');
 
+Route::middleware('auth')->group(function(){
+
+	Route::get('/member/soal' , [App\Http\Controllers\Member\SoalController::class , 'index'])->name('member.soal');
+
+});
+
 //Route Hooks - Do not delete//
 	Route::view('transactions', 'livewire.transactions.index')->middleware('auth');
 	Route::view('payment_methods', 'livewire.payment-methods.index')->middleware('auth');
