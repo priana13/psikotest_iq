@@ -26,6 +26,8 @@ Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])-
 Route::middleware('auth')->group(function(){
 
 	Route::get('/member/soal' , [App\Http\Controllers\Member\SoalController::class , 'index'])->name('member.soal');
+	Route::get('/member/ujian/{exam}' , [App\Http\Controllers\Member\UjianController::class , 'soal'])->name('member.ujian');
+
 
 });
 

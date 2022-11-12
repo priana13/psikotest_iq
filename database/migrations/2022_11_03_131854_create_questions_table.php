@@ -16,6 +16,7 @@ class CreateQuestionsTable extends Migration
         Schema::create('questions', function (Blueprint $table) {
             $table->id();
             $table->foreignId('exam_id')->constrained('exams');
+            $table->enum('type' , ['cerdas' , 'cermat']);
             $table->string('soal');
             $table->string('a');
             $table->string('b');

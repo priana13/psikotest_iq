@@ -50,9 +50,9 @@
 								<td> Active </td>
 								<td class="text-center">
 								<div class="btn-group">
-									<button type="button" class="btn btn-info btn-sm" >
+									<a href="{{route('member.ujian' , $row->id)}}" class="btn btn-info btn-sm" target = "_blank">
 									 Test Sekarang
-									</button> 
+									</a> 
                                     
 								</div>
 								</td>
