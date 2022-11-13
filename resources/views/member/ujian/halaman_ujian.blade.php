@@ -3,7 +3,7 @@
 @section('main-content')
 
 
-@livewire('member.ujian')
+@livewire('member.ujian' , ['examid' => $id])
 
 
 @endsection

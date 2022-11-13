@@ -9,6 +9,6 @@ class UjianController extends Controller
 {
     public function soal($exam){
 
-        return view('member.ujian.halaman_ujian');
+        return view('member.ujian.halaman_ujian' , ['id' => $exam]);
     }
 }

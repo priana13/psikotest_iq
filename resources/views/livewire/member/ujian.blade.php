@@ -18,7 +18,7 @@
             </div>
             <div class="card-body">
                 <p>
-                Demi menurunkan berat badan, Tanto berolahraga selama 25 menit perhari sehingga mampu menurunkan berat badannya sebanyak 5 kg. jika Tanto meningkatkan waktu olahraganya menjadi 50 menit tiap hari, maka kira-kira berapa kg berat badan yang ia turunkan ?
+                {{ $soal->soal }}
                 </p>
               
                 <fieldset class="form-group row">
@@ -28,34 +28,34 @@
                         <div class="form-check mb-2">
                             <input class="form-check-input" type="radio" name="jawaban" id="jawaban-a" value="option1" checked>
                             <label class="form-check-label" for="jawaban-a">
-                            A. 5
+                            A. {{ $soal->a }}
                             </label>
                         </div>
                         <div class="form-check mb-2">
                             <input class="form-check-input" type="radio" name="jawaban" id="jawaban-b" value="option2">
                             <label class="form-check-label" for="jawaban-b">
-                            B. 10
+                            B. {{ $soal->b }}
                             </label>
                         </div>
 
                         <div class="form-check mb-2">
                             <input class="form-check-input" type="radio" name="jawaban" id="jawaban-c" value="option2">
                             <label class="form-check-label" for="jawaban-c">
-                            C. 15
+                            C. {{ $soal->c }}
                             </label>
                         </div>
 
                         <div class="form-check mb-2">
                             <input class="form-check-input" type="radio" name="jawaban" id="jawaban-d" value="option2">
                             <label class="form-check-label" for="jawaban-d">
-                            D. 20
+                            D. {{ $soal->d }}
                             </label>
                         </div>
 
                         <div class="form-check mb-2">
                             <input class="form-check-input" type="radio" name="jawaban" id="jawaban-e" value="option2">
                             <label class="form-check-label" for="jawaban-e">
-                            E. 20,5
+                            E. {{ $soal->e }}
                             </label>
                         </div>
                    
