@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePackagesTables extends Migration
+class CreatePackageExamsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,11 @@ class CreatePackagesTables extends Migration
      */
     public function up()
     {
-        Schema::create('packages', function (Blueprint $table) {
+        Schema::create('package_exams', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->integer('qty'); // qty bulan
-            $table->integer('price');
-            $table->text('detail')->nullable();
+            $table->foreignId('user_id')->constrained('users');
+            $table->unsignedBigInteger('package_id');
+            $table->foreign('package_id')->references('id')->on('packages');
             $table->timestamps();
         });
     }
@@ -30,6 +29,6 @@ class CreatePackagesTables extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('packages');
+        Schema::dropIfExists('package_exams');
     }
 }
