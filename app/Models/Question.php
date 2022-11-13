@@ -13,7 +13,7 @@ class Question extends Model
 
     protected $table = 'questions';
 
-    protected $fillable = ['exam_id','soal','a','b','c','d','e','kc_jawaban','gambar','status'];
+    protected $fillable = ['exam_id','no','soal','a','b','c','d','e','kc_jawaban','gambar','status'];
 	
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne

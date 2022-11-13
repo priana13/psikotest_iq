@@ -13,7 +13,7 @@
         <!-- Basic Card Example -->
         <div class="card shadow mb-4">
             <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                <h6 class="m-0 font-weight-bold text-primary">Psikotes Cerdas</h6>
+                <h6 class="m-0 font-weight-bold text-primary">{{ $exam->nama_tes }}</h6>
                 <h6><strong>{{ $step }}</strong> dari 50</h6>
             </div>
             <div class="card-body">

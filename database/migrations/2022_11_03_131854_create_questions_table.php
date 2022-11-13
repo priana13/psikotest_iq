@@ -17,6 +17,7 @@ class CreateQuestionsTable extends Migration
             $table->id();
             $table->foreignId('exam_id')->constrained('exams');
             $table->enum('type' , ['cerdas' , 'cermat']);
+            $table->integer('no');
             $table->string('soal');
             $table->string('a');
             $table->string('b');
