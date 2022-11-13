@@ -18,7 +18,7 @@ class CreateExamsTable extends Migration
             $table->string('nama_tes');
             $table->string('waktu');
             $table->string('nilai_min');
-            $table->text('peraturan');
+            $table->text('peraturan')->nullable();
             $table->timestamps();
         });
     }

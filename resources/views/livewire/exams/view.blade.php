@@ -19,7 +19,7 @@
 							<input wire:model='keyWord' type="text" class="form-control" name="search" id="search" placeholder="Search Exams">
 						</div>
 						<div class="btn btn-sm btn-primary" data-toggle="modal" data-target="#createDataModal">
-						<i class="fa fa-plus"></i>  Add Exams
+						<i class="fa fa-plus"></i>  Tambah Tes Baru
 						</div>
 					</div>
 				</div>

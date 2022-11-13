@@ -44,10 +44,10 @@ class Exams extends Component
     public function store()
     {
         $this->validate([
-		'nama_tes' => 'required',
-		'waktu' => 'required',
-		'nilai_min' => 'required',
-		'peraturan' => 'required',
+		'nama_tes' => 'string|required',
+		'waktu' => 'string|required',
+		'nilai_min' => 'string|required',
+		'peraturan' => 'string',
         ]);
 
         Exam::create([ 
