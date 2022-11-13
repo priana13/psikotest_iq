@@ -90,32 +90,32 @@
         </div>
 
         <!-- Nav Item - Profile -->
-        <li class="nav-item {{ Nav::isRoute('profile') }}">
-            <a class="nav-link" href="/exams">
+        <li class="nav-item {{ Nav::isRoute('admin.exams') }}">
+            <a class="nav-link" href="{{ route('admin.exams') }}">
                 <i class="fas fa-fw fa-user"></i>
                 <span>{{ __('Test') }}</span>
             </a>
         </li>
 
         <!-- Nav Item - About -->
-        <li class="nav-item {{ Nav::isRoute('about') }}">
-            <a class="nav-link" href="#">
+        <li class="nav-item {{ Nav::isRoute('admin.questions') }}">
+            <a class="nav-link" href="{{ route('admin.questions') }}">
                 <i class="fas fa-fw fa-hands-helping"></i>
                 <span>{{ __('Soal') }}</span>
             </a>
         </li>
 
         <!-- Nav Item - About -->
-        <li class="nav-item {{ Nav::isRoute('about') }}">
-            <a class="nav-link" href="#">
+        <li class="nav-item {{ Nav::isRoute('admin.scores') }}">
+            <a class="nav-link" href="{{ route('admin.scores') }}">
                 <i class="fas fa-fw fa-hands-helping"></i>
                 <span>{{ __('Nilai') }}</span>
             </a>
         </li>
 
         <!-- Nav Item - About -->
-        <li class="nav-item {{ Nav::isRoute('about') }}">
-            <a class="nav-link" href="#">
+        <li class="nav-item {{ Nav::isRoute('admin.users') }}">
+            <a class="nav-link" href="{{ route('admin.users') }}">
                 <i class="fas fa-fw fa-users"></i>
                 <span>{{ __('Users') }}</span>
             </a>

@@ -31,16 +31,14 @@
 					<table class="table table-bordered table-sm">
 						<thead class="thead">
 							<tr> 
-								<td>#</td> 
-								<th>Exam Id</th>
+								<td>#</td> 								
 								<th>Soal</th>
+								<th>Tes</th>
 								<th>A</th>
 								<th>B</th>
 								<th>C</th>
 								<th>D</th>
-								<th>E</th>
-								<th>Kc Jawaban</th>
-								<th>Gambar</th>
+								<th>E</th>															
 								<th>Status</th>
 								<td>ACTIONS</td>
 							</tr>
@@ -48,16 +46,14 @@
 						<tbody>
 							@foreach($questions as $row)
 							<tr>
-								<td>{{ $loop->iteration }}</td> 
-								<td>{{ $row->exam_id }}</td>
+								<td>{{ $loop->iteration }}</td> 								
 								<td>{{ $row->soal }}</td>
+								<td>{{ $row->exam->nama_tes }}</td>
 								<td>{{ $row->a }}</td>
 								<td>{{ $row->b }}</td>
 								<td>{{ $row->c }}</td>
 								<td>{{ $row->d }}</td>
-								<td>{{ $row->e }}</td>
-								<td>{{ $row->kc_jawaban }}</td>
-								<td>{{ $row->gambar }}</td>
+								<td>{{ $row->e }}</td>															
 								<td>{{ $row->status }}</td>
 								<td width="90">
 								<div class="btn-group">

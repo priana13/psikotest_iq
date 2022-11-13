@@ -5,13 +5,14 @@ namespace App\Http\Livewire;
 use Livewire\Component;
 use Livewire\WithPagination;
 use App\Models\Question;
+use App\Models\Exam;
 
 class Questions extends Component
 {
     use WithPagination;
 
 	protected $paginationTheme = 'bootstrap';
-    public $selected_id, $keyWord, $exam_id, $soal, $a, $b, $c, $d, $e, $kc_jawaban, $gambar, $status;
+    public $selected_id, $keyWord, $exam_id, $soal, $a, $b, $c, $d, $e, $kc_jawaban, $gambar, $status = "on";
     public $updateMode = false;
 
     public function render()
@@ -30,6 +31,8 @@ class Questions extends Component
 						->orWhere('gambar', 'LIKE', $keyWord)
 						->orWhere('status', 'LIKE', $keyWord)
 						->paginate(10),
+
+			'exams' => Exam::all(),
         ]);
     }
 	
