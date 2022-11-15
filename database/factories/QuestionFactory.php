@@ -13,16 +13,17 @@ class QuestionFactory extends Factory
     public function definition()
     {
         return [
-			'exam_id' => $this->faker->name,
-			'soal' => $this->faker->name,
+			'exam_id' => 1,
+			'soal' => $this->faker->text(10),
+			'no' => 1,
 			'a' => $this->faker->name,
 			'b' => $this->faker->name,
 			'c' => $this->faker->name,
 			'd' => $this->faker->name,
 			'e' => $this->faker->name,
-			'kc_jawaban' => $this->faker->name,
+			'kc_jawaban' => "b",
 			'gambar' => $this->faker->name,
-			'status' => $this->faker->name,
+			'status' => 'Aktif',
         ];
     }
 }
