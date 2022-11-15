@@ -1,0 +1,45 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+class CreateExamEventsTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('examevents', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
+            $table->integer('salah')->nullable();
+            $table->integer('nilai')->nullable();
+            $table->integer('benar')->nullable();
+            $table->timestamps();
+        });
+
+        Schema::table('exam_items' , function(Blueprint $table){
+            $table->foreignId('examevent_id')->constrained('examevents');
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('examevents');
+
+        Schema::table('exam_items' , function(Blueprint $table){
+            $table->dropConstrainedForeignId('exam_event_id');
+        });
+
+
+    }
+}
