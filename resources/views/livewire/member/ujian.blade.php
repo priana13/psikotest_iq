@@ -14,46 +14,45 @@
         <div class="card shadow mb-4">
             <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                 <h6 class="m-0 font-weight-bold text-primary">{{ $exam->nama_tes }}</h6>
-                <h6><strong>{{ $step }}</strong> dari 50</h6>
+                <h6><strong>{{ $step }}</strong> dari {{ $total }}</h6>
             </div>
             <div class="card-body">
-                <p>
-                {{ $soal->soal }}
-                </p>
+                
+                <p> <strong>{{ $soal->soal }}</strong> </p>
               
                 <fieldset class="form-group row">
                   
                     <div class="col-sm-10">
 
                         <div class="form-check mb-2">
-                            <input class="form-check-input" type="radio" name="jawaban" id="jawaban-a" value="option1" checked>
+                            <input class="form-check-input" type="radio" name="jawaban" id="jawaban-a" wire:model="jawaban" value="a" >
                             <label class="form-check-label" for="jawaban-a">
                             A. {{ $soal->a }}
                             </label>
                         </div>
                         <div class="form-check mb-2">
-                            <input class="form-check-input" type="radio" name="jawaban" id="jawaban-b" value="option2">
+                            <input class="form-check-input" type="radio" name="jawaban" id="jawaban-b"  wire:model="jawaban" value="b">
                             <label class="form-check-label" for="jawaban-b">
                             B. {{ $soal->b }}
                             </label>
                         </div>
 
                         <div class="form-check mb-2">
-                            <input class="form-check-input" type="radio" name="jawaban" id="jawaban-c" value="option2">
+                            <input class="form-check-input" type="radio" name="jawaban" id="jawaban-c"  wire:model="jawaban" value="c">
                             <label class="form-check-label" for="jawaban-c">
                             C. {{ $soal->c }}
                             </label>
                         </div>
 
                         <div class="form-check mb-2">
-                            <input class="form-check-input" type="radio" name="jawaban" id="jawaban-d" value="option2">
+                            <input class="form-check-input" type="radio" name="jawaban" id="jawaban-d" wire:model="jawaban" value="d">
                             <label class="form-check-label" for="jawaban-d">
                             D. {{ $soal->d }}
                             </label>
                         </div>
 
                         <div class="form-check mb-2">
-                            <input class="form-check-input" type="radio" name="jawaban" id="jawaban-e" value="option2">
+                            <input class="form-check-input" type="radio" name="jawaban" id="jawaban-e"  wire:model="jawaban" value="e">
                             <label class="form-check-label" for="jawaban-e">
                             E. {{ $soal->e }}
                             </label>
@@ -68,7 +67,7 @@
                     <button class="btn btn-default btn-sm mr-3">
                         Sebelunya
                     </button>
-                    <button class="btn btn-primary btn-sm" wire:click="berikutnya">
+                    <button class="btn btn-primary btn-sm" wire:click="berikutnya" type="submit">
                         Berikutnya
                     </button>
 

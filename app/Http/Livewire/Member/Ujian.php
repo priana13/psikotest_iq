@@ -12,23 +12,34 @@ class Ujian extends Component
     public $examid;
     public $exam;
     public $soal;
+    public $total;
+    public $jawaban;
 
     public function mount($examid){
 
-        $this->exam = Exam::find($examid);
+        $this->exam = Exam::find($examid);       
 
     }
 
 
     public function render()
     {
-       $this->soal = $this->exam->questions->first();      
+       $this->soal = $this->exam->questions()->step($this->step)->first();   
+       $this->total = $this->exam->questions->count();   
        
         return view('livewire.member.ujian');
     }
 
     public function berikutnya(){
+        
+        $this->validate([
+            'jawaban' => 'required'
+        ]);
+
+        // input ke table ujian di sini
 
         $this->step += 1;
     }
+
+
 }

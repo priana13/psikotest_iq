@@ -22,5 +22,11 @@ class Question extends Model
     {
         return $this->hasOne('App\Models\Exam', 'id', 'exam_id');
     }
+
+    public function scopeStep($query,$step){
+
+        return $query->where('no' , $step);
+
+    }
     
 }
