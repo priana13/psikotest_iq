@@ -5,6 +5,7 @@ namespace App\Http\Livewire\Member;
 use Livewire\Component;
 use App\Models\Question;
 use App\Models\Exam;
+use App\Models\ExamItem;
 
 class Ujian extends Component
 {
@@ -36,9 +37,18 @@ class Ujian extends Component
             'jawaban' => 'required'
         ]);
 
+        ($this->soal->kc_jawaban == $this->jawaban)? $hasil = true:$hasil = false;      
+
         // input ke table ujian di sini
+        ExamItem::create([
+            'user_id' => auth()->user()->id,
+            'question_id' => $this->soal->id,
+            'jawaban' => $this->jawaban,
+            'is_true' => $hasil
+        ]);
 
         $this->step += 1;
+        $this->jawaban = '';
     }
 
 

@@ -18,7 +18,7 @@
             </div>
             <div class="card-body">
                 
-                <p> <strong>{{ $soal->soal }}</strong> </p>
+                <p> <strong>{{ $step }}. {{ $soal->soal }}</strong> </p>
               
                 <fieldset class="form-group row">
                   
