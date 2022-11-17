@@ -58,8 +58,35 @@
              
             </ul>
           </li>
+
+          @guest
+
           <li><a href="{{route('login')}}">Login</a></li>
           <li><a href="{{route('register')}}">Register</a></li>
+
+          @else
+
+          <li class="nav-item">
+
+                      
+          <form id="logout-form" action="{{ route('logout') }}" method="POST">
+            @csrf
+
+            <button class="nav-link btn btn-default btn-sm text-white">             
+              <span>{{ __('Logout') }}</span>
+            </button>
+
+         </form>
+
+
+
+          </li>  
+          
+
+
+
+        @endguest
+
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
@@ -120,6 +147,7 @@
           </div>
         </div>
       </div>
+
 
       <div class="row justify-content-center text-center">
         <div class="col-md-7">
