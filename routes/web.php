@@ -20,7 +20,6 @@ Route::get('/', function () {
 Route::view('/fitur', 'pages.fitur')->name('page.fitur');
 Route::view('/harga', 'pages.harga')->name('page.harga');
 
-
 Route::view('page', [ App\Http\Controllers\HomeController::class, 'page'])->middleware('auth');
 
 Auth::routes();

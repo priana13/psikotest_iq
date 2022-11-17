@@ -7,6 +7,7 @@ use App\Models\Question;
 use App\Models\Exam;
 use App\Models\ExamItem;
 use App\Models\ExamEvent;
+use Carbon\Carbon;
 
 class Ujian extends Component
 {
@@ -17,6 +18,9 @@ class Ujian extends Component
     public $total;
     public $jawaban;
     public $examEvent;
+    public $waktu;
+    public $endtime;
+    public $date;
 
     public function mount($examid , $examEvent){
 
@@ -29,7 +33,11 @@ class Ujian extends Component
     public function render()
     {      
        $this->soal = $this->exam->questions()->step($this->step)->first();   
-       $this->total = $this->exam->questions->count();   
+       $this->total = $this->exam->questions->count();
+       
+        // https://carbon.nesbot.com/docs/
+        $this->date = Carbon::now();
+        $this->endtime = $this->date->addMinutes($this->exam->waktu);
        
         return view('livewire.member.ujian');
     }
