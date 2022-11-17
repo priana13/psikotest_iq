@@ -12,7 +12,7 @@ class Questions extends Component
     use WithPagination;
 
 	protected $paginationTheme = 'bootstrap';
-    public $selected_id, $keyWord, $exam_id, $soal, $a, $b, $c, $d, $e, $kc_jawaban, $gambar, $status = "on";
+    public $selected_id, $keyWord, $exam_id, $soal, $a, $b, $c, $d, $e, $kc_jawaban, $gambar, $status = "on" , $no = 1;
     public $updateMode = false;
 
     public function render()
@@ -69,8 +69,15 @@ class Questions extends Component
 		'status' => 'required',
         ]);
 
+		$existing_question = Question::where('exam_id' , $this->exam_id)->pluck('no');		
+
+		($existing_question->count() > 0)?			
+						$this->no = $existing_question->max() + 1:
+						$this->no = 1;	
+
         Question::create([ 
-			'exam_id' => $this-> exam_id,
+			'exam_id' => $this->exam_id,
+			'no' => $this->no,
 			'soal' => $this-> soal,
 			'a' => $this-> a,
 			'b' => $this-> b,

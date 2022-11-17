@@ -21,6 +21,7 @@ class Ujian extends Component
     public $waktu;
     public $endtime;
     public $date;
+    public $finish_status = FALSE;
 
     public function mount($examid , $examEvent){
 
@@ -32,7 +33,13 @@ class Ujian extends Component
 
     public function render()
     {      
-       $this->soal = $this->exam->questions()->step($this->step)->first();   
+
+       if(!$this->finish_status){
+
+        $this->soal = $this->exam->questions()->step($this->step)->first(); 
+
+       }       
+       
        $this->total = $this->exam->questions->count();
        
         // https://carbon.nesbot.com/docs/
@@ -48,19 +55,33 @@ class Ujian extends Component
             'jawaban' => 'required'
         ]);
 
-        ($this->soal->kc_jawaban == $this->jawaban)? $hasil = true:$hasil = false;
+        if($this->step == $this->total){
+            $this->finish_status = TRUE;
 
-        // input ke table ujian di sini
-        ExamItem::create([
-            'examevent_id' => $this->examEvent->id,
-            'user_id' => auth()->user()->id,
-            'question_id' => $this->soal->id,
-            'jawaban' => $this->jawaban,
-            'is_true' => $hasil
-        ]);
+            // kita bisa redirect page di sini ke halaman nilai
+        }
 
-        $this->step += 1;
-        $this->jawaban = '';
+        if(!$this->finish_status){
+
+            ($this->soal->kc_jawaban == $this->jawaban)? $hasil = true:$hasil = false;
+
+            // input ke table ujian di sini
+            ExamItem::create([
+                'examevent_id' => $this->examEvent->id,
+                'user_id' => auth()->user()->id,
+                'question_id' => $this->soal->id,
+                'jawaban' => $this->jawaban,
+                'is_true' => $hasil
+            ]);
+
+            $this->step += 1;
+            $this->jawaban = '';
+
+
+        }
+
+
+
     }
 
 

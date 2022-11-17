@@ -11,6 +11,8 @@
             </div>
             <div class="card-body">
                 
+                @if(!$finish_status)
+
                 <p> <strong>{{ $step }}. {{ $soal->soal }}</strong> </p>
               
                 <fieldset class="form-group row">
@@ -71,8 +73,16 @@
                 </div>
                 
 
+                @else
 
+                {{-- JIKA SUDAH SELESAI --}}
 
+                <p>
+                    Terimakasih Sudah menyelesaikan Psikotes ini dengan baik, berikut hasil psikotest Anda:
+                    ....
+                </p>
+
+                @endif
             </div>
         </div>
 
