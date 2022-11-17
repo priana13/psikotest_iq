@@ -48,8 +48,8 @@
 
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a class="active " href="index.html">Home</a></li>
-          <li><a href="features.html">Fitur</a></li>
+          <li><a class="active" href="{{ route('home') }}">Home</a></li>
+          <li><a href="{{ route('page.fiture') }}">Fitur</a></li>
           <li><a href="pricing.html">Harga</a></li>          
           <li class="dropdown"><a href="#"><span>Psikotes</span> <i class="bi bi-chevron-down"></i></a>
             <ul>                      
@@ -67,11 +67,7 @@
     </div>
   </header><!-- End Header -->
 
-  <section class="hero-section" id="hero">
-
   @yield('header')
-
-  </section> <!-- End Hero -->
 
   <main id="main">
 

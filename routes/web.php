@@ -15,7 +15,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('home_page');
-});
+})->name('home');
+
+Route::view('/fitures', 'pages.fitures')->name('page.fiture');
 
 Route::view('page', [ App\Http\Controllers\HomeController::class, 'page'])->middleware('auth');
 
