@@ -2,8 +2,11 @@
 
 @section('main-content')
 
-
-@livewire('member.ujian' , ['examid' => $id])
+@livewire('member.ujian' , 
+[
+    'examid' => $id,
+    'examEvent' => $exam_event
+])
 
 
 @endsection
