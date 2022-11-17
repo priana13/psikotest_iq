@@ -61,9 +61,13 @@
                     </div>
                 </fieldset>
 
-
+                <div class="mb-3">
+                    <div class="arror">
+                        @error('jawaban') <span class="text-danger">Belum ada Jawaban yang Terpilih</span> @enderror                     
+                    </div>
+                </div>
                 
-                <div class="d-flex justify-content-center">
+                <div class="d-flex justify-content-left">
                     <button class="btn btn-default btn-sm mr-3">
                         Sebelunya
                     </button>
