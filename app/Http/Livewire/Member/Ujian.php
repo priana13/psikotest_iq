@@ -22,6 +22,7 @@ class Ujian extends Component
     public $endtime;
     public $date;
     public $finish_status = FALSE;
+    public $salah = 0, $benar = 0, $nilai;
 
     public function mount($examid , $examEvent){
 
@@ -58,12 +59,29 @@ class Ujian extends Component
         if($this->step == $this->total){
             $this->finish_status = TRUE;
 
+            $this->examEvent->salah = $this->salah;
+            $this->examEvent->benar = $this->benar;            
+
+            $this->nilai = $this->benar / $this->total * 100;           
+
+            $this->examEvent->nilai = $this->nilai;
+            $this->examEvent->save();
+
             // kita bisa redirect page di sini ke halaman nilai
         }
 
         if(!$this->finish_status){
 
             ($this->soal->kc_jawaban == $this->jawaban)? $hasil = true:$hasil = false;
+
+            if($this->soal->kc_jawaban == $this->jawaban){
+                $hasil = true;
+                $this->benar += 1;
+
+            }else{
+                $hasil = false;
+                $this->salah += 1;
+            }
 
             // input ke table ujian di sini
             ExamItem::create([

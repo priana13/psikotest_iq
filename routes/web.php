@@ -35,7 +35,7 @@ Route::middleware('auth')->group(function(){
 });
 
 //Route Hooks - Do not delete//
-	Route::view('examevents', 'livewire.examevents.index')->middleware('auth');
+	Route::view('examevents', 'livewire.examevents.index')->middleware('auth')->name('examevents');
 	Route::view('exam_events', 'livewire.exam-events.index')->middleware('auth');
 	Route::view('transactions', 'livewire.transactions.index')->middleware('auth')->name('admin.transactions');
 	Route::view('payment_methods', 'livewire.payment-methods.index')->middleware('auth')->name('admin.payment_methods');

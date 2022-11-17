@@ -66,7 +66,7 @@
 
         <!-- Nav Item - Profile -->
         <li class="nav-item">
-            <a class="nav-link" href="/exams">
+            <a class="nav-link" href="{{ route('examevents') }}">
                 <i class="fas fa-fw fa-user"></i>
                 <span>{{ __('History') }}</span>
             </a>

@@ -36,22 +36,28 @@
 								<th>Nama Tes</th>
 								<th>Waktu</th>
 								<th>Nilai Min</th>
-								<th>Status</th>
+								<th>Soal</th>
 								<td class="text-center">ACTIONS</td>
 							</tr>
 						</thead>
 						<tbody>
 							@foreach($exams as $row)
+
+							<?php 
+
+								$jumlah_soal = $row->questions->count();
+
+							?>
 							<tr>
 								<td>{{ $loop->iteration }}</td> 
 								<td>{{ $row->nama_tes }}</td>
 								<td>{{ $row->waktu }}</td>
 								<td>{{ $row->nilai_min }}</td>
-								<td> Active </td>
+								<td> {{ $jumlah_soal }} </td>
 								<td class="text-center">
 								<div class="btn-group">
-									<a href="{{route('member.ujian' , $row->id)}}" class="btn btn-info btn-sm" target = "_blank">
-									 Test Sekarang
+									<a href="{{route('member.ujian' , $row->id)}}" class="btn btn-{{ ($jumlah_soal == 0)?'secondary':'primary' }} btn-sm {{ ($jumlah_soal == 0)?'disabled':'' }}" target = "_blank">
+										{{ ($jumlah_soal == 0)?'Belum Tersedia':'Test Sekarang' }}
 									</a> 
                                     
 								</div>

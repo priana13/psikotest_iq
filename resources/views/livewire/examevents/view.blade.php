@@ -7,7 +7,7 @@
 					<div style="display: flex; justify-content: space-between; align-items: center;">
 						<div class="float-left">
 							<h4><i class="fab fa-laravel text-info"></i>
-							Examevent Listing </h4>
+							History Psikotes </h4>
 						</div>
 						<div wire:poll.60s>
 							<code><h5>{{ now()->format('H:i:s') }} UTC</h5></code>
@@ -33,20 +33,38 @@
 							<tr> 
 								<td>#</td> 
 								<th>Name</th>
-								<th>Salah</th>
-								<th>Nilai</th>
+								<th>Salah</th>								
 								<th>Benar</th>
+								<th>Score</th>
 								<td>ACTIONS</td>
 							</tr>
 						</thead>
 						<tbody>
 							@foreach($examevents as $row)
+
+							<?php 
+
+							if($row->nilai >= 80){
+								$tanda = 'success';
+							}elseif($row->nilai < 80 && $row->nilai > 70){
+								$tanda = 'info';
+							}elseif($row->nilai <= 70 && $row->nilai > 50){ 
+								$tanda = 'warning';
+							}else{
+								$tanda = 'danger';
+							}
+
+
+							?>
 							<tr>
 								<td>{{ $loop->iteration }}</td> 
 								<td>{{ $row->name }}</td>
-								<td>{{ $row->salah }}</td>
-								<td>{{ $row->nilai }}</td>
+								<td>{{ $row->salah }}</td>								
 								<td>{{ $row->benar }}</td>
+								<td>
+									<span class="badge badge-pill badge-{{ $tanda }}">{{ $row->nilai }}%</span>
+									
+								</td>
 								<td width="90">
 								<div class="btn-group">
 									<button type="button" class="btn btn-info btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
