@@ -25,7 +25,7 @@
         <div class="col-lg-8 text-center text-lg-start">
           <h1 data-aos="fade-right">Psikotes Mudah - Akses Dimanapun</h1>
           <p class="mb-5" data-aos="fade-right" data-aos-delay="100">Persiapkan diri untuk mengikuti ujian.</p>
-          <p data-aos="fade-right" data-aos-delay="200" data-aos-offset="-500"><a href="#" class="btn btn-outline-white">Mulai Sekarang</a></p>
+          <p data-aos="fade-right" data-aos-delay="200" data-aos-offset="-500"><a href="{{ route('register') }}" class="btn btn-outline-white">Mulai Sekarang</a></p>
         </div>
         <div class="col-lg-4 iphone-wrap">
           <img src="assets/img/phone_1.png" alt="Image" class="phone-1" data-aos="fade-right">
@@ -243,7 +243,7 @@
         <h2>Jangan biarkan waktu berlalu</h2>
       </div>
       <div class="col-md-5 text-center text-md-end">
-        <p><a href="#" class="btn d-inline-flex align-items-center"><span>Mulai Sekarang</span></a> </p>
+        <p><a href="{{ route('register') }}" class="btn d-inline-flex align-items-center"><span>Mulai Sekarang</span></a> </p>
       </div>
     </div>
   </div>

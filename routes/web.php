@@ -17,7 +17,9 @@ Route::get('/', function () {
     return view('home_page');
 })->name('home');
 
-Route::view('/fitures', 'pages.fitures')->name('page.fiture');
+Route::view('/fitur', 'pages.fitur')->name('page.fitur');
+Route::view('/harga', 'pages.harga')->name('page.harga');
+
 
 Route::view('page', [ App\Http\Controllers\HomeController::class, 'page'])->middleware('auth');
 

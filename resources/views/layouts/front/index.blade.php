@@ -41,7 +41,7 @@
     <div class="container d-flex justify-content-between align-items-center">
 
       <div class="logo">
-        <h1><a href="index.html">Psikotes</a></h1>
+        <h1><a href="{{ route('home') }}">{{ config('app.name') }}</a></h1>
         <!-- Uncomment below if you prefer to use an image logo -->
         <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
       </div>
@@ -49,8 +49,8 @@
       <nav id="navbar" class="navbar">
         <ul>
           <li><a class="active" href="{{ route('home') }}">Home</a></li>
-          <li><a href="{{ route('page.fiture') }}">Fitur</a></li>
-          <li><a href="pricing.html">Harga</a></li>          
+          <li><a href="{{ route('page.fitur') }}">Fitur</a></li>
+          <li><a href="{{ route('page.harga') }}">Harga</a></li>          
           <li class="dropdown"><a href="#"><span>Psikotes</span> <i class="bi bi-chevron-down"></i></a>
             <ul>                      
               <li><a href="#">Soal Kecerdasarn</a></li>
@@ -80,7 +80,7 @@
     <div class="container">
       <div class="row">
         <div class="col-md-4 mb-4 mb-md-0">
-          <h3>About SoftLand</h3>
+          <h3>About {{ config('app.name') }}</h3>
           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius ea delectus pariatur, numquam aperiam
             dolore nam optio dolorem facilis itaque voluptatum recusandae deleniti minus animi.</p>
           <p class="social">
