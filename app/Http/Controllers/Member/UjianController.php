@@ -9,6 +9,17 @@ use App\Models\Examevent;
 
 class UjianController extends Controller
 {
+
+
+    public function index($exam){
+
+      return view('member.ujian.mulai', [
+          'ujian' => Exam::find($exam)
+      ]);
+
+    }
+
+
     public function soal($exam){  
 
         $exam = Exam::find($exam);

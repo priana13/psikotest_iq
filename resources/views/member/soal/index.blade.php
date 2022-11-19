@@ -11,7 +11,7 @@
 					<div style="display: flex; justify-content: space-between; align-items: center;">
 						<div class="float-left">
 							<h4><i class="fab fa-laravel text-info"></i>
-							List Soal Psikotes </h4>
+							List Soal Tersedia </h4>
 						</div>
 						
 						@if (session()->has('message'))
@@ -56,7 +56,7 @@
 								<td> {{ $jumlah_soal }} </td>
 								<td class="text-center">
 								<div class="btn-group">
-									<a href="{{route('member.ujian' , $row->id)}}" class="btn btn-{{ ($jumlah_soal == 0)?'secondary':'primary' }} btn-sm {{ ($jumlah_soal == 0)?'disabled':'' }}" target = "_blank">
+									<a href="{{route('mulai-ujian' , $row->id)}}" class="btn btn-{{ ($jumlah_soal == 0)?'secondary':'primary' }} btn-sm {{ ($jumlah_soal == 0)?'disabled':'' }}" target = "_blank">
 										{{ ($jumlah_soal == 0)?'Belum Tersedia':'Test Sekarang' }}
 									</a> 
                                     
