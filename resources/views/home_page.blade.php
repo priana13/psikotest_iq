@@ -28,8 +28,8 @@
           <p data-aos="fade-right" data-aos-delay="200" data-aos-offset="-500"><a href="{{ route('register') }}" class="btn btn-outline-white">Mulai Sekarang</a></p>
         </div>
         <div class="col-lg-4 iphone-wrap">
-          <img src="assets/img/phone_1.png" alt="Image" class="phone-1" data-aos="fade-right">
-          <img src="assets/img/phone_2.png" alt="Image" class="phone-2" data-aos="fade-right" data-aos-delay="200">
+          {{-- <img src="assets/img/phone_1.png" alt="Image" class="phone-1" data-aos="fade-right"> --}}
+          <img src="img/exam.webp" alt="Image" class="img-fluid rounded shadow" data-aos="fade-right" data-aos-delay="200">
         </div>
       </div>
     </div>
@@ -121,11 +121,9 @@
   <div class="container">
     <div class="row align-items-center">
       <div class="col-md-4 me-auto">
-        <h2 class="mb-4">Seamlessly Communicate</h2>
-        <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur at reprehenderit optio,
-          laudantium eius quod, eum maxime molestiae porro omnis. Dolores aspernatur delectus impedit incidunt
-          dolore mollitia esse natus beatae.</p>
-        <p><a href="#" class="btn btn-primary">Download Now</a></p>
+        <h2 class="mb-4">Pengerjaan Tes Flexible</h2>
+        <p class="mb-4">Tak semua orang memiliki waktu yang luang yang banyak, Anda bisa mengerjakan soal psikotes kapan dan dimanapun menyesuaikan waktu Anda.</p>
+        <p><a href="{{ route('register') }}" class="btn btn-primary">Coba Sekarang</a></p>
       </div>
       <div class="col-md-6" data-aos="fade-left">
         <img src="assets/img/undraw_svg_2.svg" alt="Image" class="img-fluid">

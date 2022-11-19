@@ -9,9 +9,7 @@
 							<h4><i class="fab fa-laravel text-info"></i>
 							History Psikotes </h4>
 						</div>
-						<div wire:poll.60s>
-							<code><h5>{{ now()->format('H:i:s') }} UTC</h5></code>
-						</div>
+						
 						@if (session()->has('message'))
 						<div wire:poll.4s class="btn btn-sm btn-success" style="margin-top:0px; margin-bottom:0px;"> {{ session('message') }} </div>
 						@endif
@@ -32,10 +30,11 @@
 						<thead class="thead">
 							<tr> 
 								<td>#</td> 
-								<th>Name</th>
+								<th>Name</th>								
 								<th>Salah</th>								
 								<th>Benar</th>
 								<th>Score</th>
+								<th>Status</th>
 								<td>ACTIONS</td>
 							</tr>
 						</thead>
@@ -58,12 +57,18 @@
 							?>
 							<tr>
 								<td>{{ $loop->iteration }}</td> 
-								<td>{{ $row->name }}</td>
+								<td>
+									<strong>{{ $row->name }}</strong><br>
+									{{ $row->created_at->diffForHumans() }}
+								</td>								
 								<td>{{ $row->salah }}</td>								
 								<td>{{ $row->benar }}</td>
 								<td>
 									<span class="badge badge-pill badge-{{ $tanda }}">{{ $row->nilai }}%</span>
 									
+								</td>
+								<td>
+									{{ ($row->nilai)? 'Selesai': 'Tidak Selesai' }}
 								</td>
 								<td width="90">
 								<div class="btn-group">
