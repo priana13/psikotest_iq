@@ -2,7 +2,7 @@
 
     <div class="row justify-content-center">
 		<div class="col-md-12">
-			<div class="card">
+			<div class="card position-sticky">
                 <div class="card-header d-flex justify-content-between">
 
                     <button class="btn btn-primary">
@@ -20,8 +20,8 @@
                 
                 <div class="card-body row">
 
-                    <div class="col-md-6 mx-auto">
-                        <h5>Kolom 1</h5>
+                    <div class="col-md-6 mx-auto text-center">
+                        <h4>Kolom 1</h4>
 
                         <table class="table table-striped">
                             <tr>
@@ -33,37 +33,60 @@
                             </tr>                           
 
                             <tr>
-                                <td>7</td>
-                                <td>2</td>
-                                <td>3</td>
-                                <td>6</td>
-                                <td>0</td>  
-
-                            </tr>
-                        </table>
-
-                        <h4>Soal</h4>
-
-                        <table class="table">
-                            
-                            @for ($i = 1; $i <= 50; $i++)
-
-                            <tr class="">
-                                <th class="">{{ $i }}</th>
-                                <td class="">6</td>
-                                <td class="">5</td>
-                                <td class="">4</td>
-                                <td class="">3</td>
                                 <td style="width:20%;">
                                     <input class="form-control" type="text">
                                 </td>
+                                <td style="width:20%;">
+                                    <input class="form-control" type="text">
+                                </td>
+                                <td style="width:20%;">
+                                    <input class="form-control" type="text">
+                                </td>
+                                <td style="width:20%;">
+                                    <input class="form-control" type="text">
+                                </td>
+                                <td style="width:20%;">
+                                    <input class="form-control" type="text">
+                                </td>  
+
                             </tr>
-                                
-                            @endfor
-
-
-                           
                         </table>
+
+                        @if(!$soalTampil)
+
+                        <button class="btn btn-warning mx-auto" wire:click="buatsoal">Buat Soal</button>
+
+                        @else
+
+                        <div class="">
+
+                            <h4>Soal</h4>
+
+                            <table class="table">
+                                
+                                @for ($i = 1; $i <= 50; $i++)
+    
+                                <tr class="">
+                                    <th class="">{{ $i }}</th>
+                                    <td class="">6</td>
+                                    <td class="">5</td>
+                                    <td class="">4</td>
+                                    <td class="">3</td>
+                                    <td style="width:20%;">
+                                        <input class="form-control" type="text">
+                                    </td>
+                                </tr>
+                                    
+                                @endfor
+                               
+                            </table>
+
+
+                        </div>
+
+                        @endif
+
+
                     </div>
 
                               
