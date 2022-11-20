@@ -24,7 +24,7 @@ Auth::routes();
 Route::middleware('auth')->group(function(){
 
 	Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('dashboard');
-
+	Route::get('/myprofile', [App\Http\Controllers\ProfileController::class, 'index'])->name('myprofile');
 
 	Route::get('/member/soal' , [App\Http\Controllers\Member\SoalController::class , 'index'])->name('member.soal');
 	Route::get('/member/ujian/mulai/{exam}' , [App\Http\Controllers\Member\UjianController::class , 'index'])->name('mulai-ujian');
