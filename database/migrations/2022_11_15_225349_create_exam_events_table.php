@@ -15,6 +15,7 @@ class CreateExamEventsTable extends Migration
     {
         Schema::create('examevents', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained('users');
             $table->string('name');
             $table->integer('salah')->nullable();
             $table->integer('nilai')->nullable();

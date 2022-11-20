@@ -13,7 +13,7 @@ class Examevent extends Model
 
     protected $table = 'examevents';
 
-    protected $fillable = ['name','salah','nilai','benar'];
+    protected $fillable = ['user_id','name','salah','nilai','benar'];
 	
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
@@ -22,5 +22,12 @@ class Examevent extends Model
     {
         return $this->hasMany('App\Models\ExamItem', 'examevent_id', 'id');
     }
+
+    public function user(){
+
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
+
     
 }

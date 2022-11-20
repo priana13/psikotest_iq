@@ -17,18 +17,14 @@ class Examevents extends Component
     public function render()
     {
 
-        // $user = 
+		// $keyWord = '%'.$this->keyWord .'%';          
 
+        $histories = auth()->user()->examevents()->paginate(10);
 
-		$keyWord = '%'.$this->keyWord .'%';
         return view('livewire.examevents.view', [
-            'examevents' => Examevent::latest()
-						->orWhere('name', 'LIKE', $keyWord)
-						->orWhere('salah', 'LIKE', $keyWord)
-						->orWhere('nilai', 'LIKE', $keyWord)
-						->orWhere('benar', 'LIKE', $keyWord)
-						->paginate(10),
-        ]);
+            'examevents' => $histories
+        ]); 
+
     }
 	
     public function cancel()
