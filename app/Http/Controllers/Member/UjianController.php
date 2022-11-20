@@ -22,9 +22,15 @@ class UjianController extends Controller
 
     public function soal($exam){  
 
-        $exam = Exam::find($exam);
+        $exam = Exam::find($exam);     
+        
+        if($exam->type == 'cermat'){
+          $type = 'kolom';
+        }else{
+          $type = 'pg'; // pilihan ganda
+        }
 
-        return view('member.ujian.halaman_ujian' , 
+        return view('member.ujian.halaman_ujian_'. $type , 
         ['id' => $exam->id , 
           'exam_event' => Examevent::create([
             'name' => 'Test ' . $exam->nama_tes,
@@ -33,4 +39,5 @@ class UjianController extends Controller
         ]
     );
     }
+
 }
