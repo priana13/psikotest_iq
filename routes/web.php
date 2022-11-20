@@ -45,6 +45,7 @@ Route::middleware('auth')->group(function(){
 		Route::view('scores', 'livewire.scores.index')->name('admin.scores');
 		Route::view('questions', 'livewire.questions.index')->name('admin.questions');
 		Route::view('exams', 'livewire.exams.index')->name('admin.exams');
+		Route::view('tes-cermat' ,'livewire.tes-cermat.index')->name('admin.tes-kecermatan');
 
 
 	});

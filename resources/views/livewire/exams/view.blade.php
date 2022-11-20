@@ -9,18 +9,32 @@
 							<h4><i class="fab fa-laravel text-info"></i>
 							List Psikotes </h4>
 						</div>
-						<div wire:poll.60s>
-							<code><h5>{{ now()->format('H:i:s') }} UTC</h5></code>
-						</div>
+						
 						@if (session()->has('message'))
 						<div wire:poll.4s class="btn btn-sm btn-success" style="margin-top:0px; margin-bottom:0px;"> {{ session('message') }} </div>
 						@endif
 						<div>
-							<input wire:model='keyWord' type="text" class="form-control" name="search" id="search" placeholder="Search Exams">
+							<input wire:model='keyWord' type="text" class="form-control" name="search" id="search" placeholder="Search...">
 						</div>
-						<div class="btn btn-sm btn-primary" data-toggle="modal" data-target="#createDataModal">
-						<i class="fa fa-plus"></i>  Tambah Tes Baru
+
+						<div class="dropdown">
+							<button class="btn btn-primary dropdown-toggle" type="button" id="dropdownTambah" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								<i class="fa fa-plus"></i>
+								Tambah Tes
+							</button>
+							<div class="dropdown-menu animated--fade-in" aria-labelledby="dropdownTambah" style="">
+
+								<a href="#" class="dropdown-item" data-toggle="modal" data-target="#createDataModal">
+									Tes Kecerdasan
+								</a>
+								<a class="dropdown-item" href="{{ route('admin.tes-kecermatan') }}">
+									Tes Kecermatan
+								</a>								
+							</div>
 						</div>
+
+
+
 					</div>
 				</div>
 				
@@ -31,12 +45,12 @@
 					<table class="table table-bordered table-sm">
 						<thead class="thead">
 							<tr> 
-								<td>#</td> 
+								<td>No</td> 
 								<th>Nama Tes</th>
+								<th>Type</th>
 								<th>Waktu</th>
-								<th>Nilai Min</th>
-								<th>Peraturan</th>
-								<td>ACTIONS</td>
+								<th>Nilai Min</th>								
+								<td>Action</td>
 							</tr>
 						</thead>
 						<tbody>
@@ -44,9 +58,9 @@
 							<tr>
 								<td>{{ $loop->iteration }}</td> 
 								<td>{{ $row->nama_tes }}</td>
+								<td>{{ $row->type }}</td>
 								<td>{{ $row->waktu }}</td>
-								<td>{{ $row->nilai_min }}</td>
-								<td>{{ $row->peraturan }}</td>
+								<td>{{ $row->nilai_min }}</td>								
 								<td width="90">
 								<div class="btn-group">
 									<button type="button" class="btn btn-info btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
