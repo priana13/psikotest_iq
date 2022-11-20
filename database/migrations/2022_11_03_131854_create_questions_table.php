@@ -17,13 +17,14 @@ class CreateQuestionsTable extends Migration
             $table->id();
             $table->foreignId('exam_id')->constrained('exams');
             $table->enum('type' , ['cerdas' , 'cermat']);
+            $table->string('kolom' , 5)->nullable();
             $table->integer('no');
-            $table->string('soal');
+            $table->string('soal')->nullable();
             $table->string('a');
             $table->string('b');
             $table->string('c');
             $table->string('d');
-            $table->string('e');
+            $table->string('e')->nullable();
             $table->string('kc_jawaban')->nullable();
             $table->string('gambar')->nullable();
             $table->string('status');

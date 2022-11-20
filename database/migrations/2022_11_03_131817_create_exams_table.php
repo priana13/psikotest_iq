@@ -15,6 +15,7 @@ class CreateExamsTable extends Migration
     {
         Schema::create('exams', function (Blueprint $table) {
             $table->id();
+            $table->enum('type' , ['cerdas' , 'cermat']);
             $table->string('nama_tes');
             $table->string('waktu');
             $table->string('nilai_min');

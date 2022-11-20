@@ -13,6 +13,7 @@ class ExamFactory extends Factory
     public function definition()
     {
         return [
+            'type' => 'cerdas',
 			'nama_tes' => $this->faker->sentence,
 			'waktu' => 60,
 			'nilai_min' => 80,
