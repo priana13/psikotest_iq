@@ -16,6 +16,10 @@ class Examevents extends Component
 
     public function render()
     {
+
+        // $user = 
+
+
 		$keyWord = '%'.$this->keyWord .'%';
         return view('livewire.examevents.view', [
             'examevents' => Examevent::latest()

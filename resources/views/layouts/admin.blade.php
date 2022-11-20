@@ -66,7 +66,7 @@
 
         <!-- Nav Item - Profile -->
         <li class="nav-item">
-            <a class="nav-link" href="{{ route('examevents') }}">
+            <a class="nav-link" href="{{ route('member.history') }}">
                 <i class="fas fa-fw fa-user"></i>
                 <span>{{ __('History') }}</span>
             </a>
@@ -74,7 +74,7 @@
 
         <!-- Nav Item - Profile -->
         <li class="nav-item">
-            <a class="nav-link" href="/exams">
+            <a class="nav-link" href="#">
                 <i class="fas fa-fw fa-user"></i>
                 <span>{{ __('Langganan') }}</span>
             </a>
@@ -83,6 +83,8 @@
 
         <!-- Divider -->
         <hr class="sidebar-divider">
+
+        @can('admin')
 
         <!-- Heading -->
         <div class="sidebar-heading">
@@ -120,6 +122,8 @@
                 <span>{{ __('Users') }}</span>
             </a>
         </li>
+
+        @endcan
 
         <!-- Divider -->
         <hr class="sidebar-divider d-none d-md-block">

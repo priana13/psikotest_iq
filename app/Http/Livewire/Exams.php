@@ -15,7 +15,8 @@ class Exams extends Component
     public $updateMode = false;
 
     public function render()
-    {
+    {        
+
 		$keyWord = '%'.$this->keyWord .'%';
         return view('livewire.exams.view', [
             'exams' => Exam::latest()

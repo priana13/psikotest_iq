@@ -29,6 +29,8 @@ Route::middleware('auth')->group(function(){
 	Route::get('/member/soal' , [App\Http\Controllers\Member\SoalController::class , 'index'])->name('member.soal');
 	Route::get('/member/ujian/mulai/{exam}' , [App\Http\Controllers\Member\UjianController::class , 'index'])->name('mulai-ujian');
 	Route::get('/member/ujian/{exam}' , [App\Http\Controllers\Member\UjianController::class , 'soal'])->name('member.ujian');
+	Route::view('member/history', 'livewire.examevents.index')->name('member.history');
+
 
 
 	Route::middleware('admin')->group(function(){

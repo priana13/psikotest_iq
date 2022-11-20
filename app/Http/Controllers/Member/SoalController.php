@@ -16,6 +16,8 @@ class SoalController extends Controller
     public function index()
     {        
 
+        // $this->authorize('admin');
+
         return view('member.soal.index' , [
             'exams' => Exam::latest()->paginate(10)
         ]);
