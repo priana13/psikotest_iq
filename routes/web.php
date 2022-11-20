@@ -19,31 +19,34 @@ Route::get('/', function () {
 
 Route::view('/fitur', 'pages.fitur')->name('page.fitur');
 Route::view('/harga', 'pages.harga')->name('page.harga');
-
-Route::view('page', [ App\Http\Controllers\HomeController::class, 'page'])->middleware('auth');
-
 Auth::routes();
 
-Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('dashboard');
-
 Route::middleware('auth')->group(function(){
+
+	Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('dashboard');
+
 
 	Route::get('/member/soal' , [App\Http\Controllers\Member\SoalController::class , 'index'])->name('member.soal');
 	Route::get('/member/ujian/mulai/{exam}' , [App\Http\Controllers\Member\UjianController::class , 'index'])->name('mulai-ujian');
 	Route::get('/member/ujian/{exam}' , [App\Http\Controllers\Member\UjianController::class , 'soal'])->name('member.ujian');
 
 
+	Route::middleware('admin')->group(function(){
 
+		//Route Hooks - Do not delete//
+		Route::view('examevents', 'livewire.examevents.index')->name('examevents');
+		Route::view('exam_events', 'livewire.exam-events.index');
+		Route::view('transactions', 'livewire.transactions.index')->name('admin.transactions');
+		Route::view('payment_methods', 'livewire.payment-methods.index')->name('admin.payment_methods');
+		Route::view('users', 'livewire.users.index')->name('admin.users');
+		Route::view('settings', 'livewire.settings.index')->name('admin.settings');
+		Route::view('scores', 'livewire.scores.index')->name('admin.scores');
+		Route::view('questions', 'livewire.questions.index')->name('admin.questions');
+		Route::view('exams', 'livewire.exams.index')->name('admin.exams');
+
+
+	});
 
 });
 
-//Route Hooks - Do not delete//
-	Route::view('examevents', 'livewire.examevents.index')->middleware('auth')->name('examevents');
-	Route::view('exam_events', 'livewire.exam-events.index')->middleware('auth');
-	Route::view('transactions', 'livewire.transactions.index')->middleware('auth')->name('admin.transactions');
-	Route::view('payment_methods', 'livewire.payment-methods.index')->middleware('auth')->name('admin.payment_methods');
-	Route::view('users', 'livewire.users.index')->middleware('auth')->name('admin.users');
-	Route::view('settings', 'livewire.settings.index')->middleware('auth')->name('admin.settings');
-	Route::view('scores', 'livewire.scores.index')->middleware('auth')->name('admin.scores');
-	Route::view('questions', 'livewire.questions.index')->middleware('auth')->name('admin.questions');
-	Route::view('exams', 'livewire.exams.index')->middleware('auth')->name('admin.exams');
+
