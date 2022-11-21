@@ -75,14 +75,32 @@
 
                 @else
 
-                {{-- JIKA SUDAH SELESAI --}}
+                {{-- JIKA SUDAH SELESAI --}}         
 
-                <p>
-                    Terimakasih Sudah menyelesaikan Psikotes ini dengan baik, berikut hasil psikotest Anda:
-                    ....
-                </p>
 
+                <div class="text-center">
+
+                    <p class="text-center">
+                        Terimakasih Sudah menyelesaikan Psikotes ini dengan baik, berikut hasil psikotest Anda:
+                        <h3 class="text-center">Score Anda: <strong> <span class="text-success">{{ $examEvent->nilai }} 50</span> </strong></h3>
+                    </p>  
+
+                    <div class="d-flex justify-content-center">
+                        <a href="{{ route('member.history') }}" class="btn btn-secondary btn-sm mr-3">
+                            History
+                        </a>
+                        <a href="{{ route('member.soal') }}" class="btn btn-primary btn-sm"  type="submit">
+                            Test Lagi
+                        </a>
+    
+                    </div>
+
+
+                </div>
                 @endif
+
+
+
             </div>
         </div>
 
