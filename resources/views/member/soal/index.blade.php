@@ -34,10 +34,11 @@
 							<tr> 
 								<td>#</td> 
 								<th>Nama Tes</th>
+								<th>Jenis</th>
 								<th>Waktu</th>
 								<th>Nilai Min</th>
 								<th>Soal</th>
-								<td class="text-center">ACTIONS</td>
+								<td class="text-center">Aksi</td>
 							</tr>
 						</thead>
 						<tbody>
@@ -48,15 +49,18 @@
 								$jumlah_soal = $row->questions->count();
 
 							?>
-							<tr>
+							<tr>								
 								<td>{{ $loop->iteration }}</td> 
 								<td>{{ $row->nama_tes }}</td>
+								<td>{{ $row->type }}</td>
 								<td>{{ $row->waktu }}</td>
 								<td>{{ $row->nilai_min }}</td>
 								<td> {{ $jumlah_soal }} </td>
 								<td class="text-center">
 								<div class="btn-group">
 									<a href="{{route('mulai-ujian' , $row->id)}}" class="btn btn-{{ ($jumlah_soal == 0)?'secondary':'primary' }} btn-sm {{ ($jumlah_soal == 0)?'disabled':'' }}" target = "_blank">
+										{{-- <i class="fas fa-lock"></i> --}}
+										
 										{{ ($jumlah_soal == 0)?'Belum Tersedia':'Test Sekarang' }}
 									</a> 
                                     

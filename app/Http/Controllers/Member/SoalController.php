@@ -18,8 +18,13 @@ class SoalController extends Controller
 
         // $this->authorize('admin');
 
+
+        $exam = Exam::whereHas('questions')->paginate(10);
+
+
+
         return view('member.soal.index' , [
-            'exams' => Exam::latest()->paginate(10)
+            'exams' => $exam
         ]);
     }
 
