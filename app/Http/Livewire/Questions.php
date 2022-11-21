@@ -6,14 +6,16 @@ use Livewire\Component;
 use Livewire\WithPagination;
 use App\Models\Question;
 use App\Models\Exam;
+use Livewire\WithFileUploads;
 
 class Questions extends Component
 {
     use WithPagination;
+	use WithFileUploads;
 
 	protected $paginationTheme = 'bootstrap';
     public $selected_id, $keyWord, $exam_id, $soal, $a, $b, $c, $d, $e, $kc_jawaban, $gambar, $status = "on" , $no = 1;
-    public $updateMode = false;
+    public $updateMode = false;	
 
     public function render()
     {
@@ -67,7 +69,10 @@ class Questions extends Component
 		'd' => 'required',
 		'e' => 'required',
 		'status' => 'required',
-        ]);
+		'gambar' => 'image|max:1024'
+        ]);		
+ 
+        $path_gambar =  $this->gambar->store('photos');
 
 		$existing_question = Question::where('exam_id' , $this->exam_id)->pluck('no');		
 
@@ -78,15 +83,15 @@ class Questions extends Component
         Question::create([ 
 			'exam_id' => $this->exam_id,
 			'no' => $this->no,
-			'soal' => $this-> soal,
+			'soal' => $this->soal,
 			'a' => $this-> a,
 			'b' => $this-> b,
 			'c' => $this-> c,
 			'd' => $this-> d,
 			'e' => $this-> e,
 			'kc_jawaban' => $this-> kc_jawaban,
-			'gambar' => $this-> gambar,
-			'status' => $this-> status
+			'gambar' => $path_gambar,
+			'status' => $this->status
         ]);
         
         $this->resetInput();

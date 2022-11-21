@@ -19,7 +19,7 @@ class Examevents extends Component
 
 		// $keyWord = '%'.$this->keyWord .'%';          
 
-        $histories = auth()->user()->examevents()->paginate(10);
+        $histories = auth()->user()->examevents()->orderBy('id' , 'desc')->paginate(10);
 
         return view('livewire.examevents.view', [
             'examevents' => $histories

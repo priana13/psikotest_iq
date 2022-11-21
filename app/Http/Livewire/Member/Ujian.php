@@ -24,6 +24,10 @@ class Ujian extends Component
     public $finish_status = FALSE;
     public $salah = 0, $benar = 0, $nilai;
 
+
+    protected $listeners = ['waktuHabis' => 'waktuHabis'];
+
+
     public function mount($examid , $examEvent){
 
         $this->exam = Exam::find($examid);       
@@ -98,6 +102,21 @@ class Ujian extends Component
 
         }
 
+
+
+    }
+
+    public function waktuHabis(){
+
+        $this->finish_status = TRUE;
+
+        $this->examEvent->salah = $this->salah;
+        $this->examEvent->benar = $this->benar;            
+
+        $this->nilai = $this->benar / $this->total * 100;           
+
+        $this->examEvent->nilai = $this->nilai;
+        $this->examEvent->save();
 
 
     }

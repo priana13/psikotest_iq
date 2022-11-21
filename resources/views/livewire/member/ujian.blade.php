@@ -64,7 +64,7 @@
                 
                 <div class="d-flex justify-content-left">
                     <button class="btn btn-default btn-sm mr-3">
-                        Sebelunya
+                        Sebelumnya
                     </button>
                     <button class="btn btn-primary btn-sm" wire:click="berikutnya" type="submit">
                         Berikutnya
@@ -82,7 +82,7 @@
 
                     <p class="text-center">
                         Terimakasih Sudah menyelesaikan Psikotes ini dengan baik, berikut hasil psikotest Anda:
-                        <h3 class="text-center">Score Anda: <strong> <span class="text-success">{{ $examEvent->nilai }} 50</span> </strong></h3>
+                        <h3 class="text-center">Score Anda: <strong> <span class="text-success">{{ $examEvent->nilai }}</span> </strong></h3>
                     </p>  
 
                     <div class="d-flex justify-content-center">
@@ -124,8 +124,9 @@
 
                     clearInterval(timer); 
                     
-                    alert('waktu habis');
+                    alert('Waktu Tes Telah Habis');
                     // emit di sini
+                    Livewire.emit('waktuHabis');
 
                     return;
                 }

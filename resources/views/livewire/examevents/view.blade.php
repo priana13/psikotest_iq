@@ -28,8 +28,7 @@
 				<div class="table-responsive">
 					<table class="table table-bordered table-sm">
 						<thead class="thead">
-							<tr> 
-								<td>#</td> 
+							<tr> 								
 								<th>Name</th>								
 								<th>Salah</th>								
 								<th>Benar</th>
@@ -55,8 +54,7 @@
 
 
 							?>
-							<tr>
-								<td>{{ $loop->iteration }}</td> 
+							<tr>								
 								<td>
 									<strong>{{ $row->name }}</strong><br>
 									{{ $row->created_at->diffForHumans() }}

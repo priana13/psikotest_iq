@@ -3,7 +3,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="createDataModalLabel">Create New Question</h5>
+                <h5 class="modal-title" id="createDataModalLabel">Tambah Soal</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                      <span aria-hidden="true close-btn">×</span>
                 </button>
@@ -51,7 +51,7 @@
             </div>
             <div class="form-group">
                 <label for="gambar"></label>
-                <input wire:model="gambar" type="text" class="form-control" id="gambar" placeholder="Gambar">@error('gambar') <span class="text-danger">{{ $message }}</span> @enderror
+                <input wire:model="gambar" type="file" class="form-control" id="gambar" placeholder="Gambar">@error('gambar') <span class="text-danger">{{ $message }}</span> @enderror
             </div>
             <div class="form-group">
                 <label for="status"></label>
