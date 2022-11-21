@@ -122,7 +122,11 @@
                 var distance = end - now;
                 if (distance < 0) {
 
-                    clearInterval(timer);                    
+                    clearInterval(timer); 
+                    
+                    alert('waktu habis');
+                    // emit di sini
+
                     return;
                 }
                 var days = Math.floor(distance / _day);
