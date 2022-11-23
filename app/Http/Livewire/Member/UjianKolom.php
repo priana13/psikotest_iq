@@ -13,6 +13,9 @@ class UjianKolom extends Component
 {
 
     public $exam , $examEvent;
+    public $waktu;
+    public $endtime;
+    public $date;
     
     public function mount($examid , $examEvent){
 
@@ -23,6 +26,12 @@ class UjianKolom extends Component
 
     public function render()
     {
+
+        // https://carbon.nesbot.com/docs/
+        $this->date = Carbon::now();
+        $this->endtime = $this->date->addMinutes($this->exam->waktu);
+        
+
         return view('livewire.member.ujian-kolom');
     }
 
