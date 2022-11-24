@@ -31,7 +31,7 @@ class UjianController extends Controller
         }
 
         return view('member.ujian.halaman_ujian_'. $type , 
-        ['id' => $exam->id , 
+        ['exam' => $exam, 
           'exam_event' => Examevent::create([
             'name' => 'Test ' . $exam->nama_tes,
             'user_id' => auth()->user()->id

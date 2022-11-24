@@ -1,36 +1,9 @@
 <div class="row">
 
-    <div class="col-md-2" id="list-nomor">
-        
-        <div class="card shadow mb-4">
 
-            <div class="card-body">
+    <div class="col">
 
-                <div class="row">
-
-                    @foreach($exam->questions as $row)
-        
-                    <button class="col btn btn-sm btn-secondary m-1" >{{ $row->no }}</button>
-            
-                    @endforeach
-        
-                </div>  
-                {{-- akhir row --}}
-
-            </div>
-            {{-- akhir card body--}}
-          
-
-        </div> 
-        {{-- akhir card --}}
-    </div>
-
-
-
-
-    <div class="col-md-10">
-
-        <button class="btn btn-sm btn-primary mb-1" onclick="listNo()">Nomor</button>
+        <button class="btn btn-sm btn-primary mb-1" onclick="listNo()" id="sidebarToggle">Nomor</button>
 
 
         <!-- Basic Card Example -->
@@ -179,9 +152,19 @@
             timer = setInterval(showRemaining, 1000);
         }
 
+        var hidesidebar = 0;
+
         function listNo(){
 
-            $('#list-nomor').hide();
+            if(hidesidebar == 0){
+                $('#accordionSidebar').hide();
+                hidesidebar = 1;
+            }else{
+                $('#accordionSidebar').show();
+                hidesidebar = 0;
+
+            }
+
         }
     </script>
 

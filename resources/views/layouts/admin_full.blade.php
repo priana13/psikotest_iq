@@ -22,11 +22,30 @@
     <!-- Favicon -->
     <link href="{{ asset('img/favicon.png') }}" rel="icon" type="image/png">
     @livewireStyles
+
+
+    <style>
+
+    @media (max-width:1000px) {
+        .sidebar {
+            width: 0 !important;
+            overflow: hidden;
+        }
+
+        .sidebar.toggled {
+            width: auto !important;
+        }
+    }
+
+
+    </style>
 </head>
 <body id="page-top">
 
 <!-- Page Wrapper -->
 <div id="wrapper">
+
+    @yield('sidebar')
 
     <!-- Content Wrapper -->
     <div id="content-wrapper" class="d-flex flex-column">
