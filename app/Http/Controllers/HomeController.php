@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Exam;
 
 class HomeController extends Controller
 {
@@ -24,7 +25,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('dashboard');
+        return view('dashboard' , [
+            'exams' => Exam::paginate(5)
+        ]);
     }
 
     public function page()

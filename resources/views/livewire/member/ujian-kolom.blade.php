@@ -60,11 +60,7 @@
                                 <button class="btn btn-secondary">D</button>
                                 <button class="btn btn-secondary">E</button>
                                 
-                            </div>
-
-                            <div class="my-3">
-                                <button class="btn btn-primary">Jawab</button>
-                            </div>
+                            </div>                          
 
 
                         </div>
