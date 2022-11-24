@@ -16,8 +16,14 @@
                 <p> <strong>{{ $step }}. {{ $soal->soal }}</strong> </p>
               
                 <fieldset class="form-group row">
-                  
-                    <div class="col-sm-10">
+                    @if($soal->gambar)
+                    <div class="col-sm-3">
+                        <img src="{{ asset('storage/' . $soal->gambar) }}" alt="" class="img-thumbnail float-left mx-2" width="200px">
+
+                    </div>  
+                    @endif
+                                    
+                    <div class="col-sm-9 mt-3">
 
                         <div class="form-check mb-2">
                             <input class="form-check-input" type="radio" name="jawaban" id="jawaban-a" wire:model="jawaban" value="a" >
