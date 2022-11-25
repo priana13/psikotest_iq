@@ -56,11 +56,18 @@
         {{ __('Resource') }}
         </div>
 
-        <!-- Nav Item - Profile -->
+        <!-- Nav Item - Soal Cerdas -->
         <li class="nav-item">
-            <a class="nav-link" href="{{route('member.soal')}}">
+            <a class="nav-link" href="{{route('member.soal.type' , 'cerdas')}}">
                 <i class="fas fa-fw fa-user"></i>
-                <span>{{ __('Soal') }}</span>
+                <span>{{ __('Soal Kecerdasan') }}</span>
+            </a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link" href="{{route('member.soal.type' , 'cermat')}}">
+                <i class="fas fa-fw fa-user"></i>
+                <span>{{ __('Soal Kecermatan') }}</span>
             </a>
         </li>
 

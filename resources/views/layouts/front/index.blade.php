@@ -50,15 +50,7 @@
         <ul>
           <li><a class="active" href="{{ route('home') }}">Home</a></li>
           <li><a href="{{ route('page.fitur') }}">Fitur</a></li>
-          <li><a href="{{ route('page.harga') }}">Harga</a></li>          
-          <li class="dropdown"><a href="#"><span>Psikotes</span> <i class="bi bi-chevron-down"></i></a>
-            <ul>                      
-              <li><a href="#">Soal Kecerdasarn</a></li>
-              <li><a href="#">Soal Kecermatan</a></li>
-             
-            </ul>
-          </li>
-
+          <li><a href="{{ route('page.harga') }}">Harga</a></li>  
           @guest
 
           <li><a href="{{route('login')}}">Login</a></li>
@@ -66,8 +58,16 @@
 
           @else
 
-          <li class="nav-item">
+          <li class="dropdown"><a href="#"><span>Psikotes</span> <i class="bi bi-chevron-down"></i></a>
+            <ul>                      
+              <li><a href="{{route('member.soal.type' , 'cerdas')}}">Soal Kecerdasarn</a></li>
+              <li><a href="{{route('member.soal.type' , 'cermat')}}">Soal Kecermatan</a></li>             
+            </ul>
+          </li>
 
+          <li><a href="{{ route('dashboard') }}">Dashboard</a></li>  
+
+          <li class="nav-item">
                       
           <form id="logout-form" action="{{ route('logout') }}" method="POST">
             @csrf
@@ -78,11 +78,7 @@
 
          </form>
 
-
-
           </li>  
-          
-
 
 
         @endguest
