@@ -108,8 +108,7 @@
       <div class="row">
         <div class="col-md-4 mb-4 mb-md-0">
           <h3>About {{ config('app.name') }}</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius ea delectus pariatur, numquam aperiam
-            dolore nam optio dolorem facilis itaque voluptatum recusandae deleniti minus animi.</p>
+          <p>Psikotes Online diakses di manapun.</p>
           <p class="social">
             <a href="#"><span class="bi bi-twitter"></span></a>
             <a href="#"><span class="bi bi-facebook"></span></a>
@@ -140,8 +139,7 @@
             <div class="col-md-4 mb-4 mb-md-0">
               <h3>Downloads</h3>
               <ul class="list-unstyled">
-                <li><a href="#">Get from the App Store</a></li>
-                <li><a href="#">Get from the Play Store</a></li>
+                <!-- <li><a href="#">Get from the App Store</a></li> -->
               </ul>
             </div>
           </div>
@@ -151,7 +149,7 @@
 
       <div class="row justify-content-center text-center">
         <div class="col-md-7">
-          <p class="copyright">&copy; Copyright SoftLand. All Rights Reserved</p>
+          <p class="copyright">&copy;Copyright {{ config('app.name') }}.</p>
           <div class="credits">
             <!--
             All the links in the footer should remain intact.

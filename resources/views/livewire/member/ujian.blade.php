@@ -72,11 +72,11 @@
                 </div>
                 
                 <div class="d-flex justify-content-left">
-                    <button class="btn btn-default btn-sm mr-3">
-                        Sebelumnya
+                    <button class="btn btn-default btn-sm mr-3" wire:click="jawab_nanti">
+                        Jawab Nanti
                     </button>
                     <button class="btn btn-primary btn-sm" wire:click="berikutnya" type="submit">
-                        Berikutnya
+                        Jawab
                     </button>
 
                 </div>

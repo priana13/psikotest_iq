@@ -99,10 +99,14 @@ class Ujian extends Component
             $this->step += 1;
             $this->jawaban = '';
 
-
         }
 
+    }
 
+    public function jawab_nanti(){
+
+        $this->step += 1;
+        $this->jawaban = '';
 
     }
 
