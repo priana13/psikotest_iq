@@ -25,7 +25,10 @@ class Ujian extends Component
     public $salah = 0, $benar = 0, $nilai;
 
 
-    protected $listeners = ['waktuHabis' => 'waktuHabis'];
+    protected $listeners = [
+            'waktuHabis' => 'waktuHabis',
+            'getSoal' => 'getSoal'
+            ];
 
 
     public function mount($examid , $examEvent){
@@ -123,6 +126,11 @@ class Ujian extends Component
         $this->examEvent->save();
 
 
+    }
+
+    public function getSoal($no){
+
+        $this->step = $no;
     }
 
 
