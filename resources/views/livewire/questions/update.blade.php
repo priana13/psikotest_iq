@@ -29,7 +29,7 @@
 
                     <div class="col">
                         <img class="img img-fluid mr-3" src="storage/{{ $gambar_a }}" alt="" width="100px">
-                        <input class="" type="file" wire:model="gambar_a" id="gambar_a"> 
+                        <input class="" type="file" wire:model="gambar_a_edit"> 
 
                     </div>
 
@@ -46,7 +46,7 @@
                 <div class="row mt-2">
                     <div class="col">
                         <img class="img img-fluid mr-3" src="storage/{{ $gambar_b }}" alt="" width="100px">
-                        <input class="" type="file" wire:model="gambar_b" id="gambar_b"> 
+                        <input class="" type="file" wire:model="gambar_b_edit" id="gambar_b"> 
 
                     </div>
 
@@ -64,7 +64,7 @@
                 <div class="row mt-2">
                     <div class="col">
                         <img class="img img-fluid mr-3" src="storage/{{ $gambar_c }}" alt="" width="100px">
-                        <input class="" type="file" wire:model="gambar_c" id="gambar_c"> 
+                        <input class="" type="file" wire:model="gambar_c_edit" id="gambar_c"> 
 
                     </div>
 
@@ -82,7 +82,7 @@
                 <div class="row mt-2">
                     <div class="col">
                         <img class="img img-fluid mr-3" src="storage/{{ $gambar_d }}" alt="" width="100px">
-                        <input class="" type="file" wire:model="gambar_d" id="gambar_d"> 
+                        <input class="" type="file" wire:model="gambar_d_edit" id="gambar_d"> 
 
                     </div>
                 </div>
@@ -98,7 +98,7 @@
                 <div class="row mt-2">
                     <div class="col">
                         <img class="img img-fluid mr-3" src="storage/{{ $gambar_e }}" alt="" width="100px">
-                        <input class="" type="file" wire:model="gambar_e" id="gambar_e"> 
+                        <input class="" type="file" wire:model="gambar_e_edit" id="gambar_e"> 
 
                     </div>
 
@@ -112,7 +112,7 @@
                     <div class="col">
                         <img src="storage/{{ $gambar }}" alt="" srcset="" class="img-fluid" width="200px">
 
-                        <input wire:model="gambar" type="file" class="" id="gambar" placeholder="Gambar">@error('gambar') <span class="error text-danger">{{ $message }}</span> @enderror
+                        <input wire:model="gambar_edit" type="file" class="" id="gambar" placeholder="Gambar">@error('gambar') <span class="error text-danger">{{ $message }}</span> @enderror
         
 
                     </div>

@@ -18,6 +18,7 @@ class Questions extends Component
     public $selected_id, $keyWord, $exam_id, $soal, $a, $b, $c, $d, $e, $kc_jawaban, $gambar, $status = "on" , $no = 1;
     public $updateMode = false;	
 	public $gambar_a, $gambar_b, $gambar_c , $gambar_d, $gambar_e;
+	public $gambar_a_edit,$gambar_b_edit,$gambar_c_edit,$gambar_d_edit,$gambar_e_edit , $gambar_edit;
 
     public function render()
     {
@@ -101,7 +102,7 @@ class Questions extends Component
 		// input gambar a
 		if($this->gambar_a){
 
-			$path_gambar_a =  $this->gambar->store('public/photos');
+			$path_gambar_a =  $this->gambar_a->store('public/photos');
 			$path_gambar_a = explode('public/' , $path_gambar_a);
 			$path_gambar_a = $path_gambar_a[1];			
 
@@ -115,7 +116,7 @@ class Questions extends Component
 		// input gambar b
 		if($this->gambar_b){
 
-			$path_gambar_b =  $this->gambar->store('public/photos');
+			$path_gambar_b =  $this->gambar_b->store('public/photos');
 			$path_gambar_b = explode('public/' , $path_gambar_b);
 			$path_gambar_b = $path_gambar_b[1];			
 
@@ -129,7 +130,7 @@ class Questions extends Component
 		// input gambar c
 		if($this->gambar_c){
 
-			$path_gambar_c =  $this->gambar->store('public/photos');
+			$path_gambar_c =  $this->gambar_c->store('public/photos');
 			$path_gambar_c = explode('public/' , $path_gambar_c);
 			$path_gambar_c = $path_gambar_c[1];			
 
@@ -143,7 +144,7 @@ class Questions extends Component
 		// input gambar d
 		if($this->gambar_d){
 
-			$path_gambar_d =  $this->gambar->store('public/photos');
+			$path_gambar_d =  $this->gambar_d->store('public/photos');
 			$path_gambar_d = explode('public/' , $path_gambar_d);
 			$path_gambar_d = $path_gambar_d[1];			
 
@@ -157,7 +158,7 @@ class Questions extends Component
 		// input gambar e
 		if($this->gambar_e){
 
-			$path_gambar_e =  $this->gambar->store('public/photos');
+			$path_gambar_e =  $this->gambar_e->store('public/photos');
 			$path_gambar_e = explode('public/' , $path_gambar_e);
 			$path_gambar_e = $path_gambar_e[1];			
 
@@ -245,6 +246,15 @@ class Questions extends Component
         ]);
 
         if ($this->selected_id) {
+
+			if($this->gambar_edit){
+
+				$path_gambar =  $this->gambar_edit->store('public/photos');
+				$path_gambar = explode('public/' , $path_gambar);
+				$path_gambar = $path_gambar[1];	
+	
+			}
+
 			$record = Question::find($this->selected_id);
             $record->update([ 
 			'exam_id' => $this-> exam_id,
@@ -254,10 +264,75 @@ class Questions extends Component
 			'c' => $this-> c,
 			'd' => $this-> d,
 			'e' => $this-> e,
-			'kc_jawaban' => $this-> kc_jawaban,
-			'gambar' => $this-> gambar,
+			'kc_jawaban' => $this-> kc_jawaban,			
 			'status' => $this-> status
             ]);
+
+			if($this->gambar_edit){
+
+				$record->gambar = $path_gambar;
+				$record->save();
+
+			}
+
+			// input gambar a
+			if($this->gambar_a_edit){
+				$path_gambar_a_edit =  $this->gambar_a_edit->store('public/photos');
+				$path_gambar_a_edit = explode('public/' , $path_gambar_a_edit);
+				$path_gambar_a_edit = $path_gambar_a_edit[1];					
+				$gambar_a = QuestionImage::where('type' , 'a')->where('question_id', $this->selected_id)->first();
+				$gambar_a->image = $path_gambar_a_edit;
+				$gambar_a->save();
+			}
+
+			// input gambar b
+			if($this->gambar_b_edit){
+
+				$path_gambar_b =  $this->gambar_b_edit->store('public/photos');
+				$path_gambar_b = explode('public/' , $path_gambar_b);
+				$path_gambar_b = $path_gambar_b[1];	
+				
+				$gambar_b = QuestionImage::where('type' , 'b')->where('question_id', $this->selected_id)->first();
+				$gambar_b->image = $path_gambar_b;
+				$gambar_b->save();
+			}
+
+			// input gambar c
+			if($this->gambar_c_edit){
+
+				$path_gambar_c =  $this->gambar_c_edit->store('public/photos');
+				$path_gambar_c = explode('public/' , $path_gambar_c);
+				$path_gambar_c = $path_gambar_c[1];	
+				
+				$gambar_c = QuestionImage::where('type' , 'c')->where('question_id', $this->selected_id)->first();
+				$gambar_c->image = $path_gambar_c;
+				$gambar_c->save();
+			}
+
+			// input gambar d
+			if($this->gambar_d_edit){
+
+				$path_gambar_d =  $this->gambar_d_edit->store('public/photos');
+				$path_gambar_d = explode('public/' , $path_gambar_d);
+				$path_gambar_d = $path_gambar_d[1];	
+				
+				$gambar_d = QuestionImage::where('type' , 'd')->where('question_id', $this->selected_id)->first();
+				$gambar_d->image = $path_gambar_d;
+				$gambar_d->save();
+			}
+
+			// input gambar e
+			if($this->gambar_e_edit){
+
+				$path_gambar_e =  $this->gambar_e_edit->store('public/photos');
+				$path_gambar_e = explode('public/' , $path_gambar_e);
+				$path_gambar_e = $path_gambar_e[1];	
+				
+				$gambar_e = QuestionImage::where('type' , 'e')->where('question_id', $this->selected_id)->first();
+				$gambar_e->image = $path_gambar_e;
+				$gambar_e->save();
+			}
+
 
             $this->resetInput();
             $this->updateMode = false;
