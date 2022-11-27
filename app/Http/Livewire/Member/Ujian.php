@@ -104,6 +104,8 @@ class Ujian extends Component
 
         }
 
+        $this->emit('refresh');
+
     }
 
     public function jawab_nanti(){

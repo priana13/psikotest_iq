@@ -7,7 +7,22 @@
 
             @foreach($exam->questions as $row)
 
-            <button class="col btn btn-sm btn-light m-1" wire:click="getSoal({{ $row->no }})">{{ $row->no }}</button>
+            <?php 
+
+            if(in_array( $row->id, $sudah_dijawab)){
+
+                $warna = 'success';
+
+            }else{
+
+                $warna = 'light';
+
+            }
+
+
+            ?>
+
+            <button class="col btn btn-sm btn-{{ $warna }} m-1" wire:click="getSoal({{ $row->no }})">{{ $row->no }}</button>
     
             @endforeach
 

@@ -4,7 +4,8 @@
 
 
 @livewire('member.list-nomor' , [
-    'exam' => $exam
+    'exam' => $exam,    
+    'examEvent' => $exam_event
 ])
 
 @endsection
