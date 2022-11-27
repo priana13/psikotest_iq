@@ -69,7 +69,8 @@ class Ujian extends Component
             $this->examEvent->salah = $this->salah;
             $this->examEvent->benar = $this->benar;            
 
-            $this->nilai = $this->benar / $this->total * 100;           
+            $nilai = $this->benar / $this->total * 100;  
+            $this->nilai = number_format($nilai);         
 
             $this->examEvent->nilai = $this->nilai;
             $this->examEvent->save();

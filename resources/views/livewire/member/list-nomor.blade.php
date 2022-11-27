@@ -8,21 +8,14 @@
             @foreach($exam->questions as $row)
 
             <?php 
-
-            if(in_array( $row->id, $sudah_dijawab)){
-
-                $warna = 'success';
-
-            }else{
-
+            (in_array( $row->id, $sudah_dijawab))?
+                $warna = 'success':
                 $warna = 'light';
-
-            }
-
-
             ?>
 
-            <button class="col btn btn-sm btn-{{ $warna }} m-1" wire:click="getSoal({{ $row->no }})">{{ $row->no }}</button>
+            <button class="col btn btn-sm btn-{{ $warna }} m-1" wire:click="getSoal({{ $row->no }})"
+            {{ (in_array($row->id,$sudah_dijawab))?'disabled':'' }} 
+            >{{ $row->no }}</button>
     
             @endforeach
 
