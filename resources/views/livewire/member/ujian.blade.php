@@ -26,40 +26,92 @@
                     </div>  
                     @endif
                                     
-                    <div class="col-sm-9 mt-3">
+                    <div class="col-sm-9 mt-3 px-5">
 
                         <div class="form-check mb-2">
-                            <input class="form-check-input" type="radio" name="jawaban" id="jawaban-a" wire:model="jawaban" value="a" >
-                            <label class="form-check-label" for="jawaban-a">
-                            A. {{ $soal->a }}
-                            </label>
+
+                            <div class="row">                                
+
+                                <input class="form-check-input" type="radio" name="jawaban" id="jawaban-a" wire:model="jawaban" value="a" >                            
+                                <label class="form-check-label" for="jawaban-a">
+                                A. {{ $soal->a }}
+                                </label>  
+
+                            </div>
+
+                            <div class="row">
+                                <img class="img img-fluid " src="/img/gambar.jpg" width="100px" alt="" srcset="">
+
+                            </div>
+
                         </div>
+
                         <div class="form-check mb-2">
+                            <div class="row">
+
                             <input class="form-check-input" type="radio" name="jawaban" id="jawaban-b"  wire:model="jawaban" value="b">
                             <label class="form-check-label" for="jawaban-b">
                             B. {{ $soal->b }}
                             </label>
+
+                            </div>
+
+                            <div class="row">
+                                <img class="img img-fluid " src="/img/gambar.jpg" width="100px" alt="" srcset="">
+                            </div>
+
                         </div>
 
                         <div class="form-check mb-2">
-                            <input class="form-check-input" type="radio" name="jawaban" id="jawaban-c"  wire:model="jawaban" value="c">
-                            <label class="form-check-label" for="jawaban-c">
-                            C. {{ $soal->c }}
-                            </label>
+
+                            <div class="row">
+
+                                <input class="form-check-input" type="radio" name="jawaban" id="jawaban-c"  wire:model="jawaban" value="c">
+                                <label class="form-check-label" for="jawaban-c">
+                                C. {{ $soal->c }}
+                                </label>
+
+                            </div>
+
+                            <div class="row">
+                                <img class="img img-fluid " src="/img/gambar.jpg" width="100px" alt="" srcset="">
+                                
+                            </div>
+
                         </div>
 
                         <div class="form-check mb-2">
-                            <input class="form-check-input" type="radio" name="jawaban" id="jawaban-d" wire:model="jawaban" value="d">
-                            <label class="form-check-label" for="jawaban-d">
-                            D. {{ $soal->d }}
-                            </label>
+
+                            <div class="row">
+                                <input class="form-check-input" type="radio" name="jawaban" id="jawaban-d" wire:model="jawaban" value="d">
+                                <label class="form-check-label" for="jawaban-d">
+                                D. {{ $soal->d }}
+                                </label>
+                            </div>
+
+                            <div class="row">
+                                <img class="img img-fluid " src="/img/gambar.jpg" width="100px" alt="" srcset="">
+                                
+                            </div>
+
+                          
                         </div>
 
                         <div class="form-check mb-2">
-                            <input class="form-check-input" type="radio" name="jawaban" id="jawaban-e"  wire:model="jawaban" value="e">
-                            <label class="form-check-label" for="jawaban-e">
-                            E. {{ $soal->e }}
-                            </label>
+
+                            <div class="row">
+                                <input class="form-check-input" type="radio" name="jawaban" id="jawaban-e"  wire:model="jawaban" value="e">
+                                <label class="form-check-label" for="jawaban-e">
+                                E. {{ $soal->e }}
+                                </label>
+
+                            </div>
+
+                            <div class="row">
+                                <img class="img img-fluid " src="/img/gambar.jpg" width="100px" alt="" srcset="">
+                                
+                            </div>
+
                         </div>
                    
                     </div>
