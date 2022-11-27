@@ -167,7 +167,7 @@ class Questions extends Component
 				'image' => $path_gambar_e
 			]);
 		}        
-		
+
         $this->resetInput();
 		$this->emit('closeModal');
 		session()->flash('message', 'Question Successfully created.');
@@ -176,6 +176,45 @@ class Questions extends Component
     public function edit($id)
     {
         $record = Question::findOrFail($id);
+
+		$questionImage = $record->questionImages;	
+		
+		$gambar_a = $questionImage->where('type' , 'a')->first();
+		$gambar_b = $questionImage->where('type' , 'b')->first();
+		$gambar_c = $questionImage->where('type' , 'c')->first();
+		$gambar_d = $questionImage->where('type' , 'd')->first();
+		$gambar_e = $questionImage->where('type' , 'e')->first();
+
+		if($gambar_a){
+			$this->gambar_a = $gambar_a->image;
+		}else{
+			$this->gambar_a = '';
+		}
+
+		if($gambar_b){
+			$this->gambar_b = $gambar_b->image;
+		}else{
+			$this->gambar_b = '';
+		}
+
+		if($gambar_c){
+			$this->gambar_c = $gambar_c->image;
+		}else{
+			$this->gambar_c = '';
+		}
+
+		if($gambar_d){
+			$this->gambar_d = $gambar_d->image;
+		}else{
+			$this->gambar_d = '';
+		}
+
+		if($gambar_e){
+			$this->gambar_e = $gambar_e->image;
+		}else{
+			$this->gambar_e = '';
+		}
+
 
         $this->selected_id = $id; 
 		$this->exam_id = $record-> exam_id;
@@ -186,8 +225,8 @@ class Questions extends Component
 		$this->d = $record-> d;
 		$this->e = $record-> e;
 		$this->kc_jawaban = $record-> kc_jawaban;
-		$this->gambar = $record-> gambar;
-		$this->status = $record-> status;
+		$this->gambar = $record->gambar;
+		$this->status = $record->status;
 		
         $this->updateMode = true;
     }
