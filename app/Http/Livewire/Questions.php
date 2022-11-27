@@ -5,6 +5,7 @@ namespace App\Http\Livewire;
 use Livewire\Component;
 use Livewire\WithPagination;
 use App\Models\Question;
+use App\Models\QuestionImage;
 use App\Models\Exam;
 use Livewire\WithFileUploads;
 
@@ -16,6 +17,7 @@ class Questions extends Component
 	protected $paginationTheme = 'bootstrap';
     public $selected_id, $keyWord, $exam_id, $soal, $a, $b, $c, $d, $e, $kc_jawaban, $gambar, $status = "on" , $no = 1;
     public $updateMode = false;	
+	public $gambar_a, $gambar_b, $gambar_c , $gambar_d, $gambar_e;
 
     public function render()
     {
@@ -72,7 +74,9 @@ class Questions extends Component
 		'gambar' => 'image|max:1024'
         ]);		
  
-        $path_gambar =  $this->gambar->store('photos');
+        $path_gambar =  $this->gambar->store('public/photos');
+		$path_gambar = explode('public/' , $path_gambar);
+		$path_gambar = $path_gambar[1];	
 
 		$existing_question = Question::where('exam_id' , $this->exam_id)->pluck('no');		
 
@@ -80,7 +84,7 @@ class Questions extends Component
 						$this->no = $existing_question->max() + 1:
 						$this->no = 1;	
 
-        Question::create([ 
+        $question = Question::create([ 
 			'exam_id' => $this->exam_id,
 			'no' => $this->no,
 			'soal' => $this->soal,
@@ -93,7 +97,77 @@ class Questions extends Component
 			'gambar' => $path_gambar,
 			'status' => $this->status
         ]);
-        
+
+		// input gambar a
+		if($this->gambar_a){
+
+			$path_gambar_a =  $this->gambar->store('public/photos');
+			$path_gambar_a = explode('public/' , $path_gambar_a);
+			$path_gambar_a = $path_gambar_a[1];			
+
+			QuestionImage::create([
+				'question_id' => $question->id,
+				'type' => 'a',
+				'image' => $path_gambar_a
+			]);
+		}
+
+		// input gambar b
+		if($this->gambar_b){
+
+			$path_gambar_b =  $this->gambar->store('public/photos');
+			$path_gambar_b = explode('public/' , $path_gambar_b);
+			$path_gambar_b = $path_gambar_b[1];			
+
+			QuestionImage::create([
+				'question_id' => $question->id,
+				'type' => 'b',
+				'image' => $path_gambar_b
+			]);
+		}
+
+		// input gambar c
+		if($this->gambar_c){
+
+			$path_gambar_c =  $this->gambar->store('public/photos');
+			$path_gambar_c = explode('public/' , $path_gambar_c);
+			$path_gambar_c = $path_gambar_c[1];			
+
+			QuestionImage::create([
+				'question_id' => $question->id,
+				'type' => 'c',
+				'image' => $path_gambar_c
+			]);
+		}
+
+		// input gambar d
+		if($this->gambar_d){
+
+			$path_gambar_d =  $this->gambar->store('public/photos');
+			$path_gambar_d = explode('public/' , $path_gambar_d);
+			$path_gambar_d = $path_gambar_d[1];			
+
+			QuestionImage::create([
+				'question_id' => $question->id,
+				'type' => 'd',
+				'image' => $path_gambar_d
+			]);
+		}
+
+		// input gambar e
+		if($this->gambar_e){
+
+			$path_gambar_e =  $this->gambar->store('public/photos');
+			$path_gambar_e = explode('public/' , $path_gambar_e);
+			$path_gambar_e = $path_gambar_e[1];			
+
+			QuestionImage::create([
+				'question_id' => $question->id,
+				'type' => 'e',
+				'image' => $path_gambar_e
+			]);
+		}        
+		
         $this->resetInput();
 		$this->emit('closeModal');
 		session()->flash('message', 'Question Successfully created.');

@@ -25,25 +25,69 @@
                 <label for="soal"></label>
                 <input wire:model="soal" type="text" class="form-control" id="soal" placeholder="Soal">@error('soal') <span class="text-danger">{{ $message }}</span> @enderror
             </div>
-            <div class="form-group">
+            <div class="form-group card shadow p-3">
                 <label for="a">Pilihan Jawaban A</label>
-                <input wire:model="a" type="text" class="form-control" id="a" placeholder="A">@error('a') <span class="text-danger">{{ $message }}</span> @enderror
+                <div class="row mb-2">
+                    <div class="col">
+                        <input wire:model="a" type="text" class="form-control" id="a" placeholder="A">@error('a') <span class="text-danger">{{ $message }}</span> @enderror
+                    </div>
+                </div>
+                <div class="row">
+                    <input class="col" type="file" wire:model="gambar_a" id="gambar_a">
+
+                </div>
+
             </div>
-            <div class="form-group">
+
+
+            <div class="form-group card shadow p-3">
                 <label for="b">Pilihan Jawaban B</label>
-                <input wire:model="b" type="text" class="form-control" id="b" placeholder="B">@error('b') <span class="text-danger">{{ $message }}</span> @enderror
+                <div class="row mb-2">
+                    <div class="col">
+                        <input wire:model="b" type="text" class="form-control" id="b" placeholder="B">@error('b') <span class="text-danger">{{ $message }}</span> @enderror
+                    </div>
+
+                </div>
+                <div class="row">
+                    <input class="col" type="file" wire:model="gambar_b" id="gambar_b">
+
+                </div>
             </div>
-            <div class="form-group">
+            <div class="form-group card shadow p-3">
                 <label for="c">Pilihan Jawaban C</label>
-                <input wire:model="c" type="text" class="form-control" id="c" placeholder="C">@error('c') <span class="text-danger">{{ $message }}</span> @enderror
+                <div class="row mb-2">
+                    <div class="col">
+                        <input wire:model="c" type="text" class="form-control" id="c" placeholder="C">@error('c') <span class="text-danger">{{ $message }}</span> @enderror
+
+                    </div>
+
+                </div>
+                <div class="row">
+                    <input class="col" type="file" wire:model="gambar_c" id="gambar_c">
+                </div>
             </div>
-            <div class="form-group">
+            <div class="form-group card shadow p-3">
                 <label for="d">Pilihan Jawaban D</label>
-                <input wire:model="d" type="text" class="form-control" id="d" placeholder="D">@error('d') <span class="text-danger">{{ $message }}</span> @enderror
+                <div class="row mb-2">
+                    <div class="col">
+                        <input wire:model="d" type="text" class="form-control" id="d" placeholder="D">@error('d') <span class="text-danger">{{ $message }}</span> @enderror
+                    </div>
+                </div>
+                <div class="row">
+                    <input class="col" type="file" wire:model="gambar_d" id="gambar_d">
+                </div>
             </div>
-            <div class="form-group">
+            <div class="form-group card shadow p-3">
                 <label for="e">Pilihan Jawaban E</label>
-                <input wire:model="e" type="text" class="form-control" id="e" placeholder="E">@error('e') <span class="text-danger">{{ $message }}</span> @enderror
+                <div class="row mb-2">
+                    <div class="col">
+                        <input wire:model="e" type="text" class="form-control" id="e" placeholder="E">@error('e') <span class="text-danger">{{ $message }}</span> @enderror
+
+                    </div>
+                </div>
+                <div class="row">
+                    <input class="col" type="file" wire:model="gambar_e" id="gambar_e">
+                </div>
             </div>
             <div class="form-group">
                 <label for="kc_jawaban"></label>
