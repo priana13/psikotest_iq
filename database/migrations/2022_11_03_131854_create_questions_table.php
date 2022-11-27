@@ -17,7 +17,7 @@ class CreateQuestionsTable extends Migration
             $table->id();
             $table->foreignId('exam_id')->constrained('exams');
             $table->enum('type' , ['cerdas' , 'cermat']);
-            $table->string('kolom' , 5)->nullable();
+            // $table->string('kolom' , 5)->nullable();
             $table->integer('no');
             $table->string('soal')->nullable();
             $table->string('a');

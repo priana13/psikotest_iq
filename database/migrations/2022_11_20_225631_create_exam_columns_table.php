@@ -21,8 +21,14 @@ class CreateExamColumnsTable extends Migration
             $table->string('b');
             $table->string('c');
             $table->string('d');
-            $table->string('e');
+            $table->string('e')->nullable();
+            $table->integer('waktu')->nullable();
             $table->timestamps();
+        });
+
+        Schema::table('questions',function(Blueprint $table){
+            $table->foreignId('exam_column_id')->nullable()->constrained('exam_columns');
+
         });
     }
 
@@ -34,5 +40,12 @@ class CreateExamColumnsTable extends Migration
     public function down()
     {
         Schema::dropIfExists('exam_columns');
+
+        Schema::table('questions',function(Blueprint $table){
+            $table->dropConstrainedForeignId('exam_column_id');
+
+        });
+
+
     }
 }

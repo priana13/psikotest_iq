@@ -13,7 +13,7 @@ class Exam extends Model
 
     protected $table = 'exams';
 
-    protected $fillable = ['nama_tes','waktu','nilai_min','peraturan'];
+    protected $fillable = ['type','nama_tes','waktu','nilai_min','peraturan'];
 	
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
