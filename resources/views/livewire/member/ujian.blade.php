@@ -39,8 +39,16 @@
 
                             </div>
 
-                            <div class="row">
-                                <img class="img img-fluid " src="/img/gambar.jpg" width="100px" alt="" srcset="">
+                            <div class="row">  
+                                
+                                @php 
+                                    $src_a = $soal->questionImages()->type('a')->first();
+                                    ($src_a)?
+                                        $src_a = $src_a->image:
+                                        $src_a = '';                                    
+                                @endphp
+                                
+                                <img class="img img-fluid " src="/storage/{{ $src_a }}" width="100px" alt="" srcset="">
 
                             </div>
 
@@ -57,7 +65,16 @@
                             </div>
 
                             <div class="row">
-                                <img class="img img-fluid " src="/img/gambar.jpg" width="100px" alt="" srcset="">
+
+                                @php 
+                                $src_b = $soal->questionImages()->type('b')->first();
+                                ($src_b)?
+                                    $src_b = $src_b->image:
+                                    $src_b = '';                                    
+                                @endphp
+
+
+                                <img class="img img-fluid " src="/storage/{{ $src_b }}" width="100px" alt="" srcset="">
                             </div>
 
                         </div>
@@ -74,7 +91,16 @@
                             </div>
 
                             <div class="row">
-                                <img class="img img-fluid " src="/img/gambar.jpg" width="100px" alt="" srcset="">
+
+                                @php 
+                                $src_c = $soal->questionImages()->type('c')->first();
+                                ($src_c)?
+                                    $src_c = $src_c->image:
+                                    $src_c = '';                                    
+                                @endphp
+
+
+                                <img class="img img-fluid " src="/storage/{{ $src_c }}" width="100px" alt="" srcset="">
                                 
                             </div>
 
@@ -90,7 +116,16 @@
                             </div>
 
                             <div class="row">
-                                <img class="img img-fluid " src="/img/gambar.jpg" width="100px" alt="" srcset="">
+
+                                @php 
+                                $src_d = $soal->questionImages()->type('d')->first();
+                                ($src_d)?
+                                    $src_d = $src_d->image:
+                                    $src_d = '';                                    
+                                @endphp
+
+
+                                <img class="img img-fluid " src="/storage/{{ $src_d }}" width="100px" alt="" srcset="">
                                 
                             </div>
 
@@ -108,7 +143,15 @@
                             </div>
 
                             <div class="row">
-                                <img class="img img-fluid " src="/img/gambar.jpg" width="100px" alt="" srcset="">
+
+                                @php 
+                                $src_e = $soal->questionImages()->type('e')->first();
+                                ($src_e)?
+                                    $src_e = $src_e->image:
+                                    $src_e = '';                                    
+                                @endphp
+
+                                <img class="img img-fluid " src="/storage/{{ $src_e }}" width="100px" alt="" srcset="">
                                 
                             </div>
 
