@@ -4,10 +4,11 @@
 		<div class="col-md-12">
 			<div class="card position-sticky">
                 <div class="card-header d-flex justify-content-between">
-
+                    @if($column > 0)
                     <button class="btn btn-primary" wire:click="sebelumnya">
                         << Sebelumnya
                     </button>
+                    @endif
 
                     <div>
                         <h4>Soal Psikotes Kecermatan</h4>                           
@@ -95,7 +96,7 @@
                             </tr>
                         </table>
 
-                        @if(!$soalTampil && $isSoalAda)
+                        @if(!$soalTampil)
 
                         <button class="btn btn-warning mx-auto" wire:click="buatsoal">Buat Soal</button>
 
@@ -103,24 +104,63 @@
 
                         <div class="">
 
-                            <h4>Soal</h4>
+                            <h4>Soal</h4>                           
+                           
 
                             <table class="table">
+                                <?php $i = 1; ?>     
                                 
-                                @for ($i = 1; $i <= 50; $i++)
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td>Jawaban</td>
+                                </tr>
+                                @foreach ($list_soal as $soal)
     
                                 <tr class="">
-                                    <th class="">{{ $i }}</th>
-                                    <td class="">6</td>
-                                    <td class="">5</td>
-                                    <td class="">4</td>
-                                    <td class="">3</td>
+                                    <th class="">{{ $i++ }}</th>
+                                    <td style="width:20%;">
+                                        <select class="form-control" name="" id="">
+                                            @foreach($list_nomor as $nomor)
+                                            <option value="{{ $nomor }}" {{ ($nomor == $soal->a)?'selected':'' }}>{{ $nomor }}</option>
+                                            @endforeach
+                                        </select>                                     
+
+                                    </td>
+                                    <td style="width:20%;">
+                                        <select class="form-control" name="" id="">
+                                            @foreach($list_nomor as $nomor)
+                                            <option value="{{ $nomor }}" {{ ($nomor == $soal->b)?'selected':'' }}>{{ $nomor }}</option>
+                                            @endforeach
+                                        </select>                                     
+
+                                    </td>
+                                    <td style="width:20%;">
+                                        <select class="form-control" name="" id="">
+                                            @foreach($list_nomor as $nomor)
+                                            <option value="{{ $nomor }}" {{ ($nomor == $soal->c)?'selected':'' }}>{{ $nomor }}</option>
+                                            @endforeach
+                                        </select>                                     
+
+                                    </td>
+                                    <td style="width:20%;">
+
+                                        <select class="form-control" name="" id="">
+                                            @foreach($list_nomor as $nomor)
+                                            <option value="{{ $nomor }}" {{ ($nomor == $soal->d)?'selected':'' }}>{{ $nomor }}</option>
+                                            @endforeach
+                                        </select>                                     
+
+                                    </td>
                                     <td style="width:20%;">
                                         <input class="form-control" type="text">
                                     </td>
                                 </tr>
                                     
-                                @endfor
+                                @endforeach
                                
                             </table>
 

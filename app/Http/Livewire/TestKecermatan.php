@@ -14,6 +14,8 @@ class TestKecermatan extends Component
     public $column = 0;
     public $peraturan,$namatest,$waktu,$nilai_min,$jumlah_row = 50;
     public $a,$b,$c,$d,$e;
+    public $list_nomor = [];
+    public $list_soal = [];
 
 
     public function render()
@@ -23,10 +25,25 @@ class TestKecermatan extends Component
 
         }
 
+        if( count($this->list_soal)  > 0){
+                        
+            $this->list_soal = Question::where('exam_id' , $this->exam->id)->where('exam_column_id' , $this->examColumn->id)->get();        
+
+
+        }
+
         return view('livewire.tes-cermat.show');
     }
 
     public function buatsoal(){
+
+        $this->validate([
+            'a' => 'required', 
+            'b' => 'required',
+            'c' => 'required',
+            'd' => 'required',
+            'e'=> 'required'
+        ]);
 
         // cari exam dulu pastikan belum dibuat
         $existExamColumn = ExamColumn::where('exam_id' , $this->exam->id)->where('kolom' , $this->column)->first();
@@ -44,6 +61,8 @@ class TestKecermatan extends Component
                 'e' => $this->e,
                 'waktu' => 1
             ]);
+
+            
         }else{
             $this->examColumn = $existExamColumn;
         }
@@ -68,7 +87,7 @@ class TestKecermatan extends Component
 
         }
 
-
+        $this->list_soal = Question::where('exam_id' , $this->exam->id)->where('exam_column_id' , $this->examColumn->id)->get();        
 
 
         $this->soalTampil = TRUE;
@@ -93,6 +112,8 @@ class TestKecermatan extends Component
             }
 
         }       
+
+        $this->list_nomor = [$this->a,$this->b,$this->c,$this->d,$this->e];
 
         $this->column++;
     }
