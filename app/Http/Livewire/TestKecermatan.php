@@ -27,9 +27,9 @@ class TestKecermatan extends Component
 
         }
 
-        if( count($this->list_soal)  > 0){
+        if($existExamColumn != null){
                         
-            $this->list_soal = Question::where('exam_id' , $this->exam->id)->where('exam_column_id' , $this->examColumn->id)->get();        
+            $this->list_soal = Question::where('exam_id' , $this->exam->id)->where('exam_column_id' , $existExamColumn->id)->get();        
 
 
         }
@@ -124,6 +124,8 @@ class TestKecermatan extends Component
 
         $this->column++;
 
+        $this->emit('soalBerikutnya');
+
         $existExamColumn = ExamColumn::where('exam_id' , $this->exam->id)->where('kolom' , $this->column)->first();
         // jika kolom belum dibuat sembunyikan soal
         ($existExamColumn == null)?
@@ -135,6 +137,14 @@ class TestKecermatan extends Component
     public function sebelumnya(){
 
         $this->column--;
+
+        $existExamColumn = ExamColumn::where('exam_id' , $this->exam->id)->where('kolom' , $this->column)->first();
+        // jika kolom belum dibuat sembunyikan soal
+        ($existExamColumn == null)?
+            $this->soalTampil = FALSE:
+            $this->soalTampil = TRUE; 
+
+
     }
 
     public function updateSoal(){

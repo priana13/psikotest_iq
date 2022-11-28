@@ -13,7 +13,8 @@ class ItemSoalKolom extends Component
     public $soal_a,$soal_b,$soal_c,$soal_d,$jawaban;
     public $pesan;
 
-    protected $listeners = ['updateSoal' => '$refresh'];
+    protected $listeners = ['updateSoal' => '$refresh' , 
+                            'soalBerikutnya' => '$refresh'];
 
     public function mount($soal,$list_nomor){
         $this->soal = $soal;
