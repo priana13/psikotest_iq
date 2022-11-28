@@ -14,11 +14,13 @@
                         <h4>Soal Psikotes Kecermatan</h4>                           
                     </div>
 
-
+                    @if($column > 0)
              
                     <button class="btn btn-primary" wire:click="berikutnya">
                         Next >
                     </button>
+                    @endif
+                    
                 </div>
                 
                 <div class="card-body row">
@@ -40,7 +42,7 @@
                         <div class="row">
 
                             <div class="form-group col-3">
-                                <label for="waktu">Waktu</label>
+                                <label for="waktu">Waktu Per Kolom (Menit)</label>
                                 <input type="number" class="form-control" wire:model="waktu">
                             </div>
 
@@ -102,63 +104,24 @@
 
                         @else
 
-                        <div class="">
-
-                            <h4>Soal</h4>                           
+                        <div class="">                                                
                            
 
                             <table class="table">
                                 <?php $i = 1; ?>     
                                 
                                 <tr>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
+                                    <td colspan="5">Soal</td>                                   
                                     <td>Jawaban</td>
                                 </tr>
+
+                                @if (session()->has('message'))
+                                <div wire:poll.4s class="btn btn-sm btn-success" style="margin-top:0px; margin-bottom:2px;"> {{ session('message') }} </div>
+                                @endif
+
                                 @foreach ($list_soal as $soal)
-    
-                                <tr class="">
-                                    <th class="">{{ $i++ }}</th>
-                                    <td style="width:20%;">
-                                        <select class="form-control" name="" id="">
-                                            @foreach($list_nomor as $nomor)
-                                            <option value="{{ $nomor }}" {{ ($nomor == $soal->a)?'selected':'' }}>{{ $nomor }}</option>
-                                            @endforeach
-                                        </select>                                     
 
-                                    </td>
-                                    <td style="width:20%;">
-                                        <select class="form-control" name="" id="">
-                                            @foreach($list_nomor as $nomor)
-                                            <option value="{{ $nomor }}" {{ ($nomor == $soal->b)?'selected':'' }}>{{ $nomor }}</option>
-                                            @endforeach
-                                        </select>                                     
-
-                                    </td>
-                                    <td style="width:20%;">
-                                        <select class="form-control" name="" id="">
-                                            @foreach($list_nomor as $nomor)
-                                            <option value="{{ $nomor }}" {{ ($nomor == $soal->c)?'selected':'' }}>{{ $nomor }}</option>
-                                            @endforeach
-                                        </select>                                     
-
-                                    </td>
-                                    <td style="width:20%;">
-
-                                        <select class="form-control" name="" id="">
-                                            @foreach($list_nomor as $nomor)
-                                            <option value="{{ $nomor }}" {{ ($nomor == $soal->d)?'selected':'' }}>{{ $nomor }}</option>
-                                            @endforeach
-                                        </select>                                     
-
-                                    </td>
-                                    <td style="width:20%;">
-                                        <input class="form-control" type="text">
-                                    </td>
-                                </tr>
+                                <livewire:member.item-soal-kolom :soal="$soal" :list_nomor="$list_nomor" :wire:key="$soal->id">
                                     
                                 @endforeach
                                

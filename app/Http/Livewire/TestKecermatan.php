@@ -17,6 +17,8 @@ class TestKecermatan extends Component
     public $list_nomor = [];
     public $list_soal = [];
 
+    protected $listeners = ['updateSoal' => "updateSoal"];
+
 
     public function render()
     {            
@@ -59,7 +61,7 @@ class TestKecermatan extends Component
                 'c' => $this->c,
                 'd' => $this->d,
                 'e' => $this->e,
-                'waktu' => 1
+                'waktu' => $this->waktu
             ]);
 
             
@@ -87,7 +89,10 @@ class TestKecermatan extends Component
 
         }
 
+        $this->list_nomor = [$this->a,$this->b,$this->c,$this->d,$this->e];
+
         $this->list_soal = Question::where('exam_id' , $this->exam->id)->where('exam_column_id' , $this->examColumn->id)->get();        
+
 
 
         $this->soalTampil = TRUE;
@@ -109,18 +114,34 @@ class TestKecermatan extends Component
 
                 ]);
 
-            }
+            }       
+
+
 
         }       
 
         $this->list_nomor = [$this->a,$this->b,$this->c,$this->d,$this->e];
 
         $this->column++;
+
+        $existExamColumn = ExamColumn::where('exam_id' , $this->exam->id)->where('kolom' , $this->column)->first();
+        // jika kolom belum dibuat sembunyikan soal
+        ($existExamColumn == null)?
+            $this->soalTampil = FALSE:
+            $this->soalTampil = TRUE;        
+
     }
 
     public function sebelumnya(){
 
         $this->column--;
     }
+
+    public function updateSoal(){
+
+        session()->flash('message', 'Soal Telah Diupdate');        
+
+    }
+
 
 }
