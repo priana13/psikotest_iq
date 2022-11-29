@@ -37,6 +37,12 @@
                     <ul class="navbar-nav mr-auto">
 						<!--Nav Bar Hooks - Do not delete!!-->
 						<li class="nav-item">
+                            <a href="{{ url('/posts') }}" class="nav-link"><i class="fab fa-laravel text-info"></i> Posts</a> 
+                        </li>
+						<li class="nav-item">
+                            <a href="{{ url('/categories') }}" class="nav-link"><i class="fab fa-laravel text-info"></i> Categories</a> 
+                        </li>
+						<li class="nav-item">
                             <a href="{{ url('/examevents') }}" class="nav-link"><i class="fab fa-laravel text-info"></i> Examevents</a> 
                         </li>
 						<li class="nav-item">

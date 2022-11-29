@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateWebPostsTable extends Migration
+class CreatePostsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,11 @@ class CreateWebPostsTable extends Migration
      */
     public function up()
     {
-        Schema::create('web_posts', function (Blueprint $table) {
+        Schema::create('posts', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('users');
-            $table->foreignId('web_category_id')->constrained('web_catagories');
+            $table->unsignedBigInteger('category_id');          
+            $table->foreign('category_id')->references('id')->on('catagories');
             $table->string('slug');
             $table->string('title',100);
             $table->text('body');
@@ -32,6 +33,6 @@ class CreateWebPostsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('web_posts');
+        Schema::dropIfExists('posts');
     }
 }
