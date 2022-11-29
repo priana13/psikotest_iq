@@ -20,17 +20,17 @@ class ItemSoalKolom extends Component
         $this->soal = $soal;
         $this->list_nomor = $list_nomor;
 
-        $this->soal_a = $this->soal->a;
-        $this->soal_b = $this->soal->b;
-        $this->soal_c = $this->soal->c;
-        $this->soal_d = $this->soal->d;
-        $this->jawaban = $this->soal->kc_jawaban;
+        $this->soal_a = $soal->a;
+        $this->soal_b = $soal->b;
+        $this->soal_c = $soal->c;
+        $this->soal_d = $soal->d;
+        $this->jawaban = $soal->kc_jawaban;
 
 
     }
 
     public function render()
-    {
+    {       
 
         return view('livewire.member.item-soal-kolom');
     }

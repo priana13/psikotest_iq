@@ -17,7 +17,8 @@ class UjianKolom extends Component
     public $waktu;
     public $endtime;
     public $date;
-    public $kolom = 1 , $nomor = 1 , $soal , $list_nomor , $exam_column , $pilihanJawaban;
+    public $kolom = 1 , $nomor = 1 , $soal , $list_nomor , $exam_column , $pilihanJawaban , 
+            $soal_terakhir, $kolom_terakhir;
     
     public function mount($exam , $examEvent){
 
@@ -43,28 +44,50 @@ class UjianKolom extends Component
         ];
 
         $this->soal = Question::where('exam_column_id' , $this->exam_column->id)->where('no' , $this->nomor)->first(); 
-        
-        $this->list_nomor = $this->soal->a . ' '. $this->soal->b .' '.  $this->soal->c . ' '. $this->soal->d;
+        $this->soal_terakhir = Question::where('exam_column_id' , $this->exam_column->id)->max('no');
+        $this->kolom_terakhir = ExamColumn::where('exam_id' , $this->exam->id)->max('kolom');
+       
+        if($this->soal == null){
+            // soal untuk kolom ini belum ada
+
+        }else{
+
+            $this->list_nomor = $this->soal->a . ' '. $this->soal->b .' '.  $this->soal->c . ' '. $this->soal->d;
+
+        }
 
         return view('livewire.member.ujian-kolom');
     }
 
     public function jawab($jawaban){
 
-        // jawaban di sini
-        $nilai_jawaban = $this->pilihanJawaban[$jawaban];
 
-        ($this->soal->kc_jawaban == $nilai_jawaban)? $hasil = true:$hasil = false;
+        if($this->nomor < $this->soal_terakhir){
 
-        $exam_item = ExamItem::create([
+            // jawaban di sini
+            $nilai_jawaban = $this->pilihanJawaban[$jawaban];
+            ($this->soal->kc_jawaban == $nilai_jawaban)? $hasil = true:$hasil = false;
 
-            'examevent_id' => $this->examEvent->id,
-            'user_id' => auth()->user()->id,
-            'question_id' => $this->soal->id,
-            'jawaban' => $nilai_jawaban,
-            'is_true' => $hasil
+            $exam_item = ExamItem::create([
 
-        ]);
+                'examevent_id' => $this->examEvent->id,
+                'user_id' => auth()->user()->id,
+                'question_id' => $this->soal->id,
+                'jawaban' => $nilai_jawaban,
+                'is_true' => $hasil
+
+            ]);
+    
+        }else{           
+
+            if($this->kolom < $this->kolom_terakhir){
+                $this->kolom ++;
+            }else{
+
+                // tes berakhir, tampilkan nilai dari tes ini
+            }
+        }
+
 
         $this->nomor ++;
     }

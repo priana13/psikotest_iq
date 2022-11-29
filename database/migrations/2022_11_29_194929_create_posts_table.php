@@ -17,7 +17,7 @@ class CreatePostsTable extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained('users');
             $table->unsignedBigInteger('category_id');          
-            $table->foreign('category_id')->references('id')->on('catagories');
+            // $table->foreign('category_id')->references('id')->on('catagories');
             $table->string('slug');
             $table->string('title',100);
             $table->text('body');

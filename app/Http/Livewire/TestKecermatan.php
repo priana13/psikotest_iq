@@ -12,7 +12,7 @@ class TestKecermatan extends Component
     public $exam,$examColumn;
     public $soalTampil = FALSE;
     public $column = 0;
-    public $peraturan,$namatest,$waktu,$nilai_min,$jumlah_row = 50;
+    public $peraturan,$namatest,$waktu,$nilai_min,$jumlah_row = 5;
     public $a,$b,$c,$d,$e;
     public $list_nomor = [];
     public $list_soal = [];
@@ -25,14 +25,17 @@ class TestKecermatan extends Component
         if($this->exam){
             $existExamColumn = ExamColumn::where('exam_id' , $this->exam->id)->where('kolom' , $this->column)->first();
 
-        }
 
-        if($existExamColumn != null){
+            if($existExamColumn != null){
                         
-            $this->list_soal = Question::where('exam_id' , $this->exam->id)->where('exam_column_id' , $existExamColumn->id)->get();        
-
+                $this->list_soal = Question::where('exam_id' , $this->exam->id)->where('exam_column_id' , $existExamColumn->id)->get();        
+    
+    
+            }
 
         }
+
+
 
         return view('livewire.tes-cermat.show');
     }
