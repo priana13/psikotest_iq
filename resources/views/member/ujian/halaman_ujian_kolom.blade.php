@@ -12,7 +12,7 @@
 
 @livewire('member.ujian-kolom' , 
 [
-    'examid' => $exam->id,
+    'exam' => $exam,
     'examEvent' => $exam_event
 ])
 

@@ -58,22 +58,22 @@
 
         <!-- Nav Item - Soal Cerdas -->
         <li class="nav-item">
-            <a class="nav-link" href="{{route('member.soal.type' , 'cerdas')}}">
+            <a class="nav-link py-2" href="{{route('member.soal.type' , 'cerdas')}}">
                 <i class="fas fa-fw fa-user"></i>
                 <span>{{ __('Soal Kecerdasan') }}</span>
             </a>
         </li>
 
-        <li class="nav-item">
-            <a class="nav-link" href="{{route('member.soal.type' , 'cermat')}}">
+        <li class="nav-item my-0">
+            <a class="nav-link py-2" href="{{route('member.soal.type' , 'cermat')}}">
                 <i class="fas fa-fw fa-user"></i>
                 <span>{{ __('Soal Kecermatan') }}</span>
             </a>
         </li>
 
         <!-- Nav Item - Profile -->
-        <li class="nav-item">
-            <a class="nav-link" href="{{ route('member.history') }}">
+        <li class="nav-item my-0">
+            <a class="nav-link py-2" href="{{ route('member.history') }}">
                 <i class="fas fa-fw fa-user"></i>
                 <span>{{ __('History') }}</span>
             </a>
@@ -81,7 +81,7 @@
 
         <!-- Nav Item - Profile -->
         <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link py-2" href="#">
                 <i class="fas fa-fw fa-user"></i>
                 <span>{{ __('Langganan') }}</span>
             </a>
@@ -100,7 +100,7 @@
 
         <!-- Nav Item - Profile -->
         <li class="nav-item {{ Nav::isRoute('admin.exams') }}">
-            <a class="nav-link" href="{{ route('admin.exams') }}">
+            <a class="nav-link py-2" href="{{ route('admin.exams') }}">
                 <i class="fas fa-fw fa-user"></i>
                 <span>{{ __('Test') }}</span>
             </a>
@@ -108,7 +108,7 @@
 
         <!-- Nav Item - About -->
         <li class="nav-item {{ Nav::isRoute('admin.questions') }}">
-            <a class="nav-link" href="{{ route('admin.questions') }}">
+            <a class="nav-link py-2" href="{{ route('admin.questions') }}">
                 <i class="fas fa-fw fa-hands-helping"></i>
                 <span>{{ __('Soal') }}</span>
             </a>
@@ -116,7 +116,7 @@
 
         <!-- Nav Item - About -->
         <li class="nav-item {{ Nav::isRoute('admin.scores') }}">
-            <a class="nav-link" href="{{ route('admin.scores') }}">
+            <a class="nav-link py-2" href="{{ route('admin.scores') }}">
                 <i class="fas fa-fw fa-hands-helping"></i>
                 <span>{{ __('Nilai') }}</span>
             </a>
@@ -124,7 +124,7 @@
 
         <!-- Nav Item - About -->
         <li class="nav-item {{ Nav::isRoute('admin.users') }}">
-            <a class="nav-link" href="{{ route('admin.users') }}">
+            <a class="nav-link py-2" href="{{ route('admin.users') }}">
                 <i class="fas fa-fw fa-users"></i>
                 <span>{{ __('Users') }}</span>
             </a>
@@ -137,7 +137,7 @@
 
         <!-- Nav Item - Profile -->
         <li class="nav-item">
-            <a class="nav-link" href="{{ route('myprofile') }}">
+            <a class="nav-link py-2" href="{{ route('myprofile') }}">
                 <i class="fas fa-fw fa-user"></i>
                 <span>{{ __('My Profile') }}</span>
             </a>
@@ -145,7 +145,7 @@
 
         <!-- Nav Item - Profile -->
         <li class="nav-item">
-            <a class="nav-link" href="#" data-toggle="modal" data-target="#logoutModal">
+            <a class="nav-link py-2" href="#" data-toggle="modal" data-target="#logoutModal">
                 <i class="fas fa-fw fa-user"></i>
                 <span>{{ __('Logout') }}</span>
             </a>

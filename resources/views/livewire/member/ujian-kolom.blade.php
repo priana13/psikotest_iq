@@ -15,7 +15,7 @@
                 <div class="card-body row">
 
                     <div class="col-md-4 mx-auto text-center">
-                        <h4>Kolom 1 - 1</h4>
+                        <h4>Kolom {{ $kolom }} - {{ $nomor }}</h4>
 
                         <table class="table table-striped">
                             <tr class="bg-primary text-light">
@@ -28,19 +28,19 @@
 
                             <tr>
                                 <td style="width:20%;">
-                                    7
+                                    {{ $exam_column->a }}
                                 </td>
                                 <td style="width:20%;">
-                                    2
+                                    {{ $exam_column->b }}
                                 </td>
                                 <td style="width:20%;">
-                                    3
+                                    {{ $exam_column->c }}
                                 </td>
                                 <td style="width:20%;">
-                                    6
+                                    {{ $exam_column->d }}
                                 </td>
                                 <td style="width:20%;">
-                                    0
+                                    {{ $exam_column->e }}
                                 </td>  
 
                             </tr>
@@ -50,15 +50,14 @@
 
                             {{-- <h4>Soal</h4> --}}
 
-                            <h4>2	3	0	6</h4>  
- 
+                            <h3>{{ $list_nomor }}</h3> 
                             
                             <div class="my-3">
-                                <button class="btn btn-success">A</button>
-                                <button class="btn btn-secondary">B</button>
-                                <button class="btn btn-secondary">C</button>
-                                <button class="btn btn-secondary">D</button>
-                                <button class="btn btn-secondary">E</button>
+                                <button class="btn btn-secondary" wire:click="jawab('A')">A</button>
+                                <button class="btn btn-secondary" wire:click="jawab('B')">B</button>
+                                <button class="btn btn-secondary" wire:click="jawab('C')">C</button>
+                                <button class="btn btn-secondary" wire:click="jawab('D')">D</button>
+                                <button class="btn btn-secondary" wire:click="jawab('E')">E</button>
                                 
                             </div>                          
 
