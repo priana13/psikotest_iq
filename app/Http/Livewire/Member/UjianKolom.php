@@ -18,7 +18,8 @@ class UjianKolom extends Component
     public $endtime;
     public $date;
     public $kolom = 1 , $nomor = 1 , $soal , $list_nomor , $exam_column , $pilihanJawaban , 
-            $soal_terakhir, $kolom_terakhir;
+            $soal_terakhir, $kolom_terakhir , $nilai_akhir;
+    public $is_finish = FALSE;
     
     public function mount($exam , $examEvent){
 
@@ -35,17 +36,30 @@ class UjianKolom extends Component
         $this->endtime = $this->date->addMinutes($this->exam->waktu);
 
         $this->exam_column = ExamColumn::where('exam_id' , $this->exam->id)->where('kolom' , $this->kolom)->first();
-        $this->pilihanJawaban = [
-            "A" => $this->exam_column->a,
-            "B" => $this->exam_column->b,
-            "C" => $this->exam_column->c,
-            "D" => $this->exam_column->d,
-            "E" => $this->exam_column->e
-        ];
+        
+        if($this->exam_column != null){
 
-        $this->soal = Question::where('exam_column_id' , $this->exam_column->id)->where('no' , $this->nomor)->first(); 
-        $this->soal_terakhir = Question::where('exam_column_id' , $this->exam_column->id)->max('no');
+            $this->soal = Question::where('exam_column_id' , $this->exam_column->id)->where('no' , $this->nomor)->first(); 
+            $this->soal_terakhir = Question::where('exam_column_id' , $this->exam_column->id)->max('no');
+    
+        }        
+        
         $this->kolom_terakhir = ExamColumn::where('exam_id' , $this->exam->id)->max('kolom');
+
+        if($this->kolom <= $this->kolom_terakhir){
+
+            $this->pilihanJawaban = [
+                "A" => $this->exam_column->a,
+                "B" => $this->exam_column->b,
+                "C" => $this->exam_column->c,
+                "D" => $this->exam_column->d,
+                "E" => $this->exam_column->e
+            ];
+    
+        }else{
+
+            $this->is_finish = TRUE;
+        }
        
         if($this->soal == null){
             // soal untuk kolom ini belum ada
@@ -61,6 +75,7 @@ class UjianKolom extends Component
 
     public function jawab($jawaban){
 
+        // dd($this->nomor , $this->soal_terakhir);
 
         if($this->nomor < $this->soal_terakhir){
 
@@ -78,10 +93,14 @@ class UjianKolom extends Component
 
             ]);
     
-        }else{           
+        }else{    
+            $this->kolom ++;                
+            
 
             if($this->kolom < $this->kolom_terakhir){
+
                 $this->kolom ++;
+
             }else{
 
                 // tes berakhir, tampilkan nilai dari tes ini

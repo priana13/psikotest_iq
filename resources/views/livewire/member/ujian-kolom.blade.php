@@ -14,6 +14,16 @@
                 
                 <div class="card-body row">
 
+                    @if($is_finish == TRUE)
+
+                    <div class="mx-auto">
+                         <h2 class="text-center">Tes Telah Selesai/Berakhir</h2>
+                         <p>Terimakasih Telah Mengikuti Test ini dengan baik, Nilai Kamu adalah:</p>
+                         <h1 class="text-center text-primary"> <strong>90</strong></h1>
+                    </div>                   
+
+                    @else
+
                     <div class="col-md-4 mx-auto text-center">
                         <h4>Kolom {{ $kolom }} - {{ $nomor }}</h4>
 
@@ -67,7 +77,7 @@
 
 
                     </div>
-
+                    @endif
                               
 
 
