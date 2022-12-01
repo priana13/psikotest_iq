@@ -8,6 +8,7 @@ use App\Models\Exam;
 use App\Models\ExamColumn;
 use App\Models\ExamItem;
 use App\Models\ExamEvent;
+use App\Models\TempExam;
 use Carbon\Carbon;
 
 class UjianKolom extends Component
@@ -18,22 +19,31 @@ class UjianKolom extends Component
     public $endtime;
     public $date;
     public $kolom = 1 , $nomor = 1 , $soal , $list_nomor , $exam_column , $pilihanJawaban , 
-            $soal_terakhir, $kolom_terakhir , $nilai_akhir;
+            $soal_terakhir, $kolom_terakhir , $nilai_akhir , $tempexam;
     public $is_finish = FALSE;
+
+    protected $listeners = [
+        'kurangiWaktu'
+    ];
     
     public function mount($exam , $examEvent){
 
         $this->exam = $exam;    
         $this->examEvent = $examEvent;
 
+        if($examEvent->status == "Selesai"){
+
+            $this->is_finish = TRUE;
+        }
+
     }
 
     public function render()
-    {
+    {     
 
         // https://carbon.nesbot.com/docs/
         $this->date = Carbon::now();
-        $this->endtime = $this->date->addMinutes($this->exam->waktu);
+        $this->endtime = $this->date->addMinutes($this->exam->waktu); 
 
         $this->exam_column = ExamColumn::where('exam_id' , $this->exam->id)->where('kolom' , $this->kolom)->first();
         
@@ -45,6 +55,20 @@ class UjianKolom extends Component
         }        
         
         $this->kolom_terakhir = ExamColumn::where('exam_id' , $this->exam->id)->max('kolom');
+        
+        $temp_waktu = TempExam::where('examevent_id' , $this->examEvent->id)->count(); 
+
+        if($temp_waktu == 0){        
+
+            $this->tempexam = TempExam::create([
+                'examevent_id' => $this->examEvent->id,
+                'waktu_terakhir' => $this->exam->waktu * 60,
+                'kolom_terakhir' => $this->kolom,
+                'soal_terakhir' => $this->nomor
+            ]);        
+
+        }
+        $this->tempexam = TempExam::where('examevent_id' , $this->examEvent->id)->first();
 
         if($this->kolom <= $this->kolom_terakhir){
 
@@ -92,6 +116,10 @@ class UjianKolom extends Component
                 'is_true' => $hasil
 
             ]);
+
+            $this->tempexam->soal_terakhir = $this->soal->no + 1;
+            $this->tempexam->save();
+
     
         }else{    
             $this->kolom ++;                
@@ -101,14 +129,31 @@ class UjianKolom extends Component
 
                 $this->kolom ++;
 
+                $this->tempexam->kolom_terakhir = $this->kolom;
+                $this->tempexam->save();                
+
             }else{
 
                 // tes berakhir, tampilkan nilai dari tes ini
+
+               $exam_event = ExamEvent::find($this->examEvent->id);
+               $exam_event->status = 'Selesai';
+               $exam_event->save();
+
             }
         }
 
 
         $this->nomor ++;
+
+        
+    }
+
+    public function kurangiWaktu(){
+
+        $this->examEvent->sisa_waktu -= 1;
+        $this->examEvent->save();
+
     }
 
   

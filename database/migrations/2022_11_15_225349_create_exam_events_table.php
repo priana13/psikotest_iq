@@ -21,6 +21,7 @@ class CreateExamEventsTable extends Migration
             $table->integer('nilai')->nullable();
             $table->integer('benar')->nullable();
             $table->integer('sisa_waktu')->nullable();
+            $table->string('status',20)->default('Belum Selesai');
             $table->timestamps();
         });
 

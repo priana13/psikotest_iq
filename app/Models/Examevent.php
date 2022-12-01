@@ -28,6 +28,11 @@ class Examevent extends Model
         return $this->belongsTo(User::class, 'user_id');
     }
 
+    public function tempExams(){
+
+        return $this->hasMany(TempExam::class, 'examevent_id');
+    }
+
 
     
 }

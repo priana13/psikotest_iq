@@ -109,7 +109,12 @@
                     Livewire.emit('waktuHabis');
 
                     return;
+                }else{
+
+                    // kurangi waktu yang ada di database
+                    Livewire.emit('kurangiWaktu');
                 }
+
                 var days = Math.floor(distance / _day);
                 var hours = Math.floor((distance % _day) / _hour);
                 var minutes = Math.floor((distance % _hour) / _minute);
@@ -118,7 +123,10 @@
                 // document.getElementById(id).innerHTML = days + 'days ';
                 document.getElementById(id).innerHTML = hours + ':';
                 document.getElementById(id).innerHTML += minutes + ':';
-                document.getElementById(id).innerHTML += seconds;                
+                document.getElementById(id).innerHTML += seconds;   
+                
+                // kurangi waktu yang ada di database
+               console.log(seconds);
             }
             timer = setInterval(showRemaining, 1000);
         }
