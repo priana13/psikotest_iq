@@ -20,24 +20,44 @@ class UjianController extends Controller
     }
 
 
-    public function soal($exam){  
+    public function buat_event($exam){  
 
-        $exam = Exam::find($exam);     
-        
-        if($exam->type == 'cermat'){
-          $type = 'kolom';
-        }else{
-          $type = 'pg'; // pilihan ganda
-        }
+        $exam = Exam::find($exam); 
 
-        return view('member.ujian.halaman_ujian_'. $type , 
-        ['exam' => $exam, 
-          'exam_event' => Examevent::create([
-            'name' => 'Test ' . $exam->nama_tes,
-            'user_id' => auth()->user()->id
-          ])
-        ]
-    );
+        $exam_event = Examevent::create([
+          'name' => 'Test ' . $exam->nama_tes,
+          'user_id' => auth()->user()->id
+        ]);
+
+        return redirect()->route('member.ujian',[
+          'exam' => $exam,
+          'examevent' => $exam_event
+        ]); 
+
     }
+
+    public function ujian($exam,$examevent){
+
+      $exam = Exam::find($exam);     
+      $examevent = Examevent::find($examevent);
+
+      if($exam->type == 'cermat'){
+        $type = 'kolom';
+      }else{
+        $type = 'pg'; // pilihan ganda
+      }
+     
+
+      return view('member.ujian.halaman_ujian_'. $type , 
+      ['exam' => $exam, 
+        'exam_event' => $examevent
+      ]
+    );
+
+
+
+    }
+
+
 
 }

@@ -36,7 +36,7 @@
                     <a href="{{ route('member.soal') }}" class="btn btn-default btn-sm mr-3">
                         Batal
                     </a>
-                    <a href="{{ route('member.ujian' , $ujian->id) }}" class="btn btn-primary btn-sm" type="submit">
+                    <a href="{{ route('member.buat_event' , $ujian->id) }}" class="btn btn-primary btn-sm" type="submit">
                         Mulai Sekarang
                     </a>
 
