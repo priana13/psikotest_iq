@@ -20,6 +20,7 @@ class CreateExamEventsTable extends Migration
             $table->integer('salah')->nullable();
             $table->integer('nilai')->nullable();
             $table->integer('benar')->nullable();
+            $table->integer('sisa_waktu')->nullable();
             $table->timestamps();
         });
 
