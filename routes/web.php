@@ -34,8 +34,8 @@ Route::middleware('auth')->group(function(){
 	Route::get('/member/ujian/{exam}/{examevent}' , [App\Http\Controllers\Member\UjianController::class , 'ujian'])->name('member.ujian');
 	Route::view('member/history', 'livewire.examevents.index')->name('member.history');
 	Route::get('/checkout' , [App\Http\Controllers\CheckoutController::class , 'index'])->name('checkout');
-
-
+	Route::get('/checkout/thanks' , [App\Http\Controllers\CheckoutController::class , 'thanks'])->name('checkout.thanks');
+	Route::get('/checkout/konfirmasi' , [App\Http\Controllers\CheckoutController::class , 'konfirmasi'])->name('checkout.konfirmasi');
 
 
 

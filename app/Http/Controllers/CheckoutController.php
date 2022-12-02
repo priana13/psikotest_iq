@@ -10,4 +10,14 @@ class CheckoutController extends Controller
 
         return view('livewire.checkout.index');
     }
+
+    public function thanks(){
+
+        return view('livewire.checkout.thanks.index');
+    }
+
+    public function konfirmasi(){      
+
+        return view('livewire.checkout.konfirmasi.index_konfirmasi');
+    }
 }

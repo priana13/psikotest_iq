@@ -100,7 +100,9 @@
                                 <h3></h3>
                             </div>
 
-                            <button class="btn btn-lg btn-danger m-auto" style="width:90%;">Beli Sekarang</button>
+                            <a href="{{ route('checkout.thanks') }}" class="btn btn-lg btn-danger m-auto" style="width:90%;">Beli Sekarang</a href="{{ route('checkout.thanks') }}">
+
+                            {{-- <button class="btn btn-lg btn-danger m-auto" style="width:90%;">Beli Sekarang</button> --}}
 
                         </div>
 
