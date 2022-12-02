@@ -11,9 +11,9 @@ class CheckoutController extends Controller
         return view('livewire.checkout.index');
     }
 
-    public function thanks(){
+    public function thanks($id){     
 
-        return view('livewire.checkout.thanks.index');
+        return view('livewire.checkout.thanks.index' , compact('id'));
     }
 
     public function konfirmasi(){      
