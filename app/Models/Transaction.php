@@ -13,14 +13,14 @@ class Transaction extends Model
 
     protected $table = 'transactions';
 
-    protected $fillable = ['user_id','exam_id','payment_method_id','nominal','status'];
+    protected $fillable = ['user_id','package_id','payment_method_id','nominal','status'];
 	
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
-    public function exam()
+    public function package()
     {
-        return $this->hasOne('App\Models\Exam', 'id', 'exam_id');
+        return $this->hasOne('App\Models\Package', 'id', 'package_id');
     }
     
     /**

@@ -11,7 +11,7 @@ class Transactions extends Component
     use WithPagination;
 
 	protected $paginationTheme = 'bootstrap';
-    public $selected_id, $keyWord, $user_id, $exam_id, $payment_method_id, $nominal, $status;
+    public $selected_id, $keyWord, $user_id, $package_id, $payment_method_id, $nominal, $status;
     public $updateMode = false;
 
     public function render()
@@ -20,7 +20,7 @@ class Transactions extends Component
         return view('livewire.transactions.view', [
             'transactions' => Transaction::latest()
 						->orWhere('user_id', 'LIKE', $keyWord)
-						->orWhere('exam_id', 'LIKE', $keyWord)
+						->orWhere('package_id', 'LIKE', $keyWord)
 						->orWhere('payment_method_id', 'LIKE', $keyWord)
 						->orWhere('nominal', 'LIKE', $keyWord)
 						->orWhere('status', 'LIKE', $keyWord)
@@ -37,7 +37,7 @@ class Transactions extends Component
     private function resetInput()
     {		
 		$this->user_id = null;
-		$this->exam_id = null;
+		$this->package_id = null;
 		$this->payment_method_id = null;
 		$this->nominal = null;
 		$this->status = null;
@@ -47,7 +47,7 @@ class Transactions extends Component
     {
         $this->validate([
 		'user_id' => 'required',
-		'exam_id' => 'required',
+		'package_id' => 'required',
 		'payment_method_id' => 'required',
 		'nominal' => 'required',
 		'status' => 'required',
@@ -55,7 +55,7 @@ class Transactions extends Component
 
         Transaction::create([ 
 			'user_id' => $this-> user_id,
-			'exam_id' => $this-> exam_id,
+			'package_id' => $this-> package_id,
 			'payment_method_id' => $this-> payment_method_id,
 			'nominal' => $this-> nominal,
 			'status' => $this-> status
@@ -72,7 +72,7 @@ class Transactions extends Component
 
         $this->selected_id = $id; 
 		$this->user_id = $record-> user_id;
-		$this->exam_id = $record-> exam_id;
+		$this->package_id = $record-> package_id;
 		$this->payment_method_id = $record-> payment_method_id;
 		$this->nominal = $record-> nominal;
 		$this->status = $record-> status;
@@ -84,7 +84,7 @@ class Transactions extends Component
     {
         $this->validate([
 		'user_id' => 'required',
-		'exam_id' => 'required',
+		'package_id' => 'required',
 		'payment_method_id' => 'required',
 		'nominal' => 'required',
 		'status' => 'required',
@@ -94,7 +94,7 @@ class Transactions extends Component
 			$record = Transaction::find($this->selected_id);
             $record->update([ 
 			'user_id' => $this-> user_id,
-			'exam_id' => $this-> exam_id,
+			'package_id' => $this-> package_id,
 			'payment_method_id' => $this-> payment_method_id,
 			'nominal' => $this-> nominal,
 			'status' => $this-> status

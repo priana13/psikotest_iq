@@ -28,6 +28,8 @@ class DatabaseSeeder extends Seeder
 
         \App\Models\User::factory(10)->create();
         \App\Models\Exam::factory(2)->create();
+        \App\Models\Package::factory(1)->create();
+
         // \App\Models\Question::factory(10)->create();
 
         for ($i=1; $i <= 50; $i++) {

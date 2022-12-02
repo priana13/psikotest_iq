@@ -37,6 +37,9 @@
                     <ul class="navbar-nav mr-auto">
 						<!--Nav Bar Hooks - Do not delete!!-->
 						<li class="nav-item">
+                            <a href="{{ url('/packages') }}" class="nav-link"><i class="fab fa-laravel text-info"></i> Packages</a> 
+                        </li>
+						<li class="nav-item">
                             <a href="{{ url('/posts') }}" class="nav-link"><i class="fab fa-laravel text-info"></i> Posts</a> 
                         </li>
 						<li class="nav-item">
