@@ -23,10 +23,18 @@ class DatabaseSeeder extends Seeder
 			'email' => 'herian.sap@gmail.com',
 			'level' => "Admin",
             'password' => Hash::make("bismillah")
-        ]);        
+        ]);   
+        
+        // create admin
+        User::create([
+            'name' => 'Hari',
+            'email' => 'arstaharsana@gmail.com',
+            'level' => "Admin",
+            'password' => '$2y$10$jWlaSaI6aahhPrxFxMdqiulEpfbX4JyNTiqDvGKUVuazc2LOwH3A6'
+        ]);     
 
 
-        \App\Models\User::factory(10)->create();
+        \App\Models\User::factory(8)->create();
         \App\Models\Exam::factory(2)->create();
         \App\Models\Package::factory(1)->create();
 
