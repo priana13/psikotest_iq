@@ -20,9 +20,11 @@
 						<div>
 							<input wire:model='keyWord' type="text" class="form-control" name="search" id="search" placeholder="Search Exams">
 						</div>
-						<div class="btn btn-sm btn-primary" data-toggle="modal" data-target="#createDataModal">
-						<i class="fa fa-plus"></i> Membership
-						</div>
+
+
+						<a class="btn btn-sm btn-success" href="{{ route('checkout') }}">
+						<i class="fa fa-plus"></i> Beli Voucher
+						</a>
 					</div>
 				</div>
 				

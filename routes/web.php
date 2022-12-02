@@ -33,6 +33,9 @@ Route::middleware('auth')->group(function(){
 	Route::get('/member/ujian/{exam}' , [App\Http\Controllers\Member\UjianController::class , 'buat_event'])->name('member.buat_event');
 	Route::get('/member/ujian/{exam}/{examevent}' , [App\Http\Controllers\Member\UjianController::class , 'ujian'])->name('member.ujian');
 	Route::view('member/history', 'livewire.examevents.index')->name('member.history');
+	Route::get('/checkout' , [App\Http\Controllers\CheckoutController::class , 'index'])->name('checkout');
+
+
 
 
 
