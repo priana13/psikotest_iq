@@ -16,12 +16,13 @@ class CreateTransactionsTable extends Migration
         Schema::create('transactions', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('users');
-            $table->foreignId('exam_id')->constrained('exams')->nullable();
+            $table->string('code',30);
+            $table->foreignId('package_id')->constrained('packages');
             $table->foreignId('payment_method_id')->constrained('payment_methods');            
             $table->integer('nominal');
-            $table->string('status');
             $table->string('bukti_transfer')->nullable();
             $table->string('notes')->nullable();
+            $table->string('status')->default('Pending');
             $table->timestamps();
         });
     }
