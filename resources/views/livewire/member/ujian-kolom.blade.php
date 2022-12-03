@@ -104,7 +104,7 @@
 
                     clearInterval(timer); 
                     
-                    alert('Waktu Tes Telah Habis');
+                    alert('Waktu Tes Kolom ini Telah Habis');
                     // emit di sini
                     Livewire.emit('waktuHabis');
 

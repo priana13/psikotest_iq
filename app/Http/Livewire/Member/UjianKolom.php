@@ -23,7 +23,7 @@ class UjianKolom extends Component
     public $is_finish = FALSE;
 
     protected $listeners = [
-        'kurangiWaktu'
+        'kurangiWaktu' , 'waktuHabis'
     ];
     
     public function mount($exam , $examEvent){
@@ -120,31 +120,42 @@ class UjianKolom extends Component
             $this->tempexam->soal_terakhir = $this->soal->no + 1;
             $this->tempexam->save();
 
+            $this->nomor ++;
+
     
-        }else{    
-            $this->kolom ++;                
+        }else{                    
             
+
+            $this->nomor = 1;           
 
             if($this->kolom < $this->kolom_terakhir){
 
                 $this->kolom ++;
 
                 $this->tempexam->kolom_terakhir = $this->kolom;
-                $this->tempexam->save();                
+                $this->tempexam->save();     
+                
+
 
             }else{
 
                 // tes berakhir, tampilkan nilai dari tes ini
+                $exam_event = ExamEvent::find($this->examEvent->id);
+                $exam_event->status = 'Selesai';
+                $exam_event->save();
 
-               $exam_event = ExamEvent::find($this->examEvent->id);
-               $exam_event->status = 'Selesai';
-               $exam_event->save();
+                $this->is_finish = TRUE;
 
             }
+            
+
+
+
         }
 
 
-        $this->nomor ++;
+
+
 
         
     }
@@ -153,6 +164,25 @@ class UjianKolom extends Component
 
         $this->examEvent->sisa_waktu -= 1;
         $this->examEvent->save();
+
+    }
+
+    public function waktuHabis(){
+
+        if($this->kolom == $this->kolom_terakhir){   
+
+            $this->is_finish = TRUE;
+
+        }else{
+
+            $this->kolom += 1;
+            $this->nomor = 1;
+    
+
+        }
+
+
+
 
     }
 
