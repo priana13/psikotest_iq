@@ -14,8 +14,10 @@
                     <div class="form-group col-md-10">
                         <select class="form-control" wire:model="product" id="">
                             <option value="">Select Product</option>
-                            <option value="bulanan" selected>Bulanan</option>
-                            <option value="mingguan">Mingguan</option>
+                            @foreach($package as $row)
+                            <option value="{{ $row->id }}">{{ $row->name }}</option>
+                            @endforeach
+                           
                         </select>
                     </div>
 
@@ -23,6 +25,24 @@
 
                         <input wire:model="qty" type="number" class="form-control">
 
+                    </div>
+
+                </div>
+
+                <div class="row">
+                    <div class="form-group col-md-10">
+                        <label for="">Metode Pembayaran</label>
+                        <select class="form-control" wire:model="payment_method">
+                            <option value="">Pilih Methode Bayar</option>
+                           
+                            @foreach($list_payment_methods as $row)
+                            <option value="{{ $row->id }}">{{ $row->name }}</option>
+
+                            @endforeach
+                           
+
+                           
+                        </select>
                     </div>
 
                 </div>
@@ -48,7 +68,7 @@
 
 
                     <div class="form-group">
-                        <input wire:model="alamat" type="text" class="form-control" placeholder="Alamat Lengkap">
+                        <input wire:model="alamat" type="text" class="form-control" placeholder="Alamat">
                     </div>
 
                     

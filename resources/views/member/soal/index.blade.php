@@ -11,21 +11,18 @@
 					<div style="display: flex; justify-content: space-between; align-items: center;">
 						<div class="float-left">
 							<h4><i class="fab fa-laravel text-info"></i>
-							List Soal Tersedia </h4>
+							List Soal </h4>
 						</div>
-						
-						@if (session()->has('message'))
-						<div wire:poll.4s class="btn btn-sm btn-success" style="margin-top:0px; margin-bottom:0px;"> {{ session('message') }} </div>
-						@endif
-						<div>
-							<input wire:model='keyWord' type="text" class="form-control" name="search" id="search" placeholder="Search Exams">
-						</div>
-
 
 						<a class="btn btn-sm btn-success" href="{{ route('checkout') }}">
-						<i class="fa fa-plus"></i> Beli Voucher
+							<i class="fa fa-plus"></i> Beli Voucher
 						</a>
 					</div>
+
+					@if (session()->has('message'))
+					<div wire:poll.4s class="btn btn-sm btn-success" style="margin-top:0px; margin-bottom:0px;"> {{ session('message') }} </div>
+					@endif	
+
 				</div>
 				
 				<div class="card-body">

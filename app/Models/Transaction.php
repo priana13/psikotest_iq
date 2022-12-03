@@ -13,7 +13,7 @@ class Transaction extends Model
 
     protected $table = 'transactions';
 
-    protected $fillable = ['user_id','package_id','payment_method_id','nominal','status'];
+    protected $fillable = ['user_id','package_id','code','payment_method_id','nominal','status'];
 	
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne

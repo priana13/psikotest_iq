@@ -16,9 +16,9 @@
              
                 <div class="row">
 
-                    <div class="col p-5 mb-5 text-center">
+                    <div class="col p-3 mb-5 text-center">
                        
-                       <h1 class="mb-3"><strong>Terimakasih sudah melakukan order Voucher Try Out Online</strong></h1> 
+                       <h2 class="mb-3"><strong>Terimakasih sudah melakukan order Voucher Bulanan</strong></h2> 
 
                        <h4 class="mb-3">Untuk menyelesaikan proses order, silahkan transfer sejumlah</h4>
 
@@ -33,7 +33,7 @@
 
                        <div class="row">
 
-                        <div class="card col-6 m-auto p-3">
+                        <div class="card col-md-6 m-auto px-2 py-3">
 
                             <img class="mx-auto mb-2" src="/img/bank-bca.png" alt="" width="100px">
 
