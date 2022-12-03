@@ -19,6 +19,7 @@
                             @endforeach
                            
                         </select>
+                        @error('product') <span class="error">tes</span> @enderror
                     </div>
 
                     <div class="form-group col-md-2">

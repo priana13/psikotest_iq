@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Transaction;
 use Illuminate\Http\Request;
 
 class CheckoutController extends Controller
@@ -11,9 +12,11 @@ class CheckoutController extends Controller
         return view('livewire.checkout.index');
     }
 
-    public function thanks($id){     
-
-        return view('livewire.checkout.thanks.index' , compact('id'));
+    public function thanks($id){   
+        
+        $transaksi = Transaction::find($id);
+       
+        return view('livewire.checkout.thanks.index' , compact('transaksi'));
     }
 
     public function konfirmasi(){      

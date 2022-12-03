@@ -30,6 +30,12 @@ class CheckoutShow extends Component
         $this->package = Package::all();
 
     }
+
+    protected $rules = [
+        'product' => 'required',
+        'payment_method' => 'required'
+    ];
+
     
     public function render()
     {
@@ -45,6 +51,11 @@ class CheckoutShow extends Component
 
     public function store(){
 
+        $this->validate([
+            'product' => 'required',
+            'payment_method' => 'required'
+        ]);
+
         $transaksi = Transaction::create([
 
             'user_id' => auth()->user()->id,
@@ -55,7 +66,7 @@ class CheckoutShow extends Component
             'package_id' => $this->product
         ]);
 
-        return redirect()->route('checkout.thanks' , 1);
+        return redirect()->route('checkout.thanks' , $transaksi->id);
 
 
     }
