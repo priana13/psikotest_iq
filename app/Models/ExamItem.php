@@ -22,4 +22,14 @@ class ExamItem extends Model
 
         return $this->belongsTo(Question::class, 'question_id');
     }
+
+    public function scopeBenar($query){
+
+        return $query->where('is_true' , 1);
+    }
+
+    public function scopeSalah($query){
+
+        return $query->where('is_true' , 0);
+    }
 }

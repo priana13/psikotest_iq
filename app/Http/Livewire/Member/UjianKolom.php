@@ -19,7 +19,7 @@ class UjianKolom extends Component
     public $endtime;
     public $date;
     public $kolom, $nomor = 1 , $soal , $list_nomor , $exam_column , $pilihanJawaban , 
-            $soal_terakhir, $kolom_terakhir , $nilai_akhir , $tempexam;
+            $soal_terakhir, $kolom_terakhir , $nilai_akhir = 0 , $tempexam, $jumlahSoal;
     public $is_finish = FALSE;
 
     protected $listeners = [
@@ -30,6 +30,8 @@ class UjianKolom extends Component
 
         $this->exam = $exam;    
         $this->examEvent = $examEvent;
+
+        $this->jumlahSoal = $this->exam->questions->count();
 
         if($examEvent->status == "Selesai"){
 
@@ -106,7 +108,20 @@ class UjianKolom extends Component
 
             $this->list_nomor = $this->soal->a . ' '. $this->soal->b .' '.  $this->soal->c . ' '. $this->soal->d;
 
-        }     
+        }   
+        
+        // Nilai Akhir
+        $nilai_akhir = ExamItem::where('examevent_id' , $this->examEvent->id)->get();
+
+        if($nilai_akhir->count() > 0){
+
+            $jawaban_benar =  $nilai_akhir->where('is_true',1)->count();           
+
+
+            $this->nilai_akhir = ($jawaban_benar / $this->jumlahSoal ) * 100;
+        }else{
+            $this->nilai_akhir = 0;
+        }
 
 
         return view('livewire.member.ujian-kolom');
@@ -169,6 +184,9 @@ class UjianKolom extends Component
                 // tes berakhir, tampilkan nilai dari tes ini
                 $exam_event = ExamEvent::find($this->examEvent->id);
                 $exam_event->status = 'Selesai';
+                $exam_event->nilai = $this->nilai_akhir;
+                $exam_event->salah = ExamItem::where('examevent_id' , $this->examEvent->id)->salah()->count();
+                $exam_event->benar = ExamItem::where('examevent_id' , $this->examEvent->id)->benar()->count();
                 $exam_event->save();
 
                 $this->is_finish = TRUE;
