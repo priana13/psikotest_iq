@@ -59,7 +59,8 @@
       <div class="col-md-4" data-aos="fade-up" data-aos-delay="">
         <div class="feature-1 text-center">
           <div class="wrap-icon icon-1">
-            <i class="bi bi-people"></i>
+            <i class="bi bi-thermometer-sun"></i>
+            
           </div>
           <h3 class="mb-3">Kecerdasan</h3>
           <p>Seberapa cerdasarkah kamu?</p>
@@ -69,7 +70,8 @@
       <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
         <div class="feature-1 text-center">
           <div class="wrap-icon icon-1">
-            <i class="bi bi-brightness-high"></i>
+            
+            <i class="bi bi-clipboard2-check-fill"></i>
           </div>
           <h3 class="mb-3">Kecermatan</h3>
           <p>Uji Kercermatan</p>
@@ -79,7 +81,7 @@
       <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
         <div class="feature-1 text-center">
           <div class="wrap-icon icon-1">
-            <i class="bi bi-brightness-high"></i>
+            <i class="bi bi-person-badge"></i>
           </div>
           <h3 class="mb-3">Kepribadian</h3>
           <p>Uji Kepribadian</p>
@@ -130,7 +132,7 @@
 <section class="section">
   <div class="container">
 
-    <div class="row justify-content-left mb-5">
+    <div class="row justify-content-center text-center mb-5">
       <div class="col-md-4" data-aos="fade-up">
         <h2 class="section-heading">Keuntungan</h2>
         {{-- <p class="mb-4">Dapatkan berbagai kemudahan dengan ikut bergabung bersama kami.</p> --}}
@@ -140,24 +142,24 @@
 
     <div class="row">
 
-      <div class="col-md-4 me-auto">
-        <img src="assets/img/undraw_svg_2.svg" alt="Image" class="img-fluid mb-3" width="200px">
+      <div class="col-md-4 me-auto text-center">
+        <img src="/img/time.jpg" alt="Image" class="img-fluid mb-3" width="100px">
         <h3 class="mb-4">Flexible</h3>
 
         <p class="mb-4">Tak semua orang memiliki waktu yang luang yang banyak, Anda bisa belajar kapan dan dimanapun menyesuaikan keinginan Anda.</p>
         
       </div>
 
-      <div class="col-md-4 me-auto">
-        <img src="assets/img/undraw_svg_2.svg" alt="Image" class="img-fluid mb-3" width="200px">
+      <div class="col-md-4 me-auto text-center">
+        <img src="/img/easy.jpg" alt="Image" class="img-fluid mb-3" width="200px">
         <h3 class="mb-4">Mudah Digunakan</h3>
 
         <p class="mb-4">Rasakan kemudahan dalam mengakses setiap fitur yang Anda inginkan.</p>
         
       </div>
 
-      <div class="col-md-4 me-auto">
-        <img src="assets/img/undraw_svg_2.svg" alt="Image" class="img-fluid mb-3" width="200px">
+      <div class="col-md-4 me-auto text-center">
+        <img src="/img/tech.jpg" alt="Image" class="img-fluid mb-3" width="200px">
         <h3 class="mb-5">Berbasis Teknologi</h3>
 
         <p class="mb-4">Waktunya beralih ke pembelajaran digital dengan teknologi terkini.</p>
@@ -167,7 +169,7 @@
     </div>
 
 
-    <div class="row justify-content-left my-5">
+    <div class="row justify-content-center text-center my-5">
       <div class="col-md-5" data-aos="fade-up">
         <p><a href="{{ route('register') }}" class="btn btn-primary">Coba Sekarang</a></p>
       </div>
