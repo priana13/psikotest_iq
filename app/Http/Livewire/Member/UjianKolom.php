@@ -34,6 +34,7 @@ class UjianKolom extends Component
         if($examEvent->status == "Selesai"){
 
             $this->is_finish = TRUE;
+            
         }
 
         /**
@@ -105,7 +106,8 @@ class UjianKolom extends Component
 
             $this->list_nomor = $this->soal->a . ' '. $this->soal->b .' '.  $this->soal->c . ' '. $this->soal->d;
 
-        }
+        }     
+
 
         return view('livewire.member.ujian-kolom');
     }
@@ -170,6 +172,8 @@ class UjianKolom extends Component
                 $exam_event->save();
 
                 $this->is_finish = TRUE;
+
+                $this->emit('ujianSelesai',1);
 
             }
             

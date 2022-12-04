@@ -128,7 +128,7 @@
               <ul class="list-unstyled">
                 <li><a href="#">Tentang Kami</a></li>
                 <li><a href="#">Syarat & Ketentuan</a></li>
-                <li><a href="#">Kbijakan Privasi</a></li>
+                <li><a href="#">Kebijakan Privasi</a></li>
               </ul>
             </div>
             <div class="col-md-4 mb-4 mb-md-0">

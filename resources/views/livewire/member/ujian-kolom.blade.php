@@ -7,7 +7,7 @@
                 <div class="card-header d-flex justify-content-center">                   
 
                     <h4 class="text-center">
-                        {{ $exam->nama_tes }}
+                        Tes: {{ $exam->nama_tes }}
                     </h4>              
                   
                 </div>
@@ -130,6 +130,9 @@
             }
             timer = setInterval(showRemaining, 1000);
         }
+
+
+
     </script>
 
 
