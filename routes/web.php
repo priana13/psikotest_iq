@@ -1,6 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Member\SoalController;
+use App\Http\Controllers\Member\TypeSoalController;
+use App\Http\Controllers\Member\UjianController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,19 +29,24 @@ Auth::routes();
 
 Route::middleware('auth')->group(function(){
 
-	Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('dashboard');
-	Route::get('/myprofile', [App\Http\Controllers\ProfileController::class, 'index'])->name('myprofile');
+	Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
+	Route::get('/myprofile', [ProfileController::class, 'index'])->name('myprofile');
 
-	Route::get('/member/soal' , [App\Http\Controllers\Member\SoalController::class , 'index'])->name('member.soal');
-	Route::get('/member/soal/{type}' , [App\Http\Controllers\Member\TypeSoalController::class , 'index'])->name('member.soal.type');
+	Route::get('/member/soal' , [SoalController::class , 'index'])->name('member.soal');
+	Route::get('/member/soal/{type}' , [TypeSoalController::class , 'index'])->name('member.soal.type');
 
-	Route::get('/member/ujian/mulai/{exam}' , [App\Http\Controllers\Member\UjianController::class , 'index'])->name('mulai-ujian');
-	Route::get('/member/ujian/{exam}' , [App\Http\Controllers\Member\UjianController::class , 'buat_event'])->name('member.buat_event');
-	Route::get('/member/ujian/{exam}/{examevent}' , [App\Http\Controllers\Member\UjianController::class , 'ujian'])->name('member.ujian');
+	Route::get('/member/ujian/mulai/{exam}' , [UjianController::class , 'index'])->name('mulai-ujian');
+	Route::get('/member/ujian/{exam}' , [UjianController::class , 'buat_event'])->name('member.buat_event');
+
+	Route::get('/member/ujian/{exam}/{examevent}' , [UjianController::class , 'ujian'])->name('member.ujian');
+	Route::get('/member/ujian/{exam}/{examevent}/{kolom}' , [UjianController::class , 'ujian_kolom'])->name('member.ujian-kolom');
+
+
 	Route::view('member/history', 'livewire.examevents.index')->name('member.history');
-	Route::get('/checkout' , [App\Http\Controllers\CheckoutController::class , 'index'])->name('checkout');
-	Route::get('/checkout/thanks/{id}' , [App\Http\Controllers\CheckoutController::class , 'thanks'])->name('checkout.thanks');
-	Route::get('/checkout/konfirmasi' , [App\Http\Controllers\CheckoutController::class , 'konfirmasi'])->name('checkout.konfirmasi');
+	// checkout
+	Route::get('/checkout' , [CheckoutController::class , 'index'])->name('checkout');
+	Route::get('/checkout/thanks/{id}' , [CheckoutController::class , 'thanks'])->name('checkout.thanks');
+	Route::get('/checkout/konfirmasi' , [CheckoutController::class , 'konfirmasi'])->name('checkout.konfirmasi');
 
 
 

@@ -18,7 +18,7 @@ class UjianKolom extends Component
     public $waktu;
     public $endtime;
     public $date;
-    public $kolom = 1 , $nomor = 1 , $soal , $list_nomor , $exam_column , $pilihanJawaban , 
+    public $kolom, $nomor = 1 , $soal , $list_nomor , $exam_column , $pilihanJawaban , 
             $soal_terakhir, $kolom_terakhir , $nilai_akhir , $tempexam;
     public $is_finish = FALSE;
 
@@ -26,7 +26,7 @@ class UjianKolom extends Component
         'kurangiWaktu' , 'waktuHabis'
     ];
     
-    public function mount($exam , $examEvent){
+    public function mount($exam,$examEvent,$kolom){
 
         $this->exam = $exam;    
         $this->examEvent = $examEvent;
@@ -36,20 +36,23 @@ class UjianKolom extends Component
             $this->is_finish = TRUE;
         }
 
-                /**
-         * jika sudah pernah melakukan ujian sebelumnya ambil kolom terakhir dari tem table.
-         * tapi untuk soal ambil soal terakhir hanya ketika 
+        /**
+         * Ambil soal terkhir
          */
         $temp_exam = TempExam::where('examevent_id', $this->examEvent->id)->first();
 
         if($temp_exam != null){
             $this->nomor = $temp_exam->soal_terakhir;
-            $this->kolom = $temp_exam->kolom_terakhir;
         }
+
+        $this->kolom = $kolom;
 
         // https://carbon.nesbot.com/docs/
         $this->date = Carbon::now();
-        $this->endtime = $this->date->addMinutes($this->exam->waktu);         
+        $this->endtime = $this->date->addMinutes($this->exam->waktu);    
+        
+        $this->kolom_terakhir = ExamColumn::where('exam_id' , $this->exam->id)->max('kolom');
+
 
     }
 
@@ -63,10 +66,7 @@ class UjianKolom extends Component
             $this->soal = Question::where('exam_column_id' , $this->exam_column->id)->where('no' , $this->nomor)->first(); 
             $this->soal_terakhir = Question::where('exam_column_id' , $this->exam_column->id)->max('no');
     
-        }        
-        
-        $this->kolom_terakhir = ExamColumn::where('exam_id' , $this->exam->id)->max('kolom');
-
+        } 
         
         $temp_waktu = TempExam::where('examevent_id' , $this->examEvent->id)->count(); 
 
@@ -80,6 +80,7 @@ class UjianKolom extends Component
             ]);        
 
         }
+        
         $this->tempexam = TempExam::where('examevent_id' , $this->examEvent->id)->first();
 
         if($this->kolom <= $this->kolom_terakhir){
@@ -144,10 +145,17 @@ class UjianKolom extends Component
             // jika kolom kolom masih tersedia
             if($this->kolom < $this->kolom_terakhir){
 
-                $this->kolom ++;
+                // $this->kolom ++;
 
                 $this->tempexam->kolom_terakhir = $this->kolom;
-                $this->tempexam->save();   
+                $this->tempexam->save();  
+                
+                // redirect ke kolom berikutnya
+                return redirect()->route('member.ujian-kolom',[
+                    'exam' => $this->exam->id,
+                    'examevent' => $this->examEvent->id,
+                    'kolom' => $this->kolom + 1
+                 ]); 
                 
                 // reset waktu
                 

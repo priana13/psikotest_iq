@@ -13,7 +13,8 @@
 @livewire('member.ujian-kolom' , 
 [
     'exam' => $exam,
-    'examEvent' => $exam_event
+    'examEvent' => $exam_event,
+    'kolom' => $kolom
 ])
 
 
