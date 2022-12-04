@@ -104,7 +104,7 @@
       <div class="row">
         <div class="col-md-4 mb-4 mb-md-0">
           <h3>About {{ config('app.name') }}</h3>
-          <p>Psikotes Online diakses di manapun.</p>
+          <p>Merupakan penyedia pembelajaran dan pelatihan berbasis digital yang bersifat personal.</p>
           <p class="social">
             <a href="#"><span class="bi bi-twitter"></span></a>
             <a href="#"><span class="bi bi-facebook"></span></a>

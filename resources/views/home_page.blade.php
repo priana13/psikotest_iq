@@ -23,8 +23,8 @@
     <div class="col-12 hero-text-image">
       <div class="row">
         <div class="col-lg-8 text-center text-lg-start">
-          <h1 data-aos="fade-right">Psikotes Mudah - Akses Dimanapun</h1>
-          <p class="mb-5" data-aos="fade-right" data-aos-delay="100">Persiapkan diri untuk mengikuti ujian.</p>
+          <h1 data-aos="fade-right">Belajar Mudah - Akses Dimanapun</h1>
+          <p class="mb-5" data-aos="fade-right" data-aos-delay="100">Persiapkan dirimu untuk mengikuti tes seleksi Polri - TNI.</p>
           <p data-aos="fade-right" data-aos-delay="200" data-aos-offset="-500"><a href="{{ route('register') }}" class="btn btn-outline-white">Mulai Sekarang</a></p>
         </div>
         <div class="col-lg-4 iphone-wrap">
@@ -51,28 +51,38 @@
 
     <div class="row justify-content-center text-center mb-5">
       <div class="col-md-5" data-aos="fade-up">
-        <h2 class="section-heading">Pilih Psikotes</h2>
+        <h2 class="section-heading">Psikotes</h2>
       </div>
     </div>
 
     <div class="row">
-      <div class="col-md-6" data-aos="fade-up" data-aos-delay="">
+      <div class="col-md-4" data-aos="fade-up" data-aos-delay="">
         <div class="feature-1 text-center">
           <div class="wrap-icon icon-1">
             <i class="bi bi-people"></i>
           </div>
-          <h3 class="mb-3">Soal Mengukur Kecerdasan</h3>
+          <h3 class="mb-3">Kecerdasan</h3>
           <p>Seberapa cerdasarkah kamu?</p>
         </div>
       </div>
 
-      <div class="col-md-6" data-aos="fade-up" data-aos-delay="100">
+      <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
         <div class="feature-1 text-center">
           <div class="wrap-icon icon-1">
             <i class="bi bi-brightness-high"></i>
           </div>
-          <h3 class="mb-3">Psikotes Mengukur Kecermatan</h3>
+          <h3 class="mb-3">Kecermatan</h3>
           <p>Uji Kercermatan</p>
+        </div>
+      </div>
+
+      <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+        <div class="feature-1 text-center">
+          <div class="wrap-icon icon-1">
+            <i class="bi bi-brightness-high"></i>
+          </div>
+          <h3 class="mb-3">Kepribadian</h3>
+          <p>Uji Kepribadian</p>
         </div>
       </div>
       
@@ -119,16 +129,51 @@
 
 <section class="section">
   <div class="container">
-    <div class="row align-items-center">
-      <div class="col-md-4 me-auto">
-        <h2 class="mb-4">Pengerjaan Tes Flexible</h2>
-        <p class="mb-4">Tak semua orang memiliki waktu yang luang yang banyak, Anda bisa mengerjakan soal psikotes kapan dan dimanapun menyesuaikan waktu Anda.</p>
-        <p><a href="{{ route('register') }}" class="btn btn-primary">Coba Sekarang</a></p>
-      </div>
-      <div class="col-md-6" data-aos="fade-left">
-        <img src="assets/img/undraw_svg_2.svg" alt="Image" class="img-fluid">
+
+    <div class="row justify-content-left mb-5">
+      <div class="col-md-4" data-aos="fade-up">
+        <h2 class="section-heading">Keuntungan</h2>
+        {{-- <p class="mb-4">Dapatkan berbagai kemudahan dengan ikut bergabung bersama kami.</p> --}}
       </div>
     </div>
+
+
+    <div class="row">
+
+      <div class="col-md-4 me-auto">
+        <img src="assets/img/undraw_svg_2.svg" alt="Image" class="img-fluid mb-3" width="200px">
+        <h3 class="mb-4">Flexible</h3>
+
+        <p class="mb-4">Tak semua orang memiliki waktu yang luang yang banyak, Anda bisa belajar kapan dan dimanapun menyesuaikan keinginan Anda.</p>
+        
+      </div>
+
+      <div class="col-md-4 me-auto">
+        <img src="assets/img/undraw_svg_2.svg" alt="Image" class="img-fluid mb-3" width="200px">
+        <h3 class="mb-4">Mudah Digunakan</h3>
+
+        <p class="mb-4">Rasakan kemudahan dalam mengakses setiap fitur yang Anda inginkan.</p>
+        
+      </div>
+
+      <div class="col-md-4 me-auto">
+        <img src="assets/img/undraw_svg_2.svg" alt="Image" class="img-fluid mb-3" width="200px">
+        <h3 class="mb-5">Berbasis Teknologi</h3>
+
+        <p class="mb-4">Waktunya beralih ke pembelajaran digital dengan teknologi terkini.</p>
+        
+      </div>    
+
+    </div>
+
+
+    <div class="row justify-content-left my-5">
+      <div class="col-md-5" data-aos="fade-up">
+        <p><a href="{{ route('register') }}" class="btn btn-primary">Coba Sekarang</a></p>
+      </div>
+    </div>
+
+
   </div>
 </section>
 
