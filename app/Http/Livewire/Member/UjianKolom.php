@@ -36,14 +36,25 @@ class UjianKolom extends Component
             $this->is_finish = TRUE;
         }
 
-    }
+                /**
+         * jika sudah pernah melakukan ujian sebelumnya ambil kolom terakhir dari tem table.
+         * tapi untuk soal ambil soal terakhir hanya ketika 
+         */
+        $temp_exam = TempExam::where('examevent_id', $this->examEvent->id)->first();
 
-    public function render()
-    {     
+        if($temp_exam != null){
+            $this->nomor = $temp_exam->soal_terakhir;
+            $this->kolom = $temp_exam->kolom_terakhir;
+        }
 
         // https://carbon.nesbot.com/docs/
         $this->date = Carbon::now();
-        $this->endtime = $this->date->addMinutes($this->exam->waktu); 
+        $this->endtime = $this->date->addMinutes($this->exam->waktu);         
+
+    }
+
+    public function render()
+    { 
 
         $this->exam_column = ExamColumn::where('exam_id' , $this->exam->id)->where('kolom' , $this->kolom)->first();
         
@@ -55,6 +66,7 @@ class UjianKolom extends Component
         }        
         
         $this->kolom_terakhir = ExamColumn::where('exam_id' , $this->exam->id)->max('kolom');
+
         
         $temp_waktu = TempExam::where('examevent_id' , $this->examEvent->id)->count(); 
 
@@ -99,8 +111,7 @@ class UjianKolom extends Component
 
     public function jawab($jawaban){
 
-        // dd($this->nomor , $this->soal_terakhir);
-
+        // Jika soal masih tersedia di kolom current
         if($this->nomor < $this->soal_terakhir){
 
             // jawaban di sini
@@ -122,21 +133,27 @@ class UjianKolom extends Component
 
             $this->nomor ++;
 
-    
+        // jika nomor soal di kolom sudah habis, maka pindah ke soal di kolom berikutnya
         }else{                    
             
+            // rest nomor ke 1 lagi jika sudah pindah kolom baru
+            $this->nomor = 1;  
+            $this->tempexam->soal_terakhir = $this->nomor;
+            $this->tempexam->save();
 
-            $this->nomor = 1;           
-
+            // jika kolom kolom masih tersedia
             if($this->kolom < $this->kolom_terakhir){
 
                 $this->kolom ++;
 
                 $this->tempexam->kolom_terakhir = $this->kolom;
-                $this->tempexam->save();     
+                $this->tempexam->save();   
+                
+                // reset waktu
+                
                 
 
-
+            // Jika lolom sudah habis / terakhir
             }else{
 
                 // tes berakhir, tampilkan nilai dari tes ini
@@ -152,10 +169,6 @@ class UjianKolom extends Component
 
 
         }
-
-
-
-
 
         
     }
@@ -181,10 +194,9 @@ class UjianKolom extends Component
 
         }
 
-
-
-
     }
+
+
 
   
 
