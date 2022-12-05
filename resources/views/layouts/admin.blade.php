@@ -32,10 +32,11 @@
 
         <!-- Sidebar - Brand -->
         <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ route('home') }}">
-            <div class="sidebar-brand-icon rotate-n-15">
-                <i class="fas fa-laugh-wink"></i>
+            <div class="sidebar-brand-icon">
+                {{-- <i class="fas fa-laugh-wink"></i> --}}
+                <img src="/img/logo.png" alt="" width="120px">
             </div>
-            <div class="sidebar-brand-text mx-3">Psikotes</div>
+            {{-- <div class="sidebar-brand-text mx-3">Psikotes</div> --}}
         </a>
 
         <!-- Divider -->
