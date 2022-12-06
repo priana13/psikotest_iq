@@ -13,7 +13,7 @@ class PaymentMethod extends Model
 
     protected $table = 'payment_methods';
 
-    protected $fillable = ['name','bank','code','type','status'];
+    protected $guarded = [];
 	
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany

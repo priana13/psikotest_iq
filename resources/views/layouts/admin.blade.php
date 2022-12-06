@@ -123,6 +123,19 @@
             </a>
         </li>
 
+
+        <!-- Configurasi -->
+        <div class="sidebar-heading mt-3">
+            {{ __('Configurasi') }}
+        </div>
+
+        <li class="nav-item {{ Nav::isRoute('admin.payment_methods') }}">
+            <a class="nav-link py-2" href="{{ route('admin.payment_methods') }}">
+                <i class="fas fa-fw fa-users"></i>
+                <span>{{ __('Payment Method') }}</span>
+            </a>
+        </li>            
+
         <!-- Nav Item - About -->
         <li class="nav-item {{ Nav::isRoute('admin.users') }}">
             <a class="nav-link py-2" href="{{ route('admin.users') }}">
@@ -132,6 +145,9 @@
         </li>
 
         @endcan
+
+
+
 
         <!-- Divider -->
         <hr class="sidebar-divider d-none d-md-block">

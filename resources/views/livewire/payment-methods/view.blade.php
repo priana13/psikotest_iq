@@ -7,11 +7,9 @@
 					<div style="display: flex; justify-content: space-between; align-items: center;">
 						<div class="float-left">
 							<h4><i class="fab fa-laravel text-info"></i>
-							Payment Method Listing </h4>
+							Payment Method </h4>
 						</div>
-						<div wire:poll.60s>
-							<code><h5>{{ now()->format('H:i:s') }} UTC</h5></code>
-						</div>
+						
 						@if (session()->has('message'))
 						<div wire:poll.4s class="btn btn-sm btn-success" style="margin-top:0px; margin-bottom:0px;"> {{ session('message') }} </div>
 						@endif
@@ -33,8 +31,8 @@
 							<tr> 
 								<td>#</td> 
 								<th>Name</th>
-								<th>Bank</th>
-								<th>Code</th>
+								<th>No Rek</th>
+								<th>Bank</th>								
 								<th>Type</th>
 								<th>Status</th>
 								<td>ACTIONS</td>
@@ -45,8 +43,8 @@
 							<tr>
 								<td>{{ $loop->iteration }}</td> 
 								<td>{{ $row->name }}</td>
-								<td>{{ $row->bank }}</td>
-								<td>{{ $row->code }}</td>
+								<td>{{ $row->no_rek }}</td>
+								<td>{{ $row->bank }}</td>								
 								<td>{{ $row->type }}</td>
 								<td>{{ $row->status }}</td>
 								<td width="90">

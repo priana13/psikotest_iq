@@ -15,6 +15,13 @@
                 <label for="name"></label>
                 <input wire:model="name" type="text" class="form-control" id="name" placeholder="Name">@error('name') <span class="error text-danger">{{ $message }}</span> @enderror
             </div>
+
+            <div class="form-group">
+                <label for="no_rek"></label>
+                <input wire:model="no_rek" type="text" class="form-control" id="no_rek" placeholder="No Rek">@error('no_rek') <span class="error text-danger">{{ $message }}</span> @enderror
+            </div>
+
+            
             <div class="form-group">
                 <label for="bank"></label>
                 <input wire:model="bank" type="text" class="form-control" id="bank" placeholder="Bank">@error('bank') <span class="error text-danger">{{ $message }}</span> @enderror
@@ -23,13 +30,23 @@
                 <label for="code"></label>
                 <input wire:model="code" type="text" class="form-control" id="code" placeholder="Code">@error('code') <span class="error text-danger">{{ $message }}</span> @enderror
             </div>
+
             <div class="form-group">
                 <label for="type"></label>
-                <input wire:model="type" type="text" class="form-control" id="type" placeholder="Type">@error('type') <span class="error text-danger">{{ $message }}</span> @enderror
+                <select wire:model="type" id="" class="form-control">
+                    <option value="direct">Direct</option>
+                    <option value="midtrans">Midtrans</option>
+                </select>
+                @error('type') <span class="error text-danger">{{ $message }}</span> @enderror
             </div>
+
             <div class="form-group">
                 <label for="status"></label>
-                <input wire:model="status" type="text" class="form-control" id="status" placeholder="Status">@error('status') <span class="error text-danger">{{ $message }}</span> @enderror
+                <select wire:model="status" class="form-control">
+                    <option value="Aktif">Aktif</option>
+                    <option value="Tidak Aktif">Tidak Aktif</option>
+                </select>
+                @error('status') <span class="error text-danger">{{ $message }}</span> @enderror
             </div>
 
                 </form>

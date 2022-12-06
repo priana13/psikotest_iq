@@ -11,8 +11,9 @@ class PaymentMethods extends Component
     use WithPagination;
 
 	protected $paginationTheme = 'bootstrap';
-    public $selected_id, $keyWord, $name, $bank, $code, $type, $status;
+    public $selected_id, $keyWord, $name, $bank, $code, $type = 'Direct', $status = 'Aktif', $no_rek , $gambar;
     public $updateMode = false;
+
 
     public function render()
     {
@@ -55,6 +56,7 @@ class PaymentMethods extends Component
 
         PaymentMethod::create([ 
 			'name' => $this-> name,
+            'no_rek' => $this->no_rek,
 			'bank' => $this-> bank,
 			'code' => $this-> code,
 			'type' => $this-> type,
@@ -72,6 +74,7 @@ class PaymentMethods extends Component
 
         $this->selected_id = $id; 
 		$this->name = $record-> name;
+        $this->no_rek = $record->no_rek;
 		$this->bank = $record-> bank;
 		$this->code = $record-> code;
 		$this->type = $record-> type;
@@ -94,6 +97,7 @@ class PaymentMethods extends Component
 			$record = PaymentMethod::find($this->selected_id);
             $record->update([ 
 			'name' => $this-> name,
+            'no_rek' => $this->no_rek,
 			'bank' => $this-> bank,
 			'code' => $this-> code,
 			'type' => $this-> type,
