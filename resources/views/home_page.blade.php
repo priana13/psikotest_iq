@@ -25,7 +25,7 @@
         <div class="col-lg-8 text-center text-lg-start">
           <h1 data-aos="fade-right">Belajar Mudah - Akses Dimanapun</h1>
           <p class="mb-5" data-aos="fade-right" data-aos-delay="100">Persiapkan dirimu untuk mengikuti tes seleksi Polri - TNI.</p>
-          <p data-aos="fade-right" data-aos-delay="200" data-aos-offset="-500"><a href="{{ route('register') }}" class="btn btn-outline-white">Mulai Sekarang</a></p>
+          <p data-aos="fade-right" data-aos-delay="200" data-aos-offset="-500"><a href="{{ route('register') }}" class="btn btn-warning">Mulai Sekarang</a></p>
         </div>
         <div class="col-lg-4 iphone-wrap">
           {{-- <img src="assets/img/phone_1.png" alt="Image" class="phone-1" data-aos="fade-right"> --}}
@@ -171,7 +171,7 @@
 
     <div class="row justify-content-center text-center my-5">
       <div class="col-md-5" data-aos="fade-up">
-        <p><a href="{{ route('register') }}" class="btn btn-primary">Coba Sekarang</a></p>
+        <p><a href="{{ route('register') }}" class="btn btn-warning">Coba Sekarang</a></p>
       </div>
     </div>
 
@@ -288,7 +288,7 @@
         <h2>Jangan biarkan waktu berlalu</h2>
       </div>
       <div class="col-md-5 text-center text-md-end">
-        <p><a href="{{ route('register') }}" class="btn d-inline-flex align-items-center"><span>Mulai Sekarang</span></a> </p>
+        <p><a href="{{ route('register') }}" class="btn d-inline-flex align-items-center btn-warning">Mulai Sekarang</a> </p>
       </div>
     </div>
   </div>

@@ -23,6 +23,8 @@ class CheckoutShow extends Component
             $total,
             $disc=0,
             $ppn=0;
+    public $label_rekening_selected = 'Pilih Metode Pembayaran';
+    public $rekening_selected;
 
     public function mount(){
 
@@ -60,8 +62,8 @@ class CheckoutShow extends Component
 
             'user_id' => auth()->user()->id,
             'code' => uniqid(),
-            'payment_method_id' => $this->payment_method,
-            'nominal' => $this->harga,
+            'payment_method_id' => $this->rekening_selected->id,
+            'nominal' => $this->total,
             'notes' => 'pesan membership',            
             'package_id' => $this->product
         ]);
@@ -69,5 +71,12 @@ class CheckoutShow extends Component
         return redirect()->route('checkout.thanks' , $transaksi->id);
 
 
+    }
+
+    public function pilihRekening($id){
+
+        $this->rekening_selected = PaymentMethod::find($id);
+        $this->payment_method = $id;
+        $this->label_rekening_selected = $this->rekening_selected->name;
     }
 }

@@ -29,7 +29,7 @@
                     </div>
 
                 </div>
-
+{{-- 
                 <div class="row">
                     <div class="form-group col-md-10">
                         <label for="">Metode Pembayaran</label>
@@ -39,14 +39,37 @@
                             @foreach($list_payment_methods as $row)
                             <option value="{{ $row->id }}">{{ $row->name }}</option>
 
-                            @endforeach
-                           
-
-                           
+                            @endforeach                            
                         </select>
                     </div>
 
+                </div> --}}
+
+
+
+                <div class="row">
+
+                    <div class="dropdown col-md-10">
+                        <button class="btn btn-light dropdown-toggle btn-block border text-left" type="button" data-toggle="dropdown" aria-expanded="false">
+                          {{ $label_rekening_selected }}
+                        </button>
+
+                        <input type="hidden" wire:model="payment_method">
+                        <div class="dropdown-menu">
+                            @foreach($list_payment_methods as $row)
+                           
+                            <button class="dropdown-item" wire:click="pilihRekening({{ $row->id }})">
+                                <img src="/img/bank-bca.png" alt="" width="50px" class="img img-fluid">
+                                {{ $row->name }}
+                            </button>
+
+                            @endforeach    
+                     
+                        </div>
+                      </div>
+
                 </div>
+
 
 
                 <div class="data-member mt-5">
@@ -100,7 +123,7 @@
 
                         <ul class="list-group">
                             <li class="list-group-item">Voucher Psikotes Bulanan</li>
-                            <li class="list-group-item">Harga: {{ number_format($harga) }} x {{ $qty }} {{ $this->product }}</li>
+                            <li class="list-group-item">Harga: <strong>{{ number_format($harga) }}</strong>  x <strong>{{ $qty }}</strong>  {{ $this->product }}</li>
                             <li class="list-group-item">Disc : 0%</li>
                             <li class="list-group-item">PPN : 0%</li>  
                             <li class="list-group-item">Total: <strong>Rp. {{ number_format($total) }}</strong></li>                                  
