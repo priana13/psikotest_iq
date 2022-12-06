@@ -29,7 +29,7 @@
 
                             <img class="mx-auto mb-2" src="/img/bank-bca.png" alt="" width="100px">
 
-                            <h2 class="my-2">No. Rek: 0952606202</h2>
+                            <h2 class="my-2">No. Rek: {{ $transaksi->paymentMethod->no_rek }}</h2>
 
                             <h4 class="mb-2">Atas nama: Indra Himawan</h4>
 
@@ -57,4 +57,31 @@
 
           
     </div>
+
+   
+
+        <!-- TODO: Remove ".sandbox" from script src URL for production environment. Also input your client key in "data-client-key" -->
+        <script src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="SB-Mid-client-AXYaJE45Y8Dy9Ror"></script>
+        <script type="text/javascript">
+          
+                // SnapToken acquired from previous step
+                snap.pay('{{ $snapToken }}', {
+                // Optional
+                onSuccess: function(result){
+                    /* You may add your own js here, this is just example */ document.getElementById('result-json').innerHTML += JSON.stringify(result, null, 2);
+                },
+                // Optional
+                onPending: function(result){
+                    /* You may add your own js here, this is just example */ document.getElementById('result-json').innerHTML += JSON.stringify(result, null, 2);
+                },
+                // Optional
+                onError: function(result){
+                    /* You may add your own js here, this is just example */ document.getElementById('result-json').innerHTML += JSON.stringify(result, null, 2);
+                }
+                });
+            
+        </script>
+
+
+  
 </div>

@@ -54,19 +54,24 @@ class CheckoutShow extends Component
     public function store(){
 
         $this->validate([
-            'product' => 'required',
-            'payment_method' => 'required'
+            'product' => 'required'            
         ]);
+
+        $rekening = PaymentMethod::first();
 
         $transaksi = Transaction::create([
 
             'user_id' => auth()->user()->id,
             'code' => uniqid(),
-            'payment_method_id' => $this->rekening_selected->id,
+            'payment_method_id' => $rekening->id,
             'nominal' => $this->total,
+            'qty' => $this->qty,
             'notes' => 'pesan membership',            
             'package_id' => $this->product
         ]);
+
+
+
 
         return redirect()->route('checkout.thanks' , $transaksi->id);
 

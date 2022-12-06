@@ -47,7 +47,7 @@
 
 
 
-                <div class="row">
+                <div class="row d-none">
 
                     <div class="dropdown col-md-10">
                         <button class="btn btn-light dropdown-toggle btn-block border text-left" type="button" data-toggle="dropdown" aria-expanded="false">

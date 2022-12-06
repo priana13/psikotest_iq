@@ -13,7 +13,7 @@ class Transaction extends Model
 
     protected $table = 'transactions';
 
-    protected $fillable = ['user_id','package_id','code','payment_method_id','nominal','status'];
+    protected $guarded = [];
 	
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
@@ -37,6 +37,11 @@ class Transaction extends Model
     public function user()
     {
         return $this->hasOne('App\Models\User', 'id', 'user_id');
+    }
+
+    public function details(){
+
+        return $this->hasMany('App\Models\TransactionDetail', 'transaction_id');
     }
     
 }

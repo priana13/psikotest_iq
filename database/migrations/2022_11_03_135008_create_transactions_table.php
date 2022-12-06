@@ -17,7 +17,8 @@ class CreateTransactionsTable extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained('users');
             $table->string('code',30);
-            $table->foreignId('payment_method_id')->constrained('payment_methods');            
+            $table->foreignId('payment_method_id')->constrained('payment_methods');  
+            $table->integer('qty');          
             $table->integer('nominal');
             $table->string('bukti_transfer')->nullable();
             $table->string('notes')->nullable();

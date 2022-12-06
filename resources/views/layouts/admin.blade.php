@@ -126,7 +126,7 @@
 
         <!-- Configurasi -->
         <div class="sidebar-heading mt-3">
-            {{ __('Configurasi') }}
+            {{ __('Konfigurasi') }}
         </div>
 
         <li class="nav-item {{ Nav::isRoute('admin.payment_methods') }}">
