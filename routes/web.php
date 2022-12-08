@@ -46,7 +46,9 @@ Route::middleware('auth')->group(function(){
 	// checkout
 	Route::get('/checkout' , [CheckoutController::class , 'index'])->name('checkout');
 	Route::get('/checkout/thanks/{id}' , [CheckoutController::class , 'thanks'])->name('checkout.thanks');
-	Route::get('/checkout/konfirmasi' , [CheckoutController::class , 'konfirmasi'])->name('checkout.konfirmasi');
+	Route::get('/checkout/konfirmasi/{code}' , [CheckoutController::class , 'konfirmasi'])->name('checkout.konfirmasi');
+	Route::post('/checkout/konfirmasi' , [CheckoutController::class , 'storeKonfirmasi'])->name('store_konfirmasi');
+
 
 
 

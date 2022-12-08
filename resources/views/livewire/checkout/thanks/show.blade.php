@@ -53,7 +53,7 @@
                        @endif
 
 
-                       <h4 class="mt-5">Konfirmasikan pembayaran anda di: <a href="{{ route('checkout.konfirmasi') }}">Konfirmasi Pembayaran</a> </h4>
+                       <h4 class="mt-5">Konfirmasikan pembayaran anda di: <a href="{{ route('checkout.konfirmasi' , $transaksi->code) }}">Konfirmasi Pembayaran</a> </h4>
 
 
                     </div>
