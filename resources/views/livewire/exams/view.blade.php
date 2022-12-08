@@ -62,7 +62,7 @@
 								<td>{{ $row->waktu }}</td>
 								<td>{{ $row->nilai_min }}</td>								
 								<td>
-								<a class="btn btn-sm btn-primary" href="{{ route('admin.questions') }}">Soal</a>
+								<a class="btn btn-sm btn-primary" href="{{ route('admin.exam_soal' , $row->id) }}">Soal</a>
 								<div class="btn-group">
 									<button type="button" class="btn btn-info btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 									Actions

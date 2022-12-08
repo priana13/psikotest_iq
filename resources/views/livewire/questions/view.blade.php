@@ -1,5 +1,37 @@
 @section('title', __('Questions'))
 <div class="container-fluid">
+
+	@if($psikotes)
+
+	<div class="row mb-4">
+		<div class="col-md-12">
+			<div class="card">
+				<div class="card-header text-center">
+					
+					<h4>Nama Psikotes: <strong>{{ $psikotes->nama_tes }}</strong> </h4>
+					
+				</div>
+
+				<div class="card-body">
+
+					<div class="row">
+						<div class="col-md-4"><h5>Type : {{ $psikotes->type }}</h5></div>
+						<div class="col-md-4"><h5>Waktu : {{ $psikotes->waktu }}</h5></div>
+						<div class="col-md-4"> <h5>Jumlah Soal: {{ $psikotes->questions->count() }}</h5> </div>
+
+					</div>					
+					
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+	@endif
+
+
+	{{-- List Soal --}}
+
 	<div class="row justify-content-center">
 		<div class="col-md-12">
 			<div class="card">
@@ -14,7 +46,7 @@
 						<div wire:poll.4s class="btn btn-sm btn-success" style="margin-top:0px; margin-bottom:0px;"> {{ session('message') }} </div>
 						@endif
 						<div>
-							<input wire:model='keyWord' type="text" class="form-control" name="search" id="search" placeholder="Search Questions">
+							<input wire:model='keyWord' type="text" class="form-control d-none" name="search" id="search" placeholder="Search Questions">
 						</div>
 						<div class="btn btn-sm btn-info" data-toggle="modal" data-target="#createDataModal">
 						<i class="fa fa-plus"></i>  Tambah Soal
@@ -44,7 +76,7 @@
 						<tbody>
 							@foreach($questions as $row)
 							<tr>
-								<td>{{ $loop->iteration }}</td> 								
+								<td>{{ $row->no }}</td> 								
 								<td>{{ $row->soal }}</td>
 								<td>{{ $row->exam->nama_tes }}</td>
 								<td>{{ $row->a }}</td>

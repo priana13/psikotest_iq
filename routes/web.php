@@ -7,6 +7,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Member\SoalController;
 use App\Http\Controllers\Member\TypeSoalController;
 use App\Http\Controllers\Member\UjianController;
+use App\Http\Controllers\PsikotesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -68,7 +69,7 @@ Route::middleware('auth')->group(function(){
 		Route::view('scores', 'livewire.scores.index')->name('admin.scores');
 		Route::view('questions', 'livewire.questions.index')->name('admin.questions');
 		Route::view('exams', 'livewire.exams.index')->name('admin.exams');
-		// Route::get('exams/soal/{id}', 'livewire.exams.index')->name('admin.exams');
+		Route::get('exams/soal/{id}', [PsikotesController::class, 'soal'])->name('admin.exam_soal');
 		Route::view('tes-cermat' ,'livewire.tes-cermat.index')->name('admin.tes-kecermatan');
 
 

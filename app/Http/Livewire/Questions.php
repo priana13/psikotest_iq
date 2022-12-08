@@ -19,14 +19,32 @@ class Questions extends Component
     public $updateMode = false;	
 	public $gambar_a, $gambar_b, $gambar_c , $gambar_d, $gambar_e;
 	public $gambar_a_edit,$gambar_b_edit,$gambar_c_edit,$gambar_d_edit,$gambar_e_edit , $gambar_edit;
+	public $id_psikotes;
+	public $psikotes;
+
+
+	public function mount($id = null){
+
+		if($id != null){
+
+			$this->id_psikotes = $id;
+			$this->psikotes = Exam::find($id);
+			$this->exam_id = $id;
+
+		}
+	}
+
 
     public function render()
     {
+		
 		$keyWord = '%'.$this->keyWord .'%';
-        return view('livewire.questions.view', [
-            'questions' => Question::latest()
-						->orWhere('exam_id', 'LIKE', $keyWord)
-						->orWhere('soal', 'LIKE', $keyWord)
+
+		$questions = Question::where('exam_id' , $this->id_psikotes);	
+
+		if($this->keyWord != null){
+
+			$questions = $questions->orWhere('soal', 'LIKE', $keyWord)
 						->orWhere('a', 'LIKE', $keyWord)
 						->orWhere('b', 'LIKE', $keyWord)
 						->orWhere('c', 'LIKE', $keyWord)
@@ -34,8 +52,15 @@ class Questions extends Component
 						->orWhere('e', 'LIKE', $keyWord)
 						->orWhere('kc_jawaban', 'LIKE', $keyWord)
 						->orWhere('gambar', 'LIKE', $keyWord)
-						->orWhere('status', 'LIKE', $keyWord)
-						->paginate(10),
+						->orWhere('status', 'LIKE', $keyWord);
+						
+		}		
+
+		$questions = $questions->paginate(10);
+		
+
+        return view('livewire.questions.view', [
+            'questions' => $questions,
 
 			'exams' => Exam::all(),
         ]);
