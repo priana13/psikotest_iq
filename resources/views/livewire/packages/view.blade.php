@@ -7,11 +7,9 @@
 					<div style="display: flex; justify-content: space-between; align-items: center;">
 						<div class="float-left">
 							<h4><i class="fab fa-laravel text-info"></i>
-							Package Listing </h4>
+							Paket Harga </h4>
 						</div>
-						<div wire:poll.60s>
-							<code><h5>{{ now()->format('H:i:s') }} UTC</h5></code>
-						</div>
+						
 						@if (session()->has('message'))
 						<div wire:poll.4s class="btn btn-sm btn-success" style="margin-top:0px; margin-bottom:0px;"> {{ session('message') }} </div>
 						@endif
@@ -19,7 +17,7 @@
 							<input wire:model='keyWord' type="text" class="form-control" name="search" id="search" placeholder="Search Packages">
 						</div>
 						<div class="btn btn-sm btn-info" data-toggle="modal" data-target="#createDataModal">
-						<i class="fa fa-plus"></i>  Add Packages
+						<i class="fa fa-plus"></i>  Tambah Paket
 						</div>
 					</div>
 				</div>
@@ -32,20 +30,18 @@
 						<thead class="thead">
 							<tr> 
 								<td>#</td> 
-								<th>Name</th>
-								<th>Qty</th>
-								<th>Price</th>
+								<th>Name</th>								
+								<th>Harga</th>
 								<th>Detail</th>
-								<td>ACTIONS</td>
+								<td>Aksi</td>
 							</tr>
 						</thead>
 						<tbody>
 							@foreach($packages as $row)
 							<tr>
 								<td>{{ $loop->iteration }}</td> 
-								<td>{{ $row->name }}</td>
-								<td>{{ $row->qty }}</td>
-								<td>{{ $row->price }}</td>
+								<td>{{ $row->name }}</td>								
+								<td>{{ number_format($row->price) }}</td>
 								<td>{{ $row->detail }}</td>
 								<td width="90">
 								<div class="btn-group">

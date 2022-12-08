@@ -61,7 +61,8 @@
 								<td>{{ $row->type }}</td>
 								<td>{{ $row->waktu }}</td>
 								<td>{{ $row->nilai_min }}</td>								
-								<td width="90">
+								<td>
+								<a class="btn btn-sm btn-primary" href="{{ route('admin.questions') }}">Soal</a>
 								<div class="btn-group">
 									<button type="button" class="btn btn-info btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 									Actions

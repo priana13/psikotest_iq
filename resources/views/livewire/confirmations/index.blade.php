@@ -4,7 +4,7 @@
 
 <div class="row justify-content-center">
     <div class="col-md-12">
-        @livewire('packages')
+        @livewire('confirmations')
     </div>     
 </div>   
 

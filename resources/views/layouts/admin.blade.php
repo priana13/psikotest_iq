@@ -103,12 +103,12 @@
         <li class="nav-item {{ Nav::isRoute('admin.exams') }}">
             <a class="nav-link py-2" href="{{ route('admin.exams') }}">
                 <i class="fas fa-fw fa-user"></i>
-                <span>{{ __('Test') }}</span>
+                <span>{{ __('List Psikotes') }}</span>
             </a>
         </li>
 
         <!-- Nav Item - About -->
-        <li class="nav-item {{ Nav::isRoute('admin.questions') }}">
+        <li class="nav-item d-none {{ Nav::isRoute('admin.questions') }}">
             <a class="nav-link py-2" href="{{ route('admin.questions') }}">
                 <i class="fas fa-fw fa-hands-helping"></i>
                 <span>{{ __('Soal') }}</span>
@@ -116,12 +116,37 @@
         </li>
 
         <!-- Nav Item - About -->
-        <li class="nav-item {{ Nav::isRoute('admin.scores') }}">
+        <li class="nav-item d-none {{ Nav::isRoute('admin.scores') }}">
             <a class="nav-link py-2" href="{{ route('admin.scores') }}">
                 <i class="fas fa-fw fa-hands-helping"></i>
                 <span>{{ __('Nilai') }}</span>
             </a>
         </li>
+
+
+        <li class="nav-item {{ Nav::isRoute('admin.packages') }}">
+            <a class="nav-link py-2" href="{{ route('admin.packages') }}">
+                <i class="fas fa-fw fa-hands-helping"></i>
+                <span>{{ __('Paket Harga') }}</span>
+            </a>
+        </li>
+
+
+        <li class="nav-item {{ Nav::isRoute('admin.transactions') }}">
+            <a class="nav-link py-2" href="{{ route('admin.transactions') }}">
+                <i class="fas fa-fw fa-hands-helping"></i>
+                <span>{{ __('Transaksi') }}</span>
+            </a>
+        </li>
+
+
+        <li class="nav-item {{ Nav::isRoute('admin.confirmations') }}">
+            <a class="nav-link py-2" href="{{ route('admin.confirmations') }}">
+                <i class="fas fa-fw fa-hands-helping"></i>
+                <span>{{ __('Konfirmasi') }}</span>
+            </a>
+        </li>
+
 
 
         <!-- Configurasi -->
