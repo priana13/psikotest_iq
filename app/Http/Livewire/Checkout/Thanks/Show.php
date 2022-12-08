@@ -12,7 +12,7 @@ class Show extends Component
     public $status_transaksi;
 
     public function mount($transaksi){
-
+        
         $this->transaksi = $transaksi;
         $this->status_transaksi = $this->transaksi->status;
 
@@ -42,8 +42,8 @@ class Show extends Component
     }
 
 
-    public function payMidtrans(){
-     
+    public function payMidtrans(){       
+       
 
         $payload = [
             'transaction_details' => [

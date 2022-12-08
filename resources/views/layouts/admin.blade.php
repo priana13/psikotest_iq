@@ -13,7 +13,14 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Fonts -->
-    <link href="{{ asset('vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet">
+    {{-- <link href="{{ asset('vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet"> --}}
+
+    <link href="/fontawesome5/css/fontawesome.css" rel="stylesheet">
+    <link href="/fontawesome5/css/brands.css" rel="stylesheet">
+    <link href="/fontawesome5/css/solid.css" rel="stylesheet">
+
+    <link href="/fontawesome5/css/v5-font-face.css" rel="stylesheet">
+
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
     <!-- Styles -->
@@ -60,14 +67,14 @@
         <!-- Nav Item - Soal Cerdas -->
         <li class="nav-item">
             <a class="nav-link py-2" href="{{route('member.soal.type' , 'cerdas')}}">
-                <i class="fas fa-fw fa-user"></i>
+                <i class="fas fa-head-side-virus"></i>
                 <span>{{ __('Soal Kecerdasan') }}</span>
             </a>
         </li>
 
         <li class="nav-item my-0">
             <a class="nav-link py-2" href="{{route('member.soal.type' , 'cermat')}}">
-                <i class="fas fa-fw fa-user"></i>
+                <i class="fas fa-clipboard-list"></i>
                 <span>{{ __('Soal Kecermatan') }}</span>
             </a>
         </li>
@@ -75,7 +82,7 @@
         <!-- Nav Item - Profile -->
         <li class="nav-item my-0">
             <a class="nav-link py-2" href="{{ route('member.history') }}">
-                <i class="fas fa-fw fa-user"></i>
+                <i class="fas fa-history"></i>
                 <span>{{ __('History') }}</span>
             </a>
         </li>
@@ -83,7 +90,7 @@
         <!-- Nav Item - Profile -->
         <li class="nav-item">
             <a class="nav-link py-2" href="#">
-                <i class="fas fa-fw fa-user"></i>
+                <i class="fas fa-clock"></i>
                 <span>{{ __('Langganan') }}</span>
             </a>
         </li>
@@ -102,7 +109,8 @@
         <!-- Nav Item - Profile -->
         <li class="nav-item {{ Nav::isRoute('admin.exams') }}">
             <a class="nav-link py-2" href="{{ route('admin.exams') }}">
-                <i class="fas fa-fw fa-user"></i>
+                {{-- <i class="fas fa-fw fa-user"></i> --}}
+                <i class="fas fa-list"></i>
                 <span>{{ __('List Psikotes') }}</span>
             </a>
         </li>
@@ -110,7 +118,8 @@
         <!-- Nav Item - About -->
         <li class="nav-item d-none {{ Nav::isRoute('admin.questions') }}">
             <a class="nav-link py-2" href="{{ route('admin.questions') }}">
-                <i class="fas fa-fw fa-hands-helping"></i>
+                {{-- <i class="fas fa-fw fa-hands-helping"></i> --}}
+                <i class="fas fa-question"></i>
                 <span>{{ __('Soal') }}</span>
             </a>
         </li>
@@ -126,7 +135,8 @@
 
         <li class="nav-item {{ Nav::isRoute('admin.packages') }}">
             <a class="nav-link py-2" href="{{ route('admin.packages') }}">
-                <i class="fas fa-fw fa-hands-helping"></i>
+                {{-- <i class="fas fa-fw fa-hands-helping"></i> --}}
+                <i class="fas fa-dollar-sign"></i>
                 <span>{{ __('Paket Harga') }}</span>
             </a>
         </li>
@@ -134,7 +144,8 @@
 
         <li class="nav-item {{ Nav::isRoute('admin.transactions') }}">
             <a class="nav-link py-2" href="{{ route('admin.transactions') }}">
-                <i class="fas fa-fw fa-hands-helping"></i>
+                {{-- <i class="fas fa-fw fa-hands-helping"></i> --}}
+                <i class="fas fa-tasks"></i>
                 <span>{{ __('Transaksi') }}</span>
             </a>
         </li>
@@ -142,7 +153,7 @@
 
         <li class="nav-item {{ Nav::isRoute('admin.confirmations') }}">
             <a class="nav-link py-2" href="{{ route('admin.confirmations') }}">
-                <i class="fas fa-fw fa-hands-helping"></i>
+                <i class="fas fa-envelope-open-text"></i>
                 <span>{{ __('Konfirmasi') }}</span>
             </a>
         </li>
@@ -156,7 +167,7 @@
 
         <li class="nav-item {{ Nav::isRoute('admin.payment_methods') }}">
             <a class="nav-link py-2" href="{{ route('admin.payment_methods') }}">
-                <i class="fas fa-fw fa-users"></i>
+                <i class="fas fa-money-check-alt"></i>
                 <span>{{ __('Payment Method') }}</span>
             </a>
         </li>            
@@ -188,7 +199,7 @@
         <!-- Nav Item - Profile -->
         <li class="nav-item">
             <a class="nav-link py-2" href="#" data-toggle="modal" data-target="#logoutModal">
-                <i class="fas fa-fw fa-user"></i>
+                <i class="fas fa-sign-out-alt"></i>
                 <span>{{ __('Logout') }}</span>
             </a>
         </li>
@@ -379,6 +390,8 @@
         </div>
     </div>
 </div>
+
+
 
 @livewireScripts
 
