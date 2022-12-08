@@ -43,5 +43,12 @@ class Transaction extends Model
 
         return $this->hasMany('App\Models\TransactionDetail', 'transaction_id');
     }
+
+    public function midtrans()
+    {
+        return $this->hasMany('App\Models\TransactionMidtran', 'transaction_id');
+    }
+
+
     
 }

@@ -10,7 +10,8 @@ use Livewire\Component;
 
 class CheckoutShow extends Component
 {
-    public $product="bulanan",
+    public $product= 1,
+            $productSelected,
             $package,
             $qty= 1, 
             $nama,
@@ -25,11 +26,15 @@ class CheckoutShow extends Component
             $ppn=0;
     public $label_rekening_selected = 'Pilih Metode Pembayaran';
     public $rekening_selected;
+    public $type = [
+        'bulanan' => 'Bulan',
+        'mingguan' => 'Minggu'
+    ];
 
     public function mount(){
 
         $this->list_payment_methods = PaymentMethod::all();
-        $this->package = Package::all();
+        $this->package = Package::all();        
 
     }
 
@@ -42,7 +47,10 @@ class CheckoutShow extends Component
     public function render()
     {
         if($this->qty == ''){$this->qty = 0;}
-        $this->harga = 200000;
+
+        $this->productSelected = Package::find(1);      
+
+        $this->harga = $this->productSelected->price;
         $this->total = $this->harga * $this->qty;
 
         $this->nama = auth()->user()->name;
@@ -62,8 +70,7 @@ class CheckoutShow extends Component
         $transaksi = Transaction::create([
 
             'user_id' => auth()->user()->id,
-            'code' => uniqid(),
-            'payment_method_id' => $rekening->id,
+            'code' => uniqid(),              
             'nominal' => $this->total,
             'qty' => $this->qty,
             'notes' => 'pesan membership',            

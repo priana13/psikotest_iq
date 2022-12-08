@@ -18,27 +18,39 @@
                         <strong>Rp {{ number_format($transaksi->nominal) }}</strong> 
                        </h1>
 
+                       @if($transaksi->status == 'success')
+
+                       <button class="btn btn-outline-success">{{ $transaksi->status }}</button>
+
+                       @else
+
                        <button class="btn btn-outline-secondary">Salin Nominal</button>
 
+                       @endif
+
+                       @if($transaksi->paymentMethod)
                        <h4 class="mt-5">Ke Rekening Berikut:</h4>
 
-
                        <div class="row">
+                        
 
                         <div class="card col-md-6 m-auto px-2 py-3">
 
                             <img class="mx-auto mb-2" src="/img/bank-bca.png" alt="" width="100px">
 
+                           
                             <h2 class="my-2">No. Rek: {{ $transaksi->paymentMethod->no_rek }}</h2>
+                           
 
                             <h4 class="mb-2">Atas nama: Indra Himawan</h4>
 
                             <button class="btn btn-outline-secondary">Salin Rekening</button>
 
-                        </div>
+                        </div>                      
 
 
                        </div>
+                       @endif
 
 
                        <h4 class="mt-5">Konfirmasikan pembayaran anda di: <a href="{{ route('checkout.konfirmasi') }}">Konfirmasi Pembayaran</a> </h4>
@@ -63,6 +75,7 @@
         <!-- TODO: Remove ".sandbox" from script src URL for production environment. Also input your client key in "data-client-key" -->
         <script src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="SB-Mid-client-AXYaJE45Y8Dy9Ror"></script>
         <script type="text/javascript">
+            @if($status_transaksi == 'Pending')
           
                 // SnapToken acquired from previous step
                 snap.pay('{{ $snapToken }}', {
@@ -79,6 +92,8 @@
                     /* You may add your own js here, this is just example */ document.getElementById('result-json').innerHTML += JSON.stringify(result, null, 2);
                 }
                 });
+
+            @endif
             
         </script>
 

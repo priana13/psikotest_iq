@@ -2,16 +2,19 @@
 
 namespace App\Http\Livewire\Checkout\Thanks;
 
+use App\Models\TransactionMidtran;
 use Livewire\Component;
 
 class Show extends Component
 {
     public $transaksi; 
     public $snapToken;
+    public $status_transaksi;
 
     public function mount($transaksi){
 
         $this->transaksi = $transaksi;
+        $this->status_transaksi = $this->transaksi->status;
 
     // Set your Merchant Server Key
     \Midtrans\Config::$serverKey = config('services.midtrans.serverKey');
@@ -65,16 +68,37 @@ class Show extends Component
             // 'enabled_payments'=> [$donation->channel]
 
         ];
-        $this->snapToken = \Midtrans\Snap::getSnapToken($payload);
-        // dd($this->snapToken);
-        // $donation->snap_token = $snapToken;
-        // $donation->save();
+      
 
-        // $this->response['snap_token'] = $snapToken;
+        if($this->transaksi->midtrans->count() > 0){           
+          
+            $this->snapToken = $this->transaksi->midtrans->first()->snap_token;
 
+        }else{
 
-        // return response()->json($this->response);
+            $this->snapToken = \Midtrans\Snap::getSnapToken($payload);
         
+            $this->transaksi->payment_type = 'midtrans';
+            $this->transaksi->save();
+
+        }
+
+
+        $cek_transaksi_midtrans = TransactionMidtran::where('transaction_id' , $this->transaksi->id)->get();
+
+        if($cek_transaksi_midtrans->count() < 1){
+
+            // insert ke table transactio midtrans
+            TransactionMidtran::create([
+                'transaction_id' => $this->transaksi->id,            
+                'snap_token' => $this->snapToken,
+                'status' => 'Pending' 
+            ]);
+
+        }
+
+
+     
 
     }
 }
