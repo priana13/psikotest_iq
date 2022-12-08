@@ -60,7 +60,7 @@ class Show extends Component
                 [
                     'id'       => $this->transaksi->package->id,
                     'price'    => $this->transaksi->package->price,
-                    'quantity' => 2,
+                    'quantity' => $this->transaksi->qty,
                     'name'     => $this->transaksi->package->name,
                 ]
             ],

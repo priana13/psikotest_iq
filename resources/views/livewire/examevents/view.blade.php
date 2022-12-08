@@ -16,9 +16,12 @@
 						{{-- <div>
 							<input wire:model='keyWord' type="text" class="form-control" name="search" id="search" placeholder="Search Examevents">
 						</div> --}}
-						<div class="btn btn-sm btn-info" data-toggle="modal" data-target="#createDataModal">
+						
+						{{-- <div class="btn btn-sm btn-info" data-toggle="modal" data-target="#createDataModal">
 						<i class="fa fa-plus"></i>  Add Examevents
-						</div>
+						</div> --}}
+						
+
 					</div>
 				</div>
 				
