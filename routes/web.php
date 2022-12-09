@@ -56,6 +56,7 @@ Route::middleware('auth')->group(function(){
 	Route::middleware('admin')->group(function(){
 
 		//Route Hooks - Do not delete//
+	Route::view('memberships', 'livewire.memberships.index')->middleware('auth');
 		Route::view('confirmations', 'livewire.confirmations.index')->middleware('auth')->name('admin.confirmations');
 		Route::view('packages', 'livewire.packages.index')->middleware('auth')->name('admin.packages');
 		Route::view('posts', 'livewire.posts.index')->middleware('auth');

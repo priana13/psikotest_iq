@@ -37,6 +37,9 @@
                     <ul class="navbar-nav mr-auto">
 						<!--Nav Bar Hooks - Do not delete!!-->
 						<li class="nav-item">
+                            <a href="{{ url('/memberships') }}" class="nav-link"><i class="fab fa-laravel text-info"></i> Memberships</a> 
+                        </li>
+						<li class="nav-item">
                             <a href="{{ url('/confirmations') }}" class="nav-link"><i class="fab fa-laravel text-info"></i> Confirmations</a> 
                         </li>
 						<li class="nav-item">

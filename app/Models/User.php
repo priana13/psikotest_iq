@@ -49,4 +49,9 @@ class User extends Authenticatable
 
         return $this->hasMany(Examevent::class, 'user_id');
     }
+
+    public function memberships(){
+
+        return $this->hasMany(Membership::class, 'user_id');
+    }
 }
