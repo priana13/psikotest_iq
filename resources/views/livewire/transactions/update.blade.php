@@ -13,23 +13,26 @@
 					<input type="hidden" wire:model="selected_id">
             <div class="form-group">
                 <label for="user_id"></label>
-                <input wire:model="user_id" type="text" class="form-control" id="user_id" placeholder="User Id">@error('user_id') <span class="error text-danger">{{ $message }}</span> @enderror
+                <input wire:model="user_id" type="text" class="form-control" id="user_id" placeholder="User Id" readonly>
+                @error('user_id') <span class="error text-danger">{{ $message }}</span> @enderror
             </div>
+          
             <div class="form-group">
-                <label for="exam_id"></label>
-                <input wire:model="exam_id" type="text" class="form-control" id="exam_id" placeholder="Exam Id">@error('exam_id') <span class="error text-danger">{{ $message }}</span> @enderror
-            </div>
-            <div class="form-group">
-                <label for="payment_method_id"></label>
+                <label for="payment_method_id">Metode Pembayaran</label>
                 <input wire:model="payment_method_id" type="text" class="form-control" id="payment_method_id" placeholder="Payment Method Id">@error('payment_method_id') <span class="error text-danger">{{ $message }}</span> @enderror
             </div>
             <div class="form-group">
-                <label for="nominal"></label>
+                <label for="nominal">Nominal</label>
                 <input wire:model="nominal" type="text" class="form-control" id="nominal" placeholder="Nominal">@error('nominal') <span class="error text-danger">{{ $message }}</span> @enderror
             </div>
             <div class="form-group">
-                <label for="status"></label>
-                <input wire:model="status" type="text" class="form-control" id="status" placeholder="Status">@error('status') <span class="error text-danger">{{ $message }}</span> @enderror
+                <label for="status">Status</label>   
+                <select  wire:model="status" class="form-control" >
+                    <option value="Pending">Pending</option>
+                    <option value="Completed">Completed</option>
+                    <option value="Expired">Expired</option>
+                </select>
+                @error('status') <span class="text-danger">{{ $message }}</span> @enderror
             </div>
 
                 </form>

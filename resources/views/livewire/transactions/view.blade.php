@@ -16,7 +16,7 @@
 						<div>
 							<input wire:model='keyWord' type="text" class="form-control" name="search" id="search" placeholder="Search Transactions">
 						</div>
-						<div class="btn btn-sm btn-info" data-toggle="modal" data-target="#createDataModal">
+						<div class="btn btn-sm btn-success" data-toggle="modal" data-target="#createDataModal">
 						<i class="fa fa-plus"></i>  Tambah Transaksi
 						</div>
 					</div>
@@ -30,7 +30,7 @@
 						<thead class="thead">
 							<tr> 
 								<td>#</td> 
-								<th>User Id</th>								
+								<th>User</th>								
 								<th>Payment Type</th>
 								<th>Nominal</th>
 								<th>Status</th>
@@ -44,15 +44,24 @@
 								<td>{{ $row->user->name }}</td>								
 								<td>{{ $row->payment_type }}</td>
 								<td>{{ number_format($row->nominal) }}</td>
-								<td>{{ $row->status }}</td>
+								<td>
+									<span class="badge badge-{{ $warna_status[$row->status] }}">{{ $row->status }}</span>
+									
+								</td>
 								<td width="90">
 								<div class="btn-group">
-									<button type="button" class="btn btn-info btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+									<button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 									Actions
 									</button>
 									<div class="dropdown-menu dropdown-menu-right">
 									<a data-toggle="modal" data-target="#updateModal" class="dropdown-item" wire:click="edit({{$row->id}})"><i class="fa fa-edit"></i> Edit </a>							 
-									<a class="dropdown-item" onclick="confirm('Confirm Delete Transaction id {{$row->id}}? \nDeleted Transactions cannot be recovered!')||event.stopImmediatePropagation()" wire:click="destroy({{$row->id}})"><i class="fa fa-trash"></i> Delete </a>   
+									<a class="dropdown-item" onclick="confirm('Confirm Delete Transaction id {{$row->id}}? \nDeleted Transactions cannot be recovered!')||event.stopImmediatePropagation()" wire:click="destroy({{$row->id}})"><i class="fa fa-trash"></i> Delete </a> 
+									
+									<a class="dropdown-item" onclick="confirm('Selesaikan Transaksi ini \n Akses Psikotes untuk transaksi ini akan di Aprove')||event.stopImmediatePropagation()" wire:click="aprove({{$row->id}})">
+										<i class="fa fa-check"></i> Selesai 
+									</a>   
+
+
 									</div>
 								</div>
 								</td>

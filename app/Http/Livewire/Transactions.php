@@ -14,6 +14,12 @@ class Transactions extends Component
     public $selected_id, $keyWord, $user_id, $package_id, $payment_method_id, $nominal, $status;
     public $updateMode = false;
 
+    public $warna_status = [
+        'Pending' => 'warning',
+        'Completed' => 'success',
+        'Expired' => 'secondary'
+    ];
+
     public function render()
     {
 		$keyWord = '%'.$this->keyWord .'%';
@@ -111,6 +117,15 @@ class Transactions extends Component
         if ($id) {
             $record = Transaction::where('id', $id);
             $record->delete();
+        }
+    }
+
+    public function aprove($id){
+
+        if ($id) {
+            $record = Transaction::find($id);
+            $record->status = 'Completed';
+            $record->save();
         }
     }
 }
