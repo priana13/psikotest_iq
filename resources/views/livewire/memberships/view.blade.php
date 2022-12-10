@@ -16,9 +16,21 @@
 						<div>
 							<input wire:model='keyWord' type="text" class="form-control" name="search" id="search" placeholder="Search Memberships">
 						</div>
+
+						@can('admin')
+
+						<div class="btn btn-sm btn-success" data-toggle="modal" data-target="#createDataModal">
+							<i class="fa fa-plus"></i>  Tambah Paket
+							</div>
+
+						@else
 						<a class="btn btn-sm btn-success" href="{{ route('checkout') }}">
 							<i class="fa fa-plus"></i> Beli Voucher
 						</a>
+
+						@endcan
+
+
 					</div>
 				</div>
 				
