@@ -11,32 +11,39 @@
             <div class="modal-body">
                 <form>
 					<input type="hidden" wire:model="selected_id">
+            
+          
+
             <div class="form-group">
-                <label for="user_id"></label>
-                <input wire:model="user_id" type="text" class="form-control" id="user_id" placeholder="User Id">@error('user_id') <span class="error text-danger">{{ $message }}</span> @enderror
+                <label for="member_type">Type</label>
+                <input wire:model="member_type" type="text" class="form-control" id="member_type" placeholder="Member Type" readonly>@error('member_type') <span class="error text-danger">{{ $message }}</span> @enderror
             </div>
             <div class="form-group">
-                <label for="member_type"></label>
-                <input wire:model="member_type" type="text" class="form-control" id="member_type" placeholder="Member Type">@error('member_type') <span class="error text-danger">{{ $message }}</span> @enderror
+                <label for="start">Start</label>
+                <input wire:model="start" type="date" class="form-control" id="start" placeholder="Start" readonly>@error('start') <span class="error text-danger">{{ $message }}</span> @enderror
             </div>
             <div class="form-group">
-                <label for="start"></label>
-                <input wire:model="start" type="text" class="form-control" id="start" placeholder="Start">@error('start') <span class="error text-danger">{{ $message }}</span> @enderror
+                <label for="end">End</label>
+                <input wire:model="end" type="date" class="form-control" id="end" placeholder="End">@error('end') <span class="error text-danger">{{ $message }}</span> @enderror
             </div>
             <div class="form-group">
-                <label for="end"></label>
-                <input wire:model="end" type="text" class="form-control" id="end" placeholder="End">@error('end') <span class="error text-danger">{{ $message }}</span> @enderror
-            </div>
-            <div class="form-group">
-                <label for="status"></label>
-                <input wire:model="status" type="text" class="form-control" id="status" placeholder="Status">@error('status') <span class="error text-danger">{{ $message }}</span> @enderror
+                <label for="status">Status</label> 
+                <select wire:model="status" id="" class="form-control">
+                    <option value="active">Aktif</option>
+                    <option value="pending">Pending</option>
+                    <option value="expired">Expired</option>
+                </select>
+
+                @error('status') <span class="text-danger">{{ $message }}</span> @enderror
+
+
             </div>
 
                 </form>
             </div>
             <div class="modal-footer">
                 <button type="button" wire:click.prevent="cancel()" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" wire:click.prevent="update()" class="btn btn-primary" data-dismiss="modal">Save</button>
+                <button type="button" wire:click.prevent="update()" class="btn btn-primary" data-dismiss="modal">Update</button>
             </div>
        </div>
     </div>

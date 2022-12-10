@@ -57,8 +57,12 @@
 								<td> {{ $jumlah_soal }} </td>
 								<td class="text-center">
 								<div class="btn-group">
-									<a href="{{route('mulai-ujian' , $row->id)}}" class="btn btn-{{ ($jumlah_soal == 0)?'secondary':'primary' }} btn-sm {{ ($jumlah_soal == 0)?'disabled':'' }}" target = "_blank">
-										{{-- <i class="fas fa-lock"></i> --}}
+									<a href="{{route('mulai-ujian' , $row->id)}}" class="btn btn-{{ ($jumlah_soal == 0)?'secondary':'primary' }} btn-sm {{ ($jumlah_soal == 0)?'disabled':'' }}
+									@can('member') disabled @endcan
+										" target = "_blank"
+										
+										>
+										@can('member') <i class="fas fa-lock"></i>  @endcan										
 										
 										{{ ($jumlah_soal == 0)?'Belum Tersedia':'Test Sekarang' }}
 									</a> 

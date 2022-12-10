@@ -30,5 +30,11 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('admin', function (User $user) {
             return $user->level === "Admin";
         });
+
+        Gate::define('member', function(User $user){
+
+            return $user->memberships()->active()->count() < 1;
+
+        });
     }
 }

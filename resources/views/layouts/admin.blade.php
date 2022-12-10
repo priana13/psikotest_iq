@@ -87,13 +87,16 @@
             </a>
         </li>
 
+        @cannot('admin')
         <!-- Nav Item - Profile -->
-        <li class="nav-item">
-            <a class="nav-link py-2" href="#">
+        <li class="nav-item {{ Nav::isRoute('admin.memberships') }}">
+            <a class="nav-link py-2" href="{{ route('admin.memberships') }}">
                 <i class="fas fa-clock"></i>
                 <span>{{ __('Langganan') }}</span>
             </a>
         </li>
+
+        @endcan
 
 
         <!-- Divider -->
@@ -157,6 +160,14 @@
                 <span>{{ __('Konfirmasi') }}</span>
             </a>
         </li>
+
+        <li class="nav-item {{ Nav::isRoute('admin.memberships') }}">
+            <a class="nav-link py-2" href="{{ route('admin.memberships') }}">
+                <i class="fas fa-clock"></i>
+                <span>{{ __('Langganan') }}</span>
+            </a>
+        </li>
+
 
 
 

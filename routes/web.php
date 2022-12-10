@@ -49,14 +49,12 @@ Route::middleware('auth')->group(function(){
 	Route::get('/checkout/thanks/{id}' , [CheckoutController::class , 'thanks'])->name('checkout.thanks');
 	Route::get('/checkout/konfirmasi/{code}' , [CheckoutController::class , 'konfirmasi'])->name('checkout.konfirmasi');
 	Route::post('/checkout/konfirmasi' , [CheckoutController::class , 'storeKonfirmasi'])->name('store_konfirmasi');
-
-
+	Route::view('memberships', 'livewire.memberships.index')->middleware('auth')->name('admin.memberships');
 
 
 	Route::middleware('admin')->group(function(){
 
 		//Route Hooks - Do not delete//
-	Route::view('memberships', 'livewire.memberships.index')->middleware('auth');
 		Route::view('confirmations', 'livewire.confirmations.index')->middleware('auth')->name('admin.confirmations');
 		Route::view('packages', 'livewire.packages.index')->middleware('auth')->name('admin.packages');
 		Route::view('posts', 'livewire.posts.index')->middleware('auth');

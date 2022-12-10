@@ -16,9 +16,9 @@
 						<div>
 							<input wire:model='keyWord' type="text" class="form-control" name="search" id="search" placeholder="Search Memberships">
 						</div>
-						<div class="btn btn-sm btn-info" data-toggle="modal" data-target="#createDataModal">
-						<i class="fa fa-plus"></i>  Tambah
-						</div>
+						<a class="btn btn-sm btn-success" href="{{ route('checkout') }}">
+							<i class="fa fa-plus"></i> Beli Voucher
+						</a>
 					</div>
 				</div>
 				
@@ -29,35 +29,55 @@
 					<table class="table table-bordered table-sm">
 						<thead class="thead">
 							<tr> 
-								<td>#</td> 
+								<td>No</td> 
+								@can('admin')
 								<th>User</th>
+								@endcan
+
 								<th>Member Type</th>
 								<th>Start</th>
 								<th>End</th>
 								<th>Status</th>
-								<td>ACTIONS</td>
+								@can('admin')
+								<td>Aksi</td>
+								@endcan
 							</tr>
 						</thead>
 						<tbody>
 							@foreach($memberships as $row)
 							<tr>
 								<td>{{ $loop->iteration }}</td> 
+								@can('admin')
 								<td>{{ $row->user->name }}</td>
+								@endcan
 								<td>{{ $row->member_type }}</td>
-								<td>{{ $row->start }}</td>
-								<td>{{ $row->end }}</td>
-								<td>{{ $row->status }}</td>
-								<td width="90">
+								<td>{{ date('d M Y', strtotime($row->start)) }}</td>
+								<td>{{ date('d M Y', strtotime($row->end)) }}</td>
+								<td>
+									
+									<span class="badge badge-{{ $warna_status[$row->status] }}">{{ $row->status }}</span>
+									
+								</td>
+								
+								@can('admin')
+								<td width="90">		
+								
 								<div class="btn-group">
-									<button type="button" class="btn btn-info btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-									Actions
+									<button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+									Aksi
 									</button>
 									<div class="dropdown-menu dropdown-menu-right">
-									<a data-toggle="modal" data-target="#updateModal" class="dropdown-item" wire:click="edit({{$row->id}})"><i class="fa fa-edit"></i> Edit </a>							 
+									<a data-toggle="modal" data-target="#updateModal" class="dropdown-item" wire:click="edit({{$row->id}})"><i class="fa fa-edit"></i> Edit </a>
+									
+									@if($row->status == 'expired')
 									<a class="dropdown-item" onclick="confirm('Confirm Delete Membership id {{$row->id}}? \nDeleted Memberships cannot be recovered!')||event.stopImmediatePropagation()" wire:click="destroy({{$row->id}})"><i class="fa fa-trash"></i> Delete </a>   
+									@endif
+
 									</div>
-								</div>
+								</div>	
+
 								</td>
+								@endcan
 							@endforeach
 						</tbody>
 					</table>						

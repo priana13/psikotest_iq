@@ -15,6 +15,11 @@ class Memberships extends Component
     public $selected_id, $keyWord, $user_id, $member_type = "Langganan", $start, $end, $status = 'active';
     public $updateMode = false;
     public $users;
+    public $warna_status = [
+        'active' => 'success',
+        'pending' => 'warning',
+        'expired' => 'secondary'
+    ];
 
     public function mount(){
 
