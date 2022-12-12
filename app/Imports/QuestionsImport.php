@@ -22,6 +22,9 @@ class QuestionsImport implements ToModel,WithHeadingRow
     public function model(array $row)
     {     
 
+        // lakukan pengecekan soal tersedia di sini,
+        // jika nomor dari soal ini sudah ada, lakukan update / overwrite
+
         return new Question([            
            	'exam_id' => $this->examId,
 			'no' => $row['no'],
