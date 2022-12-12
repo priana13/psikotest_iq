@@ -48,15 +48,26 @@
 						<div>
 							<input wire:model='keyWord' type="text" class="form-control d-none" name="search" id="search" placeholder="Search Questions">
 						</div>
-						<div class="btn btn-sm btn-info" data-toggle="modal" data-target="#createDataModal">
-						<i class="fa fa-plus"></i>  Tambah Soal
+
+						<div class="tombol">							
+
+							<div class="btn btn-sm btn-primary" data-toggle="modal" data-target="#importDataModal">
+								<i class="fa fa-upload"></i>  Import
+							</div>
+
+							<div class="btn btn-sm btn-info" data-toggle="modal" data-target="#createDataModal">
+							<i class="fa fa-plus"></i>  Tambah
+							</div>
+
 						</div>
+
 					</div>
 				</div>
 				
 				<div class="card-body">
 						@include('livewire.questions.create')
 						@include('livewire.questions.update')
+						@include('livewire.questions.import')
 				<div class="table-responsive">
 					<table class="table table-bordered table-sm">
 						<thead class="thead">

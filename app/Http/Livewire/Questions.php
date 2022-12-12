@@ -2,12 +2,14 @@
 
 namespace App\Http\Livewire;
 
+use App\Imports\QuestionsImport;
 use Livewire\Component;
 use Livewire\WithPagination;
 use App\Models\Question;
 use App\Models\QuestionImage;
 use App\Models\Exam;
 use Livewire\WithFileUploads;
+use Maatwebsite\Excel\Facades\Excel;
 
 class Questions extends Component
 {
@@ -21,6 +23,7 @@ class Questions extends Component
 	public $gambar_a_edit,$gambar_b_edit,$gambar_c_edit,$gambar_d_edit,$gambar_e_edit , $gambar_edit;
 	public $id_psikotes;
 	public $psikotes;
+	public $file;
 
 
 	public function mount($id = null){
@@ -372,4 +375,10 @@ class Questions extends Component
             $record->delete();
         }
     }
+
+	public function import(){	
+
+		Excel::import(new QuestionsImport($this->exam_id), $this->file);
+
+	}
 }
