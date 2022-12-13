@@ -49,7 +49,7 @@ class QuestionsImport implements ToModel,WithHeadingRow
            
 
             Question::where('id',$question->id)->update([            
-                'exam_id' => $this->examId,
+             'exam_id' => $this->examId,
              'no' => $row['no'],
              'soal' =>$row['soal'],
              'a' => $row['a'],

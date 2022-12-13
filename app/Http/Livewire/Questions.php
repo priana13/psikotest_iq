@@ -17,7 +17,7 @@ class Questions extends Component
 	use WithFileUploads;
 
 	protected $paginationTheme = 'bootstrap';
-    public $selected_id, $keyWord, $exam_id, $soal, $a, $b, $c, $d, $e, $kc_jawaban, $gambar, $status = "on" , $no = 1;
+    public $selected_id, $keyWord, $exam_id, $soal, $a, $b, $c, $d, $e, $kc_jawaban, $gambar, $status = "Aktif" , $no = 1;
     public $updateMode = false;	
 	public $gambar_a, $gambar_b, $gambar_c , $gambar_d, $gambar_e;
 	public $gambar_a_edit,$gambar_b_edit,$gambar_c_edit,$gambar_d_edit,$gambar_e_edit , $gambar_edit;
@@ -93,6 +93,13 @@ class Questions extends Component
 		$this->status = null;
     }
 
+	public function create(){
+
+		$max_question = Question::where('exam_id', $this->exam_id)->max('no');
+
+		$this->no = $max_question + 1;
+	}
+
     public function store()
     {
         $this->validate([
@@ -104,12 +111,19 @@ class Questions extends Component
 		'd' => 'required',
 		'e' => 'required',
 		'status' => 'required',
-		'gambar' => 'image|max:1024'
-        ]);		
+		'gambar' => 'max:1024'
+        ]);	
+		
+		$path_gambar = null;
+
+		if($this->gambar){
+
+			$path_gambar =  $this->gambar->store('public/photos');
+			$path_gambar = explode('public/' , $path_gambar);
+			$path_gambar = $path_gambar[1];	
+		}
  
-        $path_gambar =  $this->gambar->store('public/photos');
-		$path_gambar = explode('public/' , $path_gambar);
-		$path_gambar = $path_gambar[1];	
+
 
 		$existing_question = Question::where('exam_id' , $this->exam_id)->pluck('no');		
 
@@ -260,6 +274,7 @@ class Questions extends Component
 		$this->kc_jawaban = $record-> kc_jawaban;
 		$this->gambar = $record->gambar;
 		$this->status = $record->status;
+		$this->no = $record->no;
 		
         $this->updateMode = true;
     }

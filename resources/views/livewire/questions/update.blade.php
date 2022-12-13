@@ -15,8 +15,9 @@
                     <input wire:model="exam_id" type="hidden" class="form-control" id="exam_id" placeholder="Exam Id">@error('exam_id') <span class="error text-danger">{{ $message }}</span> @enderror
             
             <div class="form-group">
-                <label for="soal">Soal</label>
-                <input wire:model="soal" type="text" class="form-control" id="soal" placeholder="Soal">@error('soal') <span class="error text-danger">{{ $message }}</span> @enderror
+                <label for="soal">Soal No <strong>{{ $no }}</strong> </label>
+                <textarea class="form-control" wire:model="soal" id="soal" cols="30" rows="5" placeholder="Soal"></textarea>
+                @error('soal') <span class="error text-danger">{{ $message }}</span> @enderror
             </div>
             <div class="form-group card shadow p-3">                
                 <label for="a">Pilihan Jawaban A</label>
@@ -125,10 +126,14 @@
                 <input wire:model="kc_jawaban" type="text" class="form-control" id="kc_jawaban" placeholder="Kc Jawaban">@error('kc_jawaban') <span class="error text-danger">{{ $message }}</span> @enderror
             </div>
 
-
-            <div class="form-group">
-                <label for="status">Status</label>
-                <input wire:model="status" type="text" class="form-control" id="status" placeholder="Status">@error('status') <span class="error text-danger">{{ $message }}</span> @enderror
+            <div class="form-group d-none">
+                <label for="status"></label>
+                <select wire:model="status" class="form-control" id="status" placeholder="Status">
+                    <option value="">Pilih Status</option>
+                    <option value="Aktif">Aktif</option>
+                    <option value="Tidak Aktif">Tidak Aktif</option>    
+                </select>
+                @error('status') <span class="text-danger">{{ $message }}</span> @enderror
             </div>
 
                 </form>

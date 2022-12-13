@@ -3,14 +3,14 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="createDataModalLabel">Tambah Soal</h5>
+                <h5 class="modal-title" id="createDataModalLabel">Tambah Soal No <strong>{{ $no }}</strong></h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                      <span aria-hidden="true close-btn">×</span>
                 </button>
             </div>
            <div class="modal-body">
 				<form>
-            <div class="form-group">
+            <div class="form-group d-none">
                 <label for="exam_id"></label>
                 <select wire:model="exam_id" class="form-control" id="exam_id" placeholder="Exam Id">
                     <option value="">Pilih Test</option>
@@ -22,8 +22,9 @@
                 @error('exam_id') <span class="text-danger">{{ $message }}</span> @enderror
             </div>
             <div class="form-group">
-                <label for="soal"></label>
-                <input wire:model="soal" type="text" class="form-control" id="soal" placeholder="Soal">@error('soal') <span class="text-danger">{{ $message }}</span> @enderror
+                <label for="soal">Soal</label>
+                <textarea class="form-control" wire:model="soal" id="soal" cols="30" rows="5" placeholder="Soal"></textarea>
+                @error('soal') <span class="text-danger">{{ $message }}</span> @enderror
             </div>
             <div class="form-group card shadow p-3">
                 <label for="a">Pilihan Jawaban A</label>
@@ -97,12 +98,13 @@
                 <label for="gambar"></label>
                 <input wire:model="gambar" type="file" class="form-control" id="gambar" placeholder="Gambar">@error('gambar') <span class="text-danger">{{ $message }}</span> @enderror
             </div>
-            <div class="form-group">
+
+            <div class="form-group d-none">
                 <label for="status"></label>
                 <select wire:model="status" class="form-control" id="status" placeholder="Status">
                     <option value="">Pilih Status</option>
-                    <option value="on">Aktif</option>
-                    <option value="off">Tidak Aktif</option>    
+                    <option value="Aktif">Aktif</option>
+                    <option value="Tidak Aktif">Tidak Aktif</option>    
                 </select>
                 @error('status') <span class="text-danger">{{ $message }}</span> @enderror
             </div>

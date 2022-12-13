@@ -55,7 +55,7 @@
 								<i class="fa fa-upload"></i>  Import
 							</div>
 
-							<div class="btn btn-sm btn-info" data-toggle="modal" data-target="#createDataModal">
+							<div class="btn btn-sm btn-info" data-toggle="modal" data-target="#createDataModal" wire:click="create">
 							<i class="fa fa-plus"></i>  Tambah
 							</div>
 
@@ -72,14 +72,13 @@
 					<table class="table table-bordered table-sm">
 						<thead class="thead">
 							<tr> 
-								<td>#</td> 								
+								<td>No</td> 								
 								<th>Soal</th>								
 								<th>A</th>
 								<th>B</th>
 								<th>C</th>
 								<th>D</th>
-								<th>E</th>															
-								<th>Status</th>
+								<th>E</th>	
 								<td>ACTIONS</td>
 							</tr>
 						</thead>
@@ -92,8 +91,7 @@
 								<td>{{ $row->b }}</td>
 								<td>{{ $row->c }}</td>
 								<td>{{ $row->d }}</td>
-								<td>{{ $row->e }}</td>															
-								<td>{{ $row->status }}</td>
+								<td>{{ $row->e }}</td>	
 								<td width="90">
 								<div class="btn-group">
 									<button type="button" class="btn btn-info btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
