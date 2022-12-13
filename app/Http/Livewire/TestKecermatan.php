@@ -11,27 +11,44 @@ class TestKecermatan extends Component
 {
     public $exam,$examColumn;
     public $soalTampil = FALSE;
-    public $column = 0;
-    public $peraturan,$namatest,$waktu,$nilai_min,$jumlah_row = 5;
+    public $column = 1;
+    public $peraturan,$namatest,$waktu,$nilai_min,$jumlah_row = 50;
     public $a,$b,$c,$d,$e;
     public $list_nomor = [];
     public $list_soal = [];
 
     protected $listeners = ['updateSoal' => "updateSoal"];
 
+    public function mount($id){
+
+        $this->exam = Exam::find($id);
+    }
 
     public function render()
     {            
         if($this->exam){
             $existExamColumn = ExamColumn::where('exam_id' , $this->exam->id)->where('kolom' , $this->column)->first();
 
-
             if($existExamColumn != null){
+
+
+            $this->a = $existExamColumn->a;
+            $this->b = $existExamColumn->b;
+            $this->c = $existExamColumn->c;
+            $this->d = $existExamColumn->d;
+            $this->e = $existExamColumn->e;    
+
                         
-                $this->list_soal = Question::where('exam_id' , $this->exam->id)->where('exam_column_id' , $existExamColumn->id)->get();        
+            $this->list_soal = Question::where('exam_id' , $this->exam->id)->where('exam_column_id' , $existExamColumn->id)->get();        
     
     
             }
+
+            $this->list_nomor = [$this->a,$this->b,$this->c,$this->d,$this->e];
+
+            ($existExamColumn == null)?
+                $this->soalTampil = FALSE:
+                $this->soalTampil = TRUE;   
 
         }
 

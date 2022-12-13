@@ -4,7 +4,7 @@
 		<div class="col-md-12">
 			<div class="card position-sticky">
                 <div class="card-header d-flex justify-content-between">
-                    @if($column > 0)
+                    @if($column > 1)
                     <button class="btn btn-primary" wire:click="sebelumnya">
                         << Sebelumnya
                     </button>
@@ -14,57 +14,26 @@
                         <h4>Soal Psikotes Kecermatan</h4>                           
                     </div>
 
-                    @if($column > 0)
+                    @if($column < 4)
              
                     <button class="btn btn-primary" wire:click="berikutnya">
                         Next >
                     </button>
+
+                    @else
+
+                    <a href="{{ route('admin.exams') }}" class="btn btn-warning">Selesai</a>
+
                     @endif
                     
                 </div>
                 
                 <div class="card-body row">
-                    @if($column == 0)
-
-                    <div class="col">
-
-                        <div class="form-group">
-                            <label for="nama-tes">Nama Tes</label>
-                            <input type="text" class="form-control" wire:model="namatest">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="peraturan">Intruksi Soal</label>
-                            <textarea wire:model="peraturan" class="form-control" name="" id="peraturan" cols="30" rows="10"></textarea>
-                        </div>
-    
-
-                        <div class="row">
-
-                            <div class="form-group col-3">
-                                <label for="waktu">Waktu Per Kolom (Menit)</label>
-                                <input type="number" class="form-control" wire:model="waktu">
-                            </div>
-
-                            <div class="form-group col-3">
-                                <label for="nilai_min">Nilai Min</label>
-                                <input type="number" class="form-control" wire:model="nilai_min">
-                            </div>
-
-
-                        </div>
-
-                        <button class="btn btn-primary" wire:click="berikutnya">Berikutnya</button>
-
-
-                    </div>
-
-                    @else                    
-
+                   
 
                     <div class="col-md-6 mx-auto text-center">
 
-                        <h4>Nama Tes: <strong>{{ $namatest }}</strong> </h4> 
+                        <h4>Nama Tes: <strong>{{ $exam->nama_tes }}</strong> </h4> 
 
 
                         <h4>Kolom {{ $column }}</h4>
@@ -133,10 +102,7 @@
                         @endif
 
 
-                    </div>
-
-                    @endif 
-                    {{-- akhir if column == 0 --}}
+                    </div>               
 
                               
 

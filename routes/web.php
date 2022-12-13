@@ -69,7 +69,10 @@ Route::middleware('auth')->group(function(){
 		Route::view('questions', 'livewire.questions.index')->name('admin.questions');
 		Route::view('exams', 'livewire.exams.index')->name('admin.exams');
 		Route::get('exams/soal/{id}', [PsikotesController::class, 'soal'])->name('admin.exam_soal');
-		Route::view('tes-cermat' ,'livewire.tes-cermat.index')->name('admin.tes-kecermatan');
+		Route::get('tes-cermat/create' ,[PsikotesController::class, 'createCermat'])->name('admin.createCermat');
+		Route::post('tes-cermat/create' ,[PsikotesController::class, 'storeCermat'])->name('admin.storeCermat');
+
+		Route::get('tes-cermat/{id}' ,[PsikotesController::class, 'soalKecermatan'])->name('admin.tes-kecermatan');
 
 
 	});

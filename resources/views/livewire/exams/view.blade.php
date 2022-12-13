@@ -27,7 +27,7 @@
 								<a href="#" class="dropdown-item" data-toggle="modal" data-target="#createDataModal">
 									Tes Kecerdasan
 								</a>
-								<a class="dropdown-item" href="{{ route('admin.tes-kecermatan') }}">
+								<a class="dropdown-item" href="{{ route('admin.createCermat') }}">
 									Tes Kecermatan
 								</a>								
 							</div>
@@ -63,8 +63,18 @@
 								<td>{{ $row->waktu }}</td>								
 								<td>{{ $row->nilai_min }}</td>	
 								<td>{{ $row->questions->count() }}</td>							
-								<td>
+								<td>									
+
+								@if($row->type == 'cerdas')
+
 								<a class="btn btn-sm btn-primary" href="{{ route('admin.exam_soal' , $row->id) }}">Soal</a>
+								
+								@else
+
+								<a class="btn btn-sm btn-primary" href="{{ route('admin.tes-kecermatan' , $row->id) }}">Soal</a>
+
+								@endif
+
 								<div class="btn-group">
 									<button type="button" class="btn btn-info btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 									Actions
