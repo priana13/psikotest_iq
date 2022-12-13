@@ -418,6 +418,7 @@
 <script type="text/javascript">
 	window.livewire.on('closeModal', () => {
 		$('#createDataModal').modal('hide');
+        $('#importDataModal').modal('hide');
 	});
 </script>
 

@@ -3,7 +3,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="importDataModalLabel">Tambah Soal</h5>
+                <h5 class="modal-title" id="importDataModalLabel">Import Soal</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                      <span aria-hidden="true close-btn">×</span>
                 </button>
@@ -15,6 +15,10 @@
                     <label for="file">Pilih File Import:</label>
                     <input wire:model="file" type="file" class="form-control" id="file" placeholder="file">@error('file') <span class="text-danger">{{ $message }}</span> @enderror
                 </div>
+
+                <p>
+                    Contoh file import : <a href="{{ asset('format-import.xlsx') }}">example.xlsx</a> 
+                </p>
 
             </form>
             </div>

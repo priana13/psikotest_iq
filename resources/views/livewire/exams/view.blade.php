@@ -49,7 +49,8 @@
 								<th>Nama Tes</th>
 								<th>Type</th>
 								<th>Waktu</th>
-								<th>Nilai Min</th>								
+								<th>Nilai Min</th>		
+								<th>Soal</th>						
 								<td>Action</td>
 							</tr>
 						</thead>
@@ -59,8 +60,9 @@
 								<td>{{ $loop->iteration }}</td> 
 								<td>{{ $row->nama_tes }}</td>
 								<td>{{ $row->type }}</td>
-								<td>{{ $row->waktu }}</td>
-								<td>{{ $row->nilai_min }}</td>								
+								<td>{{ $row->waktu }}</td>								
+								<td>{{ $row->nilai_min }}</td>	
+								<td>{{ $row->questions->count() }}</td>							
 								<td>
 								<a class="btn btn-sm btn-primary" href="{{ route('admin.exam_soal' , $row->id) }}">Soal</a>
 								<div class="btn-group">

@@ -73,8 +73,7 @@
 						<thead class="thead">
 							<tr> 
 								<td>#</td> 								
-								<th>Soal</th>
-								<th>Tes</th>
+								<th>Soal</th>								
 								<th>A</th>
 								<th>B</th>
 								<th>C</th>
@@ -88,8 +87,7 @@
 							@foreach($questions as $row)
 							<tr>
 								<td>{{ $row->no }}</td> 								
-								<td>{{ $row->soal }}</td>
-								<td>{{ $row->exam->nama_tes }}</td>
+								<td>{{ $row->soal }}</td>								
 								<td>{{ $row->a }}</td>
 								<td>{{ $row->b }}</td>
 								<td>{{ $row->c }}</td>

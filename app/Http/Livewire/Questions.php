@@ -25,6 +25,10 @@ class Questions extends Component
 	public $psikotes;
 	public $file;
 
+	protected $listeners = [
+		'refresh' => '$refresh'
+	];
+
 
 	public function mount($id = null){
 
@@ -43,7 +47,7 @@ class Questions extends Component
 		
 		$keyWord = '%'.$this->keyWord .'%';
 
-		$questions = Question::where('exam_id' , $this->id_psikotes);	
+		$questions = Question::where('exam_id' , $this->id_psikotes)->orderBy('no');	
 
 		if($this->keyWord != null){
 
@@ -374,11 +378,15 @@ class Questions extends Component
             $record = Question::where('id', $id);
             $record->delete();
         }
+
+		$this->emit('refresh');
     }
 
 	public function import(){	
 
 		Excel::import(new QuestionsImport($this->exam_id), $this->file);
+		$this->emit('closeModal');		
+		$this->emit('refresh');
 
 	}
 }

@@ -19,4 +19,13 @@
     </div>     
 </div>   
 
+
+@push('script')
+
+    <script>
+
+        alert('oke')
+    </script>
+@endpush
+
 @endsection
