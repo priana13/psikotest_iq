@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\CronJobController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Member\SoalController;
 use App\Http\Controllers\Member\TypeSoalController;
@@ -19,6 +20,9 @@ use App\Http\Controllers\PsikotesController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+// cron job
+// Route::get('/cron', [CronJobController::class, 'expired']);
 
 Route::get('/', function () {
     return view('home_page');
