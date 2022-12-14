@@ -13,7 +13,7 @@
 @section('main-content')
 
 <!-- timmer -->
-<div>
+<div id='hitung-waktu'>
     <h3 class="text-center"> 
     <i class="fas fa-fw fa-clock"></i>            
     <span id="waktu"></span>        

@@ -40,7 +40,7 @@ class Ujian extends Component
 
 
     public function render()
-    {      
+    {             
 
        if(!$this->finish_status){
 
@@ -63,20 +63,6 @@ class Ujian extends Component
             'jawaban' => 'required'
         ]);
 
-        if($this->step == $this->total){
-            $this->finish_status = TRUE;
-
-            $this->examEvent->salah = $this->salah;
-            $this->examEvent->benar = $this->benar;            
-
-            $nilai = $this->benar / $this->total * 100;  
-            $this->nilai = number_format($nilai);         
-
-            $this->examEvent->nilai = $this->nilai;
-            $this->examEvent->save();
-
-            // kita bisa redirect page di sini ke halaman nilai
-        }
 
         if(!$this->finish_status){
 
@@ -100,8 +86,38 @@ class Ujian extends Component
                 'is_true' => $hasil
             ]);
 
+
+
+            // jika ini adalah soal yang terakhir
+            // harus nya di cek apakah masih ada soal yang belum dijawab atau sudah semua
+            if($this->step == $this->total){
+                $this->finish_status = TRUE;
+    
+                $this->examEvent->salah = $this->salah;
+                $this->examEvent->benar = $this->benar;            
+    
+                $nilai = $this->benar / $this->total * 100;  
+                $this->nilai = number_format($nilai);         
+    
+                $this->examEvent->nilai = $this->nilai;
+                $this->examEvent->save();
+
+                $this->emit('ujianSelesai');
+    
+                // kita bisa redirect page di sini ke halaman nilai
+            }else{
+
+
             $this->step += 1;
             $this->jawaban = '';
+
+
+            }
+
+
+
+
+
 
         }
 

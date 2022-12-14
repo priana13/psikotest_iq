@@ -239,6 +239,13 @@
 	window.livewire.on('closeModal', () => {
 		$('#createDataModal').modal('hide');
 	});
+
+
+    window.livewire.on('ujianSelesai',()=> {
+        $('#hitung-waktu').hide();
+    });
+
+    
 </script>
 
 @stack('scripts')
