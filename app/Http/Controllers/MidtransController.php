@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Membership;
+use App\Models\Transaction;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+
 
 class MidtransController extends Controller
 {
@@ -32,6 +36,8 @@ class MidtransController extends Controller
             //midtrans notif 
             $order_id = $notif->order_id;
 
+            $transaksi = Transaction::where('code', $order_id)->first();
+
             // query ke table transaksi di sini            
 
             $va_number    = $notif->va_numbers[0]; 
@@ -49,8 +55,7 @@ class MidtransController extends Controller
           
             $transaction = $notif->transaction_status;         
 
-            $type = $notif->payment_type;
-            $orderId = $notif->order_id;
+            $type = $notif->payment_type;           
             $fraud = $notif->fraud_status;
 
             /** Ambil data konfirmasi */
@@ -68,12 +73,20 @@ class MidtransController extends Controller
             }
           } elseif ($transaction == 'settlement') {
 
-            $donation->setStatusSuccess();
+            $transaksi->status = 'completed';  
+            
+            
+            // tambahkan langganan sesuai paket yang dipesan
+            $hari_ini = Carbon::now(); 
+            $bulan_depan = $hari_ini->addMonth($transaksi->qty);
 
-            // $donatur = Prospek::findorFail($data_konfirmasi->prospek_id);
-            // $donatur->status_donor= "donatur";
-            // $donatur->last_donation = $data_konfirmasi->tanggal;
-            // $donatur->save();
+            Membership::create([ 
+              'user_id' => $transaksi->user_id,
+              'member_type' => "Langganan",
+              'start' =>  Carbon::now(),
+              'end' => $bulan_depan,
+              'status' => "active"
+            ]);
             
             /**Kirim notifikasi ke whatsap */
                 
@@ -82,18 +95,8 @@ class MidtransController extends Controller
                * kirim notifikasi ke email
                */
     
-          } elseif($transaction == 'pending'){
-             
-            //   $donation->setStatusPending();
-            
-              // input nomor va ke table konfirmasi
-              
-            //   if($payment_type == 'echannel'){
-            //      $donation->va_number = $notif->bill_key;
-            //      $donation->com_code = $notif->biller_code;
-            //   }else{
-            //      $donation->va_number = $notif->va_numbers[0]->va_number;
-            //   }
+          } elseif($transaction == 'pending'){            
+           
               
             
             // kiri pesan whatsapp pending                     
@@ -109,20 +112,84 @@ class MidtransController extends Controller
 
           } elseif ($transaction == 'deny') {
 
-              $donation->setStatusFailed();
+            $transaksi->status = 'deny';
 
           } elseif ($transaction == 'expire') {
 
-              $donation->setStatusExpired();
+            $transaksi->status = 'expired';
 
           } elseif ($transaction == 'cancel') {
 
-              $donation->setStatusFailed();
+            $transaksi->status = 'cancel';
 
           }
 
+
+          $transaksi->save();
+
         // penutup db transaction
         // });
+    }
+
+
+    public function callback(){
+
+        /**
+         * notifikasi pending 
+            {
+                "va_numbers": [
+                  {
+                    "va_number": "39916370765",
+                    "bank": "bca"
+                  }
+                ],
+                "transaction_time": "2022-12-14 21:37:33",
+                "transaction_status": "pending",
+                "transaction_id": "90b6e343-3c4f-405b-bb30-dd2ad1653da8",
+                "status_message": "midtrans payment notification",
+                "status_code": "201",
+                "signature_key": "5e1728073f7dcb7a2c9c17b6c32feef415244140c426b8937c8872970cca3e55bb8ca6b812c4e661bd66dce936dbafb759eba448b3d8cc0621311feb9b1454a5",
+                "payment_type": "bank_transfer",
+                "payment_amounts": [],
+                "order_id": "6399dfa708f1a",
+                "merchant_id": "G094939916",
+                "gross_amount": "195000.00",
+                "fraud_status": "accept",
+                "currency": "IDR"
+              } 
+        * 
+        * 
+        * 
+        * notifikasi sukses
+        * {
+          "va_numbers": [
+            {
+              "va_number": "39916370765",
+              "bank": "bca"
+            }
+          ],
+          "transaction_time": "2022-12-14 21:37:33",
+          "transaction_status": "settlement",
+          "transaction_id": "90b6e343-3c4f-405b-bb30-dd2ad1653da8",
+          "status_message": "midtrans payment notification",
+          "status_code": "200",
+          "signature_key": "6aff67d1176d6158c8dc63ed796e6e2502c07474ce7f5a5d334c7c0905e159f1e55555673d42b346e9074231cc805c658890367599b8d0abdeca65862c2d5444",
+          "settlement_time": "2022-12-14 21:39:54",
+          "payment_type": "bank_transfer",
+          "payment_amounts": [],
+          "order_id": "6399dfa708f1a",
+          "merchant_id": "G094939916",
+          "gross_amount": "195000.00",
+          "fraud_status": "accept",
+          "currency": "IDR"
+        }
+
+
+        * 
+        */
+
+
+      
     }
 
 

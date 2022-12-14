@@ -32,6 +32,7 @@
 								<td>#</td> 
 								<th>User</th>								
 								<th>Payment Type</th>
+								<th>Qty Bulan</th>
 								<th>Nominal</th>
 								<th>Status</th>
 								<td>ACTIONS</td>
@@ -43,6 +44,7 @@
 								<td>{{ $loop->iteration }}</td> 
 								<td>{{ $row->user->name }}</td>								
 								<td>{{ $row->payment_type }}</td>
+								<td>{{ $row->qty }}</td>
 								<td>{{ number_format($row->nominal) }}</td>
 								<td>
 									<span class="badge badge-{{ $warna_status[$row->status] }}">{{ $row->status }}</span>

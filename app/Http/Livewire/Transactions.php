@@ -5,6 +5,8 @@ namespace App\Http\Livewire;
 use Livewire\Component;
 use Livewire\WithPagination;
 use App\Models\Transaction;
+use Carbon\Carbon;
+use App\Models\Membership;
 
 class Transactions extends Component
 {
@@ -123,9 +125,23 @@ class Transactions extends Component
     public function aprove($id){
 
         if ($id) {
-            $record = Transaction::find($id);
-            $record->status = 'Completed';
-            $record->save();
+            $transaksi = Transaction::find($id);
+            $transaksi->status = 'Completed';
+            $transaksi->save();
+
+            // tambahkan langganan sesuai paket yang dipesan
+            $hari_ini = Carbon::now(); 
+            $bulan_depan = $hari_ini->addMonth($transaksi->qty);
+
+            Membership::create([ 
+                'user_id' => $transaksi->user_id,
+                'member_type' => "Langganan",
+                'start' =>Carbon::now(),
+                'end' => $bulan_depan,
+                'status' => "active"
+            ]);
+
+
         }
     }
 }

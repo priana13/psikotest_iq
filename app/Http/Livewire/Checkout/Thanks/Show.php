@@ -47,7 +47,7 @@ class Show extends Component
 
         $payload = [
             'transaction_details' => [
-                'order_id'      => uniqid(),
+                'order_id'      => $this->transaksi->code,
                 'gross_amount'  => $this->transaksi->nominal,
             ],
             'customer_details' => [
