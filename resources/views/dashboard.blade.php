@@ -20,121 +20,129 @@
         </div>
     @endif
 
+
     <div class="row">
 
-        <!-- Earnings (Monthly) Card Example -->
-        <div class="col-xl-3 col-md-6 mb-4">
-            <div class="card border-left-primary shadow h-100 py-2">
-                <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                        <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Psikotes</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">2</div>
-                        </div>
-                        <div class="col-auto">
-                            <i class="fas fa-calendar fa-2x text-gray-300"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
 
-        <!-- Earnings (Monthly) Card Example -->
-        <div class="col-xl-3 col-md-6 mb-4">
-            <div class="card border-left-success shadow h-100 py-2">
-                <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                        <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Topup</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">Rp. 200.000</div>
-                        </div>
-                        <div class="col-auto">
-                            <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <div class="col-xl-8">
 
-        <!-- Earnings (Monthly) Card Example -->
-        <div class="col-xl-3 col-md-6 mb-4">
-            <div class="card border-left-info shadow h-100 py-2">
-                <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                        <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Soal</div>
-                            <div class="row no-gutters align-items-center">
-                                <div class="col-auto">
-                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">500</div>
-                                </div>
-                                <div class="col">
-                                    <div class="progress progress-sm mr-2">
-                                        <div class="progress-bar bg-info" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+            <div class="row">
+
+                    <!--Col-->
+                    <div class="col-xl-4 col-md-6 mb-4">
+                        <div class="card border-left-primary shadow-sm h-100 py-2">
+                            <div class="card-body">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col mr-2 text-center">
+                                        <div class="font-weight-bold text-primary text-uppercase mb-1 ">
+                                          <a href="{{ route('member.soal') }}">Psikotes</a>  
+                                        </div>
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800 d-none">2</div>
                                     </div>
+
+                                    <p class="mt-2 text-center">Simulasi tes Psikologi yang meliputi tes Kecerdasan, kecermatan dan kepribadian</p>
+                                   
                                 </div>
                             </div>
                         </div>
-                        <div class="col-auto">
-                            <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                    </div>
+
+
+                    <!--Col-->
+                    <div class="col-xl-4 col-md-6 mb-4">
+                        <div class="card border-left-warning shadow-sm h-100 py-2">
+                            <div class="card-body">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col mr-2 text-center">
+                                        <div class="font-weight-bold text-primary text-uppercase mb-1">AKADEMIK</div>
+                                        <div class="h5 mb-0 font-weight-bold text-danger">SEGERA HADIR</div>
+                                    </div>
+
+                                    <p class="mt-2 text-center">Simulasi akademik yang meliputi tes pengetahuan umum, Bahasa Indonesia, Bahasa Ingris, Matematika</p>
+                                   
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--Col-->
+                    <div class="col-xl-4 col-md-6 mb-4">
+                        <div class="card border-left-success shadow-sm h-100 py-2">
+                            <div class="card-body">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col mr-2 text-center">
+                                        <div class="font-weight-bold text-primary text-uppercase mb-1">POTENSI DIRI</div>
+                                        <div class="h5 mb-0 font-weight-bold text-danger text-uppercase">segera hadir</div>
+                                    </div>
+
+                                    <p class="mt-2 text-center">Ketahui potensi dan pengembangan dirimu</p>
+                                  
+                                </div>
+                            </div>
+                        </div>                      
+
+
+                    </div>
+
+
+            </div>
+            {{-- akhir row --}}
+
+
+            {{-- row kedua --}}
+            <div class="row">
+
+                <!--Col-->
+                <div class="col-xl-4 col-md-6 mb-4">
+                    <div class="card border-left-info shadow-sm h-100 py-2">
+                        <div class="card-body">
+                            <div class="row no-gutters align-items-center">
+                                <div class="col mr-2 text-center">
+                                    <div class="font-weight-bold text-primary text-uppercase mb-1 ">LEADERSHIP</div>
+                                    <div class="h5 mb-0 font-weight-bold text-danger">SEGERA HADIR</div>
+                                </div>
+
+                                <p class="mt-2 text-center">Ketahui dan pahami tipe kepemimpinan</p>
+                               
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
 
-        <!-- Users -->
-        <div class="col-xl-3 col-md-6 mb-4">
-            <div class="card border-left-warning shadow h-100 py-2">
-                <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                        <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">{{ __('Users') }}</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">200</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $widget['users'] ?? ''}}</div>
-                        </div>
-                        <div class="col-auto">
-                            <i class="fas fa-users fa-2x text-gray-300"></i>
+
+                <!--Col-->
+                <div class="col-xl-4 col-md-6 mb-4">
+                    <div class="card border-left-danger shadow-sm h-100 py-2">
+                        <div class="card-body">
+                            <div class="row no-gutters align-items-center">
+                                <div class="col mr-2 text-center">
+                                    <div class="font-weight-bold text-primary text-uppercase mb-1">INTELECTUAL QUOTIENT</div>
+                                    <div class="h5 mb-0 font-weight-bold text-danger">SEGERA HADIR</div>
+                                </div>
+
+                                <p class="mt-2 text-center">Mau mengetahui IQ kamu, yuk coba di sini</p>
+                               
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
 
-    <div class="row">
+            
 
-        @can('admin')
-
-        <!-- Content Column -->
-        <div class="col-lg-6 mb-4">
-
-            <!-- Project Card Example -->
-            <div class="card shadow mb-4">
-                <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">Psikotest Aktif</h6>
-                </div>
-                <div class="card-body">
-                    @foreach($exams as $exam)
-
-                        <h4 class="small font-weight-bold">{{ $exam->nama_tes }}n <span class="float-right">20%</span></h4>
-                        <div class="progress mb-4">
-                            <div class="progress-bar bg-success" role="progressbar" style="width: 20%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-
-                    @endforeach
-                                    
-                    
-                </div>
-            </div>          
 
         </div>
+        {{-- akhir row --}}
 
-        @endcan
 
-        <div class="col-lg-6 mb-4">
-   
-            <!-- Approach -->
-            <div class="card shadow mb-4">
+
+        </div>
+        {{-- akhir col-xl-8 --}}
+
+
+        <div class="col-xl-4">
+
+
+            <div class="card shadow-sm mb-4">
                 <div class="card-header py-3">
                     <h6 class="m-0 font-weight-bold text-primary">Pengumuman</h6>
                 </div>
@@ -144,6 +152,15 @@
                 </div>
             </div>
 
+
+
         </div>
+
+
+
     </div>
+
+ 
+
+
 @endsection
