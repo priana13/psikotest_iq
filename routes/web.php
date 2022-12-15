@@ -8,6 +8,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Member\SoalController;
 use App\Http\Controllers\Member\TypeSoalController;
 use App\Http\Controllers\Member\UjianController;
+use App\Http\Controllers\PageController;
 use App\Http\Controllers\PsikotesController;
 
 /*
@@ -30,6 +31,8 @@ Route::get('/', function () {
 
 Route::view('/fitur', 'pages.fitur')->name('page.fitur');
 Route::view('/harga', 'pages.harga')->name('page.harga');
+Route::get('/page/{slug}', [PageController::class, 'show']);
+
 Auth::routes();
 
 Route::middleware('auth')->group(function(){
@@ -61,8 +64,8 @@ Route::middleware('auth')->group(function(){
 		//Route Hooks - Do not delete//
 		Route::view('confirmations', 'livewire.confirmations.index')->middleware('auth')->name('admin.confirmations');
 		Route::view('packages', 'livewire.packages.index')->middleware('auth')->name('admin.packages');
-		Route::view('posts', 'livewire.posts.index')->middleware('auth');
-		Route::view('categories', 'livewire.categories.index')->middleware('auth');
+		Route::view('posts', 'livewire.posts.index')->middleware('auth')->name('admin.posts');
+		Route::view('categories', 'livewire.categories.index')->middleware('auth')->name('admin.categories');
 		Route::view('examevents', 'livewire.examevents.index')->name('examevents');
 		Route::view('exam_events', 'livewire.exam-events.index');
 		Route::view('transactions', 'livewire.transactions.index')->name('admin.transactions');

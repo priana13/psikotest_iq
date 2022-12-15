@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Category;
 use Livewire\Component;
 use Livewire\WithPagination;
 use App\Models\Post;
@@ -12,7 +13,14 @@ class Posts extends Component
 
 	protected $paginationTheme = 'bootstrap';
     public $selected_id, $keyWord, $user_id, $category_id, $slug, $title, $body, $status;
+    public $categories;
     public $updateMode = false;
+
+    public function mount(){
+
+        $this->user_id = auth()->user()->id;
+        $this->categories = Category::all();
+    }
 
     public function render()
     {

@@ -20,7 +20,7 @@
             <div class="row justify-content-center">
                 <div class="col-md-7 text-center hero-text">
                 <h1 data-aos="fade-up" data-aos-delay="">{{ config('app.name') }} Fiture</h1>
-                <p class="mb-5" data-aos="fade-up" data-aos-delay="100">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                <p class="mb-5" data-aos="fade-up" data-aos-delay="100">Dapatkan berbagai fiture terbaik untuk mengukur kemampuan Anda.</p>
                 </div>
             </div>
             </div>
@@ -37,8 +37,8 @@
     <div class="container">
       <div class="row align-items-center">
         <div class="col-md-4 me-auto">
-          <h2 class="mb-4">Seamlessly Communicate</h2>
-          <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur at reprehenderit optio, laudantium eius quod, eum maxime molestiae porro omnis. Dolores aspernatur delectus impedit incidunt dolore mollitia esse natus beatae.</p>
+          <h2 class="mb-4">Tes Online</h2>
+          <p class="mb-4">Anda akan mendapatkan akses soal psikotes dan dilakukan secara online. Tes harus diselesaikan dalam waktu tertentu, jadi bisa menjadi semulasi untuk menghadapi ujian.</p>
           <p><a href="#">Read More</a></p>
         </div>
         <div class="col-md-6" data-aos="fade-left">
@@ -52,8 +52,8 @@
     <div class="container">
       <div class="row align-items-center">
         <div class="col-md-4 ms-auto order-2">
-          <h2 class="mb-4">Gather Feedback</h2>
-          <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur at reprehenderit optio, laudantium eius quod, eum maxime molestiae porro omnis. Dolores aspernatur delectus impedit incidunt dolore mollitia esse natus beatae.</p>
+          <h2 class="mb-4">History Ujian</h2>
+          <p class="mb-4">Dengan melakukan ujian secara berkala, Anda bisa mengukur sudah sejauh mana kempuan Anda dari waktu ke waktu dengan melihat history ujian sebelumnya.</p>
           <p><a href="#">Read More</a></p>
         </div>
         <div class="col-md-6" data-aos="fade-right">

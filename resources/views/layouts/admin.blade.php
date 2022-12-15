@@ -168,6 +168,12 @@
             </a>
         </li>
 
+        <li class="nav-item {{ Nav::isRoute('admin.posts') }}">
+            <a class="nav-link py-2" href="{{ route('admin.posts') }}">
+                <i class="fas fa-clipboard-list""></i>
+                <span>{{ __('Pages') }}</span>
+            </a>
+        </li>
 
 
 
