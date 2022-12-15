@@ -88,7 +88,7 @@ class Ujian extends Component
 
         $this->emit('ujianSelesai');
 
-        
+
        }
        
        $this->total = $this->exam->questions->count();     
@@ -120,14 +120,29 @@ class Ujian extends Component
                 $this->salah += 1;
             }
 
-            // input ke table ujian di sini
-            ExamItem::create([
-                'examevent_id' => $this->examEvent->id,
-                'user_id' => auth()->user()->id,
-                'question_id' => $this->soal->id,
-                'jawaban' => $this->jawaban,
-                'is_true' => $hasil
-            ]);
+            // cek apakah soal ini sudah dijawab atau belum sebelumnya
+            $cek_soal = ExamItem::where('examevent_id', $this->examEvent->id)->where('question_id', $this->soal->id)->first();
+
+            if($cek_soal == null){
+
+                // input ke table ujian di sini
+                ExamItem::create([
+                    'examevent_id' => $this->examEvent->id,
+                    'user_id' => auth()->user()->id,
+                    'question_id' => $this->soal->id,
+                    'jawaban' => $this->jawaban,
+                    'is_true' => $hasil
+                ]);
+
+            }else{
+
+                ExamItem::where('id', $cek_soal->id)->update([
+                    'jawaban' => $this->jawaban,
+                    'is_true' => $hasil
+                ]);
+            }
+
+
 
 
             // jika ini adalah soal yang terakhir
