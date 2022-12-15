@@ -245,6 +245,20 @@
         $('#hitung-waktu').hide();
     });
 
+
+    window.Livewire.on('soalMasihAda', ()=> {
+
+           var conf = confirm("Masih ada Soal yang Belum dijawab. Akhiri Saja?");
+
+           if(conf){
+                
+            Livewire.emit('selesaikanUjian');
+            
+           }
+    });
+
+
+
     
 </script>
 

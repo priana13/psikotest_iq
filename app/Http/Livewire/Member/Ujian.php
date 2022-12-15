@@ -32,11 +32,18 @@ class Ujian extends Component
             'waktuHabis' => 'waktuHabis',
             'getSoal' => 'getSoal',
             'refresh' => '$refresh',
-            'kurangiWaktu'
+            'kurangiWaktu' => 'kurangiWaktu',
+            'selesaikanUjian' => 'ujianTelahSelesai'
             ];
 
 
     public function mount($examid , $examEvent){
+
+        if($examEvent->status == 'Selesai'){
+
+            $this->finish_status = TRUE;           
+
+        }
 
         $this->exam = Exam::find($examid);       
         $this->examEvent = $examEvent;
@@ -77,9 +84,14 @@ class Ujian extends Component
 
         $this->soal = $this->exam->questions()->step($this->step)->first(); 
 
-       }       
+       }else{
+
+        $this->emit('ujianSelesai');
+
+        
+       }
        
-       $this->total = $this->exam->questions->count();
+       $this->total = $this->exam->questions->count();     
        
         // https://carbon.nesbot.com/docs/
         $this->date = Carbon::now();
@@ -118,24 +130,27 @@ class Ujian extends Component
             ]);
 
 
-
             // jika ini adalah soal yang terakhir
             // harus nya di cek apakah masih ada soal yang belum dijawab atau sudah semua
-            if($this->step == $this->total){
-                $this->finish_status = TRUE;
-    
-                $this->examEvent->salah = $this->salah;
-                $this->examEvent->benar = $this->benar;            
-    
-                $nilai = $this->benar / $this->total * 100;  
-                $this->nilai = number_format($nilai);         
-    
-                $this->examEvent->nilai = $this->nilai;
-                $this->examEvent->save();
+            if($this->step == $this->total){              
 
-                $this->emit('ujianSelesai');
+
+                // cek apakah masih ada soalyang belum dijawab
+
+                $jumlah_terjawab = ExamItem::where('examevent_id', $this->examEvent->id)->count();
+
+               if($jumlah_terjawab < $this->total ){
+               
+
+                    $this->emit('soalMasihAda');
+
+               }else{
+
+                $this->ujianTelahSelesai();
+
+               }
     
-                // kita bisa redirect page di sini ke halaman nilai
+               
             }else{
 
             $this->tempexam->soal_terakhir = $this->soal->no + 1;
@@ -168,6 +183,10 @@ class Ujian extends Component
     public function waktuHabis(){
 
         $this->finish_status = TRUE;
+
+        $this->benar = ExamItem::where('examevent_id', $this->examEvent->id)->benar()->count();
+        $this->salah = ExamItem::where('examevent_id', $this->examEvent->id)->salah()->count();
+
 
         $this->examEvent->salah = $this->salah;
         $this->examEvent->benar = $this->benar;            
@@ -208,6 +227,31 @@ class Ujian extends Component
 
         $this->emit('refresh');
 
+
+    }
+
+
+    public function ujianTelahSelesai(){
+
+        $this->finish_status = TRUE;
+
+        $this->benar = ExamItem::where('examevent_id', $this->examEvent->id)->benar()->count();
+        $this->salah = ExamItem::where('examevent_id', $this->examEvent->id)->salah()->count();
+
+    
+        $this->examEvent->salah = $this->salah;
+        $this->examEvent->benar = $this->benar;            
+
+        $nilai = $this->benar / $this->total * 100;  
+        $this->nilai = number_format($nilai);         
+
+        $this->examEvent->nilai = $this->nilai;
+        $this->examEvent->status = "Selesai";
+        $this->examEvent->save();
+
+        $this->emit('ujianSelesai');
+
+         // kita bisa redirect page di sini ke halaman nilai
 
     }
 

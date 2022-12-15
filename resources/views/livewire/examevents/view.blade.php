@@ -69,7 +69,7 @@
 									
 								</td>
 								<td>
-									{{ ($row->nilai)? 'Selesai': 'Tidak Selesai' }}
+									{{ $row->status }}
 								</td>
 								<td width="90">
 								<div class="btn-group">
