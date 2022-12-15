@@ -12,7 +12,7 @@ class Posts extends Component
     use WithPagination;
 
 	protected $paginationTheme = 'bootstrap';
-    public $selected_id, $keyWord, $user_id, $category_id, $slug, $title, $body, $status;
+    public $selected_id, $keyWord, $user_id, $category_id = 1, $slug, $title, $body, $status = "Publish";
     public $categories;
     public $updateMode = false;
 
