@@ -47,8 +47,10 @@ class UjianKolom extends Component
 
         if($temp_exam != null){
             $this->nomor = $temp_exam->soal_terakhir;
-            $this->sisa_waktu = $this->examEvent->sisa_waktu;
         }
+        
+        $this->sisa_waktu = $this->examEvent->sisa_waktu;
+
 
         $this->kolom = $kolom;
 

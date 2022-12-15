@@ -54,10 +54,10 @@ class Ujian extends Component
         $temp_exam = TempExam::where('examevent_id', $this->examEvent->id)->first();        
 
         if($temp_exam != null){
-            $this->step = $temp_exam->soal_terakhir;
-            $this->sisa_waktu = $this->examEvent->sisa_waktu;
+            $this->step = $temp_exam->soal_terakhir;           
         }
 
+        $this->sisa_waktu = $this->examEvent->sisa_waktu;
 
     }
 
