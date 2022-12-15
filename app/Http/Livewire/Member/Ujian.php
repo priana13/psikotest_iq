@@ -8,6 +8,7 @@ use App\Models\Exam;
 use App\Models\ExamItem;
 use App\Models\ExamEvent;
 use Carbon\Carbon;
+use App\Models\TempExam;
 
 class Ujian extends Component
 {
@@ -23,12 +24,15 @@ class Ujian extends Component
     public $date;
     public $finish_status = FALSE;
     public $salah = 0, $benar = 0, $nilai;
+    public $tempexam;
+    public $sisa_waktu;
 
 
     protected $listeners = [
             'waktuHabis' => 'waktuHabis',
             'getSoal' => 'getSoal',
-            'refresh' => '$refresh'
+            'refresh' => '$refresh',
+            'kurangiWaktu'
             ];
 
 
@@ -37,11 +41,37 @@ class Ujian extends Component
         $this->exam = Exam::find($examid);       
         $this->examEvent = $examEvent;
 
+                /**
+         * Ambil soal terkhir
+         */
+        $temp_exam = TempExam::where('examevent_id', $this->examEvent->id)->first();        
+
+        if($temp_exam != null){
+            $this->step = $temp_exam->soal_terakhir;
+            $this->sisa_waktu = $examEvent->sisa_waktu;
+        }
+
+
     }
 
 
     public function render()
-    {             
+    {      
+        
+        $temp_waktu = TempExam::where('examevent_id' , $this->examEvent->id)->count(); 
+
+        if($temp_waktu == 0){        
+
+            $this->tempexam = TempExam::create([
+                'examevent_id' => $this->examEvent->id,
+                'waktu_terakhir' => $this->exam->waktu * 60,                
+                'soal_terakhir' => $this->step
+            ]);        
+
+        }
+        
+        $this->tempexam = TempExam::where('examevent_id' , $this->examEvent->id)->first();
+
 
        if(!$this->finish_status){
 
@@ -53,7 +83,7 @@ class Ujian extends Component
        
         // https://carbon.nesbot.com/docs/
         $this->date = Carbon::now();
-        $this->endtime = $this->date->addMinutes($this->exam->waktu);
+        $this->endtime = $this->date->addSeconds($this->sisa_waktu);
        
         return view('livewire.member.ujian');
     }
@@ -108,6 +138,8 @@ class Ujian extends Component
                 // kita bisa redirect page di sini ke halaman nilai
             }else{
 
+            $this->tempexam->soal_terakhir = $this->soal->no + 1;
+            $this->tempexam->save();
 
             $this->step += 1;
             $this->jawaban = '';
@@ -147,6 +179,14 @@ class Ujian extends Component
 
 
     }
+
+    public function kurangiWaktu(){
+
+        $this->examEvent->sisa_waktu -= 1;
+        $this->examEvent->save();
+
+    }
+
 
     public function getSoal($no){
 

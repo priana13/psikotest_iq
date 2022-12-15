@@ -233,7 +233,12 @@
                     Livewire.emit('waktuHabis');
 
                     return;
+                }else{
+
+                // kurangi waktu yang ada di database
+                Livewire.emit('kurangiWaktu');
                 }
+                
                 var days = Math.floor(distance / _day);
                 var hours = Math.floor((distance % _day) / _hour);
                 var minutes = Math.floor((distance % _hour) / _minute);

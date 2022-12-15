@@ -27,33 +27,12 @@ class UjianController extends Controller
 
         $exam_event = Examevent::create([
           'name' => 'Test ' . $exam->nama_tes,
-          'user_id' => auth()->user()->id
+          'user_id' => auth()->user()->id,
+          'sisa_waktu' => $exam->waktu * 60
         ]);     
 
 
         if($exam->type == 'cermat'){
-
-            // // cek dulu dulu ke temp exam apakah sudah ada history atau belum
-            // $cek_temp_exam = TempExam::where('examevent_id' , $exam_event->id)->count(); 
-
-            // if($cek_temp_exam == 0){        
-
-            //     $tempexam = TempExam::create([
-            //         'examevent_id' => $exam_event->id,
-            //         'waktu_terakhir' => $exam->waktu * 60,
-            //         'kolom_terakhir' => 1,
-            //         'soal_terakhir' => 1
-            //     ]);     
-                
-            //     $kolom = 1;
-
-            // }else{
-
-            //   $kolom = $cek_temp_exam->kolom_terakhir;
-
-            // }   
-
-            // dd($kolom);
 
 
           return redirect()->route('member.ujian-kolom',[
@@ -64,6 +43,7 @@ class UjianController extends Controller
 
 
         }else{
+          
 
           // $type = 'pg'; // pilihan ganda
           return redirect()->route('member.ujian',[

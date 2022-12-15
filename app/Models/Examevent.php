@@ -13,7 +13,7 @@ class Examevent extends Model
 
     protected $table = 'examevents';
 
-    protected $fillable = ['user_id','name','salah','nilai','benar'];
+    protected $guarded = [];
 	
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
