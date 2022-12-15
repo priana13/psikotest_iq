@@ -28,7 +28,7 @@ class ListNomor extends Component
         return view('livewire.member.list-nomor');
     }
 
-    public function getSoal($no){     
+    public function getSoal($no){ 
 
         $this->emit('getSoal' , $no);
     }

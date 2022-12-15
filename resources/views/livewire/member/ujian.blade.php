@@ -32,7 +32,7 @@
 
                             <div class="row">                                
 
-                                <input class="form-check-input" type="radio" name="jawaban" id="jawaban-a" wire:model="jawaban" value="a" >                            
+                                <input class="form-check-input" type="radio" name="jawaban" id="jawaban-a" wire:model="jawaban" value="a">                            
                                 <label class="form-check-label" for="jawaban-a">
                                 A. {{ $soal->a }}
                                 </label>  
@@ -155,7 +155,7 @@
                                 
                             </div>
 
-                        </div>
+                        </div>                      
                    
                     </div>
                 </fieldset>

@@ -27,7 +27,8 @@ class Ujian extends Component
 
     protected $listeners = [
             'waktuHabis' => 'waktuHabis',
-            'getSoal' => 'getSoal'
+            'getSoal' => 'getSoal',
+            'refresh' => '$refresh'
             ];
 
 
@@ -150,6 +151,24 @@ class Ujian extends Component
     public function getSoal($no){
 
         $this->step = $no;
+
+        $this->soal = $this->exam->questions()->step($this->step)->first(); 
+
+        $exam_item = ExamItem::where('examevent_id' , $this->examEvent->id)->where('question_id',$this->soal->id)->first();      
+              
+
+        if($exam_item){
+
+            $this->jawaban = $exam_item->jawaban;
+
+        }else{
+
+            $this->jawaban = '';
+        }
+
+        $this->emit('refresh');
+
+
     }
 
 
