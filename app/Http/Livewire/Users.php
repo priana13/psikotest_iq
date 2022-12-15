@@ -13,6 +13,12 @@ class Users extends Component
 	protected $paginationTheme = 'bootstrap';
     public $selected_id, $keyWord, $name, $email, $level;
     public $updateMode = false;
+    public $total;
+
+    public function mount(){
+
+        $this->total = User::count();
+    }
 
     public function render()
     {
