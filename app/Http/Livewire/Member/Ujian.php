@@ -55,7 +55,7 @@ class Ujian extends Component
 
         if($temp_exam != null){
             $this->step = $temp_exam->soal_terakhir;
-            $this->sisa_waktu = $examEvent->sisa_waktu;
+            $this->sisa_waktu = $this->examEvent->sisa_waktu;
         }
 
 

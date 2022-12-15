@@ -21,6 +21,7 @@ class UjianKolom extends Component
     public $kolom, $nomor = 1 , $soal , $list_nomor , $exam_column , $pilihanJawaban , 
             $soal_terakhir, $kolom_terakhir , $nilai_akhir = 0 , $tempexam, $jumlahSoal;
     public $is_finish = FALSE;
+    public $sisa_waktu;
 
     protected $listeners = [
         'kurangiWaktu' , 'waktuHabis'
@@ -46,13 +47,14 @@ class UjianKolom extends Component
 
         if($temp_exam != null){
             $this->nomor = $temp_exam->soal_terakhir;
+            $this->sisa_waktu = $this->examEvent->sisa_waktu;
         }
 
         $this->kolom = $kolom;
 
         // https://carbon.nesbot.com/docs/
         $this->date = Carbon::now();
-        $this->endtime = $this->date->addMinutes($this->exam->waktu);    
+        $this->endtime = $this->date->addSeconds($this->sisa_waktu);  
         
         $this->kolom_terakhir = ExamColumn::where('exam_id' , $this->exam->id)->max('kolom');
 
@@ -159,6 +161,9 @@ class UjianKolom extends Component
             $this->tempexam->soal_terakhir = $this->nomor;
             $this->tempexam->save();
 
+            $this->examEvent->sisa_waktu = $this->exam->waktu * 60;
+            $this->examEvent->save();
+
             // jika kolom kolom masih tersedia
             if($this->kolom < $this->kolom_terakhir){
 
@@ -216,10 +221,21 @@ class UjianKolom extends Component
 
             $this->is_finish = TRUE;
 
-        }else{
+        }else{          
 
-            $this->kolom += 1;
-            $this->nomor = 1;
+            $this->examEvent->sisa_waktu = $this->exam->waktu * 60;
+            $this->examEvent->save();
+
+
+            $this->tempexam->kolom_terakhir = $this->kolom;
+            $this->tempexam->save();  
+            
+            // redirect ke kolom berikutnya
+            return redirect()->route('member.ujian-kolom',[
+                'exam' => $this->exam->id,
+                'examevent' => $this->examEvent->id,
+                'kolom' => $this->kolom + 1
+             ]); 
     
 
         }
