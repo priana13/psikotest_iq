@@ -28,6 +28,9 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
     <!-- Favicon -->
     <link href="{{ asset('img/favicon.png') }}" rel="icon" type="image/png">
+    
+
+
     @livewireStyles
 </head>
 <body id="page-top">
@@ -426,6 +429,7 @@
 		$('#createDataModal').modal('hide');
         $('#importDataModal').modal('hide');
 	});
+    
 
 
 

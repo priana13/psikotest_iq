@@ -41,11 +41,11 @@
 					<table class="table table-bordered table-sm">
 						<thead class="thead">
 							<tr> 
-								<td>#</td> 
-								<th>Title</th>									
-								<th>Category</th>																				
+								<td>No</td> 
+								<th>Judul</th>									
+								<th>Kategori</th>																				
 								<th>Status</th>
-								<td>ACTIONS</td>
+								<td>Aksi</td>
 							</tr>
 						</thead>
 						<tbody>
@@ -59,7 +59,10 @@
 								</td>
 								
 								<td>{{ $row->category->category }}</td>																					
-								<td>{{ $row->status }}</td>
+								<td>
+									<span class="badge badge-{{ ($row->status == 'Publish')?"success":"secondary" }}">{{ $row->status }}</span>
+									
+								</td>
 								<td width="90">
 								<div class="btn-group">
 									<button type="button" class="btn btn-info btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

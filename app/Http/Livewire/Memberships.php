@@ -31,6 +31,8 @@ class Memberships extends Component
 
         $level = auth()->user()->level;
 
+        $keyWord = '%'.$this->keyWord .'%';
+
         if($level == 'Admin'){
 
             $memberships = Membership::latest()
@@ -46,9 +48,7 @@ class Memberships extends Component
             $memberships = auth()->user()->memberships()->latest()->paginate(5);
 
         }
-
-
-		$keyWord = '%'.$this->keyWord .'%';
+		
         return view('livewire.memberships.view', compact('memberships'));
     }
 	
