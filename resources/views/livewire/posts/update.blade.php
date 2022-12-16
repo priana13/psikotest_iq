@@ -1,69 +1,84 @@
-<!-- Modal -->
-<div wire:ignore.self class="modal fade" id="updateModal" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="updateModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-       <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="updateModalLabel">Update Post</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span wire:click.prevent="cancel()" aria-hidden="true">×</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form>
-					<input type="hidden" wire:model="selected_id">            
-         
+@extends('layouts.admin')
 
-                    <div class="form-group">
-                        <label for="title">Judul</label>
-                        <input wire:model="title" type="text" class="form-control" id="title" placeholder="Title">@error('title') <span class="error text-danger">{{ $message }}</span> @enderror
-                    </div>
-                    <div class="form-group">
-                        <label for="slug">Slug/Url</label>
-                        <input wire:model="slug" type="text" class="form-control" id="slug" placeholder="Slug">@error('slug') <span class="error text-danger">{{ $message }}</span> @enderror
-                    </div>            
+@section('main-content')
+
+<div class="row justify-content-center">
+    <div class="col-md-12">
+
+        <div class="card">
+            <div class="card-title px-4 pt-4">
+
+                <h5 class="modal-title" id="createDataModalLabel">Buat Page Baru</h5>
+
+            </div>
+
+            <div class="card-body">
+      
+                <form method="post" action="{{ route('posts.update', $post->id) }}">
+                    @csrf
+                    @method('put')
+                        <input type="hidden" name="id" value="{{ $post->id }}">
+
+                        <div class="form-group">
+                            <label for="title">Judul</label>
+                            <input name="title" type="text" class="form-control" id="title" placeholder="Judul" value="{{ $post->title }}">@error('title') <span class="text-danger">{{ $message }}</span> @enderror
+                        </div>
+                        <div class="form-group">
+                            <label for="slug">Slug/Url</label>
+                            <input name="slug" type="text" class="form-control" id="slug" placeholder="Slug" value="{{ $post->slug }}">@error('slug') <span class="text-danger">{{ $message }}</span> @enderror
+                        </div>         
+        
+                        <div class="form-group">
+                            <label for="body">Body</label>
+                            <textarea class="form-control"  name="body" id="" cols="30" rows="10">{{ $post->body }}</textarea>
+                        
+                            @error('body') <span class="text-danger">{{ $message }}</span> @enderror
+                        </div>
+
+                        <div class="form-group">
+                            <label for="category_id">Kategori</label>                
+        
+                            <select class="form-control" id="" name="category_id" >
+                                <option value="">Select Category</option>
+                                @foreach($categories as $row)
+                                <option value="{{ $row->id }}" 
+                                    {{ ($post->category_id == $row->id)?"selected":"" }}
+                                    >{{ $row->category }}</option>
+                                @endforeach
+        
+                            </select>
+                            
+                            @error('status') <span class="text-danger">{{ $message }}</span> @enderror        
+        
+                        </div>
+        
+                        <div class="form-group">
+                            <label for="status">Status</label>
+                            <select class="form-control" id="" name="status">
+                                <option value="Publish" {{ ($post->status == "Publish")?"selected":"" }}>Publish</option>
+                                <option value="Draft" {{ ($post->status == "Draft")?"selected":"" }}>Draft</option>
+                            </select>
+                            
+                            @error('status') <span class="text-danger">{{ $message }}</span> @enderror
+        
+                        </div>
+        
+                        <button type="button" class="btn btn-secondary close-btn" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary close-modal">Save</button>
             
-                    <div class="form-group">
-                        <label for="category_id">Kategori</label>                
-        
-                        <select class="form-control" id="" wire:model="category_id">
-                            <option value="">Select Category</option>
-                            @foreach($categories as $row)
-                            <option value="{{ $row->id }}">{{ $row->category }}</option>
-                            @endforeach
-        
-                        </select>
-                        
-                        @error('status') <span class="text-danger">{{ $message }}</span> @enderror
-        
-        
-                    </div>
-        
-        
-                    <div class="form-group">
-                        <label for="body">Body</label>
-                        <textarea class="form-control"  wire:model="body" id="" cols="30" rows="10"></textarea>
-                       
-                        @error('body') <span class="text-danger">{{ $message }}</span> @enderror
-                    </div>
-        
-                    <div class="form-group">
-                        <label for="status">Status</label>
-                        <select class="form-control" id="" wire:model="status">
-                            <option value="Publish">Publish</option>
-                            <option value="Draft">Draft</option>
-                        </select>
-                        
-                        @error('status') <span class="text-danger">{{ $message }}</span> @enderror
-        
-                    </div>
-        
-
+            
                 </form>
+
             </div>
-            <div class="modal-footer">
-                <button type="button" wire:click.prevent="cancel()" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" wire:click.prevent="update()" class="btn btn-primary" data-dismiss="modal">Save</button>
-            </div>
-       </div>
-    </div>
-</div>
+            
+        </div>
+
+      
+
+
+
+    </div>     
+</div>   
+
+@endsection
+

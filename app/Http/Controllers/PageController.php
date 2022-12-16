@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Post;
 use Illuminate\Http\Request;
 
@@ -24,7 +25,10 @@ class PageController extends Controller
      */
     public function create()
     {
-        //
+
+        $categories = Category::all();
+
+        return view('livewire.posts.create', compact('categories'));
     }
 
     /**
@@ -35,7 +39,25 @@ class PageController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([           
+            'category_id' => 'required',
+            'slug' => 'required',
+            'title' => 'required',
+            'body' => 'required',
+            'status' => 'required',
+            ]);
+    
+        Post::create([ 
+                'user_id' => auth()->user()->id,
+                'category_id' => $request-> category_id,
+                'slug' => $request-> slug,
+                'title' => $request-> title,
+                'body' => $request-> body,
+                'status' => $request-> status
+            ]);
+
+
+        return redirect()->route('admin.posts')->with('message', 'Page Berhasil Ditambahkan');
     }
 
     /**
@@ -61,7 +83,11 @@ class PageController extends Controller
      */
     public function edit($id)
     {
-        //
+        $post = Post::find($id);   
+
+        $categories = Category::all();    
+
+        return view('livewire.posts.update', compact('post', 'categories'));
     }
 
     /**
@@ -73,7 +99,25 @@ class PageController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([           
+            'category_id' => 'required',
+            'slug' => 'required',
+            'title' => 'required',
+            'body' => 'required',
+            'status' => 'required',
+            ]);
+    
+        Post::where('id', $id)->update([ 
+                'user_id' => auth()->user()->id,
+                'category_id' => $request-> category_id,
+                'slug' => $request-> slug,
+                'title' => $request-> title,
+                'body' => $request-> body,
+                'status' => $request-> status
+            ]);
+
+
+        return redirect()->route('admin.posts')->with('message', 'Page Berhasil Dipudate');
     }
 
     /**

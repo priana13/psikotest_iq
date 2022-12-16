@@ -29,9 +29,10 @@
 					<table class="table table-bordered table-sm">
 						<thead class="thead">
 							<tr> 
-								<td>#</td> 
-								<th>Slug</th>
+								<td>No</td> 
 								<th>Category</th>
+								<th>Slug</th>	
+								<th>Post</th>							
 								<td>ACTIONS</td>
 							</tr>
 						</thead>
@@ -39,8 +40,9 @@
 							@foreach($categories as $row)
 							<tr>
 								<td>{{ $loop->iteration }}</td> 
-								<td>{{ $row->slug }}</td>
 								<td>{{ $row->category }}</td>
+								<td>{{ $row->slug }}</td>	
+								<td>{{ $row->posts->count() }}</td>							
 								<td width="90">
 								<div class="btn-group">
 									<button type="button" class="btn btn-info btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

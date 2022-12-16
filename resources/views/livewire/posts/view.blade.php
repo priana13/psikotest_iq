@@ -23,9 +23,9 @@
 							Kategori
 						</a>
 
-						<div class="btn btn-sm btn-info" data-toggle="modal" data-target="#createDataModal">
+						<a class="btn btn-sm btn-info" href="{{ route('posts.create') }}">
 						<i class="fa fa-plus"></i>  Tambah Page
-						</div>
+						</a>
 
 
 						</div>
@@ -35,8 +35,8 @@
 				</div>
 				
 				<div class="card-body">
-						@include('livewire.posts.create')
-						@include('livewire.posts.update')
+						{{-- @include('livewire.posts.create') --}}
+						{{-- @include('livewire.posts.update') --}}
 				<div class="table-responsive">
 					<table class="table table-bordered table-sm">
 						<thead class="thead">
@@ -66,7 +66,7 @@
 									Actions
 									</button>
 									<div class="dropdown-menu dropdown-menu-right">
-									<a data-toggle="modal" data-target="#updateModal" class="dropdown-item" wire:click="edit({{$row->id}})"><i class="fa fa-edit"></i> Edit </a>							 
+									<a  class="dropdown-item" href="{{ route('front.page', $row->slug) }}" target="_blank"><i class="fa fa-eye"></i> Lihat </a>										<a  class="dropdown-item" href="{{ route('posts.edit', $row->id) }}"><i class="fa fa-edit"></i> Edit </a>							 
 									<a class="dropdown-item" onclick="confirm('Confirm Delete Post id {{$row->id}}? \nDeleted Posts cannot be recovered!')||event.stopImmediatePropagation()" wire:click="destroy({{$row->id}})"><i class="fa fa-trash"></i> Delete </a>   
 									</div>
 								</div>

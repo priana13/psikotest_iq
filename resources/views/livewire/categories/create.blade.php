@@ -10,14 +10,18 @@
             </div>
            <div class="modal-body">
 				<form>
-            <div class="form-group">
-                <label for="slug"></label>
-                <input wire:model="slug" type="text" class="form-control" id="slug" placeholder="Slug">@error('slug') <span class="error text-danger">{{ $message }}</span> @enderror
-            </div>
+
             <div class="form-group">
                 <label for="category"></label>
-                <input wire:model="category" type="text" class="form-control" id="category" placeholder="Category">@error('category') <span class="error text-danger">{{ $message }}</span> @enderror
+                <input wire:model="category" type="text" class="form-control" id="category" placeholder="Nama Kategori">@error('category') <span class="text-danger">{{ $message }}</span> @enderror
+            </div>                    
+
+            <div class="form-group">
+                <label for="slug"></label>
+                <input wire:model="slug" type="text" class="form-control" id="slug" placeholder="Slug / url">@error('slug') <span class="text-danger">{{ $message }}</span> @enderror
             </div>
+
+
 
                 </form>
             </div>

@@ -1,66 +1,82 @@
-<!-- Modal -->
-<div wire:ignore.self class="modal fade" id="createDataModal" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="createDataModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
+@extends('layouts.admin')
+
+@section('main-content')
+
+<div class="row justify-content-center">
+    <div class="col-md-12">
+
+        <div class="card">
+            <div class="card-title px-4 pt-4">
+
                 <h5 class="modal-title" id="createDataModalLabel">Buat Page Baru</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                     <span aria-hidden="true close-btn">×</span>
-                </button>
-            </div>
-           <div class="modal-body">
-				<form>
-
-            <div class="form-group">
-                <label for="title">Judul</label>
-                <input wire:model="title" type="text" class="form-control" id="title" placeholder="Title">@error('title') <span class="error text-danger">{{ $message }}</span> @enderror
-            </div>
-            <div class="form-group">
-                <label for="slug">Slug/Url</label>
-                <input wire:model="slug" type="text" class="form-control" id="slug" placeholder="Slug">@error('slug') <span class="error text-danger">{{ $message }}</span> @enderror
-            </div>            
-    
-            <div class="form-group">
-                <label for="category_id">Kategori</label>                
-
-                <select class="form-control" id="" wire:model="category_id">
-                    <option value="">Select Category</option>
-                    @foreach($categories as $row)
-                    <option value="{{ $row->id }}">{{ $row->category }}</option>
-                    @endforeach
-
-                </select>
-                
-                @error('status') <span class="text-danger">{{ $message }}</span> @enderror
-
 
             </div>
 
+            <div class="card-body">
+      
+                <form method="post" action="{{ route('posts.store') }}">
+                    @csrf
 
-            <div class="form-group">
-                <label for="body">Body</label>
-                <textarea class="form-control"  wire:model="body" id="" cols="30" rows="10"></textarea>
-               
-                @error('body') <span class="text-danger">{{ $message }}</span> @enderror
-            </div>
+                        <div class="form-group">
+                            <label for="title">Judul</label>
+                            <input name="title" type="text" class="form-control" id="title" placeholder="Judul" value="{{ old('title') }}">@error('title') <span class="text-danger">{{ $message }}</span> @enderror
+                        </div>
+                        <div class="form-group">
+                            <label for="slug">Slug/Url</label>
+                            <input name="slug" type="text" class="form-control" id="slug" placeholder="Slug" value="{{ old('slug') }}">@error('slug') <span class="text-danger">{{ $message }}</span> @enderror
+                        </div>         
+        
+                        <div class="form-group">
+                            <label for="body">Body</label>
+                            <textarea class="form-control"  name="body" id="" cols="30" rows="10">{{ old('body') }}</textarea>
+                        
+                            @error('body') <span class="text-danger">{{ $message }}</span> @enderror
+                        </div>
 
-            <div class="form-group">
-                <label for="status">Status</label>
-                <select class="form-control" id="" wire:model="status">
-                    <option value="Publish">Publish</option>
-                    <option value="Draft">Draft</option>
-                </select>
-                
-                @error('status') <span class="text-danger">{{ $message }}</span> @enderror
-
-            </div>
-
+                        <div class="form-group">
+                            <label for="category_id">Kategori</label>                
+        
+                            <select class="form-control" id="" name="category_id" >
+                                <option value="">Select Category</option>
+                                @foreach($categories as $row)
+                                <option value="{{ $row->id }}" 
+                                    {{ (old('category_id') == $row->id)?"selected":"" }}
+                                    >{{ $row->category }}</option>
+                                @endforeach
+        
+                            </select>
+                            
+                            @error('status') <span class="text-danger">{{ $message }}</span> @enderror        
+        
+                        </div>
+        
+                        <div class="form-group">
+                            <label for="status">Status</label>
+                            <select class="form-control" id="" name="status">
+                                <option value="Publish" {{ (old('status') == "Publish")?"selected":"" }}>Publish</option>
+                                <option value="Draft" {{ (old('status') == "Draft")?"selected":"" }}>Draft</option>
+                            </select>
+                            
+                            @error('status') <span class="text-danger">{{ $message }}</span> @enderror
+        
+                        </div>
+        
+                        <button type="button" class="btn btn-secondary close-btn" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary close-modal">Save</button>
+            
+            
                 </form>
+
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary close-btn" data-dismiss="modal">Close</button>
-                <button type="button" wire:click.prevent="store()" class="btn btn-primary close-modal">Save</button>
-            </div>
+            
         </div>
-    </div>
-</div>
+
+      
+
+
+
+    </div>     
+</div>   
+
+@endsection
+

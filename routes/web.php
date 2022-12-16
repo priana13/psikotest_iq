@@ -31,7 +31,7 @@ Route::get('/', function () {
 
 Route::view('/fitur', 'pages.fitur')->name('page.fitur');
 Route::view('/harga', 'pages.harga')->name('page.harga');
-Route::get('/page/{slug}', [PageController::class, 'show']);
+Route::get('/page/{slug}', [PageController::class, 'show'])->name('front.page');
 
 Auth::routes();
 
@@ -65,6 +65,13 @@ Route::middleware('auth')->group(function(){
 		Route::view('confirmations', 'livewire.confirmations.index')->middleware('auth')->name('admin.confirmations');
 		Route::view('packages', 'livewire.packages.index')->middleware('auth')->name('admin.packages');
 		Route::view('posts', 'livewire.posts.index')->middleware('auth')->name('admin.posts');
+
+		Route::get('/posts/create', [PageController::class, 'create'])->name('posts.create');
+		Route::post('/posts/create', [PageController::class, 'store'])->name('posts.store');
+		Route::get('/posts/edit/{id}', [PageController::class, 'edit'])->name('posts.edit');
+		Route::put('/posts/update/{id}', [PageController::class, 'update'])->name('posts.update');
+
+
 		Route::view('categories', 'livewire.categories.index')->middleware('auth')->name('admin.categories');
 		Route::view('examevents', 'livewire.examevents.index')->name('examevents');
 		Route::view('exam_events', 'livewire.exam-events.index');
