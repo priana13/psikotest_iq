@@ -28,16 +28,28 @@ class Memberships extends Component
 
     public function render()
     {
+
+        $level = auth()->user()->level;
+
+        if($level == 'Admin'){
+
+            $memberships = Membership::latest()
+                        ->orWhere('user_id', 'LIKE', $keyWord)
+                        ->orWhere('member_type', 'LIKE', $keyWord)
+                        ->orWhere('start', 'LIKE', $keyWord)
+                        ->orWhere('end', 'LIKE', $keyWord)
+                        ->orWhere('status', 'LIKE', $keyWord)
+                        ->paginate(10);
+           
+        }else{
+
+            $memberships = auth()->user()->memberships()->latest()->paginate(5);
+
+        }
+
+
 		$keyWord = '%'.$this->keyWord .'%';
-        return view('livewire.memberships.view', [
-            'memberships' => Membership::latest()
-						->orWhere('user_id', 'LIKE', $keyWord)
-						->orWhere('member_type', 'LIKE', $keyWord)
-						->orWhere('start', 'LIKE', $keyWord)
-						->orWhere('end', 'LIKE', $keyWord)
-						->orWhere('status', 'LIKE', $keyWord)
-						->paginate(10),
-        ]);
+        return view('livewire.memberships.view', compact('memberships'));
     }
 	
     public function cancel()
