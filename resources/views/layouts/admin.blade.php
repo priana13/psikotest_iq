@@ -420,6 +420,8 @@
 <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 <script src="{{ asset('vendor/jquery-easing/jquery.easing.min.js') }}"></script>
 <script src="{{ asset('js/sb-admin-2.min.js') }}"></script>
+
+<script src="//cdn.ckeditor.com/4.20.1/standard/ckeditor.js"></script>
    
 
 
@@ -429,6 +431,11 @@
 		$('#createDataModal').modal('hide');
         $('#importDataModal').modal('hide');
 	});
+
+
+    $(document).ready(function () {
+        $('.ckeditor').ckeditor();
+    });
     
 
 

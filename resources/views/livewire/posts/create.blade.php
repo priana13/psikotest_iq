@@ -28,7 +28,7 @@
         
                         <div class="form-group">
                             <label for="body">Body</label>
-                            <textarea class="form-control"  name="body" id="summernote" cols="30" rows="10">{{ old('body') }}</textarea>
+                            <textarea class="form-control ckeditor"  name="body" id="" cols="30" rows="10">{{ old('body') }}</textarea>
                         
                             @error('body') <span class="text-danger">{{ $message }}</span> @enderror
                         </div>
