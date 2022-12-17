@@ -5,7 +5,7 @@ Paket Membership psikotes Anda telah Aktif, silahkan melakukan login untuk menga
 
 Semoga Sukses.
 
-@component('mail::button', ['url' => 'login'])
+@component('mail::button', ['url' => {{ route('login') }}])
 Login Sekarang
 @endcomponent
 

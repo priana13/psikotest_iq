@@ -31,6 +31,6 @@ class CompletedOrderMail extends Mailable
      */
     public function build()
     {
-        return $this->markdown('mail.completed-order-mail', $this->transaksi);
+        return $this->markdown('mail.completed-order-mail');
     }
 }
