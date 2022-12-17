@@ -19,6 +19,8 @@ class MidtransController extends Controller
 
    public $notif;
 
+   public $va_number;
+
     public function __construct(){
 
         // Set your Merchant Server Key
@@ -53,6 +55,8 @@ class MidtransController extends Controller
             // query ke table transaksi di sini            
 
             $va_number    = $notif->va_numbers[0]; 
+
+            $this->va_number;
 
             $echannel = [
               'biller_code' =>  $notif->biller_code,
@@ -210,7 +214,7 @@ class MidtransController extends Controller
     public function sendPendingMail(){
 
 
-      Mail::to($this->transaksi->user->email)->send(new OrderMail($this->transaksi , $this->notif));
+      Mail::to($this->transaksi->user->email)->send(new OrderMail($this->transaksi , $this->notif , $this->va_number));
 
     }
 

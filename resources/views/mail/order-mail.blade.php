@@ -5,11 +5,13 @@ Satu langkah lagi untuk menyelesaikan pesanan ini,
 
 Mohon lakukan pembayaran ke Rekening berikut:
 
-Rekening: {{ $data['payment_type'] }}
-VA Number: {{ $data['va_number'] }}
-Nominal: {{ $data['nominal'] }}
+Rekening: {{ $transaksi['payment_type'] }}
 
-@component('mail::button', ['url' => {{ route('checkout.konfirmasi', $data['code']) }}])
+VA Number: {{ $transaksi['va_number'] }}
+
+Nominal: {{ $transaksi['nominal'] }}
+
+@component('mail::button', ['url' => route('checkout.konfirmasi', $transaksi['code']) ])
 Konfirmasi Pembayaran
 @endcomponent
 
