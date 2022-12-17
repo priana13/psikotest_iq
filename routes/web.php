@@ -9,6 +9,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Member\SoalController;
 use App\Http\Controllers\Member\TypeSoalController;
 use App\Http\Controllers\Member\UjianController;
+use App\Http\Controllers\MidtransController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\PsikotesController;
 
@@ -90,6 +91,8 @@ Route::middleware('auth')->group(function(){
 		Route::get('tes-cermat/{id}' ,[PsikotesController::class, 'soalKecermatan'])->name('admin.tes-kecermatan');
 
 		Route::post('/image-upload', [CkEditorController::class, 'upload'])->name('ckeditor.image-upload');
+
+		// Route::get('/kirim-email', [MidtransController::class, 'sendMail']);
 
 
 	});

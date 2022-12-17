@@ -2,14 +2,22 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\CompletedOrderMail;
+use App\Mail\OrderMail;
+use Mail;
 use App\Models\Membership;
 use App\Models\Transaction;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 
+
 class MidtransController extends Controller
 {
+
+   public $transaksi;
+
+   public $notif;
 
     public function __construct(){
 
@@ -37,6 +45,10 @@ class MidtransController extends Controller
             $order_id = $notif->order_id;
 
             $transaksi = Transaction::where('code', $order_id)->first();
+
+            $this->transaksi = $transaksi;
+
+            $this->notif = $notif;
 
             // query ke table transaksi di sini            
 
@@ -94,9 +106,12 @@ class MidtransController extends Controller
             	/**
                * kirim notifikasi ke email
                */
+
+               $this->send_completed_mail()
     
-          } elseif($transaction == 'pending'){            
-           
+          } elseif($transaction == 'pending'){    
+            
+                      
               
             
             // kiri pesan whatsapp pending                     
@@ -106,7 +121,7 @@ class MidtransController extends Controller
                  * kirim notifikasi ke email
                  */
 
-                // Mail::to($donation->email)->send(new NotifPending($donation));
+                $this->sendPendingMail();
                 
                 // $donation->save();
 
@@ -190,6 +205,21 @@ class MidtransController extends Controller
 
 
       
+    }
+
+    public function sendPendingMail(){
+
+
+      Mail::to($this->transaksi->user->email)->send(new OrderMail($this->transaksi , $this->notif));
+
+    }
+
+
+    public function send_completed_mail(){
+
+
+      Mail::to($this->transaksi->user->email)->send(new CompletedOrderMail($this->transaksi));
+
     }
 
 
