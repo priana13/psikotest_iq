@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\CkEditorController;
 use App\Http\Controllers\CronJobController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Member\SoalController;
@@ -87,6 +88,8 @@ Route::middleware('auth')->group(function(){
 		Route::post('tes-cermat/create' ,[PsikotesController::class, 'storeCermat'])->name('admin.storeCermat');
 
 		Route::get('tes-cermat/{id}' ,[PsikotesController::class, 'soalKecermatan'])->name('admin.tes-kecermatan');
+
+		Route::post('/image-upload', [CkEditorController::class, 'upload'])->name('ckeditor.image-upload');
 
 
 	});
