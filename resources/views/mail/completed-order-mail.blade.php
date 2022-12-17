@@ -5,7 +5,7 @@ Paket Membership psikotes Anda telah Aktif, silahkan melakukan login untuk menga
 
 Semoga Sukses.
 
-@component('mail::button', ['url' => {{ route('login') }}])
+@component('mail::button', ['url' => "https://arstamedia.com/login"])
 Login Sekarang
 @endcomponent
 
