@@ -107,7 +107,7 @@ class MidtransController extends Controller
                * kirim notifikasi ke email
                */
 
-               $this->send_completed_mail()
+               $this->send_completed_mail();
     
           } elseif($transaction == 'pending'){    
             
