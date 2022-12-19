@@ -41,10 +41,10 @@
         @foreach($posts as $post)
 
         <div class="col-md-4">
-          <div class="post-entry p-2">
-            <a href="blog-single.html" class="d-block mb-4">
+          <div class="post-entry p-2 shadow">
+            <a href="/page/{{ $post->slug }}" class="d-block mb-4">
               @if($post->image)
-              <img src="{{ asset('storate/'.$post->image)}}" alt="Image" class="img-fluid">
+              <img src="{{ asset('storage/'.$post->image)}}" alt="Image" class="img-fluid">
               @else
               <img src="/img/gambar.jpg" alt="Image" class="img-fluid">
               @endif

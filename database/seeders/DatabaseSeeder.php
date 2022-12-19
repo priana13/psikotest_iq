@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Category;
 use Illuminate\Database\Seeder;
 use App\Models\Question;
 use App\Models\StaticPage;
@@ -73,6 +74,16 @@ class DatabaseSeeder extends Seeder
            StaticPage::create([
             'name' => $value
            ]);
+        }
+
+        $categories = ["Statis", "Artikel"];
+
+        foreach ($categories as $category) {
+
+            Category::create([
+                "slug" => strtolower($category),
+                "category" => $category
+            ]);
         }
 
 

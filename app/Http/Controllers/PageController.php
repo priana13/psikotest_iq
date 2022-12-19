@@ -47,7 +47,17 @@ class PageController extends Controller
             'title' => 'required',
             'body' => 'required',
             'status' => 'required',
+            'gambar' => 'image'
             ]);
+
+        $path_gambar = null;
+
+        if($request->gambar){
+
+            $path_gambar =  $request->gambar->store('public/photos');
+            $path_gambar = explode('public/' , $path_gambar);
+            $path_gambar = $path_gambar[1];	
+        }
     
         Post::create([ 
                 'user_id' => auth()->user()->id,
@@ -55,7 +65,8 @@ class PageController extends Controller
                 'slug' => $request-> slug,
                 'title' => $request-> title,
                 'body' => $request-> body,
-                'status' => $request-> status
+                'status' => $request-> status,
+                'image' => $path_gambar
             ]);
 
 
@@ -107,6 +118,7 @@ class PageController extends Controller
             'title' => 'required',
             'body' => 'required',
             'status' => 'required',
+            'gambar' => 'image'
             ]);
     
         Post::where('id', $id)->update([ 
@@ -117,6 +129,19 @@ class PageController extends Controller
                 'body' => $request-> body,
                 'status' => $request-> status
             ]);
+     
+
+        if($request->gambar){
+
+            $path_gambar =  $request->gambar->store('public/photos');
+            $path_gambar = explode('public/' , $path_gambar);
+            $path_gambar = $path_gambar[1];	
+
+            Post::where('id', $id)->update([              
+                'image' => $path_gambar
+            ]);
+
+        }
 
 
         return redirect()->route('admin.posts')->with('message', 'Page Berhasil Dipudate');

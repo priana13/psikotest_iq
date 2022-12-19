@@ -14,7 +14,7 @@
 
             <div class="card-body">
       
-                <form method="post" action="{{ route('posts.update', $post->id) }}">
+                <form method="post" action="{{ route('posts.update', $post->id) }}" enctype="multipart/form-data">
                     @csrf
                     @method('put')
                         <input type="hidden" name="id" value="{{ $post->id }}">
@@ -33,6 +33,16 @@
                             <textarea class="form-control"  name="body" id="ckeditor" cols="30" rows="10">{{ $post->body }}</textarea>
                         
                             @error('body') <span class="text-danger">{{ $message }}</span> @enderror
+                        </div>
+
+                        <div class="form-group">
+                            <label for="gambar">Gambar Thumbnail</label>
+
+                            <input type="file" name="gambar" id="gambar">
+
+                            @error('gambar') <span class="text-danger">{{ $message }}</span> @enderror
+
+
                         </div>
 
                         <div class="form-group">
