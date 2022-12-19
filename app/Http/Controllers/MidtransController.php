@@ -56,7 +56,9 @@ class MidtransController extends Controller
 
             $va_number    = $notif->va_numbers[0]; 
 
-            $this->va_number;
+            $this->va_number = $notif->va_numbers[0]->va_number;
+
+            // dd($this->va_number);
 
             $echannel = [
               'biller_code' =>  $notif->biller_code,
@@ -81,9 +83,13 @@ class MidtransController extends Controller
             if ($type == 'credit_card') {
 
               if($fraud == 'challenge') {
-                $donation->setStatusPending();
+
+                // $donation->setStatusPending();
+
               } else {
-                $donation->setStatusSuccess();
+
+                // $donation->setStatusSuccess();
+
               }
 
             }
@@ -211,8 +217,7 @@ class MidtransController extends Controller
       
     }
 
-    public function sendPendingMail(){
-
+    public function sendPendingMail(){  
 
       Mail::to($this->transaksi->user->email)->send(new OrderMail($this->transaksi , $this->notif , $this->va_number));
 

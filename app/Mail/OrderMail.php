@@ -22,7 +22,7 @@ class OrderMail extends Mailable
     public $va_number;
 
     public function __construct($transaksi , $notif , $va_number)
-    {
+    {      
         $this->transaksi = $transaksi;
 
         $this->notif = $notif;
@@ -35,16 +35,17 @@ class OrderMail extends Mailable
      * @return $this
      */
     public function build()
-    {
-
+    {      
         $transaksi = [
             'code' => $this->transaksi->code,
             "name" => $this->transaksi->user->name,
             'nominal' => $this->transaksi->nominal, 
-            'payment_type' => $this->notif->payment_type,
-            'va_number' => $this->va_number
+            'payment_type' => $this->notif->payment_type           
         ];
 
-        return $this->markdown('mail.order-mail', compact('transaksi'));
+        $va = $this->va_number;
+        $bank = strtoupper($this->notif->va_numbers[0]->bank);
+
+        return $this->markdown('mail.order-mail', compact('transaksi', 'va' , 'bank'));
     }
 }
