@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\Category;
 use Illuminate\Database\Seeder;
 use App\Models\Question;
+use App\Models\Setting;
 use App\Models\StaticPage;
 use App\Models\User;
 use Faker\Factory as Faker;
@@ -85,6 +86,27 @@ class DatabaseSeeder extends Seeder
                 "category" => $category
             ]);
         }
+
+        // setting 
+
+        $setting = [
+            "app_name" => "Arsta Media",
+            "app_bio" => "Merupakan penyedia pembelajaran dan pelatihan berbasis digital yang bersifat personal.",
+            "twitter" => null,
+            "facebook" => null,
+            "instagram" => null
+        ];
+
+        foreach ($setting as $key => $value) {
+
+            Setting::create([
+                "name" => $key,
+                "value" => $value
+            ]);
+        }
+
+
+
 
 
     }

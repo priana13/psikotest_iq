@@ -13,6 +13,6 @@ class Setting extends Model
 
     protected $table = 'settings';
 
-    protected $fillable = [];
+    protected $guarded = [];
 	
 }

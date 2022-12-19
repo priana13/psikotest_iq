@@ -16,12 +16,25 @@
       
                 <form method="post" action="{{ route('setting.update') }}" enctype="multipart/form-data">
                     @csrf   
+
+                        <h5 class="mb-2"> <em>Global</em>  </h5>  
+
+                        <div class="form-group row">
+                            <label class="col-md-2">App Name</label>
+                            <input type="text" class="form-control form-control-sm col-md-8" name="app_name" value="{{ $setting["app_name"]->value }}">
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-md-2">App Bio</label>
+                            <textarea type="text" class="form-control form-control-sm col-md-8" name="app_bio">{{ $setting["app_bio"]->value }}</textarea>
+                        </div>
+
                     
                         <h5 class="mb-2"> <em>Halaman Statis</em>  </h5>  
         
                         <div class="form-group row">
                             <label class="col-md-2" for="kontak">Contact</label>
-                            <select class="form-control col-md-8" id="" name="kontak">
+                            <select class="form-control form-control-sm col-md-8" id="" name="kontak">
                                 <option value="0">Select</option>
                                 @foreach ($list_post as $row)
                                 <option value="{{ $row->id }}" 
@@ -37,7 +50,7 @@
 
                         <div class="form-group row">
                             <label class="col-md-2" for="tentang">Tentang Kami</label>
-                            <select class="form-control col-md-8" id="" name="tentang">
+                            <select class="form-control form-control-sm col-md-8" id="" name="tentang">
                                 <option value="0">Select</option>
                                 @foreach ($list_post as $post)
                                 <option value="{{ $post->id }}"
@@ -54,7 +67,7 @@
 
                         <div class="form-group row">
                             <label class="col-md-2" for="syarat_ketentuan">Syarat & Ketentuan</label>
-                            <select class="form-control col-md-8" id="" name="syarat_ketentuan">
+                            <select class="form-control form-control-sm col-md-8" id="" name="syarat_ketentuan">
                                 <option value="0">Select</option>
                                 @foreach ($list_post as $post)
                                 <option value="{{ $post->id }}"
@@ -71,7 +84,7 @@
 
                         <div class="form-group row">
                             <label class="col-md-2" for="kebijakan">Kebijakan Privasi</label>
-                            <select class="form-control col-md-8" id="" name="kebijakan">
+                            <select class="form-control form-control-sm col-md-8" id="" name="kebijakan">
                                 <option value="0">Select</option>
                                 @foreach ($list_post as $post)
                                 <option value="{{ $post->id }}"

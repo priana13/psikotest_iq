@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use App\Models\Setting;
 use App\Models\StaticPage;
 use Illuminate\Http\Request;
 
@@ -16,7 +17,9 @@ class SettingController extends Controller
             "kontak" => StaticPage::name("kontak")->first()->page,
             "tentang" => StaticPage::name("tentang")->first()->page,
             "syarat_ketentuan" => StaticPage::name("syarat_ketentuan")->first()->page,
-            "kebijakan" => StaticPage::name("kebijakan")->first()->page
+            "kebijakan" => StaticPage::name("kebijakan")->first()->page,
+            "app_name" => Setting::where('name','app_name')->first(),
+            "app_bio" => Setting::where('name','app_bio')->first()
         ];  
 
         return view('setting', compact('list_post', 'setting'));
@@ -31,6 +34,22 @@ class SettingController extends Controller
             'syarat_ketentuan' => 'integer',
             'kebijakan' => 'integer'
         ]);
+
+
+
+        // setting App Name
+        $app_name = Setting::where('name','app_name')->first();
+        ($request->app_name == NULL)?       
+            $app_name->value = "Arsta Media":
+            $app_name->value = $request->app_name; 
+        $app_name->save();
+
+        // setting App Bio
+        $app_bio = Setting::where('name','app_bio')->first();
+        ($request->app_bio== NULL)?       
+            $app_bio->value = "Merupakan penyedia pembelajaran dan pelatihan berbasis digital yang bersifat personal.":
+            $app_bio->value = $request->app_bio; 
+        $app_bio->save();
 
 
         // update kontak
@@ -62,6 +81,8 @@ class SettingController extends Controller
             $setting_kebijakan->post_id = NULL:
             $setting_kebijakan->post_id = $request->kebijakan; 
         $setting_kebijakan->save();
+
+
 
         
         return back();
