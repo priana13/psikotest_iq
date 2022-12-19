@@ -82,7 +82,7 @@
             </a>
         </li>
 
-        <!-- Nav Item - Profile -->
+        <!-- Nav Item - History -->
         <li class="nav-item my-0">
             <a class="nav-link py-2" href="{{ route('member.history') }}">
                 <i class="fas fa-history"></i>
@@ -91,7 +91,7 @@
         </li>
 
         @cannot('admin')
-        <!-- Nav Item - Profile -->
+        <!-- Nav Item - Langganan -->
         <li class="nav-item {{ Nav::isRoute('admin.memberships') }}">
             <a class="nav-link py-2" href="{{ route('admin.memberships') }}">
                 <i class="fas fa-clock"></i>
@@ -112,7 +112,7 @@
             {{ __('Admin') }}
         </div>
 
-        <!-- Nav Item - Profile -->
+        <!-- Nav Item - List Psikotes -->
         <li class="nav-item {{ Nav::isRoute('admin.exams') }}">
             <a class="nav-link py-2" href="{{ route('admin.exams') }}">
                 {{-- <i class="fas fa-fw fa-user"></i> --}}
@@ -121,7 +121,7 @@
             </a>
         </li>
 
-        <!-- Nav Item - About -->
+        <!-- Nav Item - Soal -->
         <li class="nav-item d-none {{ Nav::isRoute('admin.questions') }}">
             <a class="nav-link py-2" href="{{ route('admin.questions') }}">
                 {{-- <i class="fas fa-fw fa-hands-helping"></i> --}}
@@ -130,7 +130,7 @@
             </a>
         </li>
 
-        <!-- Nav Item - About -->
+        <!-- Nav Item - Nilai -->
         <li class="nav-item d-none {{ Nav::isRoute('admin.scores') }}">
             <a class="nav-link py-2" href="{{ route('admin.scores') }}">
                 <i class="fas fa-fw fa-hands-helping"></i>
@@ -199,6 +199,15 @@
                 <span>{{ __('Users') }}</span>
             </a>
         </li>
+
+        <!-- Nav Item - Setting -->
+        <li class="nav-item {{ Nav::isRoute('setting') }}">
+            <a class="nav-link py-2" href="{{ route('setting') }}">
+                <i class="fas fa-fw fa-cogs"></i>
+                <span>{{ __('Setting') }}</span>
+            </a>
+        </li>
+
 
         @endcan
 
