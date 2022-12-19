@@ -8,7 +8,7 @@
         <div class="card">
             <div class="card-title px-4 pt-4">
 
-                <h5 class="modal-title" id="createDataModalLabel">Setting</h5>
+                <h5 class="modal-title" id="createDataModalLabel"> <i class="fas fa-save"></i> Setting</h5>
 
             </div>          
 
@@ -30,7 +30,13 @@
                         </div>
 
                     
-                        <h5 class="mb-2"> <em>Halaman Statis</em>  </h5>  
+                        <div class="title mb-3 mt-5">
+                            <h5 class=""> <em>Halaman Statis</em>  </h5>                          
+                            <small id="" class="form-text text-muted">
+                                Jika Halaman belum tersedia, Anda Harus <a href="{{ route("admin.posts") }}" target="_blank">Membuat Page</a>  terlebih dahulu.
+                            </small>
+                        </div>
+                      
         
                         <div class="form-group row">
                             <label class="col-md-2" for="kontak">Contact</label>
@@ -100,7 +106,9 @@
                         
                         
                       
-                        <button type="submit" class="btn btn-primary close-modal">Simpan</button>
+                        <button type="submit" class="btn btn-primary close-modal">
+                            <i class="fas fa-save"></i>
+                            Simpan</button>
             
             
                 </form>
