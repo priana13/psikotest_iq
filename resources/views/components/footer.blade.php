@@ -18,7 +18,7 @@
                 <li><a href="{{ route('page.harga') }}">Harga</a></li>
                 <li><a href="{{ route('page.fitur') }}">Fitur</a></li>
                 <li><a href="{{ route('blog') }}">Blog</a></li>
-                <li><a href="page/{{ $kontak->slug }}">{{ $kontak->title }}</a></li>
+                <li><a href="page/{{ ($kontak)?$kontak->slug:"#" }}">{{ ($kontak)?$kontak->title:"Kontak" }}</a></li>
               </ul>
             </div>
             <div class="col-md-4 mb-4 mb-md-0">

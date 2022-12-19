@@ -12,6 +12,7 @@ use App\Http\Controllers\Member\UjianController;
 use App\Http\Controllers\MidtransController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\PsikotesController;
+use App\Http\Controllers\SettingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -73,7 +74,8 @@ Route::middleware('auth')->group(function(){
 		Route::post('/posts/create', [PageController::class, 'store'])->name('posts.store');
 		Route::get('/posts/edit/{id}', [PageController::class, 'edit'])->name('posts.edit');
 		Route::put('/posts/update/{id}', [PageController::class, 'update'])->name('posts.update');
-
+		Route::get('setting', [SettingController::class, 'index'])->name('setting');
+		Route::post('setting', [SettingController::class, 'update'])->name('setting.update');
 
 		Route::view('categories', 'livewire.categories.index')->middleware('auth')->name('admin.categories');
 		Route::view('examevents', 'livewire.examevents.index')->name('examevents');
