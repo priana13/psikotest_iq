@@ -15,7 +15,9 @@ class PageController extends Controller
      */
     public function index()
     {
-        //
+        $posts = Post::paginate(6);
+
+        return view('pages.blog', compact('posts'));
     }
 
     /**

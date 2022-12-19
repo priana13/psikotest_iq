@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use App\Models\Question;
+use App\Models\StaticPage;
 use App\Models\User;
 use Faker\Factory as Faker;
 use Illuminate\Support\Facades\Hash;
@@ -60,6 +61,19 @@ class DatabaseSeeder extends Seeder
 
         }
 
+
+        $static_pages = [
+            "tentang",
+            "kontak",
+            "syarat_ketentuan",
+            "kebijakan"
+        ];
+
+        foreach ($static_pages as $value) {
+           StaticPage::create([
+            'name' => $value
+           ]);
+        }
 
 
     }
