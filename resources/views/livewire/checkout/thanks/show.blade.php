@@ -24,7 +24,9 @@
 
                        @else
 
-                       <button class="btn btn-outline-secondary">Salin Nominal</button>
+                       {{-- <button class="btn btn-outline-secondary">Salin Nominal</button> --}}
+
+                       <a class="btn btn-outline-success" href="{{ route('checkout.thanks' , $transaksi->id) }}">Bayar Sekarang</a>
 
                        @endif
 
@@ -45,6 +47,8 @@
                             <h4 class="mb-2">Atas nama: Indra Himawan</h4>
 
                             <button class="btn btn-outline-secondary">Salin Rekening</button>
+
+                            
 
                         </div>                      
 
