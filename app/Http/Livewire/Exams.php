@@ -13,6 +13,7 @@ class Exams extends Component
 	protected $paginationTheme = 'bootstrap';
     public $selected_id, $keyWord, $nama_tes, $waktu, $nilai_min, $peraturan;
     public $updateMode = false;
+    public $type;
 
     public function render()
     {        
@@ -55,7 +56,8 @@ class Exams extends Component
 			'nama_tes' => $this-> nama_tes,
 			'waktu' => $this-> waktu,
 			'nilai_min' => $this-> nilai_min,
-			'peraturan' => $this-> peraturan
+			'peraturan' => $this-> peraturan,
+            'type' => $this->type
         ]);
         
         $this->resetInput();
@@ -106,5 +108,10 @@ class Exams extends Component
             $record = Exam::where('id', $id);
             $record->delete();
         }
+    }
+
+    public function pilihType($type){
+
+        $this->type = $type;
     }
 }

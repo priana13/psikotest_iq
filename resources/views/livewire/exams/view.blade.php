@@ -24,12 +24,21 @@
 							</button>
 							<div class="dropdown-menu animated--fade-in" aria-labelledby="dropdownTambah" style="">
 
-								<a href="#" class="dropdown-item" data-toggle="modal" data-target="#createDataModal">
-									Tes Kecerdasan
+								<a href="#" class="dropdown-item" data-toggle="modal" data-target="#createDataModal"
+									wire:click="pilihType('cerdas')"
+								>
+									Kecerdasan
 								</a>
 								<a class="dropdown-item" href="{{ route('admin.createCermat') }}">
-									Tes Kecermatan
-								</a>								
+									Kecermatan
+								</a>	
+								
+								<a href="#" class="dropdown-item" data-toggle="modal" data-target="#createDataModal"
+								wire:click="pilihType('kepribadian')"
+								>
+									Kepribadian
+								</a>
+
 							</div>
 						</div>
 
@@ -65,13 +74,13 @@
 								<td>{{ $row->questions->count() }}</td>							
 								<td>									
 
-								@if($row->type == 'cerdas')
+								@if($row->type == 'cermat')
 
-								<a class="btn btn-sm btn-primary" href="{{ route('admin.exam_soal' , $row->id) }}">Soal</a>
+								<a class="btn btn-sm btn-primary" href="{{ route('admin.tes-kecermatan' , $row->id) }}">Soal</a>
 								
 								@else
 
-								<a class="btn btn-sm btn-primary" href="{{ route('admin.tes-kecermatan' , $row->id) }}">Soal</a>
+								<a class="btn btn-sm btn-primary" href="{{ route('admin.exam_soal' , $row->id) }}">Soal</a>
 
 								@endif
 

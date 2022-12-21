@@ -33,10 +33,20 @@
                         <input wire:model="a" type="text" class="form-control" id="a" placeholder="A">@error('a') <span class="text-danger">{{ $message }}</span> @enderror
                     </div>
                 </div>
-                <div class="row">
-                    <input class="col" type="file" wire:model="gambar_a" id="gambar_a">
+
+                <div class="row my-2 ">
+                    <label class="col-md-3" for="">Nilai</label>
+                    <div class="col-md-4">
+                        <input type="text" wire:model="val_a" class="form-control">
+                    </div>
+                </div>
+
+                <div class="row my-2 ">
+                    <label class="col-md-3" for="">Gambar</label>
+                    <input class="col-md-8" type="file" wire:model="gambar_a" id="gambar_a">
 
                 </div>
+               
 
             </div>
 
@@ -49,10 +59,21 @@
                     </div>
 
                 </div>
-                <div class="row">
-                    <input class="col" type="file" wire:model="gambar_b" id="gambar_b">
+
+
+                <div class="row my-2 ">
+                    <label class="col-md-3" for="">Nilai</label>
+                    <div class="col-md-4">
+                        <input type="text" wire:model="val_b" class="form-control">
+                    </div>
+                </div>
+
+                <div class="row my-2 ">
+                    <label class="col-md-3" for="">Gambar</label>
+                    <input class="col-md-8" type="file" wire:model="gambar_b" id="gambar_b">
 
                 </div>
+             
             </div>
             <div class="form-group card shadow p-3">
                 <label for="c">Pilihan Jawaban C</label>
@@ -63,9 +84,20 @@
                     </div>
 
                 </div>
-                <div class="row">
-                    <input class="col" type="file" wire:model="gambar_c" id="gambar_c">
+
+                <div class="row my-2 ">
+                    <label class="col-md-3" for="">Nilai</label>
+                    <div class="col-md-4">
+                        <input type="text" wire:model="val_c" class="form-control">
+                    </div>
                 </div>
+
+                <div class="row my-2 ">
+                    <label class="col-md-3" for="">Gambar</label>
+                    <input class="col-md-8" type="file" wire:model="gambar_c" id="gambar_c">
+
+                </div>
+
             </div>
             <div class="form-group card shadow p-3">
                 <label for="d">Pilihan Jawaban D</label>
@@ -74,9 +106,20 @@
                         <input wire:model="d" type="text" class="form-control" id="d" placeholder="D">@error('d') <span class="text-danger">{{ $message }}</span> @enderror
                     </div>
                 </div>
-                <div class="row">
-                    <input class="col" type="file" wire:model="gambar_d" id="gambar_d">
+
+                <div class="row my-2 ">
+                    <label class="col-md-3" for="">Nilai</label>
+                    <div class="col-md-4">
+                        <input type="text" wire:model="val_d" class="form-control">
+                    </div>
                 </div>
+
+                <div class="row my-2 ">
+                    <label class="col-md-3" for="">Gambar</label>
+                    <input class="col-md-8" type="file" wire:model="gambar_d" id="gambar_d">
+
+                </div>
+
             </div>
             <div class="form-group card shadow p-3">
                 <label for="e">Pilihan Jawaban E</label>
@@ -86,9 +129,20 @@
 
                     </div>
                 </div>
-                <div class="row">
-                    <input class="col" type="file" wire:model="gambar_e" id="gambar_e">
+
+                <div class="row my-2 ">
+                    <label class="col-md-3" for="">Nilai</label>
+                    <div class="col-md-4">
+                        <input type="text" wire:model="val_e" class="form-control">
+                    </div>
                 </div>
+
+                <div class="row my-2 ">
+                    <label class="col-md-3" for="">Gambar</label>
+                    <input class="col-md-8" type="file" wire:model="gambar_e" id="gambar_e">
+
+                </div>
+
             </div>
             <div class="form-group">
                 <label for="kc_jawaban"></label>

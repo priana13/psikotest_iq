@@ -26,13 +26,22 @@
                         <input wire:model="a" type="text" class="form-control" id="a" placeholder="A">@error('a') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
                 </div>
-                <div class="row mt-2">
 
-                    <div class="col">
+                <div class="row my-2 ">
+                    <label class="col-md-3" for="">Nilai</label>
+                    <div class="col-md-4">
+                        <input type="text" wire:model="val_a" class="form-control">
+                    </div>
+                </div>
+
+
+                <div class="row my-2">                 
+
+                    <div class="col-md-8">
                         <img class="img img-fluid mr-3" src="storage/{{ $gambar_a }}" alt="" width="100px">
                         <input class="" type="file" wire:model="gambar_a_edit"> 
 
-                    </div>
+                    </div>                 
 
                 </div>
             </div>
@@ -44,6 +53,16 @@
 
                     </div>
                 </div>
+
+
+                <div class="row my-2 ">
+                    <label class="col-md-3" for="">Nilai</label>
+                    <div class="col-md-4">
+                        <input type="text" wire:model="val_b" class="form-control">
+                    </div>
+                </div>
+
+
                 <div class="row mt-2">
                     <div class="col">
                         <img class="img img-fluid mr-3" src="storage/{{ $gambar_b }}" alt="" width="100px">
@@ -62,6 +81,16 @@
 
                     </div>
                 </div>
+
+
+                <div class="row my-2 ">
+                    <label class="col-md-3" for="">Nilai</label>
+                    <div class="col-md-4">
+                        <input type="text" wire:model="val_c" class="form-control">
+                    </div>
+                </div>
+
+
                 <div class="row mt-2">
                     <div class="col">
                         <img class="img img-fluid mr-3" src="storage/{{ $gambar_c }}" alt="" width="100px">
@@ -80,6 +109,16 @@
 
                     </div>
                 </div>
+
+
+                <div class="row my-2 ">
+                    <label class="col-md-3" for="">Nilai</label>
+                    <div class="col-md-4">
+                        <input type="text" wire:model="val_d" class="form-control">
+                    </div>
+                </div>
+
+
                 <div class="row mt-2">
                     <div class="col">
                         <img class="img img-fluid mr-3" src="storage/{{ $gambar_d }}" alt="" width="100px">
@@ -96,6 +135,16 @@
                         <input wire:model="e" type="text" class="form-control" id="e" placeholder="E">@error('e') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
                 </div>
+
+
+                <div class="row my-2 ">
+                    <label class="col-md-3" for="">Nilai</label>
+                    <div class="col-md-4">
+                        <input type="text" wire:model="val_e" class="form-control">
+                    </div>
+                </div>
+
+
                 <div class="row mt-2">
                     <div class="col">
                         <img class="img img-fluid mr-3" src="storage/{{ $gambar_e }}" alt="" width="100px">

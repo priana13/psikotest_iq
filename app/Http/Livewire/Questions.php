@@ -24,6 +24,8 @@ class Questions extends Component
 	public $id_psikotes;
 	public $psikotes;
 	public $file;
+	public $val_a=1,$val_b=1,$val_c=1,$val_d=1,$val_e=1;
+
 
 	protected $listeners = [
 		'refresh' => '$refresh'
@@ -140,6 +142,12 @@ class Questions extends Component
 			'c' => $this-> c,
 			'd' => $this-> d,
 			'e' => $this-> e,
+			'val_a' => $this->val_a,
+            'val_b' => $this->val_b,
+            'val_c' => $this->val_c,
+            'val_d' => $this->val_d,
+            'val_e' => $this->val_e,
+
 			'kc_jawaban' => $this-> kc_jawaban,
 			'gambar' => $path_gambar,
 			'status' => $this->status
@@ -271,6 +279,11 @@ class Questions extends Component
 		$this->c = $record-> c;
 		$this->d = $record-> d;
 		$this->e = $record-> e;
+		$this->val_a = $record->val_a;
+		$this->val_b = $record->val_b;
+		$this->val_c = $record->val_c;
+		$this->val_d = $record->val_d;
+		$this->val_e = $record->val_e;
 		$this->kc_jawaban = $record-> kc_jawaban;
 		$this->gambar = $record->gambar;
 		$this->status = $record->status;
@@ -311,6 +324,12 @@ class Questions extends Component
 			'c' => $this-> c,
 			'd' => $this-> d,
 			'e' => $this-> e,
+			'val_a' => $this->val_a,
+            'val_b' => $this->val_b,
+            'val_c' => $this->val_c,
+            'val_d' => $this->val_d,
+            'val_e' => $this->val_e,
+
 			'kc_jawaban' => $this-> kc_jawaban,			
 			'status' => $this-> status
             ]);
