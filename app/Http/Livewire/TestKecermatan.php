@@ -6,9 +6,14 @@ use Livewire\Component;
 use App\Models\Exam;
 use App\Models\ExamColumn;
 use App\Models\Question;
+use Livewire\WithFileUploads;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Imports\ColumnQuestionImport;
 
 class TestKecermatan extends Component
 {
+    use WithFileUploads;
+
     public $exam,$examColumn;
     public $soalTampil = FALSE;
     public $column = 1;
@@ -16,6 +21,8 @@ class TestKecermatan extends Component
     public $a,$b,$c,$d,$e;
     public $list_nomor = [];
     public $list_soal = [];
+    public $file;
+    public $isColumnExis;
 
     protected $listeners = ['updateSoal' => "updateSoal"];
 
@@ -31,24 +38,36 @@ class TestKecermatan extends Component
 
             if($existExamColumn != null){
 
+            $this->isColumnExis = TRUE;
 
             $this->a = $existExamColumn->a;
             $this->b = $existExamColumn->b;
             $this->c = $existExamColumn->c;
             $this->d = $existExamColumn->d;
-            $this->e = $existExamColumn->e;    
-
+            $this->e = $existExamColumn->e; 
                         
-            $this->list_soal = Question::where('exam_id' , $this->exam->id)->where('exam_column_id' , $existExamColumn->id)->get();        
+            $this->list_soal = Question::where('exam_id' , $this->exam->id)->where('exam_column_id' , $existExamColumn->id)->get();     
     
-    
+            }else{
+
+                $this->isColumnExis = FALSE;
+              
             }
 
             $this->list_nomor = [$this->a,$this->b,$this->c,$this->d,$this->e];
 
-            ($existExamColumn == null)?
-                $this->soalTampil = FALSE:
-                $this->soalTampil = TRUE;   
+            if($existExamColumn == null){
+
+                $this->soalTampil = FALSE;
+
+            }else{
+                
+                 $this->soalTampil = TRUE;   
+
+                 $this->examColumn = $existExamColumn;
+            }
+               
+               
 
         }
 
@@ -148,9 +167,21 @@ class TestKecermatan extends Component
 
         $existExamColumn = ExamColumn::where('exam_id' , $this->exam->id)->where('kolom' , $this->column)->first();
         // jika kolom belum dibuat sembunyikan soal
-        ($existExamColumn == null)?
-            $this->soalTampil = FALSE:
-            $this->soalTampil = TRUE;        
+        if($existExamColumn == null){
+
+            $this->soalTampil = FALSE;
+            $this->isColumnExis = FALSE;
+
+                $this->a = '';
+                $this->b = '';
+                $this->c = '';
+                $this->d = '';
+                $this->e = '';
+        }else{
+
+            $this->soalTampil = TRUE; 
+        }
+                  
 
     }
 
@@ -172,6 +203,40 @@ class TestKecermatan extends Component
         session()->flash('message', 'Soal Telah Diupdate');        
 
     }
+
+    public function import(){	
+
+
+        if($this->isColumnExis == FALSE){
+
+            $this->validate([
+                'a' => 'required', 
+                'b' => 'required',
+                'c' => 'required',
+                'd' => 'required',
+                'e'=> 'required'
+            ]);
+
+
+            // create exam_column
+            $this->examColumn = ExamColumn::create([
+                'exam_id' => $this->exam->id,
+                'kolom' => $this->column,
+                'a' => $this->a,
+                'b' => $this->b,
+                'c' => $this->c,
+                'd' => $this->d,
+                'e' => $this->e,
+                'waktu' => $this->waktu
+            ]);
+            
+        }      
+
+		Excel::import(new ColumnQuestionImport($this->exam->id, $this->examColumn->id), $this->file);
+		$this->emit('closeModal');		
+		$this->emit('refresh');
+
+	}
 
 
 }

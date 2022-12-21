@@ -14,24 +14,32 @@
                         <h4>Soal Psikotes Kecermatan</h4>                           
                     </div>
 
-                    @if($column < 4)
-             
-                    <button class="btn btn-primary" wire:click="berikutnya">
-                        Next >
-                    </button>
+                    {{-- kanan --}}
+                    <div>
 
-                    @else
+                        <a href="" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#importDataModal">Import</a>
 
-                    <a href="{{ route('admin.exams') }}" class="btn btn-warning">Selesai</a>
+                        @if($column < 4)
+                 
+                        <button class="btn btn-primary btn-sm" wire:click="berikutnya">
+                            Next >
+                        </button>
+    
+                        @else
+    
+                        <a href="{{ route('admin.exams') }}" class="btn btn-warning btn-sm">Selesai</a>
+    
+                        @endif 
 
-                    @endif
-                    
+                    </div>
+
+
                 </div>
                 
                 <div class="card-body row">
                    
 
-                    <div class="col-md-6 mx-auto text-center">
+                    <div class="col-md-8 mx-auto text-center">
 
                         <h4>Nama Tes: <strong>{{ $exam->nama_tes }}</strong> </h4> 
 
@@ -112,5 +120,8 @@
             </div>
         </div>
     </div>
+
+    @include('livewire.tes-cermat.import')
+
 
 </div>
