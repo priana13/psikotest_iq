@@ -37,7 +37,7 @@
 								<th>Benar</th>
 								<th>Score</th>
 								<th>Status</th>
-								<td>ACTIONS</td>
+								<th>Aksi</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -74,7 +74,7 @@
 								<td width="90">
 								<div class="btn-group">
 									<button type="button" class="btn btn-info btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-									Actions
+									Aksi
 									</button>
 									<div class="dropdown-menu dropdown-menu-right">
 									<a data-toggle="modal" data-target="#updateModal" class="dropdown-item" wire:click="edit({{$row->id}})"><i class="fa fa-edit"></i> Edit </a>							 

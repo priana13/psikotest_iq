@@ -16,11 +16,31 @@
 
                     @if($is_finish == TRUE)
 
+
+
                     <div class="mx-auto">
                          <h2 class="text-center">Tes Telah Selesai/Berakhir</h2>
                          <p>Terimakasih Telah Mengikuti Test ini dengan baik, Nilai Kamu adalah:</p>
-                         <h1 class="text-center text-primary"> <strong>{{ $nilai_akhir }}</strong></h1>
-                    </div>                   
+                         <h1 class="text-center text-primary"> <strong>{{ number_format($nilai_akhir) }}</strong></h1>
+
+
+                         <div class="d-flex justify-content-center">
+                            <a href="{{ route('member.history') }}" class="btn btn-secondary btn-sm mr-3">
+                                History
+                            </a>
+                            <a href="{{ route('member.soal') }}" class="btn btn-primary btn-sm"  type="submit">
+                                Test Lagi
+                            </a>
+        
+                        </div>
+
+                        
+                    </div>  
+                    
+                    
+
+
+
 
                     @else
 
