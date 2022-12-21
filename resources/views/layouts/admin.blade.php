@@ -441,6 +441,7 @@
 	window.livewire.on('closeModal', () => {
 		$('#createDataModal').modal('hide');
         $('#importDataModal').modal('hide');
+        $('#hapusModal').modal('hide');
 	});
 
 

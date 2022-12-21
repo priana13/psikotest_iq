@@ -48,4 +48,13 @@ class ItemSoalKolom extends Component
         $this->emit('updateSoal');
 
     }
+
+    public function hapusSoal(){      
+
+        $soal = Question::find($this->soal->id);       
+        $soal->delete();       
+
+        $this->emit('hapusSoal');
+
+    }
 }

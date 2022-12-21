@@ -39,7 +39,7 @@
                 <div class="card-body row">
                    
 
-                    <div class="col-md-8 mx-auto text-center">
+                    <div class="col-md-10 mx-auto text-center">
 
                         <h4>Nama Tes: <strong>{{ $exam->nama_tes }}</strong> </h4> 
 
@@ -77,12 +77,13 @@
 
                         @if(!$soalTampil)
 
-                        <button class="btn btn-warning mx-auto" wire:click="buatsoal">Buat Soal</button>
+                        <button class="btn btn-warning mx-auto" wire:click="buatsoal">Generate Soal</button>
 
                         @else
 
-                        <div class="">                                                
-                           
+                        @if(count($list_soal) >= 1)
+
+                        <div class="">  
 
                             <table class="table">
                                 <?php $i = 1; ?>     
@@ -90,6 +91,10 @@
                                 <tr>
                                     <td colspan="5">Soal</td>                                   
                                     <td>Jawaban</td>
+                                    <td><button  class="btn btn-sm btn-danger"
+                                        data-toggle="modal" data-target="#hapusModal">Hapus Semua</button> 
+                                    
+                                    </td>
                                 </tr>
 
                                 @if (session()->has('message'))
@@ -107,6 +112,16 @@
 
                         </div>
 
+                        @else 
+
+                        <p>Soal Belum Tersedia</p>
+
+                        <button class="btn btn-primary mx-auto btn-sm" wire:click="buatsoal">Generate Soal</button>
+
+                        <a href="" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#importDataModal">Import</a>
+
+                        @endif
+
                         @endif
 
 
@@ -122,6 +137,8 @@
     </div>
 
     @include('livewire.tes-cermat.import')
+    @include('livewire.tes-cermat.modal-hapus')
+
 
 
 </div>

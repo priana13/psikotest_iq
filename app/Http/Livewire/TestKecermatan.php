@@ -24,7 +24,7 @@ class TestKecermatan extends Component
     public $file;
     public $isColumnExis;
 
-    protected $listeners = ['updateSoal' => "updateSoal"];
+    protected $listeners = ['updateSoal' => "updateSoal" , "hapusSoal"];
 
     public function mount($id){
 
@@ -204,6 +204,10 @@ class TestKecermatan extends Component
 
     }
 
+    public function hapusSoal(){              
+
+    }
+
     public function import(){	
 
 
@@ -237,6 +241,17 @@ class TestKecermatan extends Component
 		$this->emit('refresh');
 
 	}
+
+
+    public function hapusSoalColumn(){
+
+        $list_soal = Question::where('exam_id' , $this->exam->id)->where('exam_column_id' , $this->examColumn->id)->delete(); 
+
+        session()->flash('message', 'Soal Telah Dihapus');  
+
+        $this->emit('closeModal');	
+
+    }
 
 
 }
