@@ -1,7 +1,7 @@
 <footer class="footer" role="contentinfo">
     <div class="container">
       <div class="row">
-        <div class="col-md-4 mb-4 mb-md-0">
+        <div class="col-md-5 mb-4 mb-md-0">
           <h3>About {{ $app_name }}</h3>
           <p>{{ $app_bio }}</p>
           <p class="social">
@@ -10,9 +10,9 @@
             <a href="#"><span class="bi bi-instagram"></span></a>            
           </p>
         </div>
-        <div class="col-md-7 ms-auto">
+        <div class="col-md-6 ms-auto">
           <div class="row site-section pt-0">
-            <div class="col-md-4 mb-4 mb-md-0">
+            <div class="col-md-6 mb-4 mb-md-0">
               <h3>Navigation</h3>
               <ul class="list-unstyled">
                 <li><a href="{{ route('page.harga') }}">Harga</a></li>
@@ -21,7 +21,7 @@
                 <li><a href="/page/{{ ($kontak)?$kontak->slug:"#" }}">{{ ($kontak)?$kontak->title:"Kontak" }}</a></li>
               </ul>
             </div>
-            <div class="col-md-4 mb-4 mb-md-0">
+            <div class="col-md-6 mb-4 mb-md-0">
               <h3>Page</h3>
               <ul class="list-unstyled">
 
@@ -30,12 +30,14 @@
                 <li><a href="/page/{{ ($kebijakan)?$kebijakan->slug:"#" }}">{{ ($kebijakan)?$kebijakan->title:"Kebijakan" }}</a></li>
               </ul>
             </div>
-            <div class="col-md-4 mb-4 mb-md-0">
+
+            {{-- <div class="col-md-4 mb-4 mb-md-0">
               <h3>Downloads</h3>
               <ul class="list-unstyled">
                 <!-- <li><a href="#">Get from the App Store</a></li> -->
               </ul>
-            </div>
+            </div> --}}
+
           </div>
         </div>
       </div>
