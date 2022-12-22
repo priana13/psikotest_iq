@@ -17,6 +17,29 @@
 							<input wire:model='keyWord' type="text" class="form-control" name="search" id="search" placeholder="Search...">
 						</div>
 
+
+					</div>
+				
+
+					<div class="d-flex mt-3" style="display: flex; justify-content: space-between; align-items: center;">
+						
+						<ul class="nav nav-pills">
+							<li class="nav-item">
+							  <a class="nav-link {{ ($selected == 'all')?'active':'' }}" href="#" wire:click.prevent="pilihSoal('all')">All({{ $qty['all'] }})</a>
+							</li>
+							<li class="nav-item">
+							  <a class="nav-link {{ ($selected == 'cerdas')?'active':'' }}" href="#" wire:click.prevent="pilihSoal('cerdas')">Cerdas({{ $qty['cerdas'] }})</a>
+							</li>
+							<li class="nav-item">
+							  <a class="nav-link {{ ($selected == 'cermat')?'active':'' }}" href="#" wire:click.prevent="pilihSoal('cermat')">Cermat({{ $qty['cermat'] }})</a>
+							</li>
+							<li class="nav-item">
+							  <a class="nav-link {{ ($selected == 'kepribadian')?'active':'' }}" wire:click.prevent="pilihSoal('kepribadian')" href="#">Kepribadian({{ $qty['kepribadian'] }})</a>
+							</li>
+						  </ul>
+
+
+
 						<div class="dropdown">
 							<button class="btn btn-primary dropdown-toggle" type="button" id="dropdownTambah" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 								<i class="fa fa-plus"></i>
@@ -43,9 +66,10 @@
 						</div>
 
 
-
-					</div>
+					
+					</div>	
 				</div>
+				
 				
 				<div class="card-body">
 						@include('livewire.exams.create')
@@ -103,4 +127,5 @@
 			</div>
 		</div>
 	</div>
+	  
 </div>
