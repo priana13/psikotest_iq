@@ -82,6 +82,13 @@
             </a>
         </li>
 
+        <li class="nav-item my-0">
+            <a class="nav-link py-2" href="{{route('member.soal.type' , 'kepribadian')}}">
+                <i class="fas fa-clipboard-list"></i>
+                <span>{{ __('Soal Kepribadian') }}</span>
+            </a>
+        </li>
+
         <!-- Nav Item - History -->
         <li class="nav-item my-0">
             <a class="nav-link py-2" href="{{ route('member.history') }}">

@@ -26,6 +26,7 @@ class Ujian extends Component
     public $salah = 0, $benar = 0, $nilai;
     public $tempexam;
     public $sisa_waktu;
+    public $nilai_soal;
 
 
     protected $listeners = [
@@ -120,10 +121,23 @@ class Ujian extends Component
                 $this->salah += 1;
             }
 
+            // hitung nilai
+            if($this->exam->type == 'kepribadian'){
+
+               $this->hitungNilai();
+
+               $nilai = $this->nilai_soal;
+
+            }else{
+                $nilai = 1;
+            }
+          
+
             // cek apakah soal ini sudah dijawab atau belum sebelumnya
             $cek_soal = ExamItem::where('examevent_id', $this->examEvent->id)->where('question_id', $this->soal->id)->first();
 
             if($cek_soal == null){
+
 
                 // input ke table ujian di sini
                 ExamItem::create([
@@ -131,14 +145,16 @@ class Ujian extends Component
                     'user_id' => auth()->user()->id,
                     'question_id' => $this->soal->id,
                     'jawaban' => $this->jawaban,
-                    'is_true' => $hasil
+                    'is_true' => $hasil, 
+                    'nilai' => $nilai
                 ]);
 
             }else{
 
                 ExamItem::where('id', $cek_soal->id)->update([
                     'jawaban' => $this->jawaban,
-                    'is_true' => $hasil
+                    'is_true' => $hasil,
+                    'nilai' => $nilai
                 ]);
             }
 
@@ -253,11 +269,20 @@ class Ujian extends Component
         $this->benar = ExamItem::where('examevent_id', $this->examEvent->id)->benar()->count();
         $this->salah = ExamItem::where('examevent_id', $this->examEvent->id)->salah()->count();
 
-    
-        $this->examEvent->salah = $this->salah;
-        $this->examEvent->benar = $this->benar;            
+        if($this->exam->type == 'kepribadian'){
 
-        $nilai = $this->benar / $this->total * 100;  
+            $nilai = ExamItem::where('examevent_id' , $this->examEvent->id)->sum('nilai');
+
+        }else{
+
+            $this->examEvent->salah = $this->salah;
+            $this->examEvent->benar = $this->benar;            
+    
+            $nilai = $this->benar / $this->total * 100;  
+
+        }
+
+
         $this->nilai = number_format($nilai);         
 
         $this->examEvent->nilai = $this->nilai;
@@ -268,6 +293,17 @@ class Ujian extends Component
 
          // kita bisa redirect page di sini ke halaman nilai
 
+    }
+
+    public function hitungNilai(){
+
+        $jawaban = $this->jawaban;
+        $key = 'val_' . $jawaban;       
+        $soal = $this->soal->toArray();     
+
+        // cari val berdasarkan jawaban
+        $this->nilai_soal = $soal[$key];
+        
     }
 
 

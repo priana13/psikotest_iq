@@ -39,6 +39,11 @@ class QuestionsImport implements ToModel,WithHeadingRow
                     'c' => $row['c'],
                     'd' => $row['d'],
                     'e' => $row['e'],
+                    'val_a' => $row['val_a'],
+                    'val_b' => $row['val_b'],
+                    'val_c' => $row['val_c'],
+                    'val_d' => $row['val_d'],
+                    'val_e' => $row['val_e'],
                     'kc_jawaban' => $row['kc'],			
                     'status' => 'Aktif'
                 ]);
@@ -57,6 +62,11 @@ class QuestionsImport implements ToModel,WithHeadingRow
              'c' => $row['c'],
              'd' => $row['d'],
              'e' => $row['e'],
+             'val_a' => $row['val_a'],
+             'val_b' => $row['val_b'],
+             'val_c' => $row['val_c'],
+             'val_d' => $row['val_d'],
+             'val_e' => $row['val_e'],
              'kc_jawaban' => $row['kc'],			
              'status' => 'Aktif'
             ]);

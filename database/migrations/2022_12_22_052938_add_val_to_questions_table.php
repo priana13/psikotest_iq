@@ -21,6 +21,11 @@ class AddValToQuestionsTable extends Migration
             $table->integer('val_e')->nullable(); 
 
         });
+
+        Schema::table('exam_items', function (Blueprint $table) {
+            $table->integer('nilai')->nullable();
+        });
+
     }
 
     /**
@@ -38,7 +43,12 @@ class AddValToQuestionsTable extends Migration
             $table->dropColumn('val_d');
             $table->dropColumn('val_e'); 
 
-
         });
+
+        Schema::table('exam_items', function (Blueprint $table) {
+            $table->dropColumn('nilai');
+        });
+
+
     }
 }
