@@ -5,6 +5,7 @@ namespace App\Http\Livewire;
 use Livewire\Component;
 use Livewire\WithPagination;
 use App\Models\Exam;
+use App\Models\Question;
 
 class Exams extends Component
 {
@@ -105,6 +106,8 @@ class Exams extends Component
     public function destroy($id)
     {
         if ($id) {
+            // Hapus Soal / question          
+
             $record = Exam::where('id', $id);
             $record->delete();
         }

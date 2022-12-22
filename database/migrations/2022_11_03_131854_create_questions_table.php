@@ -15,7 +15,7 @@ class CreateQuestionsTable extends Migration
     {
         Schema::create('questions', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('exam_id')->constrained('exams');
+            $table->foreignId('exam_id')->constrained('exams')->onDelete('cascade');;
             $table->enum('type' , ['cerdas' , 'cermat']);
             // $table->string('kolom' , 5)->nullable();
             $table->integer('no');

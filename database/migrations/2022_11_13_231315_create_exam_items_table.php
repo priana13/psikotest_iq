@@ -16,7 +16,7 @@ class CreateExamItemsTable extends Migration
         Schema::create('exam_items', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('users');
-            $table->foreignId('question_id')->constrained('questions');
+            $table->foreignId('question_id')->constrained('questions')->onDelete('cascade');;
             $table->string('jawaban');
             $table->boolean('is_true');            
             $table->timestamps();
