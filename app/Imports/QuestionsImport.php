@@ -29,47 +29,50 @@ class QuestionsImport implements ToModel,WithHeadingRow
 
         if(!$question){
 
+            $getSoal = new Question();
+            $getSoal->exam_id = $this->examId;
+            $getSoal->no =  $row['no'];
+            $getSoal->soal = $row['soal'];
+            $getSoal->a = $row['a'];
+            $getSoal->b = $row['b'];
+            $getSoal->c = $row['c'];
+            $getSoal->d = $row['d'];
+            $getSoal->e = $row['e'];
+            $getSoal->kc_jawaban = $row['kc'];
+            $getSoal->status = 'Aktif';
 
-                return new Question([            
-                    'exam_id' => $this->examId,
-                    'no' => $row['no'],
-                    'soal' =>$row['soal'],
-                    'a' => $row['a'],
-                    'b' => $row['b'],
-                    'c' => $row['c'],
-                    'd' => $row['d'],
-                    'e' => $row['e'],
-                    'val_a' => $row['val_a'],
-                    'val_b' => $row['val_b'],
-                    'val_c' => $row['val_c'],
-                    'val_d' => $row['val_d'],
-                    'val_e' => $row['val_e'],
-                    'kc_jawaban' => $row['kc'],			
-                    'status' => 'Aktif'
-                ]);
+            if(isset($row['val_a'])){
+                $getSoal->val_a = $row['val_a'];
+                $getSoal->val_b = $row['val_b'];
+                $getSoal->val_c = $row['val_c'];
+                $getSoal->val_d = $row['val_d'];
+                $getSoal->val_e = $row['val_e'];
+            }
 
-
+            $getSoal->save();
 
         }else{
-           
 
-            Question::where('id',$question->id)->update([            
-             'exam_id' => $this->examId,
-             'no' => $row['no'],
-             'soal' =>$row['soal'],
-             'a' => $row['a'],
-             'b' => $row['b'],
-             'c' => $row['c'],
-             'd' => $row['d'],
-             'e' => $row['e'],
-             'val_a' => $row['val_a'],
-             'val_b' => $row['val_b'],
-             'val_c' => $row['val_c'],
-             'val_d' => $row['val_d'],
-             'val_e' => $row['val_e'],
-             'kc_jawaban' => $row['kc'],			
-             'status' => 'Aktif'
-            ]);
+            $getSoal = Question::find($question->id);
+
+            $getSoal->no =  $row['no'];
+            $getSoal->soal = $row['soal'];
+            $getSoal->a = $row['a'];
+            $getSoal->b = $row['b'];
+            $getSoal->c = $row['c'];
+            $getSoal->d = $row['d'];
+            $getSoal->e = $row['e'];
+            $getSoal->kc_jawaban = $row['kc'];
+
+            if(isset($row['val_a'])){
+                $getSoal->val_a = $row['val_a'];
+                $getSoal->val_b = $row['val_b'];
+                $getSoal->val_c = $row['val_c'];
+                $getSoal->val_d = $row['val_d'];
+                $getSoal->val_e = $row['val_e'];
+            }
+
+            $getSoal->save();
 
         }
 
