@@ -31,7 +31,7 @@
 							  <a class="nav-link {{ ($selected == 'cerdas')?'active':'' }}" href="#" wire:click.prevent="pilihSoal('cerdas')">Cerdas({{ $qty['cerdas'] }})</a>
 							</li>
 							<li class="nav-item">
-							  <a class="nav-link {{ ($selected == 'cermat')?'active':'' }}" href="#" wire:click.prevent="pilihSoal('cermat')">Cermat({{ $qty['cermat'] }})</a>
+							  <a class="nav-link {{ ($selected == 'cermat')?'active':'' }}" href="#" wire:click.prevent="pilihSoal('cermat')"> @lang('app.cermat')({{ $qty['cermat'] }})</a>
 							</li>
 							<li class="nav-item">
 							  <a class="nav-link {{ ($selected == 'kepribadian')?'active':'' }}" wire:click.prevent="pilihSoal('kepribadian')" href="#">Kepribadian({{ $qty['kepribadian'] }})</a>
@@ -53,7 +53,7 @@
 									Kecerdasan
 								</a>
 								<a class="dropdown-item" href="{{ route('admin.createCermat') }}">
-									Kecermatan
+									@lang('app.kecermatan')
 								</a>	
 								
 								<a href="#" class="dropdown-item" data-toggle="modal" data-target="#createDataModal"
@@ -92,7 +92,7 @@
 							<tr>
 								<td>{{ $loop->iteration }}</td> 
 								<td>{{ $row->nama_tes }}</td>
-								<td>{{ $row->type }}</td>
+								<td> @lang('app.' . $row->type)</td>
 								<td>{{ $row->waktu }}</td>								
 								<td>{{ $row->nilai_min }}</td>	
 								<td>{{ $row->questions->count() }}</td>							

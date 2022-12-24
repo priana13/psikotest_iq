@@ -78,7 +78,7 @@
         <li class="nav-item my-0">
             <a class="nav-link py-2" href="{{route('member.soal.type' , 'cermat')}}">
                 <i class="fas fa-clipboard-list"></i>
-                <span>{{ __('Soal Kecermatan') }}</span>
+                <span>@lang('app.Soal-Kecermatan')</span>
             </a>
         </li>
 

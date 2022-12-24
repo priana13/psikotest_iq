@@ -61,8 +61,9 @@
 
           <li class="dropdown"><a href="#"><span>Psikotes</span> <i class="bi bi-chevron-down"></i></a>
             <ul>                      
-              <li><a href="{{route('member.soal.type' , 'cerdas')}}">Soal Kecerdasarn</a></li>
-              <li><a href="{{route('member.soal.type' , 'cermat')}}">Soal Kecermatan</a></li>             
+              <li><a href="{{route('member.soal.type' , 'cerdas')}}">Soal Kecerdasan</a></li>
+              <li><a href="{{route('member.soal.type' , 'cermat')}}">@lang('app.Soal-Kecermatan')</a></li>    
+              <li><a href="{{route('member.soal.type' , 'kepribadian')}}">@lang('app.soal-kepribadian')</a></li>          
             </ul>
           </li>
 

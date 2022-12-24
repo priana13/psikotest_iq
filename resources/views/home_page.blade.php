@@ -73,8 +73,8 @@
             
             <i class="bi bi-clipboard2-check-fill"></i>
           </div>
-          <h3 class="mb-3">Kecermatan</h3>
-          <p>Uji Kercermatan</p>
+          <h3 class="mb-3">Sikap Kerja</h3>
+          <p>Ujian Sikap Kerja</p>
         </div>
       </div>
 

@@ -51,7 +51,7 @@
 							<tr>								
 								<td>{{ $loop->iteration }}</td> 
 								<td>{{ $row->nama_tes }}</td>
-								<td>{{ $row->type }}</td>
+								<td>@lang('app.' . $row->type)</td>
 								<td>{{ $row->waktu }}</td>
 								<td>{{ $row->nilai_min }}</td>
 								<td> {{ $jumlah_soal }} </td>
