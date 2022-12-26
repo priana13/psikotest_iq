@@ -19,7 +19,7 @@ class CreateQuestionsTable extends Migration
             $table->enum('type' , ['cerdas' , 'cermat']);
             // $table->string('kolom' , 5)->nullable();
             $table->integer('no');
-            $table->string('soal')->nullable();
+            $table->text('soal')->nullable();
             $table->string('a');
             $table->string('b');
             $table->string('c');
