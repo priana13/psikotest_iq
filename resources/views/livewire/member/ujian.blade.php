@@ -26,7 +26,7 @@
                     </div>  
                     @endif
                                     
-                    <div class="col-sm-9 mt-3 ">
+                    <div class="{{ ($soal->gambar)?"col-sm-9":"col" }} mt-3 ">
 
                         <div class="form-check mb-2 shadow-sm p-2">
 

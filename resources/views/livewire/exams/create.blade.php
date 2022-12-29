@@ -16,11 +16,11 @@
             </div>
             <div class="form-group">
                 <label for="waktu"></label>
-                <input wire:model="waktu" type="text" class="form-control" id="waktu" placeholder="Waktu">@error('waktu') <span class="text-danger">{{ $message }}</span> @enderror
+                <input wire:model="waktu" type="number" class="form-control" id="waktu" placeholder="Waktu">@error('waktu') <span class="text-danger">{{ $message }}</span> @enderror
             </div>
             <div class="form-group">
                 <label for="nilai_min"></label>
-                <input wire:model="nilai_min" type="text" class="form-control" id="nilai_min" placeholder="Nilai Min">@error('nilai_min') <span class="text-danger">{{ $message }}</span> @enderror
+                <input wire:model="nilai_min" type="number" class="form-control" id="nilai_min" placeholder="Nilai Min">@error('nilai_min') <span class="text-danger">{{ $message }}</span> @enderror
             </div>
             <div class="form-group">
                 <label for="peraturan"></label>

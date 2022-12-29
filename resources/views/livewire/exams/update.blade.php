@@ -22,12 +22,12 @@
 
                     <div class="form-group col-md-6">
                         <label for="waktu">Jumlah Kolom</label>
-                        <input wire:model="col_qty" type="text" class="form-control" id="col_qty" placeholder="col_qty">@error('col_qty') <span class="text-danger">{{ $message }}</span> @enderror
+                        <input wire:model="col_qty" type="number" class="form-control" id="col_qty" placeholder="col_qty">@error('col_qty') <span class="text-danger">{{ $message }}</span> @enderror
                     </div>
 
                     <div class="form-group col-md-6">
                         <label for="waktu">Waktu</label>
-                        <input wire:model="waktu" type="text" class="form-control" id="waktu" placeholder="Waktu">@error('waktu') <span class="text-danger">{{ $message }}</span> @enderror
+                        <input wire:model="waktu" type="number" class="form-control" id="waktu" placeholder="Waktu">@error('waktu') <span class="text-danger">{{ $message }}</span> @enderror
                     </div>
 
                 </div>
@@ -35,7 +35,7 @@
 
             <div class="form-group">
                 <label for="waktu">Waktu</label>
-                <input wire:model="waktu" type="text" class="form-control" id="waktu" placeholder="Waktu">@error('waktu') <span class="text-danger">{{ $message }}</span> @enderror
+                <input wire:model="waktu" type="number" class="form-control" id="number" placeholder="Waktu">@error('waktu') <span class="text-danger">{{ $message }}</span> @enderror
             </div>
 
             @endif
@@ -43,7 +43,7 @@
 
             <div class="form-group">
                 <label for="nilai_min">Nilai Minimal</label>
-                <input wire:model="nilai_min" type="text" class="form-control" id="nilai_min" placeholder="Nilai Min">@error('nilai_min') <span class="text-danger">{{ $message }}</span> @enderror
+                <input wire:model="nilai_min" type="number" class="form-control" id="nilai_min" placeholder="Nilai Min">@error('nilai_min') <span class="text-danger">{{ $message }}</span> @enderror
             </div>
             <div class="form-group">
                 <label for="peraturan">Peraturan</label>
