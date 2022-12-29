@@ -26,8 +26,8 @@ class PsikotesController extends Controller
             'namatest' => 'required',
             'peraturan' => 'required',
             'nilai_min' => 'required',
-            'waktu' => 'required'
-        ]);
+            'waktu' => 'required',           
+        ]);       
 
 
         $exam = Exam::create([
@@ -35,7 +35,8 @@ class PsikotesController extends Controller
             'nama_tes' => $request->namatest,
             'peraturan' => $request->peraturan,
             'nilai_min' => $request->nilai_min,
-            'waktu' => $request->waktu
+            'waktu' => $request->waktu,
+            'col_qty' => $request->col_qty,
 
         ]);
 

@@ -11,7 +11,7 @@
                     @endif
 
                     <div>
-                        <h4>Soal Psikotes Kecermatan</h4>                           
+                        <h4>@lang('app.Soal-Kecermatan')</h4>                           
                     </div>
 
                     {{-- kanan --}}
@@ -19,7 +19,7 @@
 
                         <a href="" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#importDataModal">Import</a>
 
-                        @if($column < 4)
+                        @if($column < $exam->col_qty)
                  
                         <button class="btn btn-primary btn-sm" wire:click="berikutnya">
                             Next >

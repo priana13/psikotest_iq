@@ -15,7 +15,7 @@
                         <div class="card-header d-flex justify-content-between">                          
         
                             <div class="">
-                                <h4>Soal Psikotes Kecermatan</h4>  
+                                <h4>@lang('app.Soal-Kecermatan')</h4>  
                                                          
                             </div> 
                             
@@ -42,12 +42,21 @@
             
         
                                 <div class="row">
+
+                                            
+                                    <div class="form-group col-3">
+                                        <label for="col_qty">Jumlah Kolom</label>
+                                        <input type="number" class="form-control" name="col_qty" value="{{ old('col_qty') }}">
+                                        @error('col_qty') <span class="text-danger">{{ $message }}</span> @enderror
+                                    </div> 
+                                    
         
                                     <div class="form-group col-3">
                                         <label for="waktu">Waktu Per Kolom (Menit)</label>
                                         <input type="number" class="form-control" name="waktu" value="{{ old('waktu') }}">
                                         @error('waktu') <span class="text-danger">{{ $message }}</span> @enderror
                                     </div> 
+
                                 </div>
 
                                 <div class="row">
@@ -60,7 +69,7 @@
         
 
                                 </div>
-        
+                                <a class="btn btn-secondary" href="{{ route('admin.exams') }}">Batal</a>
                                 <button class="btn btn-primary" wire:click="berikutnya">Buat Psikotes</button>
         
         

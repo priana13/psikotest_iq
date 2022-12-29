@@ -12,20 +12,45 @@
                 <form>
 					<input type="hidden" wire:model="selected_id">
             <div class="form-group">
-                <label for="nama_tes"></label>
-                <input wire:model="nama_tes" type="text" class="form-control" id="nama_tes" placeholder="Nama Tes">@error('nama_tes') <span class="error text-danger">{{ $message }}</span> @enderror
+                <label for="nama_tes">Judul</label>
+                <input wire:model="nama_tes" type="text" class="form-control" id="nama_tes" placeholder="Nama Tes">@error('nama_tes') <span class="text-danger">{{ $message }}</span> @enderror
+            </div>
+
+            @if($selected_type == 'cermat')
+
+                <div class="row">
+
+                    <div class="form-group col-md-6">
+                        <label for="waktu">Jumlah Kolom</label>
+                        <input wire:model="col_qty" type="text" class="form-control" id="col_qty" placeholder="col_qty">@error('col_qty') <span class="text-danger">{{ $message }}</span> @enderror
+                    </div>
+
+                    <div class="form-group col-md-6">
+                        <label for="waktu">Waktu</label>
+                        <input wire:model="waktu" type="text" class="form-control" id="waktu" placeholder="Waktu">@error('waktu') <span class="text-danger">{{ $message }}</span> @enderror
+                    </div>
+
+                </div>
+            @else
+
+            <div class="form-group">
+                <label for="waktu">Waktu</label>
+                <input wire:model="waktu" type="text" class="form-control" id="waktu" placeholder="Waktu">@error('waktu') <span class="text-danger">{{ $message }}</span> @enderror
+            </div>
+
+            @endif
+
+
+            <div class="form-group">
+                <label for="nilai_min">Nilai Minimal</label>
+                <input wire:model="nilai_min" type="text" class="form-control" id="nilai_min" placeholder="Nilai Min">@error('nilai_min') <span class="text-danger">{{ $message }}</span> @enderror
             </div>
             <div class="form-group">
-                <label for="waktu"></label>
-                <input wire:model="waktu" type="text" class="form-control" id="waktu" placeholder="Waktu">@error('waktu') <span class="error text-danger">{{ $message }}</span> @enderror
-            </div>
-            <div class="form-group">
-                <label for="nilai_min"></label>
-                <input wire:model="nilai_min" type="text" class="form-control" id="nilai_min" placeholder="Nilai Min">@error('nilai_min') <span class="error text-danger">{{ $message }}</span> @enderror
-            </div>
-            <div class="form-group">
-                <label for="peraturan"></label>
-                <input wire:model="peraturan" type="text" class="form-control" id="peraturan" placeholder="Peraturan">@error('peraturan') <span class="error text-danger">{{ $message }}</span> @enderror
+                <label for="peraturan">Peraturan</label>
+                <textarea wire:model="peraturan" id="peraturan" cols="30" rows="10"
+                class="form-control"
+                ></textarea>
+                @error('peraturan') <span class="text-danger">{{ $message }}</span> @enderror
             </div>
 
                 </form>

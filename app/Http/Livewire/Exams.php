@@ -17,6 +17,7 @@ class Exams extends Component
     public $updateMode = false;
     public $type;
     public $selected = 'all';
+    public $selected_type,$col_qty = null;
 
     public function render()
     {        
@@ -102,6 +103,8 @@ class Exams extends Component
 		$this->waktu = $record-> waktu;
 		$this->nilai_min = $record-> nilai_min;
 		$this->peraturan = $record-> peraturan;
+        $this->selected_type = $record->type;
+        $this->col_qty = $record->col_qty;
 		
         $this->updateMode = true;
     }
@@ -121,7 +124,8 @@ class Exams extends Component
 			'nama_tes' => $this-> nama_tes,
 			'waktu' => $this-> waktu,
 			'nilai_min' => $this-> nilai_min,
-			'peraturan' => $this-> peraturan
+			'peraturan' => $this-> peraturan,
+            'col_qty' => $this->col_qty
             ]);
 
             $this->resetInput();

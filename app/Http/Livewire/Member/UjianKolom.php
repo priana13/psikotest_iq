@@ -137,7 +137,8 @@ class UjianKolom extends Component
         if($this->nomor < $this->soal_terakhir){
 
             // jawaban di sini
-            $nilai_jawaban = $this->pilihanJawaban[$jawaban];
+            $nilai_jawaban = $this->pilihanJawaban[$jawaban];         
+
             ($this->soal->kc_jawaban == $nilai_jawaban)? $hasil = true:$hasil = false;
 
             $exam_item = ExamItem::create([
