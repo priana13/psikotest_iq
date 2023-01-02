@@ -52,7 +52,7 @@ Route::middleware('auth')->group(function(){
 
 	Route::get('/member/ujian/{exam}/{examevent}' , [UjianController::class , 'ujian'])->name('member.ujian');
 	Route::get('/member/ujian/{exam}/{examevent}/{kolom}' , [UjianController::class , 'ujian_kolom'])->name('member.ujian-kolom');
-
+	Route::get('/member/hasil-ujian/{examevent}', [UjianController::class,'hasil_ujian'])->name('member.hasil_ujian');
 
 	Route::view('member/history', 'livewire.examevents.index')->name('member.history');
 	// checkout

@@ -28,6 +28,9 @@
                             <a href="{{ route('member.history') }}" class="btn btn-secondary btn-sm mr-3">
                                 History
                             </a>
+                            <a href="{{ route('member.hasil_ujian', $examEvent) }}" class="btn btn-success btn-sm mr-3"  type="submit">
+                                Lihat Hasil
+                            </a>
                             <a href="{{ route('member.soal') }}" class="btn btn-primary btn-sm"  type="submit">
                                 Test Lagi
                             </a>

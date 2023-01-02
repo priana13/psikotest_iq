@@ -87,5 +87,13 @@ class UjianController extends Controller
     }
 
 
+    public function hasil_ujian(Examevent $examevent){
+
+      $ujian = $examevent;     
+
+      return view('livewire.member.hasil-ujian', compact('ujian') );
+    }
+
+
 
 }
