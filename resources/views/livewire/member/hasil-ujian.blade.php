@@ -14,8 +14,8 @@
 
                 <div class="my-2">
 
-                    USER: <strong>{{ $ujian->user->name }}</strong> <br>
-                    TANGGAL: <strong>{{ date('d-m-Y', strtotime($ujian->created_at))  }}</strong> 
+                    USER: <strong>{{ $examevent->user->name }}</strong> <br>
+                    TANGGAL: <strong>{{ date('d-m-Y', strtotime($examevent->created_at))  }}</strong> 
                     
                 </div>
 
@@ -30,16 +30,9 @@
                             <tr>
 
                                 <th></th>
-                                <th>Kol 1</th>
-                                <th>Kol 2</th>
-                                <th>Kol 3</th>
-                                <th>Kol 4</th>
-                                <th>Kol 5</th>
-                                <th>Kol 6</th>
-                                <th>Kol 7</th>
-                                <th>Kol 8</th>
-                                <th>Kol 9</th>
-                                <th>Kol 10</th>
+                                @foreach ($kolom['kolom-benar'] as $row)
+                                    <th>Kol {{ $row->kolom }}</th>
+                                @endforeach
                                 <th></th>
 
                             </tr>
@@ -48,36 +41,40 @@
 
                         <tbody>
                             <tr>
+                                <?php
+                                    $jumlah_benar = 0;
+                                    $jumlah_salah = 0;
+                                  
+                                ?>
                                 <td>BENAR</td>
-                                <td>1</td>
-                                <td>2</td>
-                                <td>3</td>
-                                <td>4</td>
-                                <td>5</td>
-                                <td>6</td>
-                                <td>7</td>
-                                <td>8</td>
-                                <td>9</td>
-                                <td>10</td>
-                                <th>300</th>
+                                @foreach ($kolom['kolom-benar'] as $row)
+                                    <td>{{ $row->qty }}</td>
+                                        <?php 
+                                            $jumlah_benar += $row->qty;
+
+                                            $kol_benar [$row->kolom] =$row->qty;
+                                        ?>
+                                @endforeach
+                                <th>{{ $jumlah_benar }}</th>
                             </tr>
                             <tr>
                                 <td>SALAH</td>
-                                <td>1</td>
-                                <td>2</td>
-                                <td>3</td>
-                                <td>4</td>
-                                <td>5</td>
-                                <td>6</td>
-                                <td>7</td>
-                                <td>8</td>
-                                <td>9</td>
-                                <td>10</td>
-                                <th>100</th>
+
+                                @foreach ($kolom['kolom-salah'] as $row)
+                                    <td>{{ $row->qty }}</td>
+
+                                    <?php 
+                                        $jumlah_salah += $row->qty;
+                                    ?>
+
+                                @endforeach
+
+                               
+                                <th>{{ $jumlah_salah }}</th>
                             </tr>
                             <tr>
-                                <th colspan="11" style="text-align: center;"> <span>Nilai Rata-rata</span> </th>
-                                <th>300</th>
+                                <th colspan="{{ $kolom['kolom-benar']->max('kolom') + 1 }}" style="text-align: center;"> <span>Nilai Rata-rata</span> </th>
+                                <th>{{ ($jumlah_benar - $jumlah_salah) / 10 }}</th>
                             </tr>
                         </tbody>
 
@@ -91,58 +88,149 @@
 
                 {{-- Table 2 --}}
 
-                <div class="table-responsive">
+                <div class="row">
+                    <div class="col-md-10">                           
 
-                    <table class="table table-bordered">
-                        <thead class="bg-warning">
-                            <tr>
+                        <div class="table-responsive">
 
-                                <th>KOLOM</th>
-                                <th>1-2</th>
-                                <th>2-3</th>
-                                <th>3-4</th>
-                                <th>4-5</th>
-                                <th>5-6</th>
-                                <th>6-7</th>
-                                <th>7-8</th>
-                                <th>8-9</th>
-                                <th>9-10</th>                               
+                            <table class="table table-bordered">
+                                <thead class="bg-warning">
+                                    <tr>
+        
+                                        <th>KOLOM</th>
 
-                            </tr>
+                                        <th>1-2</th>
 
-                        </thead>
+                                        <th>2-3</th>
+                                        <th>3-4</th>
+                                        <th>4-5</th>
+                                        <th>5-6</th>
+                                        <th>6-7</th>
+                                        <th>7-8</th>
+                                        <th>8-9</th>
+                                        <th>9-10</th>      
 
-                        <tbody>
-                           
-                            <tr>
-                                <td>SELISIH</td>
-                                <td>1</td>
-                                <td>2</td>
-                                <td>3</td>
-                                <td>4</td>
-                                <td>5</td>
-                                <td>6</td>
-                                <td>7</td>
-                                <td>8</td>
-                                <td>9</td>                                                             
-                            </tr>
-                           
-                        </tbody>
+        
+                                    </tr>
+        
+                                </thead>
+        
+                                <tbody>
+                                   
+                                    <tr>
+                                        <td>SELISIH</td>
+                                        <td>{{ ( isset($kol_benar[2]) )? $kol_benar[1] - $kol_benar[2] : 0 }}</td>
+                                        <td>{{ ( isset($kol_benar[3]) )? $kol_benar[2] - $kol_benar[3]: 0 }}</td>
+                                        <td>{{ ( isset($kol_benar[4]) )? $kol_benar[3] - $kol_benar[4]: 0 }}</td>
+                                        <td>{{ ( isset($kol_benar[5]) )? $kol_benar[4] - $kol_benar[5]: 0 }}</td>
+                                        <td>{{ ( isset($kol_benar[6]) )? $kol_benar[5] - $kol_benar[6]: 0 }}</td>
+                                        <td>{{ ( isset($kol_benar[7]) )? $kol_benar[6] - $kol_benar[7]: 0 }}</td>
+                                        <td>{{ ( isset($kol_benar[8]) )? $kol_benar[7] - $kol_benar[8]: 0 }}</td>
+                                        <td>{{ ( isset($kol_benar[9]) )? $kol_benar[8] - $kol_benar[9]: 0 }}</td>
+                                        <td>{{ ( isset($kol_benar[10]) )? $kol_benar[9] - $kol_benar[10]: 0 }}</td>                                                             
+                                    </tr>
+                                   
+                                </tbody>
+        
+        
+                            </table>
+        
+                        </div>
 
 
-                    </table>
-
+                    </div>
                 </div>
 
-                {{-- Akhir table 2 --}}
 
+                {{-- Akhir table 2 --}}              
 
+                <div>
+
+                    <div>
+                        <canvas id="myChart"></canvas>
+                    </div>
+
+                    <div class="mt-3">
+                        <canvas id="chartKestabilan"></canvas>
+                    </div>                      
+
+                </div>
 
             </div>
         </div>
 
     </div>
 </div>
+
+
+@push('scripts')
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+    const ctx = document.getElementById('myChart');
+  
+    new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ["kolom 1", "Kolom 2"],
+        datasets: [{
+          label: 'Nilai',
+          data: [12, 19, 3, 5, 2, 3],
+               
+          backgroundColor: ["#5BC0F8", "#5BC0F8", "#5BC0F8", "#5BC0F8", "#5BC0F8", "#5BC0F8"],
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        },
+        plugins: {
+            title: {
+                display: true,
+                text: 'GRAFIK KETAHANAN'
+            }
+        }
+      }
+    });
+  </script>
+
+{{-- Grafik Kestabilan --}}
+<script>
+    const ctx2 = document.getElementById('chartKestabilan');
+  
+    new Chart(ctx2, {
+      type: 'bar',
+      data: {
+        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+        datasets: [{
+          label: 'Nilai',
+          data: [12, 19, 3, 5, 2, 3],
+          borderWidth: 1,
+          backgroundColor: ["#0081C9", "#0081C9", "#0081C9", "#0081C9", "#0081C9", "#0081C9"],
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        },
+        plugins: {
+            title: {
+                display: true,
+                text: 'GRAFIK KESTABILAN'
+            }
+        }
+      }
+    });
+  </script>
+
+
+
+@endpush
 
 
 @endsection

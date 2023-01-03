@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers\Member;
 
+use App\Charts\GrafikKetahanan;
 use App\Http\Controllers\Controller;
 use App\Models\Exam;
 use Illuminate\Http\Request;
 use App\Models\Examevent;
 use App\Models\TempExam;
+use Illuminate\Support\Facades\DB;
 
 class UjianController extends Controller
 {
@@ -87,11 +89,41 @@ class UjianController extends Controller
     }
 
 
-    public function hasil_ujian(Examevent $examevent){
+    public function hasil_ujian(Examevent $examevent){      
 
-      $ujian = $examevent;     
+      $nilai_kolom = DB::table('exam_items')
+                    ->select(['kolom','is_true',DB::raw('count(*) as qty')])
+                    ->join('users', 'user_id', 'users.id')
+                    ->join('questions', 'question_id', 'questions.id')
+                    ->join('exam_columns', 'exam_column_id', 'exam_columns.id')
+                    ->where('examevent_id', $examevent->id)
+                    ->groupBy('kolom')
+                    ->groupBy('is_true')
+                    ->get();
+       
 
-      return view('livewire.member.hasil-ujian', compact('ujian') );
+        $kolom = [
+          "kolom-benar" => $nilai_kolom->where('is_true',1),
+          "kolom-salah" => $nilai_kolom->where('is_true',0),
+        ];
+
+      // {
+      // kolom: "1",
+      // qty: 49
+      // }
+
+      // foreach ($nilai_kolom as $row) {
+
+      //   $kolom[] = $row->kolom;
+      //   $kolom_nilai[] = $row->qty;
+
+      // }
+
+      return view('livewire.member.hasil-ujian', compact(
+        'examevent',
+        'nilai_kolom',
+        'kolom',      
+        ) );
     }
 
 
