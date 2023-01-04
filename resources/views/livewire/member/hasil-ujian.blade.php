@@ -28,7 +28,7 @@
                     <table class="table table-bordered">
                         <thead class="bg-warning">
                             <tr>
-
+                               
                                 <th></th>
                                 @foreach ($kolom['kolom-benar'] as $row)
                                     <th>Kol {{ $row->kolom }}</th>
@@ -57,6 +57,7 @@
                                             $value_benar[] = $row->qty;
                                         ?>
                                 @endforeach
+                              
                                 <th>{{ $jumlah_benar }}</th>
                             </tr>
                             <tr>
@@ -117,26 +118,26 @@
         
                                 </thead>
         
-                                <tbody>
+                                <tbody>                                    
                                    
                                     <tr>
                                         <td>SELISIH</td>
                                         <td>
-                                            {{ ( isset($kol_benar[2]) )?
+                                            {{ ( isset($kol_benar[2]) && isset($kol_benar[1]))?
                                              $selisih1 = $kol_benar[1] - $kol_benar[2]:
                                              $selisih1 = 0 }}
                                         </td>
-                                        <td>{{ ( isset($kol_benar[3]) )? 
+                                        <td>{{ ( isset($kol_benar[2]) && isset($kol_benar[3]) )? 
                                                 $selisih2 = $kol_benar[2] - $kol_benar[3]: 
                                                 $selisih2 = 0 }}
                                         </td>
-                                        <td>{{ ( isset($kol_benar[4]) )?$selisih3 =  $kol_benar[3] - $kol_benar[4]: $selisih3 = 0 }}</td>
-                                        <td>{{ ( isset($kol_benar[5]) )? $selisih4 = $kol_benar[4] - $kol_benar[5]: $selisih4 = 0 }}</td>
-                                        <td>{{ ( isset($kol_benar[6]) )? $selisih5 = $kol_benar[5] - $kol_benar[6]: $selisih5 = 0 }}</td>
-                                        <td>{{ ( isset($kol_benar[7]) )? $selisih6 = $kol_benar[6] - $kol_benar[7]: $selisih6 = 0 }}</td>
-                                        <td>{{ ( isset($kol_benar[8]) )? $selisih7 = $kol_benar[7] - $kol_benar[8]: $selisih7 =0 }}</td>
-                                        <td>{{ ( isset($kol_benar[9]) )? $selisih8 =$kol_benar[8] - $kol_benar[9]: $selisih8 =0 }}</td>
-                                        <td>{{ ( isset($kol_benar[10]) )? $selisih9 =$kol_benar[9] - $kol_benar[10]: $selisih9 =0 }}</td>                                                             
+                                        <td>{{ ( isset($kol_benar[3]) && isset($kol_benar[4]) )?$selisih3 =  $kol_benar[3] - $kol_benar[4]: $selisih3 = 0 }}</td>
+                                        <td>{{ ( isset($kol_benar[4]) && isset($kol_benar[5]) )? $selisih4 = $kol_benar[4] - $kol_benar[5]: $selisih4 = 0 }}</td>
+                                        <td>{{ ( isset( $kol_benar[5]) && isset($kol_benar[6]) )? $selisih5 = $kol_benar[5] - $kol_benar[6]: $selisih5 = 0 }}</td>
+                                        <td>{{ ( isset($kol_benar[6]) && isset($kol_benar[7]) )? $selisih6 = $kol_benar[6] - $kol_benar[7]: $selisih6 = 0 }}</td>
+                                        <td>{{ ( isset($kol_benar[7]) && isset($kol_benar[8]) )? $selisih7 = $kol_benar[7] - $kol_benar[8]: $selisih7 =0 }}</td>
+                                        <td>{{ ( isset($kol_benar[8]) && isset($kol_benar[9]) )? $selisih8 =$kol_benar[8] - $kol_benar[9]: $selisih8 =0 }}</td>
+                                        <td>{{ ( isset($kol_benar[9]) && isset($kol_benar[10]) )? $selisih9 =$kol_benar[9] - $kol_benar[10]: $selisih9 =0 }}</td>                                                             
                                     </tr>
                                    
                                 </tbody>
