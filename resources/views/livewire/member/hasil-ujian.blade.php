@@ -6,11 +6,11 @@
 <div class="container">
     <div class="row">
 
-        <div class="col-md-10 m-auto">
+        <div class="col m-auto">
 
-            <div class="card bg-white shadow p-3">
+            <div class="card bg-white shadow p-5">
 
-                <h3 class="text-center">HASIL TES SIKAP KERJA</h3>
+                <h3 class="text-center"> <strong>HASIL TES SIKAP KERJA</strong> </h3>
 
                 <div class="my-2">
 
@@ -19,11 +19,11 @@
                     
                 </div>
 
-                <h4>Data Tes Sikap Kerja</h4>
+                {{-- <h4>Data Tes Sikap Kerja</h4> --}}
 
                 {{-- Table 1 --}}
 
-                <div class="table-responsive">
+                <div class="table-responsive mt-3">
 
                     <table class="table table-bordered">
                         <thead class="bg-warning">
@@ -53,6 +53,8 @@
                                             $jumlah_benar += $row->qty;
 
                                             $kol_benar [$row->kolom] =$row->qty;
+                                            $label_benar[] = $row->kolom;
+                                            $value_benar[] = $row->qty;
                                         ?>
                                 @endforeach
                                 <th>{{ $jumlah_benar }}</th>
@@ -119,15 +121,22 @@
                                    
                                     <tr>
                                         <td>SELISIH</td>
-                                        <td>{{ ( isset($kol_benar[2]) )? $kol_benar[1] - $kol_benar[2] : 0 }}</td>
-                                        <td>{{ ( isset($kol_benar[3]) )? $kol_benar[2] - $kol_benar[3]: 0 }}</td>
-                                        <td>{{ ( isset($kol_benar[4]) )? $kol_benar[3] - $kol_benar[4]: 0 }}</td>
-                                        <td>{{ ( isset($kol_benar[5]) )? $kol_benar[4] - $kol_benar[5]: 0 }}</td>
-                                        <td>{{ ( isset($kol_benar[6]) )? $kol_benar[5] - $kol_benar[6]: 0 }}</td>
-                                        <td>{{ ( isset($kol_benar[7]) )? $kol_benar[6] - $kol_benar[7]: 0 }}</td>
-                                        <td>{{ ( isset($kol_benar[8]) )? $kol_benar[7] - $kol_benar[8]: 0 }}</td>
-                                        <td>{{ ( isset($kol_benar[9]) )? $kol_benar[8] - $kol_benar[9]: 0 }}</td>
-                                        <td>{{ ( isset($kol_benar[10]) )? $kol_benar[9] - $kol_benar[10]: 0 }}</td>                                                             
+                                        <td>
+                                            {{ ( isset($kol_benar[2]) )?
+                                             $selisih1 = $kol_benar[1] - $kol_benar[2]:
+                                             $selisih1 = 0 }}
+                                        </td>
+                                        <td>{{ ( isset($kol_benar[3]) )? 
+                                                $selisih2 = $kol_benar[2] - $kol_benar[3]: 
+                                                $selisih2 = 0 }}
+                                        </td>
+                                        <td>{{ ( isset($kol_benar[4]) )?$selisih3 =  $kol_benar[3] - $kol_benar[4]: $selisih3 = 0 }}</td>
+                                        <td>{{ ( isset($kol_benar[5]) )? $selisih4 = $kol_benar[4] - $kol_benar[5]: $selisih4 = 0 }}</td>
+                                        <td>{{ ( isset($kol_benar[6]) )? $selisih5 = $kol_benar[5] - $kol_benar[6]: $selisih5 = 0 }}</td>
+                                        <td>{{ ( isset($kol_benar[7]) )? $selisih6 = $kol_benar[6] - $kol_benar[7]: $selisih6 = 0 }}</td>
+                                        <td>{{ ( isset($kol_benar[8]) )? $selisih7 = $kol_benar[7] - $kol_benar[8]: $selisih7 =0 }}</td>
+                                        <td>{{ ( isset($kol_benar[9]) )? $selisih8 =$kol_benar[8] - $kol_benar[9]: $selisih8 =0 }}</td>
+                                        <td>{{ ( isset($kol_benar[10]) )? $selisih9 =$kol_benar[9] - $kol_benar[10]: $selisih9 =0 }}</td>                                                             
                                     </tr>
                                    
                                 </tbody>
@@ -154,9 +163,23 @@
                         <canvas id="chartKestabilan"></canvas>
                     </div>                      
 
+                </div>    
+                
+                
+
+                <div class="card-footer text-center mt-5">
+                    <button class="btn btn-primary btn-sm" onclick="window.print();">
+                        <i class="fas fa-print"></i>
+                        Print PDF</button>
                 </div>
 
+
+
             </div>
+
+            
+
+            {{-- akhir card --}}
         </div>
 
     </div>
@@ -171,16 +194,17 @@
     const ctx = document.getElementById('myChart');
   
     new Chart(ctx, {
-      type: 'bar',
+      type: 'line',
       data: {
-        labels: ["kolom 1", "Kolom 2"],
+        labels: {!! json_encode($label_benar) !!},
         datasets: [{
           label: 'Nilai',
-          data: [12, 19, 3, 5, 2, 3],
-               
-          backgroundColor: ["#5BC0F8", "#5BC0F8", "#5BC0F8", "#5BC0F8", "#5BC0F8", "#5BC0F8"],
+          data: {!! json_encode($value_benar) !!},
+          borderWidth: 3,
+          borderColor: "#5BC0F8",
+        //   backgroundColor: ["#5BC0F8", "#5BC0F8", "#5BC0F8", "#5BC0F8", "#5BC0F8", "#5BC0F8"],
         }]
-      },
+      },      
       options: {
         scales: {
           y: {
@@ -202,13 +226,24 @@
     const ctx2 = document.getElementById('chartKestabilan');
   
     new Chart(ctx2, {
-      type: 'bar',
+      type: 'line',
       data: {
-        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+        labels: ['1-2', '2-3', '3-4', '4-5', '5-6', '6-7','7-8','8-9','9-10'],
         datasets: [{
           label: 'Nilai',
-          data: [12, 19, 3, 5, 2, 3],
-          borderWidth: 1,
+          data: [
+            {{$selisih1}}, 
+            {{$selisih2}},
+            {{$selisih3}},
+            {{$selisih4}},
+            {{$selisih5}},
+            {{$selisih6}},
+            {{$selisih7}},
+            {{$selisih8}},
+            {{$selisih9}}           
+        ],
+          borderWidth: 2,
+          borderColor: "#0081C9",
           backgroundColor: ["#0081C9", "#0081C9", "#0081C9", "#0081C9", "#0081C9", "#0081C9"],
         }]
       },

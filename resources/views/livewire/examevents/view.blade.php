@@ -77,7 +77,15 @@
 									Aksi
 									</button>
 									<div class="dropdown-menu dropdown-menu-right">
-									<a data-toggle="modal" data-target="#updateModal" class="dropdown-item" wire:click="edit({{$row->id}})"><i class="fa fa-edit"></i> Edit </a>							 
+
+									@if($row->status == "Selesai")
+
+									<a  target="_blank" class="dropdown-item" href="{{ route('member.hasil_ujian', $row->id) }}"><i class="fa fa-eye"></i> Lihat Hasil </a>
+
+									@endif
+									
+									<a data-toggle="modal" data-target="#updateModal" class="dropdown-item" wire:click="edit({{$row->id}})"><i class="fa fa-edit"></i> Edit </a>
+
 									<a class="dropdown-item" onclick="confirm('Confirm Delete Examevent id {{$row->id}}? \nDeleted Examevents cannot be recovered!')||event.stopImmediatePropagation()" wire:click="destroy({{$row->id}})"><i class="fa fa-trash"></i> Delete </a>   
 									</div>
 								</div>
