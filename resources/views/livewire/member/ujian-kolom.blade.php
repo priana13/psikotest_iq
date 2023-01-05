@@ -19,9 +19,9 @@
 
 
                     <div class="mx-auto">
-                         <h2 class="text-center">Tes Telah Selesai/Berakhir</h2>
-                         <p>Terimakasih Telah Mengikuti Test ini dengan baik, Nilai Kamu adalah:</p>
-                         <h1 class="text-center text-primary"> <strong>{{ number_format($nilai_akhir) }}</strong></h1>
+                         <h2 class="text-center">Tes Telah Selesai</h2>
+                         <p>Terimakasih Telah Mengikuti Test ini dengan baik</p>
+                         {{-- <h1 class="text-center text-primary"> <strong>{{ number_format($nilai_akhir) }}</strong></h1> --}}
 
 
                          <div class="d-flex justify-content-center">
@@ -48,7 +48,7 @@
                     @else
 
                     <div class="col-md-4 mx-auto text-center">
-                        <h4>Kolom {{ $kolom }} - {{ $nomor }}</h4>
+                        <h4>Kolom {{ $kolom }} </h4>
 
                         <table class="table table-striped">
                             <tr class="bg-primary text-light">
