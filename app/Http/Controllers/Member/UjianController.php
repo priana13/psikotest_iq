@@ -100,6 +100,15 @@ class UjianController extends Controller
                     ->groupBy('kolom')
                     ->groupBy('is_true')
                     ->get();
+
+        $semua_ujian = DB::table('exam_items')
+                    ->select(['kolom',DB::raw('count(*) as qty')])
+                    ->join('users', 'user_id', 'users.id')
+                    ->join('questions', 'question_id', 'questions.id')
+                    ->join('exam_columns', 'exam_column_id', 'exam_columns.id')
+                    ->where('examevent_id', $examevent->id)
+                    ->groupBy('kolom')                   
+                    ->get();
        
 
         $kolom = [
@@ -122,7 +131,8 @@ class UjianController extends Controller
       return view('livewire.member.hasil-ujian', compact(
         'examevent',
         'nilai_kolom',
-        'kolom',      
+        'kolom',    
+        'semua_ujian'  
         ) );
     }
 

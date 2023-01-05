@@ -14,8 +14,10 @@
 
                 <div class="my-2">
 
-                    USER: <strong>{{ $examevent->user->name }}</strong> <br>
-                    TANGGAL: <strong>{{ date('d-m-Y', strtotime($examevent->created_at))  }}</strong> 
+                    <h4 class="uppercase" >User: <strong>{{ $examevent->user->name }}</strong> <br></h4>
+
+                    
+                    Tanggal: <strong>{{ date('d-m-Y', strtotime($examevent->created_at))  }}</strong> 
                     
                 </div>
 
@@ -30,7 +32,7 @@
                             <tr>
                                
                                 <th></th>
-                                @foreach ($kolom['kolom-benar'] as $row)
+                                @foreach ($semua_ujian as $row)
                                     <th>Kol {{ $row->kolom }}</th>
                                 @endforeach
                                 <th></th>
@@ -42,15 +44,16 @@
                         <tbody>
                             <tr>
                                 <?php
-                                    $jumlah_benar = 0;
+                                    $jumlah_terjawab = 0;
                                     $jumlah_salah = 0;
                                   
                                 ?>
-                                <td>BENAR</td>
-                                @foreach ($kolom['kolom-benar'] as $row)
+                                <td>JUMLAH</td>
+                                @foreach ($semua_ujian as $row)
+                                   
                                     <td>{{ $row->qty }}</td>
                                         <?php 
-                                            $jumlah_benar += $row->qty;
+                                            $jumlah_terjawab += $row->qty;
 
                                             $kol_benar [$row->kolom] =$row->qty;
                                             $label_benar[] = $row->kolom;
@@ -58,16 +61,36 @@
                                         ?>
                                 @endforeach
                               
-                                <th>{{ $jumlah_benar }}</th>
+                                <th>{{ $jumlah_terjawab }}</th>
                             </tr>
                             <tr>
                                 <td>SALAH</td>
 
-                                @foreach ($kolom['kolom-salah'] as $row)
-                                    <td>{{ $row->qty }}</td>
+                                
+
+                                @foreach ($semua_ujian as $row)
+
+                                <?php 
+
+                                $get_data = $kolom['kolom-salah']->where('kolom',$row->kolom)->first();  
+                                
+                                if($get_data){
+
+                                    $salah = $kolom['kolom-salah']->where('kolom',$row->kolom)->first()->qty;
+                                }else{
+                                    $salah = 0;
+                                }
+
+                                ?>
+
+                                    @if($get_data)
+                                    <td>{{ $salah }}</td>
+                                    @else
+                                    <td>0</td>
+                                    @endif
 
                                     <?php 
-                                        $jumlah_salah += $row->qty;
+                                        $jumlah_salah += $salah;
                                     ?>
 
                                 @endforeach
@@ -77,7 +100,7 @@
                             </tr>
                             <tr>
                                 <th colspan="{{ $kolom['kolom-benar']->max('kolom') + 1 }}" style="text-align: center;"> <span>Nilai Rata-rata</span> </th>
-                                <th>{{ ($jumlah_benar - $jumlah_salah) / 10 }}</th>
+                                <th>{{ ($jumlah_terjawab - $jumlah_salah) / 10 }}</th>
                             </tr>
                         </tbody>
 
@@ -124,20 +147,20 @@
                                         <td>SELISIH</td>
                                         <td>
                                             {{ ( isset($kol_benar[2]) && isset($kol_benar[1]))?
-                                             $selisih1 = $kol_benar[1] - $kol_benar[2]:
+                                             $selisih1 = abs($kol_benar[1] - $kol_benar[2]) :
                                              $selisih1 = 0 }}
                                         </td>
                                         <td>{{ ( isset($kol_benar[2]) && isset($kol_benar[3]) )? 
-                                                $selisih2 = $kol_benar[2] - $kol_benar[3]: 
+                                                $selisih2 = abs($kol_benar[2] - $kol_benar[3]): 
                                                 $selisih2 = 0 }}
                                         </td>
-                                        <td>{{ ( isset($kol_benar[3]) && isset($kol_benar[4]) )?$selisih3 =  $kol_benar[3] - $kol_benar[4]: $selisih3 = 0 }}</td>
-                                        <td>{{ ( isset($kol_benar[4]) && isset($kol_benar[5]) )? $selisih4 = $kol_benar[4] - $kol_benar[5]: $selisih4 = 0 }}</td>
-                                        <td>{{ ( isset( $kol_benar[5]) && isset($kol_benar[6]) )? $selisih5 = $kol_benar[5] - $kol_benar[6]: $selisih5 = 0 }}</td>
-                                        <td>{{ ( isset($kol_benar[6]) && isset($kol_benar[7]) )? $selisih6 = $kol_benar[6] - $kol_benar[7]: $selisih6 = 0 }}</td>
-                                        <td>{{ ( isset($kol_benar[7]) && isset($kol_benar[8]) )? $selisih7 = $kol_benar[7] - $kol_benar[8]: $selisih7 =0 }}</td>
-                                        <td>{{ ( isset($kol_benar[8]) && isset($kol_benar[9]) )? $selisih8 =$kol_benar[8] - $kol_benar[9]: $selisih8 =0 }}</td>
-                                        <td>{{ ( isset($kol_benar[9]) && isset($kol_benar[10]) )? $selisih9 =$kol_benar[9] - $kol_benar[10]: $selisih9 =0 }}</td>                                                             
+                                        <td>{{ ( isset($kol_benar[3]) && isset($kol_benar[4]) )?$selisih3 =  abs($kol_benar[3] - $kol_benar[4]): $selisih3 = 0 }}</td>
+                                        <td>{{ ( isset($kol_benar[4]) && isset($kol_benar[5]) )? $selisih4 = abs($kol_benar[4] - $kol_benar[5]): $selisih4 = 0 }}</td>
+                                        <td>{{ ( isset( $kol_benar[5]) && isset($kol_benar[6]) )? $selisih5 = abs($kol_benar[5] - $kol_benar[6]): $selisih5 = 0 }}</td>
+                                        <td>{{ ( isset($kol_benar[6]) && isset($kol_benar[7]) )? $selisih6 = abs($kol_benar[6] - $kol_benar[7]): $selisih6 = 0 }}</td>
+                                        <td>{{ ( isset($kol_benar[7]) && isset($kol_benar[8]) )? $selisih7 = abs($kol_benar[7] - $kol_benar[8]): $selisih7 =0 }}</td>
+                                        <td>{{ ( isset($kol_benar[8]) && isset($kol_benar[9]) )? $selisih8 =abs($kol_benar[8] - $kol_benar[9]): $selisih8 =0 }}</td>
+                                        <td>{{ ( isset($kol_benar[9]) && isset($kol_benar[10]) )? $selisih9 =abs($kol_benar[9] - $kol_benar[10]): $selisih9 =0 }}</td>                                                             
                                     </tr>
                                    
                                 </tbody>
