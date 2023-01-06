@@ -110,6 +110,8 @@
         </div>
     </div>
 
+    @if($is_finish == FALSE)
+
     <script>
         CountDownTimer('{{$date}}', 'waktu');
         function CountDownTimer(dt, id)
@@ -119,10 +121,13 @@
             var _minute = _second * 60;
             var _hour = _minute * 60;
             var _day = _hour * 24;
-            var timer;
+            let timer;
+
+
             function showRemaining() {
                 var now = new Date();
                 var distance = end - now;
+               
                 if (distance < 0) {
 
                     clearInterval(timer); 
@@ -149,14 +154,19 @@
                 document.getElementById(id).innerHTML += seconds;   
                 
                 // kurangi waktu yang ada di database
-               console.log(seconds);
+            //    console.log(seconds);
             }
+
             timer = setInterval(showRemaining, 1000);
+            // clearInterval(timer);
+            // console.log(timer);
         }
 
 
 
     </script>
+
+    @endif
 
 
 </div>

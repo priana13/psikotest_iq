@@ -258,6 +258,13 @@
     });
 
 
+    window.livewire.on('clearInterval',()=> {
+
+        clearInterval(timer); 
+
+    });
+
+
 
     
 </script>

@@ -107,9 +107,9 @@ class UjianController extends Controller
                     ->join('questions', 'question_id', 'questions.id')
                     ->join('exam_columns', 'exam_column_id', 'exam_columns.id')
                     ->where('examevent_id', $examevent->id)
-                    ->groupBy('kolom')                   
+                    ->groupBy('kolom')  
+                    ->orderBy('kolom','asc')                 
                     ->get();
-       
 
         $kolom = [
           "kolom-benar" => $nilai_kolom->where('is_true',1),

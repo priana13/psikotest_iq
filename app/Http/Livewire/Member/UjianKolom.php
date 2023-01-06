@@ -50,9 +50,11 @@ class UjianKolom extends Component
 
         if($temp_exam != null){
             $this->nomor = $temp_exam->soal_terakhir;
-        }
+        }        
         
         $this->sisa_waktu = $this->examEvent->sisa_waktu;
+
+        // dd($this->sisa_waktu);
 
 
         $this->kolom = $kolom;
@@ -184,6 +186,9 @@ class UjianKolom extends Component
 
                 $this->tempexam->kolom_terakhir = $this->kolom;
                 $this->tempexam->save();  
+
+                // clear interval waktu di javascript
+                $this->emit('clearInterval');
                 
                 // redirect ke kolom berikutnya
                 return redirect()->route('member.ujian-kolom',[
