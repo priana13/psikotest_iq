@@ -5,6 +5,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\CkEditorController;
 use App\Http\Controllers\CronJobController;
+use App\Http\Controllers\ExamController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Member\SoalController;
 use App\Http\Controllers\Member\TypeSoalController;
@@ -87,6 +88,8 @@ Route::middleware('auth')->group(function(){
 		Route::view('scores', 'livewire.scores.index')->name('admin.scores');
 		Route::view('questions', 'livewire.questions.index')->name('admin.questions');
 		Route::view('exams', 'livewire.exams.index')->name('admin.exams');
+		Route::get('exams/edit/{id}', [ExamController::class, 'edit'])->name('admin.exams.edit');
+		Route::put('exams/edit/{id}', [ExamController::class, 'update'])->name('admin.exams.update');
 		Route::get('exams/soal/{id}', [PsikotesController::class, 'soal'])->name('admin.exam_soal');
 		Route::get('tes-cermat/create' ,[PsikotesController::class, 'createCermat'])->name('admin.createCermat');
 		Route::post('tes-cermat/create' ,[PsikotesController::class, 'storeCermat'])->name('admin.storeCermat');
