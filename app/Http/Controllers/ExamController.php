@@ -22,9 +22,11 @@ class ExamController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        $type = $request->type;
+
+        return view('livewire.exams.create2', compact('type'));
     }
 
     /**
@@ -35,7 +37,28 @@ class ExamController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'nama_tes' => 'string|required',
+            'waktu' => 'string|required',
+            'nilai_min' => 'string|required',
+            'peraturan' => 'string',
+            'type' => 'required|string'
+            ]);
+
+        (!$request->type)?
+            $type = 'cerdas':
+            $type = $request->type;
+    
+        Exam::create([ 
+            'nama_tes' => $request->nama_tes,
+            'waktu' => $request->waktu,
+            'nilai_min' => $request->nilai_min,
+            'peraturan' => $request->peraturan,
+            'type' => $type
+        ]);           
+         
+
+        return redirect()->route('admin.exams')->with('message', 'Data Ditambahkan');
     }
 
     /**

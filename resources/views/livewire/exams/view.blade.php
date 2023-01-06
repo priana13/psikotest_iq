@@ -47,18 +47,14 @@
 							</button>
 							<div class="dropdown-menu animated--fade-in" aria-labelledby="dropdownTambah" style="">
 
-								<a href="#" class="dropdown-item" data-toggle="modal" data-target="#createDataModal"
-									wire:click="pilihType('cerdas')"
-								>
+								<a class="dropdown-item" href="{{ route('admin.exams.create') }}?type=cerdas">
 									Kecerdasan
 								</a>
 								<a class="dropdown-item" href="{{ route('admin.createCermat') }}">
 									@lang('app.kecermatan')
 								</a>	
 								
-								<a href="#" class="dropdown-item" data-toggle="modal" data-target="#createDataModal"
-								wire:click="pilihType('kepribadian')"
-								>
+								<a href="{{ route('admin.exams.create') }}?type=kepribadian" class="dropdown-item" >
 									Kepribadian
 								</a>
 

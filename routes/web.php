@@ -88,6 +88,8 @@ Route::middleware('auth')->group(function(){
 		Route::view('scores', 'livewire.scores.index')->name('admin.scores');
 		Route::view('questions', 'livewire.questions.index')->name('admin.questions');
 		Route::view('exams', 'livewire.exams.index')->name('admin.exams');
+		Route::get('exams/create', [ExamController::class, 'create'])->name('admin.exams.create');
+		Route::post('exams/store', [ExamController::class, 'store'])->name('admin.exams.store');
 		Route::get('exams/edit/{id}', [ExamController::class, 'edit'])->name('admin.exams.edit');
 		Route::put('exams/edit/{id}', [ExamController::class, 'update'])->name('admin.exams.update');
 		Route::get('exams/soal/{id}', [PsikotesController::class, 'soal'])->name('admin.exam_soal');

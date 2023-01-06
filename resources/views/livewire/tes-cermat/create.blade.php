@@ -36,7 +36,7 @@
         
                                 <div class="form-group">
                                     <label for="peraturan">Intruksi Soal</label>
-                                    <textarea name="peraturan" class="form-control" name="" id="peraturan" cols="30" rows="10">{{ old('peraturan') }}</textarea>
+                                    <textarea name="peraturan" class="form-control" name="" id="ckeditor" cols="30" rows="10">{{ old('peraturan') }}</textarea>
                                     @error('peraturan') <span class="text-danger">{{ $message }}</span> @enderror
                                 </div>
             
