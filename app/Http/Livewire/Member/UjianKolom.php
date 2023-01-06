@@ -10,6 +10,7 @@ use App\Models\ExamItem;
 use App\Models\ExamEvent;
 use App\Models\TempExam;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Redirect;
 
 class UjianKolom extends Component
 {
@@ -38,6 +39,8 @@ class UjianKolom extends Component
 
             $this->is_finish = TRUE;
             
+        }else{
+            $this->is_finish = FALSE;
         }
 
         /**
@@ -58,13 +61,19 @@ class UjianKolom extends Component
         $this->date = Carbon::now();
         $this->endtime = $this->date->addSeconds($this->sisa_waktu);  
         
-        $this->kolom_terakhir = ExamColumn::where('exam_id' , $this->exam->id)->max('kolom');
+        $this->kolom_terakhir = ExamColumn::where('exam_id' , $this->exam->id)->pluck('kolom')->max();  
+        
+        if($this->kolom > $this->kolom_terakhir){
+
+            Redirect::route('home');
+
+        }
 
 
     }
 
     public function render()
-    { 
+    {        
 
         $this->exam_column = ExamColumn::where('exam_id' , $this->exam->id)->where('kolom' , $this->kolom)->first();
         
@@ -89,6 +98,7 @@ class UjianKolom extends Component
         }
         
         $this->tempexam = TempExam::where('examevent_id' , $this->examEvent->id)->first();
+       
 
         if($this->kolom <= $this->kolom_terakhir){
 

@@ -12,7 +12,7 @@
                   
                 </div>
                 
-                <div class="card-body row">
+                <div class="card-body row">                  
 
                     @if($is_finish == TRUE)
 
