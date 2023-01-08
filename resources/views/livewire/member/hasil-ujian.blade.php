@@ -29,11 +29,12 @@
 
                     <table class="table table-bordered">
                         <thead class="bg-warning">
-                            <tr>
+                            <tr>    
+                                                      
                                
                                 <th></th>
                                 @foreach ($semua_ujian as $row)
-                                    <th>Kol {{ $row->kolom }}</th>
+                                    <th>Kol {{ $row["kolom"] }}</th>
                                 @endforeach
                                 <th></th>
 
@@ -51,32 +52,30 @@
                                 <td>JUMLAH</td>
                                 @foreach ($semua_ujian as $row)
                                    
-                                    <td>{{ $row->qty }}</td>
+                                    <td>{{ $row["qty"] }}</td>
                                         <?php 
-                                            $jumlah_terjawab += $row->qty;
+                                            $jumlah_terjawab += $row["qty"];
 
-                                            $kol_benar [$row->kolom] =$row->qty;
-                                            $label_benar[] = $row->kolom;
-                                            $value_benar[] = $row->qty;
+                                            $kol_benar [$row["kolom"]] =$row["qty"];
+                                            $label_benar[] = $row["kolom"];
+                                            $value_benar[] = $row["qty"];
                                         ?>
                                 @endforeach
                               
                                 <th>{{ $jumlah_terjawab }}</th>
                             </tr>
                             <tr>
-                                <td>SALAH</td>
-
-                                
+                                <td>SALAH</td>                                
 
                                 @foreach ($semua_ujian as $row)
 
                                 <?php 
 
-                                $get_data = $kolom['kolom-salah']->where('kolom',$row->kolom)->first();  
+                                $get_data = $kolom['kolom-salah']->where('kolom',$row["kolom"])->first();  
                                 
                                 if($get_data){
 
-                                    $salah = $kolom['kolom-salah']->where('kolom',$row->kolom)->first()->qty;
+                                    $salah = $kolom['kolom-salah']->where('kolom',$row["kolom"])->first()->qty;
                                 }else{
                                     $salah = 0;
                                 }

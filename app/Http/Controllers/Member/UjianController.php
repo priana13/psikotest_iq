@@ -117,11 +117,26 @@ class UjianController extends Controller
 
         foreach ($sort as $row) {
 
-          $semua_ujian->push($data_ujian->where('kolom', $row)->first());
-          
-        }    
-                
+          $data = $data_ujian->where('kolom', $row)->first();
 
+          if($data){
+
+            $semua_ujian[] = [
+              "kolom" => $row,
+              "qty" => $data->qty,
+            ];
+          }else{
+            $semua_ujian[] = [
+              "kolom" => $row,
+              "qty" => 0
+            ];
+          }
+        
+          
+        }
+          
+        
+      
         $kolom = [
           "kolom-benar" => $nilai_kolom->where('is_true',1),
           "kolom-salah" => $nilai_kolom->where('is_true',0),

@@ -112,6 +112,7 @@
 
     @if($is_finish == FALSE)
 
+
     <script>
         CountDownTimer('{{$date}}', 'waktu');
         function CountDownTimer(dt, id)
@@ -132,9 +133,20 @@
 
                     clearInterval(timer); 
                     
-                    alert('Waktu Tes Kolom ini Telah Habis');
-                    // emit di sini
-                    Livewire.emit('waktuHabis');
+                    // alert('Waktu Tes Kolom ini Telah Habis');
+
+                    Swal.fire({
+                        title: 'Waktu Tes Kolom ini Telah Habis',           
+                        icon: 'warning',
+                        confirmButtonText: 'Oke',
+                        timer: 3000, // 3 detik
+                        timerProgressBar: true,
+                        didDestroy: function(){
+                            Livewire.emit('waktuHabis');
+                        }
+                    });
+                    
+                    // emit di sini                   
 
                     return;
                 }else{
