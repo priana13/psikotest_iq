@@ -101,7 +101,7 @@ class UjianController extends Controller
                     ->groupBy('is_true')
                     ->get();
 
-        $semua_ujian = DB::table('exam_items')
+        $data_ujian = DB::table('exam_items')
                     ->select(['kolom',DB::raw('count(*) as qty')])
                     ->join('users', 'user_id', 'users.id')
                     ->join('questions', 'question_id', 'questions.id')
@@ -110,6 +110,17 @@ class UjianController extends Controller
                     ->groupBy('kolom')  
                     ->orderBy('kolom','asc')                 
                     ->get();
+
+        $sort = [1,2,3,4,5,6,7,8,9,10];
+
+        $semua_ujian = collect();
+
+        foreach ($sort as $row) {
+
+          $semua_ujian->push($data_ujian->where('kolom', $row)->first());
+          
+        }    
+                
 
         $kolom = [
           "kolom-benar" => $nilai_kolom->where('is_true',1),
