@@ -4,11 +4,11 @@
 
 
 <div class="container">
-    <div class="row">
+    <div class="row" >
 
-        <div class="col m-auto">
+        <div class="col m-auto p-3" style="max-width: 1024px;" id="halaman">
 
-            <div class="card bg-white shadow p-5">
+            <div class="card bg-white shadow p-5" >
 
                 <h3 class="text-center"> <strong>HASIL TES SIKAP KERJA</strong> </h3>
 
@@ -180,11 +180,11 @@
                 <div>
 
                     <div>
-                        <canvas id="myChart"></canvas>
+                        <canvas id="myChart" class="card shadow p-2" style="width: 100%;"></canvas>
                     </div>
 
                     <div class="mt-3">
-                        <canvas id="chartKestabilan"></canvas>
+                        <canvas id="chartKestabilan" class="card shadow"  style="width: 100%;"></canvas>
                     </div>                      
 
                 </div>    
@@ -192,7 +192,7 @@
                 
 
                 <div class="card-footer text-center mt-5">
-                    <button class="btn btn-primary btn-sm" onclick="window.print();">
+                    <button class="btn btn-primary btn-sm" onclick="printHalaman()">
                         <i class="fas fa-print"></i>
                         Print PDF</button>
                 </div>
@@ -285,6 +285,13 @@
         }
       }
     });
+
+
+    function printHalaman(){
+
+        window.print();
+
+    }
   </script>
 
 
