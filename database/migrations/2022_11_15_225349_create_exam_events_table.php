@@ -26,7 +26,7 @@ class CreateExamEventsTable extends Migration
         });
 
         Schema::table('exam_items' , function(Blueprint $table){
-            $table->foreignId('examevent_id')->constrained('examevents');
+            $table->foreignId('examevent_id')->constrained('examevents')->cascadeOnDelete();
         });
     }
 

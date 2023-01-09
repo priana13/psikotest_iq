@@ -15,7 +15,7 @@ class CreateTempExampsTable extends Migration
     {
         Schema::create('temp_exams', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('examevent_id')->constrained('examevents');
+            $table->foreignId('examevent_id')->constrained('examevents')->cascadeOnDelete();
             $table->integer('waktu_terakhir');
             $table->integer('soal_terakhir');
             $table->string('kolom_terakhir')->nullable();

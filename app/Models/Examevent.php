@@ -33,6 +33,10 @@ class Examevent extends Model
         return $this->hasMany(TempExam::class, 'examevent_id');
     }
 
+    public function scopeSelesai($query){
+        return $this->where('status','Selesai');
+    }
+
 
     
 }
