@@ -136,11 +136,12 @@
                     // alert('Waktu Tes Kolom ini Telah Habis');
 
                     Swal.fire({
-                        title: 'Waktu Tes Kolom ini Telah Habis',           
-                        icon: 'warning',
-                        confirmButtonText: 'Oke',
+                        title: 'WAKTU HABIS',
+                        text: 'Pindah kolom berikutnya',
                         timer: 3000, // 3 detik
                         timerProgressBar: true,
+                        background: '#282A3A',
+                        color: '#ffff',
                         didDestroy: function(){
                             Livewire.emit('waktuHabis');
                         }
