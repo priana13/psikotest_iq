@@ -235,9 +235,20 @@ class UjianKolom extends Component
 
     public function waktuHabis(){
 
-        if($this->kolom == $this->kolom_terakhir){   
+        if($this->kolom == $this->kolom_terakhir){ 
 
-            $this->is_finish = TRUE;
+             // tes berakhir, tampilkan nilai dari tes ini
+             $exam_event = ExamEvent::find($this->examEvent->id);
+             $exam_event->status = 'Selesai';
+             $exam_event->nilai = $this->nilai_akhir;
+             $exam_event->salah = ExamItem::where('examevent_id' , $this->examEvent->id)->salah()->count();
+             $exam_event->benar = ExamItem::where('examevent_id' , $this->examEvent->id)->benar()->count();
+             $exam_event->save();
+
+             $this->is_finish = TRUE;
+
+             $this->emit('ujianSelesai',1);
+
 
         }else{          
 
