@@ -71,24 +71,16 @@
 								<td>
 									{{ $row->status }}
 								</td>
-								<td width="90">
-								<div class="btn-group">
-									<button type="button" class="btn btn-info btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-									Aksi
-									</button>
-									<div class="dropdown-menu dropdown-menu-right">
+								<td width="250px" class="text-center" >									
 
-									@if($row->status == "Selesai")
+									<nav class="navbar navbar-light bg-light">
+									<form class="form-inline">
+										<a class="btn btn-sm btn-success mx-2" href="{{ route('member.hasil_ujian', $row->id) }}" target="_blank">LIHAT HASIL</a>
+										<a class="btn btn-sm btn-danger" onclick="confirm('Confirm Delete Examevent id {{$row->id}}? \nDeleted Examevents cannot be recovered!')||event.stopImmediatePropagation()" wire:click="destroy({{$row->id}})">HAPUS</a>
+									</form>
+									</nav>					
 
-									<a  target="_blank" class="dropdown-item" href="{{ route('member.hasil_ujian', $row->id) }}"><i class="fa fa-eye"></i> Lihat Hasil </a>
-
-									@endif
-									
-									<a data-toggle="modal" data-target="#updateModal" class="dropdown-item" wire:click="edit({{$row->id}})"><i class="fa fa-edit"></i> Edit </a>
-
-									<a class="dropdown-item" onclick="confirm('Confirm Delete Examevent id {{$row->id}}? \nDeleted Examevents cannot be recovered!')||event.stopImmediatePropagation()" wire:click="destroy({{$row->id}})"><i class="fa fa-trash"></i> Delete </a>   
-									</div>
-								</div>
+							
 								</td>
 							@endforeach
 						</tbody>
