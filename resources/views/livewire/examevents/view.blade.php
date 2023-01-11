@@ -93,7 +93,12 @@
 
 									<nav class="navbar navbar-light bg-light">
 									<form class="form-inline">
+										@if($selected == 'cermat')
 										<a class="btn btn-sm btn-success mx-2" href="{{ route('member.hasil_ujian', $row->id) }}" target="_blank">LIHAT HASIL</a>
+										@else 
+										<a class="btn btn-sm btn-success mx-2" href="{{ route('member.hasil_ujian_umum', $row->id) }}" target="_blank">LIHAT HASIL</a>
+										@endif
+
 										<a class="btn btn-sm btn-danger" onclick="confirm('Confirm Delete Examevent id {{$row->id}}? \nDeleted Examevents cannot be recovered!')||event.stopImmediatePropagation()" wire:click="destroy({{$row->id}})">HAPUS</a>
 									</form>
 									</nav>					

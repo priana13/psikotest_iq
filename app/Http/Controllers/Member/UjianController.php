@@ -163,6 +163,11 @@ class UjianController extends Controller
         ) );
     }
 
+    public function hasil_ujian_umum(Examevent $examevent){
+
+      return view('livewire.member.hasil-ujian-umum', compact('examevent'));
+    }
+
 
 
 }
