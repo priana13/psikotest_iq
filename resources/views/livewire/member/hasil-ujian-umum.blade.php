@@ -10,12 +10,12 @@
 
             <div class="card bg-white shadow p-5" >
 
-                <h3 class="text-center"> <strong>HASIL PSIKOTES</strong> </h3>
+                <h3 class="text-center"> <strong>HASIL PSIKOTES {{ $type[$examevent->type] }}</strong> </h3>
 
                 <div class="my-2 row">
 
                     <ul class="list-group list-group-flush col-md-4">
-                        <li class="list-group-item">User: <strong>{{ $examevent->user->name }}</strong></li>
+                        <li class="list-group-item">Nama: <strong>{{ $examevent->user->name }}</strong></li>
                         <li class="list-group-item">Tanggal: <strong>{{ date('d-m-Y', strtotime($examevent->created_at))  }}</strong></li>
                         <li class="list-group-item">No Ujian: <strong>#{{ $examevent->id }}</strong></li>                      
                     </ul>

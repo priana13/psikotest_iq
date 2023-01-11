@@ -14,7 +14,7 @@
 
                 <div class="my-2">
 
-                    <h4 class="uppercase" >User: <strong>{{ $examevent->user->name }}</strong> <br></h4>
+                    <h4 class="uppercase" >Nama: <strong>{{ $examevent->user->name }}</strong> <br></h4>
 
                     
                     Tanggal: <strong>{{ date('d-m-Y', strtotime($examevent->created_at))  }}</strong> 
