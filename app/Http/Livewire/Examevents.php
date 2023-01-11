@@ -14,6 +14,8 @@ class Examevents extends Component
     public $selected_id, $keyWord, $name, $salah, $nilai, $benar;
     public $updateMode = false;
 
+    public $selected = "all";
+
     public function render()
     {
 
@@ -99,5 +101,11 @@ class Examevents extends Component
             $record = Examevent::where('id', $id);
             $record->delete();
         }
+    }
+
+    public function pilihHiostory($type){
+
+        // filter di sini
+
     }
 }

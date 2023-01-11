@@ -21,3 +21,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 
 Route::post('/m/notif' , [MidtransController::class , 'notif']);
+// http://arstamedia.com/api/m/notif

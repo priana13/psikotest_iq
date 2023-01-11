@@ -6,8 +6,22 @@
 				<div class="card-header">
 					<div style="display: flex; justify-content: space-between; align-items: center;">
 						<div class="float-left">
-							<h4><i class="fas fa-history"></i>
+							<h4 class="mb-3"><i class="fas fa-history"></i>
 							History Psikotes </h4>
+
+
+							<ul class="nav nav-pills">
+								<li class="nav-item">
+								  <a class="nav-link {{ ($selected == 'all')?'active':'' }}" href="#" wire:click.prevent="pilihSoal('all')">Sikap Kerja(5)</a>
+								</li>
+								<li class="nav-item">
+								  <a class="nav-link {{ ($selected == 'cerdas')?'active':'' }}" href="#" wire:click.prevent="pilihSoal('cerdas')">Kecerdasan(2)</a>
+								</li>								
+								<li class="nav-item">
+								  <a class="nav-link {{ ($selected == 'kepribadian')?'active':'' }}" wire:click.prevent="pilihSoal('kepribadian')" href="#">Kepribadian(5)</a>
+								</li>
+							  </ul>
+
 						</div>
 						
 						@if (session()->has('message'))
