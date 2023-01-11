@@ -30,7 +30,8 @@ class UjianController extends Controller
         $exam_event = Examevent::create([
           'name' => 'Test ' . $exam->nama_tes,
           'user_id' => auth()->user()->id,
-          'sisa_waktu' => $exam->waktu * 60
+          'sisa_waktu' => $exam->waktu * 60,
+          'type' => $exam->type,
         ]);     
 
 

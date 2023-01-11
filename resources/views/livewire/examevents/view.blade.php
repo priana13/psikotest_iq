@@ -12,13 +12,13 @@
 
 							<ul class="nav nav-pills">
 								<li class="nav-item">
-								  <a class="nav-link {{ ($selected == 'all')?'active':'' }}" href="#" wire:click.prevent="pilihSoal('all')">Sikap Kerja(5)</a>
+								  <a class="nav-link {{ ($selected == 'cermat')?'active':'' }}" href="#" wire:click.prevent="pilihHiostory('cermat')">Sikap Kerja ({{ $count_history['cermat'] }})</a>
 								</li>
 								<li class="nav-item">
-								  <a class="nav-link {{ ($selected == 'cerdas')?'active':'' }}" href="#" wire:click.prevent="pilihSoal('cerdas')">Kecerdasan(2)</a>
+								  <a class="nav-link {{ ($selected == 'cerdas')?'active':'' }}" href="#" wire:click.prevent="pilihHiostory('cerdas')">Kecerdasan({{ $count_history['kecerdasan'] }})</a>
 								</li>								
 								<li class="nav-item">
-								  <a class="nav-link {{ ($selected == 'kepribadian')?'active':'' }}" wire:click.prevent="pilihSoal('kepribadian')" href="#">Kepribadian(5)</a>
+								  <a class="nav-link {{ ($selected == 'kepribadian')?'active':'' }}" wire:click.prevent="pilihHiostory('kepribadian')" href="#">Kepribadian({{ $count_history['kepribadian'] }})</a>
 								</li>
 							  </ul>
 
@@ -46,10 +46,12 @@
 					<table class="table table-bordered table-sm">
 						<thead class="thead">
 							<tr> 								
-								<th>Name</th>								
-								<th>Salah</th>								
-								<th>Benar</th>
-								<th>Score</th>
+								<th>Name</th>	
+								@if($selected != 'cermat')
+									<th>Salah</th>								
+									<th>Benar</th>
+									<th>Score</th>
+								@endif
 								<th>Status</th>
 								<th>Aksi</th>
 							</tr>
@@ -75,13 +77,15 @@
 								<td>
 									<strong>{{ $row->name }}</strong><br>
 									{{ $row->created_at->diffForHumans() }}
-								</td>								
-								<td>{{ $row->salah }}</td>								
-								<td>{{ $row->benar }}</td>
-								<td>
-									<span class="badge badge-pill badge-{{ $tanda }}">{{ $row->nilai }}%</span>
-									
-								</td>
+								</td>	
+								@if($selected != 'cermat')							
+									<td>{{ $row->salah }}</td>								
+									<td>{{ $row->benar }}</td>
+									<td>
+										<span class="badge badge-pill badge-{{ $tanda }}">{{ $row->nilai }}</span>
+										
+									</td>
+								@endif
 								<td>
 									{{ $row->status }}
 								</td>

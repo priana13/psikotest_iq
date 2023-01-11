@@ -14,7 +14,7 @@ class AddTypeToExameventsTable extends Migration
     public function up()
     {
         Schema::table('examevents', function (Blueprint $table) {
-            $table->string('type',20)->nullable();
+            $table->string('type',20)->nullable()->after('user_id');
         });
     }
 

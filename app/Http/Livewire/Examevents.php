@@ -14,17 +14,30 @@ class Examevents extends Component
     public $selected_id, $keyWord, $name, $salah, $nilai, $benar;
     public $updateMode = false;
 
-    public $selected = "all";
+    public $selected = "cermat";
 
     public function render()
     {
 
 		// $keyWord = '%'.$this->keyWord .'%';          
 
-        $histories = auth()->user()->examevents()->selesai()->orderBy('id' , 'desc')->paginate(10);
+        $histories = auth()->user()->examevents()->selesai()->type($this->selected)->orderBy('id' , 'desc')->paginate(10);
+
+        $count_history = auth()->user()->examevents()->selesai()->groupType()->pluck('qty','type');    
+
+        (isset($count_history['cermat']))?$cermat = $count_history['cermat']:$cermat=0;
+        (isset($count_history['cerdas']))?$kecerdasan = $count_history['cerdas']:$kecerdasan=0;
+        (isset($count_history['kepribadian']))?$kepribadian = $count_history['kepribadian']:$kepribadian=0;
+        
+        $count_history = [
+            'cermat' => $cermat,
+            'kecerdasan'=> $kecerdasan,
+            'kepribadian' => $kepribadian,
+        ];      
 
         return view('livewire.examevents.view', [
-            'examevents' => $histories
+            'examevents' => $histories,
+            'count_history' => $count_history,
         ]); 
 
     }
@@ -105,7 +118,7 @@ class Examevents extends Component
 
     public function pilihHiostory($type){
 
-        // filter di sini
+       $this->selected = $type;
 
     }
 }
