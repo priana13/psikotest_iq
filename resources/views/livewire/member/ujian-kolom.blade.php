@@ -4,11 +4,15 @@
 		<div class="col-md-12">
 			<div class="card position-relative">
 
-                <div class="card-header d-flex justify-content-center">                   
+                <div class="card-header text-center">                   
 
                     <h4 class="text-center">
                         Tes: {{ $exam->nama_tes }}
                     </h4>              
+
+                    <h6 class="d-none">
+                        Nomor: {{ $nomor }} - Soal terakhir: {{ $soal_terakhir }} - Waktu: {{ $sisa_waktu }}
+                    </h6>
                   
                 </div>
                 
@@ -86,11 +90,11 @@
                             <h3>{{ $list_nomor }}</h3> 
                             
                             <div class="my-3">
-                                <button class="btn btn-secondary" wire:click="jawab('A')">A</button>
-                                <button class="btn btn-secondary" wire:click="jawab('B')">B</button>
-                                <button class="btn btn-secondary" wire:click="jawab('C')">C</button>
-                                <button class="btn btn-secondary" wire:click="jawab('D')">D</button>
-                                <button class="btn btn-secondary" wire:click="jawab('E')">E</button>
+                                <button class="btn btn-secondary" wire:click.prevent="jawab('A')">A</button>
+                                <button class="btn btn-secondary" wire:click.prevent="jawab('B')">B</button>
+                                <button class="btn btn-secondary" wire:click.prevent="jawab('C')">C</button>
+                                <button class="btn btn-secondary" wire:click.prevent="jawab('D')">D</button>
+                                <button class="btn btn-secondary" wire:click.prevent="jawab('E')">E</button>
                                 
                             </div>                          
 

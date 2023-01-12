@@ -201,7 +201,7 @@ class UjianKolom extends Component
                 
                 
 
-            // Jika lolom sudah habis / terakhir
+            // Jika kolom sudah habis / terakhir
             }else{
 
                 // tes berakhir, tampilkan nilai dari tes ini
@@ -235,26 +235,19 @@ class UjianKolom extends Component
 
     public function waktuHabis(){
 
-        if($this->kolom == $this->kolom_terakhir){ 
+        // clear interval waktu di javascript
+        $this->emit('clearInterval');
 
-             // tes berakhir, tampilkan nilai dari tes ini
-             $exam_event = ExamEvent::find($this->examEvent->id);
-             $exam_event->status = 'Selesai';
-             $exam_event->nilai = $this->nilai_akhir;
-             $exam_event->salah = ExamItem::where('examevent_id' , $this->examEvent->id)->salah()->count();
-             $exam_event->benar = ExamItem::where('examevent_id' , $this->examEvent->id)->benar()->count();
-             $exam_event->save();
+        //jika kolom masih tersedia
+        if($this->kolom < $this->kolom_terakhir) {
 
-             $this->is_finish = TRUE;
-
-             $this->emit('ujianSelesai',1);
-
-
-        }else{          
+            // rest nomor ke 1 lagi jika sudah pindah kolom baru
+            $this->nomor = 1;  
+            $this->tempexam->soal_terakhir = $this->nomor;
+            $this->tempexam->save();
 
             $this->examEvent->sisa_waktu = $this->exam->waktu * 60;
             $this->examEvent->save();
-
 
             $this->tempexam->kolom_terakhir = $this->kolom;
             $this->tempexam->save();  
@@ -265,9 +258,58 @@ class UjianKolom extends Component
                 'examevent' => $this->examEvent->id,
                 'kolom' => $this->kolom + 1
              ]); 
+
+        //jika sedang berada di kolom yang terakhir
+        }else{
+
+            // tes berakhir, tampilkan nilai dari tes ini
+            $exam_event = ExamEvent::find($this->examEvent->id);
+            $exam_event->status = 'Selesai';
+            $exam_event->nilai = $this->nilai_akhir;
+            $exam_event->salah = ExamItem::where('examevent_id' , $this->examEvent->id)->salah()->count();
+            $exam_event->benar = ExamItem::where('examevent_id' , $this->examEvent->id)->benar()->count();
+            $exam_event->save();
+
+            $this->is_finish = TRUE;
+
+            $this->emit('ujianSelesai',1);
+  
+        }
+
+        // //jika sedang berada di kolom yang terakhir
+        // if($this->kolom == $this->kolom_terakhir){ 
+
+        //      // tes berakhir, tampilkan nilai dari tes ini
+        //      $exam_event = ExamEvent::find($this->examEvent->id);
+        //      $exam_event->status = 'Selesai';
+        //      $exam_event->nilai = $this->nilai_akhir;
+        //      $exam_event->salah = ExamItem::where('examevent_id' , $this->examEvent->id)->salah()->count();
+        //      $exam_event->benar = ExamItem::where('examevent_id' , $this->examEvent->id)->benar()->count();
+        //      $exam_event->save();
+
+        //      $this->is_finish = TRUE;
+
+        //      $this->emit('ujianSelesai',1);
+
+
+        // }else{          
+
+        //     $this->examEvent->sisa_waktu = $this->exam->waktu * 60;
+        //     $this->examEvent->save();
+
+
+        //     $this->tempexam->kolom_terakhir = $this->kolom;
+        //     $this->tempexam->save();  
+            
+        //     // redirect ke kolom berikutnya
+        //     return redirect()->route('member.ujian-kolom',[
+        //         'exam' => $this->exam->id,
+        //         'examevent' => $this->examEvent->id,
+        //         'kolom' => $this->kolom + 1
+        //      ]); 
     
 
-        }
+        // }
 
     }
 
