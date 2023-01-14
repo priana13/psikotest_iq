@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Exam;
+use App\Models\ExamColumn;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Imports\ColumnQuestionImport;
 
 class PsikotesController extends Controller
 {
@@ -44,8 +47,48 @@ class PsikotesController extends Controller
         return redirect()->route('admin.tes-kecermatan', $exam->id);
     }
 
-    public function soalKecermatan($id){
+    public function soalKecermatan($id , $kolom = null){
 
-        return view('livewire.tes-cermat.index', compact('id'));
+        return view('livewire.tes-cermat.index', compact('id', 'kolom'));
+    }
+
+
+    public function import(Request $request){          
+
+        $existExamColumn = ExamColumn::where('exam_id' , $request->exam_id)->where('kolom' , $request->column)->first();
+        $exam = Exam::find($request->exam_id);
+
+        $request->validate([
+            'file' => 'required'
+        ]);
+
+        if($existExamColumn == null){
+
+            $request->validate([
+                'a' => 'required', 
+                'b' => 'required',
+                'c' => 'required',
+                'd' => 'required',
+                'e'=> 'required'
+            ]);
+
+
+            // create exam_column            
+            $existExamColumn = ExamColumn::create([
+                'exam_id' =>  $request->exam_id,
+                'kolom' => $request->column,
+                'a' => $request->a,
+                'b' => $request->b,
+                'c' => $request->c,
+                'd' => $request->d,
+                'e' => $request->e,
+                'waktu' => $exam->waktu
+            ]);
+            
+        }  
+
+        Excel::import(new ColumnQuestionImport($request->exam_id, $existExamColumn->id), $request->file);		
+
+        return redirect()->route('admin.tes-kecermatan', [$request->exam_id, $request->column]);      
     }
 }

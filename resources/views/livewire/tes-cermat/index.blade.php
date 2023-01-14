@@ -5,7 +5,7 @@
 
 <div class="row justify-content-center">
     <div class="col-md-12">
-        @livewire('test-kecermatan',['id' => $id])
+        @livewire('test-kecermatan',['id' => $id, 'kolom' => $kolom])
     </div>     
 </div>   
 

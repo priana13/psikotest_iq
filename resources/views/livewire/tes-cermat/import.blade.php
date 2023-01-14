@@ -9,10 +9,11 @@
                 </button>
             </div>
            <div class="modal-body">
-			<form>
+			<form method="POST" action="{{ route('admin.cermat.import') }}" enctype="multipart/form-data">
+                @csrf               
 
-
-               
+                <input type="hidden" name="exam_id" value="{{ $exam->id }}">
+                <input type="hidden" name="column" value="{{ $column }}">
 
                 @if($isColumnExis == FALSE)
 
@@ -29,19 +30,19 @@
 
                         <tr>
                             <td style="width:20%;">
-                                <input class="form-control" type="text" wire:model="a">
+                                <input class="form-control" type="text" wire:model="a" name="a" required>
                             </td>
                             <td style="width:20%;">
-                                <input class="form-control" type="text" wire:model="b">
+                                <input class="form-control" type="text" wire:model="b" name="b" required>
                             </td>
                             <td style="width:20%;">
-                                <input class="form-control" type="text" wire:model="c">
+                                <input class="form-control" type="text" wire:model="c" name="c" required>
                             </td>
                             <td style="width:20%;">
-                                <input class="form-control" type="text" wire:model="d">
+                                <input class="form-control" type="text" wire:model="d" name="d" required>
                             </td>
                             <td style="width:20%;">
-                                <input class="form-control" type="text" wire:model="e">
+                                <input class="form-control" type="text" wire:model="e" name="e" required>
                             </td>  
 
                         </tr>
@@ -51,19 +52,22 @@
 
                 <div class="form-group">
                     <label for="file">Pilih File Import:</label>
-                    <input wire:model="file" type="file" class="form-control" id="file" placeholder="file">@error('file') <span class="text-danger">{{ $message }}</span> @enderror
+                    <input wire:model="file" type="file" class="form-control" name="file" id="file" placeholder="file" required>@error('file') <span class="text-danger" >{{ $message }}</span> @enderror
                 </div>
 
                 <p>
                     Contoh file import : <a href="{{ asset('format-import-cermat.xlsx') }}">example.xlsx</a> 
                 </p>
-
-            </form>
+           
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary close-btn" data-dismiss="modal">Batal</button>
-                <button type="button" wire:click.prevent="import()" class="btn btn-primary close-modal">Import</button>
+                {{-- <button type="button" wire:click.prevent="import()" class="btn btn-primary close-modal">Import</button> --}}
+                <button type="submit" class="btn btn-primary close-modal">Import</button>
             </div>
+
+        </form>
+
         </div>
     </div>
 </div>

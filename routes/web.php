@@ -97,8 +97,9 @@ Route::middleware('auth')->group(function(){
 		Route::get('exams/soal/{id}', [PsikotesController::class, 'soal'])->name('admin.exam_soal');
 		Route::get('tes-cermat/create' ,[PsikotesController::class, 'createCermat'])->name('admin.createCermat');
 		Route::post('tes-cermat/create' ,[PsikotesController::class, 'storeCermat'])->name('admin.storeCermat');
+		Route::post('tes-cermat/import' ,[PsikotesController::class, 'import'])->name('admin.cermat.import');
 
-		Route::get('tes-cermat/{id}' ,[PsikotesController::class, 'soalKecermatan'])->name('admin.tes-kecermatan');
+		Route::get('tes-cermat/{id}/{kolom?}' ,[PsikotesController::class, 'soalKecermatan'])->name('admin.tes-kecermatan');
 
 		Route::post('/image-upload', [CkEditorController::class, 'upload'])->name('ckeditor.image-upload');
 

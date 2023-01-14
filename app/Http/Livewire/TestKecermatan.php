@@ -26,9 +26,14 @@ class TestKecermatan extends Component
 
     protected $listeners = ['updateSoal' => "updateSoal" , "hapusSoal"];
 
-    public function mount($id){
+    public function mount($id, $kolom = null){
 
         $this->exam = Exam::find($id);
+
+        if($kolom){
+            $this->column = $kolom;
+        }
+        
     }
 
     public function render()
