@@ -157,7 +157,7 @@
             <!-- End of Topbar -->
 
             <!-- Begin Page Content -->
-            <div class="">
+            <div class="container-lg">
 
                 @yield('main-content')
 
