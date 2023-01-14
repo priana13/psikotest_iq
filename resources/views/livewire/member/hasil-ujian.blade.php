@@ -3,12 +3,12 @@
 @section('main-content')
 
 
-<div class="container">
+<div class="">
     <div class="row" >
 
-        <div class="col m-auto p-3" style="max-width: 1024px;" id="halaman">
+        <div class="col m-auto" style="max-width: 1024px;" id="halaman">
 
-            <div class="card bg-white shadow p-5" >
+            <div class="card bg-white shadow p-3" >
 
                 <h3 class="text-center"> <strong>HASIL TES SIKAP KERJA</strong> </h3>
 
