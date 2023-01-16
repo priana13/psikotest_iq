@@ -36,7 +36,7 @@ class Examevent extends Model
 
     public function scopeSelesai($query){
 
-        return $this->where('status','Selesai');
+        return $query->where('status','Selesai');
 
     }
 

@@ -52,6 +52,7 @@
 									<th>Benar</th>
 									<th>Score</th>
 								@endif
+								<th>User</th>
 								<th>Status</th>
 								<th>Aksi</th>
 							</tr>
@@ -86,6 +87,9 @@
 										
 									</td>
 								@endif
+								<td>
+									{{ $row->user->name }}
+								</td>
 								<td>
 									{{ $row->status }}
 								</td>
