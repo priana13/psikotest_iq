@@ -50,6 +50,7 @@ class Packages extends Component
         ]);
 
         Package::create([ 
+            'type' => 'bulanan',
 			'name' => $this-> name,
 			'qty' => $this-> qty,
 			'price' => $this-> price,

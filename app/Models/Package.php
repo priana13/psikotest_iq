@@ -13,7 +13,7 @@ class Package extends Model
 
     protected $table = 'packages';
 
-    protected $fillable = ['name','qty','price','detail'];
+    protected $guarded = [];
 	
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany

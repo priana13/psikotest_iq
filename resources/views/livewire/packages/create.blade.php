@@ -12,19 +12,20 @@
 				<form>
             <div class="form-group">
                 <label for="name"></label>
-                <input wire:model="name" type="text" class="form-control" id="name" placeholder="Name">@error('name') <span class="error text-danger">{{ $message }}</span> @enderror
+                <input wire:model="name" type="text" class="form-control" id="name" placeholder="Name">@error('name') <span class="text-danger">{{ $message }}</span> @enderror
             </div>
             <div class="form-group">
                 <label for="qty"></label>
-                <input wire:model="qty" type="text" class="form-control" id="qty" placeholder="Qty">@error('qty') <span class="error text-danger">{{ $message }}</span> @enderror
+                <input wire:model="qty" type="text" class="form-control" id="qty" placeholder="Qty">@error('qty') <span class="text-danger">{{ $message }}</span> @enderror
             </div>
             <div class="form-group">
                 <label for="price"></label>
-                <input wire:model="price" type="text" class="form-control" id="price" placeholder="Price">@error('price') <span class="error text-danger">{{ $message }}</span> @enderror
+                <input wire:model="price" type="text" class="form-control" id="price" placeholder="Price">@error('price') <span class="text-danger">{{ $message }}</span> @enderror
             </div>
             <div class="form-group">
                 <label for="detail"></label>
-                <input wire:model="detail" type="text" class="form-control" id="detail" placeholder="Detail">@error('detail') <span class="error text-danger">{{ $message }}</span> @enderror
+                <textarea wire:model="detail" id="" class="form-control" cols="30" rows="10"></textarea>                
+                @error('detail') <span class="text-danger">{{ $message }}</span> @enderror
             </div>
 
                 </form>

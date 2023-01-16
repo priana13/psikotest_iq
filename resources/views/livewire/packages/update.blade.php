@@ -25,7 +25,8 @@
             </div>
             <div class="form-group">
                 <label for="detail"></label>
-                <input wire:model="detail" type="text" class="form-control" id="detail" placeholder="Detail">@error('detail') <span class="error text-danger">{{ $message }}</span> @enderror
+                <textarea wire:model="detail" id="" class="form-control" cols="30" rows="10"></textarea>                
+                @error('detail') <span class="text-danger">{{ $message }}</span> @enderror
             </div>
 
                 </form>

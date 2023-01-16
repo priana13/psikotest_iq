@@ -10,7 +10,7 @@ use Livewire\Component;
 
 class CheckoutShow extends Component
 {
-    public $product= 1,
+    public $product,
             $productSelected,
             $package,
             $qty= 1, 
@@ -34,7 +34,10 @@ class CheckoutShow extends Component
     public function mount(){
 
         $this->list_payment_methods = PaymentMethod::all();
-        $this->package = Package::all();        
+        $this->package = Package::all(); 
+        
+        $this->productSelected = Package::first();  
+        $this->product = $this->productSelected->id;
 
     }
 
@@ -45,16 +48,19 @@ class CheckoutShow extends Component
 
     
     public function render()
-    {
+    {       
+
         if($this->qty == ''){$this->qty = 0;}
 
-        $this->productSelected = Package::find(1);      
-
+        $this->productSelected = Package::find($this->product);
+       
         $this->harga = $this->productSelected->price;
         $this->total = $this->harga * $this->qty;
 
         $this->nama = auth()->user()->name;
         $this->email = auth()->user()->email;
+        $this->hp = auth()->user()->hp;
+        $this->alamat = auth()->user()->alamat;
 
         return view('livewire.checkout.checkout-show');
     }
