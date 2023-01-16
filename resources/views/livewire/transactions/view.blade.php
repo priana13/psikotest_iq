@@ -30,6 +30,7 @@
 						<thead class="thead">
 							<tr> 
 								<td>#</td> 
+								<th>Date</th>
 								<th>User</th>								
 								<th>Payment Type</th>
 								<th>Qty Bulan</th>
@@ -42,6 +43,7 @@
 							@foreach($transactions as $row)
 							<tr>
 								<td>{{ $loop->iteration }}</td> 
+								<td>{{ $row->created_at->diffForHumans() }}</td>
 								<td>{{ $row->user->name }}</td>								
 								<td>{{ $row->payment_type }}</td>
 								<td>{{ $row->qty }}</td>
