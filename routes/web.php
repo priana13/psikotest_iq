@@ -44,6 +44,7 @@ Route::middleware('auth')->group(function(){
 
 	Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
 	Route::get('/myprofile', [ProfileController::class, 'index'])->name('myprofile');
+	Route::put('/myprofile/update/{id}', [ProfileController::class, 'update'])->name('myprofile.update');
 
 	Route::get('/member/soal' , [SoalController::class , 'index'])->name('member.soal');
 	Route::get('/member/soal/{type}' , [TypeSoalController::class , 'index'])->name('member.soal.type');

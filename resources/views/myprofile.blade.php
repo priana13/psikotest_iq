@@ -20,24 +20,42 @@
                 </div>
 
                 <div class="col-md-8">
-                    <form action="">
-
+                    <form action="{{ route('myprofile.update', auth()->user()->id) }}" method="POST" enctype="multipart/form-data">
+                        @csrf 
+                        @method('put')
 
                         <div class="form-group">
-                            <label class="float-label">Username</label>
-                            <input type="text" name="username" class="form-control" required="" value="{{ auth()->user()->name }}">
-                            <span class="form-bar"></span>                            
+                            <label class="float-label">Name</label>
+                            <input type="text" name="name" class="form-control" required="" value="{{ auth()->user()->name }}">
+                            <span class="form-bar"></span>   
+                            @error('name') <span class="text-danger">{{ $message }}</span> @enderror                         
                         </div>
+
+                        <div class="form-group">
+                            <label class="float-label">HP</label>
+                            <input type="text" name="hp" class="form-control" required="" value="{{ auth()->user()->hp }}">
+                            <span class="form-bar"></span>  
+                            @error('hp') <span class="text-danger">{{ $message }}</span> @enderror                                         
+                        </div>
+
+                        <div class="form-group">
+                            <label class="float-label">Alamat</label>
+                            <input type="text" name="alamat" class="form-control"  value="{{ auth()->user()->alamat }}">
+                            <span class="form-bar"></span>  
+                            @error('alamat') <span class="text-danger">{{ $message }}</span> @enderror                                         
+                        </div>
+
 
                         <div class="form-group">
                             <label class="float-label">Email</label>
                             <input type="email" name="email" class="form-control" required="" value="{{ auth()->user()->email }}">
-                            <span class="form-bar"></span>                            
+                            <span class="form-bar"></span>    
+                            @error('email') <span class="text-danger">{{ $message }}</span> @enderror                                       
                         </div>
 
                         <div class="form-group">
-                            <label class="float-label">Password</label>
-                            <input type="password" name="password" class="form-control" required="">
+                            <label class="float-label">New Password</label>
+                            <input type="password" name="password" class="form-control" value="lama" >
                             <span class="form-bar"></span>                            
                         </div>
 
