@@ -18,8 +18,8 @@ class Transactions extends Component
 
     public $warna_status = [
         'Pending' => 'warning',
-        'Completed' => 'success',
-        'Expired' => 'secondary'
+        'completed' => 'success',
+        'expired' => 'secondary'
     ];
 
     public function render()
