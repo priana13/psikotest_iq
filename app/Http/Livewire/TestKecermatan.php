@@ -33,33 +33,36 @@ class TestKecermatan extends Component
         if($kolom){
             $this->column = $kolom;
         }
+
+        $existExamColumn = ExamColumn::where('exam_id' , $this->exam->id)->where('kolom' , $this->column)->first();
+
+        if($existExamColumn != null){
+
+        $this->isColumnExis = TRUE;
+
+        $this->a = $existExamColumn->a;
+        $this->b = $existExamColumn->b;
+        $this->c = $existExamColumn->c;
+        $this->d = $existExamColumn->d;
+        $this->e = $existExamColumn->e; 
+                    
+        $this->list_soal = Question::where('exam_id' , $this->exam->id)->where('exam_column_id' , $existExamColumn->id)->get();     
+
+        }else{
+
+            $this->isColumnExis = FALSE;
+          
+        }
         
     }
 
     public function render()
     {            
         if($this->exam){
-            $existExamColumn = ExamColumn::where('exam_id' , $this->exam->id)->where('kolom' , $this->column)->first();
-
-            if($existExamColumn != null){
-
-            $this->isColumnExis = TRUE;
-
-            $this->a = $existExamColumn->a;
-            $this->b = $existExamColumn->b;
-            $this->c = $existExamColumn->c;
-            $this->d = $existExamColumn->d;
-            $this->e = $existExamColumn->e; 
-                        
-            $this->list_soal = Question::where('exam_id' , $this->exam->id)->where('exam_column_id' , $existExamColumn->id)->get();     
-    
-            }else{
-
-                $this->isColumnExis = FALSE;
-              
-            }
 
             $this->list_nomor = [$this->a,$this->b,$this->c,$this->d,$this->e];
+
+            $existExamColumn = ExamColumn::where('exam_id' , $this->exam->id)->where('kolom' , $this->column)->first();
 
             if($existExamColumn == null){
 
@@ -255,6 +258,40 @@ class TestKecermatan extends Component
         session()->flash('message', 'Soal Telah Dihapus');  
 
         $this->emit('closeModal');	
+
+    }
+
+    public function updateKolom(){
+
+        $existExamColumn = ExamColumn::where('exam_id' , $this->exam->id)->where('kolom' , $this->column)->first();
+
+        if(!$existExamColumn){
+
+            // create exam_column
+            $this->examColumn = ExamColumn::create([
+                'exam_id' => $this->exam->id,
+                'kolom' => $this->column,
+                'a' => $this->a,
+                'b' => $this->b,
+                'c' => $this->c,
+                'd' => $this->d,
+                'e' => $this->e,
+                'waktu' => $this->waktu
+            ]);
+
+            
+        }else{
+         
+            $existExamColumn->a = $this->a;
+            $existExamColumn->b = $this->b;
+            $existExamColumn->c = $this->c;
+            $existExamColumn->d = $this->d;
+            $existExamColumn->e = $this->e;
+            $existExamColumn->save();
+            
+        }
+
+        session()->flash('message', 'Data Telah Disimpan');         
 
     }
 

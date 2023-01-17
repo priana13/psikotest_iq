@@ -46,13 +46,20 @@
 
                         <h4>Kolom {{ $column }}</h4>
 
+                        @if (session()->has('message'))
+                            <div class="alert alert-success">
+                                {{ session('message') }}
+                            </div>
+                        @endif
+
                         <table class="table table-striped">
                             <tr>
                                 <th>A</th>
                                 <th>B</th>
                                 <th>C</th>
                                 <th>D</th>
-                                <th>E</th>                               
+                                <th>E</th>  
+                                <th>Action</th>                             
                             </tr>                           
 
                             <tr>
@@ -71,6 +78,9 @@
                                 <td style="width:20%;">
                                     <input class="form-control" type="text" wire:model="e">
                                 </td>  
+                                <td>
+                                    <button class="btn btn-sm btn-primary" wire:click="updateKolom">Update</button>
+                                </td>
 
                             </tr>
                         </table>
