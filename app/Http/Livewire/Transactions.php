@@ -126,7 +126,7 @@ class Transactions extends Component
 
         if ($id) {
             $transaksi = Transaction::find($id);
-            $transaksi->status = 'Completed';
+            $transaksi->status = 'completed';
             $transaksi->save();
 
             // tambahkan langganan sesuai paket yang dipesan
