@@ -233,6 +233,29 @@ class MidtransController extends Controller
           "currency": "IDR"
         }
 
+        *
+        *
+        Gopay
+
+          {
+            "transaction_type": "off-us",
+            "transaction_time": "2023-01-17 08:52:33",
+            "transaction_status": "expire",
+            "transaction_id": "37b462eb-eb09-4283-b15c-018a2f85389b",
+            "status_message": "midtrans payment notification",
+            "status_code": "202",
+            "signature_key": "74f2537af3bbf78a6722a9096ef193e0f2cb307928c5819b25571fa0e19f5e5287c07daf7a5d310bb17f3988ebc698a1a1a420d8a8caa61a583f5fe7a312cb7e",
+            "reference_id": "01202301170152335hzcV84OGyID",
+            "payment_type": "qris",
+            "order_id": "63c5ff5c2bf8e",
+            "merchant_id": "G239288898",
+            "gross_amount": "10000.00",
+            "fraud_status": "accept",
+            "expire_time": "2023-01-17 09:07:33",
+            "currency": "IDR",
+            "acquirer": "gopay"
+          }
+
 
         * 
         */
