@@ -19,7 +19,7 @@ class MidtransController extends Controller
 
    public $notif;
 
-   public $va_number;
+   public $va_number = null;
 
     public function __construct(){
 
@@ -50,23 +50,27 @@ class MidtransController extends Controller
 
             $this->transaksi = $transaksi;
 
-            $this->notif = $notif;
-
-            // query ke table transaksi di sini            
-
-            $va_number    = $notif->va_numbers[0]; 
-
-            $this->va_number = $notif->va_numbers[0]->va_number;
-
-            // dd($this->va_number);
-
-            $echannel = [
-              'biller_code' =>  $notif->biller_code,
-              'bill_key' =>  $notif->bill_key
-            ];
-            
+            $this->notif = $notif;                
 
             $payment_type = $notif->payment_type;
+
+            if($payment_type == 'echannel'){
+
+              $echannel = [
+                'biller_code' =>  $notif->biller_code,
+                'bill_key' =>  $notif->bill_key
+              ];
+
+              $this->va_number = "Bill Code: " . $notif->biller_code . ", Bill Key: " . $notif->bill_key;
+
+            }else{
+
+              $va_number    = $notif->va_numbers[0]; 
+              $this->va_number = $notif->va_numbers[0]->va_number;  
+
+              
+            }
+          
 
             // inisialisasi woo wa
             // $whatsapp_notif = new Woowa();
