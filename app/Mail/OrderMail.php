@@ -44,7 +44,21 @@ class OrderMail extends Mailable
         ];
 
         $va = $this->va_number;
-        $bank = strtoupper($this->notif->va_numbers[0]->bank);
+
+        if($this->notif->payment_type == 'echannel'){
+
+            $bank = "Bank Mandiri";
+
+        }elseif($this->notif->payment_type == 'qris'){
+
+            $bank = "E-Wallet";
+            
+        }else{
+
+            $bank = strtoupper($this->notif->va_numbers[0]->bank);
+
+        }
+        
 
         return $this->markdown('mail.order-mail', compact('transaksi', 'va' , 'bank'));
     }

@@ -70,6 +70,8 @@ class MidtransController extends Controller
 
               
             }
+
+            // dd($this->va_number);
           
 
             // inisialisasi woo wa
