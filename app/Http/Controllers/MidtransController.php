@@ -183,7 +183,27 @@ class MidtransController extends Controller
                 "currency": "IDR"
               } 
         * 
-        * 
+        * Notif Pending khusus mandiri 
+
+        {
+          "transaction_time": "2023-01-18 13:38:06",
+          "transaction_status": "settlement",
+          "transaction_id": "437050cf-0628-4857-8bc8-c59c93f682c9",
+          "status_message": "midtrans payment notification",
+          "status_code": "200",
+          "signature_key": "166f800895588135b84d7774879cdf8a29465084a8d65b19255898356383f9d8a432a0e8a58b65965c80cb2f7363cae657c23d7b8b18da8256fc9e20356fea6c",
+          "settlement_time": "2023-01-18 13:41:00",
+          "payment_type": "echannel",
+          "order_id": "63c793caef1a2",
+          "merchant_id": "G239288898",
+          "gross_amount": "10000.00",
+          "fraud_status": "accept",
+          "expiry_time": "2023-01-19 13:38:06",
+          "currency": "IDR",
+          "biller_code": "70012",
+          "bill_key": "290682496819"
+        }
+
         * 
         * notifikasi sukses
         * {
