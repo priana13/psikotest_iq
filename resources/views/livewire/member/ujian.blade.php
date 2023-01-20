@@ -16,7 +16,7 @@
                 
                 @if(!$finish_status)
 
-                <p> <strong>{{ $step }}. {{ $soal->soal }}</strong> </p>
+                <p> <strong>{{ $soal->soal }}</strong> </p>
               
                 <fieldset class="form-group row">
                     @if($soal->gambar)
