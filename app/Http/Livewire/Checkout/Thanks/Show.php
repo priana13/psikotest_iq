@@ -51,10 +51,10 @@ class Show extends Component
                 'gross_amount'  => $this->transaksi->nominal,
             ],
             'customer_details' => [
-                'first_name'    => $this->transaksi->user->nama,
-                'email'         => $this->transaksi->user->email,
-                // 'phone'         => '08888888888',
-                // 'address'       => '',
+                'first_name'    => $this->transaksi->nama,
+                'email'         => $this->transaksi->email,
+                'phone'         => $this->transaksi->hp,
+                'address'       => $this->transaksi->alamat,
             ],
             'item_details' => [
                 [

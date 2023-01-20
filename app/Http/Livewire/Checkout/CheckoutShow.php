@@ -39,6 +39,12 @@ class CheckoutShow extends Component
         $this->productSelected = Package::first();  
         $this->product = $this->productSelected->id;
 
+        $this->nama = auth()->user()->name;
+        $this->email = auth()->user()->email;
+        $this->hp = auth()->user()->hp;
+        $this->alamat = auth()->user()->alamat;
+
+
     }
 
     protected $rules = [
@@ -55,12 +61,7 @@ class CheckoutShow extends Component
         $this->productSelected = Package::find($this->product);
        
         $this->harga = $this->productSelected->price;
-        $this->total = $this->harga * $this->qty;
-
-        $this->nama = auth()->user()->name;
-        $this->email = auth()->user()->email;
-        $this->hp = auth()->user()->hp;
-        $this->alamat = auth()->user()->alamat;
+        $this->total = $this->harga * $this->qty;      
 
         return view('livewire.checkout.checkout-show');
     }
@@ -80,7 +81,11 @@ class CheckoutShow extends Component
             'nominal' => $this->total,
             'qty' => $this->qty,
             'notes' => 'pesan membership',            
-            'package_id' => $this->product
+            'package_id' => $this->product,
+            'nama' => $this->nama,
+            'hp' => $this->hp, 
+            'email' => $this->email,
+            'alamat' => $this->alamat,
         ]);
 
 
