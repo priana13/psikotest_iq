@@ -12,18 +12,18 @@
                 <form>
 					<input type="hidden" wire:model="selected_id">
             
-                    <input wire:model="exam_id" type="hidden" class="form-control" id="exam_id" placeholder="Exam Id">@error('exam_id') <span class="error text-danger">{{ $message }}</span> @enderror
+                    <input wire:model="exam_id" type="hidden" class="form-control" id="exam_id" placeholder="Exam Id">@error('exam_id') <span class="text-danger">{{ $message }}</span> @enderror
             
             <div class="form-group">
                 <label for="soal">Soal No <strong>{{ $no }}</strong> </label>
                 <textarea class="form-control" wire:model="soal" id="soal" cols="30" rows="5" placeholder="Soal"></textarea>
-                @error('soal') <span class="error text-danger">{{ $message }}</span> @enderror
+                @error('soal') <span class="text-danger">{{ $message }}</span> @enderror
             </div>
             <div class="form-group card shadow p-3">                
                 <label for="a">Pilihan Jawaban A</label>
                 <div class="row">
                     <div class="col">
-                        <input wire:model="a" type="text" class="form-control" id="a" placeholder="A">@error('a') <span class="error text-danger">{{ $message }}</span> @enderror
+                        <input wire:model="a" type="text" class="form-control" id="a" placeholder="A">@error('a') <span class="text-danger">{{ $message }}</span> @enderror
                     </div>
                 </div>
 
@@ -51,7 +51,7 @@
                 <label for="b">Pilihan Jawaban B</label>
                 <div class="row">
                     <div class="col">
-                        <input wire:model="b" type="text" class="form-control" id="b" placeholder="B">@error('b') <span class="error text-danger">{{ $message }}</span> @enderror
+                        <input wire:model="b" type="text" class="form-control" id="b" placeholder="B">@error('b') <span class="text-danger">{{ $message }}</span> @enderror
 
                     </div>
                 </div>
@@ -80,7 +80,7 @@
                 <label for="c">Pilihan Jawaban C</label>
                 <div class="row">
                     <div class="col">
-                        <input wire:model="c" type="text" class="form-control" id="c" placeholder="C">@error('c') <span class="error text-danger">{{ $message }}</span> @enderror
+                        <input wire:model="c" type="text" class="form-control" id="c" placeholder="C">@error('c') <span class="text-danger">{{ $message }}</span> @enderror
 
                     </div>
                 </div>
@@ -107,7 +107,7 @@
                 <label for="d">Pilihan Jawaban D</label>
                 <div class="row">
                     <div class="col">
-                        <input wire:model="d" type="text" class="form-control" id="d" placeholder="D">@error('d') <span class="error text-danger">{{ $message }}</span> @enderror
+                        <input wire:model="d" type="text" class="form-control" id="d" placeholder="D">@error('d') <span class="text-danger">{{ $message }}</span> @enderror
                         
 
                     </div>
@@ -135,7 +135,7 @@
                 <label for="e">Pilihan Jawaban E</label>
                 <div class="row">
                     <div class="col">
-                        <input wire:model="e" type="text" class="form-control" id="e" placeholder="E">@error('e') <span class="error text-danger">{{ $message }}</span> @enderror
+                        <input wire:model="e" type="text" class="form-control" id="e" placeholder="E">@error('e') <span class="text-danger">{{ $message }}</span> @enderror
                     </div>
                 </div>
 
@@ -181,7 +181,7 @@
 
             <div class="form-group">
                 <label for="kc_jawaban">Kunci Jawaban</label>
-                <input wire:model="kc_jawaban" type="text" class="form-control" id="kc_jawaban" placeholder="Kc Jawaban">@error('kc_jawaban') <span class="error text-danger">{{ $message }}</span> @enderror
+                <input wire:model="kc_jawaban" type="text" class="form-control" id="kc_jawaban" placeholder="Kc Jawaban">@error('kc_jawaban') <span class="text-danger">{{ $message }}</span> @enderror
             </div>
 
             <div class="form-group d-none">
