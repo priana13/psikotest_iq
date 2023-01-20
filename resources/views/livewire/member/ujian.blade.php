@@ -197,8 +197,8 @@
                 <div class="text-center">
 
                     <p class="text-center">
-                        Terimakasih Sudah menyelesaikan Psikotes ini dengan baik, berikut hasil psikotest Anda:
-                        <h3 class="text-center">Score Anda: <strong> <span class="text-success">{{ $examEvent->nilai }}</span> </strong></h3>
+                        Terimakasih Sudah menyelesaikan Psikotes ini dengan baik
+                        {{-- <h3 class="text-center">Score Anda: <strong> <span class="text-success">{{ $examEvent->nilai }}</span> </strong></h3> --}}
                     </p>  
 
                     <div class="d-flex justify-content-center">
