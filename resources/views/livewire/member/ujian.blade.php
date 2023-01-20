@@ -17,14 +17,16 @@
                 @if(!$finish_status)
 
                 <p> <strong>{{ $soal->soal }}</strong> </p>
+
+                    @if($soal->gambar)
+                        <div class="row">
+                            <img src="{{ asset('storage/' . $soal->gambar) }}" alt="" class="img-fluid float-left mx-2" width="400px">
+
+                        </div>  
+                    @endif               
               
                 <fieldset class="form-group row">
-                    @if($soal->gambar)
-                    <div class="col-sm-3">
-                        <img src="{{ asset('storage/' . $soal->gambar) }}" alt="" class="img-thumbnail float-left mx-2" width="200px">
-
-                    </div>  
-                    @endif
+                    
                                     
                     <div class="{{ ($soal->gambar)?"col-sm-9":"col" }} mt-3 ">
 
