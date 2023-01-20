@@ -347,8 +347,21 @@ class Questions extends Component
 				$path_gambar_a_edit = explode('public/' , $path_gambar_a_edit);
 				$path_gambar_a_edit = $path_gambar_a_edit[1];					
 				$gambar_a = QuestionImage::where('type' , 'a')->where('question_id', $this->selected_id)->first();
-				$gambar_a->image = $path_gambar_a_edit;
-				$gambar_a->save();
+
+				if($gambar_a){
+
+					$gambar_a->image = $path_gambar_a_edit;
+					$gambar_a->save();	
+
+				}else{
+
+					QuestionImage::create([
+						'question_id' => $record->id,
+						'type' => 'a',
+						'image' => $path_gambar_a_edit
+					]);
+				}
+
 			}
 
 			// input gambar b
@@ -359,8 +372,22 @@ class Questions extends Component
 				$path_gambar_b = $path_gambar_b[1];	
 				
 				$gambar_b = QuestionImage::where('type' , 'b')->where('question_id', $this->selected_id)->first();
-				$gambar_b->image = $path_gambar_b;
-				$gambar_b->save();
+				
+				if($gambar_b){
+
+					$gambar_b->image = $path_gambar_b;
+					$gambar_b->save();
+
+				}else{
+
+					QuestionImage::create([
+						'question_id' => $record->id,
+						'type' => 'b',
+						'image' => $path_gambar_b
+					]);
+
+				}
+				
 			}
 
 			// input gambar c
@@ -371,8 +398,24 @@ class Questions extends Component
 				$path_gambar_c = $path_gambar_c[1];	
 				
 				$gambar_c = QuestionImage::where('type' , 'c')->where('question_id', $this->selected_id)->first();
-				$gambar_c->image = $path_gambar_c;
-				$gambar_c->save();
+				
+				if($gambar_c){
+
+						$gambar_c->image = $path_gambar_c;
+						$gambar_c->save();
+
+				}else{
+
+					QuestionImage::create([
+						'question_id' => $record->id,
+						'type' => 'c',
+						'image' => $path_gambar_c
+					]);
+
+
+				}
+				
+				
 			}
 
 			// input gambar d
@@ -383,8 +426,22 @@ class Questions extends Component
 				$path_gambar_d = $path_gambar_d[1];	
 				
 				$gambar_d = QuestionImage::where('type' , 'd')->where('question_id', $this->selected_id)->first();
-				$gambar_d->image = $path_gambar_d;
-				$gambar_d->save();
+				
+				if($gambar_d){
+
+						$gambar_d->image = $path_gambar_d;
+						$gambar_d->save();
+				}else{
+
+					QuestionImage::create([
+						'question_id' => $record->id,
+						'type' => 'd',
+						'image' => $path_gambar_d
+					]);
+
+
+				}
+				
 			}
 
 			// input gambar e
@@ -395,8 +452,21 @@ class Questions extends Component
 				$path_gambar_e = $path_gambar_e[1];	
 				
 				$gambar_e = QuestionImage::where('type' , 'e')->where('question_id', $this->selected_id)->first();
-				$gambar_e->image = $path_gambar_e;
-				$gambar_e->save();
+				
+				if($gambar_e){
+
+					$gambar_e->image = $path_gambar_e;
+					$gambar_e->save();
+
+				}else{
+
+					QuestionImage::create([
+						'question_id' => $record->id,
+						'type' => 'e',
+						'image' => $path_gambar_e
+					]);
+
+				}
 			}
 
 

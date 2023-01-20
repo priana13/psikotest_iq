@@ -37,8 +37,10 @@
 
                 <div class="row my-2">                 
 
-                    <div class="col-md-8">
-                        <img class="img img-fluid mr-3" src="storage/{{ $gambar_a }}" alt="" width="100px">
+                    <div class="col-md-8">                       
+
+                        <img src="{{ asset('storage/' . $gambar_a) }}" alt="" srcset="" class="img-fluid m-2 border" width="200px">
+
                         <input class="" type="file" wire:model="gambar_a_edit"> 
 
                     </div>                 
@@ -65,7 +67,8 @@
 
                 <div class="row mt-2">
                     <div class="col">
-                        <img class="img img-fluid mr-3" src="storage/{{ $gambar_b }}" alt="" width="100px">
+                        <img src="{{ asset('storage/' . $gambar_b) }}" alt="" srcset="" class="img-fluid m-2 border" width="200px">
+                        
                         <input class="" type="file" wire:model="gambar_b_edit" id="gambar_b"> 
 
                     </div>
@@ -93,7 +96,7 @@
 
                 <div class="row mt-2">
                     <div class="col">
-                        <img class="img img-fluid mr-3" src="storage/{{ $gambar_c }}" alt="" width="100px">
+                        <img src="{{ asset('storage/' . $gambar_c) }}" alt="" srcset="" class="img-fluid m-2 border" width="200px">
                         <input class="" type="file" wire:model="gambar_c_edit" id="gambar_c"> 
 
                     </div>
@@ -121,7 +124,7 @@
 
                 <div class="row mt-2">
                     <div class="col">
-                        <img class="img img-fluid mr-3" src="storage/{{ $gambar_d }}" alt="" width="100px">
+                        <img src="{{ asset('storage/' . $gambar_d) }}" alt="" srcset="" class="img-fluid m-2 border" width="200px">
                         <input class="" type="file" wire:model="gambar_d_edit" id="gambar_d"> 
 
                     </div>
@@ -147,7 +150,7 @@
 
                 <div class="row mt-2">
                     <div class="col">
-                        <img class="img img-fluid mr-3" src="storage/{{ $gambar_e }}" alt="" width="100px">
+                        <img src="{{ asset('storage/' . $gambar_e) }}" alt="" srcset="" class="img-fluid m-2 border" width="200px">
                         <input class="" type="file" wire:model="gambar_e_edit" id="gambar_e"> 
 
                     </div>
@@ -160,9 +163,15 @@
                 <label for="gambar">Gambar Utama</label>
                 <div class="row mt-2">
                     <div class="col">
-                        <img src="storage/{{ $gambar }}" alt="" srcset="" class="img-fluid" width="200px">
+                        <img src="{{ asset('storage/' . $gambar) }}" alt="" srcset="" class="img-fluid m-2 border" width="300px">
 
-                        <input wire:model="gambar_edit" type="file" class="" id="gambar" placeholder="Gambar">@error('gambar') <span class="error text-danger">{{ $message }}</span> @enderror
+                        <div class="d-flex mt-2">
+                            <label for="">Ganti:</label>
+                            <input wire:model="gambar_edit" type="file" class="" id="gambar" placeholder="Gambar">
+                        
+                        </div>
+
+                        @error('gambar') <span class="text-danger">{{ $message }}</span> @enderror                     
         
 
                     </div>
