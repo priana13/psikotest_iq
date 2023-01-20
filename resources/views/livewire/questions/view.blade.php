@@ -45,9 +45,7 @@
 						@if (session()->has('message'))
 						<div wire:poll.4s class="btn btn-sm btn-success" style="margin-top:0px; margin-bottom:0px;"> {{ session('message') }} </div>
 						@endif
-						<div>
-							<input wire:model='keyWord' type="text" class="form-control d-none" name="search" id="search" placeholder="Search Questions">
-						</div>
+						
 
 						<div class="tombol">							
 
@@ -62,12 +60,24 @@
 						</div>
 
 					</div>
+					
 				</div>
 				
 				<div class="card-body">
 						@include('livewire.questions.create')
 						@include('livewire.questions.update')
 						@include('livewire.questions.import')
+
+				<div class="row d-flex justify-content-between pr-3 pb-2">	
+					
+					<div></div>
+
+					<div>
+						<input wire:model='keyWord' type="text" class="form-control" name="search" id="search" placeholder="Cari Nomor Soal">
+					</div>
+
+				</div>
+
 				<div class="table-responsive">
 					<table class="table table-bordered table-sm">
 						<thead class="thead">

@@ -45,23 +45,13 @@ class Questions extends Component
 
 
     public function render()
-    {
-		
-		$keyWord = '%'.$this->keyWord .'%';
+    {				
 
 		$questions = Question::where('exam_id' , $this->id_psikotes)->orderBy('no');	
 
 		if($this->keyWord != null){
 
-			$questions = $questions->orWhere('soal', 'LIKE', $keyWord)
-						->orWhere('a', 'LIKE', $keyWord)
-						->orWhere('b', 'LIKE', $keyWord)
-						->orWhere('c', 'LIKE', $keyWord)
-						->orWhere('d', 'LIKE', $keyWord)
-						->orWhere('e', 'LIKE', $keyWord)
-						->orWhere('kc_jawaban', 'LIKE', $keyWord)
-						->orWhere('gambar', 'LIKE', $keyWord)
-						->orWhere('status', 'LIKE', $keyWord);
+			$questions = $questions->where('no', $this->keyWord);
 						
 		}		
 
