@@ -3,7 +3,17 @@
 
     <div class="col">
 
-        <button class="btn btn-sm btn-primary mb-1" onclick="listNo()" id="sidebarToggle">Nomor</button>
+        <div class="header d-flex justify-content-between">
+
+            <button class="btn btn-sm btn-primary mb-1" onclick="listNo()" id="sidebarToggle">Nomor</button>
+
+            @if(!$finish_status)
+
+                <button class="btn btn-sm btn-danger mb-1" onclick="akhiriTest();">Akhiri Tes</button>
+
+            @endif
+
+        </div>
 
 
         <!-- Basic Card Example -->
@@ -269,6 +279,27 @@
                 hidesidebar = 0;
 
             }
+
+        }
+
+        function akhiriTest(){       
+
+
+            Swal.fire({
+                icon: 'warning',
+                title: 'Yakin ingin mengakhiri Tes ini?', 
+                confirmButtonText: 'Ya Akhiri',                   
+                showCancelButton: true,                           
+                }).then((result) => {
+                /* Read more about isConfirmed, isDenied below */
+                if (result.isConfirmed) {
+
+                    Livewire.emit('selesaikanUjian');
+
+                    Swal.fire('Tes Telah Diakhiri!', '', 'success')
+                } 
+            })
+
 
         }
 
