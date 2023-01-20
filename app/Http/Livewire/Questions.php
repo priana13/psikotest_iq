@@ -17,7 +17,7 @@ class Questions extends Component
 	use WithFileUploads;
 
 	protected $paginationTheme = 'bootstrap';
-    public $selected_id, $keyWord, $exam_id, $soal, $a, $b, $c, $d, $e, $kc_jawaban, $gambar, $status = "Aktif" , $no = 1;
+    public $selected_id, $keyWord, $exam_id, $soal, $a, $b, $c, $d, $e, $kc_jawaban, $gambar, $status = "Aktif" , $no;
     public $updateMode = false;	
 	public $gambar_a, $gambar_b, $gambar_c , $gambar_d, $gambar_e;
 	public $gambar_a_edit,$gambar_b_edit,$gambar_c_edit,$gambar_d_edit,$gambar_e_edit , $gambar_edit;
@@ -25,6 +25,7 @@ class Questions extends Component
 	public $psikotes;
 	public $file;
 	public $val_a=1,$val_b=1,$val_c=1,$val_d=1,$val_e=1;
+	public $list_nomor;
 
 
 	protected $listeners = [
@@ -41,11 +42,30 @@ class Questions extends Component
 			$this->exam_id = $id;
 
 		}
+
+		$questions = Question::where('exam_id' , $id)->pluck('no');
+
+		$list_nomor = collect();
+
+		for ($i=1; $i <= 100; $i++) { 
+
+			$list_nomor->push($i);
+		}		
+		
+		$diff = $list_nomor->diff($questions);
+		
+
+		$this->list_nomor = $diff->all();
+
+
+		$this->no = reset( $this->list_nomor );	
+
 	}
 
 
     public function render()
-    {				
+    {	
+		
 
 		$questions = Question::where('exam_id' , $this->id_psikotes)->orderBy('no');	
 
@@ -87,9 +107,9 @@ class Questions extends Component
 
 	public function create(){
 
-		$max_question = Question::where('exam_id', $this->exam_id)->max('no');
+		// $max_question = Question::where('exam_id', $this->exam_id)->max('no');
 
-		$this->no = $max_question + 1;
+		// $this->no = $max_question + 1;
 	}
 
     public function store()
@@ -119,9 +139,9 @@ class Questions extends Component
 
 		$existing_question = Question::where('exam_id' , $this->exam_id)->pluck('no');		
 
-		($existing_question->count() > 0)?			
-						$this->no = $existing_question->max() + 1:
-						$this->no = 1;	
+		// ($existing_question->count() > 0)?			
+		// 				$this->no = $existing_question->max() + 1:
+		// 				$this->no = 1;	
 
         $question = Question::create([ 
 			'exam_id' => $this->exam_id,
@@ -214,6 +234,7 @@ class Questions extends Component
 		}        
 
         $this->resetInput();
+		$this->emit('refresh');
 		$this->emit('closeModal');
 		session()->flash('message', 'Question Successfully created.');
     }

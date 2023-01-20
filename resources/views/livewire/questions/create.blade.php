@@ -3,13 +3,14 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="createDataModalLabel">Tambah Soal No <strong>{{ $no }}</strong></h5>
+                <h5 class="modal-title" id="createDataModalLabel">Tambah Soal {{ $no }}</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                      <span aria-hidden="true close-btn">×</span>
                 </button>
             </div>
            <div class="modal-body">
-				<form>
+			<form>
+
             <div class="form-group d-none">
                 <label for="exam_id"></label>
                 <select wire:model="exam_id" class="form-control" id="exam_id" placeholder="Exam Id">
@@ -21,11 +22,24 @@
                 </select>               
                 @error('exam_id') <span class="text-danger">{{ $message }}</span> @enderror
             </div>
+
+            <div class="form-group">
+                <label for="">Pilih Nomor Soal</label>
+                <select class="form-control" wire:model="no" id="">
+                    @foreach($list_nomor as $nomor)
+                        <option value="{{ $nomor }}">{{ $nomor }}</option>
+                    @endforeach                   
+                </select>
+
+            </div>
+
+
             <div class="form-group">
                 <label for="soal">Soal</label>
                 <textarea class="form-control" wire:model="soal" id="soal" cols="30" rows="5" placeholder="Soal"></textarea>
                 @error('soal') <span class="text-danger">{{ $message }}</span> @enderror
             </div>
+
             <div class="form-group card shadow p-3">
                 <label for="a">Pilihan Jawaban A</label>
                 <div class="row mb-2">
