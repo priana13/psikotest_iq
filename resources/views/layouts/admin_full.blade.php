@@ -235,7 +235,7 @@
 
            if(conf){
                 
-            Livewire.emit('selesaikanUjian');
+            // Livewire.emit('selesaikanUjian');
             
            }
     });

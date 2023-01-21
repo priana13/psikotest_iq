@@ -177,7 +177,7 @@ class Ujian extends Component
 
                }else{
 
-                $this->ujianTelahSelesai();
+                // $this->ujianTelahSelesai();
 
                }
     
