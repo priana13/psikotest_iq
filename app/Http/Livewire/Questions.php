@@ -116,12 +116,7 @@ class Questions extends Component
     {
         $this->validate([
 		'exam_id' => 'required',
-		'soal' => 'required',
-		'a' => 'required',
-		'b' => 'required',
-		'c' => 'required',
-		'd' => 'required',
-		'e' => 'required',
+		'soal' => 'required',		
 		'status' => 'required',
 		'gambar' => 'max:1024'
         ]);	
@@ -307,12 +302,7 @@ class Questions extends Component
     {
         $this->validate([
 		'exam_id' => 'required',
-		'soal' => 'required',
-		'a' => 'required',
-		'b' => 'required',
-		'c' => 'required',
-		'd' => 'required',
-		'e' => 'required',
+		'soal' => 'required',		
 		'status' => 'required',
         ]);
 

@@ -59,9 +59,9 @@
                                         $src_a = $src_a->image:
                                         $src_a = '';                                    
                                 @endphp
-                                
-                                <img class="img img-fluid " src="/storage/{{ $src_a }}" width="100px" alt="" srcset="">
-
+                                @if($src_a)
+                                <img class="img img-fluid ml-5 mt-2" src="/storage/{{ $src_a }}" width="100px" alt="" srcset="">
+                                @endif
                             </div>
 
                         </div>
@@ -85,8 +85,9 @@
                                     $src_b = '';                                    
                                 @endphp
 
-
-                                <img class="img img-fluid " src="/storage/{{ $src_b }}" width="100px" alt="" srcset="">
+                                @if($src_b)
+                                <img class="img img-fluid ml-5 mt-2" src="/storage/{{ $src_b }}" width="100px" alt="" srcset="">
+                                @endif
                             </div>
 
                         </div>
@@ -111,9 +112,10 @@
                                     $src_c = '';                                    
                                 @endphp
 
+                                @if($src_c)
+                                <img class="img img-fluid ml-5 mt-2" src="/storage/{{ $src_c }}" width="100px" alt="" srcset="">
+                                @endif
 
-                                <img class="img img-fluid " src="/storage/{{ $src_c }}" width="100px" alt="" srcset="">
-                                
                             </div>
 
                         </div>
@@ -135,10 +137,10 @@
                                     $src_d = $src_d->image:
                                     $src_d = '';                                    
                                 @endphp
-
-
-                                <img class="img img-fluid " src="/storage/{{ $src_d }}" width="100px" alt="" srcset="">
                                 
+                                @if($src_d)
+                                <img class="img img-fluid ml-5 mt-2" src="/storage/{{ $src_d }}" width="100px" alt="" srcset="">
+                                @endif
                             </div>
 
                           
@@ -163,8 +165,11 @@
                                     $src_e = '';                                    
                                 @endphp
 
-                                <img class="img img-fluid " src="/storage/{{ $src_e }}" width="100px" alt="" srcset="">
-                                
+                                @if($src_e)
+
+                                <img class="img img-fluid ml-5 mt-2" src="/storage/{{ $src_e }}" width="100px" alt="" srcset="">
+                               
+                                @endif
                             </div>
 
                         </div>                      
