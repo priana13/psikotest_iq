@@ -12,8 +12,7 @@
                 <div class="row">
 
                     <div class="form-group col-md-10">
-                        <select class="form-control" wire:model="product" id="">
-                            <option value="">Select Product</option>
+                        <select class="form-control" wire:model="product" id="">                           
                             @foreach($package as $row)
                             <option value="{{ $row->id }}">{{ $row->name }}</option>
                             @endforeach
