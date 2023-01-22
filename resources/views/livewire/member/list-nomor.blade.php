@@ -5,7 +5,7 @@
     
         <div class="row mx-2 my-auto">
 
-            @foreach($exam->questions as $row)
+            @foreach($exam->questions()->orderBy('no')->get() as $row)
 
             <?php 
             (in_array( $row->id, $sudah_dijawab))?

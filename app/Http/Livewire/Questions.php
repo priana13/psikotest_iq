@@ -26,6 +26,7 @@ class Questions extends Component
 	public $file;
 	public $val_a=1,$val_b=1,$val_c=1,$val_d=1,$val_e=1;
 	public $list_nomor;
+	public $edit_id;
 
 
 	protected $listeners = [
@@ -237,43 +238,44 @@ class Questions extends Component
     public function edit($id)
     {
         $record = Question::findOrFail($id);
+		$this->edit_id = $record->id;
 
 		$questionImage = $record->questionImages;	
 		
-		$gambar_a = $questionImage->where('type' , 'a')->first();
-		$gambar_b = $questionImage->where('type' , 'b')->first();
-		$gambar_c = $questionImage->where('type' , 'c')->first();
-		$gambar_d = $questionImage->where('type' , 'd')->first();
-		$gambar_e = $questionImage->where('type' , 'e')->first();
+		$gambar_a_edit = $questionImage->where('type' , 'a')->first();
+		$gambar_b_edit = $questionImage->where('type' , 'b')->first();
+		$gambar_c_edit = $questionImage->where('type' , 'c')->first();
+		$gambar_d_edit = $questionImage->where('type' , 'd')->first();
+		$gambar_e_edit = $questionImage->where('type' , 'e')->first();
 
-		if($gambar_a){
-			$this->gambar_a = $gambar_a->image;
+		if($gambar_a_edit){
+			$this->gambar_a_edit = $gambar_a_edit->image;
 		}else{
-			$this->gambar_a = '';
+			$this->gambar_a_edit = '';
 		}
 
-		if($gambar_b){
-			$this->gambar_b = $gambar_b->image;
+		if($gambar_b_edit){
+			$this->gambar_b_edit = $gambar_b_edit->image;
 		}else{
-			$this->gambar_b = '';
+			$this->gambar_b_edit = '';
 		}
 
-		if($gambar_c){
-			$this->gambar_c = $gambar_c->image;
+		if($gambar_c_edit){
+			$this->gambar_c_edit = $gambar_c_edit->image;
 		}else{
-			$this->gambar_c = '';
+			$this->gambar_c_edit = '';
 		}
 
-		if($gambar_d){
-			$this->gambar_d = $gambar_d->image;
+		if($gambar_d_edit){
+			$this->gambar_d_edit = $gambar_d_edit->image;
 		}else{
-			$this->gambar_d = '';
+			$this->gambar_d_edit = '';
 		}
 
-		if($gambar_e){
-			$this->gambar_e = $gambar_e->image;
+		if($gambar_e_edit){
+			$this->gambar_e_edit = $gambar_e_edit->image;
 		}else{
-			$this->gambar_e = '';
+			$this->gambar_e_edit = '';
 		}
 
 
@@ -492,6 +494,19 @@ class Questions extends Component
 		Excel::import(new QuestionsImport($this->exam_id), $this->file);
 		$this->emit('closeModal');		
 		$this->emit('refresh');
+
+	}
+
+
+	public function hapus_gambar($soal, $id){
+
+		$record = Question::findOrFail($id);
+
+		$questionImage = $record->questionImages;	
+		
+		QuestionImage::where('question_id', $id)->where('type', $soal)->delete();	
+
+		return redirect('exams/soal/'. $this->exam_id);
 
 	}
 }
