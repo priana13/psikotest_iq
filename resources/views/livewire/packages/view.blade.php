@@ -30,7 +30,8 @@
 						<thead class="thead">
 							<tr> 
 								<td>#</td> 
-								<th>Name</th>								
+								<th>Name</th>		
+								<th>Qty Bulan</th>						
 								<th>Harga</th>
 								<th>Detail</th>
 								<td>Aksi</td>
@@ -39,8 +40,9 @@
 						<tbody>
 							@foreach($packages as $row)
 							<tr>
-								<td>{{ $loop->iteration }}</td> 
-								<td>{{ $row->name }}</td>								
+								<td>{{ $loop->iteration }}</td> 								
+								<td>{{ $row->name }}</td>
+								<td>{{ $row->qty }}</td>								
 								<td>{{ number_format($row->price) }}</td>
 								<td>{{ $row->detail }}</td>
 								<td width="90">

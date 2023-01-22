@@ -30,6 +30,7 @@ class CheckoutShow extends Component
         'bulanan' => 'Bulan',
         'mingguan' => 'Minggu'
     ];
+    public $jumlah_bulan;
 
     public function mount(){
 
@@ -43,6 +44,7 @@ class CheckoutShow extends Component
         $this->email = auth()->user()->email;
         $this->hp = auth()->user()->hp;
         $this->alamat = auth()->user()->alamat;
+        // $this->jumlah_bulan = $this->product->qty;
 
 
     }
@@ -57,11 +59,15 @@ class CheckoutShow extends Component
     {       
 
         if($this->qty == ''){$this->qty = 0;}
-
         $this->productSelected = Package::find($this->product);
+
+        // $this->qty = $this->productSelected->qty;
+
        
         $this->harga = $this->productSelected->price;
-        $this->total = $this->harga * $this->qty;      
+        $this->total = $this->harga * $this->qty;  
+        
+        $this->jumlah_bulan = $this->productSelected->qty * $this->qty;
 
         return view('livewire.checkout.checkout-show');
     }
