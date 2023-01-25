@@ -307,4 +307,10 @@ class Ujian extends Component
     }
 
 
+    public function pilih($soal){
+
+       $this->jawaban = $soal;
+    }
+
+
 }

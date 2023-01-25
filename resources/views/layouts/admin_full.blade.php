@@ -37,6 +37,11 @@
         }
     }
 
+    .soal:hover {
+
+        background-color: rgb(230, 236, 246);       
+    }
+
 
     </style>
 </head>

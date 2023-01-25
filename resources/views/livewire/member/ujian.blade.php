@@ -38,9 +38,9 @@
                 <fieldset class="form-group row">
                     
                                     
-                    <div class="{{ ($soal->gambar)?"col-sm-9":"col" }} mt-3 ">
+                    <div class="{{ ($soal->gambar)?"col-sm-9":"col" }} mt-3" >
 
-                        <div class="form-check mb-2 shadow-sm p-2">
+                        <div class="form-check mb-2 shadow-sm p-2 soal" style=""  wire:click="pilih('a')">
 
                             <div class="row">                                
 
@@ -66,7 +66,7 @@
 
                         </div>
 
-                        <div class="form-check mb-2 shadow-sm p-2">
+                        <div class="form-check mb-2 shadow-sm p-2 soal" wire:click="pilih('b')">
                             <div class="row">
 
                             <input class="mx-3" type="radio" name="jawaban" id="jawaban-b"  wire:model="jawaban" value="b">
@@ -92,7 +92,7 @@
 
                         </div>
 
-                        <div class="form-check mb-2 shadow-sm p-2">
+                        <div class="form-check mb-2 shadow-sm p-2 soal" wire:click="pilih('c')">
 
                             <div class="row">
 
@@ -120,7 +120,7 @@
 
                         </div>
 
-                        <div class="form-check mb-2 shadow-sm p-2">
+                        <div class="form-check mb-2 shadow-sm p-2 soal" wire:click="pilih('d')">
 
                             <div class="row">
                                 <input class="mx-3" type="radio" name="jawaban" id="jawaban-d" wire:model="jawaban" value="d">
@@ -146,7 +146,7 @@
                           
                         </div>
 
-                        <div class="form-check mb-2 shadow-sm p-2">
+                        <div class="form-check mb-2 shadow-sm p-2 soal" wire:click="pilih('e')">
 
                             <div class="row">
                                 <input class="mx-3" type="radio" name="jawaban" id="jawaban-e"  wire:model="jawaban" value="e">
@@ -311,6 +311,7 @@
 
 
         }
+      
 
 
     </script>
