@@ -229,9 +229,13 @@
         </div>
 
     </div>
+
+    @push('scripts')
     
 
     <script>
+
+
         CountDownTimer('{{$date}}', 'waktu');
         function CountDownTimer(dt, id)
         {
@@ -310,6 +314,8 @@
 
 
     </script>
+
+    @endpush
 
 
 </div>
