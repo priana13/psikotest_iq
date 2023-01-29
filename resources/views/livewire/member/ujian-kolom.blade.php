@@ -118,22 +118,27 @@
 
 
     <script>
-        CountDownTimer('{{$date}}', 'waktu');
-        function CountDownTimer(dt, id)
+        CountDownTimer('waktu');
+
+        function CountDownTimer(id)
         {
-            var end = new Date('{{$endtime}}');
-            var _second = 1000;
-            var _minute = _second * 60;
-            var _hour = _minute * 60;
-            var _day = _hour * 24;
-            let timer;
+            var end = new Date('{{$endtime}}').getTime();
+            var _detik = 1000;
+            var _menit = _detik * 60;
+            var _jam = _menit * 60;
+            var _hari = _jam * 24;                     
 
-
-            function showRemaining() {
+            const timer = setInterval(function showRemaining() {
                 var now = new Date();
-                var distance = end - now;
+                var now = new Date().toLocaleString("en-US", {
+                            timeZone: "Asia/Jakarta",
+                        });
+
+                const now_jakarta = new Date(now).getTime();
+
+                var selisih = end - now_jakarta;
                
-                if (distance < 0) {
+                if (selisih < 0) {
 
                     clearInterval(timer); 
                     
@@ -160,21 +165,19 @@
                     Livewire.emit('kurangiWaktu');
                 }
 
-                var days = Math.floor(distance / _day);
-                var hours = Math.floor((distance % _day) / _hour);
-                var minutes = Math.floor((distance % _hour) / _minute);
-                var seconds = Math.floor((distance % _minute) / _second);
+                // var days = Math.floor(selisih / _hari);
+                var jam = Math.floor((selisih % _hari) / _jam);
+                var menit = Math.floor((selisih % _jam) / _menit);
+                var detik = Math.floor((selisih % _menit) / _detik);
+
 
                 // document.getElementById(id).innerHTML = days + 'days ';
-                document.getElementById(id).innerHTML = hours + ':';
-                document.getElementById(id).innerHTML += minutes + ':';
-                document.getElementById(id).innerHTML += seconds;   
+                document.getElementById(id).innerHTML = jam + ':';
+                document.getElementById(id).innerHTML += menit + ':';
+                document.getElementById(id).innerHTML += detik;                
                 
-                // kurangi waktu yang ada di database
-            //    console.log(seconds);
-            }
+            }, 1000);
 
-            timer = setInterval(showRemaining, 1000);
             // clearInterval(timer);
             // console.log(timer);
         }

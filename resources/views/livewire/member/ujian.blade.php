@@ -236,44 +236,52 @@
     <script>
 
 
-        CountDownTimer('{{$date}}', 'waktu');
-        function CountDownTimer(dt, id)
+        CountDownTimer('waktu');
+
+        function CountDownTimer(id)
         {
-            var end = new Date('{{$endtime}}');
-            var _second = 1000;
-            var _minute = _second * 60;
-            var _hour = _minute * 60;
-            var _day = _hour * 24;
-            var timer;
-            function showRemaining() {
-                var now = new Date();
-                var distance = end - now;
-                if (distance < 0) {
+            var end = new Date('{{$endtime}}').getTime();
+            var _detik = 1000;
+            var _menit = _detik * 60;
+            var _jam = _menit * 60;
+            var _hari = _jam * 24;                     
+            
+            const timer = setInterval(function showRemaining() {
 
-                    clearInterval(timer); 
-                    
-                    alert('Waktu Tes Telah Habis');
-                    // emit di sini
-                    Livewire.emit('waktuHabis');
+                    var now = new Date().toLocaleString("en-US", {
+                            timeZone: "Asia/Jakarta",
+                        });
 
-                    return;
-                }else{
+                    const now_jakarta = new Date(now).getTime();
+                    // console.log(now, end , now_jakarta );
 
-                // kurangi waktu yang ada di database
-                Livewire.emit('kurangiWaktu');
-                }
+                    var selisih = end - now_jakarta;
+                    if (selisih < 0) {
 
-                var days = Math.floor(distance / _day);
-                var hours = Math.floor((distance % _day) / _hour);
-                var minutes = Math.floor((distance % _hour) / _minute);
-                var seconds = Math.floor((distance % _minute) / _second);
+                        clearInterval(timer); 
+                        
+                        alert('Waktu Tes Telah Habis');
+                        // emit di sini
+                        Livewire.emit('waktuHabis');
 
-                // document.getElementById(id).innerHTML = days + 'days ';
-                document.getElementById(id).innerHTML = hours + ':';
-                document.getElementById(id).innerHTML += minutes + ':';
-                document.getElementById(id).innerHTML += seconds;                
-            }
-            timer = setInterval(showRemaining, 1000);
+                        return;
+                    }else{
+
+                    // kurangi waktu yang ada di database
+                    Livewire.emit('kurangiWaktu');
+                    }
+
+                    // var days = Math.floor(selisih / _hari);
+                    var jam = Math.floor((selisih % _hari) / _jam);
+                    var menit = Math.floor((selisih % _jam) / _menit);
+                    var detik = Math.floor((selisih % _menit) / _detik);
+
+                    // document.getElementById(id).innerHTML = days + 'days ';
+                    document.getElementById(id).innerHTML = jam + ':';
+                    document.getElementById(id).innerHTML += menit + ':';
+                    document.getElementById(id).innerHTML += detik;                
+                }, 1000);
+
         }
 
         var hidesidebar = 0;
