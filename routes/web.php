@@ -90,6 +90,9 @@ Route::middleware('auth')->group(function(){
 		Route::view('settings', 'livewire.settings.index')->name('admin.settings');
 		Route::view('scores', 'livewire.scores.index')->name('admin.scores');
 		Route::view('questions', 'livewire.questions.index')->name('admin.questions');
+		Route::get('questions/{id}/update', [QuestionController::class, 'edit'])->name('admin.questions.update');
+		
+
 		Route::view('exams', 'livewire.exams.index')->name('admin.exams');
 		Route::get('exams/create', [ExamController::class, 'create'])->name('admin.exams.create');
 		Route::post('exams/store', [ExamController::class, 'store'])->name('admin.exams.store');

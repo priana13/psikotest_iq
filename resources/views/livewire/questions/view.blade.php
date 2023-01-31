@@ -64,8 +64,7 @@
 				</div>
 				
 				<div class="card-body">
-						@include('livewire.questions.create')
-						@include('livewire.questions.update')
+						@include('livewire.questions.create')						
 						@include('livewire.questions.import')
 
 				<div class="row d-flex justify-content-between pr-3 pb-2">	
@@ -108,7 +107,7 @@
 									Actions
 									</button>
 									<div class="dropdown-menu dropdown-menu-right">
-									<a data-toggle="modal" data-target="#updateModal" class="dropdown-item" wire:click="edit({{$row->id}})"><i class="fa fa-edit"></i> Edit </a>							 
+									<a class="dropdown-item" target="_blank" href="{{ route('admin.questions.update', $row->id) }}"><i class="fa fa-edit"></i> Edit </a>							 
 									<a class="dropdown-item" onclick="confirm('Confirm Delete Question id {{$row->id}}? \nDeleted Questions cannot be recovered!')||event.stopImmediatePropagation()" wire:click="destroy({{$row->id}})"><i class="fa fa-trash"></i> Delete </a>   
 									</div>
 								</div>
