@@ -342,18 +342,18 @@ class Questions extends Component
 				$record->gambar = $path_gambar;
 				$record->save();
 
-			}
+			}			
 
 			// input gambar a
-			if($this->gambar_a_edit){
-				$path_gambar_a_edit =  $this->gambar_a_edit->store('public/photos');
-				$path_gambar_a_edit = explode('public/' , $path_gambar_a_edit);
-				$path_gambar_a_edit = $path_gambar_a_edit[1];					
+			if($this->gambar_a){
+				$path_gambar_a =  $this->gambar_a->store('public/photos');
+				$path_gambar_a = explode('public/' , $path_gambar_a);
+				$path_gambar_a = $path_gambar_a[1];					
 				$gambar_a = QuestionImage::where('type' , 'a')->where('question_id', $this->selected_id)->first();
 
 				if($gambar_a){
 
-					$gambar_a->image = $path_gambar_a_edit;
+					$gambar_a->image = $path_gambar_a;
 					$gambar_a->save();	
 
 				}else{
@@ -361,16 +361,16 @@ class Questions extends Component
 					QuestionImage::create([
 						'question_id' => $record->id,
 						'type' => 'a',
-						'image' => $path_gambar_a_edit
+						'image' => $path_gambar_a
 					]);
 				}
 
 			}
 
 			// input gambar b
-			if($this->gambar_b_edit){
+			if($this->gambar_b){
 
-				$path_gambar_b =  $this->gambar_b_edit->store('public/photos');
+				$path_gambar_b =  $this->gambar_b->store('public/photos');
 				$path_gambar_b = explode('public/' , $path_gambar_b);
 				$path_gambar_b = $path_gambar_b[1];	
 				
@@ -394,9 +394,9 @@ class Questions extends Component
 			}
 
 			// input gambar c
-			if($this->gambar_c_edit){
+			if($this->gambar_c){
 
-				$path_gambar_c =  $this->gambar_c_edit->store('public/photos');
+				$path_gambar_c =  $this->gambar_c->store('public/photos');
 				$path_gambar_c = explode('public/' , $path_gambar_c);
 				$path_gambar_c = $path_gambar_c[1];	
 				
@@ -422,9 +422,9 @@ class Questions extends Component
 			}
 
 			// input gambar d
-			if($this->gambar_d_edit){
+			if($this->gambar_d){
 
-				$path_gambar_d =  $this->gambar_d_edit->store('public/photos');
+				$path_gambar_d =  $this->gambar_d->store('public/photos');
 				$path_gambar_d = explode('public/' , $path_gambar_d);
 				$path_gambar_d = $path_gambar_d[1];	
 				
@@ -448,9 +448,9 @@ class Questions extends Component
 			}
 
 			// input gambar e
-			if($this->gambar_e_edit){
+			if($this->gambar_e){
 
-				$path_gambar_e =  $this->gambar_e_edit->store('public/photos');
+				$path_gambar_e =  $this->gambar_e->store('public/photos');
 				$path_gambar_e = explode('public/' , $path_gambar_e);
 				$path_gambar_e = $path_gambar_e[1];	
 				

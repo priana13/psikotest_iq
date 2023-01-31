@@ -43,7 +43,7 @@
 
                         <div class="d-flex">
 
-                            <input class="" type="file" wire:model="gambar_a_edit"> 
+                            <input class="" type="file" wire:model="gambar_a"> 
                             <button class="btn btn-sm btn-warning" wire:click.prevent="hapus_gambar('a', {{ $edit_id }})">Hapus</button>   
 
                         </div>
@@ -76,7 +76,7 @@
                     <div class="col">
                         <img src="{{ asset('storage/' . $gambar_b_edit) }}" alt="" srcset="" class="img-fluid m-2 border" width="200px">
                         
-                        <input class="" type="file" wire:model="gambar_b_edit" id="gambar_b"> 
+                        <input class="" type="file" wire:model="gambar_b" id="gambar_b"> 
                         <button class="btn btn-sm btn-warning" wire:click.prevent="hapus_gambar('b', {{ $edit_id }})">Hapus</button>  
 
                     </div>
@@ -105,7 +105,7 @@
                 <div class="row mt-2">
                     <div class="col">
                         <img src="{{ asset('storage/' . $gambar_c_edit) }}" alt="" srcset="" class="img-fluid m-2 border" width="200px">
-                        <input class="" type="file" wire:model="gambar_c_edit" id="gambar_c"> 
+                        <input class="" type="file" wire:model="gambar_c" id="gambar_c"> 
                         <button class="btn btn-sm btn-warning" wire:click.prevent="hapus_gambar('c', {{ $edit_id }})">Hapus</button>  
 
                     </div>
@@ -134,7 +134,7 @@
                 <div class="row mt-2">
                     <div class="col">
                         <img src="{{ asset('storage/' . $gambar_d_edit) }}" alt="" srcset="" class="img-fluid m-2 border" width="200px">
-                        <input class="" type="file" wire:model="gambar_d_edit" id="gambar_d"> 
+                        <input class="" type="file" wire:model="gambar_d" id="gambar_d"> 
                         <button class="btn btn-sm btn-warning" wire:click.prevent="hapus_gambar('d', {{ $edit_id }})">Hapus</button>  
 
                     </div>
@@ -161,7 +161,7 @@
                 <div class="row mt-2">
                     <div class="col">
                         <img src="{{ asset('storage/' . $gambar_e_edit) }}" alt="" srcset="" class="img-fluid m-2 border" width="200px">
-                        <input class="" type="file" wire:model="gambar_e_edit" id="gambar_e"> 
+                        <input class="" type="file" wire:model="gambar_e" id="gambar_e"> 
                         <button class="btn btn-sm btn-warning" wire:click.prevent="hapus_gambar('e', {{ $edit_id }})">Hapus</button>  
 
                     </div>
