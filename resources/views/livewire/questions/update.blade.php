@@ -16,7 +16,7 @@
             
             <div class="form-group">
                 <label for="soal">Soal No <strong>{{ $no }}</strong> </label>
-                <textarea class="form-control" wire:model="soal" id="soal" cols="30" rows="5" placeholder="Soal"></textarea>
+                <textarea class="form-control" wire:model="soal" id="ckeditor" cols="30" rows="5" placeholder="Soal"></textarea>
                 @error('soal') <span class="text-danger">{{ $message }}</span> @enderror
             </div>
             <div class="form-group card shadow p-3">                
