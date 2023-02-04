@@ -5,6 +5,8 @@ namespace App\Console;
 use App\Http\Controllers\CronJobController;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
+use App\Models\Membership;
+use Carbon\Carbon;
 
 class Kernel extends ConsoleKernel
 {
@@ -18,7 +20,19 @@ class Kernel extends ConsoleKernel
     {
         // $schedule->command('inspire')->hourly();
 
-        $schedule->call([CronJobController::class , 'expired'])->daily();
+        // $schedule->call([CronJobController::class , 'expired'])->daily();
+
+        $schedule->call(function () {
+                    
+            $hari_ini = Carbon::now();
+            
+            Membership::where('end', '<=', $hari_ini)->update([
+                'status' => 'expired'
+            ]);
+            
+        })->hourly();
+
+
     }
 
     /**
