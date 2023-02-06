@@ -25,8 +25,8 @@
                 {{-- <h4>Data Tes Sikap Kerja</h4> --}}
 
                 <h4 class="text-center"> SKOR ANDA</h4>
-                <h3 class="text-center display-4 d-block m-5"> 
-                    <span class="border py-2 px-4 border-primary">{{ $examevent->nilai }}</span> 
+                <h3 class="text-center h3 d-block my-2"> 
+                    <span class="border py-2 px-4 border-primary text-success" style="font-size:36px;">{{ $examevent->nilai }}</span> 
                 </h3>
 
                 {{-- Table 1 --}}
