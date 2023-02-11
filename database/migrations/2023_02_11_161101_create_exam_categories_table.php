@@ -13,7 +13,7 @@ class CreateExamCategoriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('exam_categories', function (Blueprint $table) {
+        Schema::create('examcategory', function (Blueprint $table) {
             $table->id();
             $table->string('name'); // Kepribadian, Kecerdasan, Sikap kerja, Matemateika dll.
             $table->string('type'); // PG,Column
@@ -23,7 +23,7 @@ class CreateExamCategoriesTable extends Migration
 
         Schema::table('exams', function (Blueprint $table) {
 
-            $table->foreignId('exam_category_id')->nullable()->constrained('exam_categories');
+            $table->foreignId('examcategory_id')->nullable()->constrained('examcategory');
 
         });
 
@@ -39,11 +39,11 @@ class CreateExamCategoriesTable extends Migration
 
         Schema::table('exams', function (Blueprint $table) {
 
-            $table->dropConstrainedForeignId('exam_category_id');
+            $table->dropConstrainedForeignId('examcategory_id');
 
         });
 
 
-        Schema::dropIfExists('exam_categories');
+        Schema::dropIfExists('examcategory');
     }
 }
