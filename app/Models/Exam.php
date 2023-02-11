@@ -39,6 +39,11 @@ class Exam extends Model
         return $this->hasMany('App\Models\Transaction', 'exam_id', 'id');
     }
 
+    public function exam_category(){
+
+        return $this->belongsTo(ExamCategory::class);
+    }
+
     public function scopeType($query,$type){
         
        return $query->where('type' , $type);
