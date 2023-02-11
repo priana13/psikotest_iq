@@ -3,7 +3,7 @@
     <style>
 
         .tombol {
-            padding: 8px 18px 8px 18px;
+            padding: 8px 15px 8px 15px;
             margin-bottom: 5px;
         }
 
@@ -64,7 +64,7 @@
                         <h4>Kolom {{ $kolom }} </h4>
 
                         <table class="table table-striped">
-                            <tr class="bg-primary text-light h2">
+                            <tr class="bg-primary text-light h3">
                                 <th>A</th>
                                 <th>B</th>
                                 <th>C</th>
@@ -96,7 +96,7 @@
 
                             <h3 class="font-bold" style="font-size:40px;margin-bottom:10px;">{{ $list_nomor }}</h3> <br>
                             
-                            <div class="my-3 h2">
+                            <div class="my-3">
                                 <button class="btn btn-secondary btn-lg tombol" wire:click.prevent="jawab('A')" style="font-size:20px;">A</button>
                                 <button class="btn btn-secondary btn-lg tombol" wire:click.prevent="jawab('B')" style="font-size:20px;">B</button>
                                 <button class="btn btn-secondary btn-lg tombol" wire:click.prevent="jawab('C')" style="font-size:20px;">C</button>
