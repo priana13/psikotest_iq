@@ -21,7 +21,7 @@
                 <div class="form-group">
                     <label for="nama_tes">Judul</label>
                     <input name="nama_tes" type="text" class="form-control" value="{{ old('nama_tes') }}" id="nama_tes" placeholder="Nama Tes">@error('nama_tes') <span class="text-danger">{{ $message }}</span> @enderror
-                </div>
+                </div>           
 
                 <div class="form-group">
                     <Label>Categori Tes</Label>
@@ -29,7 +29,7 @@
                         <option value="">Pilih</option>
                         @foreach($kategori as $row)
                             <option value="{{ $row->id }}" 
-                                {{ (old('examcategory_id') == $row->id)?'selected':'' }}
+                                {{ (old('examcategory_id') == $row->id || $type_name[$type] == $row->name)?'selected':'' }}
                                 >{{ $row->name }}</option>
                         @endforeach
                     </select>

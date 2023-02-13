@@ -28,7 +28,14 @@ class ExamController extends Controller
         $type = $request->type;
         $kategori = Examcategory::pg()->get();
 
-        return view('livewire.exams.create2', compact('type','kategori'));
+        $type_name = [
+            "cerdas" => "Kecerdasan",
+            "cermat" => "Kecermatan",
+            "kepribadian" => "Kepribadian",
+            "Akademik" => "Akademik"
+        ];  
+
+        return view('livewire.exams.create2', compact('type','kategori','type_name'));
     }
 
     /**

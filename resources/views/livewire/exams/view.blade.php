@@ -33,9 +33,15 @@
 							<li class="nav-item">
 							  <a class="nav-link {{ ($selected == 'cermat')?'active':'' }}" href="#" wire:click.prevent="pilihSoal('cermat')"> @lang('app.cermat')({{ $qty['cermat'] }})</a>
 							</li>
+
 							<li class="nav-item">
 							  <a class="nav-link {{ ($selected == 'kepribadian')?'active':'' }}" wire:click.prevent="pilihSoal('kepribadian')" href="#">Kepribadian({{ $qty['kepribadian'] }})</a>
 							</li>
+
+							<li class="nav-item">
+								<a class="nav-link {{ ($selected == 'Akademik')?'active':'' }}" wire:click.prevent="pilihSoal('Akademik')" href="#">Akademik({{ $qty['Akademik'] }})</a>
+							  </li>
+
 						  </ul>
 
 
@@ -56,6 +62,10 @@
 								
 								<a href="{{ route('admin.exams.create') }}?type=kepribadian" class="dropdown-item" >
 									Kepribadian
+								</a>
+
+								<a href="{{ route('admin.exams.create') }}?type=Akademik" class="dropdown-item" >
+									Akademik
 								</a>
 
 							</div>
@@ -89,14 +99,14 @@
 							<tr>
 								<td>{{ $loop->iteration }}</td> 
 								<td>{{ $row->nama_tes }}</td>
-								<td> @lang('app.' . $row->type)</td>
+								<td>{{ ($row->exam_category)?$row->exam_category->type:'' }}</td>
 								<td>{{ ($row->exam_category)?$row->exam_category->name:'' }}</td>
 								<td>{{ $row->waktu }}</td>								
 								<td>{{ $row->nilai_min }}</td>	
 								<td>{{ $row->questions->count() }}</td>							
 								<td>									
 
-								@if($row->type == 'cermat')
+								@if($row->exam_category && $row->exam_category->type == 'Column')
 
 								<a class="btn btn-sm btn-primary" href="{{ route('admin.tes-kecermatan' , $row->id) }}">Soal</a>
 								
