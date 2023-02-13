@@ -9,6 +9,7 @@ return [
     'kecermatan' => 'Sikap Kerja',
     'cermat' => 'Sikap Kerja',
     'cerdas' => 'Kecerdasan',
-    'kepribadian' => 'Kepribadian'
+    'kepribadian' => 'Kepribadian',
+    'Akademik' => 'Akademik'
 
 ];

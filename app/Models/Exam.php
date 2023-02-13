@@ -50,5 +50,11 @@ class Exam extends Model
         
        return $query->where('type' , $type);
     }
+
+    public function scopeTypeIn($query,$type){
+        
+        return $query->whereIn('type' , $type);
+     }
+     
     
 }

@@ -13,18 +13,35 @@ class SoalController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {        
 
-        // $this->authorize('admin');
+        $type = $request->type;
+        $exam = Exam::whereHas('questions');
+
+        if($type){
+
+            if($type == 'Psikotes'){
+
+                $exam = $exam->typeIn(['cerdas', 'cermat', 'kepribadian']);
+
+            }else if($type == 'Akademik'){
+
+                $exam = $exam->typeIn(['Akademik']);
+
+            }
 
 
-        $exam = Exam::whereHas('questions')->paginate(10);
+        }        
+
+        $exam = $exam->paginate(10);
 
 
+        $title = "List Soal";
 
         return view('member.soal.index' , [
-            'exams' => $exam
+            'exams' => $exam,
+            'title' => $title
         ]);
     }
 
