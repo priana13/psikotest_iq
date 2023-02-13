@@ -22,5 +22,15 @@ class Examcategory extends Model
     {
         return $this->hasMany('App\Models\Exam', 'examcategory_id', 'id');
     }
+
+    public function scopePg($query){
+
+        return $query->where('type', 'PG');
+    }
+
+    public function scopeColumn($query){
+
+        return $query->where('type', 'Column');
+    }
     
 }

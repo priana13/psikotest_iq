@@ -22,6 +22,20 @@
                     <label for="nama_tes">Judul</label>
                     <input name="nama_tes" type="text" class="form-control" value="{{ old('nama_tes') }}" id="nama_tes" placeholder="Nama Tes">@error('nama_tes') <span class="text-danger">{{ $message }}</span> @enderror
                 </div>
+
+                <div class="form-group">
+                    <Label>Categori Tes</Label>
+                    <select name="examcategory_id" id="" class="form-control">
+                        <option value="">Pilih</option>
+                        @foreach($kategori as $row)
+                            <option value="{{ $row->id }}" 
+                                {{ (old('examcategory_id') == $row->id)?'selected':'' }}
+                                >{{ $row->name }}</option>
+                        @endforeach
+                    </select>
+
+                    @error('examcategory_id') <span class="text-danger">{{ $message }}</span> @enderror
+                </div>
               
     
                 <div class="form-group">

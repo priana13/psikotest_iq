@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Exam;
+use App\Models\Examcategory;
 use Illuminate\Http\Request;
 
 class ExamController extends Controller
@@ -25,8 +26,9 @@ class ExamController extends Controller
     public function create(Request $request)
     {
         $type = $request->type;
+        $kategori = Examcategory::pg()->get();
 
-        return view('livewire.exams.create2', compact('type'));
+        return view('livewire.exams.create2', compact('type','kategori'));
     }
 
     /**
@@ -42,7 +44,8 @@ class ExamController extends Controller
             'waktu' => 'string|required',
             'nilai_min' => 'string|required',
             'peraturan' => 'string',
-            'type' => 'required|string'
+            'type' => 'required|string',
+            'examcategory_id' => 'required|integer'
             ]);
 
         (!$request->type)?
@@ -54,7 +57,9 @@ class ExamController extends Controller
             'waktu' => $request->waktu,
             'nilai_min' => $request->nilai_min,
             'peraturan' => $request->peraturan,
-            'type' => $type
+            'type' => $type,
+            'examcategory_id' => $request->examcategory_id
+
         ]);           
          
 
@@ -81,8 +86,9 @@ class ExamController extends Controller
     public function edit($id)
     {
         $exam = Exam::find($id);
+        $kategori = Examcategory::all();
 
-        return view('livewire.exams.edit', compact('exam'));
+        return view('livewire.exams.edit', compact('exam', 'kategori'));
     }
 
     /**
@@ -99,6 +105,7 @@ class ExamController extends Controller
             'waktu' => 'required',
             'nilai_min' => 'required',
             'peraturan' => 'required',
+            'examcategory_id' => 'required|integer'
          ]);
     
           
@@ -109,7 +116,8 @@ class ExamController extends Controller
             'waktu' => $request->waktu,
             'nilai_min' => $request->nilai_min,
             'peraturan' => $request->peraturan,
-            'col_qty' => $request->col_qty
+            'col_qty' => $request->col_qty,
+            'examcategory_id' => $request->examcategory_id
             ]);
            
             return redirect()->route('admin.exams')->with('message', 'Data Psikotes Berhasil Diupdate');

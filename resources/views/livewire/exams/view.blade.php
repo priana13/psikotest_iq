@@ -77,6 +77,7 @@
 								<td>No</td> 
 								<th>Nama Tes</th>
 								<th>Type</th>
+								<th>Kategori</th>
 								<th>Waktu</th>
 								<th>Nilai Min</th>		
 								<th>Soal</th>						
@@ -89,6 +90,7 @@
 								<td>{{ $loop->iteration }}</td> 
 								<td>{{ $row->nama_tes }}</td>
 								<td> @lang('app.' . $row->type)</td>
+								<td>{{ ($row->exam_category)?$row->exam_category->name:'' }}</td>
 								<td>{{ $row->waktu }}</td>								
 								<td>{{ $row->nilai_min }}</td>	
 								<td>{{ $row->questions->count() }}</td>							
