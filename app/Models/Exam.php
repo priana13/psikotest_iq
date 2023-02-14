@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Exam extends Model
 {
@@ -39,9 +40,21 @@ class Exam extends Model
         return $this->hasMany('App\Models\Transaction', 'exam_id', 'id');
     }
 
+    public function exam_category():BelongsTo
+    {
+
+        return $this->belongsTo(Examcategory::class, 'examcategory_id');
+    }
+
     public function scopeType($query,$type){
         
        return $query->where('type' , $type);
     }
+
+    public function scopeTypeIn($query,$type){
+        
+        return $query->whereIn('type' , $type);
+     }
+     
     
 }

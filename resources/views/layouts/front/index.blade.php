@@ -6,8 +6,8 @@
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
   <title>{{ config('app.name') }}</title>
-  <meta content="" name="description">
-  <meta content="" name="keywords">
+  <meta content="psikotes online terbaik diindonesia" name="description">
+  <meta content="psikotest,tes masuk prolri, tes masuk tni, psikotes online" name="keywords">
 
   <!-- Favicons -->
   <link href=" {{ asset('assets/img/favicon.png') }}" rel="icon">
@@ -88,6 +88,8 @@
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
+
+      {!! seo() !!}
 
     </div>
   </header><!-- End Header -->

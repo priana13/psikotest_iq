@@ -1,5 +1,14 @@
 <div>
 
+    <style>
+
+        .tombol {
+            padding: 8px 15px 8px 15px;
+            margin-bottom: 5px;
+        }
+
+    </style>
+
     <div class="row justify-content-center">
 		<div class="col-md-12">
 			<div class="card position-relative">
@@ -51,11 +60,11 @@
 
                     @else
 
-                    <div class="col-md-4 mx-auto text-center">
+                    <div class="col-md-7 mx-auto text-center">
                         <h4>Kolom {{ $kolom }} </h4>
 
                         <table class="table table-striped">
-                            <tr class="bg-primary text-light">
+                            <tr class="bg-primary text-light h3">
                                 <th>A</th>
                                 <th>B</th>
                                 <th>C</th>
@@ -63,7 +72,7 @@
                                 <th>E</th>                               
                             </tr>  
 
-                            <tr>
+                            <tr class="h2">
                                 <td style="width:20%;">
                                     {{ $exam_column->a }}
                                 </td>
@@ -83,18 +92,16 @@
                             </tr>
                         </table>                       
 
-                        <div class="mt-4">
+                        <div class="my-4">                          
 
-                            {{-- <h4>Soal</h4> --}}
-
-                            <h3>{{ $list_nomor }}</h3> 
+                            <h3 class="font-bold" style="font-size:40px;margin-bottom:10px;">{{ $list_nomor }}</h3> <br>
                             
                             <div class="my-3">
-                                <button class="btn btn-secondary" wire:click.prevent="jawab('A')">A</button>
-                                <button class="btn btn-secondary" wire:click.prevent="jawab('B')">B</button>
-                                <button class="btn btn-secondary" wire:click.prevent="jawab('C')">C</button>
-                                <button class="btn btn-secondary" wire:click.prevent="jawab('D')">D</button>
-                                <button class="btn btn-secondary" wire:click.prevent="jawab('E')">E</button>
+                                <button class="btn btn-secondary btn-lg tombol" wire:click.prevent="jawab('A')" style="font-size:20px;">A</button>
+                                <button class="btn btn-secondary btn-lg tombol" wire:click.prevent="jawab('B')" style="font-size:20px;">B</button>
+                                <button class="btn btn-secondary btn-lg tombol" wire:click.prevent="jawab('C')" style="font-size:20px;">C</button>
+                                <button class="btn btn-secondary btn-lg tombol" wire:click.prevent="jawab('D')" style="font-size:20px;">D</button>
+                                <button class="btn btn-secondary btn-lg tombol" wire:click.prevent="jawab('E')" style="font-size:20px;">E</button>
                                 
                             </div>                          
 

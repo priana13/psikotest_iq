@@ -11,7 +11,7 @@
 					<div style="display: flex; justify-content: space-between; align-items: center;">
 						<div class="float-left">
 							<h4> <i class="fas fa-list"></i>
-							List Soal </h4>
+							List Soal {{ $title }} </h4>
 						</div>
 
 						<a class="btn btn-sm btn-success" href="{{ route('checkout') }}">

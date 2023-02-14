@@ -13,6 +13,7 @@ use App\Http\Controllers\Member\UjianController;
 use App\Http\Controllers\MidtransController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\PsikotesController;
+use App\Http\Controllers\SeoController;
 use App\Http\Controllers\SettingController;
 
 /*
@@ -32,6 +33,9 @@ use App\Http\Controllers\SettingController;
 Route::get('/', function () {
     return view('home_page');
 })->name('home');
+
+Route::get('/sitemap.xml', [SeoController::class,'index'])->name('sitemap');
+
 
 Route::view('/fitur', 'pages.fitur')->name('page.fitur');
 Route::view('/harga', 'pages.harga')->name('page.harga');
@@ -70,6 +74,7 @@ Route::middleware('auth')->group(function(){
 	Route::middleware('admin')->group(function(){
 
 		//Route Hooks - Do not delete//
+		Route::view('examcategory', 'livewire.examcategories.index')->middleware('auth')->name('admin.examcategory');
 		Route::view('confirmations', 'livewire.confirmations.index')->middleware('auth')->name('admin.confirmations');
 		Route::view('packages', 'livewire.packages.index')->middleware('auth')->name('admin.packages');
 		Route::view('posts', 'livewire.posts.index')->middleware('auth')->name('admin.posts');

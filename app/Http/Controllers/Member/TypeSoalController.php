@@ -12,8 +12,16 @@ class TypeSoalController extends Controller
        
         $exam = Exam::whereHas('questions')->type($type)->paginate(10);
 
+        $title = [
+            "cerdas" => "Kecerdasan",
+            "cermat" => "Sikap Kerja",
+            "kepribadian" => "Kepribadian",
+            'Akademik' => "Akademik"
+        ];
+
         return view('member.soal.index' , [
-            'exams' => $exam
+            'exams' => $exam , 
+            'title' => $title[$type]
         ]);
 
     }

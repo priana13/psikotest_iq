@@ -1,4 +1,5 @@
 @extends('layouts.admin')
+<!-- Modal -->
 
 @section('main-content')
 

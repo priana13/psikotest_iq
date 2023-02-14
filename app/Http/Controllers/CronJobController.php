@@ -10,7 +10,7 @@ class CronJobController extends Controller
 {
     public function expired(){
 
-        $hari_ini = Carbon::now();     
+        $hari_ini = Carbon::now();
 
         $membership = Membership::where('end', '<=', $hari_ini)->update([
             'status' => 'expired'
