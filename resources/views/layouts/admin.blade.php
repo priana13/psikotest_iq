@@ -472,9 +472,8 @@
 	});
 
 
-    $(document).ready(function () {
+    $(document).ready(function () {      
        
-        // $('.ckeditor').ckeditor();
 
         CKEDITOR.replace( 'ckeditor' , {
 
@@ -483,12 +482,46 @@
 
         });
 
+        CKEDITOR.inline( 'ckeditor-a' , {
 
-        // CKEDITOR.replace('ckeditor', {
-        //     filebrowserUploadUrl: "{{route('ckeditor.image-upload', ['_token' => csrf_token() ])}}",
-        //     filebrowserUploadMethod: 'form'
-        // });
+            filebrowserUploadUrl: "{{route('ckeditor.image-upload', ['_token' => csrf_token() ])}}",
+            filebrowserUploadMethod: 'form'
 
+        });
+
+
+        CKEDITOR.inline( 'ckeditor-b' , {
+
+        filebrowserUploadUrl: "{{route('ckeditor.image-upload', ['_token' => csrf_token() ])}}",
+        filebrowserUploadMethod: 'form'
+
+        });
+
+
+        CKEDITOR.inline( 'ckeditor-c' , {
+
+        filebrowserUploadUrl: "{{route('ckeditor.image-upload', ['_token' => csrf_token() ])}}",
+        filebrowserUploadMethod: 'form'
+
+        });
+
+        CKEDITOR.inline( 'ckeditor-d' , {
+
+        filebrowserUploadUrl: "{{route('ckeditor.image-upload', ['_token' => csrf_token() ])}}",
+        filebrowserUploadMethod: 'form'
+
+        });
+
+
+        CKEDITOR.inline( 'ckeditor-e' , {
+
+        filebrowserUploadUrl: "{{route('ckeditor.image-upload', ['_token' => csrf_token() ])}}",
+        filebrowserUploadMethod: 'form'
+
+        });
+
+
+     
 
     });
     

@@ -27,6 +27,7 @@ class UpdateQuestion extends Component
 	public $list_nomor;
 	public $edit_id;
     public $record;
+	public $soalnya;
 
     public function mount($id){
 
@@ -123,7 +124,7 @@ class UpdateQuestion extends Component
 	
 			}
 
-			$record = Question::find($this->selected_id);
+			$record = Question::find($this->selected_id);			
           
             $record->update([ 
 			'exam_id' => $this->exam_id,

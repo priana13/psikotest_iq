@@ -8,10 +8,12 @@
     
             <input wire:model="exam_id" type="hidden" class="form-control" id="exam_id" placeholder="Exam Id">@error('exam_id') <span class="text-danger">{{ $message }}</span> @enderror
     
-    <div class="form-group">
+    <div class="form-group" wire:ignore >
         <label for="soal">Soal No <strong>{{ $no }}</strong> </label>      
+
+        {{ $soalnya }}
        
-        <trix-editor class="form-control" wire:model="soal" placeholder="Soal"></trix-editor>
+        <textarea class="form-control" id="ckeditor" wire:model="soalnya" placeholder="Soal"></textarea>
         @error('soal') <span class="text-danger">{{ $message }}</span> @enderror
 
     </div>
@@ -19,7 +21,9 @@
         <label for="a">Pilihan Jawaban A</label>
         <div class="row">
             <div class="col">
-                <input wire:model="a" type="text" class="form-control" id="a" placeholder="A">@error('a') <span class="text-danger">{{ $message }}</span> @enderror
+                <textarea id="ckeditor-a" wire:model="a" type="text" class="form-control" cols="30" rows="10"></textarea>
+                
+                @error('a') <span class="text-danger">{{ $message }}</span> @enderror
             </div>
         </div>
 
@@ -54,7 +58,9 @@
         <label for="b">Pilihan Jawaban B</label>
         <div class="row">
             <div class="col">
-                <input wire:model="b" type="text" class="form-control" id="b" placeholder="B">@error('b') <span class="text-danger">{{ $message }}</span> @enderror
+                <textarea id="ckeditor-b" wire:model="b" type="text" class="form-control" cols="30" rows="10"></textarea>
+                
+                @error('b') <span class="text-danger">{{ $message }}</span> @enderror
 
             </div>
         </div>
@@ -84,7 +90,9 @@
         <label for="c">Pilihan Jawaban C</label>
         <div class="row">
             <div class="col">
-                <input wire:model="c" type="text" class="form-control" id="c" placeholder="C">@error('c') <span class="text-danger">{{ $message }}</span> @enderror
+                <textarea id="ckeditor-c" wire:model="c" type="text" class="form-control" cols="30" rows="10"></textarea>
+               
+                @error('c') <span class="text-danger">{{ $message }}</span> @enderror
 
             </div>
         </div>
@@ -112,7 +120,9 @@
         <label for="d">Pilihan Jawaban D</label>
         <div class="row">
             <div class="col">
-                <input wire:model="d" type="text" class="form-control" id="d" placeholder="D">@error('d') <span class="text-danger">{{ $message }}</span> @enderror
+                <textarea id="ckeditor-d" wire:model="d" type="text" class="form-control" cols="30" rows="10"></textarea>
+               
+                @error('d') <span class="text-danger">{{ $message }}</span> @enderror
                 
 
             </div>
@@ -141,7 +151,9 @@
         <label for="e">Pilihan Jawaban E</label>
         <div class="row">
             <div class="col">
-                <input wire:model="e" type="text" class="form-control" id="e" placeholder="E">@error('e') <span class="text-danger">{{ $message }}</span> @enderror
+                <textarea id="ckeditor-e" wire:model="e" type="text" class="form-control" cols="30" rows="10"></textarea>
+
+                @error('e') <span class="text-danger">{{ $message }}</span> @enderror
             </div>
         </div>
 
@@ -205,6 +217,6 @@
     </div>
     <div class="modal-footer">
         <button type="button" wire:click.prevent="cancel()" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" wire:click.prevent="update()" class="btn btn-primary" data-dismiss="modal">Save</button>
+        <button type="button" wire:click.prevent="update" class="btn btn-primary" data-dismiss="modal">Save</button>
     </div>
 </div>

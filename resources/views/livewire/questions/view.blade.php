@@ -107,7 +107,7 @@
 									Actions
 									</button>
 									<div class="dropdown-menu dropdown-menu-right">
-									<a class="dropdown-item" target="_blank" href="{{ route('admin.questions.update', $row->id) }}"><i class="fa fa-edit"></i> Edit </a>							 
+									<a class="dropdown-item" target="_blank" href="{{ route('admin.questions.edit', $row->id) }}"><i class="fa fa-edit"></i> Edit </a>							 
 									<a class="dropdown-item" onclick="confirm('Confirm Delete Question id {{$row->id}}? \nDeleted Questions cannot be recovered!')||event.stopImmediatePropagation()" wire:click="destroy({{$row->id}})"><i class="fa fa-trash"></i> Delete </a>   
 									</div>
 								</div>
