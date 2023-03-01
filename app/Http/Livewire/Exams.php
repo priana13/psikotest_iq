@@ -5,6 +5,7 @@ namespace App\Http\Livewire;
 use Livewire\Component;
 use Livewire\WithPagination;
 use App\Models\Exam;
+use App\Models\Examcategory;
 use App\Models\Question;
 use DB;
 
@@ -18,9 +19,12 @@ class Exams extends Component
     public $type;
     public $selected = 'all';
     public $selected_type,$col_qty = null;
+    public $examcategory;
 
     public function render()
     {        
+
+        $this->examcategory = Examcategory::all();
 
 		$keyWord = '%'.$this->keyWord .'%';      
 
@@ -41,20 +45,14 @@ class Exams extends Component
  
             }else{
 
-                $exams = Exam::latest()->where('type' , $this->selected)->paginate(10);
+                $exams = Exam::latest()->where('examcategory_id' , $this->selected)->paginate(10);
 
             }
 
 
         }
      
-        $qty = [
-            'all' => Exam::count(),
-            'cerdas' => Exam::type('cerdas')->count(),
-            'cermat' => Exam::type('cermat')->count(),
-            'kepribadian' => Exam::type('kepribadian')->count(),
-            'Akademik' => Exam::type('Akademik')->count(),
-        ]; 
+        $qty = Exam::count(); 
 
         return view('livewire.exams.view', compact('exams' , 'qty'));
     }
