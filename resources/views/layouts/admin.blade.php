@@ -59,12 +59,17 @@
                 <span>{{ __('Dashboard') }}</span></a>
         </li>
 
+        <!-- Heading -->
+        <div class="sidebar-heading">
+            {{ __('TIPS & TRICK') }}
+        </div>
+
         <!-- Divider -->
         <hr class="sidebar-divider">
 
         <!-- Heading -->
         <div class="sidebar-heading">
-        {{ __('Resource') }}
+        {{ __('PSIKOTES') }}
         </div>
 
         <!-- Nav Item - Soal Cerdas -->
@@ -95,6 +100,44 @@
                 <span>{{ __('Soal Akademik') }}</span>
             </a>
         </li>
+
+
+        <!-- Divider -->
+        <hr class="sidebar-divider">
+
+        <!-- Heading -->
+        <div class="sidebar-heading">
+        {{ __('AKADEMIK') }}
+        </div>
+
+        <li class="nav-item my-0">
+            <a class="nav-link py-2" href="{{ route('member.history') }}">
+                <i class="fas fa-history"></i>
+                <span>{{ __('Pengetahuan Umum') }}</span>
+            </a>
+        </li>
+
+        <li class="nav-item my-0">
+            <a class="nav-link py-2" href="{{ route('member.history') }}">
+                <i class="fas fa-history"></i>
+                <span>{{ __('Bahasa Ingris') }}</span>
+            </a>
+        </li>
+
+        <li class="nav-item my-0">
+            <a class="nav-link py-2" href="{{ route('member.history') }}">
+                <i class="fas fa-history"></i>
+                <span>{{ __('Bahasa Indonesia') }}</span>
+            </a>
+        </li>
+
+        <!-- Divider -->
+        <hr class="sidebar-divider">
+
+        <!-- Heading -->
+        <div class="sidebar-heading">
+        {{ __('UJIAN') }}
+        </div>
 
         <!-- Nav Item - History -->
         <li class="nav-item my-0">
