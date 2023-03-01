@@ -7,6 +7,7 @@ use App\Models\Exam;
 use App\Models\ExamColumn;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Imports\ColumnQuestionImport;
+use App\Models\Examcategory;
 
 class PsikotesController extends Controller
 {
@@ -17,9 +18,11 @@ class PsikotesController extends Controller
     }
 
 
-    public function createCermat(){       
+    public function createCermat(){    
+        
+        $kategori = Examcategory::column()->get();
 
-        return view('livewire.tes-cermat.create');
+        return view('livewire.tes-cermat.create', compact('kategori'));
     }
 
 
@@ -29,7 +32,8 @@ class PsikotesController extends Controller
             'namatest' => 'required',
             'peraturan' => 'required',
             'nilai_min' => 'required',
-            'waktu' => 'required',           
+            'waktu' => 'required',   
+            'examcategory_id' => 'required|integer'        
         ]);       
 
 
@@ -40,6 +44,7 @@ class PsikotesController extends Controller
             'nilai_min' => $request->nilai_min,
             'waktu' => $request->waktu,
             'col_qty' => $request->col_qty,
+            'examcategory_id' => $request->examcategory_id
 
         ]);
 

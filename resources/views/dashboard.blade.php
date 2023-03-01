@@ -2,6 +2,16 @@
 
 @section('main-content')
 
+<style>
+
+    .card:hover {
+        transform: scale(1.1);
+        transition: transform 0.2s ease;
+    }
+
+
+</style>
+
     <!-- Page Heading -->
     <h1 class="h3 mb-4 text-gray-800">{{ __('Dashboard') }}</h1>
 
@@ -31,14 +41,12 @@
                     <!--Col-->
                     <div class="col-xl-4 col-md-6 mb-4">
                         <div class="card border-left-primary shadow-sm h-100 py-2">
-                            <div class="card-body">
-                                <div class="row no-gutters align-items-center">
-                                    <div class="col mr-2 text-center">
-                                        <div class="font-weight-bold text-primary text-uppercase mb-1 ">
-                                          <a href="{{ route('member.soal') }}">Psikotes</a>  
-                                        </div>
-                                        <div class="h5 mb-0 font-weight-bold text-gray-800 d-none">2</div>
-                                    </div>
+                            <div class="card-body text-center">
+
+                                <a class="stretched-link text-primary font-weight-bold text-primary text-uppercase" href="{{ route('member.soal') }}?type=psikotes">Psikotes</a>
+
+
+                                <div class="row no-gutters align-items-center">                                   
 
                                     <p class="mt-2 text-center">Simulasi tes Psikologi yang meliputi tes Kecerdasan, kecermatan dan kepribadian</p>
                                    
@@ -50,19 +58,23 @@
 
                     <!--Col-->
                     <div class="col-xl-4 col-md-6 mb-4">
+
                         <div class="card border-left-warning shadow-sm h-100 py-2">
-                            <div class="card-body">
-                                <div class="row no-gutters align-items-center">
-                                    <div class="col mr-2 text-center">
-                                        <div class="font-weight-bold text-primary text-uppercase mb-1">AKADEMIK</div>
-                                        <div class="h5 mb-0 font-weight-bold text-danger">SEGERA HADIR</div>
-                                    </div>
+                            <div class="card-body text-center">
+                                <a class="stretched-link text-primary font-weight-bold text-primary text-uppercase " href="{{ route('member.soal') }}?type=Akademik">AKADEMIK</a>
+
+                                <div class="row no-gutters align-items-center">                                   
 
                                     <p class="mt-2 text-center">Simulasi akademik yang meliputi tes pengetahuan umum, Bahasa Indonesia, Bahasa Ingris, Matematika</p>
                                    
                                 </div>
+
+                              
+
+
                             </div>
                         </div>
+                        
                     </div>
 
                     <!--Col-->

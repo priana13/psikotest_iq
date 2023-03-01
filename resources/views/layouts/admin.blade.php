@@ -89,6 +89,13 @@
             </a>
         </li>
 
+        <li class="nav-item my-0">
+            <a class="nav-link py-2" href="{{route('member.soal.type' , 'Akademik')}}">
+                <i class="fas fa-clipboard-list"></i>
+                <span>{{ __('Soal Akademik') }}</span>
+            </a>
+        </li>
+
         <!-- Nav Item - History -->
         <li class="nav-item my-0">
             <a class="nav-link py-2" href="{{ route('member.history') }}">
@@ -190,7 +197,16 @@
         <!-- Configurasi -->
         <div class="sidebar-heading mt-3">
             {{ __('Konfigurasi') }}
-        </div>
+        </div>        
+
+
+        <li class="nav-item {{ Nav::isRoute('admin.examcategory') }}">
+            <a class="nav-link py-2" href="{{ route('admin.examcategory') }}">
+                <i class="fas fa-money-check-alt"></i>
+                <span>{{ __('Kategori Psikotes') }}</span>
+            </a>
+        </li>  
+
 
         <li class="nav-item {{ Nav::isRoute('admin.payment_methods') }}">
             <a class="nav-link py-2" href="{{ route('admin.payment_methods') }}">

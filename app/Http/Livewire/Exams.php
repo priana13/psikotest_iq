@@ -53,6 +53,7 @@ class Exams extends Component
             'cerdas' => Exam::type('cerdas')->count(),
             'cermat' => Exam::type('cermat')->count(),
             'kepribadian' => Exam::type('kepribadian')->count(),
+            'Akademik' => Exam::type('Akademik')->count(),
         ]; 
 
         return view('livewire.exams.view', compact('exams' , 'qty'));

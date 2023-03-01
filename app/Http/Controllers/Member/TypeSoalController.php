@@ -15,7 +15,8 @@ class TypeSoalController extends Controller
         $title = [
             "cerdas" => "Kecerdasan",
             "cermat" => "Sikap Kerja",
-            "kepribadian" => "Kepribadian" 
+            "kepribadian" => "Kepribadian",
+            'Akademik' => "Akademik"
         ];
 
         return view('member.soal.index' , [
