@@ -32,8 +32,7 @@
 						<thead class="thead">
 							<tr> 
 								<td>#</td> 
-								<th>Nama Tes</th>
-								<th>Jenis</th>
+								<th>Nama Tes</th>								
 								<th>Waktu</th>
 								<th>Nilai Min</th>
 								<th>Soal</th>
@@ -41,7 +40,7 @@
 							</tr>
 						</thead>
 						<tbody>
-							@foreach($exams as $row)
+							@forelse($exams as $row)
 
 							<?php 
 
@@ -50,8 +49,7 @@
 							?>
 							<tr>								
 								<td>{{ $loop->iteration }}</td> 
-								<td>{{ $row->nama_tes }}</td>
-								<td>@lang('app.' . $row->type)</td>
+								<td>{{ $row->nama_tes }}</td>								
 								<td>{{ $row->waktu }}</td>
 								<td>{{ $row->nilai_min }}</td>
 								<td> {{ $jumlah_soal }} </td>
@@ -69,7 +67,16 @@
                                     
 								</div>
 								</td>
-							@endforeach
+
+							</tr>
+							@empty
+
+							<tr>
+								<td colspan="6" class="text-center">Mohon Maaf, Tes Belum Tersedia</td>
+							</tr>						
+							
+							
+							@endforelse
 						</tbody>
 					</table>						
 					{{ $exams->links() }}

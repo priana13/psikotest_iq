@@ -13,7 +13,7 @@ class Examcategory extends Model
 
     protected $table = 'examcategory';
 
-    protected $fillable = ['name','type'];
+    protected $guarded = [];
 	
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
