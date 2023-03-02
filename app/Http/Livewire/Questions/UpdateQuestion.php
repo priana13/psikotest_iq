@@ -112,6 +112,7 @@ class UpdateQuestion extends Component
 		'soal' => 'required',		
 		'status' => 'required',
         ]);
+	
 
      
         if ($this->selected_id) {
