@@ -18,6 +18,7 @@ class ExamFactory extends Factory
 			'waktu' => 60,
 			'nilai_min' => 80,
 			'peraturan' => $this->faker->text,
+            'examcategory_id' => rand(1,4)
         ];
     }
 }

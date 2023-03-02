@@ -36,9 +36,12 @@ class DatabaseSeeder extends Seeder
             'password' => '$2y$10$jWlaSaI6aahhPrxFxMdqiulEpfbX4JyNTiqDvGKUVuazc2LOwH3A6'
         ]);     
 
+        $this->call([
+            ExamCategorySeeder::class,
+        ]);
 
         \App\Models\User::factory(8)->create();
-        \App\Models\Exam::factory(2)->create();
+        \App\Models\Exam::factory(20)->create();
         \App\Models\Package::factory(1)->create();
 
         // \App\Models\Question::factory(10)->create();

@@ -16,8 +16,21 @@
                 <input wire:model="name" type="text" class="form-control" id="name" placeholder="Name">
                 @error('name') <span class="text-danger">{{ $message }}</span> @enderror
             </div>
+
             <div class="form-group">
-                <label for="type"></label>
+                <label for="type">Tipe Ujian</label>
+
+                <select wire:model="exam_type" class="form-control" id="">
+                    <option value="">Pilih Type Ujian</option>
+                    <option value="Psikotes">Psikotes</option>
+                    <option value="Akademik">Akademik</option>                    
+                </select>
+                
+                @error('type') <span class="text-danger">{{ $message }}</span> @enderror
+            </div>
+
+            <div class="form-group">
+                <label for="type">Tipe Soal</label>
 
                 <select wire:model="type" class="form-control" id="">
                     <option value="">Pilih Type</option>
@@ -27,6 +40,8 @@
                 
                 @error('type') <span class="text-danger">{{ $message }}</span> @enderror
             </div>
+
+
                 </form>
             </div>
             <div class="modal-footer">

@@ -18,29 +18,20 @@
 						</div>
 
 
-					</div>
+					</div>		
 				
 
 					<div class="d-flex mt-3" style="display: flex; justify-content: space-between; align-items: center;">
 						
 						<ul class="nav nav-pills">
 							<li class="nav-item">
-							  <a class="nav-link {{ ($selected == 'all')?'active':'' }}" href="#" wire:click.prevent="pilihSoal('all')">All({{ $qty['all'] }})</a>
+							  <a class="nav-link {{ ($selected == 'all')?'active':'' }}" href="#" wire:click.prevent="pilihSoal('all')">All({{ $qty }})</a>
 							</li>
+							@foreach ($examcategory as $row )
 							<li class="nav-item">
-							  <a class="nav-link {{ ($selected == 'cerdas')?'active':'' }}" href="#" wire:click.prevent="pilihSoal('cerdas')">Cerdas({{ $qty['cerdas'] }})</a>
-							</li>
-							<li class="nav-item">
-							  <a class="nav-link {{ ($selected == 'cermat')?'active':'' }}" href="#" wire:click.prevent="pilihSoal('cermat')"> @lang('app.cermat')({{ $qty['cermat'] }})</a>
-							</li>
-
-							<li class="nav-item">
-							  <a class="nav-link {{ ($selected == 'kepribadian')?'active':'' }}" wire:click.prevent="pilihSoal('kepribadian')" href="#">Kepribadian({{ $qty['kepribadian'] }})</a>
-							</li>
-
-							<li class="nav-item">
-								<a class="nav-link {{ ($selected == 'Akademik')?'active':'' }}" wire:click.prevent="pilihSoal('Akademik')" href="#">Akademik({{ $qty['Akademik'] }})</a>
+								<a class="nav-link {{ ($selected == $row->id)?'active':'' }}" href="#" wire:click.prevent="pilihSoal({{ $row->id }})">{{ $row->name }}({{ $row->exams->count() }})</a>
 							  </li>
+							@endforeach
 
 						  </ul>
 

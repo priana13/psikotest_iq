@@ -28,7 +28,8 @@
 							<tr> 
 								<td>#</td> 
 								<th>Name</th>
-								<th>Type</th>
+								<th>Tipe Ujuan</th>
+								<th>Tipe Soal</th>
 								<td>ACTIONS</td>
 							</tr>
 						</thead>
@@ -37,6 +38,7 @@
 							<tr>
 								<td>{{ $loop->iteration }}</td> 
 								<td>{{ $row->name }}</td>
+								<td>{{ $row->exam_type }}</td>
 								<td>{{ $row->type }}</td>
 								<td width="90">
 								<div class="btn-group">

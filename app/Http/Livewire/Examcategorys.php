@@ -11,7 +11,7 @@ class Examcategorys extends Component
     use WithPagination;
 
 	protected $paginationTheme = 'bootstrap';
-    public $selected_id, $keyWord, $name, $type;
+    public $selected_id, $keyWord, $name, $type, $exam_type;
     public $updateMode = false;
 
     public function render()
@@ -41,11 +41,13 @@ class Examcategorys extends Component
     {
         $this->validate([
 		'name' => 'required',
+        'exam_type' => 'required',
 		'type' => 'required',
         ]);
 
         Examcategory::create([ 
 			'name' => $this-> name,
+            'exam_type' => $this->exam_type,
 			'type' => $this-> type
         ]);
         
@@ -60,6 +62,7 @@ class Examcategorys extends Component
 
         $this->selected_id = $id; 
 		$this->name = $record-> name;
+        $this->exam_type = $record->exam_type;
 		$this->type = $record-> type;
 		
         $this->updateMode = true;
@@ -70,12 +73,14 @@ class Examcategorys extends Component
         $this->validate([
 		'name' => 'required',
 		'type' => 'required',
+        'exam_type' => 'required'
         ]);
 
         if ($this->selected_id) {
 			$record = Examcategory::find($this->selected_id);
             $record->update([ 
 			'name' => $this-> name,
+            'exam_type' => $this->exam_type,
 			'type' => $this-> type
             ]);
 

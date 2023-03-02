@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Member;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Exam;
+use App\Models\Examcategory;
 
 class SoalController extends Controller
 {
@@ -27,7 +28,9 @@ class SoalController extends Controller
 
             }else if($type == 'Akademik'){
 
-                $exam = $exam->typeIn(['Akademik']);
+                $category = Examcategory::where('exam_type', 'Akademik')->pluck('id');               
+
+                $exam = $exam->whereIn('examcategory_id', $category);
 
             }
 
@@ -41,7 +44,7 @@ class SoalController extends Controller
 
         return view('member.soal.index' , [
             'exams' => $exam,
-            'title' => $title
+            'title' => $type
         ]);
     }
 

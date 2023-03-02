@@ -32,10 +32,9 @@ class UjianController extends Controller
           'user_id' => auth()->user()->id,
           'sisa_waktu' => $exam->waktu * 60,
           'type' => $exam->type,
-        ]);     
+        ]);  
 
-
-        if($exam->type == 'cermat'){
+        if($exam->exam_category->type == 'Column'){
 
 
           return redirect()->route('member.ujian-kolom',[

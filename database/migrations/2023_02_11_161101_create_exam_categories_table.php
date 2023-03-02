@@ -15,8 +15,10 @@ class CreateExamCategoriesTable extends Migration
     {
         Schema::create('examcategory', function (Blueprint $table) {
             $table->id();
-            $table->string('name'); // Kepribadian, Kecerdasan, Sikap kerja, Matemateika dll.
-            $table->string('type'); // PG,Column
+            $table->string('name',100); // Kepribadian, Kecerdasan, Sikap kerja, Matemateika dll.
+            $table->string('type',10); // PG,Column
+            $table->string('exam_type',20);//Psikotes,Akademik,Leadership,Potensi Diri, IQ
+            $table->string('icon',20)->nullable();
             $table->timestamps();
         });
 

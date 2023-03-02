@@ -20,6 +20,9 @@
 								<li class="nav-item">
 								  <a class="nav-link {{ ($selected == 'kepribadian')?'active':'' }}" wire:click.prevent="pilihHiostory('kepribadian')" href="#">Kepribadian({{ $count_history['kepribadian'] }})</a>
 								</li>
+								<li class="nav-item">
+									<a class="nav-link {{ ($selected == 'Akademik')?'active':'' }}" wire:click.prevent="pilihHiostory('Akademik')" href="#">Akademik({{ $count_history['Akademik'] }})</a>
+								  </li>
 							  </ul>
 
 						</div>
