@@ -15,7 +15,7 @@ class CreateExamColumnsTable extends Migration
     {
         Schema::create('exam_columns', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('exam_id')->constrained('exams');
+            $table->foreignId('exam_id')->constrained('exams')->onDelete('cascade');
             $table->string('kolom');
             $table->string('a');
             $table->string('b');
@@ -27,7 +27,7 @@ class CreateExamColumnsTable extends Migration
         });
 
         Schema::table('questions',function(Blueprint $table){
-            $table->foreignId('exam_column_id')->nullable()->constrained('exam_columns');
+            $table->foreignId('exam_column_id')->nullable()->constrained('exam_columns')->onDelete('cascade');
 
         });
     }
