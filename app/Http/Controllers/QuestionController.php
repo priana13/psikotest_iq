@@ -85,7 +85,7 @@ class QuestionController extends Controller
             
         //     'soal' => 'required',		
         //     'status' => 'required',
-        //     ]);
+        //     ]); 
     
         if($request->gambar_edit){
 
@@ -95,7 +95,8 @@ class QuestionController extends Controller
 
         }
 
-        $record = Question::find($request->exam_id);
+
+        $record = Question::find($request->id);
         
        
         $record->update([            

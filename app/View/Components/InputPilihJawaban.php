@@ -6,21 +6,23 @@ use Illuminate\View\Component;
 
 class InputPilihJawaban extends Component
 {
-    public $value,
-           $message,
-           $text_soal,
-           $question_id;
+    public $pilihan,
+           $value,          
+           $textSoal,
+           $questionId,
+           $gambar;
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($value = 1, $message = null,$text_soal,$question_id)
-    {
-        $this->value = $value;
-        $this->message = $message;
-        $this->text_soal = $text_soal;
-        $this->question_id = $question_id;
+    public function __construct($pilihan, $value = 1,$textSoal,$questionId, $gambar)
+    {       
+        $this->pilihan = $pilihan;
+        $this->value = $value;       
+        $this->textSoal = $textSoal;
+        $this->questionId = $questionId;
+        $this->gambar = $gambar;
     }
 
     /**
