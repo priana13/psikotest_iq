@@ -30,7 +30,7 @@
         <div class="row my-2 ">
             <label class="col-md-3" for="">Nilai</label>
             <div class="col-md-4">
-                <input type="text" name="val_a" class="form-control">
+                <input type="text" name="val_a" class="form-control" value="{{ $question->val_a }}">
             </div>
         </div>
 
@@ -69,7 +69,7 @@
         <div class="row my-2 ">
             <label class="col-md-3" for="">Nilai</label>
             <div class="col-md-4">
-                <input type="text" name="val_b" class="form-control">
+                <input type="text" name="val_b" class="form-control" value="{{ $question->val_a }}">
             </div>
         </div>
 
@@ -101,7 +101,7 @@
         <div class="row my-2 ">
             <label class="col-md-3" for="">Nilai</label>
             <div class="col-md-4">
-                <input type="text" name="val_c" class="form-control">
+                <input type="text" name="val_c" class="form-control" value="{{ $question->val_a }}">
             </div>
         </div>
 
@@ -132,7 +132,7 @@
         <div class="row my-2 ">
             <label class="col-md-3" for="">Nilai</label>
             <div class="col-md-4">
-                <input type="text" name="val_d" class="form-control">
+                <input type="text" name="val_d" class="form-control" value="{{ $question->val_a }}">
             </div>
         </div>
 
@@ -161,7 +161,7 @@
         <div class="row my-2 ">
             <label class="col-md-3" for="">Nilai</label>
             <div class="col-md-4">
-                <input type="text" name="val_e" class="form-control">
+                <input type="text" name="val_e" class="form-control" value="{{ $question->val_a }}">
             </div>
         </div>
 

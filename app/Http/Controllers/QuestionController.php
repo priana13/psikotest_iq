@@ -57,7 +57,7 @@ class QuestionController extends Controller
      */
     public function edit($id)
     {
-        $question = Question::find($id);
+        $question = Question::find($id);      
 
         $data['question'] = $question;
 
@@ -95,24 +95,24 @@ class QuestionController extends Controller
 
         }
 
-        $record = Question::find($request->exam_id);			
+        $record = Question::find($request->exam_id);
         
-        $record->update([ 
-        'exam_id' => $request->exam_id,
-        'soal' => $request->soal,
-        'a' => $request-> a,
-        'b' => $request-> b,
-        'c' => $request-> c,
-        'd' => $request-> d,
-        'e' => $request-> e,
-        'val_a' => $request->val_a,
-        'val_b' => $request->val_b,
-        'val_c' => $request->val_c,
-        'val_d' => $request->val_d,
-        'val_e' => $request->val_e,
+       
+        $record->update([            
+            'soal' => $request->soal,
+            'a' => $request-> a,
+            'b' => $request-> b,
+            'c' => $request-> c,
+            'd' => $request-> d,
+            'e' => $request-> e,
+            'val_a' => $request->val_a,
+            'val_b' => $request->val_b,
+            'val_c' => $request->val_c,
+            'val_d' => $request->val_d,
+            'val_e' => $request->val_e,
 
-        'kc_jawaban' => $request-> kc_jawaban,			
-        'status' => $request-> status
+            'kc_jawaban' => $request-> kc_jawaban,			
+            'status' => $request-> status
         ]);
 
         if($request->gambar_edit){
