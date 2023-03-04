@@ -28,6 +28,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
     <!-- Favicon -->
     <link href=" {{ asset('assets/img/favicon.png') }}" rel="icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/trix/1.3.1/trix.min.css" />
     
 
 
@@ -227,6 +228,9 @@
 {{-- <script src="//cdn.ckeditor.com/4.20.1/standard/ckeditor.js"></script> --}}
 <script src="https://cdn.ckeditor.com/4.13.1/standard/ckeditor.js"></script>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/trix/1.3.1/trix.min.js"></script>
+
+
    
 
 
@@ -239,9 +243,8 @@
 	});
 
 
-    $(document).ready(function () {
+    $(document).ready(function () {      
        
-        // $('.ckeditor').ckeditor();
 
         CKEDITOR.replace( 'ckeditor' , {
 
@@ -250,12 +253,46 @@
 
         });
 
+        CKEDITOR.inline( 'ckeditor-a' , {
 
-        // CKEDITOR.replace('ckeditor', {
-        //     filebrowserUploadUrl: "{{route('ckeditor.image-upload', ['_token' => csrf_token() ])}}",
-        //     filebrowserUploadMethod: 'form'
-        // });
+            filebrowserUploadUrl: "{{route('ckeditor.image-upload', ['_token' => csrf_token() ])}}",
+            filebrowserUploadMethod: 'form'
 
+        });
+
+
+        CKEDITOR.inline( 'ckeditor-b' , {
+
+        filebrowserUploadUrl: "{{route('ckeditor.image-upload', ['_token' => csrf_token() ])}}",
+        filebrowserUploadMethod: 'form'
+
+        });
+
+
+        CKEDITOR.inline( 'ckeditor-c' , {
+
+        filebrowserUploadUrl: "{{route('ckeditor.image-upload', ['_token' => csrf_token() ])}}",
+        filebrowserUploadMethod: 'form'
+
+        });
+
+        CKEDITOR.inline( 'ckeditor-d' , {
+
+        filebrowserUploadUrl: "{{route('ckeditor.image-upload', ['_token' => csrf_token() ])}}",
+        filebrowserUploadMethod: 'form'
+
+        });
+
+
+        CKEDITOR.inline( 'ckeditor-e' , {
+
+        filebrowserUploadUrl: "{{route('ckeditor.image-upload', ['_token' => csrf_token() ])}}",
+        filebrowserUploadMethod: 'form'
+
+        });
+
+
+     
 
     });
     
