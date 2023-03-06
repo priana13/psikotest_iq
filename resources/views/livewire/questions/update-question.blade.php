@@ -48,13 +48,12 @@
                     <div class="form-group">
                         <label for="gambar">Gambar Utama</label>
                         <div class="row mt-2">
-                            <div class="col">
+                            <div class="col">                              
                                 <img src="{{ asset('storage/' . $question->gambar) }}" alt="" srcset="" class="img-fluid m-2 border" width="300px">
         
                                 <div class="d-flex mt-2">
                                     <label for="">Ganti:</label>
-                                    <input name="gambar_edit" type="file" class="" id="gambar" placeholder="Gambar">
-                                
+                                    <input name="gambar_edit" type="file" class="" id="gambar" placeholder="Gambar">                                
                                 </div>
         
                                 @error('gambar') <span class="text-danger">{{ $message }}</span> @enderror 

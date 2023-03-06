@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Question;
 use Illuminate\Http\Request;
+use App\Models\QuestionImage;
 
 class QuestionController extends Controller
 {
@@ -62,12 +63,24 @@ class QuestionController extends Controller
         $data['question'] = $question;
 
         $questionImage = $question->questionImages;	
+
+        $soal = ['a', 'b', 'c', 'd', 'e'];
+
+        foreach ($soal as $value) {
+
+            $data['gambar_'.$value.'_edit'] = ( $questionImage->where('type' , $value)->first() ) ? 
+            $questionImage->where('type' , $value)->first()->image:'';
+        }
 		
-		$data['gambar_a_edit'] = $questionImage->where('type' , 'a')->first();
-		$data['gambar_b_edit'] = $questionImage->where('type' , 'b')->first();
-		$data['gambar_c_edit'] = $questionImage->where('type' , 'c')->first();
-		$data['gambar_d_edit'] = $questionImage->where('type' , 'd')->first();
-		$data['gambar_e_edit'] = $questionImage->where('type' , 'e')->first();
+		// $data['gambar_a_edit'] = ( $questionImage->where('type' , 'a')->first() ) ? 
+        //                             $questionImage->where('type' , 'a')->first()->image:'';
+
+		// $data['gambar_b_edit'] = ( $questionImage->where('type' , 'a')->first() ) ? 
+        //                             $questionImage->where('type' , 'a')->first()->image:'';
+
+		// $data['gambar_c_edit'] = $questionImage->where('type' , 'c')->first();
+		// $data['gambar_d_edit'] = $questionImage->where('type' , 'd')->first();
+		// $data['gambar_e_edit'] = $questionImage->where('type' , 'e')->first();
 
         return view('livewire.questions.update', $data);
     }
