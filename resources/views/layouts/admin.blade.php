@@ -225,13 +225,9 @@
 <script src="{{ asset('vendor/jquery-easing/jquery.easing.min.js') }}"></script>
 <script src="{{ asset('js/sb-admin-2.min.js') }}"></script>
 
-{{-- <script src="//cdn.ckeditor.com/4.20.1/standard/ckeditor.js"></script> --}}
-<script src="https://cdn.ckeditor.com/4.13.1/standard/ckeditor.js"></script>
+<script src="{{ asset('vendor/ckeditor/ckeditor.js') }}"></script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/trix/1.3.1/trix.min.js"></script>
-
-
-   
+<script src="https://cdnjs.cloudflare.com/ajax/libs/trix/1.3.1/trix.min.js"></script>   
 
 
 

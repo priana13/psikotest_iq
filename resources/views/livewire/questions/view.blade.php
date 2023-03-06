@@ -95,12 +95,12 @@
 							@foreach($questions as $row)
 							<tr>
 								<td>{{ $row->no }}</td> 								
-								<td>{{ $row->soal }}</td>								
-								<td>{{ $row->a }}</td>
-								<td>{{ $row->b }}</td>
-								<td>{{ $row->c }}</td>
-								<td>{{ $row->d }}</td>
-								<td>{{ $row->e }}</td>	
+								<td>{!! $row->soal !!}</td>								
+								<td>{!! $row->a !!}</td>
+								<td>{!! $row->b !!}</td>
+								<td>{!! $row->c !!}</td>
+								<td>{!! $row->d !!}</td>
+								<td>{!! $row->e !!}</td>	
 								<td width="90">
 								<div class="btn-group">
 									<button type="button" class="btn btn-info btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
