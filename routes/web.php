@@ -98,7 +98,7 @@ Route::middleware('auth')->group(function(){
 		Route::view('questions', 'livewire.questions.index')->name('admin.questions');
 		Route::get('questions/{id}/edit', [QuestionController::class, 'edit'])->name('admin.questions.edit');
 		Route::put('questions/{id}/update', [QuestionController::class, 'update'])->name('admin.questions.update');
-
+		Route::post('questions/hapus-gambar', [QuestionController::class, 'hapus_gambar'])->name('admin.questions.hapus_gambar');
 		
 
 		Route::view('exams', 'livewire.exams.index')->name('admin.exams');

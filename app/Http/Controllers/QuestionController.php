@@ -280,4 +280,23 @@ class QuestionController extends Controller
     {
         //
     }
+
+
+    public function hapus_gambar(Request $request){
+
+        $pilihan = $request->pilihan;
+        $id = $request->id;
+
+		// $record = Question::findOrFail($id);
+
+		// $questionImage = $record->questionImages;	
+		
+		$image = QuestionImage::where('question_id', $id)->where('type', $pilihan)->delete();	
+
+        return $image;
+
+		// return redirect('exams/soal/'. $this->exam_id);
+
+	}
+
 }

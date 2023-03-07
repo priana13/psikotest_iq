@@ -3,10 +3,23 @@
 
     <div class="row">
         <div class="col-md-4">
-            <img src="{{ asset('storage/' . $gambar) }}" alt="" srcset="" class="img-fluid m-2 border" width="200px">
-            <input class="" type="file" name="gambar_{{ $pilihan }}"> 
-            <button class="btn btn-sm btn-warning d-none" wire:click.prevent="hapus_gambar('a', {{ $questionId }})">Hapus</button>
 
+            @if($gambar)
+
+            <div class="image position-relative mb-2" id="image-{{ $pilihan }}">
+                 <img src="{{ asset('storage/' . $gambar) }}" alt="" srcset="" class="img-fluid border">             
+
+                    <button class="btn btn-sm position-absolute rounded" data-toggle="tooltip" data-placement="right" title="Hapus" style="top:-20px;right:-10px;" onclick="hapusImage({{ $questionId }},'{{ $pilihan }}')">
+                        <i class="fas fa-times text-danger"></i>                
+                    </button>              
+                 
+                
+            </div>   
+            
+            @endif
+
+            <input class="" type="file" name="gambar_{{ $pilihan }}"> 
+            
             
         </div>
         <div class="col-md-8">
@@ -21,6 +34,33 @@
             Nilai: <input type="text" name="val_{{ $pilihan }}" class="form-control col-2" value="{{ $value }}">
         </div>
     </div>
+
+
+    <script>
+
+        function hapusImage(id,pilihan){
+
+            event.preventDefault();
+
+            $.ajax({
+                
+                method:'post',
+                url: '{{ route('admin.questions.hapus_gambar') }}',
+                data: {
+                    '_token': '{{ csrf_token() }}',
+                    'pilihan' : pilihan,
+                    'id' : id
+                },
+                success:function(result){
+
+                     $('#image-' + pilihan).addClass('d-none');
+                }
+            });
+
+
+        }
+
+    </script>
 
 
 </div>
