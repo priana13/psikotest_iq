@@ -87,6 +87,26 @@ class ProfileController extends Controller
 
         }
 
+        if($request->avatar){          
+
+            // $path_avatar =  $request->avatar->store('public/photos');
+            // $path_avatar = explode('public/' , $path_avatar);
+            $path_avatar = "avatar/" . $request->avatar . '.png';            
+            $user->avatar = $path_avatar;
+
+        }
+
+        if($request->custom_avatar){
+
+            $path_custom_avatar =  $request->custom_avatar->store('public/photos');
+            $path_custom_avatar = explode('public/' , $path_custom_avatar);
+            $path_custom_avatar = $path_custom_avatar[1];	 
+            
+            $user->avatar = $path_custom_avatar;
+
+        }
+
+
         $user->save();
 
         return back();
