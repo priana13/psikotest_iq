@@ -7,7 +7,7 @@
 					<div style="display: flex; justify-content: space-between; align-items: center;">
 						<div class="float-left">
 							<h4><i class="fas fa-list"></i>
-							List Psikotes </h4>
+							List Soal Tes </h4>
 						</div>
 						
 						@if (session()->has('message'))

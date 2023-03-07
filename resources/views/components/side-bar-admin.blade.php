@@ -108,7 +108,7 @@
         <a class="nav-link py-2" href="{{ route('admin.exams') }}">
             {{-- <i class="fas fa-fw fa-user"></i> --}}
             <i class="fas fa-list"></i>
-            <span>{{ __('List Psikotes') }}</span>
+            <span>{{ __('List Soal Tes') }}</span>
         </a>
     </li>
 
@@ -180,7 +180,7 @@
     <li class="nav-item {{ Nav::isRoute('admin.examcategory') }}">
         <a class="nav-link py-2" href="{{ route('admin.examcategory') }}">
             <i class="fas fa-money-check-alt"></i>
-            <span>{{ __('Kategori Psikotes') }}</span>
+            <span>{{ __('Kategori Tes') }}</span>
         </a>
     </li>  
 

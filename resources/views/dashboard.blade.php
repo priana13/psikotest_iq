@@ -65,7 +65,7 @@
 
                                 <div class="row no-gutters align-items-center">                                   
 
-                                    <p class="mt-2 text-center">Simulasi akademik yang meliputi tes pengetahuan umum, Bahasa Indonesia, Bahasa Ingris, Matematika</p>
+                                    <p class="mt-2 text-center">Simulasi akademik yang meliputi tes pengetahuan umum, Bahasa Indonesia, Bahasa Inggris, Matematika</p>
                                    
                                 </div>
 
