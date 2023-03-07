@@ -29,7 +29,7 @@ class SideBarAdmin extends Component
     {
 
         $this->akademik = Examcategory::where('exam_type', 'Akademik')->get();   
-        $this->psikotes = Examcategory::where('exam_type', 'Psikotes')->get();   
+        $this->psikotes = Examcategory::where('exam_type', 'Psikotes')->orderBy('menu_order')->get();   
 
         return view('components.side-bar-admin');
     }
