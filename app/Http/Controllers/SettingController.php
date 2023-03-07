@@ -19,7 +19,8 @@ class SettingController extends Controller
             "syarat_ketentuan" => StaticPage::name("syarat_ketentuan")->first()->page,
             "kebijakan" => StaticPage::name("kebijakan")->first()->page,
             "app_name" => Setting::where('name','app_name')->first(),
-            "app_bio" => Setting::where('name','app_bio')->first()
+            "app_bio" => Setting::where('name','app_bio')->first(),
+            "pengumuman" => Setting::where('name','pengumuman')->first()
         ];  
 
         return view('setting', compact('list_post', 'setting'));
@@ -32,7 +33,8 @@ class SettingController extends Controller
             'kontak' => 'integer',
             'tentang' => 'integer',
             'syarat_ketentuan' => 'integer',
-            'kebijakan' => 'integer'
+            'kebijakan' => 'integer',
+            'pengumuman' => 'string'
         ]);
 
 
@@ -50,6 +52,12 @@ class SettingController extends Controller
             $app_bio->value = "Merupakan penyedia pembelajaran dan pelatihan berbasis digital yang bersifat personal.":
             $app_bio->value = $request->app_bio; 
         $app_bio->save();
+
+        // setting Pengumuman
+        $pengumuman = Setting::where('name','pengumuman')->first();           
+        $pengumuman->value = $request->pengumuman; 
+        $pengumuman->save();
+       
 
 
         // update kontak

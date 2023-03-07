@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Exam;
+use App\Models\Setting;
 
 class HomeController extends Controller
 {
@@ -25,8 +26,12 @@ class HomeController extends Controller
      */
     public function index()
     {
+
+        $pengumuman = Setting::where('name', 'pengumuman')->first()->value;
+
         return view('dashboard' , [
-            'exams' => Exam::paginate(5)
+            'exams' => Exam::paginate(5),
+            'pengumuman' => $pengumuman
         ]);
     }
 

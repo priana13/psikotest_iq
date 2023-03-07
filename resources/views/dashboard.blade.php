@@ -155,12 +155,12 @@
 
 
             <div class="card shadow-sm mb-4">
-                <div class="card-header py-3">
+                <div class="card-header py-3 d-flex justify-content-between">                   
                     <h6 class="m-0 font-weight-bold text-primary">Pengumuman</h6>
+                    <i class="fas fa-bullhorn"></i>
                 </div>
                 <div class="card-body">
-                    <p>Terimakasih telah menggunakan layanan psikotes kami, semoga aplikasi ini bermanfaat untuk Anda</p>
-                    <p class="mb-0">Jika lupa terus berlatih dan menambah pengetahuan, semoga Anda sukses.</p>
+                    {!! $pengumuman !!}
                 </div>
             </div>
 

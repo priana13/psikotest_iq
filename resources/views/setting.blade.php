@@ -29,6 +29,19 @@
                             <textarea type="text" class="form-control form-control-sm col-md-8" name="app_bio">{{ $setting["app_bio"]->value }}</textarea>
                         </div>
 
+                        <div class="title mb-3 mt-5">
+                            <h5 class=""> <em>Dahboard</em>  </h5>                          
+                            <small id="" class="form-text text-muted">
+                               Pengumumana akan muncul di halaman dashboard
+                            </small>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-md-2">Pengumuman</label>
+                            <textarea type="text" id="ckeditor" class="form-control" name="pengumuman">{{ $setting["pengumuman"]->value }}</textarea>
+                        </div>
+                      
+
                     
                         <div class="title mb-3 mt-5">
                             <h5 class=""> <em>Halaman Statis</em>  </h5>                          
