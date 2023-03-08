@@ -86,6 +86,7 @@ class ProfileController extends Controller
             $user->password = Hash::make($request->password);
 
         }
+      
 
         if($request->avatar){          
 
