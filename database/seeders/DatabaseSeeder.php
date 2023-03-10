@@ -97,7 +97,8 @@ class DatabaseSeeder extends Seeder
             "app_bio" => "Merupakan penyedia pembelajaran dan pelatihan berbasis digital yang bersifat personal.",
             "twitter" => null,
             "facebook" => null,
-            "instagram" => null
+            "instagram" => null,
+            "pengumuman" => "Pengumuman"
         ];
 
         foreach ($setting as $key => $value) {

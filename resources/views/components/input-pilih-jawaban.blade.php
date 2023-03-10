@@ -18,7 +18,12 @@
             
             @endif
 
-            <input class="" type="file" name="gambar_{{ $pilihan }}"> 
+            <!-- <input class="" type="file" >  -->
+
+            <div class="custom-file mt-0 mb-3">
+                <input type="file" class="custom-file-input" id="customFile" name="gambar_{{ $pilihan }}">
+                <label class="custom-file-label selected" for="customFile">Gambar</label>
+            </div>
             
             
         </div>
@@ -59,6 +64,13 @@
 
 
         }
+
+
+        // Add the following code if you want the name of the file appear on select
+        $(".custom-file-input").on("change", function() {
+        var fileName = $(this).val().split("\\").pop();
+        $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+        });
 
     </script>
 
