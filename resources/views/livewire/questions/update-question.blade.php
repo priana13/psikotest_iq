@@ -65,7 +65,7 @@
 
                     <div class="form-group">
                         <label for="kc_jawaban">Kunci Jawaban</label>
-                        <input name="kc_jawaban" type="text" class="form-control" id="kc_jawaban" placeholder="Kc Jawaban">@error('kc_jawaban') <span class="text-danger">{{ $message }}</span> @enderror
+                        <input name="kc_jawaban" type="text" class="form-control" id="kc_jawaban" value="{{$question->kc_jawaban}}" placeholder="Kc Jawaban">@error('kc_jawaban') <span class="text-danger">{{ $message }}</span> @enderror
                     </div>
         
                     <div class="form-group d-none">
