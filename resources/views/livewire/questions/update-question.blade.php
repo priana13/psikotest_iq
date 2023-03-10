@@ -79,7 +79,7 @@
                     </div>
 
                     <div class="">
-                        <button type="button" wire:click.prevent="cancel()" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <a href="{{route('admin.exam_soal',$exam->id)}}" class="btn btn-secondary" data-dismiss="modal">Close</a>
                         <button type="submit" name="submit" class="btn btn-primary" data-dismiss="modal">Update</button>
                     </div>
 

@@ -58,7 +58,9 @@ class QuestionController extends Controller
      */
     public function edit($id)
     {
-        $question = Question::find($id);      
+        $question = Question::find($id); 
+        
+        $data['exam'] = $question->exam;
 
         $data['question'] = $question;
 
