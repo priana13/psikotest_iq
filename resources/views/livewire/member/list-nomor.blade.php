@@ -10,12 +10,16 @@
             <?php 
             (in_array( $row->id, $sudah_dijawab))?
                 $warna = 'success':
-                $warna = 'light';
+                $warna = 'light'; 
+                
+            (isset($jawaban[$row->id]))?
+                        $jawaban_key= "." . $jawaban[$row->id]:
+                        $jawaban_key="";
             ?>
 
-            <button class="col btn btn-sm btn-{{ $warna }} m-1" wire:click="getSoal({{ $row->no }})"
+            <button class="col-2 btn btn-sm btn-{{ $warna }} my-1 ml-1 px-1" wire:click="getSoal({{ $row->no }})"
            
-            >{{ $row->no }}</button>
+            >{{ $row->no }}{{ $jawaban_key }}</button>
     
             @endforeach
 

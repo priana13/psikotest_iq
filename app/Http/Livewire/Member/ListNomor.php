@@ -10,6 +10,7 @@ class ListNomor extends Component
     public $exam;
     public $examEvent;
     public $sudah_dijawab;
+    public $jawaban;
 
     protected $listeners = ['refresh' => '$refresh'];
 
@@ -23,7 +24,11 @@ class ListNomor extends Component
     {
         // $this->sudah_dijawab = [];
 
-        $this->sudah_dijawab = ExamItem::where('examevent_id' , $this->examEvent->id )->pluck('question_id')->toArray();       
+        $this->sudah_dijawab = ExamItem::where('examevent_id' , $this->examEvent->id )->pluck('question_id')->toArray();   
+
+        $this->jawaban = ExamItem::where('examevent_id' , $this->examEvent->id )->pluck('jawaban','question_id')->toArray(); 
+        
+        // dd($this->sudah_dijawab);
 
         return view('livewire.member.list-nomor');
     }
