@@ -19,7 +19,7 @@
 
             <button class="col-2 btn btn-sm btn-{{ $warna }} my-1 ml-1 px-1" wire:click="getSoal({{ $row->no }})"
            
-            >{{ $row->no }}{{ $jawaban_key }}</button>
+            >{{ $row->no }}{{ strtoupper($jawaban_key) }}</button>
     
             @endforeach
 
