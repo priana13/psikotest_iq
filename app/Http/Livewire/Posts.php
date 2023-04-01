@@ -2,14 +2,17 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\Category;
-use Livewire\Component;
-use Livewire\WithPagination;
 use App\Models\Post;
+use Livewire\Component;
+use App\Models\Category;
+use Livewire\WithPagination;
+use Livewire\WithFileUploads;
 
 class Posts extends Component
 {
     use WithPagination;
+    use WithFileUploads;
+
 
 	protected $paginationTheme = 'bootstrap';
     public $selected_id, $keyWord, $user_id, $category_id = 1, $slug, $title, $body, $status = "Publish";
@@ -64,12 +67,22 @@ class Posts extends Component
 		'status' => 'required',
         ]);
 
+        $path_gambar = null;
+
+		if($this->gambar){
+
+			$path_gambar =  $this->gambar->store('public/photos/page');
+			$path_gambar = explode('public/' , $path_gambar);
+			$path_gambar = $path_gambar[1];	
+		}
+
         Post::create([ 
 			'user_id' => $this-> user_id,
 			'category_id' => $this-> category_id,
 			'slug' => $this-> slug,
 			'title' => $this-> title,
 			'body' => $this-> body,
+            'image' => $path_gambar,
 			'status' => $this-> status
         ]);
         

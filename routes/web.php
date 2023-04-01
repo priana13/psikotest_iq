@@ -1,21 +1,22 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\SeoController;
+use App\Http\Controllers\ExamController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PageController;
+use App\Http\Controllers\CronJobController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SettingController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\CkEditorController;
-use App\Http\Controllers\CronJobController;
-use App\Http\Controllers\ExamController;
-use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\Member\SoalController;
-use App\Http\Controllers\Member\TypeSoalController;
-use App\Http\Controllers\Member\UjianController;
 use App\Http\Controllers\MidtransController;
-use App\Http\Controllers\PageController;
 use App\Http\Controllers\PsikotesController;
 use App\Http\Controllers\QuestionController;
-use App\Http\Controllers\SeoController;
-use App\Http\Controllers\SettingController;
+use App\Http\Controllers\Member\SoalController;
+use App\Http\Controllers\Member\UjianController;
+use App\Http\Controllers\Member\TypeSoalController;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,6 +43,8 @@ Route::view('/fitur', 'pages.fitur')->name('page.fitur');
 Route::view('/harga', 'pages.harga')->name('page.harga');
 Route::get('/blog', [PageController::class, 'index'])->name('blog');
 Route::get('/page/{slug}', [PageController::class, 'show'])->name('front.page');
+Route::get('/category/{slug}', [CategoryController::class, 'show'])->name('category');
+
 
 Auth::routes();
 

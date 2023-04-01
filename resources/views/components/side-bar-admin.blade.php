@@ -21,9 +21,16 @@
     </li>
 
     <!-- Heading -->
-    <div class="sidebar-heading">
-        {{ __('TIPS & TRICK') }}
-    </div>
+    @if($tips_and_trick)
+
+    <li class="nav-item my-0">
+        <a class="nav-link py-2" href="{{ route('category', $tips_link) }}" target="_blank">
+            <i class="fas fa-clipboard-list"></i>
+            <span>Tips & Trick</span>
+        </a>
+    </li>
+
+    @endif
 
     <!-- Divider -->
     <hr class="sidebar-divider">

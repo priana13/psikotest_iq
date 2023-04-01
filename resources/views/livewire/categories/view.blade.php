@@ -41,7 +41,9 @@
 							<tr>
 								<td>{{ $loop->iteration }}</td> 
 								<td>{{ $row->category }}</td>
-								<td>{{ $row->slug }}</td>	
+								<td>
+									<a href="{{ route('category', $row->slug) }}" target="_blank" rel="noopener noreferrer">{{ $row->slug }}</a>									
+								</td>	
 								<td>{{ $row->posts->count() }}</td>							
 								<td width="90">
 								<div class="btn-group">

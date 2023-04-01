@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use App\Models\Setting;
+use App\Models\Category;
 use App\Models\StaticPage;
 use Illuminate\Http\Request;
 
@@ -12,6 +13,7 @@ class SettingController extends Controller
     public function index(){
 
         $list_post = Post::all();      
+        $list_category = Category::all();
 
         $setting = [
             "kontak" => StaticPage::name("kontak")->first()->page,
@@ -20,10 +22,11 @@ class SettingController extends Controller
             "kebijakan" => StaticPage::name("kebijakan")->first()->page,
             "app_name" => Setting::where('name','app_name')->first(),
             "app_bio" => Setting::where('name','app_bio')->first(),
-            "pengumuman" => Setting::where('name','pengumuman')->first()
+            "pengumuman" => Setting::where('name','pengumuman')->first(),
+            "tips_and_trick" => Setting::where('name','tips_and_trick')->first()
         ];  
 
-        return view('setting', compact('list_post', 'setting'));
+        return view('setting', compact('list_post', 'setting', 'list_category'));
     }
 
     public function update(Request $request){
@@ -56,8 +59,7 @@ class SettingController extends Controller
         // setting Pengumuman
         $pengumuman = Setting::where('name','pengumuman')->first();           
         $pengumuman->value = $request->pengumuman; 
-        $pengumuman->save();
-       
+        $pengumuman->save();      
 
 
         // update kontak
@@ -90,8 +92,26 @@ class SettingController extends Controller
             $setting_kebijakan->post_id = $request->kebijakan; 
         $setting_kebijakan->save();
 
+        // setting Tips & Trick
+        $setting_kebijakan = StaticPage::name('kebijakan')->first();
+        ($request->kebijakan == 0)?       
+            $setting_kebijakan->post_id = NULL:
+            $setting_kebijakan->post_id = $request->kebijakan; 
+        $setting_kebijakan->save();
 
+        // setting Tips & Trick
+        if($request->tips_and_trick != 0) {
 
+            $tips_and_trick = Setting::where('name','tips_and_trick')->first();
+            if(!$tips_and_trick){
+                Setting::create(['name' => 'tips_and_trick','value' => $request->tips_and_trick]);
+            }else{
+                $tips_and_trick->value = $request->tips_and_trick;
+                $tips_and_trick->save();
+            }
+
+        }
+         
         
         return back();
 

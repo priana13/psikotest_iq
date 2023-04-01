@@ -14,13 +14,13 @@
           </svg>
   
         </div>
-  
+ 
         <div class="container">
           <div class="row align-items-center">
             <div class="col-12">
               <div class="row justify-content-center">
                 <div class="col-md-7 text-center hero-text">
-                  <h1 data-aos="fade-up" data-aos-delay="">Blog</h1>                 
+                  <h1 data-aos="fade-up" data-aos-delay="">{{ $title }}</h1>                 
                 </div>
               </div>
             </div>
@@ -38,10 +38,12 @@
 <section class="section">
     <div class="container">
       <div class="row mb-5">
+
+      @if($posts->count() > 0)
         @foreach($posts as $post)
 
         <div class="col-md-4">
-          <div class="post-entry p-2 shadow">
+          <div class="post-entry p-2 shadow-sm">
             <a href="/page/{{ $post->slug }}" class="d-block mb-4">
               @if($post->image)
               <img src="{{ asset('storage/'.$post->image)}}" alt="Image" class="img-fluid">
@@ -56,10 +58,15 @@
               <p><a href="/page/{{ $post->slug }}" class="readmore">Read more</a></p>
             </div>
           </div>
-        </div>
-       
+        </div>       
 
         @endforeach
+
+        @else 
+
+        <h2 class="text-center">Artikel untuk Kategory ini Belum Tersedia</h2>
+
+        @endif
 
       </div>
 

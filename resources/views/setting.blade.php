@@ -116,6 +116,23 @@
                             @error('kebijakan') <span class="text-danger">{{ $message }}</span> @enderror
         
                         </div>   
+
+
+                        <div class="form-group row">
+                            <label class="col-md-2" for="kebijakan">Tips & Trick</label>
+                            <select class="form-control form-control-sm col-md-8" id="" name="tips_and_trick">
+                                <option value="0">Select Category</option>
+                                @foreach ($list_category as $category)
+                                <option value="{{ $category->id }}"
+                                    @if($setting["tips_and_trick"])
+                                        {{ ($setting["tips_and_trick"]->id == $category->id)?"selected":"" }}
+                                    @endif
+                                    >{{ $category->category }}</option> 
+                                 @endforeach       
+                            </select>                            
+                            @error('tips_and_trick') <span class="text-danger">{{ $message }}</span> @enderror
+        
+                        </div>   
                         
                         
                       

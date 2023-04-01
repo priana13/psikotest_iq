@@ -17,7 +17,9 @@ class PageController extends Controller
     {
         $posts = Post::paginate(6);
 
-        return view('pages.blog', compact('posts'));
+        $title = 'Blog';
+
+        return view('pages.blog', compact('posts' , 'title'));
     }
 
     /**
@@ -50,7 +52,7 @@ class PageController extends Controller
             'gambar' => 'image'
             ]);
 
-        $path_gambar = null;
+        $path_gambar = null;       
 
         if($request->gambar){
 
@@ -58,7 +60,8 @@ class PageController extends Controller
             $path_gambar = explode('public/' , $path_gambar);
             $path_gambar = $path_gambar[1];	
         }
-    
+
+      
         Post::create([ 
                 'user_id' => auth()->user()->id,
                 'category_id' => $request-> category_id,
