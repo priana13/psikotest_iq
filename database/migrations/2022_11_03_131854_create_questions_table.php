@@ -20,11 +20,11 @@ class CreateQuestionsTable extends Migration
             // $table->string('kolom' , 5)->nullable();
             $table->integer('no');
             $table->text('soal')->nullable();
-            $table->string('a')->nullable();
-            $table->string('b')->nullable();
-            $table->string('c')->nullable();
-            $table->string('d')->nullable();
-            $table->string('e')->nullable();
+            $table->text('a')->nullable();
+            $table->text('b')->nullable();
+            $table->text('c')->nullable();
+            $table->text('d')->nullable();
+            $table->text('e')->nullable();
             $table->string('kc_jawaban')->nullable();
             $table->string('gambar')->nullable();
             $table->string('status');
