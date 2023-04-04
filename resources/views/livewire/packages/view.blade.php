@@ -30,7 +30,8 @@
 						<thead class="thead">
 							<tr> 
 								<td>#</td> 
-								<th>Name</th>		
+								<th>Name</th>	
+								<th>Type</th>	
 								<th>Qty Bulan</th>						
 								<th>Harga</th>
 								<th>Detail</th>
@@ -42,6 +43,7 @@
 							<tr>
 								<td>{{ $loop->iteration }}</td> 								
 								<td>{{ $row->name }}</td>
+								<td>{{ $row->type }}</td>
 								<td>{{ $row->qty }}</td>								
 								<td>{{ number_format($row->price) }}</td>
 								<td>{{ $row->detail }}</td>

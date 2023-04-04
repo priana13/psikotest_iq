@@ -11,7 +11,7 @@ class Packages extends Component
     use WithPagination;
 
 	protected $paginationTheme = 'bootstrap';
-    public $selected_id, $keyWord, $name, $qty, $price, $detail;
+    public $selected_id, $keyWord, $name, $qty, $price, $detail, $type , $list_test;
     public $updateMode = false;
 
     public function render()
@@ -47,10 +47,11 @@ class Packages extends Component
 		'name' => 'required',
 		'qty' => 'required',
 		'price' => 'required',
+        'type' => 'required',
         ]);
 
         Package::create([ 
-            'type' => 'bulanan',
+            'type' => $this->type,
 			'name' => $this-> name,
 			'qty' => $this-> qty,
 			'price' => $this-> price,
