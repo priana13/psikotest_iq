@@ -36,5 +36,11 @@ class AuthServiceProvider extends ServiceProvider
             return $user->memberships()->active()->count() < 1;
 
         });
+
+        Gate::define('langganan', function(User $user){
+
+            return $user->memberships()->active()->count() > 0;
+
+        });
     }
 }

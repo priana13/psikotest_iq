@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use Illuminate\Http\Request;
+use App\Models\Setting;
 
 class CategoryController extends Controller
 {
@@ -46,7 +47,16 @@ class CategoryController extends Controller
      */
     public function show($slug)
     {
+
+        $tips_and_trick = Setting::where('name', 'tips_and_trick')->first(); 
+
         $category = Category::where('slug', $slug)->first();
+
+        if($category->id == $tips_and_trick->value){
+
+            $this->authorize('langganan');
+           
+        };
         
         $posts = $category->posts()->paginate(6);
 

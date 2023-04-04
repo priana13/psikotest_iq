@@ -24,9 +24,10 @@
     @if($tips_and_trick)
 
     <li class="nav-item my-0">
-        <a class="nav-link py-2" href="{{ route('category', $tips_link) }}" target="_blank">
+        <a class="nav-link py-2 @cannot('langganan') disabled @endcannot" href="{{ route('category', $tips_link) }}" target="_blank">
             <i class="fas fa-clipboard-list"></i>
-            <span>Tips & Trick</span>
+            <span>Tips & Trick</span> 
+            @can('member') <i class="fas fa-lock"></i>  @endcan	
         </a>
     </li>
 
