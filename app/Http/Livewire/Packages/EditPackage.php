@@ -64,4 +64,13 @@ class EditPackage extends Component
 
     }
 
+    public function hapus($id){
+
+        $package_exam = PackageExam::find($id);
+
+        $package_exam->delete();
+
+        session()->flash('message', 'Data Berhasil dihapus');
+    }
+
 }

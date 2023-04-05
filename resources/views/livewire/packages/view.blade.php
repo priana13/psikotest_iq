@@ -53,7 +53,7 @@
 									Actions
 									</button>
 									<div class="dropdown-menu dropdown-menu-right">
-									<a data-toggle="modal" data-target="#updateModal" class="dropdown-item" wire:click="edit({{$row->id}})"><i class="fa fa-edit"></i> Edit </a>							 
+									<a href={{ route('admin.packages.edit', $row->id) }} class="dropdown-item"><i class="fa fa-edit"></i> Edit </a>							 
 									<a class="dropdown-item" onclick="confirm('Confirm Delete Package id {{$row->id}}? \nDeleted Packages cannot be recovered!')||event.stopImmediatePropagation()" wire:click="destroy({{$row->id}})"><i class="fa fa-trash"></i> Delete </a>   
 									</div>
 								</div>

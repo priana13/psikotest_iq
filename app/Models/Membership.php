@@ -28,6 +28,11 @@ class Membership extends Model
         return $query->where('status','active');
     }
 
+    public function scopeFullAccess($query){
+
+        return $query->where('member_type','Full');
+    }
+
     public function package(){
 
         return $this->belongsTo(Package::class);

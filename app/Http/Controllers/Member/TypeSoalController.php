@@ -6,12 +6,22 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Exam;
 use App\Models\Examcategory;
+use App\Models\Membership;
+use App\Models\PackageExam;
+use Illuminate\Support\Facades\DB;
 
 class TypeSoalController extends Controller
 {
     public function index($type){
 
-        // $exam = Exam::whereHas('questions')->type($type)->paginate(10);
+        $langganan = auth()->user()->memberships()->pluck('package_id');
+        $akses_packages = PackageExam::whereIn('package_id', $langganan)->pluck('exam_id');    
+
+        $is_full_access = DB::table('memberships')->join('packages', 'package_id', 'packages.id')
+                            ->where('memberships.status', 'active')
+                            ->where('user_id', auth()->user()->id)
+                            ->where('packages.type', 'full')
+                            ->count();       
 
         $exam = Exam::whereHas('questions')->where('examcategory_id',$type)->paginate(10);      
 
@@ -26,7 +36,9 @@ class TypeSoalController extends Controller
 
         return view('member.soal.index' , [
             'exams' => $exam , 
-            'title' => $examCategory->name
+            'title' => $examCategory->name,
+            'allowed_exam' => $akses_packages,
+            'is_full_access' => $is_full_access
         ]);
 
     }

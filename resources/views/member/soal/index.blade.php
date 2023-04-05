@@ -45,7 +45,7 @@
 							<?php 
 
 								$jumlah_soal = $row->questions->count();
-
+								
 							?>
 							<tr>								
 								<td>{{ $loop->iteration }}</td> 
@@ -53,10 +53,27 @@
 								<td>{{ $row->waktu }}</td>
 								<td>{{ $row->nilai_min }}</td>
 								<td> {{ $jumlah_soal }} </td>
-								<td class="text-center">
+								<td class="text-center">							
+								
+								
 								<div class="btn-group">
 									<a href="{{route('mulai-ujian' , $row->id)}}" class="btn btn-{{ ($jumlah_soal == 0)?'secondary':'primary' }} btn-sm {{ ($jumlah_soal == 0)?'disabled':'' }}
-									@can('member') disabled @endcan
+									
+									@if($is_full_access < 1)
+										@if(isset($allowed_exam[$row->id]))							
+										
+											
+											@if(!in_array($row->id, $allowed_exam->toArray() ))
+
+												disabled
+
+											@endif
+										
+											
+										@endif	
+										
+									@endif
+
 										" target = "_blank"
 										
 										>

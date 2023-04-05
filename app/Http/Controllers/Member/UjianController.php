@@ -9,12 +9,18 @@ use Illuminate\Http\Request;
 use App\Models\Examevent;
 use App\Models\TempExam;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Gate;
 
 class UjianController extends Controller
 {
 
 
     public function index($exam){
+
+      $response = Gate::inspect('langganan');    
+
+      abort_unless($response->allowed(), 403);
+
 
       return view('member.ujian.mulai', [
           'ujian' => Exam::find($exam)

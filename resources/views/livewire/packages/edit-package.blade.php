@@ -109,7 +109,7 @@
                     <td>{{ $row->exam->nama_tes }}</td>
                     <td>{{ $row->exam->exam_category->name }}</td>
                     <td>
-                        <a href="" class="btn btn-sm btn-danger">Hapus</a>
+                        <a href="" class="btn btn-sm btn-danger" wire:click.prevent="hapus({{ $row->id }})">Hapus</a>
                     </td>
                   </tr>    
 
