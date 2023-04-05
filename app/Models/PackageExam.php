@@ -15,4 +15,11 @@ class PackageExam extends Model
 
         return $this->belongsTo(Package::class);
     }
+
+    public function exam(){
+
+        return $this->belongsTo(Exam::class);
+    }
+
+
 }

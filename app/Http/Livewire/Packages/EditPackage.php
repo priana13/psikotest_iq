@@ -15,6 +15,8 @@ class EditPackage extends Component
     public $package;
     public $package_id;
 
+    public $package_exams;
+
     public function mount($package){
 
         // $this->package = Package::find($id);
@@ -31,6 +33,8 @@ class EditPackage extends Component
     {       
         $this->exams = Exam::all();
 
+        $this->package_exams = PackageExam::where('package_id', $this->package_id)->get();     
+
         return view('livewire.packages.edit-package');
     }
 
@@ -42,6 +46,22 @@ class EditPackage extends Component
             'exam_id' => $this->exam_id,
 
         ]);
+    }
+
+    public function update(){
+
+        $package = Package::find($this->package_id);
+
+        $package->type = $this->type;
+        $package->name = $this-> name;
+        $package->qty = $this-> qty;
+        $package->price = $this-> price;
+        $package->detail = $this-> detail;
+
+        $package->save();
+
+        session()->flash('message', 'Package Successfully Updated.');
+
     }
 
 }

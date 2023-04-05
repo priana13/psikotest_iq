@@ -46,7 +46,7 @@
 								<th>User</th>
 								@endcan
 
-								<th>Member Type</th>
+								<th>Paket</th>
 								<th>Start</th>
 								<th>End</th>
 								<th>Status</th>
@@ -62,7 +62,7 @@
 								@can('admin')
 								<td>{{ $row->user->name }}</td>
 								@endcan
-								<td>{{ $row->member_type }}</td>
+								<td>{{ $row->package->name }}</td>
 								<td>{{ date('d M Y', strtotime($row->start)) }}</td>
 								<td>{{ date('d M Y', strtotime($row->end)) }}</td>
 								<td>

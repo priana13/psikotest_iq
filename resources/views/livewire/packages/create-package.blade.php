@@ -56,64 +56,8 @@
                         @error('type') <span class="text-danger">{{ $message }}</span> @enderror
                     </div>   
 
-                </div>  
-    
-                @if($type == 'satuan')      
-            
-
-                {{-- exam / tes --}}
-                <div class="card p-2 table-responsive">
-                    <div class="card-header">
-                        <h4 class="my-2">Tes untuk Package ini</h4>
-
-                        <div class="row">
-
-                            <div class="form-group col-sm-10">                              
-                                <select wire:model="list_test" id="list_test" class="form-control">
-                                    <option value="">Pilih Test</option>
-                                    @foreach ($exams as $item)
+                </div>      
                 
-                                    <option value="{{ $item->id }}">{{ $item->nama_tes }}</option>
-                                        
-                                    @endforeach                    
-                                   
-                                </select> 
-                                
-                                @error('type') <span class="text-danger">{{ $message }}</span> @enderror
-                            </div>
-
-                            <div class="col-sm-2">
-
-                            <button type="button" wire:click.prevent="tambahTest" class="btn btn-secondary close-modal">Tambah</button>  
-                            </div>
-    
-
-                        </div> 
-    
-
-                    </div>
-                    <table class="table">
-                        <thead>
-                          <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Nama Tes</th>
-                            <th scope="col">Category</th>
-                            <th scope="col">Action</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr>
-                            <th scope="row">1</th>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
-                          </tr>                          
-                        </tbody>
-                      </table>
-
-                </div>
-                {{-- akhir card psikotes --}}
-                @endif
     
                     </form>
                 </div>

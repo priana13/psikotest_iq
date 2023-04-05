@@ -122,7 +122,7 @@
 
                         <ul class="list-group">
                             <li class="list-group-item">Voucher Psikotes Bulanan</li>
-                            <li class="list-group-item">Harga: <strong>{{ number_format($harga) }}</strong>  x <strong>{{ $jumlah_bulan }}</strong>  {{ $this->type[$this->productSelected->type] }}</li>
+                            <li class="list-group-item">Harga: <strong>{{ number_format($harga) }}</strong>  x <strong>{{ $jumlah_bulan }}</strong>  Bulan</li>
                             <li class="list-group-item">Disc : 0%</li>
                             <li class="list-group-item">PPN : 0%</li>  
                             <li class="list-group-item">Total: <strong>Rp. {{ number_format($total) }}</strong></li>                                  

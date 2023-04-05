@@ -5,6 +5,7 @@ namespace App\Http\Livewire;
 use Livewire\Component;
 use Livewire\WithPagination;
 use App\Models\Membership;
+use App\Models\Package;
 use App\Models\User;
 
 class Memberships extends Component
@@ -20,10 +21,13 @@ class Memberships extends Component
         'pending' => 'warning',
         'expired' => 'secondary'
     ];
+    public $package, $package_id;
 
     public function mount(){
 
         $this->users = User::all();
+        $this->start = date('Y-m-d');
+        $this->end = date('Y-m-d');
     }
 
     public function render()
@@ -48,6 +52,8 @@ class Memberships extends Component
             $memberships = auth()->user()->memberships()->latest()->paginate(5);
 
         }
+
+        $this->package = Package::all();
 		
         return view('livewire.memberships.view', compact('memberships'));
     }
@@ -82,7 +88,8 @@ class Memberships extends Component
 			'member_type' => $this-> member_type,
 			'start' => $this-> start,
 			'end' => $this-> end,
-			'status' => $this-> status
+			'status' => $this-> status,
+            'package_id' => $this->package_id
         ]);
         
         $this->resetInput();

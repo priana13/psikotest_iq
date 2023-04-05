@@ -13,9 +13,17 @@ class AddExamIdToPackageExamsTable extends Migration
      */
     public function up()
     {
+        
+
         Schema::table('package_exams', function (Blueprint $table) {
 
             $table->foreignId('exam_id')->constrained('exams')->onDelete('cascade');
+
+        });
+
+        Schema::table('memberships', function (Blueprint $table) {
+
+            $table->foreignId('package_id')->constrained('packages')->onDelete('cascade');
 
         });
     }
@@ -29,6 +37,12 @@ class AddExamIdToPackageExamsTable extends Migration
     {
         Schema::table('package_exams', function (Blueprint $table) {
             $table->dropConstrainedForeignId('exam_id');
+        });
+
+        Schema::table('memberships', function (Blueprint $table) {
+
+            $table->dropConstrainedForeignId('package_id');
+
         });
     }
 }

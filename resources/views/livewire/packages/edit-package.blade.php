@@ -73,7 +73,7 @@
                             <option value="">Pilih Test</option>
                             @foreach ($exams as $item)
         
-                            <option value="{{ $item->id }}">{{ $item->nama_tes }}</option>
+                            <option value="{{ $item->id }}">{{ $item->exam_category->name }} - {{ $item->nama_tes }}</option>
                                 
                             @endforeach                    
                            
@@ -95,19 +95,31 @@
             <table class="table">
                 <thead>
                   <tr>
-                    <th scope="col">#</th>
+                    <th scope="col">ID</th>
                     <th scope="col">Nama Tes</th>
                     <th scope="col">Category</th>
                     <th scope="col">Action</th>
                   </tr>
                 </thead>
                 <tbody>
+                @forelse($package_exams as $row)
+
                   <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                  </tr>                          
+                    <th scope="row">{{ $row->exam->id }}</th>
+                    <td>{{ $row->exam->nama_tes }}</td>
+                    <td>{{ $row->exam->exam_category->name }}</td>
+                    <td>
+                        <a href="" class="btn btn-sm btn-danger">Hapus</a>
+                    </td>
+                  </tr>    
+
+                @empty
+                <tr>
+                    <td colspan="4" class="text-center">Belum ada Test yang ditambahkan</td>
+                </tr>
+                  
+                @endforelse
+
                 </tbody>
               </table>
 
@@ -117,9 +129,9 @@
 
             </form>
         </div>
-        <div class="modal-footer">
+        <div class="text-center mt-3">
             <button type="button" class="btn btn-secondary close-btn" data-dismiss="modal">Close</button>
-            <button type="button" wire:click.prevent="store()" class="btn btn-primary close-modal">Buat</button>
+            <button type="button" wire:click.prevent="update()" class="btn btn-primary close-modal">Update</button>
         </div>
     </div>
 </div>

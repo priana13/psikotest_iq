@@ -13,7 +13,7 @@ class Membership extends Model
 
     protected $table = 'memberships';
 
-    protected $fillable = ['user_id','member_type','start','end','status'];
+    protected $guarded = [];
 	
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
@@ -26,6 +26,11 @@ class Membership extends Model
     public function scopeActive($query){
 
         return $query->where('status','active');
+    }
+
+    public function package(){
+
+        return $this->belongsTo(Package::class);
     }
     
 }
