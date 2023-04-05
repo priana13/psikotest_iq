@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Exam;
 use Livewire\Component;
 use Livewire\WithPagination;
 use App\Models\Package;
@@ -17,6 +18,9 @@ class Packages extends Component
     public function render()
     {
 		$keyWord = '%'.$this->keyWord .'%';
+
+        $exams = Exam::all();
+
         return view('livewire.packages.view', [
             'packages' => Package::latest()
 						->orWhere('name', 'LIKE', $keyWord)
@@ -24,6 +28,7 @@ class Packages extends Component
 						->orWhere('price', 'LIKE', $keyWord)
 						->orWhere('detail', 'LIKE', $keyWord)
 						->paginate(10),
+            'exams' => $exams
         ]);
     }
 	
@@ -43,24 +48,24 @@ class Packages extends Component
 
     public function store()
     {
-        $this->validate([
-		'name' => 'required',
-		'qty' => 'required',
-		'price' => 'required',
-        'type' => 'required',
-        ]);
+        // $this->validate([
+		// 'name' => 'required',
+		// 'qty' => 'required',
+		// 'price' => 'required',
+        // 'type' => 'required',
+        // ]);
 
-        Package::create([ 
-            'type' => $this->type,
-			'name' => $this-> name,
-			'qty' => $this-> qty,
-			'price' => $this-> price,
-			'detail' => $this-> detail
-        ]);
+        // Package::create([ 
+        //     'type' => $this->type,
+		// 	'name' => $this-> name,
+		// 	'qty' => $this-> qty,
+		// 	'price' => $this-> price,
+		// 	'detail' => $this-> detail
+        // ]);
         
-        $this->resetInput();
-		$this->emit('closeModal');
-		session()->flash('message', 'Package Successfully created.');
+        // $this->resetInput();
+		// $this->emit('closeModal');
+		// session()->flash('message', 'Package Successfully created.');
     }
 
     public function edit($id)

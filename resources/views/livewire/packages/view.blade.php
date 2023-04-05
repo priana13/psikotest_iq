@@ -16,15 +16,15 @@
 						<div>
 							<input wire:model='keyWord' type="text" class="form-control" name="search" id="search" placeholder="Search Packages">
 						</div>
-						<div class="btn btn-sm btn-info" data-toggle="modal" data-target="#createDataModal">
+						<a href = "{{ route('admin.packages.create') }}" class="btn btn-sm btn-info" >
 						<i class="fa fa-plus"></i>  Tambah Paket
-						</div>
+						</a>
 					</div>
 				</div>
 				
 				<div class="card-body">
-						@include('livewire.packages.create')
-						@include('livewire.packages.update')
+						{{-- @include('livewire.packages.create')
+						@include('livewire.packages.update') --}}
 				<div class="table-responsive">
 					<table class="table table-bordered table-sm">
 						<thead class="thead">

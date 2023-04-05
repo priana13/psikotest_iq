@@ -17,6 +17,7 @@ use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\Member\SoalController;
 use App\Http\Controllers\Member\UjianController;
 use App\Http\Controllers\Member\TypeSoalController;
+use App\Http\Controllers\PackageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -79,8 +80,10 @@ Route::middleware('auth')->group(function(){
 
 		//Route Hooks - Do not delete//
 		Route::view('examcategory', 'livewire.examcategories.index')->middleware('auth')->name('admin.examcategory');
-		Route::view('confirmations', 'livewire.confirmations.index')->middleware('auth')->name('admin.confirmations');
-		Route::view('packages', 'livewire.packages.index')->middleware('auth')->name('admin.packages');
+		Route::view('confirmations', 'livewire.confirmations.index')->middleware('auth')->name('admin.confirmations');		
+		Route::get('packages', [PackageController::class, 'index'])->middleware('auth')->name('admin.packages');
+		Route::get('packages/create', [PackageController::class, 'create'])->middleware('auth')->name('admin.packages.create');
+		Route::get('packages/edit/{id}', [PackageController::class, 'edit'])->middleware('auth')->name('admin.packages.edit');
 		Route::view('posts', 'livewire.posts.index')->middleware('auth')->name('admin.posts');
 
 		Route::get('/posts/create', [PageController::class, 'create'])->name('posts.create');
