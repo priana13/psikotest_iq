@@ -5,7 +5,7 @@
 <div class="row justify-content-center">
     <div class="col-md-12">   
 
-        @livewire('packages.create-package')
+        @livewire('packages.edit-package', ['package' => $package])
 
     </div>     
 </div>   

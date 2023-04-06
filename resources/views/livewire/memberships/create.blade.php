@@ -11,30 +11,43 @@
            <div class="modal-body">
 				<form>
             <div class="form-group">
-                <label for="user_id"></label>
+                <label for="user_id">User</label>
                 <select wire:model="user_id" id="" class="form-control">
-                    <option value="">Select</option>
+                    <option value="">Pilih User</option>
                     @foreach($users as $user)
-                    <option value="{{ $user->id }}">{{ $user->name }}</option>
+                    <option value="{{ $user->id }}">{{ $user->name }} - {{ $user->email }}</option>
                     @endforeach
                 </select>
                 
                 @error('user_id') <span class="text-danger">{{ $message }}</span> @enderror
             </div>
             <div class="form-group">
-                <label for="member_type"></label>
+                <label for="member_type">Type</label>
                 <input wire:model="member_type" type="text" class="form-control" id="member_type" placeholder="Member Type" readonly>@error('member_type') <span class="">{{ $message }}</span> @enderror
             </div>
             <div class="form-group">
-                <label for="start"></label>
+                <label for="start">Dari Tanggal</label>
                 <input wire:model="start" type="date" class="form-control" id="start" placeholder="Start">@error('start') <span class="text-danger">{{ $message }}</span> @enderror
             </div>
             <div class="form-group">
-                <label for="end"></label>
+                <label for="end">Sampai Tanggal</label>
                 <input wire:model="end" type="date" class="form-control" id="end" placeholder="End">@error('end') <span class="text-danger">{{ $message }}</span> @enderror
             </div>
+
             <div class="form-group">
-                <label for="status"></label>
+                <label for="status">Pilih Paket</label>
+                <select wire:model="package_id" id="" class="form-control">
+                    <option value="">Pilih</option>
+                    @foreach($package as $row)
+                    <option value="{{ $row->id }}">{{ $row->name }}</option>
+                    @endforeach
+                </select>
+               @error('status') <span class="text-danger">{{ $message }}</span> @enderror
+            </div>
+
+
+            <div class="form-group">
+                <label for="status">Status</label>
                 <select wire:model="status" id="" class="form-control">
                     <option value="active">Aktif</option>
                     <option value="pending">Pending</option>
