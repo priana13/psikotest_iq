@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Exam;
 use App\Models\Examcategory;
+use App\Models\PackageExam;
+use DB;
 
 class SoalController extends Controller
 {
@@ -42,9 +44,21 @@ class SoalController extends Controller
 
         $title = "List Soal";
 
+        $langganan = auth()->user()->memberships()->pluck('package_id');
+        $akses_packages = PackageExam::whereIn('package_id', $langganan)->pluck('exam_id')->toArray();           
+
+        $is_full_access = DB::table('memberships')->join('packages', 'package_id', 'packages.id')
+                            ->where('memberships.status', 'active')
+                            ->where('user_id', auth()->user()->id)
+                            ->where('packages.type', 'full')
+                            ->count();  
+
+
         return view('member.soal.index' , [
             'exams' => $exam,
-            'title' => $type
+            'title' => $type,
+            'allowed_exam' => $akses_packages,
+            'is_full_access' => $is_full_access
         ]);
     }
 

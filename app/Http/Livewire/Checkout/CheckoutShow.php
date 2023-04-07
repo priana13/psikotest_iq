@@ -35,7 +35,7 @@ class CheckoutShow extends Component
     public function mount(){
 
         $this->list_payment_methods = PaymentMethod::all();
-        $this->package = Package::all(); 
+        $this->package = Package::where('type', 'full')->get(); 
         
         $this->productSelected = Package::first();  
         $this->product = $this->productSelected->id;
@@ -56,13 +56,13 @@ class CheckoutShow extends Component
 
     
     public function render()
-    {       
+    {     
+     
 
         if($this->qty == ''){$this->qty = 0;}
         $this->productSelected = Package::find($this->product);
 
-        // $this->qty = $this->productSelected->qty;
-
+        // $this->qty = $this->productSelected->qty;       
        
         $this->harga = $this->productSelected->price;
         $this->total = $this->harga * $this->qty;  
