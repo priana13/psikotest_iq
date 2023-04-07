@@ -59,18 +59,14 @@
 								<div class="btn-group">
 									<a href="{{route('mulai-ujian' , $row->id)}}" class="btn btn-{{ ($jumlah_soal == 0)?'secondary':'primary' }} btn-sm {{ ($jumlah_soal == 0)?'disabled':'' }}
 									
-									@if($is_full_access < 1)
-										@if(isset($allowed_exam[$row->id]))							
-										
-											
-											@if(!in_array($row->id, $allowed_exam->toArray() ))
+									@if($is_full_access < 1)	
+									
+										@if(!in_array($row->id, $allowed_exam ))
 
-												disabled
+											disabled
 
-											@endif
-										
-											
-										@endif	
+										@endif									
+									
 										
 									@endif
 

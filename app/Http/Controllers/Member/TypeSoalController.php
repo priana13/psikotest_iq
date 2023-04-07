@@ -15,7 +15,7 @@ class TypeSoalController extends Controller
     public function index($type){
 
         $langganan = auth()->user()->memberships()->pluck('package_id');
-        $akses_packages = PackageExam::whereIn('package_id', $langganan)->pluck('exam_id');    
+        $akses_packages = PackageExam::whereIn('package_id', $langganan)->pluck('exam_id')->toArray();           
 
         $is_full_access = DB::table('memberships')->join('packages', 'package_id', 'packages.id')
                             ->where('memberships.status', 'active')
