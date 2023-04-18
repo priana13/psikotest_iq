@@ -113,7 +113,8 @@ class MidtransController extends Controller
               'member_type' => "Langganan",
               'start' =>  Carbon::now(),
               'end' => $bulan_depan,
-              'status' => "active"
+              'status' => "active",
+              'package_id' => $transaksi->package_id
             ]);
             
             /**Kirim notifikasi ke whatsap */
