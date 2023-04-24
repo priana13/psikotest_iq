@@ -18,6 +18,7 @@ class PackageFactory extends Factory
 			'qty' => 1,
 			'price' => 195000,
 			'detail' => "Akses Membership Bulanan",
+            'type' => 'full'
         ];
     }
 }
