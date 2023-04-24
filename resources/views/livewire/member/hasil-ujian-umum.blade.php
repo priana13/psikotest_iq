@@ -10,7 +10,7 @@
 
             <div class="card bg-white shadow p-5" >
 
-                <h3 class="text-center"> <strong>HASIL PSIKOTES {{ $type[$examevent->type] }}</strong> </h3>
+                <h3 class="text-center"> <strong>HASIL TES {{ strtoupper($examevent->exam->exam_category->name)  }}</strong> </h3>
 
                 <div class="my-2 row">
 
