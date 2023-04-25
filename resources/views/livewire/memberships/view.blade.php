@@ -62,7 +62,7 @@
 								@can('admin')
 								<td>{{ $row->user->name }}</td>
 								@endcan
-								<td>{{ $row->package->name }}</td>
+								<td>{{ ($row->package)? $row->package->name : '' }}</td>
 								<td>{{ date('d M Y', strtotime($row->start)) }}</td>
 								<td>{{ date('d M Y', strtotime($row->end)) }}</td>
 								<td>

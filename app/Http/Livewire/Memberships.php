@@ -44,7 +44,7 @@ class Memberships extends Component
                         ->orWhere('member_type', 'LIKE', $keyWord)
                         ->orWhere('start', 'LIKE', $keyWord)
                         ->orWhere('end', 'LIKE', $keyWord)
-                        ->orWhere('status', 'LIKE', $keyWord)
+                        ->orWhere('status', 'LIKE', $keyWord)                        
                         ->paginate(10);
            
         }else{
@@ -81,6 +81,7 @@ class Memberships extends Component
 		'start' => 'required',
 		'end' => 'required',
 		'status' => 'required',
+        'package_id' => 'required'
         ]);
 
         Membership::create([ 
@@ -107,7 +108,7 @@ class Memberships extends Component
 		$this->start = $record-> start;
 		$this->end = $record-> end;
 		$this->status = $record-> status;
-		
+        $this->package_id = $record->package_id;		
         $this->updateMode = true;
     }
 
@@ -128,6 +129,7 @@ class Memberships extends Component
 			'member_type' => $this-> member_type,
 			'start' => $this-> start,
 			'end' => $this-> end,
+            'package_id' => $this->package_id,
 			'status' => $this-> status
             ]);
 
