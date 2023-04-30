@@ -10,7 +10,15 @@
 
             <div class="card bg-white shadow p-5" >
 
+                @if($examevent->exam)
+
                 <h3 class="text-center"> <strong>HASIL TES {{ strtoupper($examevent->exam->exam_category->name)  }}</strong> </h3>
+                
+                @else
+
+                <h3 class="text-center"> <strong>HASIL TES {{ strtoupper($type[$examevent->type])  }}</strong> </h3>
+
+                @endif
 
                 <div class="my-2 row">
 
@@ -29,8 +37,43 @@
                     <span class="border py-2 px-4 border-primary text-success" style="font-size:36px;">{{ $examevent->nilai }}</span> 
                 </h3>
 
-                {{-- Table 1 --}}
+                {{-- Table 1 --}}                 
+               
 
+                @if($examevent->type == 'Akademik')
+
+                {{-- hasil psikotes Akademik --}}
+                <div class="table-responsive mt-3">
+
+                    <table class="table table-bordered">
+                        <thead class="bg-primary text-white">
+                            <tr> 
+                                <th class="text-center">Soal</th>                             
+                                <th class="text-center">Jawab</th>
+                                <th class="text-center">Benar</th>
+                                <th class="text-center">Salah</th>
+                            </tr>
+
+                        </thead>
+
+                        <tbody>
+                          
+                            <tr class="font-weight-bold">
+                                <td class="text-center">{{ $examevent->exam->questions->count() }}</td> 
+                                <td class="text-center">{{ $examevent->examItems->count() }}</td>                               
+                                <th class="text-center">{{ $examevent->benar }}</th>
+                                <th class="text-center"> <span>{{ $examevent->salah }}</span> </th>
+                            </tr>                          
+                        </tbody>
+
+
+                    </table>
+
+                </div>
+
+                @else
+
+                {{-- hasil tes umum --}}
                 <div class="table-responsive mt-3">
 
                     <table class="table table-bordered">
@@ -45,7 +88,7 @@
                         </thead>
 
                         <tbody>
-                          
+                            
                             <tr class="font-weight-bold">
                                 <td class="text-center">0-49</td> 
                                 <td class="text-center">50-60</td>                               
@@ -59,6 +102,7 @@
 
                 </div>
 
+                @endif
                 {{-- Akhir table 1 --}}         
 
                 
