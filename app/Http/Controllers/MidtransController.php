@@ -63,6 +63,10 @@ class MidtransController extends Controller
 
               $this->va_number = "Bill Code: " . $notif->biller_code . ", Bill Key: " . $notif->bill_key;
 
+            }elseif($notif->payment_type == 'gopay'){ 
+
+              $this->va_number = '-';
+
             }else{
 
               $va_number    = $notif->va_numbers[0]; 

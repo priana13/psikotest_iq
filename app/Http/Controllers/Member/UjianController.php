@@ -174,6 +174,7 @@ class UjianController extends Controller
       $type = [
         'cerdas' => "KECERDASAN",
         'kepribadian' => "KEPRIBADIAN",
+        'Akademik' => "AKADEMIK"
       ];
 
       return view('livewire.member.hasil-ujian-umum', compact('examevent', 'type'));

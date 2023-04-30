@@ -33,7 +33,7 @@ class EditPackage extends Component
     {       
         $this->exams = Exam::all();
 
-        $this->package_exams = PackageExam::where('package_id', $this->package_id)->get();     
+        $this->package_exams = PackageExam::where('package_id', $this->package_id)->whereHas('exam')->get();     
 
         return view('livewire.packages.edit-package');
     }

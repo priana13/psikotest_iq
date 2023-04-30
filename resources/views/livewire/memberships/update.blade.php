@@ -16,16 +16,28 @@
 
             <div class="form-group">
                 <label for="member_type">Type</label>
-                <input wire:model="member_type" type="text" class="form-control" id="member_type" placeholder="Member Type" readonly>@error('member_type') <span class="error text-danger">{{ $message }}</span> @enderror
+                <input wire:model="member_type" type="text" class="form-control" id="member_type" placeholder="Member Type" readonly>@error('member_type') <span class="text-danger">{{ $message }}</span> @enderror
             </div>
             <div class="form-group">
                 <label for="start">Start</label>
-                <input wire:model="start" type="date" class="form-control" id="start" placeholder="Start" readonly>@error('start') <span class="error text-danger">{{ $message }}</span> @enderror
+                <input wire:model="start" type="date" class="form-control" id="start" placeholder="Start" readonly>@error('start') <span class="text-danger">{{ $message }}</span> @enderror
             </div>
             <div class="form-group">
                 <label for="end">End</label>
-                <input wire:model="end" type="date" class="form-control" id="end" placeholder="End">@error('end') <span class="error text-danger">{{ $message }}</span> @enderror
+                <input wire:model="end" type="date" class="form-control" id="end" placeholder="End">@error('end') <span class="text-danger">{{ $message }}</span> @enderror
             </div>
+
+            <div class="form-group">
+                <label for="status">Pilih Paket</label>
+                <select wire:model="package_id" id="" class="form-control">
+                    <option value="">Pilih</option>
+                    @foreach($package as $row)
+                    <option value="{{ $row->id }}">{{ $row->name }}</option>
+                    @endforeach
+                </select>
+               @error('status') <span class="text-danger">{{ $message }}</span> @enderror
+            </div>
+            
             <div class="form-group">
                 <label for="status">Status</label> 
                 <select wire:model="status" id="" class="form-control">
