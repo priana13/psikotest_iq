@@ -59,7 +59,12 @@
                         <tbody>
                           
                             <tr class="font-weight-bold">
+                                @if($examevent->exam)
                                 <td class="text-center">{{ $examevent->exam->questions->count() }}</td> 
+                                @else
+                                <td class="text-center">{{ $examevent->examItems->first()->question->exam->questions->count() }}</td> 
+                                @endif
+
                                 <td class="text-center">{{ $examevent->examItems->count() }}</td>                               
                                 <th class="text-center">{{ $examevent->benar }}</th>
                                 <th class="text-center"> <span>{{ $examevent->salah }}</span> </th>
