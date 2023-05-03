@@ -50,12 +50,12 @@
 						<thead class="thead">
 							<tr> 								
 								<th>Name</th>	
-								@if($selected != 'cermat')
+								{{-- @if($selected != 'cermat2')
 									<th>Salah</th>								
 									<th>Benar</th>
 									<th>Score</th>
-								@endif
-								<th>User</th>
+								@endif --}}
+								{{-- <th>User</th> --}}
 								<th>Status</th>
 								<th>Aksi</th>
 							</tr>
@@ -82,17 +82,17 @@
 									<strong>{{ $row->name }}</strong><br>
 									{{ $row->created_at->diffForHumans() }}
 								</td>	
-								@if($selected != 'cermat')							
+								{{-- @if($selected != 'cermat')							
 									<td>{{ $row->salah }}</td>								
 									<td>{{ $row->benar }}</td>
 									<td>
 										<span class="badge badge-pill badge-{{ $tanda }}">{{ $row->nilai }}</span>
 										
 									</td>
-								@endif
-								<td>
+								@endif --}}
+								{{-- <td>
 									{{ $row->user->name }}
-								</td>
+								</td> --}}
 								<td>
 									{{ $row->status }}
 								</td>
