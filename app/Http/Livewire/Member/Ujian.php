@@ -110,9 +110,9 @@ class Ujian extends Component
 
         if(!$this->finish_status){
 
-            ($this->soal->kc_jawaban == $this->jawaban)? $hasil = true:$hasil = false;
+            // ($this->soal->kc_jawaban == $this->jawaban)? $hasil = true:$hasil = false;
 
-            if($this->soal->kc_jawaban == $this->jawaban){
+            if($this->soal->kc_jawaban == $this->jawaban || strtolower($this->soal->kc_jawaban) == $this->jawaban){
                 $hasil = true;
                 $this->benar += 1;
 
@@ -138,7 +138,6 @@ class Ujian extends Component
 
             if($cek_soal == null){
 
-
                 // input ke table ujian di sini
                 ExamItem::create([
                     'examevent_id' => $this->examEvent->id,
@@ -151,6 +150,7 @@ class Ujian extends Component
 
             }else{
 
+                // jika sudah dijawaban berarti user melakukan koreksi terhadap jawabannya
                 ExamItem::where('id', $cek_soal->id)->update([
                     'jawaban' => $this->jawaban,
                     'is_true' => $hasil,

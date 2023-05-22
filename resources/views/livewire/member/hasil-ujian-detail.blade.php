@@ -158,7 +158,7 @@
                 </div>
               
 
-                <a href="{{ route('member.hasil_ujian_umum', $examevent->id) }}" class="btn btn-secondary mx-auto mt-3"> << Kembali</a>
+                <a href="{{ route('member.hasil_ujian_umum', $examevent->id) }}" class="btn btn-secondary mx-auto mt-3"> <i class="fas fa-angle-double-left"></i> Kembali</a>
 
                 @else
 
