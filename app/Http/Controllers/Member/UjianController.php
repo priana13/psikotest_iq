@@ -180,6 +180,16 @@ class UjianController extends Controller
       return view('livewire.member.hasil-ujian-umum', compact('examevent', 'type'));
     }
 
+    public function hasil_ujian_detail(Examevent $examevent){
+
+      $questions = $examevent->exam->questions->splitIn(3);    
+
+      $jawaban = $examevent->examItems->pluck('jawaban','question_id');  
+
+      $is_true = $examevent->examItems->pluck('is_true','question_id');      
+
+      return view('livewire.member.hasil-ujian-detail', compact('questions','examevent', 'jawaban', 'is_true'));
+    }
 
 
 }
