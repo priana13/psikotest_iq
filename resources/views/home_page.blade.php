@@ -112,7 +112,7 @@
             
           </div>
           <h3 class="mb-3">Matematika</h3>
-          <p>Seberapa cerdasarkah kamu?</p>
+          <p>Test Matematika</p>
         </div>
       </div>
 
@@ -123,7 +123,7 @@
             <i class="bi bi-bank2"></i>
           </div>
           <h3 class="mb-3">Wawasan Kebangsaan</h3>
-          <p>Ujian Sikap Kerja</p>
+          <p>Ujian Pengetahuan Kebangsaan</p>
         </div>
       </div>
 
@@ -133,7 +133,7 @@
             <i class="bi bi-book"></i>
           </div>
           <h3 class="mb-3">Pengetahuan Umum</h3>
-          <p>Uji Kepribadian</p>
+          <p>Uji Pengetahuan Umum</p>
         </div>
       </div>
 
@@ -143,7 +143,7 @@
             <i class="bi bi-book-half"></i>
           </div>
           <h3 class="mb-3">Bahasa Indonesia</h3>
-          <p>Uji Kepribadian</p>
+          <p>Seberapa tau kamu tentang bahasa ibu?</p>
         </div>
       </div>
 
@@ -153,7 +153,7 @@
             <i class="bi bi-chat-left-dots-fill"></i>
           </div>
           <h3 class="mb-3">Bahasa Inggris</h3>
-          <p>Uji Kepribadian</p>
+          <p>Test Bahasa International</p>
         </div>
       </div>
       
