@@ -54,7 +54,7 @@
           </ul>
           <div class="price-cta">
             <strong class="price">1 Bulan</strong>
-            <p><a href="#" class="btn btn-white">Choose Plan</a></p>
+            <p><a href="{{ route('login') }}" class="btn btn-white">Choose Plan</a></p>
           </div>
         </div>
       </div>
@@ -68,7 +68,7 @@
           </ul>
           <div class="price-cta">
             <strong class="price">3 Bulan</strong>
-            <p><a href="#" class="btn btn-white">Choose Plan</a></p>
+            <p><a href="{{ route('login') }}" class="btn btn-white">Choose Plan</a></p>
           </div>
         </div>
       </div>
@@ -82,7 +82,7 @@
           </ul>
           <div class="price-cta">
             <strong class="price">1 Tahun</strong>
-            <p><a href="#" class="btn btn-white">Choose Plan</a></p>
+            <p><a href="{{ route('login') }}" class="btn btn-white">Choose Plan</a></p>
           </div>
         </div>
       </div>

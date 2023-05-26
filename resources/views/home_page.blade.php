@@ -93,6 +93,75 @@
   </div>
 </section>
 
+<!-- ======= Test Akademik Section ======= -->
+<section class="section">
+  <div class="container">
+
+    <div class="row justify-content-center text-center mb-5">
+      <div class="col-md-5" data-aos="fade-up">
+        <h2 class="section-heading">AKADEMIK</h2>
+      </div>
+    </div>
+
+    <div class="row">
+
+      <div class="col-6 col-sm-4 my-3" data-aos="fade-up" data-aos-delay="">
+        <div class="feature-1 text-center shadow p-2">
+          <div class="wrap-icon icon-1">
+            <i class="bi bi-calculator-fill"></i>
+            
+          </div>
+          <h3 class="mb-3">Matematika</h3>
+          <p>Seberapa cerdasarkah kamu?</p>
+        </div>
+      </div>
+
+      <div class="col-6 col-sm-4 my-3" data-aos="fade-up" data-aos-delay="100">
+        <div class="feature-1 text-center hover:bg-warning shadow p-2">
+          <div class="wrap-icon icon-1">
+            
+            <i class="bi bi-bank2"></i>
+          </div>
+          <h3 class="mb-3">Wawasan Kebangsaan</h3>
+          <p>Ujian Sikap Kerja</p>
+        </div>
+      </div>
+
+      <div class="col-6 col-sm-4 my-3" data-aos="fade-up" data-aos-delay="100">
+        <div class="feature-1 text-center shadow p-2">
+          <div class="wrap-icon icon-1">
+            <i class="bi bi-book"></i>
+          </div>
+          <h3 class="mb-3">Pengetahuan Umum</h3>
+          <p>Uji Kepribadian</p>
+        </div>
+      </div>
+
+      <div class="col-6 col-sm-4 my-3" data-aos="fade-up" data-aos-delay="100">
+        <div class="feature-1 text-center shadow p-2">
+          <div class="wrap-icon icon-1">
+            <i class="bi bi-book-half"></i>
+          </div>
+          <h3 class="mb-3">Bahasa Indonesia</h3>
+          <p>Uji Kepribadian</p>
+        </div>
+      </div>
+
+      <div class="col-6 col-sm-4 my-3" data-aos="fade-up" data-aos-delay="100">
+        <div class="feature-1 text-center shadow p-2">
+          <div class="wrap-icon icon-1">
+            <i class="bi bi-chat-left-dots-fill"></i>
+          </div>
+          <h3 class="mb-3">Bahasa Inggris</h3>
+          <p>Uji Kepribadian</p>
+        </div>
+      </div>
+      
+    </div>
+
+  </div>
+</section>
+
 <section class="section d-none">
 
   <div class="container">
