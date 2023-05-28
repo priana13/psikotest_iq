@@ -5,8 +5,10 @@ namespace App\Imports;
 use App\Models\Question;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
+use Maatwebsite\Excel\Concerns\SkipsEmptyRows;
+use Maatwebsite\Excel\Concerns\WithValidation;
 
-class QuestionsImport implements ToModel,WithHeadingRow
+class QuestionsImport implements ToModel,WithHeadingRow, SkipsEmptyRows, WithValidation
 {
     public $examId;
 
@@ -20,12 +22,13 @@ class QuestionsImport implements ToModel,WithHeadingRow
     * @return \Illuminate\Database\Eloquent\Model|null
     */
     public function model(array $row)
-    {     
+    {            
 
         // lakukan pengecekan soal tersedia di sini,
         // jika nomor dari soal ini sudah ada, lakukan update / overwrite
 
-        $question = Question::where('exam_id', $this->examId)->where('no', $row['no'])->first();
+        $question = Question::where('exam_id', $this->examId)->where('no', $row['no'])->first();    
+
 
         if(!$question){
 
@@ -81,4 +84,15 @@ class QuestionsImport implements ToModel,WithHeadingRow
 
 
     }
+
+
+    public function rules(): array
+    {
+        return [
+            'no' => ['required'],
+            'soal' => ['required']
+        ];
+    }
+
+
 }

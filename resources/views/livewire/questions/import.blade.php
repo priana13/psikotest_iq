@@ -8,7 +8,17 @@
                      <span aria-hidden="true close-btn">×</span>
                 </button>
             </div>
-           <div class="modal-body">
+           <div class="modal-body">         
+
+
+            @if ($errors->any())
+            @foreach ($errors->all() as $error)
+                <div class="text-danger">{{$error}}</div>
+            @endforeach
+                @endif
+
+
+
 			<form>
 
                 <div class="form-group">
