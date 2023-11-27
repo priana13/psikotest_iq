@@ -2,7 +2,7 @@
 <div >
     <div class="card p-3">
         <div class="">
-            <h5 class="modal-title" id="createDataModalLabel">Buat Package Baru</h5>
+            <h5 class="modal-title" id="createDataModalLabel">Edit Harga Paket</h5>
            
         </div>
 

@@ -20,7 +20,7 @@ class EditPackage extends Component
 
     public $exam_categories;
     
-    public $kategori;
+    public $kategori;  
 
     public function mount($package){
 
@@ -33,16 +33,28 @@ class EditPackage extends Component
         $this->package_id = $package->id;
         $this->kategori = $package->examcategory_id;
 
+        $this->package = $package;
 
     }
 
     public function render()
     {       
-        $this->exams = Exam::all();
+        
+
+        if($this->type == "kategori"){
+
+            $this->exams = Exam::where('examcategory_id', $this->kategori)->get();
+
+        }else{
+
+            $this->exams = Exam::all();
+
+        }
 
         $this->package_exams = PackageExam::where('package_id', $this->package_id)->whereHas('exam')->get();     
+        
 
-        $this->exam_categories = Examcategory::all();
+        $this->exam_categories = Examcategory::whereHas('exams')->get();
 
         return view('livewire.packages.edit-package');
     }
