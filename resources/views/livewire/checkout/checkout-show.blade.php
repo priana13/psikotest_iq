@@ -11,21 +11,22 @@
 
                 <div class="row">
 
-                    <div class="form-group col-md-10">
+                    <div class="form-group col-md-12">
+                        <label for="">Pilih Paket Berlangganan</label>
                         <select class="form-control" wire:model="product" id="">                           
                             @foreach($package as $row)
-                            <option value="{{ $row->id }}">{{ $row->name }}</option>
+                            <option value="{{ $row->id }}">{{ $row->name }} - {{ number_format($row->price,0,',','.') }}</option>
                             @endforeach
                            
                         </select>
                         @error('product') <span class="error">tes</span> @enderror
                     </div>
 
-                    <div class="form-group col-md-2">
+                    {{-- <div class="form-group col-md-2">
 
                         <input wire:model="qty" type="number" class="form-control">
 
-                    </div>
+                    </div> --}}
 
                 </div>
 {{-- 
@@ -73,7 +74,7 @@
 
                 <div class="data-member mt-5">
 
-                    <h3 class="font-weight-bold">Data Penerima:</h3>
+                    {{-- <h3 class="font-weight-bold">Data:</h3> --}}
 
                     <div class="form-group">
                         <input wire:model="nama" type="text" class="form-control" placeholder="Nama">
@@ -102,15 +103,17 @@
             </div>
 
             <div class="col-md-5">
-                <h3>Yang Anda Dapatkan:</h3>
+                {{-- <h3>Yang Anda Dapatkan:</h3>
 
                 <ul>
+                    
                     <li>Try Out Kecerdasan </li>
                     <li>Try Out Kecermatan</li>
                     <li>Try Out Kepribadian</li>
+
                     <li>Dapat Melihat Riwayat Try Out</li>
                     <li>Dan Banyak Fitur Lainnya</li>
-                </ul>
+                </ul> --}}
 
 
                 <div class="card">
