@@ -36,8 +36,15 @@ class CheckoutShow extends Component
 
         $this->list_payment_methods = PaymentMethod::all();
         $this->package = Package::get(); 
-        
-        $this->productSelected = Package::first();  
+
+        $this->productSelected = Package::first(); 
+
+        if( Package::find( request()->paket )){
+
+            $this->productSelected = Package::find( request()->paket );
+            
+        }
+
         $this->product = $this->productSelected->id;
 
         $this->nama = auth()->user()->name;

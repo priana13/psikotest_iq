@@ -44,21 +44,30 @@
     </div>
     <div class="row align-items-stretch">
 
-      <div class="col-lg-4 mb-4 mb-lg-0">
+      @foreach($list_paket as $paket)
+
+      <div class="col-lg-4 mb-4 mb-lg-0 my-2">
         <div class="pricing h-100 text-center">
           <span>&nbsp;</span>
-          <h3>Basic</h3>
+          <h3>{{ $paket->name }}</h3>
           <ul class="list-unstyled">
-            <li>Akses 1 Bulan</li>
-            <li>Unlimited Soal</li>
+            <li>Akses {{ $paket->qty }} Bulan</li>
+
+            @if($paket->type == 'full')
+            <li>Unlimited Test</li>
+            @endif
+
           </ul>
           <div class="price-cta">
-            <strong class="price">1 Bulan</strong>
-            <p><a href="{{ route('login') }}" class="btn btn-white">Choose Plan</a></p>
+            <strong class="price">{{ $paket->qty }} Bulan</strong>
+            <p><a href="{{ route('checkout') }}?paket={{ $paket->id }}" class="btn btn-white">Berlangganan</a></p>
           </div>
         </div>
       </div>
-      <div class="col-lg-4 mb-4 mb-lg-0">
+
+      @endforeach
+
+      {{-- <div class="col-lg-4 mb-4 mb-lg-0">
         <div class="pricing h-100 text-center popular">
           <span class="popularity">Most Popular</span>
           <h3>Professional</h3>
@@ -85,7 +94,8 @@
             <p><a href="{{ route('login') }}" class="btn btn-white">Choose Plan</a></p>
           </div>
         </div>
-      </div>
+      </div> --}}
+
     </div>
   </div>
 </section>

@@ -11,6 +11,7 @@ use App\Http\Controllers\SettingController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\CkEditorController;
+use App\Http\Controllers\HalamanHargaController;
 use App\Http\Controllers\MidtransController;
 use App\Http\Controllers\PsikotesController;
 use App\Http\Controllers\QuestionController;
@@ -41,7 +42,7 @@ Route::get('/sitemap.xml', [SeoController::class,'index'])->name('sitemap');
 
 
 Route::view('/fitur', 'pages.fitur')->name('page.fitur');
-Route::view('/harga', 'pages.harga')->name('page.harga');
+Route::get('/harga', [HalamanHargaController::class, 'index'])->name('page.harga');
 Route::get('/blog', [PageController::class, 'index'])->name('blog');
 Route::get('/page/{slug}', [PageController::class, 'show'])->name('front.page');
 Route::get('/category/{slug}', [CategoryController::class, 'show'])->name('category');
