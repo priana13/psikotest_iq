@@ -50,13 +50,35 @@
                         <select wire:model="type" id="type" class="form-control">
                             <option value="">Type</option>
                             <option value="full">Full Akses</option>
+                            <option value="kategori">Per Kategori</option>
                             <option value="satuan">Satuan</option>
                         </select>
                         
                         @error('type') <span class="text-danger">{{ $message }}</span> @enderror
                     </div>   
 
-                </div>      
+                    @if($type == 'kategori')
+
+                    <div class="form-group col-sm-4">        
+                        <label for="type">Kategory</label>                      
+                        <select wire:model="kategori" id="kategori" class="form-control">
+                            <option value="">Pilih Kategori Test</option>
+                            @foreach ($exam_categories as $kategori)
+        
+                            <option value="{{ $kategori->id }}">{{ $kategori->name }}</option>
+                                
+                            @endforeach                    
+                        
+                        </select> 
+                        
+                        @error('kategori') <span class="text-danger">{{ $message }}</span> @enderror
+                    </div>
+        
+                    @endif
+
+                </div>  
+                
+                
                 
     
                     </form>
