@@ -2,6 +2,7 @@
 
 namespace App\Console;
 
+use App\Http\Controllers\Api\WaktuUjianController;
 use App\Http\Controllers\CronJobController;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
@@ -31,6 +32,10 @@ class Kernel extends ConsoleKernel
             ]);
             
         })->hourly();
+
+        $schedule->call([
+            WaktuUjianController::class, 'kurangi_waktu'
+        ])->everyMinute();
 
 
     }

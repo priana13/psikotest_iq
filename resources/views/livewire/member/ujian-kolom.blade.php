@@ -1,4 +1,6 @@
-<div>
+<div
+
+>
 
     <style>
 
@@ -127,9 +129,15 @@
     <script>
         CountDownTimer('waktu');
 
+        localStorage.setItem("sisawaktu", 60);
+
+
         function CountDownTimer(id)
         {
+           localStorage.setItem("sisawaktu", 60);
+
             var end = new Date('{{$endtime}}').getTime();
+
             var _detik = 1000;
             var _menit = _detik * 60;
             var _jam = _menit * 60;
@@ -169,7 +177,7 @@
                 }else{
 
                     // kurangi waktu yang ada di database
-                    Livewire.emit('kurangiWaktu');
+                    //Livewire.emit('kurangiWaktu');
                 }
 
                 // var days = Math.floor(selisih / _hari);

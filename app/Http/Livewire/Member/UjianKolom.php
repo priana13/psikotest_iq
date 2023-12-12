@@ -72,6 +72,8 @@ class UjianKolom extends Component
         }
 
 
+
+
     }
 
     public function render()
