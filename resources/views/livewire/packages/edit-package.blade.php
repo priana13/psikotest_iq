@@ -2,7 +2,7 @@
 <div >
     <div class="card p-3">
         <div class="">
-            <h5 class="modal-title" id="createDataModalLabel">Buat Package Baru</h5>
+            <h5 class="modal-title" id="createDataModalLabel">Edit Harga Paket</h5>
            
         </div>
 
@@ -50,15 +50,37 @@
                 <select wire:model="type" id="type" class="form-control">
                     <option value="">Type</option>
                     <option value="full">Full Akses</option>
+                    <option value="kategori">Per Kategori</option>
                     <option value="satuan">Satuan</option>
                 </select>
                 
                 @error('type') <span class="text-danger">{{ $message }}</span> @enderror
             </div>   
 
+
+            @if($type == 'kategori')
+
+            <div class="form-group col-sm-4">        
+                <label for="type">Kategory</label>                      
+                <select wire:model="kategori" id="kategori" class="form-control">
+                    <option value="">Pilih Kategori Test</option>
+                    @foreach ($exam_categories as $kategori)
+
+                    <option value="{{ $kategori->id }}">{{ $kategori->name }}</option>
+                        
+                    @endforeach                    
+                   
+                </select> 
+                
+                @error('kategori') <span class="text-danger">{{ $message }}</span> @enderror
+            </div>
+
+            @endif
+
+
         </div>  
 
-        @if($type == 'satuan')      
+        @if($type == 'satuan' || $type == 'kategori')      
     
 
         {{-- exam / tes --}}
@@ -66,7 +88,7 @@
             <div class="card-header">
                 <h4 class="my-2">Tes untuk Package ini</h4>
 
-                <div class="row">
+                <div class="row"> 
 
                     <div class="form-group col-sm-10">                              
                         <select wire:model="exam_id" id="exam_id" class="form-control">

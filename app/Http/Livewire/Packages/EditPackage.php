@@ -5,6 +5,7 @@ namespace App\Http\Livewire\Packages;
 use Livewire\Component;
 use App\Models\Package;
 use App\Models\Exam;
+use App\Models\Examcategory;
 use App\Models\PackageExam;
 
 class EditPackage extends Component
@@ -17,6 +18,10 @@ class EditPackage extends Component
 
     public $package_exams;
 
+    public $exam_categories;
+    
+    public $kategori;  
+
     public function mount($package){
 
         // $this->package = Package::find($id);
@@ -26,14 +31,30 @@ class EditPackage extends Component
         $this->type = $package->type;
         $this->detail = $package->detail;
         $this->package_id = $package->id;
+        $this->kategori = $package->examcategory_id;
+
+        $this->package = $package;
 
     }
 
     public function render()
     {       
-        $this->exams = Exam::all();
+        
+
+        if($this->type == "kategori"){
+
+            $this->exams = Exam::where('examcategory_id', $this->kategori)->get();
+
+        }else{
+
+            $this->exams = Exam::all();
+
+        }
 
         $this->package_exams = PackageExam::where('package_id', $this->package_id)->whereHas('exam')->get();     
+        
+
+        $this->exam_categories = Examcategory::whereHas('exams')->get();
 
         return view('livewire.packages.edit-package');
     }
@@ -57,6 +78,7 @@ class EditPackage extends Component
         $package->qty = $this-> qty;
         $package->price = $this-> price;
         $package->detail = $this-> detail;
+        $package->examcategory_id = $this->kategori;
 
         $package->save();
 
