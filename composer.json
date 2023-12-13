@@ -21,7 +21,8 @@
         "livewire/livewire": "^2.10",
         "maatwebsite/excel": "^3.1",
         "midtrans/midtrans-php": "2.*",
-        "ralphjsmit/laravel-seo": "^1.2"
+        "ralphjsmit/laravel-seo": "^1.2",
+        "spatie/laravel-short-schedule": "^1.5"
     },
     "require-dev": {
         "facade/ignition": "^2.5",
