@@ -17,13 +17,13 @@ class WaktuUjianController extends Controller
      *
      * @return json
      */
-    public function cek_waktu(Request $request){
+    public function cek_waktu(Request $request , $id){
 
-        $request->validate([
-            'examevent_id' => 'required|integer'
-        ]);
+        // $request->validate([
+        //     'examevent_id' => 'required|integer'
+        // ]);
 
-        $examevent = Examevent::find($request->examevent_id);
+        $examevent = Examevent::find($id);
 
         if($examevent == null){
 

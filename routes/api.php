@@ -23,8 +23,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::post('/m/notif' , [MidtransController::class , 'notif']);
 
-Route::post('/cek-waktu' , [WaktuUjianController::class , 'cek_waktu']);
-Route::post('/kurangi-waktu' , [WaktuUjianController::class , 'kurangi_waktu']);
+Route::get('/cek-waktu/{id}' , [WaktuUjianController::class , 'cek_waktu']);
+// Route::post('/kurangi-waktu' , [WaktuUjianController::class , 'kurangi_waktu']);
 
 
 // http://arstamedia.com/api/m/notif

@@ -127,75 +127,75 @@
 
 
     <script>
-        CountDownTimer('waktu');
+        // CountDownTimer('waktu');
 
-        localStorage.setItem("sisawaktu", 60);
+        // localStorage.setItem("sisawaktu", 60);
 
 
-        function CountDownTimer(id)
-        {
-           localStorage.setItem("sisawaktu", 60);
+        // function CountDownTimer(id)
+        // {
+        //    localStorage.setItem("sisawaktu", 60);
 
-            var end = new Date('{{$endtime}}').getTime();
+        //     var end = new Date('{{$endtime}}').getTime();
 
-            var _detik = 1000;
-            var _menit = _detik * 60;
-            var _jam = _menit * 60;
-            var _hari = _jam * 24;                     
+        //     var _detik = 1000;
+        //     var _menit = _detik * 60;
+        //     var _jam = _menit * 60;
+        //     var _hari = _jam * 24;                     
 
-            const timer = setInterval(function showRemaining() {
-                var now = new Date();
-                var now = new Date().toLocaleString("en-US", {
-                            timeZone: "Asia/Jakarta",
-                        });
+        //     const timer = setInterval(function showRemaining() {
+        //         var now = new Date();
+        //         var now = new Date().toLocaleString("en-US", {
+        //                     timeZone: "Asia/Jakarta",
+        //                 });
 
-                const now_jakarta = new Date(now).getTime();
+        //         const now_jakarta = new Date(now).getTime();
 
-                var selisih = end - now_jakarta;
+        //         var selisih = end - now_jakarta;
                
-                if (selisih < 0) {
+        //         // if (selisih < 0) {
 
-                    clearInterval(timer); 
+        //         //     clearInterval(timer); 
                     
-                    // alert('Waktu Tes Kolom ini Telah Habis');
+        //         //     // alert('Waktu Tes Kolom ini Telah Habis');
 
-                    Swal.fire({
-                        title: 'WAKTU HABIS',
-                        text: 'Pindah kolom berikutnya',
-                        timer: 3000, // 3 detik
-                        timerProgressBar: true,
-                        background: '#282A3A',
-                        color: '#ffff',
-                        didDestroy: function(){
-                            Livewire.emit('waktuHabis');
-                        }
-                    });
+        //         //     Swal.fire({
+        //         //         title: 'WAKTU HABIS',
+        //         //         text: 'Pindah kolom berikutnya',
+        //         //         timer: 3000, // 3 detik
+        //         //         timerProgressBar: true,
+        //         //         background: '#282A3A',
+        //         //         color: '#ffff',
+        //         //         didDestroy: function(){
+        //         //             Livewire.emit('waktuHabis');
+        //         //         }
+        //         //     });
                     
-                    // emit di sini                   
+        //         //     // emit di sini                   
 
-                    return;
-                }else{
+        //         //     return;
+        //         // }else{
 
-                    // kurangi waktu yang ada di database
-                    //Livewire.emit('kurangiWaktu');
-                }
+        //         //     // kurangi waktu yang ada di database
+        //         //     //Livewire.emit('kurangiWaktu');
+        //         // }
 
-                // var days = Math.floor(selisih / _hari);
-                var jam = Math.floor((selisih % _hari) / _jam);
-                var menit = Math.floor((selisih % _jam) / _menit);
-                var detik = Math.floor((selisih % _menit) / _detik);
+        //         // var days = Math.floor(selisih / _hari);
+        //         var jam = Math.floor((selisih % _hari) / _jam);
+        //         var menit = Math.floor((selisih % _jam) / _menit);
+        //         var detik = Math.floor((selisih % _menit) / _detik);
 
 
-                // document.getElementById(id).innerHTML = days + 'days ';
-                document.getElementById(id).innerHTML = jam + ':';
-                document.getElementById(id).innerHTML += menit + ':';
-                document.getElementById(id).innerHTML += detik;                
+        //         // document.getElementById(id).innerHTML = days + 'days ';
+        //         document.getElementById(id).innerHTML = jam + ':';
+        //         document.getElementById(id).innerHTML += menit + ':';
+        //         document.getElementById(id).innerHTML += detik;                
                 
-            }, 1000);
+        //     }, 1000);
 
-            // clearInterval(timer);
-            // console.log(timer);
-        }
+        //     // clearInterval(timer);
+        //     // console.log(timer);
+        // }
 
 
 
