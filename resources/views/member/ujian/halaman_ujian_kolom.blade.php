@@ -11,23 +11,19 @@
     }"
 
     x-init="
-
-    const timer = setInterval(function() {
-               
-        let waktu = fetch('{{ url('/api/cek-waktu/' . $exam_event->id) }}')
+    fetch('{{ url('/api/cek-waktu/' . $exam_event->id) }}')
         .then(response => response.json())
         .then(data => sisaWaktu = data);
 
-        console.log(sisaWaktu);
 
+    myinterval = setInterval(function() {  
 
-        if (sisaWaktu < 1 && status != 'Selesai') {
-
-            {{-- clearInterval(timer);  --}}
-
-            sisaWaktu = 'Habis';
-            
-            // alert('Waktu Tes Kolom ini Telah Habis');
+        if(sisaWaktu > 0){
+            sisaWaktu -= 1; 
+        }
+        
+        
+        if( sisaWaktu == 1){
 
             Swal.fire({
                 title: 'WAKTU HABIS',
@@ -41,15 +37,10 @@
                 }
             });
             
-            // emit di sini                   
 
-         return;
-        }
-
+        }      
                 
     }, 1000);   
-
-
 
               
     "
