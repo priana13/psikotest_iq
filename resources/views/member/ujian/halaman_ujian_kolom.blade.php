@@ -6,11 +6,25 @@
     <!-- timmer -->
     <div id="timer" class=""
     x-data="{
-        sisaWaktu: {{ $exam_event->sisa_waktu }},
+        sisaWaktu: 0,
         status: '{{ $exam_event->status }}'
     }"
 
     x-init="
+
+    let waktu = localStorage.getItem('sisaWaktu{{ $exam_event->id }}');
+
+    if(waktu == null || waktu == 0){
+
+        localStorage.setItem('sisaWaktu{{ $exam_event->id }}', 60);
+    }
+
+    {{-- console.log(waktu); --}}
+
+    {{-- 
+
+    console.log(localStorage.getItem('sisaWaktu{{ $exam_event->id }}')); --}}
+
     fetch('{{ url('/api/cek-waktu/' . $exam_event->id) }}')
         .then(response => response.json())
         .then(data => sisaWaktu = data);
@@ -18,12 +32,21 @@
 
     myinterval = setInterval(function() {  
 
-        if(sisaWaktu > 0){
-            sisaWaktu -= 1; 
+        waktu = localStorage.getItem('sisaWaktu{{ $exam_event->id }}');
+
+        {{-- console.log(waktu) --}}
+
+        if(waktu > 0){
+            {{-- sisaWaktu -= 1;  --}}
+
+            localStorage.setItem('sisaWaktu{{ $exam_event->id }}' , waktu - 1);
+
+            sisaWaktu = waktu;
+
         }
         
         
-        if( sisaWaktu == 1){
+        if( waktu == 1){
 
             Swal.fire({
                 title: 'WAKTU HABIS',
