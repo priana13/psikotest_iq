@@ -2,6 +2,7 @@
 
 namespace App\Console;
 
+use App\Http\Controllers\Api\WaktuUjianController;
 use App\Http\Controllers\CronJobController;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
@@ -32,6 +33,10 @@ class Kernel extends ConsoleKernel
             
         })->hourly();
 
+        $schedule->call([
+            WaktuUjianController::class, 'kurangi_waktu'
+        ])->everyMinute();
+
 
     }
 
@@ -46,4 +51,20 @@ class Kernel extends ConsoleKernel
 
         require base_path('routes/console.php');
     }
+
+
+    // php artisan short-schedule:run
+    protected function shortSchedule(\Spatie\ShortSchedule\ShortSchedule $shortSchedule)
+    {       
+
+        // this artisan command will run every second
+        // "\App\Http\Controllers\Api\WaktuUjianController@kurangi_waktu"
+        $shortSchedule->command(
+            "pr:kurangi-waktu"            
+        )->everySecond();
+        
+        // this artisan command will run every second, its signature will be resolved from container
+        // $shortSchedule->command(\Spatie\ShortSchedule\Tests\Unit\TestCommand::class)->everySecond();
+    }
+
 }
