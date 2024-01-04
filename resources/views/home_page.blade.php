@@ -55,7 +55,7 @@
                     <div class="col-lg-8 text-center text-lg-start">
                       <h2 data-aos="fade-right" style="color:white;">Anda membutuhkan test IQ?</h2>
                       <p class="mb-5" data-aos="fade-right" data-aos-delay="100">Cepat, Akurat, Terpercaya</p>
-                      <p data-aos="fade-right" data-aos-delay="200" data-aos-offset="-500"><a href="{{ route('register') }}" class="btn btn-warning">Mulai Sekarang</a></p>
+                      <p data-aos="fade-right" data-aos-delay="200" data-aos-offset="-500"><a href="{{ route('register') }}" class="btn btn-warning">Test Sekarang</a></p>
                     </div>
                     <div class="col-lg-4 iphone-wrap">
                       {{-- <img src="assets/img/phone_1.png" alt="Image" class="phone-1" data-aos="fade-right"> --}}
@@ -96,53 +96,79 @@
 @section('content')
 
 
-<!-- ======= Home Section ======= -->
-<section class="section">
+
+<section class="section px-2" style="background: rgb(165,197,226);
+background: linear-gradient(112deg, rgba(165,197,226,1) 0%, rgba(84,150,208,1) 51%, rgba(47,110,166,1) 85%); padding-top:50px;">
+
   <div class="container">
+    <h2 class="fw-bold text-white">PSIKOTEST</h2>
+  </div>
 
-    <div class="row justify-content-center text-center mb-5">
-      <div class="col-md-5" data-aos="fade-up">
-        <h2 class="section-heading">Psikotes</h2>
-      </div>
-    </div>
+  <div class="container" data-aos="fade-up">
+    
+    <div class="row bg-white rounded p-3">
 
-    <div class="row">
-      <div class="col-md-4" data-aos="fade-up" data-aos-delay="">
-        <div class="feature-1 text-center">
-          <div class="wrap-icon icon-1">
-            <i class="bi bi-thermometer-sun"></i>
-            
-          </div>
-          <h3 class="mb-3">Kecerdasan</h3>
-          <p>Seberapa cerdasarkah kamu?</p>
+      <div class="col-md-1">
+        <div class="wrap-icon icon-1 rounded-pill p-3">
+          <i class="bi bi-clipboard2-check-fill" style="font-size: 40px;"></i>
+          
         </div>
       </div>
 
-      <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
-        <div class="feature-1 text-center">
-          <div class="wrap-icon icon-1">
-            
-            <i class="bi bi-clipboard2-check-fill"></i>
-          </div>
-          <h3 class="mb-3">Sikap Kerja</h3>
-          <p>Ujian Sikap Kerja</p>
-        </div>
+      <div class="col-md-6">
+        <h2>TryOut Test Sikap Kerja</h2>
+        <p>Mencari angka/huruf/simbol yang hilang</p>
+
+        <a href="{{ route('register') }}" class="btn btn-warning btn-sm">Coba Gratis</a>
       </div>
 
-      <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
-        <div class="feature-1 text-center">
-          <div class="wrap-icon icon-1">
-            <i class="bi bi-person-badge"></i>
-          </div>
-          <h3 class="mb-3">Kepribadian</h3>
-          <p>Uji Kepribadian</p>
-        </div>
+      <div class="col-md-5 text-center mt-2">  
+
+        <img src="img/icon-iq.png" alt="sample-test-sikap-kerja" class="img img-thumbnail" width="200px">
+
       </div>
-      
     </div>
 
   </div>
+
+  <div class="container my-2" data-aos="fade-up">
+
+    <div class="row bg-white rounded p-3">
+
+      <div class="col-md-1">
+        <div class="wrap-icon icon-1 rounded-pill p-3">
+          <i class="bi bi-thermometer-sun" style="font-size: 40px;"></i>
+          
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <h2>TryOut Test Kecerdasan</h2>
+        <p>Uji kemampuan dengan soal-soal yang diprediksi sering keluar</p>        
+      </div>    
+    </div> <!-- akhir row -->
+
+
+    <div class="row bg-white rounded p-3 mt-2">
+
+      <div class="col-md-1">
+        <div class="wrap-icon icon-1 rounded-pill p-3">
+          <i class="bi bi-person-badge" style="font-size: 40px;"></i>
+          
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <h2>TryOut Test Kepribadian</h2>
+        <p>Uji kemampuan dengan mengerjakan soal-soal kepribadian</p>        
+      </div>    
+    </div> <!-- akhir row -->
+
+
+  </div > <!-- akhir container -->
+
 </section>
+
 
 <!-- ======= Test Akademik Section ======= -->
 <section class="section">
@@ -157,7 +183,7 @@
     <div class="row">
 
       <div class="col-6 col-sm-4 my-3" data-aos="fade-up" data-aos-delay="">
-        <div class="feature-1 text-center shadow p-2">
+        <div class="feature-1 text-center shadow-sm p-2">
           <div class="wrap-icon icon-1">
             <i class="bi bi-calculator-fill"></i>
             
@@ -168,7 +194,7 @@
       </div>
 
       <div class="col-6 col-sm-4 my-3" data-aos="fade-up" data-aos-delay="100">
-        <div class="feature-1 text-center hover:bg-warning shadow p-2">
+        <div class="feature-1 text-center hover:bg-warning shadow-sm p-2">
           <div class="wrap-icon icon-1">
             
             <i class="bi bi-bank2"></i>
@@ -179,7 +205,7 @@
       </div>
 
       <div class="col-6 col-sm-4 my-3" data-aos="fade-up" data-aos-delay="100">
-        <div class="feature-1 text-center shadow p-2">
+        <div class="feature-1 text-center shadow-sm p-2">
           <div class="wrap-icon icon-1">
             <i class="bi bi-book"></i>
           </div>
@@ -189,7 +215,7 @@
       </div>
 
       <div class="col-6 col-sm-4 my-3" data-aos="fade-up" data-aos-delay="100">
-        <div class="feature-1 text-center shadow p-2">
+        <div class="feature-1 text-center shadow-sm p-2">
           <div class="wrap-icon icon-1">
             <i class="bi bi-book-half"></i>
           </div>
@@ -199,7 +225,7 @@
       </div>
 
       <div class="col-6 col-sm-4 my-3" data-aos="fade-up" data-aos-delay="100">
-        <div class="feature-1 text-center shadow p-2">
+        <div class="feature-1 text-center shadow-sm p-2">
           <div class="wrap-icon icon-1">
             <i class="bi bi-chat-left-dots-fill"></i>
           </div>
@@ -210,7 +236,17 @@
       
     </div>
 
+
+    <div class="mt-3">
+
+      <a href="{{ route('register') }}" class="btn btn-warning btn-sm">Daftar Sekarang</a>
+
+    </div>
+
   </div>
+
+
+
 </section>
 
 <section class="section d-none">
