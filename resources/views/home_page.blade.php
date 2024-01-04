@@ -249,6 +249,47 @@ background: linear-gradient(112deg, rgba(165,197,226,1) 0%, rgba(84,150,208,1) 5
 
 </section>
 
+{{-- Section test khusus iq --}}
+
+<section class="section px-2" style="background: rgb(165,197,226);
+background: linear-gradient(112deg, rgba(165,197,226,1) 0%, rgba(84,150,208,1) 51%, rgba(47,110,166,1) 85%); padding-top:50px;">
+
+  <div class="container">
+    <h2 class="fw-bold text-white">TES KHUSUS</h2>
+  </div>
+
+  <div class="container" data-aos="fade-up">
+    
+    <div class="row rounded p-3">
+
+      <div class="col-md-1">
+        <div class="wrap-icon icon-1 rounded-pill p-3 text-white">
+          <i class="bi bi-clipboard2-check-fill" style="font-size: 40px;"></i>
+          
+        </div>
+      </div>
+
+      <div class="col-md-6 text-white">
+        <h2>INTELECTUAL QUOTIENT (IQ)</h2>
+        <p>Tes yang memberikan gambaran intelegensi atau kemampuan kognitif individu</p>
+
+        <a href="{{ route('register') }}" class="btn btn-warning btn-sm">Tes Sekarang</a>
+      </div>
+
+      <div class="col-md-5 text-center mt-2">  
+
+        <img src="img/brain.png" alt="sample-test-sikap-kerja" class="img img-thumbnail" width="200px">
+
+      </div>
+    </div>
+
+  </div>
+  
+
+</section>
+
+
+
 <section class="section d-none">
 
   <div class="container">
