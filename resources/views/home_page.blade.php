@@ -2,7 +2,8 @@
 
 @section('header')
 
-<section class="hero-section">
+<section class="section" style="background: rgb(165,197,226);
+background: linear-gradient(112deg, rgba(165,197,226,1) 0%, rgba(84,150,208,1) 51%, rgba(47,110,166,1) 85%); padding-top:50px;">
 
   <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
 
@@ -25,8 +26,8 @@
                 <div class="col-12 hero-text-image">
                   <div class="row">
                     <div class="col-lg-8 text-center text-lg-start">
-                      <h1 data-aos="fade-right">Belajar Mudah - Akses Dimanapun</h1>
-                      <p class="mb-5" data-aos="fade-right" data-aos-delay="100">Persiapkan dirimu untuk mengikuti tes seleksi Polri - TNI.</p>
+                      <h1 class="text-white" data-aos="fade-right">Belajar Mudah - Akses Dimanapun</h1>
+                      <p class="mb-5 text-white" data-aos="fade-right" data-aos-delay="100">Persiapkan dirimu untuk mengikuti tes seleksi Polri - TNI.</p>
                       <p data-aos="fade-right" data-aos-delay="200" data-aos-offset="-500"><a href="{{ route('register') }}" class="btn btn-warning">Mulai Sekarang</a></p>
                     </div>
                     <div class="col-lg-4 iphone-wrap">
@@ -54,7 +55,7 @@
                   <div class="row">
                     <div class="col-lg-8 text-center text-lg-start">
                       <h2 data-aos="fade-right" style="color:white;">Anda membutuhkan test IQ?</h2>
-                      <p class="mb-5" data-aos="fade-right" data-aos-delay="100">Cepat, Akurat, Terpercaya</p>
+                      <p class="mb-5 text-white" data-aos="fade-right" data-aos-delay="100">Cepat, Akurat, Terpercaya</p>
                       <p data-aos="fade-right" data-aos-delay="200" data-aos-offset="-500"><a href="{{ route('register') }}" class="btn btn-warning">Test Sekarang</a></p>
                     </div>
                     <div class="col-lg-4 iphone-wrap">
@@ -85,8 +86,6 @@
     </button>
   </div>
 
-
-
 </section>
 
 
@@ -98,10 +97,10 @@
 
 
 <section class="section px-2" style="background: rgb(165,197,226);
-background: linear-gradient(112deg, rgba(165,197,226,1) 0%, rgba(84,150,208,1) 51%, rgba(47,110,166,1) 85%); padding-top:50px;">
+background: linear-gradient(112deg, rgba(165,197,226,1) 0%, rgb(170, 207, 240) 51%, rgb(131, 188, 238) 85%); padding-top:50px;">
 
   <div class="container">
-    <h2 class="fw-bold text-white">PSIKOTEST</h2>
+    <h2 class="fw-bold section-heading">PSIKOTEST</h2>
   </div>
 
   <div class="container" data-aos="fade-up">
