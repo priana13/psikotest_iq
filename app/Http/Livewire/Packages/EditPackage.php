@@ -71,13 +71,13 @@ class EditPackage extends Component
 
     public function update(){
 
-        $package = Package::find($this->package_id);
+        $package = Package::find($this->package_id);     
 
         $package->type = $this->type;
         $package->name = $this-> name;
         $package->qty = $this-> qty;
         $package->price = $this-> price;
-        $package->detail = $this-> detail;
+        $package->detail = $this->detail;
         $package->examcategory_id = $this->kategori;
 
         $package->save();
