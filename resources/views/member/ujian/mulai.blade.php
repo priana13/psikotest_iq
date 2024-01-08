@@ -10,7 +10,9 @@
         <!-- Basic Card Example -->
         <div class="card shadow mb-4">
             <div class="card-header py-3 d-flex flex-row align-items-center justify-content-center">
-                <h6 class="m-0 font-weight-bold text-primary">Selamat Datang <strong>{{ auth()->user()->name }}</strong></h6>
+                <h6 class="m-0 font-weight-bold text-primary">Selamat Datang <strong>
+                    @auth {{ auth()->user()->name }} @endauth
+                </strong></h6>
                 
             </div>
             <div class="card-body">     

@@ -47,6 +47,11 @@ Route::get('/blog', [PageController::class, 'index'])->name('blog');
 Route::get('/page/{slug}', [PageController::class, 'show'])->name('front.page');
 Route::get('/category/{slug}', [CategoryController::class, 'show'])->name('category');
 
+Route::prefix('coba')->group(function(){
+
+	Route::get('ujian/mulai/{exam}', [UjianController::class , 'index'])->name('coba.ujian-kecermatan');
+
+});
 
 Auth::routes();
 
