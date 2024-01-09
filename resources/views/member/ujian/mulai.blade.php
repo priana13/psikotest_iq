@@ -38,9 +38,18 @@
                     <a href="{{ route('member.soal') }}" class="btn btn-default btn-sm mr-3">
                         Batal
                     </a>
+                    @auth
                     <a href="{{ route('member.buat_event' , $ujian->id) }}" class="btn btn-primary btn-sm" type="submit">
                         Mulai Sekarang
                     </a>
+
+                    @else 
+
+                    <a href="{{ route('coba.buat_event' , $ujian->id) }}" class="btn btn-primary btn-sm" type="submit">
+                        Mulai Sekarang
+                    </a>
+
+                    @endauth
 
                 </div>                
 

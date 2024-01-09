@@ -19,6 +19,7 @@ use App\Http\Controllers\Member\SoalController;
 use App\Http\Controllers\Member\UjianController;
 use App\Http\Controllers\Member\TypeSoalController;
 use App\Http\Controllers\PackageController;
+use App\Http\Controllers\TrialPsikotestController;
 
 /*
 |--------------------------------------------------------------------------
@@ -49,7 +50,10 @@ Route::get('/category/{slug}', [CategoryController::class, 'show'])->name('categ
 
 Route::prefix('coba')->group(function(){
 
-	Route::get('ujian/mulai/{exam}', [UjianController::class , 'index'])->name('coba.ujian-kecermatan');
+	Route::get('ujian/mulai/{exam}', [TrialPsikotestController::class , 'index'])->name('coba.ujian-kecermatan');
+	Route::get('/ujian/{exam}' , [TrialPsikotestController::class , 'buat_event'])->name('coba.buat_event');
+
+	Route::get('/ujian/{exam}/{examevent}/{kolom}' , [TrialPsikotestController::class , 'ujian_kolom'])->name('coba.ujian-kolom');
 
 });
 

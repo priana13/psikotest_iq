@@ -2,14 +2,17 @@
 
 namespace App\Http\Livewire\Member;
 
-use Livewire\Component;
-use App\Models\Question;
-use App\Models\Exam;
-use App\Models\ExamColumn;
-use App\Models\ExamItem;
-use App\Models\ExamEvent;
-use App\Models\TempExam;
 use Carbon\Carbon;
+use App\Models\Exam;
+use App\Models\User;
+use Livewire\Component;
+use App\Models\ExamItem;
+use App\Models\Question;
+use App\Models\TempExam;
+use App\Models\ExamEvent;
+use App\Models\ExamColumn;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Redirect;
 
 class UjianKolom extends Component
@@ -155,10 +158,21 @@ class UjianKolom extends Component
 
             ($this->soal->kc_jawaban == $nilai_jawaban)? $hasil = true:$hasil = false;
 
+
+            if(Auth::check()){
+
+                $user =  auth()->user();
+                
+            }else{
+
+                $user = $this->getUserCoba();
+            }
+
+
             $exam_item = ExamItem::create([
 
                 'examevent_id' => $this->examEvent->id,
-                'user_id' => auth()->user()->id,
+                'user_id' => $user->id,
                 'question_id' => $this->soal->id,
                 'jawaban' => $nilai_jawaban,
                 'is_true' => $hasil
@@ -313,6 +327,24 @@ class UjianKolom extends Component
 
         // }
 
+    }
+
+    public function getUserCoba(){
+
+        $user = User::where('email', 'coba@arstamedia.com')->first();
+
+        if(!$user){
+
+            $user = User::create([
+                'name' => "User Coba",
+                'email' => 'coba@arstamedia.com',
+                'level' => "user",
+                'password' => Hash::make("bismillah123456")
+    
+            ]);
+        }
+
+        return $user;
     }
 
 
