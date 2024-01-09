@@ -50,10 +50,12 @@ Route::get('/category/{slug}', [CategoryController::class, 'show'])->name('categ
 
 Route::prefix('coba')->group(function(){
 
-	Route::get('ujian/mulai/{exam}', [TrialPsikotestController::class , 'index'])->name('coba.ujian-kecermatan');
+	// Route::get('ujian/mulai/{exam}', [TrialPsikotestController::class , 'index'])->name('coba.ujian-kecermatan');
 	Route::get('/ujian/{exam}' , [TrialPsikotestController::class , 'buat_event'])->name('coba.buat_event');
 
 	Route::get('/ujian/{exam}/{examevent}/{kolom}' , [TrialPsikotestController::class , 'ujian_kolom'])->name('coba.ujian-kolom');
+	
+	Route::get('/member/ujian/{exam}/{examevent}/{kolom}' , [TrialPsikotestController::class , 'ujian_kolom'])->name('coba.ujian-kolom');
 
 });
 

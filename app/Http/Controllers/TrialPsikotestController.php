@@ -63,18 +63,18 @@ class TrialPsikotestController extends Controller
       }
   
       // ujian pilihan ganda
-      public function ujian($exam,$examevent){
+      // public function ujian($exam,$examevent){
   
-        $exam = Exam::find($exam);     
-        $examevent = Examevent::find($examevent); 
+      //   $exam = Exam::find($exam);     
+      //   $examevent = Examevent::find($examevent); 
   
-          return view('member.ujian.halaman_ujian_pg',
-          ['exam' => $exam, 
-            'exam_event' => $examevent
-          ]
-        );
+      //     return view('member.ujian.halaman_ujian_pg',
+      //     ['exam' => $exam, 
+      //       'exam_event' => $examevent
+      //     ]
+      //   );
   
-      }
+      // }
   
       // ujian kolom
       public function ujian_kolom($exam,$examevent,$kolom){
@@ -82,7 +82,7 @@ class TrialPsikotestController extends Controller
         $exam = Exam::find($exam);     
         $examevent = Examevent::find($examevent); 
   
-          return view('member.ujian.halaman_ujian_kolom' ,
+          return view('halaman_coba_ujian_kolom' ,
           [
             'exam' => $exam, 
             'exam_event' => $examevent,
