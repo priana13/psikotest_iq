@@ -38,7 +38,7 @@
 
 <!-- Page Wrapper -->
 <div id="wrapper">
-
+  
     <x-side-bar-admin />
 
     <!-- Content Wrapper -->
@@ -49,6 +49,14 @@
 
             <!-- Topbar -->
             <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+
+                <div class="nav-item">
+                    <a href="{{ route('page.harga') }}" class="btn btn-warning rounded-pill py-1">Beli Paket</a>
+                </div>
+
+                <div class="nav-item ml-2">
+                    <a href="#" class="btn btn-warning rounded-pill py-1">Cara Membayar</a>
+                </div>
 
                 <!-- Sidebar Toggle (Topbar) -->
                 <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
