@@ -43,7 +43,7 @@
                         <div class="card border-left-primary shadow-sm h-100 py-2">
                             <div class="card-body text-center">
 
-                                <a class="stretched-link text-primary font-weight-bold text-primary text-uppercase" href="{{ route('member.soal') }}?type=psikotes">Psikotes</a>
+                                <a class="stretched-link text-primary font-weight-bold text-primary text-uppercase" href="{{ route('dashboard.subtes') }}?type=psikotes">Psikotes</a>
 
 
                                 <div class="row no-gutters align-items-center">                                   
@@ -61,7 +61,7 @@
 
                         <div class="card border-left-warning shadow-sm h-100 py-2">
                             <div class="card-body text-center">
-                                <a class="stretched-link text-primary font-weight-bold text-primary text-uppercase " href="{{ route('member.soal') }}?type=Akademik">AKADEMIK</a>
+                                <a class="stretched-link text-primary font-weight-bold text-primary text-uppercase " href="{{ route('dashboard.subtes') }}?type=Akademik">AKADEMIK</a>
 
                                 <div class="row no-gutters align-items-center">                                   
 
@@ -78,7 +78,7 @@
                     </div>
 
                     <!--Col-->
-                    <div class="col-xl-4 col-md-6 mb-4">
+                    <div class="col-xl-4 col-md-6 mb-4 d-none">
                         <div class="card border-left-success shadow-sm h-100 py-2">
                             <div class="card-body">
                                 <div class="row no-gutters align-items-center">
@@ -105,7 +105,7 @@
             <div class="row">
 
                 <!--Col-->
-                <div class="col-xl-4 col-md-6 mb-4">
+                <div class="col-xl-4 col-md-6 mb-4 d-none">
                     <div class="card border-left-info shadow-sm h-100 py-2">
                         <div class="card-body">
                             <div class="row no-gutters align-items-center">
@@ -129,7 +129,7 @@
                             <div class="row no-gutters align-items-center">
                                 <div class="col mr-2 text-center">
                                     <div class="font-weight-bold text-primary text-uppercase mb-1">INTELECTUAL QUOTIENT</div>
-                                    <div class="h5 mb-0 font-weight-bold text-danger">SEGERA HADIR</div>
+                                   
                                 </div>
 
                                 <p class="mt-2 text-center">Mau mengetahui IQ kamu, yuk coba di sini</p>

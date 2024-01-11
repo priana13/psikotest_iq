@@ -64,6 +64,8 @@ Auth::routes();
 Route::middleware('auth')->group(function(){
 
 	Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
+	Route::get('/dashboard/subtes', [HomeController::class, 'subtes'])->name('dashboard.subtes');
+
 	Route::get('/myprofile', [ProfileController::class, 'index'])->name('myprofile');
 	Route::put('/myprofile/update/{id}', [ProfileController::class, 'update'])->name('myprofile.update');
 

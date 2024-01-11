@@ -35,6 +35,16 @@ class HomeController extends Controller
         ]);
     }
 
+    public function subtes(){
+
+        $pengumuman = Setting::where('name', 'pengumuman')->first()->value;
+
+        return view('dashboard_subtes' , [
+            'exams' => Exam::paginate(5),
+            'pengumuman' => $pengumuman
+        ]);
+    }
+
     public function page()
     {
         $users = User::count();

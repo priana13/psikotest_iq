@@ -21,6 +21,15 @@
 
     <link href="/fontawesome5/css/v5-font-face.css" rel="stylesheet">
 
+    <link href=" {{ asset('assets/vendor/bootstrap-icons/bootstrap-icons.css') }} " rel="stylesheet">
+    <link href="{{ asset('assets/vendor/boxicons/css/boxicons.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/vendor/swiper/swiper-bundle.min.css') }}" rel="stylesheet">
+  
+    <!-- Template Main CSS File -->
+    <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet">
+  
+    
+
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
     <!-- Styles -->
@@ -55,7 +64,7 @@
                 </div>
 
                 <div class="nav-item ml-2">
-                    <a href="#" class="btn btn-warning rounded-pill py-1">Cara Membayar</a>
+                    <a href="/page/cara-membayar" class="btn btn-warning rounded-pill py-1">Cara Membayar</a>
                 </div>
 
                 <!-- Sidebar Toggle (Topbar) -->
