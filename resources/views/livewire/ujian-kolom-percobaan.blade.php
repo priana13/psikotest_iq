@@ -15,11 +15,13 @@
 		<div class="col-md-12">
 			<div class="card position-relative">
 
-                <div class="card-header text-center">                   
-
+                <div class="card-header text-center"> 
+                                      
+                    @if($is_finish == FALSE)
                     <h4 class="text-center">
                         Tes: {{ $exam->nama_tes }}
-                    </h4>              
+                    </h4>       
+                    @endif       
 
                     <h6 class="d-none">
                         Nomor: {{ $nomor }} - Soal terakhir: {{ $soal_terakhir }} - Waktu: {{ $sisa_waktu }}
@@ -33,22 +35,18 @@
 
 
 
-                    <div class="mx-auto">
-                         <h2 class="text-center">Tes Telah Selesai</h2>
-                         <p>Terimakasih Telah Mengikuti Test ini dengan baik</p>
+                    <div class="mx-auto my-5">
+                         <h2 class="text-center">Percobaan Test Sudah Selesai</h2>
+                         <h4>Silahkan daftar dan melakukan pembayaran untuk dapat akses tes secara menyeluruh</h4>
                          {{-- <h1 class="text-center text-primary"> <strong>{{ number_format($nilai_akhir) }}</strong></h1> --}}
 
 
                          <div class="d-flex justify-content-center">
-                            <a href="{{ route('member.history') }}" class="btn btn-secondary btn-sm mr-3">
-                                History
+                          
+                            <a href="{{ route('register') }}" class="btn btn-success btn-sm mr-3"  type="submit">
+                               Daftar Sekarang
                             </a>
-                            <a href="{{ route('member.hasil_ujian', $examEvent) }}" class="btn btn-success btn-sm mr-3"  type="submit">
-                                Lihat Hasil
-                            </a>
-                            <a href="{{ route('member.soal') }}" class="btn btn-primary btn-sm"  type="submit">
-                                Test Lagi
-                            </a>
+                          
         
                         </div>
 
@@ -153,7 +151,7 @@
 
 
 
-    @if($is_finish == FALSE)
+    {{-- @if($is_finish == FALSE) --}}
 
 
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
@@ -170,7 +168,7 @@
 
     </script>
 
-    @endif
+    {{-- @endif --}}
 
 
 </div>
