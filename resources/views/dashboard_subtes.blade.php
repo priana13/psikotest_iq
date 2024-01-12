@@ -13,7 +13,7 @@
 </style>
 
     <!-- Page Heading -->
-    <h1 class="h3 mb-4 text-gray-800">PSIKOTES</h1>
+    <h1 class="h3 mb-4 text-gray-800"> {{ $title }} </h1>
 
     @if (session('success'))
     <div class="alert alert-success border-left-success alert-dismissible fade show" role="alert">
@@ -38,6 +38,9 @@
 
             <div class="row">
 
+                @foreach( $categori as $row )
+
+               
                     <!--Col-->
                     <div class="col-md-4 mb-4">
                         <div class="card shadow-sm h-100 py-2 px-3">
@@ -46,15 +49,16 @@
                                     <i class="bi bi-calculator-fill"></i>                                    
                                 </div>
                                 <div>
-                                    <a class="stretched-link text-primary font-weight-bold text-primary text-uppercase text-decoration-none" href="{{ route('member.soal') }}?type=psikotes">TES SIKAP KERJA</a>
+                                    <a class="stretched-link text-primary font-weight-bold text-primary text-uppercase text-decoration-none" href="{{ route('member.soal') }}?type=psikotes">TES {{ $row->name }}</a>
                                 </div>  
                                
                             </div>
                         </div>
                     </div>
 
+                @endforeach
                     <!--Col-->
-                    <div class="col-md-4 mb-4">
+                    {{-- <div class="col-md-4 mb-4">
                         <div class="card shadow-sm h-100 py-2 px-3">
                             <div class="card-body text-center feature-1 text-center ">
                                 <div class="wrap-icon icon-1">
@@ -81,7 +85,7 @@
                                 
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
 
 
                 
