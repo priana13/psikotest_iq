@@ -1,8 +1,28 @@
 @extends('layouts.front.index')
 
 @section('header')
+
+<style>
+
+.harga:hover {
+  background-color: red; 
+  transform: scale(1.1);
+
+}
+
+.harga {
+
+  transition: transform .2s; /* Animation */
+
+}
+
+
+</style>
+
+
+
     <section class="hero-section inner-page">
-        <div class="wave">
+        {{-- <div class="wave">
 
         <svg width="1920px" height="265px" viewBox="0 0 1920 265" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
             <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -12,7 +32,7 @@
             </g>
         </svg>
 
-        </div>
+        </div> --}}
 
         <div class="container">
         <div class="row align-items-center">
@@ -33,34 +53,54 @@
 
 @section('content')
 
-<section class="section">
+<section class="section" style="background: rgb(165,197,226);
+background: linear-gradient(112deg, rgba(165,197,226,1) 0%, rgba(84,150,208,1) 51%, rgba(47,110,166,1) 85%); padding-top:50px;">
   <div class="container">
 
-    <div class="row justify-content-center text-center">
+    <div class="row justify-content-center text-center" data-aos="fade-up" data-aos-delay="">
       <div class="col-md-7 mb-5">
-        <h2 class="section-heading">Pilihan Paket</h2>
+        <h2 class="text-white fs-1 fw-bold">PILIHAN PAKET</h2>
         <p></p>
       </div>
     </div>
-    <div class="row align-items-stretch">
+    <div class="row align-items-stretch" data-aos="fade-up">
 
       @foreach($list_paket as $paket)
 
-      <div class="col-lg-4 mb-4 mb-lg-0 my-2">
-        <div class="pricing h-100 text-center">
+      <div class="col-lg-3 mb-4 mb-lg-0 my-2">
+        <div class="h-100 text-center shadow bg-white rounded harga">
           <span>&nbsp;</span>
-          <h3>{{ $paket->name }}</h3>
-          <ul class="list-unstyled">
-            <li>Akses {{ $paket->qty }} Bulan</li>
+          <h4 class="">{{ $paket->name }}</h4>
 
+          <h4> <span class="fs-6">Rp.</span> <span class="fw-bold">{{ number_format($paket->price,0,',','.') }}</span> / <span class="fs-6">Bulan</span></h4>
+          <ul class="list-unstyled mt-3">
+            {{-- <li>Akses {{ $paket->qty }} Bulan</li> --}}
+
+            {{-- <li class="fw-bold text-dark mt-3">Akses Tryout Psikotest</li> --}}
+            
             @if($paket->type == 'full')
             <li>Unlimited Test</li>
             @endif
 
+            {{-- <li>Unlimited Test</li>
+            <li>Unlimited Test</li>
+            <li>Unlimited Test</li>
+            <li>Unlimited Test</li> --}}
+
           </ul>
-          <div class="price-cta">
-            <strong class="price">{{ $paket->qty }} Bulan</strong>
-            <p><a href="{{ route('checkout') }}?paket={{ $paket->id }}" class="btn btn-white">Berlangganan</a></p>
+          
+          <div>
+             {!! $paket->detail !!}  
+          </div>       
+                 
+
+
+          <div class="price-cta mt-5">
+            {{-- <strong class="price">{{ $paket->qty }} Bulan</strong> --}}
+            <p>
+              <a href="{{ route('checkout') }}?paket={{ $paket->id }}" 
+                class="btn btn-warning">Beli Sekarang</a>
+            </p>
           </div>
         </div>
       </div>

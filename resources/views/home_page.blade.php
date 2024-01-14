@@ -2,41 +2,91 @@
 
 @section('header')
 
-<section class="hero-section" id="hero">
+<section class="section" style="background: rgb(165,197,226);
+background: linear-gradient(112deg, rgba(165,197,226,1) 0%, rgba(84,150,208,1) 51%, rgba(47,110,166,1) 85%); padding-top:50px;">
 
-<!-- ======= Hero Section ======= -->
+  <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
 
-<div class="wave">
+    <div class="carousel-indicators">
 
-  <svg width="100%" height="355px" viewBox="0 0 1920 355" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-      <g id="Apple-TV" transform="translate(0.000000, -402.000000)" fill="#FFFFFF">
-        <path d="M0,439.134243 C175.04074,464.89273 327.944386,477.771974 458.710937,477.771974 C654.860765,477.771974 870.645295,442.632362 1205.9828,410.192501 C1429.54114,388.565926 1667.54687,411.092417 1920,477.771974 L1920,757 L1017.15166,757 L0,757 L0,439.134243 Z" id="Path"></path>
-      </g>
-    </g>
-  </svg>
-
-</div>
-
-<div class="container">
-  <div class="row align-items-center">
-    <div class="col-12 hero-text-image">
-      <div class="row">
-        <div class="col-lg-8 text-center text-lg-start">
-          <h1 data-aos="fade-right">Belajar Mudah - Akses Dimanapun</h1>
-          <p class="mb-5" data-aos="fade-right" data-aos-delay="100">Persiapkan dirimu untuk mengikuti tes seleksi Polri - TNI.</p>
-          <p data-aos="fade-right" data-aos-delay="200" data-aos-offset="-500"><a href="{{ route('register') }}" class="btn btn-warning">Mulai Sekarang</a></p>
-        </div>
-        <div class="col-lg-4 iphone-wrap">
-          {{-- <img src="assets/img/phone_1.png" alt="Image" class="phone-1" data-aos="fade-right"> --}}
-          <img src="img/exam.webp" alt="Image" class="img-fluid rounded shadow" data-aos="fade-right" data-aos-delay="200">
-        </div>
-      </div>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+      
     </div>
-  </div>
-</div>
 
-</section> <!-- End Hero -->
+    <div class="carousel-inner">
+
+      <div class="carousel-item active">
+          
+
+          <div class="" style="padding-left: 100px; padding-top:200px;" >
+        
+            <div class="container">
+              <div class="row align-items-center">
+                <div class="col-12 hero-text-image">
+                  <div class="row">
+                    <div class="col-lg-8 text-center text-lg-start">
+                      <h1 class="text-white" data-aos="fade-right">Belajar Mudah - Akses Dimanapun</h1>
+                      <p class="mb-5 text-white" data-aos="fade-right" data-aos-delay="100">Persiapkan dirimu untuk mengikuti tes seleksi Polri - TNI.</p>
+                      <p data-aos="fade-right" data-aos-delay="200" data-aos-offset="-500"><a href="{{ route('register') }}" class="btn btn-warning">Mulai Sekarang</a></p>
+                    </div>
+                    <div class="col-lg-4 iphone-wrap">
+                      {{-- <img src="assets/img/phone_1.png" alt="Image" class="phone-1" data-aos="fade-right"> --}}
+                      <img src="img/icon-psikotest.png" alt="Image" class="img-fluid rounded shadow" data-aos="fade-right" data-aos-delay="200">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+      
+      
+      </div>
+      
+       
+      </div>
+
+      <div class="carousel-item">
+          
+          <div class="" style="padding-left: 100px; padding-top:200px;" >
+        
+            <div class="container">
+              <div class="row align-items-center">
+                <div class="col-12 hero-text-image">
+                  <div class="row">
+                    <div class="col-lg-8 text-center text-lg-start">
+                      <h2 data-aos="fade-right" style="color:white;">Anda membutuhkan test IQ?</h2>
+                      <p class="mb-5 text-white" data-aos="fade-right" data-aos-delay="100">Cepat, Akurat, Terpercaya</p>
+                      <p data-aos="fade-right" data-aos-delay="200" data-aos-offset="-500"><a href="{{ route('register') }}" class="btn btn-warning">Test Sekarang</a></p>
+                    </div>
+                    <div class="col-lg-4 iphone-wrap">
+                      {{-- <img src="assets/img/phone_1.png" alt="Image" class="phone-1" data-aos="fade-right"> --}}
+                      <img src="img/icon-iq.png" alt="Image" class="img-fluid rounded shadow" data-aos="fade-right" data-aos-delay="200">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+      
+      
+      </div>
+
+      
+      </div>
+     
+    </div>
+
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+
+</section>
 
 
 
@@ -45,53 +95,79 @@
 @section('content')
 
 
-<!-- ======= Home Section ======= -->
-<section class="section">
+
+<section class="section px-2" style="background: rgb(165,197,226);
+background: linear-gradient(112deg, rgba(165,197,226,1) 0%, rgb(170, 207, 240) 51%, rgb(131, 188, 238) 85%); padding-top:50px;">
+
   <div class="container">
+    <h2 class="fw-bold section-heading">PSIKOTEST</h2>
+  </div>
 
-    <div class="row justify-content-center text-center mb-5">
-      <div class="col-md-5" data-aos="fade-up">
-        <h2 class="section-heading">Psikotes</h2>
-      </div>
-    </div>
+  <div class="container" data-aos="fade-up">
+    
+    <div class="row bg-white rounded p-3">
 
-    <div class="row">
-      <div class="col-md-4" data-aos="fade-up" data-aos-delay="">
-        <div class="feature-1 text-center">
-          <div class="wrap-icon icon-1">
-            <i class="bi bi-thermometer-sun"></i>
-            
-          </div>
-          <h3 class="mb-3">Kecerdasan</h3>
-          <p>Seberapa cerdasarkah kamu?</p>
+      <div class="col-md-1">
+        <div class="wrap-icon icon-1 rounded-pill p-3">
+          <i class="bi bi-clipboard2-check-fill" style="font-size: 40px;"></i>
+          
         </div>
       </div>
 
-      <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
-        <div class="feature-1 text-center">
-          <div class="wrap-icon icon-1">
-            
-            <i class="bi bi-clipboard2-check-fill"></i>
-          </div>
-          <h3 class="mb-3">Sikap Kerja</h3>
-          <p>Ujian Sikap Kerja</p>
-        </div>
+      <div class="col-md-6">
+        <h2>TryOut Test Sikap Kerja</h2>
+        <p>Mencari angka/huruf/simbol yang hilang</p>
+
+        <a href="{{ route('coba.buat_event' , 9) }}" class="btn btn-warning btn-sm">Coba Gratis</a>
       </div>
 
-      <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
-        <div class="feature-1 text-center">
-          <div class="wrap-icon icon-1">
-            <i class="bi bi-person-badge"></i>
-          </div>
-          <h3 class="mb-3">Kepribadian</h3>
-          <p>Uji Kepribadian</p>
-        </div>
+      <div class="col-md-5 text-center mt-2">  
+
+        <img src="img/icon-iq.png" alt="sample-test-sikap-kerja" class="img img-thumbnail" width="200px">
+
       </div>
-      
     </div>
 
   </div>
+
+  <div class="container my-2" data-aos="fade-up">
+
+    <div class="row bg-white rounded p-3">
+
+      <div class="col-md-1">
+        <div class="wrap-icon icon-1 rounded-pill p-3">
+          <i class="bi bi-thermometer-sun" style="font-size: 40px;"></i>
+          
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <h2>TryOut Test Kecerdasan</h2>
+        <p>Uji kemampuan dengan soal-soal yang diprediksi sering keluar</p>        
+      </div>    
+    </div> <!-- akhir row -->
+
+
+    <div class="row bg-white rounded p-3 mt-2">
+
+      <div class="col-md-1">
+        <div class="wrap-icon icon-1 rounded-pill p-3">
+          <i class="bi bi-person-badge" style="font-size: 40px;"></i>
+          
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <h2>TryOut Test Kepribadian</h2>
+        <p>Uji kemampuan dengan mengerjakan soal-soal kepribadian</p>        
+      </div>    
+    </div> <!-- akhir row -->
+
+
+  </div > <!-- akhir container -->
+
 </section>
+
 
 <!-- ======= Test Akademik Section ======= -->
 <section class="section">
@@ -106,7 +182,7 @@
     <div class="row">
 
       <div class="col-6 col-sm-4 my-3" data-aos="fade-up" data-aos-delay="">
-        <div class="feature-1 text-center shadow p-2">
+        <div class="feature-1 text-center shadow-sm p-2">
           <div class="wrap-icon icon-1">
             <i class="bi bi-calculator-fill"></i>
             
@@ -117,7 +193,7 @@
       </div>
 
       <div class="col-6 col-sm-4 my-3" data-aos="fade-up" data-aos-delay="100">
-        <div class="feature-1 text-center hover:bg-warning shadow p-2">
+        <div class="feature-1 text-center hover:bg-warning shadow-sm p-2">
           <div class="wrap-icon icon-1">
             
             <i class="bi bi-bank2"></i>
@@ -128,7 +204,7 @@
       </div>
 
       <div class="col-6 col-sm-4 my-3" data-aos="fade-up" data-aos-delay="100">
-        <div class="feature-1 text-center shadow p-2">
+        <div class="feature-1 text-center shadow-sm p-2">
           <div class="wrap-icon icon-1">
             <i class="bi bi-book"></i>
           </div>
@@ -138,7 +214,7 @@
       </div>
 
       <div class="col-6 col-sm-4 my-3" data-aos="fade-up" data-aos-delay="100">
-        <div class="feature-1 text-center shadow p-2">
+        <div class="feature-1 text-center shadow-sm p-2">
           <div class="wrap-icon icon-1">
             <i class="bi bi-book-half"></i>
           </div>
@@ -148,7 +224,7 @@
       </div>
 
       <div class="col-6 col-sm-4 my-3" data-aos="fade-up" data-aos-delay="100">
-        <div class="feature-1 text-center shadow p-2">
+        <div class="feature-1 text-center shadow-sm p-2">
           <div class="wrap-icon icon-1">
             <i class="bi bi-chat-left-dots-fill"></i>
           </div>
@@ -159,8 +235,59 @@
       
     </div>
 
+
+    <div class="mt-3">
+
+      <a href="{{ route('register') }}" class="btn btn-warning btn-sm">Daftar Sekarang</a>
+
+    </div>
+
   </div>
+
+
+
 </section>
+
+{{-- Section test khusus iq --}}
+
+<section class="section px-2" style="background: rgb(165,197,226);
+background: linear-gradient(112deg, rgba(165,197,226,1) 0%, rgba(84,150,208,1) 51%, rgba(47,110,166,1) 85%); padding-top:50px;">
+
+  <div class="container">
+    <h2 class="fw-bold text-white">TES KHUSUS</h2>
+  </div>
+
+  <div class="container" data-aos="fade-up">
+    
+    <div class="row rounded p-3">
+
+      <div class="col-md-1">
+        <div class="wrap-icon icon-1 rounded-pill p-3 text-white">
+          <i class="bi bi-clipboard2-check-fill" style="font-size: 40px;"></i>
+          
+        </div>
+      </div>
+
+      <div class="col-md-6 text-white">
+        <h2>INTELECTUAL QUOTIENT (IQ)</h2>
+        <p>Tes yang memberikan gambaran intelegensi atau kemampuan kognitif individu</p>
+
+        <a href="{{ route('register') }}" class="btn btn-warning btn-sm">Tes Sekarang</a>
+      </div>
+
+      <div class="col-md-5 text-center mt-2">  
+
+        <img src="img/brain.png" alt="sample-test-sikap-kerja" class="img img-thumbnail" width="200px">
+
+      </div>
+    </div>
+
+  </div>
+  
+
+</section>
+
+
 
 <section class="section d-none">
 

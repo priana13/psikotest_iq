@@ -10,7 +10,9 @@
         <!-- Basic Card Example -->
         <div class="card shadow mb-4">
             <div class="card-header py-3 d-flex flex-row align-items-center justify-content-center">
-                <h6 class="m-0 font-weight-bold text-primary">Selamat Datang <strong>{{ auth()->user()->name }}</strong></h6>
+                <h6 class="m-0 font-weight-bold text-primary">Selamat Datang <strong>
+                    @auth {{ auth()->user()->name }} @endauth
+                </strong></h6>
                 
             </div>
             <div class="card-body">     
@@ -36,9 +38,18 @@
                     <a href="{{ route('member.soal') }}" class="btn btn-default btn-sm mr-3">
                         Batal
                     </a>
+                    @auth
                     <a href="{{ route('member.buat_event' , $ujian->id) }}" class="btn btn-primary btn-sm" type="submit">
                         Mulai Sekarang
                     </a>
+
+                    @else 
+
+                    <a href="{{ route('coba.buat_event' , $ujian->id) }}" class="btn btn-primary btn-sm" type="submit">
+                        Mulai Sekarang
+                    </a>
+
+                    @endauth
 
                 </div>                
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\Member;
+namespace App\Http\Livewire;
 
 use Carbon\Carbon;
 use App\Models\Exam;
@@ -15,9 +15,9 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Redirect;
 
-class UjianKolom extends Component
+class UjianKolomPercobaan extends Component
 {
-
+  
     public $exam , $examEvent;
     public $waktu;
     public $endtime;
@@ -82,7 +82,7 @@ class UjianKolom extends Component
     }
 
     public function render()
-    {        
+    {               
 
         $this->exam_column = ExamColumn::where('exam_id' , $this->exam->id)->where('kolom' , $this->kolom)->first();
         
@@ -145,9 +145,9 @@ class UjianKolom extends Component
         }else{
             $this->nilai_akhir = 0;
         }
+       
 
-
-        return view('livewire.member.ujian-kolom');
+        return view('livewire.ujian-kolom-percobaan');
     }
 
     public function jawab($jawaban){
@@ -207,32 +207,14 @@ class UjianKolom extends Component
 
                 // clear interval waktu di javascript
                 $this->emit('clearInterval');
-
-                if(Auth::check()){
-
-                    // redirect ke kolom berikutnya
-                    return redirect()->route('member.ujian-kolom',[
-                        'exam' => $this->exam->id,
-                        'examevent' => $this->examEvent->id,
-                        'kolom' => $this->kolom + 1
-                    ]); 
-                    
-                }else{
-
+             
                     // redirect ke kolom berikutnya
                     return redirect()->route('coba.ujian-kolom',[
                         'exam' => $this->exam->id,
                         'examevent' => $this->examEvent->id,
                         'kolom' => $this->kolom + 1
                     ]); 
-
-
-                }
-                
-
-                
-                // reset waktu
-                
+               
                 
 
             // Jika kolom sudah habis / terakhir
@@ -272,8 +254,10 @@ class UjianKolom extends Component
         // clear interval waktu di javascript
         $this->emit('clearInterval');
 
-        //jika kolom masih tersedia
-        if($this->kolom < $this->kolom_terakhir) {
+
+
+        //kolom hanya 2
+        if($this->kolom < 2 ) {
 
             // rest nomor ke 1 lagi jika sudah pindah kolom baru
             $this->nomor = 1;  
@@ -284,41 +268,16 @@ class UjianKolom extends Component
             $this->examEvent->save();
 
             $this->tempexam->kolom_terakhir = $this->kolom;
-            $this->tempexam->save();  
-            
-
-            if(Auth::check()){
+            $this->tempexam->save();
+          
 
             // redirect ke kolom berikutnya
-            return redirect()->route('member.ujian-kolom',[
+            return redirect()->route('coba.ujian-kolom',[
                 'exam' => $this->exam->id,
                 'examevent' => $this->examEvent->id,
                 'kolom' => $this->kolom + 1
-             ]); 
-
-            }else{
-
-                // untuk soal testing
-                if($this->kolom == 2){
-
-                   $this->popup_langganan = true;
-                   $this->emit('popup_langganan');
-
-                }else{
-
-                    // redirect ke kolom berikutnya
-                    return redirect()->route('coba.ujian-kolom',[
-                        'exam' => $this->exam->id,
-                        'examevent' => $this->examEvent->id,
-                        'kolom' => $this->kolom + 1
-                    ]); 
-
-                }
-
-
-
-
-            }
+            ]); 
+            
 
         //jika sedang berada di kolom yang terakhir
         }else{
@@ -333,7 +292,7 @@ class UjianKolom extends Component
 
             $this->is_finish = TRUE;
 
-            $this->emit('ujianSelesai',1);
+            $this->emit('ujianSelesai',1);           
   
         }
 
@@ -393,7 +352,5 @@ class UjianKolom extends Component
     }
 
 
-
-  
 
 }

@@ -19,6 +19,7 @@ use App\Http\Controllers\Member\SoalController;
 use App\Http\Controllers\Member\UjianController;
 use App\Http\Controllers\Member\TypeSoalController;
 use App\Http\Controllers\PackageController;
+use App\Http\Controllers\TrialPsikotestController;
 
 /*
 |--------------------------------------------------------------------------
@@ -47,12 +48,24 @@ Route::get('/blog', [PageController::class, 'index'])->name('blog');
 Route::get('/page/{slug}', [PageController::class, 'show'])->name('front.page');
 Route::get('/category/{slug}', [CategoryController::class, 'show'])->name('category');
 
+Route::prefix('coba')->group(function(){
+
+	// Route::get('ujian/mulai/{exam}', [TrialPsikotestController::class , 'index'])->name('coba.ujian-kecermatan');
+	Route::get('/ujian/{exam}' , [TrialPsikotestController::class , 'buat_event'])->name('coba.buat_event');
+
+	Route::get('/ujian/{exam}/{examevent}/{kolom}' , [TrialPsikotestController::class , 'ujian_kolom'])->name('coba.ujian-kolom');
+	
+	Route::get('/member/ujian/{exam}/{examevent}/{kolom}' , [TrialPsikotestController::class , 'ujian_kolom'])->name('coba.ujian-kolom');
+
+});
 
 Auth::routes();
 
 Route::middleware('auth')->group(function(){
 
 	Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
+	Route::get('/dashboard/subtes', [HomeController::class, 'subtes'])->name('dashboard.subtes');
+
 	Route::get('/myprofile', [ProfileController::class, 'index'])->name('myprofile');
 	Route::put('/myprofile/update/{id}', [ProfileController::class, 'update'])->name('myprofile.update');
 

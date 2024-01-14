@@ -15,11 +15,13 @@
 		<div class="col-md-12">
 			<div class="card position-relative">
 
-                <div class="card-header text-center">                   
-
+                <div class="card-header text-center"> 
+                                      
+                    @if($is_finish == FALSE)
                     <h4 class="text-center">
                         Tes: {{ $exam->nama_tes }}
-                    </h4>              
+                    </h4>       
+                    @endif       
 
                     <h6 class="d-none">
                         Nomor: {{ $nomor }} - Soal terakhir: {{ $soal_terakhir }} - Waktu: {{ $sisa_waktu }}
@@ -33,22 +35,18 @@
 
 
 
-                    <div class="mx-auto">
-                         <h2 class="text-center">Tes Telah Selesai</h2>
-                         <p>Terimakasih Telah Mengikuti Test ini dengan baik</p>
+                    <div class="mx-auto my-5">
+                         <h2 class="text-center">Percobaan Test Sudah Selesai</h2>
+                         <h4>Silahkan daftar dan melakukan pembayaran untuk dapat akses tes secara menyeluruh</h4>
                          {{-- <h1 class="text-center text-primary"> <strong>{{ number_format($nilai_akhir) }}</strong></h1> --}}
 
 
                          <div class="d-flex justify-content-center">
-                            <a href="{{ route('member.history') }}" class="btn btn-secondary btn-sm mr-3">
-                                History
+                          
+                            <a href="{{ route('register') }}" class="btn btn-success btn-sm mr-3"  type="submit">
+                               Daftar Sekarang
                             </a>
-                            <a href="{{ route('member.hasil_ujian', $examEvent) }}" class="btn btn-success btn-sm mr-3"  type="submit">
-                                Lihat Hasil
-                            </a>
-                            <a href="{{ route('member.soal') }}" class="btn btn-primary btn-sm"  type="submit">
-                                Test Lagi
-                            </a>
+                          
         
                         </div>
 
@@ -123,10 +121,54 @@
         </div>
     </div>
 
-    @if($is_finish == FALSE)
 
 
-    @endif
+{{-- <!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalLangganan">
+    Launch demo modal
+  </button> --}}
+  
+  <!-- Modal -->
+  <div class="modal fade" id="modalLangganan" tabindex="-1" aria-labelledby="modalLanggananLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalLanggananLabel">Percobaan Test Sudah Selesai</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>Silahkan daftar dan melakukan pembayaran untuk dapat akses tes secara menyeluruh</p>
+        </div>
+        <div class="modal-footer text-center">
+          {{-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> --}}
+          <button type="button" class="btn btn-warning mx-auto text-dark">Daftar Sekarang</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+    {{-- @if($is_finish == FALSE) --}}
+
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
+
+
+    <script>
+
+        Livewire.on('ujianSelesai', {
+            alert('A post was added with the id of: ');
+        })
+
+
+    </script>
+
+    {{-- @endif --}}
 
 
 </div>
