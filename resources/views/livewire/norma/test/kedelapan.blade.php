@@ -1,0 +1,276 @@
+<div>          
+    @if(($waktu_mulai !==null))
+        
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-xl-8 col-md-6 mb-4">
+                        <div class="card border-left-primary shadow-sm h-100 py-2">
+                            <div class="card-body text-center">
+                                <a class="stretched-link text-primary font-weight-bold text-primary text-uppercase" href="#">PENUJUK WAKTU TEST</a>
+                                <div class="row no-gutters align-items-center">
+                                    <p class="mt-2 text-center">{{$NormaWu['petunjuk_kedua']??''}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="col-xl-4 col-md-6 mb-4">
+                        <!-- <div class="card bg-primary text-white shadow">
+                            <div class="card-body">
+                                <h1 class="timer text-white-100 text-center" data-seconds-left = {{$waktu_test}}></h1>  
+
+                            </div>
+                        </div> -->
+                        <div id="customToastr" class="custom-toastr">
+                            <h1 class="timer text-white-100 text-center" data-seconds-left = {{$waktu_test}}></h1>  
+                        </div>
+                    </div>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-md-12">
+                        @if($QuizWu)
+                        <div class="card">
+                            <div class="card-title px-4 pt-4 text-center">
+                                <h5>{{$nama_test}}</h5>
+                            </div>
+                            
+                               
+                            <div class="card-body">                                    
+                                <div class="card-body align-items-center">   
+                                    <div class="form-group row align-items-center">
+                                        <label class="col-md-3 text-center"></label>
+                                        <div class="col-1 form-group">
+                                            <img src="{{url('storage/photos/'.$QuizWu['a'])}}" alt="no image" style="width: 70px;height: 70px;">
+                                            <label class="text-center"><span></span></label>
+                                            <div class="icheck-primary icheck-inline text-center">
+                                                <label class="form-control text-center">A</label>                              
+                                            </div>
+                                        </div>
+                                        <div class="col-1 form-group">
+                                            <img src="{{url('storage/photos/'.$QuizWu['b'])}}" alt="no image" style="width: 70px;height: 70px;">
+                                            <label class="text-center"><span></span></label>
+                                            <div class="icheck-primary icheck-inline text-center">
+                                                <label class="form-control text-center">B</label>                              
+                                            </div>
+                                        </div>    
+                                        <div class="col-1 form-group">
+                                            <img src="{{url('storage/photos/'.$QuizWu['c'])}}" alt="no image" style="width: 70px;height: 70px;">
+                                            <label class="text-center"><span></span></label>
+                                            <div class="icheck-primary icheck-inline text-center">
+                                                <label class="form-control text-center">C</label>                              
+                                            </div>
+                                        </div>
+                                        <div class="col-1 form-group">
+                                            <img src="{{url('storage/photos/'.$QuizWu['d'])}}" alt="no image" style="width: 70px;height: 70px;">
+                                            <label class="text-center"><span></span></label>
+                                            <div class="icheck-primary icheck-inline text-center">
+                                                <label class="form-control text-center">D</label>                              
+                                            </div>
+                                        </div>
+                                        <div class="col-1 form-group">
+                                            <img src="{{url('storage/photos/'.$QuizWu['e'])}}" alt="no image" style="width: 70px;height: 70px;">
+                                            <label class="text-center"><span></span></label>
+                                            <div class="icheck-primary icheck-inline text-center">
+                                                <label class="form-control text-center">E</label>                              
+                                            </div>
+                                        </div>
+                                                         
+                                    </div>                    
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="card-title px-4 pt-4 text-center">
+                                    <h5>SOAL {{$QuizWu['no']}}</h5>
+                                    <img src="{{url('storage/photos/'.$QuizWu['quiz'])}}" alt="no image" style="width: 250px;height: 250px;">
+                                </div>
+                                <div class="card-body align-items-center">   
+                                    <div class="form-group row align-items-center">
+                                        <label class="col-md-3 text-center"></label>
+                                        <div class="col-1 form-group">
+                                            <label class="form-control text-center">A</label>
+                                            <div class="icheck-primary icheck-inline text-center">
+                                                <input type="radio" wire:model="answer" value="a" 
+                                                wire:change="updateDatabase({{$QuizWu['id']}},{{$QuizWu['no']}})"/>
+                                            </div>
+                                        </div>
+                                        <div class="col-1 form-group">
+                                            <label class="form-control text-center">B</label>
+                                            <div class="icheck-primary icheck-inline text-center">
+                                                <input type="radio"  wire:model="answer" value="b" 
+                                                wire:change="updateDatabase({{$QuizWu['id']}},{{$QuizWu['no']}})"/>                         
+                                            </div>
+                                        </div>     
+                                        <div class="col-1 form-group">
+                                            <label class="form-control text-center">C</label>
+                                            <div class="icheck-primary icheck-inline text-center">
+                                                <input type="radio" wire:model="answer" value="c" 
+                                                wire:change="updateDatabase({{$QuizWu['id']}},{{$QuizWu['no']}})"/>                             
+                                            </div>
+                                        </div>
+                                        <div class="col-1 form-group">
+                                            <label class="form-control text-center">D</label>
+                                            <div class="icheck-primary icheck-inline text-center">
+                                                <input type="radio" wire:model="answer" value="d" 
+                                                wire:change="updateDatabase({{$QuizWu['id']}},{{$QuizWu['no']}})"/>                         
+                                            </div>
+                                        </div>
+                                        <div class="col-1 form-group">
+                                            <label class="form-control text-center">E</label>
+                                            <div class="icheck-primary icheck-inline text-center">
+                                                <input type="radio" wire:model="answer" value="e" 
+                                                wire:change="updateDatabase({{$QuizWu['id']}},{{$QuizWu['no']}})"/>                            
+                                            </div>
+                                        </div>
+                                                         
+                                    </div>                    
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <button type="button" class="btn btn-primary pull-right" wire:click="wuSebelumnya({{$test_id}},{{$QuizWu['no']}})">
+                                    Soal Sebelumnya
+                                </button>
+                                <button type="button" class="btn btn-primary pull-right" wire:click="wuSelanjutnya({{$test_id}},{{$QuizWu['no']}})">
+                                    Soal Selanjutnya
+                                </button>       
+                            </div>
+                                                                    
+                           
+                            <button id="finish"  type="button" class="btn btn-primary pull-right" wire:click="wuSelesai({{$test_id}})" style="display: none;">FINISH</button>
+                            
+                        </div>
+                        @endif  
+                    </div>
+                </div>
+            </div>
+        
+    @else
+            <div>
+                <div class="container-fluid"> 
+                    <div class="row ">
+                        <div class="col-md-12">
+                            <!-- <div class="card">
+                                <div class="card-title px-4 pt-4 text-center">
+                                    <h5>PETUNJUK DAN CONTOH SOAL 08</h5>
+                                </div>
+                                <div class="card-body">
+                                    <p>Soal 08 terdiri dari 20 pertanyaan .............................</p>
+                                    <p>Perhatikan soal berikut</p>
+                                    <p>Contoh Soal</p>
+                                </div>
+                                <div class="card-body">                                    
+                                    <div class="card-body align-items-center">   
+                                        <div class="form-group row align-items-center">
+                                            <label class="col-md-3 text-center"></label>
+                                            <div class="col-1 form-group">
+                                                <img src="{{url('/img/117_A.png')}}" alt="no image" style="width: 60px;height: 60px;">
+                                                <label class="text-center"><span></span></label>
+                                                <div class="icheck-primary icheck-inline text-center">
+                                                    <label class="form-control text-center">A</label>                              
+                                                </div>
+                                            </div>
+                                            <div class="col-1 form-group">
+                                                <img src="{{url('/img/117_B.png')}}" alt="no image" style="width: 60px;height: 60px;">
+                                                <label class="text-center"><span></span></label>
+                                                <div class="icheck-primary icheck-inline text-center">
+                                                    <label class="form-control text-center">B</label>                              
+                                                </div>
+                                            </div>    
+                                            <div class="col-1 form-group">
+                                                <img src="{{url('/img/117_C.png')}}" alt="no image" style="width: 60px;height: 60px;">
+                                                <label class="text-center"><span></span></label>
+                                                <div class="icheck-primary icheck-inline text-center">
+                                                    <label class="form-control text-center">C</label>                              
+                                                </div>
+                                            </div>
+                                            <div class="col-1 form-group">
+                                                <img src="{{url('/img/117_D.png')}}" alt="no image" style="width: 60px;height: 60px;">
+                                                <label class="text-center"><span></span></label>
+                                                <div class="icheck-primary icheck-inline text-center">
+                                                    <label class="form-control text-center">D</label>                              
+                                                </div>
+                                            </div>
+                                            <div class="col-1 form-group">
+                                                <img src="{{url('/img/117_E.png')}}" alt="no image" style="width: 60px;height: 60px;">
+                                                <label class="text-center"><span></span></label>
+                                                <div class="icheck-primary icheck-inline text-center">
+                                                    <label class="form-control text-center">E</label>                              
+                                                </div>
+                                            </div>
+                                                             
+                                        </div>                    
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <div class="card-title px-4 pt-4 text-center">
+                                        <h5>SOAL {{$QuizWu['no']}}</h5>
+                                        <img src="{{url('/img/117_A.png')}}" alt="no image" style="width: 150px;height: 150px;">
+                                    </div>
+                                    <div class="card-body align-items-center">   
+                                        <div class="form-group row align-items-center">
+                                            <label class="col-md-3 text-center"></label>
+                                            <div class="col-1 form-group">
+                                                <label class="form-control text-center">A</label>
+                                                <div class="icheck-primary icheck-inline text-center">
+                                                    <input type="checkbox" id="angka1" name="answer1" checked disabled />                                
+                                                </div>
+                                            </div>
+                                            <div class="col-1 form-group">
+                                                <label class="form-control text-center">B</label>
+                                                <div class="icheck-primary icheck-inline text-center">
+                                                    <input type="checkbox" id="angka2" name="answer2" disabled />                                
+                                                </div>
+                                            </div>     
+                                            <div class="col-1 form-group">
+                                                <label class="form-control text-center">C</label>
+                                                <div class="icheck-primary icheck-inline text-center">
+                                                    <input type="checkbox" id="angka3" name="answer3" disabled />                                
+                                                </div>
+                                            </div>
+                                            <div class="col-1 form-group">
+                                                <label class="form-control text-center">D</label>
+                                                <div class="icheck-primary icheck-inline text-center">
+                                                    <input type="checkbox" id="angka4" name="answer4" disabled />                                
+                                                </div>
+                                            </div>
+                                            <div class="col-1 form-group">
+                                                <label class="form-control text-center">E</label>
+                                                <div class="icheck-primary icheck-inline text-center">
+                                                    <input type="checkbox" id="angka5" name="answer5" disabled />                                
+                                                </div>
+                                            </div>                                                             
+                                        </div>                    
+                                    </div>                                    
+                                </div>
+                                <div class="card-body">                                   
+                                    <p>JIKA ANDA SUDAH SIAP SILAHKAN KLIK TOMBOL</p>
+                                    <button type="button" class="btn btn-primary text-right" wire:click="wuMulai({{$test_id}})">
+                                        NEXT
+                                    </button>
+                                </div>
+                            </div> -->
+                            <div class="card">
+                                <div class="card-title px-4 pt-4 text-center">
+                                    <h5>PETUNJUK DAN CONTOH SOAL {{$NormaWu['nama']??'INTELLIGENCE STRUCTURE TEST WU - 08'}}</h5>
+                                </div>
+                                <div class="card-body">
+                                    <p>{{$NormaWu['petunjuk_kesatu']??''}}</p>                                    
+                                </div>
+                                <div class="card-body text-center">                                    
+                                    <img src="{{ url('storage/photos/'.$NormaWu['file_petunjuk'])}}" alt="no image" style="width: 250px; height: 250px;">
+                                </div>
+                                <div class="card-body">   
+                                    <p>JIKA ANDA SUDAH SIAP SILAHKAN KLIK TOMBOL</p>                                    
+                                </div>
+                                <div class="card-body text-right">                                    
+                                    <button type="button" class="btn btn-primary text-right" wire:click="wuMulai({{$test_id}})">
+                                        NEXT
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    @endif
+</div>
+

@@ -71,7 +71,38 @@
         </a>
     </li>
         
-    @endforeach   
+    @endforeach  
+    
+    <!-- Heading -->
+    <div class="sidebar-heading">
+        {{ __('intelligence structure test') }}
+    </div>
+
+    <!-- Nav Item - List Norma Test -->
+    
+    <li class="nav-item {{ Nav::isRoute('norma.test') }}">
+        <a class="nav-link py-2" href="{{ route('norma.test') }}">
+            {{-- <i class="fas fa-fw fa-user"></i> --}}
+            <i class="fas fa-list"></i>
+            <span>{{ __('Test IQ') }}</span>
+        </a>
+    </li>
+    @can('admin')
+    <li class="nav-item {{ Nav::isRoute('norma.quiz.dashboard') }}">
+        <a class="nav-link py-2" href="{{ route('norma.quiz.dashboard') }}">
+            {{-- <i class="fas fa-fw fa-user"></i> --}}
+            <i class="fas fa-list"></i>
+            <span>{{ __('Bank Soal ') }}</span>
+        </a>
+    </li>
+    <li class="nav-item {{ Nav::isRoute('norma.report.rekap') }}">
+        <a class="nav-link py-2" href="{{ route('norma.report.rekap') }}"> 
+            {{-- <i class="fas fa-fw fa-user"></i> --}}
+            <i class="fas fa-list"></i>
+            <span>{{ __('Hasil') }}</span>
+        </a>
+    </li>
+    @endcan
 
     <!-- Divider -->
     <hr class="sidebar-divider">
