@@ -39,7 +39,6 @@
             <div class="row">
 
                 @foreach( $categori as $row )
-
                
                     <!--Col-->
                     <div class="col-md-4 mb-4">
@@ -49,7 +48,7 @@
                                     <i class="bi bi-calculator-fill"></i>                                    
                                 </div>
                                 <div>
-                                    <a class="stretched-link text-primary font-weight-bold text-primary text-uppercase text-decoration-none" href="{{ route('member.soal') }}?type=psikotes">TES {{ $row->name }}</a>
+                                    <a class="stretched-link text-primary font-weight-bold text-primary text-uppercase text-decoration-none" href="{{ route('member.soal.type' , $row->id) }}">TES {{ $row->name }}</a>
                                 </div>  
                                
                             </div>

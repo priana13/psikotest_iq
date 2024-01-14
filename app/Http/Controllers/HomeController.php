@@ -62,6 +62,7 @@ class HomeController extends Controller
                             ->where('user_id', auth()->user()->id)
                             ->where('packages.type', 'full')
                             ->count(); 
+                            
         if($is_full_access > 0){
 
             $categori = Examcategory::where('exam_type', \request()->type)->orderBy('id', 'desc')->get();
