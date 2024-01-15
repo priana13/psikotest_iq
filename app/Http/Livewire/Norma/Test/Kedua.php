@@ -57,7 +57,8 @@ class Kedua extends Component
         $this->test_id = $testId;     
 
         $userNorma = DataUserNorma::where('user_id','=',$this->user_id)->first();
-        $norma = Norma::where('id','=',$this->test_id)->first();
+        $norma = Norma::where('id','=',$this->test_id)->first();     
+
         if($norma){
             NormaTestLog::updateOrCreate(
                 ['user_id' => $this->user_id,'test_id'=>$this->test_id],
@@ -161,7 +162,12 @@ class Kedua extends Component
             }
         }  
         $NormaWa  = Norma::where('tipe','=',2)->first();
+
+       
+
         $this->NormaWa = json_decode(json_encode($NormaWa), true); 
+
+       
     }    
     
     public function render()

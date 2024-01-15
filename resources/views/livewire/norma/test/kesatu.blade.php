@@ -97,8 +97,10 @@
                                 <div class="card-body">
                                     <p>{{$NormaSe['petunjuk_kesatu']??''}}</p>                                    
                                 </div>
+
+                                {{-- {{ dd($NormaSe ) }} --}}
                                 <div class="card-body text-center">                                    
-                                    <img src="{{ url('storage/photos/'.$NormaSe['file_petunjuk'])}}" alt="no image" style="width: 250px; height: 250px;">
+                                    {{-- <img src="{{ url('storage/photos/'.$NormaSe['file_petunjuk'])}}" alt="no image" style="width: 250px; height: 250px;"> --}}
                                 </div>
                                 <div class="card-body">   
                                     <p>JIKA ANDA SUDAH SIAP SILAHKAN KLIK TOMBOL</p>                                    

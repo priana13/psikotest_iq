@@ -97,7 +97,7 @@
                                     <p>{{$NormaWa['petunjuk_kesatu']??''}}</p>                                    
                                 </div>
                                 <div class="card-body text-center">                                    
-                                    <img src="{{ url('storage/photos/'.$NormaWa['file_petunjuk'])}}" alt="no image" style="width: 250px; height: 250px;">
+                                    <img src="{{ url('storage/photos/'.$NormaWa['file_petunjuk']??'')}}" alt="no image" style="width: 250px; height: 250px;">
                                 </div>
                                 <div class="card-body">   
                                     <p>JIKA ANDA SUDAH SIAP SILAHKAN KLIK TOMBOL</p>                                    
