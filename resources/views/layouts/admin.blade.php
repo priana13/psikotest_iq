@@ -38,7 +38,38 @@
     <!-- Favicon -->
     <link href=" {{ asset('assets/img/favicon.png') }}" rel="icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/trix/1.3.1/trix.min.css" />
-    
+
+
+
+   
+    <style type="text/css">
+            .jst-hours {
+              float: left;
+            }
+            .jst-minutes {
+              float: left;
+            }
+            .jst-seconds {
+              float: left;
+            }
+            .jst-clearDiv {
+              clear: both;
+            }
+            .jst-timeout {
+              color: red;
+            }
+            .custom-toastr {
+                position: fixed;
+                top: 100px;
+                right: 120px;
+                background-color: #007bff;
+                color: #fff;
+                padding: 15px;
+                border-radius: 5px;
+                display: none;
+                z-index: 9999;
+            }
+        </style>
 
 
     @livewireStyles
@@ -47,7 +78,7 @@
 
 <!-- Page Wrapper -->
 <div id="wrapper">
-  
+
     <x-side-bar-admin />
 
     <!-- Content Wrapper -->
@@ -241,13 +272,16 @@
 
 <!-- Scripts -->
 <script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
+<script src="{{asset('js/jquery.simple.timer.js')}}" type="text/javascript"></script>
 <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 <script src="{{ asset('vendor/jquery-easing/jquery.easing.min.js') }}"></script>
+<script src="{{asset('vendor/bootstrap-toastr/toastr.min.js')}}" type="text/javascript"></script>
 <script src="{{ asset('js/sb-admin-2.min.js') }}"></script>
 
 <script src="{{ asset('vendor/ckeditor/ckeditor.js') }}"></script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/trix/1.3.1/trix.min.js"></script>   
+
 
 
 
