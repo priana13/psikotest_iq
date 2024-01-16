@@ -33,6 +33,8 @@
 								<th>Name</th>
 								<th>Email</th>
 								<th>HP</th>
+								<th>Kota</th>
+								<th>Alamat</th>								
 								<th>Level</th>
 								<td>ACTIONS</td>
 							</tr>
@@ -44,6 +46,8 @@
 								<td>{{ $row->name }}</td>
 								<td>{{ $row->email }}</td>
 								<td>{{ $row->hp }}</td>
+								<td>{{ $row->kota }}</td>
+								<td>{{ $row->alamat }}</td>
 								<td>{{ $row->level }}</td>
 								<td width="90">
 								<div class="btn-group">

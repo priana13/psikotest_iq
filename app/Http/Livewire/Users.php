@@ -5,13 +5,14 @@ namespace App\Http\Livewire;
 use Livewire\Component;
 use Livewire\WithPagination;
 use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 
 class Users extends Component
 {
     use WithPagination;
 
 	protected $paginationTheme = 'bootstrap';
-    public $selected_id, $keyWord, $name, $email, $level;
+    public $selected_id, $keyWord, $name, $email, $level, $hp, $kota;
     public $updateMode = false;
     public $total;
 
@@ -56,7 +57,10 @@ class Users extends Component
         User::create([ 
 			'name' => $this-> name,
 			'email' => $this-> email,
-			'level' => $this-> level
+			'level' => $this-> level,
+            'hp' => $this->hp,
+            'kota' => $this->kota,
+            'password' => Hash::make('123456')
         ]);
         
         $this->resetInput();
@@ -71,6 +75,8 @@ class Users extends Component
         $this->selected_id = $id; 
 		$this->name = $record-> name;
 		$this->email = $record-> email;
+        $this->hp = $record->hp;
+        $this->kota = $record->kota;
 		$this->level = $record-> level;
 		
         $this->updateMode = true;
@@ -89,6 +95,8 @@ class Users extends Component
             $record->update([ 
 			'name' => $this-> name,
 			'email' => $this-> email,
+            'hp' => $this->hp,
+            'kota' => $this->kota,
 			'level' => $this-> level
             ]);
 
