@@ -14,7 +14,7 @@
 						<div wire:poll.4s class="btn btn-sm btn-success" style="margin-top:0px; margin-bottom:0px;"> {{ session('message') }} </div>
 						@endif
 						<div>
-							<input wire:model='keyWord' type="text" class="form-control" name="search" id="search" placeholder="Search Transactions">
+							<input wire:model='keyWord' type="text" class="form-control" name="search" id="search" placeholder="Cari Transaksi">
 						</div>
 						<div class="btn btn-sm btn-success" data-toggle="modal" data-target="#createDataModal">
 						<i class="fa fa-plus"></i>  Tambah Transaksi
@@ -31,10 +31,10 @@
 							<tr> 
 								<td>#</td> 
 								<th>Paket Harga</th>
-								<th>Date</th>
+								<th>Tanggal</th>
 								<th>User</th>								
-								<th>Payment Type</th>
-								<th>Qty Bulan</th>
+								<th>Payment</th>
+								<th>Bulan/Qty</th>
 								<th>Nominal</th>
 								<th>Status</th>
 								<td>ACTIONS</td>
@@ -45,7 +45,7 @@
 							<tr>
 								<td>{{ $loop->iteration }}</td> 
 								<td>{{ $row->package->name }}</td>
-								<td>{{ $row->created_at->diffForHumans() }}</td>
+								<td>{{ $row->created_at->format('d M Y') }}</td>
 								<td>{{ $row->user->name }}</td>								
 								<td>{{ $row->payment_type }}</td>
 								<td>{{ $row->qty }}</td>

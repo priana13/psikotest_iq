@@ -22,11 +22,20 @@
                         @error('product') <span class="error">tes</span> @enderror
                     </div>
 
-                    {{-- <div class="form-group col-md-2">
+                    
+                    @if( $productSelected->type == 'iq' )
 
-                        <input wire:model="qty" type="number" class="form-control">
+                    <div class="form-group col-md-12">
+                        <label for="">Jumlah Peserta:</label>
+                        <div class="col-md-3">
 
-                    </div> --}}
+                            <input wire:model="qty" type="number" min="1" class="form-control ms-0">
+
+                        </div>
+
+                    </div>
+
+                    @endif
 
                 </div>
 {{-- 
@@ -113,7 +122,7 @@
 
                     <li>Dapat Melihat Riwayat Try Out</li>
                     <li>Dan Banyak Fitur Lainnya</li>
-                </ul> --}}
+                </ul> --}}              
 
 
                 <div class="card">
@@ -124,8 +133,8 @@
 
 
                         <ul class="list-group">
-                            <li class="list-group-item">Voucher Psikotes Bulanan</li>
-                            <li class="list-group-item">Harga: <strong>{{ number_format($harga) }}</strong>  x <strong>{{ $jumlah_bulan }}</strong>  Bulan</li>
+                            <li class="list-group-item">Voucher Tes {{ $productSelected->name }}</li>
+                            <li class="list-group-item">Harga: <strong>{{ number_format($harga) }}</strong> u/ <strong>{{ $jumlah_bulan }}</strong>  {{ ($productSelected->type == 'iq')?'Peserta': 'Bulan' }} </li>
                             <li class="list-group-item">Disc : 0%</li>
                             <li class="list-group-item">PPN : 0%</li>  
                             <li class="list-group-item">Total: <strong>Rp. {{ number_format($total) }}</strong></li>                                  

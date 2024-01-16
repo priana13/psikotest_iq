@@ -15,7 +15,7 @@ class CreateTransactionMidtransTable extends Migration
     {
         Schema::create('transaction_midtrans', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('transaction_id')->constrained('transactions'); 
+            $table->foreignId('transaction_id')->constrained('transactions')->cascadeOnDelete(); 
             $table->string('payment_channel')->nullable();
             $table->string('snap_token')->nullable();
             $table->string('signiture')->nullable();
