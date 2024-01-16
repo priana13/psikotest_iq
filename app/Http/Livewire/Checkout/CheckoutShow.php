@@ -35,7 +35,7 @@ class CheckoutShow extends Component
     public function mount(){
 
         $this->list_payment_methods = PaymentMethod::all();
-        $this->package = Package::get(); 
+        $this->package = Package::where('is_show', true)->get(); 
 
         $this->productSelected = Package::first(); 
 
