@@ -2,7 +2,7 @@
 <div >
             <div class="card p-3">
                 <div class="">
-                    <h5 class="modal-title" id="createDataModalLabel">Buat Package Baru</h5>
+                    <h5 class="modal-title" id="createDataModalLabel">Buat Paket Harga Baru</h5>
                    
                 </div>
 
@@ -18,7 +18,7 @@
                 <div class="row mt-3">
                     <div class="form-group col-sm-8">
                         <label for="name">Nama</label>
-                        <input wire:model="name" type="text" class="form-control" id="name" placeholder="Name">@error('name') <span class="text-danger">{{ $message }}</span> @enderror
+                        <input wire:model="name" type="text" class="form-control" id="name" placeholder="Nama Paket">@error('name') <span class="text-danger">{{ $message }}</span> @enderror
                     </div>
                 </div>    
              
@@ -26,7 +26,7 @@
                 <div class="row">
 
                     <div class="form-group col-sm-4">
-                        <label for="qty">Qty Bulan</label>
+                        <label for="qty">Bulan/Qty</label>
                         <input wire:model="qty" type="number" class="form-control" id="qty" placeholder="Qty">@error('qty') <span class="text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group col-sm-4">
@@ -52,6 +52,8 @@
                             <option value="full">Full Akses</option>
                             <option value="kategori">Per Kategori</option>
                             <option value="satuan">Satuan</option>
+                            <option value="iq">Test IQ</option>
+
                         </select>
                         
                         @error('type') <span class="text-danger">{{ $message }}</span> @enderror

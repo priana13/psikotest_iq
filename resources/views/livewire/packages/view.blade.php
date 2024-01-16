@@ -32,7 +32,7 @@
 								<td>#</td> 
 								<th>Name</th>	
 								<th>Type</th>	
-								<th>Qty Bulan</th>						
+								<th>Bulan/Qty</th>						
 								<th>Harga</th>
 								<th>Detail</th>
 								<td>Aksi</td>
@@ -46,7 +46,7 @@
 								<td>{{ $row->type }}</td>
 								<td>{{ $row->qty }}</td>								
 								<td>{{ number_format($row->price) }}</td>
-								<td>{{ $row->detail }}</td>
+								<td>{!! $row->detail !!}</td>
 								<td width="90">
 								<div class="btn-group">
 									<button type="button" class="btn btn-info btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
