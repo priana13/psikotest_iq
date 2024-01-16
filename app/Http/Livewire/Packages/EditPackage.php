@@ -22,6 +22,8 @@ class EditPackage extends Component
     
     public $kategori;  
 
+    public $is_show;
+
     public function mount($package){
 
         // $this->package = Package::find($id);
@@ -32,6 +34,8 @@ class EditPackage extends Component
         $this->detail = $package->detail;
         $this->package_id = $package->id;
         $this->kategori = $package->examcategory_id;
+
+        $this->is_show = $package->is_show;
 
         $this->package = $package;
 
@@ -71,6 +75,7 @@ class EditPackage extends Component
 
     public function update(){
 
+
         $package = Package::find($this->package_id);     
 
         $package->type = $this->type;
@@ -79,6 +84,7 @@ class EditPackage extends Component
         $package->price = $this-> price;
         $package->detail = $this->detail;
         $package->examcategory_id = $this->kategori;
+        $package->is_show = $this->is_show;
 
         $package->save();
 

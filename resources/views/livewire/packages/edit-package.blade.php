@@ -81,6 +81,14 @@
 
         </div>  
 
+
+        <div class="form-check mb-3">
+            <input class="form-check-input" type="checkbox" wire:model="is_show" value="1" id="is_show">
+            <label class="form-check-label" for="is_show">
+              Tampilkan di halaman Harga Paket
+            </label>
+        </div>
+
         @if($type == 'satuan' || $type == 'kategori')      
     
 
@@ -153,8 +161,8 @@
             </form>
         </div>
         <div class="text-center mt-3">
-            <button type="button" class="btn btn-secondary close-btn" data-dismiss="modal">Close</button>
-            <button type="button" wire:click.prevent="update()" class="btn btn-primary close-modal">Update</button>
+            <a href="{{ route('admin.packages') }}" class="btn btn-secondary close-btn" data-dismiss="modal">Tutup</a>
+            <button type="button" wire:click.prevent="update()" class="btn btn-primary close-modal">Simpan</button>
         </div>
     </div>
 </div>

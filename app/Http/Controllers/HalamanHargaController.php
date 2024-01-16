@@ -9,7 +9,7 @@ class HalamanHargaController extends Controller
 {
     public function index(){
 
-        $list_paket = Package::all();
+        $list_paket = Package::where('is_show', true)->get();
 
         return view('pages.harga' , compact('list_paket'));
     }

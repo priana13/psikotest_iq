@@ -86,7 +86,7 @@
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary close-btn" data-dismiss="modal">Close</button>
+                    <a href="{{ route('admin.packages') }}" class="btn btn-secondary close-btn" data-dismiss="modal">Tutup</a>
                     <button type="button" wire:click.prevent="store()" class="btn btn-primary close-modal">Buat</button>
                 </div>
             </div>

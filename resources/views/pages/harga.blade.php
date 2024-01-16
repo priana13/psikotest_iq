@@ -65,14 +65,14 @@ background: linear-gradient(112deg, rgba(165,197,226,1) 0%, rgba(84,150,208,1) 5
     </div>
     <div class="row align-items-stretch" data-aos="fade-up">
 
-      @foreach($list_paket as $paket)
+      @foreach($list_paket as $paket)     
 
       <div class="col-lg-3 mb-4 mb-lg-0 my-2">
         <div class="h-100 text-center shadow bg-white rounded harga">
           <span>&nbsp;</span>
           <h4 class="">{{ $paket->name }}</h4>
 
-          <h4> <span class="fs-6">Rp.</span> <span class="fw-bold">{{ number_format($paket->price,0,',','.') }}</span> / <span class="fs-6">Bulan</span></h4>
+          <h4> <span class="fs-6">Rp.</span> <span class="fw-bold">{{ number_format($paket->price,0,',','.') }}</span> / <span class="fs-6">{{ ($paket->type == 'iq')? 'Tes' : 'Bulan' }}</span></h4>
           <ul class="list-unstyled mt-3">
             {{-- <li>Akses {{ $paket->qty }} Bulan</li> --}}
 
