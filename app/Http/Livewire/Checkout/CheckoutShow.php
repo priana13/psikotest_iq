@@ -85,6 +85,7 @@ class CheckoutShow extends Component
             'product' => 'required'            
         ]);
 
+        
         $rekening = PaymentMethod::first();
 
         $transaksi = Transaction::create([

@@ -15,6 +15,7 @@ use App\Http\Controllers\CkEditorController;
 use App\Http\Controllers\MidtransController;
 use App\Http\Controllers\PsikotesController;
 use App\Http\Controllers\QuestionController;
+use App\Http\Livewire\Transactions\AksesUser;
 use App\Http\Controllers\Norma\QuizController;
 use App\Http\Controllers\Norma\TestController;
 use App\Http\Controllers\Member\SoalController;
@@ -130,6 +131,9 @@ Route::middleware('auth')->group(function(){
 		Route::view('examevents', 'livewire.examevents.index')->name('examevents');
 		Route::view('exam_events', 'livewire.exam-events.index');
 		Route::view('transactions', 'livewire.transactions.index')->name('admin.transactions');
+		Route::get('transaction/akses-user/{transaction}', AksesUser::class)->name('admin.transactions.akses_user');
+		
+		
 		Route::view('payment_methods', 'livewire.payment-methods.index')->name('admin.payment_methods');
 		Route::view('users', 'livewire.users.index')->name('admin.users');
 		Route::view('settings', 'livewire.settings.index')->name('admin.settings');
