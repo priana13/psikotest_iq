@@ -2,12 +2,30 @@
 
 namespace App\Http\Controllers\Norma;
 
-use App\Http\Controllers\Controller;
+use App\Models\PackageExam;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use PhpOffice\PhpSpreadsheet\Calculation\Logical\Boolean;
 
 class TestController extends Controller
 {
+
+    public function __construct(){
+
+     
+
+    //    $this->cekAksesTestIQ();
+    }
+
+
     public function index(){
+
+
+        if( !$this->cekAksesTestIQ() ){
+
+           return redirect( route('checkout') . '/?paket=' . '4' );
+        }
+
         return view ('livewire.norma.test.index');
     }
     public function petunjuk(){
@@ -45,5 +63,35 @@ class TestController extends Controller
     }
     public function kesembilan(){
         return view ('livewire.norma.test.kesembilan');
+    }
+
+    public function cekAksesTestIQ()
+    {        
+
+        $langganan = auth()->user()->memberships()->where('status' , 'active')->pluck('package_id');     
+        
+        
+
+        $akses_packages = PackageExam::whereIn('package_id', $langganan)->get(); 
+
+        $akses = false;
+    
+        $exam_categori_user = [];
+
+        if(count($akses_packages) > 0){
+
+            foreach ($akses_packages as $row) { 
+
+                $exam_categori_user[] = $row->exam->examcategory_id;
+
+                if($row->package->type == 'iq') {
+
+                    $akses = true;
+                }
+
+            }
+        } 
+     
+        return $akses;
     }
 }
