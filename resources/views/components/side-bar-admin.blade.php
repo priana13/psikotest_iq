@@ -72,6 +72,8 @@
     </li>
         
     @endforeach  
+
+    @if( $test_iq_access )
     
     <!-- Heading -->
     <div class="sidebar-heading">
@@ -87,6 +89,9 @@
             <span>{{ __('Test IQ') }}</span>
         </a>
     </li>
+
+    @endif
+
     @can('admin')
     <li class="nav-item {{ Nav::isRoute('norma.quiz.dashboard') }}">
         <a class="nav-link py-2" href="{{ route('norma.quiz.dashboard') }}">

@@ -13,7 +13,9 @@ class SideBarAdmin extends Component
 {
     public $akademik; 
     public $psikotes;
-    public $tips_and_trick, $tips_link;    
+    public $tips_and_trick, $tips_link;  
+    
+    public $test_iq_access = false;
 
     /**
      * Create a new component instance.
@@ -33,18 +35,23 @@ class SideBarAdmin extends Component
     public function render()
     {
 
-        $langganan = auth()->user()->memberships()->where('status' , 'active')->pluck('package_id');
-      
+        $langganan = auth()->user()->memberships()->where('status' , 'active')->pluck('package_id');        
 
-        $akses_packages = PackageExam::whereIn('package_id', $langganan)->get();     
+        $akses_packages = PackageExam::whereIn('package_id', $langganan)->get();   
         
+    
         $exam_categori_user = [];
 
         if(count($akses_packages) > 0){
 
-            foreach ($akses_packages as $row) {              
+            foreach ($akses_packages as $row) { 
 
                 $exam_categori_user[] = $row->exam->examcategory_id;
+
+                if($row->package->type == 'iq') {
+
+                    $this->test_iq_access = true;
+                }
 
             }
         } 
