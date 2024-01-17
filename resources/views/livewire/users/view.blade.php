@@ -30,13 +30,14 @@
 						<thead class="thead">
 							<tr> 
 								<td>#</td> 
-								<th>Name</th>
+								<th>Nama</th>
 								<th>Email</th>
 								<th>HP</th>
 								<th>Kota</th>
 								<th>Alamat</th>								
 								<th>Level</th>
-								<td>ACTIONS</td>
+								<th>Mendaftar</th>
+								<td>Aksi</td>
 							</tr>
 						</thead>
 						<tbody>
@@ -49,6 +50,7 @@
 								<td>{{ $row->kota }}</td>
 								<td>{{ $row->alamat }}</td>
 								<td>{{ $row->level }}</td>
+								<td>{{ $row->created_at->diffForHumans() }}</td>
 								<td width="90">
 								<div class="btn-group">
 									<button type="button" class="btn btn-info btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
