@@ -5,6 +5,7 @@ namespace App\View\Components;
 use App\Models\Setting;
 use App\Models\Category;
 use App\Models\PackageExam;
+use App\Models\Package;
 use App\Models\Examcategory;
 use Illuminate\View\Component;
 use Illuminate\Support\Facades\DB;
@@ -35,9 +36,10 @@ class SideBarAdmin extends Component
     public function render()
     {
 
-        $langganan = auth()->user()->memberships()->where('status' , 'active')->pluck('package_id');        
+        $langganan = auth()->user()->memberships()->where('status' , 'active')->pluck('package_id');  
+     
 
-        $akses_packages = PackageExam::whereIn('package_id', $langganan)->get();   
+        $akses_packages = PackageExam::whereIn('package_id', $langganan)->get();        
         
     
         $exam_categori_user = [];
@@ -48,14 +50,15 @@ class SideBarAdmin extends Component
 
                 $exam_categori_user[] = $row->exam->examcategory_id;
 
-                if($row->package->type == 'iq') {
-
-                    $this->test_iq_access = true;
-                }
-
             }
         } 
+        
+        
+        $packages = Package::whereIn('id', $langganan)->pluck('type')->toArray();
 
+        ( in_array('iq', $packages) ) ? $this->test_iq_access = true : $this->test_iq_access = false;
+             
+        
         $is_full_access = DB::table('memberships')->join('packages', 'package_id', 'packages.id')
                             ->where('memberships.status', 'active')
                             ->where('user_id', auth()->user()->id)

@@ -10,11 +10,10 @@ use PhpOffice\PhpSpreadsheet\Calculation\Logical\Boolean;
 class TestController extends Controller
 {
 
-    public function __construct(){
+    public function __construct(){     
 
-     
+   
 
-    //    $this->cekAksesTestIQ();
     }
 
 
@@ -70,27 +69,9 @@ class TestController extends Controller
 
         $langganan = auth()->user()->memberships()->where('status' , 'active')->pluck('package_id');     
         
-        
+        $packages = Package::whereIn('id', $langganan)->pluck('type');
 
-        $akses_packages = PackageExam::whereIn('package_id', $langganan)->get(); 
-
-        $akses = false;
-    
-        $exam_categori_user = [];
-
-        if(count($akses_packages) > 0){
-
-            foreach ($akses_packages as $row) { 
-
-                $exam_categori_user[] = $row->exam->examcategory_id;
-
-                if($row->package->type == 'iq') {
-
-                    $akses = true;
-                }
-
-            }
-        } 
+        $akses =( in_array('iq', $packages) ) ? true : false;        
      
         return $akses;
     }
