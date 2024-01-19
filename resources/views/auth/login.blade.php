@@ -12,35 +12,53 @@
                             <div class="p-5">
                                 <div class="text-center">
                                     <h1 class="h4 text-gray-900 mb-4">{{ __('Login') }}</h1>
-                                </div>
-
-                                @if ($errors->any())
-                                    <div class="alert alert-danger border-left-danger" role="alert">
-                                        <ul class="pl-4 my-2">
-                                            @foreach ($errors->all() as $error)
-                                                <li>{{ $error }}</li>
-                                            @endforeach
-                                        </ul>
-                                    </div>
-                                @endif
+                                </div>                            
 
                                 <form method="POST" action="{{ route('login') }}" class="user">
                                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
                                     <div class="form-group">
                                         <input type="email" class="form-control form-control-user" name="email" placeholder="{{ __('E-Mail Address') }}" value="{{ old('email') }}" required autofocus>
+
+                                        @error('email')
+                                            <p class="text-danger">{{ $message }}</p>
+                                        @enderror
+
+
                                     </div>
 
                                     <div class="form-group">
                                         <input type="password" class="form-control form-control-user" name="password" placeholder="{{ __('Password') }}" required>
-                                    </div>
 
+                                        @error('password')
+                                            <p class="text-danger">{{ $message }}</p>
+                                        @enderror
+
+
+                                    </div>
+                                  
+
+                                    <div class="form-group">
+
+                                        Ketik Kode Berikut: {!! captcha_img() !!}
+                                        
+                                        <a href="{{ route('login') }}">Refresh</a>
+
+                                        <input type="text" class="form-control mt-1 col-sm-6 mx-auto" name="captcha" placeholder="Security Code" required>
+
+                                        @error('captcha')
+                                            <p class="text-danger">Captcha tidak sesuai</p>
+                                        @enderror
+
+                                    </div>   
+                                    
                                     <div class="form-group">
                                         <div class="custom-control custom-checkbox small">
                                             <input type="checkbox" class="custom-control-input" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
                                             <label class="custom-control-label" for="remember">{{ __('Remember Me') }}</label>
                                         </div>
                                     </div>
+
 
                                     <div class="form-group">
                                         <button type="submit" class="btn btn-primary btn-user btn-block">

@@ -57,6 +57,20 @@
                                     </div>
 
                                     <div class="form-group">
+
+                                        Ketik Kode Berikut: {!! captcha_img() !!}
+                                        
+                                        <a href="{{ route('register') }}">Refresh</a>
+
+                                        <input type="text" class="form-control mt-1 col-sm-6" name="captcha" placeholder="Security Code" required>
+
+                                        @error('captcha')
+                                            <p class="text-danger">Captcha tidak sesuai</p>
+                                        @enderror
+
+                                    </div> 
+
+                                    <div class="form-group">
                                         <button type="submit" class="btn btn-primary btn-user btn-block">
                                             {{ __('Register') }}
                                         </button>
