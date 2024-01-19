@@ -35,22 +35,9 @@
                                         @enderror
 
 
-                                    </div>
-                                  
+                                    </div>                                  
 
-                                    <div class="form-group">
-
-                                        Ketik Kode Berikut: {!! captcha_img() !!}
-                                        
-                                        <a href="{{ route('login') }}">Refresh</a>
-
-                                        <input type="text" class="form-control mt-1 col-sm-6 mx-auto" name="captcha" placeholder="Security Code" required>
-
-                                        @error('captcha')
-                                            <p class="text-danger">Captcha tidak sesuai</p>
-                                        @enderror
-
-                                    </div>   
+                                    @livewire('captcha')
                                     
                                     <div class="form-group">
                                         <div class="custom-control custom-checkbox small">

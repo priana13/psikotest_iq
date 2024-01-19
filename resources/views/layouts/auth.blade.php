@@ -19,10 +19,15 @@
 
     <!-- Favicon -->
     <link href="{{ asset('img/favicon.png') }}" rel="icon" type="image/png">
+
+    @livewireStyles
+
 </head>
 <body class="bg-gradient-primary min-vh-100 d-flex justify-content-center align-items-center">
 
 @yield('main-content')
+
+@livewireScripts
 
 <!-- Scripts -->
 <script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
