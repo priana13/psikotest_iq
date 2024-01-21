@@ -54,7 +54,8 @@ class RegisterController extends Controller
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'hp' => ['required' , 'string', 'max:50'],
-            'kota' => ['required' , 'string', 'max:100']
+            'kota' => ['required' , 'string', 'max:100'],
+            'captcha' => 'required|captcha'
         ]);
     }
 

@@ -56,6 +56,8 @@
                                         <input type="password" class="form-control form-control-user" name="password_confirmation" placeholder="{{ __('Konfirmasi Password') }}" required>
                                     </div>
 
+                                    @livewire('captcha')
+
                                     <div class="form-group">
                                         <button type="submit" class="btn btn-primary btn-user btn-block">
                                             {{ __('Register') }}
