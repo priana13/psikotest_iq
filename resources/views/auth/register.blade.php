@@ -31,13 +31,9 @@
                                         <input type="text" class="form-control form-control-user" name="name" placeholder="{{ __('Nama') }}" value="{{ old('name') }}" required autofocus>
                                     </div>
 
-                                    <div class="form-group">
+                                    {{-- <div class="form-group">
                                         <input type="text" class="form-control form-control-user" name="last_name" placeholder="{{ __('Nama Belakang') }}" value="{{ old('last_name') }}" required>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <input type="email" class="form-control form-control-user" name="email" placeholder="{{ __('Alamat Email') }}" value="{{ old('email') }}" required>
-                                    </div>
+                                    </div> --}}
 
                                     <div class="form-group">
                                         <input type="text" class="form-control form-control-user" name="hp" placeholder="No Hp/WA" value="{{ old('hp') }}" required>
@@ -46,6 +42,12 @@
                                     <div class="form-group">
                                         <input type="text" class="form-control form-control-user" name="kota" placeholder="Kota Asal" value="{{ old('kota') }}" required>
                                     </div>
+
+                                  
+                                    <div class="form-group">
+                                        <input type="email" class="form-control form-control-user" name="email" placeholder="{{ __('Alamat Email') }}" value="{{ old('email') }}" required>
+                                    </div>
+
 
 
                                     <div class="form-group">

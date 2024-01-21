@@ -7,7 +7,7 @@ background: linear-gradient(112deg, rgba(165,197,226,1) 0%, rgba(84,150,208,1) 5
 
   <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
 
-    <div class="carousel-indicators">
+    <div class="carousel-indicators d-relative z-10">
 
       <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
       <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
@@ -19,7 +19,7 @@ background: linear-gradient(112deg, rgba(165,197,226,1) 0%, rgba(84,150,208,1) 5
       <div class="carousel-item active">
           
 
-          <div class="" style="padding-left: 100px; padding-top:200px;" >
+          <div class="" style="padding-top:200px;" >
         
             <div class="container">
               <div class="row align-items-center">
@@ -32,7 +32,7 @@ background: linear-gradient(112deg, rgba(165,197,226,1) 0%, rgba(84,150,208,1) 5
                     </div>
                     <div class="col-lg-4 iphone-wrap">
                       {{-- <img src="assets/img/phone_1.png" alt="Image" class="phone-1" data-aos="fade-right"> --}}
-                      <img src="img/icon-psikotest.png" alt="Image" class="img-fluid rounded shadow" data-aos="fade-right" data-aos-delay="200">
+                      <img src="img/icon-psikotest.png" alt="Image" class="img-fluid rounded" data-aos="fade-right" data-aos-delay="200">
                     </div>
                   </div>
                 </div>
@@ -47,7 +47,7 @@ background: linear-gradient(112deg, rgba(165,197,226,1) 0%, rgba(84,150,208,1) 5
 
       <div class="carousel-item">
           
-          <div class="" style="padding-left: 100px; padding-top:200px;" >
+          <div class="" style="padding-top:200px;" >
         
             <div class="container">
               <div class="row align-items-center">
@@ -60,7 +60,7 @@ background: linear-gradient(112deg, rgba(165,197,226,1) 0%, rgba(84,150,208,1) 5
                     </div>
                     <div class="col-lg-4 iphone-wrap">
                       {{-- <img src="assets/img/phone_1.png" alt="Image" class="phone-1" data-aos="fade-right"> --}}
-                      <img src="img/icon-iq.png" alt="Image" class="img-fluid rounded shadow" data-aos="fade-right" data-aos-delay="200">
+                      <img src="img/icon-iq.png" alt="Image" class="img-fluid rounded shadow z-1" data-aos="fade-right" data-aos-delay="200">
                     </div>
                   </div>
                 </div>
@@ -75,15 +75,16 @@ background: linear-gradient(112deg, rgba(165,197,226,1) 0%, rgba(84,150,208,1) 5
      
     </div>
 
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+    <button class="carousel-control-prev d-relative z-11" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
       <span class="visually-hidden">Previous</span>
     </button>
 
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+    <button class="carousel-control-next d-relative z-4 " type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
       <span class="carousel-control-next-icon" aria-hidden="true"></span>
       <span class="visually-hidden">Next</span>
     </button>
+    
   </div>
 
 </section>
