@@ -17,6 +17,8 @@
     <!-- Styles -->
     <link href="{{ asset('css/sb-admin-2.min.css') }}" rel="stylesheet">
 
+    <script src="{{ asset('assets/vendor/bootsrap/css/bootsrap.min.css') }}"></script>
+
     <!-- Favicon -->
     <link href="{{ asset('img/favicon.png') }}" rel="icon" type="image/png">
 
@@ -30,8 +32,17 @@
 @livewireScripts
 
 <!-- Scripts -->
+<!-- Scripts -->
 <script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
-<script src="{{ asset('vendor/bootstrap/js/bootstrap.min.js') }}"></script>
+<script src="{{asset('js/jquery.simple.timer.js')}}" type="text/javascript"></script>
+<script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+<script src="{{ asset('vendor/jquery-easing/jquery.easing.min.js') }}"></script>
+<script src="{{asset('vendor/bootstrap-toastr/toastr.min.js')}}" type="text/javascript"></script>
 <script src="{{ asset('js/sb-admin-2.min.js') }}"></script>
+
+<script src="{{ asset('vendor/ckeditor/ckeditor.js') }}"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/trix/1.3.1/trix.min.js"></script>   
+
 </body>
 </html>

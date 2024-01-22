@@ -55,7 +55,8 @@ class RegisterController extends Controller
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'hp' => ['required' , 'string', 'max:50'],
             'kota' => ['required' , 'string', 'max:100'],
-            'captcha' => 'required|captcha'
+            'captcha' => 'required|captcha',
+            'avatar' => 'nullable|integer'
         ]);
     }
 
@@ -66,13 +67,22 @@ class RegisterController extends Controller
      * @return \App\Models\User
      */
     protected function create(array $data)
-    {
-        return User::create([
+    {        
+
+        $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
             'hp' => $data['hp'],
             'kota' => $data['kota']
         ]);
+
+        if($data['avatar']){
+
+            $user->avatar = 'avatar/' . $data['avatar'] . '.png';
+            $user->save();
+        }
+
+        return $user;
     }
 }

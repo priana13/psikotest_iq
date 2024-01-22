@@ -58,6 +58,8 @@
                                         <input type="password" class="form-control form-control-user" name="password_confirmation" placeholder="{{ __('Konfirmasi Password') }}" required>
                                     </div>
 
+                                    @livewire('forms.select-avatar')
+
                                     @livewire('captcha')
 
                                     <div class="form-group">
