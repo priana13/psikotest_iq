@@ -119,7 +119,7 @@ background: linear-gradient(112deg, rgba(165,197,226,1) 0%, rgb(170, 207, 240) 5
         <h2>TryOut Test Sikap Kerja</h2>
         <p>Mencari angka/huruf/simbol yang hilang</p>
 
-        <a href="{{ route('coba.buat_event' , 9) }}" class="btn btn-warning btn-sm">Coba Gratis</a>
+        <a href="{{ route('coba.mulai_ujian' , 9) }}" class="btn btn-warning btn-sm">Coba Gratis</a>
       </div>
 
       <div class="col-md-5 text-center mt-2">  

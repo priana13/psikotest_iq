@@ -23,7 +23,7 @@ class CreateKotaTable extends Migration
 
         Schema::table('users', function (Blueprint $table) {
            
-            $table->string('kota',100)->after('alamat');
+            $table->string('kota',100)->after('alamat')->nullable();
            
         });
 

@@ -17,7 +17,7 @@ class TrialPsikotestController extends Controller
         // abort_unless($response->allowed(), 403);
   
   
-        return view('member.ujian.mulai', [
+        return view('mulai_coba_test', [
             'ujian' => Exam::find($exam)
         ]);
   
