@@ -7,7 +7,8 @@
     <div id="timer" class=""
     x-data="{
         sisaWaktu: 0,
-        status: '{{ $exam_event->status }}'
+        status: '{{ $exam_event->status }}',
+        textWaktu : ''
     }"
 
     x-init="
@@ -34,14 +35,27 @@
 
         waktu = localStorage.getItem('sisaWaktu{{ $exam_event->id }}');
 
+        var _detik = 1000;
+        var _menit = _detik * 60;
+        var _jam = _menit * 60;
+        var _hari = _jam * 24; 
+
         {{-- console.log(waktu) --}}
 
         if(waktu > 0){
             {{-- sisaWaktu -= 1;  --}}
 
-            localStorage.setItem('sisaWaktu{{ $exam_event->id }}' , waktu - 1);
-
+            localStorage.setItem('sisaWaktu{{ $exam_event->id }}' , waktu - 1);   
+            
             sisaWaktu = waktu;
+           
+            var jam = Math.floor((sisaWaktu * _detik % _hari) / _jam);
+            var menit = Math.floor((sisaWaktu * _detik % _jam) / _menit);
+            var detik = Math.floor((sisaWaktu * _detik % _menit) / _detik);            
+
+            textWaktu = jam + ':';
+            textWaktu += menit + ':';
+            textWaktu += detik;
 
         }
         
@@ -74,7 +88,7 @@
         <span id="waktu"></span>        
 
         <span 
-            x-text="sisaWaktu"
+            x-text="textWaktu"
         ></span>
         </h3>           
     </div>
