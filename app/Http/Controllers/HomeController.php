@@ -61,7 +61,7 @@ class HomeController extends Controller
                             ->where('memberships.status', 'active')
                             ->where('user_id', auth()->user()->id)
                             ->where('packages.type', 'full')
-                            ->count(); 
+                            ->count();        
                             
         if($is_full_access > 0){
 

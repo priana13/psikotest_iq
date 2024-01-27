@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Norma;
 
+use App\Models\Package;
 use App\Models\PackageExam;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -69,7 +70,7 @@ class TestController extends Controller
 
         $langganan = auth()->user()->memberships()->where('status' , 'active')->pluck('package_id');     
         
-        $packages = Package::whereIn('id', $langganan)->pluck('type');
+        $packages = Package::whereIn('id', $langganan)->pluck('type')->toArray();
 
         $akses =( in_array('iq', $packages) ) ? true : false;        
      

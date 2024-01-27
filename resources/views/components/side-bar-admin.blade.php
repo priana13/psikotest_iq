@@ -33,52 +33,65 @@
 
     @endif
 
+    @if(count($psikotes) > 0 || $is_full_access > 0)
+
+
+        <!-- Divider -->
+        <hr class="sidebar-divider">
+
+        <!-- Heading -->
+        <div class="sidebar-heading">
+        {{ __('PSIKOTES') }}
+        </div>
+
+        @foreach ($psikotes as $row)
+
+        <li class="nav-item my-0">
+            <a class="nav-link py-2" href="{{ route('member.soal.type', $row->id) }}">
+                <i class="fas fa-clipboard-list"></i>
+                <span>{{ $row->name }}</span>
+            </a>
+        </li>
+            
+        @endforeach  
+
+    @endif
+
+    @if(count($akademik) > 0 || $is_full_access > 0)
+
+        <!-- Divider -->
+        <hr class="sidebar-divider">
+
+        <!-- Heading -->
+        <div class="sidebar-heading">
+        {{ __('AKADEMIK') }}
+        </div>
+
+        @foreach ($akademik as $row)
+
+        <li class="nav-item my-0">
+            <a class="nav-link py-2" href="{{ route('member.soal.type', $row->id) }}">
+                <i class="fas fa-clipboard-list"></i>
+                <span>{{ $row->name }}</span>
+            </a>
+        </li>
+            
+        @endforeach  
+
+    @endif
+
+  
+
+    @if( $test_iq_access || auth()->user()->can('admin') )    
+
     <!-- Divider -->
     <hr class="sidebar-divider">
 
-    <!-- Heading -->
-    <div class="sidebar-heading">
-    {{ __('PSIKOTES') }}
-    </div>
-
-    @foreach ($psikotes as $row)
-
-    <li class="nav-item my-0">
-        <a class="nav-link py-2" href="{{ route('member.soal.type', $row->id) }}">
-            <i class="fas fa-clipboard-list"></i>
-            <span>{{ $row->name }}</span>
-        </a>
-    </li>
-        
-    @endforeach  
-
-
-
-    <!-- Divider -->
-    <hr class="sidebar-divider">
-
-    <!-- Heading -->
-    <div class="sidebar-heading">
-    {{ __('AKADEMIK') }}
-    </div>
-
-    @foreach ($akademik as $row)
-
-    <li class="nav-item my-0">
-        <a class="nav-link py-2" href="{{ route('member.soal.type', $row->id) }}">
-            <i class="fas fa-clipboard-list"></i>
-            <span>{{ $row->name }}</span>
-        </a>
-    </li>
-        
-    @endforeach  
-
-    @if( $test_iq_access )
-    
     <!-- Heading -->
     <div class="sidebar-heading">
         {{ __('intelligence structure test') }}
-    </div>
+    </div>        
+
 
     <!-- Nav Item - List Norma Test -->
     
