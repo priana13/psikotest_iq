@@ -138,6 +138,7 @@ class Transactions extends Component
                 'member_type' => "Langganan",
                 'start' =>Carbon::now(),
                 'end' => $bulan_depan,
+                'package_id' => $transaksi->package_id,
                 'status' => "active"
             ]);
 
