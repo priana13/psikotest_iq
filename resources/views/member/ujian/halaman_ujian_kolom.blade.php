@@ -83,13 +83,13 @@
     "
 
     >
-        <h3 class="text-center"> 
-        <i class="fas fa-fw fa-clock"></i>            
+        <h3 class="text-center h1"> 
+        {{-- <i class="fas fa-fw fa-clock"></i>             --}}
         <span id="waktu"></span>        
 
-        <span 
+        <span class="btn btn-primary font-weight-bold"
             x-text="textWaktu"
-        ></span>
+        >0:0:0</span>
         </h3>           
     </div>
 

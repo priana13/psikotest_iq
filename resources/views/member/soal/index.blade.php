@@ -14,9 +14,9 @@
 							List Soal {{ $title }} </h4>
 						</div>
 
-						<a class="btn btn-sm btn-success" href="{{ route('checkout') }}">
+						{{-- <a class="btn btn-sm btn-success" href="{{ route('checkout') }}">
 							<i class="fa fa-plus"></i> Beli Voucher
-						</a>
+						</a> --}}
 					</div>
 
 					@if (session()->has('message'))
