@@ -226,6 +226,7 @@ class Ujian extends Component
 
         $this->examEvent->nilai = $this->nilai;
         $this->examEvent->status = "Selesai";
+        $this->examEvent->sisa_waktu = 0;
         $this->examEvent->save();
 
 

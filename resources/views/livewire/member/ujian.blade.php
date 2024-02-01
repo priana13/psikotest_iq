@@ -236,53 +236,53 @@
     <script>
 
 
-        CountDownTimer('waktu');
+        // CountDownTimer('waktu');
 
-        function CountDownTimer(id)
-        {
-            var end = new Date('{{$endtime}}').getTime();
-            var _detik = 1000;
-            var _menit = _detik * 60;
-            var _jam = _menit * 60;
-            var _hari = _jam * 24;                     
+        // function CountDownTimer(id)
+        // {
+        //     var end = new Date('{{$endtime}}').getTime();
+        //     var _detik = 1000;
+        //     var _menit = _detik * 60;
+        //     var _jam = _menit * 60;
+        //     var _hari = _jam * 24;                     
             
-            const timer = setInterval(function showRemaining() {
+        //     const timer = setInterval(function showRemaining() {
 
-                    var now = new Date().toLocaleString("en-US", {
-                            timeZone: "Asia/Jakarta",
-                        });
+        //             var now = new Date().toLocaleString("en-US", {
+        //                     timeZone: "Asia/Jakarta",
+        //                 });
 
-                    const now_jakarta = new Date(now).getTime();
-                    // console.log(now, end , now_jakarta );
+        //             const now_jakarta = new Date(now).getTime();
+        //             // console.log(now, end , now_jakarta );
 
-                    var selisih = end - now_jakarta;
-                    if (selisih < 0) {
+        //             var selisih = end - now_jakarta;
+        //             if (selisih < 0) {
 
-                        clearInterval(timer); 
+        //                 clearInterval(timer); 
                         
-                        alert('Waktu Tes Telah Habis');
-                        // emit di sini
-                        Livewire.emit('waktuHabis');
+        //                 alert('Waktu Tes Telah Habis');
+        //                 // emit di sini
+        //                 Livewire.emit('waktuHabis');
 
-                        return;
-                    }else{
+        //                 return;
+        //             }else{
 
-                    // kurangi waktu yang ada di database
-                    Livewire.emit('kurangiWaktu');
-                    }
+        //             // kurangi waktu yang ada di database
+        //             Livewire.emit('kurangiWaktu');
+        //             }
 
-                    // var days = Math.floor(selisih / _hari);
-                    var jam = Math.floor((selisih % _hari) / _jam);
-                    var menit = Math.floor((selisih % _jam) / _menit);
-                    var detik = Math.floor((selisih % _menit) / _detik);
+        //             // var days = Math.floor(selisih / _hari);
+        //             var jam = Math.floor((selisih % _hari) / _jam);
+        //             var menit = Math.floor((selisih % _jam) / _menit);
+        //             var detik = Math.floor((selisih % _menit) / _detik);
 
-                    // document.getElementById(id).innerHTML = days + 'days ';
-                    document.getElementById(id).innerHTML = jam + ':';
-                    document.getElementById(id).innerHTML += menit + ':';
-                    document.getElementById(id).innerHTML += detik;                
-                }, 1000);
+        //             // document.getElementById(id).innerHTML = days + 'days ';
+        //             document.getElementById(id).innerHTML = jam + ':';
+        //             document.getElementById(id).innerHTML += menit + ':';
+        //             document.getElementById(id).innerHTML += detik;                
+        //         }, 1000);
 
-        }
+        // }
 
         var hidesidebar = 0;
 
