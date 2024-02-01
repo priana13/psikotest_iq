@@ -24,6 +24,7 @@ use App\Http\Controllers\Member\UjianController;
 use App\Http\Controllers\Norma\ReportController;
 use App\Http\Controllers\TrialPsikotestController;
 use App\Http\Controllers\Member\TypeSoalController;
+use App\Http\Controllers\Offline\PesertaOfflineController;
 
 /*
 |--------------------------------------------------------------------------
@@ -51,6 +52,11 @@ Route::get('/harga', [HalamanHargaController::class, 'index'])->name('page.harga
 Route::get('/blog', [PageController::class, 'index'])->name('blog');
 Route::get('/page/{slug}', [PageController::class, 'show'])->name('front.page');
 Route::get('/category/{slug}', [CategoryController::class, 'show'])->name('category');
+
+Route::prefix('offline')->group(function(){
+
+	Route::get('registrasi', [PesertaOfflineController::class, 'registrasi'])->name('offline.registrasi');
+});
 
 Route::prefix('coba')->group(function(){
 
