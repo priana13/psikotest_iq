@@ -21,119 +21,125 @@
 	 @livewireStyles
 </head>
 <body>
-    <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-primary shadow-sm">
-            <div class="container">
-                <h2 class="text-white"> <strong>Selamat Datang</strong> </h2>
-                {{-- <a class="navbar-brand" href="{{ url('/') }}">
-                    
-                </a> --}}
-                {{-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button> --}}
-
-                {{-- <div class="collapse navbar-collapse" id="navbarSupportedContent"> --}}
-                    <!-- Left Side Of Navbar -->
-					@auth()
-                    <ul class="navbar-nav mr-auto">
-						<!--Nav Bar Hooks - Do not delete!!-->
-						<li class="nav-item">
-                            <a href="{{ url('/examcategory') }}" class="nav-link"><i class="fab fa-laravel text-info"></i> Examcategory</a> 
-                        </li>
-						<li class="nav-item">
-                            <a href="{{ url('/memberships') }}" class="nav-link"><i class="fab fa-laravel text-info"></i> Memberships</a> 
-                        </li>
-						<li class="nav-item">
-                            <a href="{{ url('/confirmations') }}" class="nav-link"><i class="fab fa-laravel text-info"></i> Confirmations</a> 
-                        </li>
-						<li class="nav-item">
-                            <a href="{{ url('/packages') }}" class="nav-link"><i class="fab fa-laravel text-info"></i> Packages</a> 
-                        </li>
-						<li class="nav-item">
-                            <a href="{{ url('/posts') }}" class="nav-link"><i class="fab fa-laravel text-info"></i> Posts</a> 
-                        </li>
-						<li class="nav-item">
-                            <a href="{{ url('/categories') }}" class="nav-link"><i class="fab fa-laravel text-info"></i> Categories</a> 
-                        </li>
-						<li class="nav-item">
-                            <a href="{{ url('/examevents') }}" class="nav-link"><i class="fab fa-laravel text-info"></i> Examevents</a> 
-                        </li>
-						<li class="nav-item">
-                            <a href="{{ url('/exam_events') }}" class="nav-link"><i class="fab fa-laravel text-info"></i> Exam_events</a> 
-                        </li>
-						<li class="nav-item">
-                            <a href="{{ url('/transactions') }}" class="nav-link"><i class="fab fa-laravel text-info"></i> Transactions</a> 
-                        </li>
-						<li class="nav-item">
-                            <a href="{{ url('/payment_methods') }}" class="nav-link"><i class="fab fa-laravel text-info"></i> Payment_methods</a> 
-                        </li>
-						<li class="nav-item">
-                            <a href="{{ url('/users') }}" class="nav-link"><i class="fab fa-laravel text-info"></i> Users</a> 
-                        </li>
-						<li class="nav-item">
-                            <a href="{{ url('/settings') }}" class="nav-link"><i class="fab fa-laravel text-info"></i> Settings</a> 
-                        </li>
-						<li class="nav-item">
-                            <a href="{{ url('/scores') }}" class="nav-link"><i class="fab fa-laravel text-info"></i> Scores</a> 
-                        </li>
-						<li class="nav-item">
-                            <a href="{{ url('/questions') }}" class="nav-link"><i class="fab fa-laravel text-info"></i> Questions</a> 
-                        </li>
-						<li class="nav-item">
-                            <a href="{{ url('/exams') }}" class="nav-link"><i class="fab fa-laravel text-info"></i> Exams</a> 
-                        </li>
-                    </ul>
-					@endauth()
-					
-                    <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto">
-                        <!-- Authentication Links -->
-                        @guest
-
-                       
-                        <a href="{{ url('/') }}"><img src="/img/logo.png" alt="" class="img img-fluid" width="150px"></a>
-
-                       
-
-                        {{-- 
-                            @if (Route::has('login'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                                </li>
-                            @endif
-                            
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>
-                            @endif --}}
-
-
-                        @else
-                                <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }}
-                                </a>
-
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </li>
-                        @endguest
-                    </ul>
-                {{-- </div> --}}
-            </div>
-        </nav>
+    <div id="app" class="">      
 
         <main class="py-2">
+
+            <div class="row navbar navbar-expand-md navbar-light bg-primary shadow-sm">
+
+                <nav class=" col-sm-6 mx-auto">
+                    <div class="container row">
+                        <h3 class="text-white"> <strong>Selamat Datang</strong> </h3>
+                        {{-- <a class="navbar-brand" href="{{ url('/') }}">
+                            
+                        </a> --}}
+                        {{-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                            <span class="navbar-toggler-icon"></span>
+                        </button> --}}
+        
+                        {{-- <div class="collapse navbar-collapse" id="navbarSupportedContent"> --}}
+                            <!-- Left Side Of Navbar -->
+                            @auth()
+                            <ul class="navbar-nav mr-auto">
+                                <!--Nav Bar Hooks - Do not delete!!-->
+                                <li class="nav-item">
+                                    <a href="{{ url('/examcategory') }}" class="nav-link"><i class="fab fa-laravel text-info"></i> Examcategory</a> 
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ url('/memberships') }}" class="nav-link"><i class="fab fa-laravel text-info"></i> Memberships</a> 
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ url('/confirmations') }}" class="nav-link"><i class="fab fa-laravel text-info"></i> Confirmations</a> 
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ url('/packages') }}" class="nav-link"><i class="fab fa-laravel text-info"></i> Packages</a> 
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ url('/posts') }}" class="nav-link"><i class="fab fa-laravel text-info"></i> Posts</a> 
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ url('/categories') }}" class="nav-link"><i class="fab fa-laravel text-info"></i> Categories</a> 
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ url('/examevents') }}" class="nav-link"><i class="fab fa-laravel text-info"></i> Examevents</a> 
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ url('/exam_events') }}" class="nav-link"><i class="fab fa-laravel text-info"></i> Exam_events</a> 
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ url('/transactions') }}" class="nav-link"><i class="fab fa-laravel text-info"></i> Transactions</a> 
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ url('/payment_methods') }}" class="nav-link"><i class="fab fa-laravel text-info"></i> Payment_methods</a> 
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ url('/users') }}" class="nav-link"><i class="fab fa-laravel text-info"></i> Users</a> 
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ url('/settings') }}" class="nav-link"><i class="fab fa-laravel text-info"></i> Settings</a> 
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ url('/scores') }}" class="nav-link"><i class="fab fa-laravel text-info"></i> Scores</a> 
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ url('/questions') }}" class="nav-link"><i class="fab fa-laravel text-info"></i> Questions</a> 
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ url('/exams') }}" class="nav-link"><i class="fab fa-laravel text-info"></i> Exams</a> 
+                                </li>
+                            </ul>
+                            @endauth()
+                            
+                            <!-- Right Side Of Navbar -->
+                            <ul class="navbar-nav ml-auto ">
+                                <!-- Authentication Links -->
+                                @guest
+        
+                               
+                                <a href="{{ url('/') }}"><img src="/img/logo.png" alt="" class="img img-fluid" width="150px"></a>
+        
+                               
+        
+                                {{-- 
+                                    @if (Route::has('login'))
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                        </li>
+                                    @endif
+                                    
+                                    @if (Route::has('register'))
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                        </li>
+                                    @endif --}}
+        
+        
+                                @else
+                                        <li class="nav-item dropdown">
+                                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                            {{ Auth::user()->name }}
+                                        </a>
+        
+                                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                            <a class="dropdown-item" href="{{ route('logout') }}"
+                                               onclick="event.preventDefault();
+                                                             document.getElementById('logout-form').submit();">
+                                                {{ __('Logout') }}
+                                            </a>
+        
+                                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                                @csrf
+                                            </form>
+                                        </div>
+                                    </li>
+                                @endguest
+                            </ul>
+                        {{-- </div> --}}
+                    </div>
+                </nav>
+
+            </div>    
+
             @yield('content')
         </main>
     </div>
