@@ -56,6 +56,8 @@ Route::get('/category/{slug}', [CategoryController::class, 'show'])->name('categ
 Route::prefix('offline')->group(function(){
 
 	Route::get('registrasi', [PesertaOfflineController::class, 'registrasi'])->name('offline.registrasi');
+	Route::post('registrasi', [PesertaOfflineController::class, 'store'])->name('offline.registrasi.store');
+
 });
 
 Route::prefix('coba')->group(function(){

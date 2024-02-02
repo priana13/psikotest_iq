@@ -18,9 +18,9 @@
             <h5 class="mb-4 px-3">Silahkan lengkapi formulir berikut</h5>
 
 
-            <form method="POST" action="{{ route('register') }}" class="user px-3">
+            <form method="POST" action="{{ route('offline.registrasi.store') }}" class="user px-3">
 
-                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                @csrf
 
                 <div class="form-group row">
                     <label for="" class="col-3">Nama</label>
@@ -31,7 +31,11 @@
                 <div class="form-group row">
                     <label for="" class="col-3">Jenis Kelamin</label>
                     <span class="col-1">:</span>
-                    <input type="text" class=" col-7 form-control form-control-user" name="name" placeholder="{{ __('Nama') }}" value="{{ old('name') }}" required autofocus>
+                    <select name="jenis_kelamin" id="" class="col-7 form-control form-control-user">
+                        <option value="">Pilih</option>
+                        <option value="L">Laki-laki</option>
+                        <option value="P">Perempuan</option>
+                    </select>
                 </div>  
 
                 <div class="form-group row">

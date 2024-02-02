@@ -11,4 +11,9 @@ class PesertaOfflineController extends Controller
 
         return view('offline.registrasi_offline');
     }
+
+    public function store(Request $request){
+
+        return $request->all();
+    }
 }
