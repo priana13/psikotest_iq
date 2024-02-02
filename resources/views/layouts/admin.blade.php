@@ -98,11 +98,11 @@
                 </button>
 
                 <div class="nav-item">
-                    <a href="{{ route('page.harga') }}" class="btn btn-warning rounded-pill py-0">Beli Paket</a>
+                    <a href="{{ route('page.harga') }}" class="btn btn-danger">Beli Paket</a>
                 </div>
 
                 <div class="nav-item ml-2 d-sm-block d-none">
-                    <a href="/page/cara-membayar" class="btn btn-warning rounded-pill py-0">Cara Membayar</a>
+                    <a href="/page/cara-membayar" class="btn btn-warning text-dark">Cara Membayar</a>
                 </div>
 
                
