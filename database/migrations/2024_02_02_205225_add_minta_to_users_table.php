@@ -14,9 +14,10 @@ class AddMintaToUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string('minta')->nullable(); // nullable
+            $table->string('minat')->nullable(); // nullable
             $table->string('jenis_kelamin', 20)->nullable(); // L / P
             $table->string('lokasi_test')->default('online'); // online, offline
+            $table->string('password')->nullable()->change(); // online, offline
         });
     }
 
@@ -31,6 +32,7 @@ class AddMintaToUsersTable extends Migration
             $table->dropColumn('minat');
             $table->dropColumn('jenis_kelamin');
             $table->dropColumn('lokasi_test');
+            $table->string('password')->change();
         });
     }
 }
