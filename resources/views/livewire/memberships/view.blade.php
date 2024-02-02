@@ -13,20 +13,22 @@
 						@if (session()->has('message'))
 						<div wire:poll.4s class="btn btn-sm btn-success" style="margin-top:0px; margin-bottom:0px;"> {{ session('message') }} </div>
 						@endif
+						
+
+						@can('admin')
+
 						<div>
 							<input wire:model='keyWord' type="text" class="form-control" name="search" id="search" placeholder="Search Memberships">
 						</div>
-
-						@can('admin')
 
 						<div class="btn btn-sm btn-success" data-toggle="modal" data-target="#createDataModal">
 							<i class="fa fa-plus"></i>  Tambah Paket
 							</div>
 
 						@else
-						<a class="btn btn-sm btn-success" href="{{ route('checkout') }}">
+						{{-- <a class="btn btn-sm btn-success" href="{{ route('checkout') }}">
 							<i class="fa fa-plus"></i> Beli Voucher
-						</a>
+						</a> --}}
 
 						@endcan
 
@@ -47,8 +49,8 @@
 								@endcan
 
 								<th>Paket</th>
-								<th>Start</th>
-								<th>End</th>
+								<th>Mulai</th>
+								<th>Berakhir</th>
 								<th>Status</th>
 								@can('admin')
 								<td>Aksi</td>
