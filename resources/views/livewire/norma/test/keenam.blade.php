@@ -7,22 +7,22 @@
                             <div class="card-body text-center">
                                 <a class="stretched-link text-primary font-weight-bold text-primary text-uppercase" href="#">PENUJUK WAKTU TEST</a>
                                 <div class="row no-gutters align-items-center">
-                                    <p class="mt-2 text-center">{{$NormaZr['petunjuk_kesatu']??''}}</p>
+                                    <p class="mt-2 text-center">{{$NormaZr['petunjuk_kedua']??''}}</p>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <br>
                     <div class="col-xl-4 col-md-6 mb-4">
-                        <!-- <div class="card bg-primary text-white shadow">
+                        <div class="card bg-primary text-white shadow">
                             <div class="card-body">
                                 <h1 class="timer text-white-100 text-center" data-seconds-left = {{$waktu_test}}></h1>  
 
                             </div>
-                        </div> -->
-                        <div id="customToastr" class="custom-toastr">
-                            <h1 class="timer text-white-100 text-center" data-seconds-left = {{$waktu_test}}></h1>  
                         </div>
+                        <!-- <div id="customToastr" class="custom-toastr">
+                            <h1 class="timer text-white-100 text-center" data-seconds-left = {{$waktu_test}}></h1>  
+                        </div> -->
                     </div>
                 </div>
                 <div class="row justify-content-center">
@@ -106,9 +106,12 @@
                                         </div>                               
                                     </div>
                                 @endforeach
-                            @endif                            
+                            @endif 
+                            <div class="card-body">
+                                <button id="finish" type="button" class="btn btn-primary pull-right" wire:click="zrSelesai({{$test_id}})" >NEXT</button>
+                            </div>                           
                             
-                            <button id="finish" type="button" class="btn btn-primary pull-right" wire:click="zrSelesai({{$test_id}})" style="display: none;">FINISH</button>
+                            
                            
                         </div>
                     </div>
@@ -211,10 +214,12 @@
                                     <h5>PETUNJUK DAN CONTOH SOAL {{$NormaZr['nama']??'INTELLIGENCE STRUCTURE TEST ZR - 06'}}</h5>
                                 </div>
                                 <div class="card-body">
-                                    <p>{{$NormaZr['petunjuk_kesatu']??''}}</p>                                    
-                                </div>
-                                <div class="card-body text-center">                                    
-                                    <img src="{{ url('storage/photos/'.$NormaZr['file_petunjuk'])}}" alt="no image" style="width: 250px; height: 250px;">
+                                   <p>{!! nl2br($NormaZr['petunjuk_kesatu'] ?? '') !!}</p>                                 
+                                </div>                                
+                                <div class="card-body text-center">     
+                                    @if($NormaZr['file_petunjuk'])                               
+                                     <img src="{{ url('storage/photos/'.$NormaZr['file_petunjuk'])}}" alt="no image" > 
+                                     @endif
                                 </div>
                                 <div class="card-body">   
                                     <p>JIKA ANDA SUDAH SIAP SILAHKAN KLIK TOMBOL</p>                                    

@@ -19,7 +19,7 @@
                         <input wire:model="waktu" name="waktu" type="number" class="form-control" id="waktu">
                         @error('waktu') <span class="text-danger">{{ $message }}</span> @enderror
                     </div>
-                     <div class="form-group col-md-6">
+                      <div class="form-group col-md-6">
                         <label for="petunjuk_kesatu">PETUNJUK DASHBOARD</label>
                         <textarea wire:model="petunjuk_kesatu" class="form-control" ></textarea>
                         @error('petunjuk_kesatu') <span class="text-danger">{{ $message }}</span> @enderror
@@ -32,9 +32,12 @@
                     <div class="form-group col-md-6">
                         <label for="file_petunjuk">GAMBAR PETUNJUK TEST</label><br>
                         <img src="{{ url('storage/photos/'.$file_petunjuk)}}" alt="no image" style="width: 250px; height: 250px;">
-                        <input wire:model="file_petunjuk" type="file" class="form-control" >
+                        <div class="form-control" >
+                            <input wire:model="file_petunjuk" type="file" />
+                            <input type="button" wire:click="hapusImgTestGe" value="Hapus Gambar" />
+                        </div>
                         @error('file_petunjuk') <span class="text-danger">{{ $message }}</span> @enderror
-                    </div>       
+                    </div>   
                 </div>
                 <div class="card-footer">
                     <button type="button" class="btn btn-primary" wire:click="simpanTestGe"><i class="fas fa-save"></i>Simpan</button>

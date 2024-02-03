@@ -13,16 +13,15 @@
                         </div>
                     </div>
                     <br>
-                    <div class="col-xl-4 col-md-6 mb-4">
-                        <!-- <div class="card bg-primary text-white shadow">
-                            <div class="card-body">
-                                <h1 class="timer text-white-100 text-center" data-seconds-left = {{$waktu_test}}></h1>  
-
+                    <div class="col-xl-3 col-md-4 mb-4">
+                        <div class="card bg-primary text-white shadow">
+                            <div class="card-body ">
+                                <h1 class="timer text-white-100 text-center" data-seconds-left = {{$waktu_test}}></h1> 
                             </div>
-                        </div> -->
-                        <div id="customToastr" class="custom-toastr">
-                            <h1 class="timer text-white-100 text-center" data-seconds-left = {{$waktu_test}}></h1>  
                         </div>
+                        <!-- <div id="customToastr" class="custom-toastr">
+                            <h1 class="timer text-white-100 text-center" data-seconds-left = {{$waktu_test}}></h1>  
+                        </div> -->
                     </div>
                 </div>
                 <div class="row justify-content-center">
@@ -77,11 +76,17 @@
                                         </div>                                        
                                     </div>
                                 @endforeach
-                            @endif                            
+                            @endif    
+
+
+                            <div class="card-body">
+                                 <button id="finish" type="button" class="btn btn-primary pull-right" wire:click="seSelesai({{$test_id}})" >NEXT</button>
+                            </div>
                            
-                            <button id="finish" type="button" class="btn btn-primary pull-right" wire:click="seSelesai({{$test_id}})" style="display: none;">FINISH</button>
                             
                         </div>
+
+                       
                     </div>
                 </div>
             </div>
