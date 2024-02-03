@@ -95,12 +95,12 @@
                                     <h5>PETUNJUK DAN CONTOH SOAL {{$NormaSe['nama']??'INTELLIGENCE STRUCTURE TEST SE - 01'}}</h5>
                                 </div>
                                 <div class="card-body">
-                                    <p>{{$NormaSe['petunjuk_kesatu']??''}}</p>                                    
-                                </div>
-
-                                {{-- {{ dd($NormaSe ) }} --}}
-                                <div class="card-body text-center">                                    
-                                    {{-- <img src="{{ url('storage/photos/'.$NormaSe['file_petunjuk'])}}" alt="no image" style="width: 250px; height: 250px;"> --}}
+                                   <p>{!! nl2br($NormaSe['petunjuk_kesatu'] ?? '') !!}</p>                                 
+                                </div>                                
+                                <div class="card-body text-center">     
+                                    @if($NormaSe['file_petunjuk'])                               
+                                     <img src="{{ url('storage/photos/'.$NormaSe['file_petunjuk'])}}" alt="no image" > 
+                                     @endif
                                 </div>
                                 <div class="card-body">   
                                     <p>JIKA ANDA SUDAH SIAP SILAHKAN KLIK TOMBOL</p>                                    

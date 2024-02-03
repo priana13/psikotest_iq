@@ -11,7 +11,7 @@
                     <div class="form-group col-md-8">
                         <label for="nomor_test">Nomor Test</label>
                         <input wire:model="nomor_test" name="nomor_test" type="number" class="form-control" id="nomor_test">
-                        @error('waktu') <span class="text-danger">{{ $message }}</span> @enderror
+                        @error('nomor_test') <span class="text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group col-md-8">
                         <label for="name">Nama </label>
