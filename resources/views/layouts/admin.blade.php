@@ -283,7 +283,9 @@
 <script src="{{asset('vendor/bootstrap-toastr/toastr.min.js')}}" type="text/javascript"></script>
 <script src="{{ asset('js/sb-admin-2.min.js') }}"></script>
 
-<script src="{{ asset('vendor/ckeditor/ckeditor.js') }}"></script>
+{{-- <script src="{{ asset('vendor/ckeditor/ckeditor.js') }}"></script> --}}
+<script src="https://cdn.ckeditor.com/4.22.1/standard/ckeditor.js"></script>
+<script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/trix/1.3.1/trix.min.js"></script>   
 
