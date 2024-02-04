@@ -37,7 +37,17 @@ class UserNorma extends Component
     }
     
    
-    public function simpanUserNorma(){       
+    protected $rules = [
+        'nomor_test' => 'string|required',            
+        'tgl_lahir' => 'date|required',
+        'pendidikan' => 'string|required',
+        'instansi' => 'string|required',
+
+    ];
+    
+   
+    public function simpanUserNorma(){     
+        $this->validate();
         $this->userId = auth()->user()->id;
         $normaTest = DataUserNorma::updateOrCreate(
             ['user_id' => $this->userId],
@@ -61,9 +71,9 @@ class UserNorma extends Component
         );
         session()->flash($normaTest ? 'success' : 'error', $normaTest ? 'Berhasil !' : 'Gagal !');
         $this->emit('reloadPage');
-        $this->tipe = 1;
+        /*$this->tipe = 1;
         $this->clue = "simpanUserNorma";
-        $this->emit('mainCallBack',$this->tipe,$this->clue);
+        $this->emit('mainCallBack',$this->tipe,$this->clue);*/
         
     }
     public function mount(){     

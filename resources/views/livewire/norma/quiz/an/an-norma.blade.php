@@ -32,9 +32,12 @@
                     <div class="form-group col-md-6">
                         <label for="file_petunjuk">GAMBAR PETUNJUK TEST</label><br>
                         <img src="{{ url('storage/photos/'.$file_petunjuk)}}" alt="no image" style="width: 250px; height: 250px;">
-                        <input wire:model="file_petunjuk" type="file" class="form-control" >
+                        <div class="form-control" >
+                            <input wire:model="file_petunjuk" type="file" />
+                            <input type="button" wire:click="hapusImgTestAn" value="Hapus Gambar" />
+                        </div>
                         @error('file_petunjuk') <span class="text-danger">{{ $message }}</span> @enderror
-                    </div>                       
+                    </div>                         
                 </div>
                 <div class="card-footer">
                     <button type="button" class="btn btn-primary" wire:click="simpanTestAn"><i class="fas fa-save"></i>Simpan</button>

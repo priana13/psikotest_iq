@@ -49,6 +49,18 @@ class FaNorma extends Component
         session()->flash($normaTest ? 'success' : 'error', $normaTest ? 'Berhasil !' : 'Gagal !');
         $this->emit('reloadPage');
     }
+    public function hapusImgTestFa(){    
+        
+        $normaTest = Norma::updateOrCreate(
+            ['id' => $this->test_id, 'tipe' => 7],
+            [                
+                'file_petunjuk'     => ''
+            ]
+        );
+
+        session()->flash($normaTest ? 'success' : 'error', $normaTest ? 'Berhasil !' : 'Gagal !');
+        $this->emit('reloadPage');
+    }
 
     public function mount(){     
         $this->test = Norma::where('tipe', '=', 7)->first();

@@ -49,6 +49,18 @@ class GeNorma extends Component
         session()->flash($normaTest ? 'success' : 'error', $normaTest ? 'Berhasil !' : 'Gagal !');
         $this->emit('reloadPage');
     }
+    public function hapusImgTestGe(){   
+        
+        $normaTest = Norma::updateOrCreate(
+            ['id' => $this->test_id, 'tipe' => 4],
+            [                
+                'file_petunjuk'     => ''
+            ]
+        );
+
+        session()->flash($normaTest ? 'success' : 'error', $normaTest ? 'Berhasil !' : 'Gagal !');
+        $this->emit('reloadPage');
+    }
 
     public function mount(){     
         $this->test = Norma::where('tipe', '=', 4)->first();

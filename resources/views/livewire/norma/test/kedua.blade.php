@@ -14,15 +14,15 @@
                     </div>
                     <br>
                     <div class="col-xl-4 col-md-6 mb-4">
-                        <!-- <div class="card bg-primary text-white shadow">
+                        <div class="card bg-primary text-white shadow">
                             <div class="card-body">
                                 <h1 class="timer text-white-100 text-center" data-seconds-left = {{$waktu_test}}></h1>  
 
                             </div>
-                        </div> -->
-                        <div id="customToastr" class="custom-toastr">
-                            <h1 class="timer text-white-100 text-center" data-seconds-left = {{$waktu_test}}></h1>  
                         </div>
+                        <!-- <div id="customToastr" class="custom-toastr">
+                            <h1 class="timer text-white-100 text-center" data-seconds-left = {{$waktu_test}}></h1>  
+                        </div> -->
                     </div>
                 </div>
                 <div class="row justify-content-center">
@@ -73,11 +73,15 @@
                                 @endforeach
 
                             @endif
+
+                                <div class="card-body">
+                                    <button id="finish" type="button" class="btn btn-primary pull-right" wire:click="waSelesai({{$test_id}})" >
+                                        NEXT
+                                    </button>
+                                </div>
                             
                           
-                                <button id="finish" type="button" class="btn btn-primary pull-right" wire:click="waSelesai({{$test_id}})" style="display: none;">
-                                        FINISH
-                                    </button>
+                                
                             
                         </div>
                     </div>
@@ -93,11 +97,13 @@
                                 <div class="card-title px-4 pt-4 text-center">
                                     <h5>PETUNJUK DAN CONTOH SOAL {{$NormaWa['nama']??'INTELLIGENCE STRUCTURE TEST WA - 02'}}</h5>
                                 </div>
-                                <div class="card-body">
-                                    <p>{{$NormaWa['petunjuk_kesatu']??''}}</p>                                    
-                                </div>
-                                <div class="card-body text-center">                                    
-                                    <img src="{{ url('storage/photos/'.$NormaWa['file_petunjuk']??'')}}" alt="no image" style="width: 250px; height: 250px;">
+                               <div class="card-body">
+                                   <p>{!! nl2br($NormaWa['petunjuk_kesatu'] ?? '') !!}</p>                                 
+                                </div>                                
+                                <div class="card-body text-center">     
+                                    @if($NormaWa['file_petunjuk'])                               
+                                     <img src="{{ url('storage/photos/'.$NormaWa['file_petunjuk'])}}" alt="no image" > 
+                                     @endif
                                 </div>
                                 <div class="card-body">   
                                     <p>JIKA ANDA SUDAH SIAP SILAHKAN KLIK TOMBOL</p>                                    
