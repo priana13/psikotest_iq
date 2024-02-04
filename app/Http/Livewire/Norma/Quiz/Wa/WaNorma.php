@@ -49,6 +49,19 @@ class WaNorma extends Component
         $this->emit('reloadPage');
     }
 
+    public function hapusImgTestWa(){    
+        
+        $normaTest = Norma::updateOrCreate(
+            ['id' => $this->test_id, 'tipe' => 2],
+            [                
+                'file_petunjuk'     => ''
+            ]
+        );
+
+        session()->flash($normaTest ? 'success' : 'error', $normaTest ? 'Berhasil !' : 'Gagal !');
+        $this->emit('reloadPage');
+    }
+
     public function mount(){     
         $this->test = Norma::where('tipe', '=', 2)->first();
         $this->test_id = optional($this->test)->id;

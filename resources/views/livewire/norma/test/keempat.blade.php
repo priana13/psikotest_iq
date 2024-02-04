@@ -14,15 +14,15 @@
                 </div>
                 <br>
                 <div class="col-xl-4 col-md-6 mb-4">
-                        <!-- <div class="card bg-primary text-white shadow">
+                        <div class="card bg-primary text-white shadow">
                             <div class="card-body">
                                 <h1 class="timer text-white-100 text-center" data-seconds-left = {{$waktu_test}}></h1>  
 
                             </div>
-                        </div> -->
-                        <div id="customToastr" class="custom-toastr">
-                            <h1 class="timer text-white-100 text-center" data-seconds-left = {{$waktu_test}}></h1>  
                         </div>
+                        <!-- <div id="customToastr" class="custom-toastr">
+                            <h1 class="timer text-white-100 text-center" data-seconds-left = {{$waktu_test}}></h1>  
+                        </div> -->
                     </div>
             </div>
             <div class="row justify-content-center">
@@ -38,7 +38,7 @@
                                     <div class="form-group row">
                                         <label class="col-1 form-control text-center"><h5>{{$q['no']}}</h5></label>
                                         <label class="col-1"></label>
-                                        <label class="col-8 form-control text-center"><h5><em>{{$q['quiz']}}</em></h5></label>
+                                        <input type="text" class="col-8 form-control text-center " value="{{$q['quiz']}}" disabled>
                                     </div>      
                                     <div class="form-group row">
                                         <label class="col-1"></label>
@@ -52,10 +52,13 @@
                                     </div>                                     
                                 </div>
                             @endforeach
-                        @endif                       
-                            <button id="finish" type="button" class="btn btn-primary pull-right" wire:click="geSelesai({{$test_id}})" style="display: none;">
-                                    FINISH
+                        @endif            
+                        <div class="card-body">
+                            <button id="finish" type="button" class="btn btn-primary pull-right" wire:click="geSelesai({{$test_id}})" >
+                                    NEXT
                                 </button>
+                        </div>           
+                            
                     </div>
                 </div>
             </div>
@@ -103,10 +106,12 @@
                                 <h5>PETUNJUK DAN CONTOH SOAL {{$NormaGe['nama']??'INTELLIGENCE STRUCTURE TEST GE - 04'}}</h5>
                             </div>
                             <div class="card-body">
-                                <p>{{$NormaGe['petunjuk_kesatu']??''}}</p>                                    
-                            </div>
-                            <div class="card-body text-center">                                    
-                                <img src="{{ url('storage/photos/'.$NormaGe['file_petunjuk'])}}" alt="no image" style="width: 250px; height: 250px;">
+                                   <p>{!! nl2br($NormaGe['petunjuk_kesatu'] ?? '') !!}</p>                                 
+                            </div>                                
+                            <div class="card-body text-center">     
+                                @if($NormaGe['file_petunjuk'])                               
+                                 <img src="{{ url('storage/photos/'.$NormaGe['file_petunjuk'])}}" alt="no image" > 
+                                 @endif
                             </div>
                             <div class="card-body">   
                                 <p>JIKA ANDA SUDAH SIAP SILAHKAN KLIK TOMBOL</p>                                    

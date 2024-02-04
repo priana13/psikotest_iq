@@ -14,15 +14,15 @@
                     </div>
                     <br>
                     <div class="col-xl-4 col-md-6 mb-4">
-                        <!-- <div class="card bg-primary text-white shadow">
+                        <div class="card bg-primary text-white shadow">
                             <div class="card-body">
                                 <h1 class="timer text-white-100 text-center" data-seconds-left = {{$waktu_test}}></h1>  
 
                             </div>
-                        </div> -->
-                        <div id="customToastr" class="custom-toastr">
-                            <h1 class="timer text-white-100 text-center" data-seconds-left = {{$waktu_test}}></h1>  
                         </div>
+                        <!-- <div id="customToastr" class="custom-toastr">
+                            <h1 class="timer text-white-100 text-center" data-seconds-left = {{$waktu_test}}></h1>  
+                        </div> -->
                     </div>
                 </div>
                 <div class="row justify-content-center">
@@ -136,9 +136,13 @@
                                     Soal Selanjutnya
                                 </button>       
                             </div>
-                            @endif                                       
+                            @endif       
+
+                            <div class="card-body">
+                                <button type="button" id="finish" class="btn btn-primary pull-right" wire:click="faSelesai({{$test_id}})" >NEXT</button>
+                            </div>                                
                             
-                            <button type="button" id="finish" class="btn btn-primary pull-right" wire:click="faSelesai({{$test_id}})" style="display: none;">FINISH</button>
+                            
                           
                         </div>
                     </div>
@@ -255,10 +259,12 @@
                                     <h5>PETUNJUK DAN CONTOH SOAL {{$NormaFa['nama']??'INTELLIGENCE STRUCTURE TEST FA - 07'}}</h5>
                                 </div>
                                 <div class="card-body">
-                                    <p>{{$NormaFa['petunjuk_kesatu']??''}}</p>                                    
-                                </div>
-                                <div class="card-body text-center">                                    
-                                    <img src="{{ url('storage/photos/'.$NormaFa['file_petunjuk'])}}" alt="no image" style="width: 250px; height: 250px;">
+                                   <p>{!! nl2br($NormaFa['petunjuk_kesatu'] ?? '') !!}</p>                                 
+                                </div>                                
+                                <div class="card-body text-center">     
+                                    @if($NormaFa['file_petunjuk'])                               
+                                     <img src="{{ url('storage/photos/'.$NormaFa['file_petunjuk'])}}" alt="no image" > 
+                                     @endif
                                 </div>
                                 <div class="card-body">   
                                     <p>JIKA ANDA SUDAH SIAP SILAHKAN KLIK TOMBOL</p>                                    
