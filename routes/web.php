@@ -57,6 +57,7 @@ Route::prefix('offline')->group(function(){
 
 	Route::get('registrasi', [PesertaOfflineController::class, 'registrasi'])->name('offline.registrasi');
 	Route::post('registrasi', [PesertaOfflineController::class, 'store'])->name('offline.registrasi.store');
+	Route::get('pembayaran/{transaction}', [PesertaOfflineController::class, 'pembayaran'])->name('offline.pembayaran');
 
 });
 

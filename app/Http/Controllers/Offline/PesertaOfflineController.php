@@ -21,7 +21,10 @@ class PesertaOfflineController extends Controller
 
         // 1. insert ke table user 
 
-            $user = User::create([
+        $pendaftar = User::where('email', $request->email)->first();
+
+        if(!$pendaftar){
+            $pendaftar = User::create([
                 'name' => $request->name,
                 'email' => $request->email,
                 'minat' => $request->minat,
@@ -30,12 +33,13 @@ class PesertaOfflineController extends Controller
                 'jenis_kelamin' => $request->jenis_kelamin,
                 'level' => "user",               
             ]);
+        }           
 
 
         // 2. insert ke table transaction 
 
         $transaction = Transaction::create([ 
-			'user_id' => $user->id,
+			'user_id' => $pendaftar->id,
 			// 'package_id' => $this-> package_id,
             'code' => \uniqid(),
 			// 'payment_method_id' => 1,
@@ -45,9 +49,14 @@ class PesertaOfflineController extends Controller
             "qty" => 1,
         ]);
 
-        return $transaction;
-
+       return \redirect()->route('offline.pembayaran', $transaction->id);
 
         // 3. redirect ke halaman pembayaran
+    }
+
+
+    public function pembayaran(Transaction $transaction){
+       
+        return view('offline.pembayaran' , \compact('transaction'));
     }
 }

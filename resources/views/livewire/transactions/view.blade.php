@@ -30,7 +30,8 @@
 						<thead class="thead">
 							<tr> 
 								<td>#</td> 
-								<th>Paket Harga</th>
+								<th>Nama Paket</th>
+								<th>Tipe</th>
 								<th>Tanggal</th>
 								<th>User</th>								
 								<th>Payment</th>
@@ -44,7 +45,8 @@
 							@foreach($transactions as $row)
 							<tr>
 								<td>{{ $loop->iteration }}</td> 
-								<td>{{ $row->package->name }}</td>
+								<td>{{ ($row->package) ? $row->package->name : '-' }}</td>
+								<td>{{ $row->lokasi_test }}</td>
 								<td>{{ $row->created_at->format('d M Y') }}</td>
 								<td>{{ $row->user->name }}</td>								
 								<td>{{ $row->payment_type }}</td>
@@ -65,13 +67,17 @@
 									
 									<a href="#" class="dropdown-item" onclick="confirm('Selesaikan Transaksi ini \n Akses Psikotes untuk transaksi ini akan di Aprove')||event.stopImmediatePropagation()" wire:click="aprove({{$row->id}})">
 										<i class="fa fa-check"></i> Selesai 
-									</a>   
+									</a>  
+									
+									@if($row->package)
 
 									@if($row->package->type == 'iq')
 
 									<a href="{{ route('admin.transactions.akses_user', $row->id) }}" class="dropdown-item" >
 										<i class="fa fa-users"></i> Akses User 
 									</a>   
+
+									@endif
 
 									@endif
 
