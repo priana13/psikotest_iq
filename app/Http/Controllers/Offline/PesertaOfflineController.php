@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Offline;
 
 use App\Models\User;
+use App\Models\Setting;
 use App\Models\Transaction;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -38,12 +39,14 @@ class PesertaOfflineController extends Controller
 
         // 2. insert ke table transaction 
 
+        $biaya_offline = Setting::where('name','biaya_offline')->first();
+
         $transaction = Transaction::create([ 
 			'user_id' => $pendaftar->id,
 			// 'package_id' => $this-> package_id,
             'code' => \uniqid(),
 			// 'payment_method_id' => 1,
-			'nominal' => 2500000,
+			'nominal' => $biaya_offline->value,
 			'status' => "Pending",
             "lokasi_test" => "Offline",
             "qty" => 1,
