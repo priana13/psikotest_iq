@@ -1,7 +1,17 @@
 @section('title', __('Transactions'))
-<div class="container-fluid">
+<div class="">
 	<div class="row justify-content-center">
 		<div class="col-md-12">
+
+			{{-- header --}}
+
+			<div class="d-flex justify-content-end">
+				<div>
+					<h4>Jumlah Data: {{ $transactions->count() }}</h4>
+				</div>
+
+			</div>
+
 			<div class="card">
 				<div class="card-header">
 					<div style="display: flex; justify-content: space-between; align-items: center;">

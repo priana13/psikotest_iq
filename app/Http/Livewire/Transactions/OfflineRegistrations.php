@@ -7,11 +7,12 @@ use App\Models\Transaction;
 use Livewire\WithPagination;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\ExportPesertaOffline;
+use Jantinnerezo\LivewireAlert\LivewireAlert;
 
 
 class OfflineRegistrations extends Component
 {
-
+    use LivewireAlert;
     use WithPagination;
 
 	protected $paginationTheme = 'bootstrap';
@@ -22,6 +23,10 @@ class OfflineRegistrations extends Component
         'Pending' => 'warning',
         'completed' => 'success',
         'expired' => 'secondary'
+    ];
+
+    protected $listeners = [
+        'confirmed'
     ];
     
     public function render()
@@ -45,6 +50,30 @@ class OfflineRegistrations extends Component
 
     public function hapus(){
 
+        $this->alert('warning', 'Anda yakin semua data akan dihapus?', [
+            'toast' => false,
+            'position' => 'center',
+            'showConfirmButton' => true,
+            'confirmButtonText' => 'Ya Hapus',
+            'onConfirmed' => 'confirmed',
+            'showCancelButton' => true,
+            'cancelButtonText' => 'Batal',
+            'timer' => null,
+        ]);
 
+    }
+
+
+    public function confirmed()
+    {
+        // Do something
+
+        $transactions = Transaction::latest()->whereIn('lokasi_test' , ["Offline"])->delete();
+
+
+        $this->alert('success', 'Data derhasil dihapus', [
+            'toast' => false,
+            'position' => 'center'            
+        ]);
     }
 }

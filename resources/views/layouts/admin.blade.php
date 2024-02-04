@@ -275,6 +275,11 @@
 
 @livewireScripts
 
+{{-- <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script> --}}
+<script src="{{ asset('vendor/livewire-alert/livewire-alert.js') }}"></script> 
+  
+<x-livewire-alert::scripts />
+
 <!-- Scripts -->
 <script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
 <script src="{{asset('js/jquery.simple.timer.js')}}" type="text/javascript"></script>
