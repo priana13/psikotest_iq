@@ -5,6 +5,8 @@ namespace App\Http\Livewire\Transactions;
 use Livewire\Component;
 use App\Models\Transaction;
 use Livewire\WithPagination;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\ExportPesertaOffline;
 
 
 class OfflineRegistrations extends Component
@@ -33,5 +35,16 @@ class OfflineRegistrations extends Component
             'transactions' => $transactions->paginate(10),
         ])
                 ->extends('layouts.admin')->section('main-content');
+    }
+
+    public function download(){
+
+        return Excel::download(new ExportPesertaOffline, 'peserta_offline_'.date('d-m-Y').'.xlsx');
+
+    }
+
+    public function hapus(){
+
+
     }
 }

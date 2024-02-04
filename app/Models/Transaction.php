@@ -49,6 +49,11 @@ class Transaction extends Model
         return $this->hasMany('App\Models\TransactionMidtran', 'transaction_id');
     }
 
+    public function scopeOffline($query){
+
+        return $query->where('lokasi_test', 'Offline');
+    }
+
 
     
 }

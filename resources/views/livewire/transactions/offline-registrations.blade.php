@@ -39,7 +39,7 @@
 
 								<th>Alamat</th>
                                 <th>Email</th>
-								<th>Status Pembayaran</th>
+								<th class="text-center">Status Pembayaran</th>
 								<td>ACTIONS</td>
 							</tr>
 						</thead>
@@ -54,8 +54,8 @@
                                 <td>{{ $row->user->alamat }}</td>
                                 {{-- <td></td> --}}
 								<td>{{ $row->user->email }}</td>
-								<td>
-									<span class="badge badge-{{ $warna_status[$row->status] }}">{{ $row->status }}</span>
+								<td class="text-center">
+									<span class="badge badge-{{ $warna_status[$row->status] }} text-dark">{{ $row->status }}</span>
 									
 								</td>
 								<td width="90">
@@ -90,7 +90,27 @@
 					</table>						
 					{{ $transactions->links() }}
 					</div>
+
+					{{-- footer card --}}
+					<div class="d-flex justify-content-end mt-4">
+
+						<button class="btn btn-sm btn-danger mx-2" wire:click="hapus">
+							<i class="fa fa-trash"></i>  Hapus Data
+						</button>
+
+
+						<button class="btn btn-sm btn-success" wire:click="download">
+							<i class="fa fa-download"></i>  Download
+						</button>
+	
+
+					</div>
+					{{-- end footer card --}}
+	
+
 				</div>
+
+
 			</div>
 		</div>
 	</div>
