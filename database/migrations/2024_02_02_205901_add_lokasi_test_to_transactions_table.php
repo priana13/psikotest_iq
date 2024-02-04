@@ -14,7 +14,7 @@ class AddLokasiTestToTransactionsTable extends Migration
     public function up()
     {
         Schema::table('transactions', function (Blueprint $table) {
-            $table->string('lokasi_test')->default('online'); // online, offline
+            $table->string('lokasi_test')->default('Online'); // online, offline
             $table->unsignedBigInteger('package_id')->nullable()->change();
         });
     }

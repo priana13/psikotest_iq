@@ -44,7 +44,7 @@
 						<tbody>
 							@foreach($transactions as $row)
 							<tr>
-								<td>{{ $loop->iteration }}</td> 
+								<td>{{ $row->id }}</td> 
 								<td>{{ ($row->package) ? $row->package->name : '-' }}</td>
 								<td>{{ $row->lokasi_test }}</td>
 								<td>{{ $row->created_at->format('d M Y') }}</td>

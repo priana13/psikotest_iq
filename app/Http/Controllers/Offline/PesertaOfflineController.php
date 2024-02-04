@@ -43,7 +43,7 @@ class PesertaOfflineController extends Controller
 			// 'package_id' => $this-> package_id,
             'code' => \uniqid(),
 			// 'payment_method_id' => 1,
-			'nominal' => 100000,
+			'nominal' => 2500000,
 			'status' => "Pending",
             "lokasi_test" => "Offline",
             "qty" => 1,

@@ -44,14 +44,12 @@ class Show extends Component
 
     public function payMidtrans(){   
 
-      if( $this->transaksi->lokasi_test ){
-
-        $biaya_test = 200000;
+      if( $this->transaksi->lokasi_test == 'Offline' ){
 
         $product = [
             [
                 'id'       => \uniqid(),
-                'price'    => $biaya_test,
+                'price'    => $this->transaksi->nominal,
                 'quantity' => 1,
                 'name'     => "Psikotes Offline",
             ]
