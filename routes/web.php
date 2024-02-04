@@ -25,6 +25,7 @@ use App\Http\Controllers\Norma\ReportController;
 use App\Http\Controllers\TrialPsikotestController;
 use App\Http\Controllers\Member\TypeSoalController;
 use App\Http\Controllers\Offline\PesertaOfflineController;
+use App\Http\Livewire\Transactions\OfflineRegistrations;
 
 /*
 |--------------------------------------------------------------------------
@@ -141,6 +142,8 @@ Route::middleware('auth')->group(function(){
 		Route::view('exam_events', 'livewire.exam-events.index');
 		Route::view('transactions', 'livewire.transactions.index')->name('admin.transactions');
 		Route::get('transaction/akses-user/{transaction}', AksesUser::class)->name('admin.transactions.akses_user');
+
+		Route::get('offline-registration', OfflineRegistrations::class)->name('admin.offline-registrations');
 		
 		
 		Route::view('payment_methods', 'livewire.payment-methods.index')->name('admin.payment_methods');
