@@ -39,83 +39,19 @@
         
                         {{-- <div class="collapse navbar-collapse" id="navbarSupportedContent"> --}}
                             <!-- Left Side Of Navbar -->
-                            @auth()
-                            <ul class="navbar-nav mr-auto">
-                                <!--Nav Bar Hooks - Do not delete!!-->
-                                <li class="nav-item">
-                                    <a href="{{ url('/examcategory') }}" class="nav-link"><i class="fab fa-laravel text-info"></i> Examcategory</a> 
-                                </li>
-                                <li class="nav-item">
-                                    <a href="{{ url('/memberships') }}" class="nav-link"><i class="fab fa-laravel text-info"></i> Memberships</a> 
-                                </li>
-                                <li class="nav-item">
-                                    <a href="{{ url('/confirmations') }}" class="nav-link"><i class="fab fa-laravel text-info"></i> Confirmations</a> 
-                                </li>
-                                <li class="nav-item">
-                                    <a href="{{ url('/packages') }}" class="nav-link"><i class="fab fa-laravel text-info"></i> Packages</a> 
-                                </li>
-                                <li class="nav-item">
-                                    <a href="{{ url('/posts') }}" class="nav-link"><i class="fab fa-laravel text-info"></i> Posts</a> 
-                                </li>
-                                <li class="nav-item">
-                                    <a href="{{ url('/categories') }}" class="nav-link"><i class="fab fa-laravel text-info"></i> Categories</a> 
-                                </li>
-                                <li class="nav-item">
-                                    <a href="{{ url('/examevents') }}" class="nav-link"><i class="fab fa-laravel text-info"></i> Examevents</a> 
-                                </li>
-                                <li class="nav-item">
-                                    <a href="{{ url('/exam_events') }}" class="nav-link"><i class="fab fa-laravel text-info"></i> Exam_events</a> 
-                                </li>
-                                <li class="nav-item">
-                                    <a href="{{ url('/transactions') }}" class="nav-link"><i class="fab fa-laravel text-info"></i> Transactions</a> 
-                                </li>
-                                <li class="nav-item">
-                                    <a href="{{ url('/payment_methods') }}" class="nav-link"><i class="fab fa-laravel text-info"></i> Payment_methods</a> 
-                                </li>
-                                <li class="nav-item">
-                                    <a href="{{ url('/users') }}" class="nav-link"><i class="fab fa-laravel text-info"></i> Users</a> 
-                                </li>
-                                <li class="nav-item">
-                                    <a href="{{ url('/settings') }}" class="nav-link"><i class="fab fa-laravel text-info"></i> Settings</a> 
-                                </li>
-                                <li class="nav-item">
-                                    <a href="{{ url('/scores') }}" class="nav-link"><i class="fab fa-laravel text-info"></i> Scores</a> 
-                                </li>
-                                <li class="nav-item">
-                                    <a href="{{ url('/questions') }}" class="nav-link"><i class="fab fa-laravel text-info"></i> Questions</a> 
-                                </li>
-                                <li class="nav-item">
-                                    <a href="{{ url('/exams') }}" class="nav-link"><i class="fab fa-laravel text-info"></i> Exams</a> 
-                                </li>
-                            </ul>
-                            @endauth()
+                           
                             
                             <!-- Right Side Of Navbar -->
                             <ul class="navbar-nav ml-auto ">
                                 <!-- Authentication Links -->
-                                @guest
-        
+                                {{-- @guest         --}}
                                
-                                <a href="{{ url('/') }}"><img src="/img/logo.png" alt="" class="img img-fluid" width="150px"></a>
+                                <a href="{{ url('/') }}"><img src="/img/logo.png" alt="" class="img img-fluid" width="150px"></a>         
         
-                               
-        
-                                {{-- 
-                                    @if (Route::has('login'))
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                                        </li>
-                                    @endif
-                                    
-                                    @if (Route::has('register'))
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                        </li>
-                                    @endif --}}
-        
-        
-                                @else
-                                        <li class="nav-item dropdown">
+                                {{-- @else
+
+
+                                    {{-- <li class="nav-item dropdown text-white">
                                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                             {{ Auth::user()->name }}
                                         </a>
@@ -131,8 +67,8 @@
                                                 @csrf
                                             </form>
                                         </div>
-                                    </li>
-                                @endguest
+                                    </li> --}}
+                                {{-- @endguest --}}
                             </ul>
                         {{-- </div> --}}
                     </div>

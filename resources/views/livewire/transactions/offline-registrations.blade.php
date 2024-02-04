@@ -10,6 +10,10 @@
 					<h4>Jumlah Data: {{ $transactions->count() }}</h4>
 				</div>
 
+				<div class="mx-2">
+					<a href="{{ route('offline.registrasi') }}" class="btn btn-sm btn-info" target="_blank">Formulir</a>
+				</div>
+
 			</div>
 
 			<div class="card">
@@ -104,6 +108,8 @@
 					{{-- footer card --}}
 					<div class="d-flex justify-content-end mt-4">
 
+						@if($transactions->count() > 0)
+
 						<button class="btn btn-sm btn-danger mx-2" wire:click="hapus">
 							<i class="fa fa-trash"></i>  Hapus Data
 						</button>
@@ -112,7 +118,8 @@
 						<button class="btn btn-sm btn-success" wire:click="download">
 							<i class="fa fa-download"></i>  Download
 						</button>
-	
+
+						@endif	
 
 					</div>
 					{{-- end footer card --}}
