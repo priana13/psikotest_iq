@@ -14,12 +14,13 @@
                     </div>
                     <br>
                     <div class="col-xl-4 col-md-6 mb-4">
-                        <!-- <div class="card bg-primary text-white shadow">
+                        <div class="card bg-primary text-white shadow">
                             <div class="card-body">
                                 <h1 class="timer text-white-100 text-center" data-seconds-left = {{$waktu_test}}></h1>  
+                                <h1 class="text-white-100 text-center" id="countdown"></h1>
 
                             </div>
-                        </div> -->
+                        </div>
                         <div id="customToastr" class="custom-toastr">
                             <h1 class="timer text-white-100 text-center" data-seconds-left = {{$waktu_test}}></h1>  
                         </div>
@@ -78,9 +79,9 @@
                                     </div>
                                 @endforeach
                             @endif                            
-                            
-                            <button id="finish" type="button" class="btn btn-primary text-right" wire:click="meSelesai({{$test_id}})" style="display: none;">FINISH</button>
-                           
+                            <div class="card-body">
+                                <button id="finish" type="button" class="btn btn-primary text-right" wire:click="meSelesai({{$test_id}})" >SELESAI</button>
+                            </div>
                         </div>
                     </div>
                 </div>

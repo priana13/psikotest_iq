@@ -14,12 +14,13 @@
                 </div>
                 <br>
                 <div class="col-xl-4 col-md-6 mb-4">
-                        <!-- <div class="card bg-primary text-white shadow">
+                        <div class="card bg-primary text-white shadow">
                             <div class="card-body">
                                 <h1 class="timer text-white-100 text-center" data-seconds-left = {{$waktu_test}}></h1>  
+                                <h1 class="text-white-100 text-center" id="countdown"></h1>
 
                             </div>
-                        </div> -->
+                        </div>
                         <div id="customToastr" class="custom-toastr">
                             <h1 class="timer text-white-100 text-center" data-seconds-left = {{$waktu_test}}></h1>  
                         </div>
@@ -42,10 +43,12 @@
                         </div>
                             
                         
-                       
-                        <button id="finish" type="button" class="btn btn-primary pull-right" wire:click="mindSelesai({{$test_id}})" style="display: none;">
-                                    FINISH
+                        <div class="card-footer">
+                            <button id="finish" type="button" class="btn btn-primary text-right" wire:click="mindSelesai({{$test_id}})">
+                                    NEXT
                                 </button>
+                        </div>
+                        
                      
                     </div>
                 </div>
@@ -58,13 +61,15 @@
                     <div class="col-md-12">
                         <div class="card">
                                 <div class="card-title px-4 pt-4 text-center">
-                                    <h5>PETUNJUK DAN CONTOH SOAL {{$NormaMind['nama']??'INTELLIGENCE STRUCTURE TEST AN - 03'}}</h5>
+                                    <h5>PETUNJUK DAN CONTOH SOAL {{$NormaMind['nama']??'INTELLIGENCE STRUCTURE TEST MIND - 09'}}</h5>
                                 </div>
                                 <div class="card-body">
-                                    <p>{{$NormaMind['petunjuk_kesatu']??''}}</p>                                    
-                                </div>
-                                <div class="card-body text-center">                                    
-                                    <img src="{{ url('storage/photos/'.$NormaMind['file_petunjuk'])}}" alt="no image" style="width: 250px; height: 250px;">
+                                   <p>{!! nl2br($NormaMind['petunjuk_kesatu'] ?? '') !!}</p>                                 
+                                </div>                                
+                                <div class="card-body text-center">     
+                                    @if($NormaMind['file_petunjuk'])                               
+                                     <img src="{{ url('storage/photos/'.$NormaMind['file_petunjuk'])}}" alt="no image" > 
+                                     @endif
                                 </div>
                                 <div class="card-body">   
                                     <p>JIKA ANDA SUDAH SIAP SILAHKAN KLIK TOMBOL</p>                                    

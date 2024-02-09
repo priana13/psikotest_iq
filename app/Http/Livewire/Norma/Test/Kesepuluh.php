@@ -65,7 +65,7 @@ class Kesepuluh extends Component
                 'nilai' => ($QuizMe->k == $answer)? $NormaMe->nilai_min :null                
             ]
         );
-        $this->emit('reloadPage');      
+         
     }
 
 

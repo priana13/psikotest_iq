@@ -56,7 +56,7 @@ class Ketujuh extends Component
     {
         $this->user_id = auth()->user()->id;    
         $no = $questionNumber; 
-        $listSoal = QuizFa::select('no')->orderBy('no', 'asc')->get();
+        $listSoal = QuizFa::select('no')->orderBy('no', 'desc')->get();
         $beforeNumber = null;
         foreach ($listSoal as $key => $value) {
             if ($value->no < $no) {
@@ -64,7 +64,8 @@ class Ketujuh extends Component
                 break;
             }
         }        
-        $before = ($beforeNumber !== null)?$beforeNumber: $questionNumber;    
+        
+        $before = ($beforeNumber != null)?$beforeNumber: $questionNumber;    
         $QuizFa = QuizFa::where('test_id', $testId)->where('no', $before)->first();
         if($QuizFa)  {
             $this->QuizFa = json_decode(json_encode($QuizFa), true);
@@ -100,6 +101,8 @@ class Ketujuh extends Component
 
             $this->waktu_mulai = ($testLog) ? Carbon::parse($testLog->waktu_mulai) : null; // Convert to Carbon
             
+        }else{
+            $this->emit('reloadPage');    
         }
 
       
@@ -156,6 +159,8 @@ class Ketujuh extends Component
 
             $this->waktu_mulai = ($testLog) ? Carbon::parse($testLog->waktu_mulai) : null; // Convert to Carbon
             
+        }else{
+            $this->emit('reloadPage');    
         }
 
        
@@ -195,9 +200,9 @@ class Ketujuh extends Component
     public function updateDatabase($quizId,$questionNumber)
     {       
         $QuizFa =QuizFa::where('id','=',$quizId)->first();
-        $NormaFa =Norma::where('tipe','=',6)->first();
+        $NormaFa =Norma::where('tipe','=',7)->first();
        
-        NormaTest::updateOrCreate(
+        $UpdateData = NormaTest::updateOrCreate(
             [
                 'user_id' => $this->user_id,
                 'test_id' => $this->test_id,
@@ -210,7 +215,9 @@ class Ketujuh extends Component
                 
             ]
         );
-        $this->emit('reloadPage');      
+        
+        
+            
     }
 
 

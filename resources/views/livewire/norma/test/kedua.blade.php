@@ -17,6 +17,7 @@
                         <div class="card bg-primary text-white shadow">
                             <div class="card-body">
                                 <h1 class="timer text-white-100 text-center" data-seconds-left = {{$waktu_test}}></h1>  
+                                <h1 class="text-white-100 text-center" id="countdown"></h1>
 
                             </div>
                         </div>
@@ -75,7 +76,7 @@
                             @endif
 
                                 <div class="card-body">
-                                    <button id="finish" type="button" class="btn btn-primary pull-right" wire:click="waSelesai({{$test_id}})" >
+                                    <button id="finish" type="button" class="btn btn-primary text-right" wire:click="waSelesai({{$test_id}})" >
                                         NEXT
                                     </button>
                                 </div>

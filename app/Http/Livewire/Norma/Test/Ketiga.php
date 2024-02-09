@@ -99,7 +99,7 @@ class Ketiga extends Component
                 
             ]
         );
-        $this->emit('reloadPage');      
+        
     }
 
 
