@@ -60,7 +60,7 @@ background: linear-gradient(112deg, rgba(165,197,226,1) 0%, rgba(84,150,208,1) 5
                     </div>
                     <div class="col-lg-4 iphone-wrap">
                       {{-- <img src="assets/img/phone_1.png" alt="Image" class="phone-1" data-aos="fade-right"> --}}
-                      <img src="img/icon-iq.png" alt="Image" class="img-fluid rounded shadow z-1" data-aos="fade-right" data-aos-delay="200">
+                      <img src="img/test-iq.png" alt="Image" class="img-fluid rounded shadow z-1 my-auto" data-aos="fade-right" data-aos-delay="200" width="200px">
                     </div>
                   </div>
                 </div>
@@ -124,7 +124,7 @@ background: linear-gradient(112deg, rgba(165,197,226,1) 0%, rgb(170, 207, 240) 5
 
       <div class="col-md-5 text-center mt-2">  
 
-        <img src="img/icon-iq.png" alt="sample-test-sikap-kerja" class="img img-thumbnail" width="200px">
+        <img src="img/test-sikap-kerja.png" alt="sample-test-sikap-kerja" class="img img-thumbnail" width="200px">
 
       </div>
     </div>

@@ -99,10 +99,10 @@
                         <tbody>
                             
                             <tr class="font-weight-bold">
-                                <td class="text-center">0-49</td> 
-                                <td class="text-center">50-60</td>                               
-                                <th class="text-center">61-79</th>
-                                <th class="text-center"> <span>80-100</span> </th>
+                                <td class="text-center">1-149</td> 
+                                <td class="text-center">150-160</td>                               
+                                <th class="text-center">161-179</th>
+                                <th class="text-center"> <span>180-200</span> </th>
                             </tr>                          
                         </tbody>
 

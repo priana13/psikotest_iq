@@ -44,7 +44,8 @@
 
                             <div class="row">                                
 
-                                <input class="mx-3" type="radio" name="jawaban" id="jawaban-a" wire:model="jawaban" value="a">                            
+                                <input class="mx-3" type="radio" name="jawaban" id="jawaban-a" wire:model="jawaban" value="a"> 
+                               
                                 <label class="form-check-label" for="jawaban-a">
                                 A. {!! $soal->a !!}
                                 </label>  
@@ -146,6 +147,8 @@
                           
                         </div>
 
+                        @if($exam->type != 'kepribadian') <!-- jika soal kepribaidan disembunyikan -->
+
                         <div class="form-check mb-2 shadow-sm p-2 soal" wire:click="pilih('e')">
 
                             <div class="row">
@@ -172,7 +175,9 @@
                                 @endif
                             </div>
 
-                        </div>                      
+                        </div>    
+                        
+                        @endif
                    
                     </div>
                 </fieldset>
