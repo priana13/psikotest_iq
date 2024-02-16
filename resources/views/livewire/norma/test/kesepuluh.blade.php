@@ -5,7 +5,7 @@
                     <div class="col-xl-8 col-md-6 mb-4">
                         <div class="card border-left-primary shadow-sm h-100 py-2">
                             <div class="card-body text-center">
-                                <a class="stretched-link text-primary font-weight-bold text-primary text-uppercase" href="#">PENUJUK WAKTU TEST</a>
+                                <a class="stretched-link text-primary font-weight-bold text-primary text-uppercase" href="#">PETUJUK WAKTU TEST</a>
                                 <div class="row no-gutters align-items-center">
                                     <p class="mt-2 text-center">{{$NormaMe['petunjuk_kedua']??''}}</p>
                                 </div>
@@ -80,7 +80,8 @@
                                 @endforeach
                             @endif                            
                             <div class="card-body">
-                                <button id="finish" type="button" class="btn btn-primary text-right" wire:click="meSelesai({{$test_id}})" >SELESAI</button>
+                                <button id="finish" type="button" class="btn btn-primary text-right" wire:click="meSelesai({{$test_id}})" style="display: none;">SELESAI</button>
+                                <button id="finish_" type="button" class="btn btn-primary text-right" onclick="confirm('Apakah anda ingin mengakhiri test tahap ? ')||event.stopImmediatePropagation()" wire:click="meSelesai({{$test_id}})" >SELESAI</button>
                             </div>
                         </div>
                     </div>

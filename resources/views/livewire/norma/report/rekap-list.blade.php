@@ -42,13 +42,7 @@
                                         <td>{{ $row->se }}</td>
                                         <td>{{ $row->wa }}</td>
                                         <td>{{ $row->an }}</td>
-                                        <td>
-                                            @if($row->ge_null >0)
-                                            <a href="#" class="btn btn-primary btn-block margin-bottom"  data-toggle="modal" data-target="#geKoreksiModal" wire:click="showKoreksiGe({{$row->user_id}})">({{$row->ge_null}}) Koreksi</a>
-                                            @else
-                                            {{ $row->ge }}
-                                            @endif
-                                        </td>
+                                        <td>{{ $row->ge }}</td>
                                         <td>{{ $row->ra }}</td>
                                         <td>{{ $row->zr }}</td>
                                         <td>{{ $row->fa }}</td>

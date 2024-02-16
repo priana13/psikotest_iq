@@ -28,6 +28,7 @@ class RekapShow extends Component
     public $total_rw;
     public $total_sw;
     public $iq;
+    public $kat;
     public $kategori;
 
 
@@ -81,7 +82,31 @@ class RekapShow extends Component
 
 
         $this->userNorma = ($userNorma) ? json_decode(json_encode($userNorma), true) : null;
-        $normaTest = DB::table('norma_test')
+         $normaTest = DB::table('norma_test_log')
+                            ->leftJoin('norma_test', function($join) {
+                                $join->on('norma_test.user_id', '=', 'norma_test_log.user_id')
+                                     ->on('norma_test.test_id', '=', 'norma_test_log.test_id');
+                            })
+                            ->leftJoin('norma', 'norma.id', '=', 'norma_test_log.test_id')
+                            ->leftJoin('users', 'users.id', '=', 'norma_test_log.user_id')
+                            ->select(
+                                'norma_test_log.user_id',
+                                'users.email',
+                                DB::raw('SUM(CASE WHEN norma.tipe = 1 THEN norma_test.nilai ELSE 0 END) AS se'),
+                                DB::raw('SUM(CASE WHEN norma.tipe = 2 THEN norma_test.nilai ELSE 0 END) AS wa'),
+                                DB::raw('SUM(CASE WHEN norma.tipe = 3 THEN norma_test.nilai ELSE 0 END) AS an'),
+                                DB::raw('SUM(CASE WHEN norma.tipe = 4 THEN norma_test.nilai ELSE 0 END) AS ge'),
+                                DB::raw('SUM(CASE WHEN norma.tipe = 5 THEN norma_test.nilai ELSE 0 END) AS ra'),
+                                DB::raw('SUM(CASE WHEN norma.tipe = 6 THEN norma_test.nilai ELSE 0 END) AS zr'),
+                                DB::raw('SUM(CASE WHEN norma.tipe = 7 THEN norma_test.nilai ELSE 0 END) AS fa'),
+                                DB::raw('SUM(CASE WHEN norma.tipe = 8 THEN norma_test.nilai ELSE 0 END) AS wu'),
+                                DB::raw('SUM(CASE WHEN norma.tipe = 10 THEN norma_test.nilai ELSE 0 END) AS me')
+                                
+                            )
+                            ->where('norma_test_log.user_id',$this->user_id)
+                            ->groupBy('users.email', 'norma_test_log.user_id')
+                            ->orderBy('norma_test_log.user_id', 'asc')->first();
+        /*$normaTest = DB::table('norma_test')
                     ->leftJoin('norma', 'norma.id', '=', 'norma_test.test_id')
                     ->leftJoin('users', 'users.id', '=', 'norma_test.user_id')
                     ->select(
@@ -94,12 +119,11 @@ class RekapShow extends Component
                         DB::raw('SUM(CASE WHEN norma.tipe = 6 THEN norma_test.nilai ELSE 0 END) AS zr'),
                         DB::raw('SUM(CASE WHEN norma.tipe = 7 THEN norma_test.nilai ELSE 0 END) AS fa'),
                         DB::raw('SUM(CASE WHEN norma.tipe = 8 THEN norma_test.nilai ELSE 0 END) AS wu'),
-                        DB::raw('SUM(CASE WHEN norma.tipe = 10 THEN norma_test.nilai ELSE 0 END) AS me'),
-                        DB::raw('COUNT(CASE WHEN norma.tipe = 4 AND( nilai IS NULL OR nilai ="")THEN 1 ELSE NULL END) AS ge_null'),
+                        DB::raw('SUM(CASE WHEN norma.tipe = 10 THEN norma_test.nilai ELSE 0 END) AS me')
                     )
                     ->where('norma_test.user_id',$this->user_id)
                     ->groupBy('users.email', 'norma_test.user_id') 
-                    ->orderBy('norma_test.user_id', 'asc')->first();
+                    ->orderBy('norma_test.user_id', 'asc')->first();*/
         $this->normaTest = ($normaTest) ? json_decode(json_encode($normaTest), true) : null;
 
         if($normaTest){
@@ -123,17 +147,47 @@ class RekapShow extends Component
                 'wu' => $wu->wu,
                 'me' => $me->me,
             ];   
+
             $this->total_rw =  $normaTest->se + $normaTest->wa + $normaTest->an + $normaTest->ge + $normaTest->ra + $normaTest->zr + $normaTest->fa + $normaTest->wu + $normaTest->me;   
             $total_sw = KunciIQ::select(strtolower($tipe_usia))->where('rw',$this->total_rw)->first();
             $this->total_sw = ($total_sw)? $total_sw->{strtolower($tipe_usia)} : 'gagal'; 
             $iq = KunciIQ::select('iq','kategori')->where('rw',$this->total_sw)->first();
-            $this->iq = ($iq)? $iq->iq:null;
-            $this->kategori = ($iq)? $iq->kategori:null;
+            $this->iq = ($iq)? $iq->iq:0;
+            $this->kat = [
+                'se' => ($normaTest->se) ? $this->getKategori($normaTest->se):$this->getKategori(0),
+                'wa' => ($normaTest->wa) ? $this->getKategori($normaTest->wa):$this->getKategori(0),
+                'an' => ($normaTest->an) ? $this->getKategori($normaTest->an):$this->getKategori(0),
+                'ge' => ($normaTest->ge) ? $this->getKategori($normaTest->ge):$this->getKategori(0),
+                'ra' => ($normaTest->ra) ? $this->getKategori($normaTest->ra):$this->getKategori(0),
+                'zr' => ($normaTest->zr) ? $this->getKategori($normaTest->zr):$this->getKategori(0),
+                'fa' => ($normaTest->fa) ? $this->getKategori($normaTest->fa):$this->getKategori(0),
+                'wu' => ($normaTest->wu) ? $this->getKategori($normaTest->wu):$this->getKategori(0),
+                'me' => ($normaTest->me) ? $this->getKategori($normaTest->me):$this->getKategori(0)
+            ];   
+          
+            $this->kategori = ($this->iq > 0)? $iq->kategori:'MENTALLY DEFECTIVE';
 
         }
-        
-        
+                
     }   
+
+    private function getKategori($kat){
+        $response = '';
+        if(($kat > 80)&&($kat < 95)){
+            $response = 'RENDAH';
+        }elseif(($kat > 94)&&($kat < 100)){
+            $response = 'SEDANG';
+        }elseif(($kat > 99)&&($kat < 105)){
+            $response = 'CUKUP';
+        }elseif(($kat > 104)&&($kat < 119)){
+            $response = 'TINGGI';
+        }elseif(($kat > 118)){
+            $response = 'SANGAT TINGGI';
+        }else{
+            $response = 'SANGAT RENDAH';
+        }
+        return $response;
+    }
 
     public function render()
     {
