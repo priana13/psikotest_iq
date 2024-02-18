@@ -16,6 +16,7 @@ class Settings extends Component
 
     public function render()
     {
+  
 		$keyWord = '%'.$this->keyWord .'%';
         return view('livewire.settings.view', [
             'settings' => Setting::latest()

@@ -24,6 +24,8 @@ use App\Http\Controllers\Member\UjianController;
 use App\Http\Controllers\Norma\ReportController;
 use App\Http\Controllers\TrialPsikotestController;
 use App\Http\Controllers\Member\TypeSoalController;
+use App\Http\Controllers\Offline\PesertaOfflineController;
+use App\Http\Livewire\Transactions\OfflineRegistrations;
 
 /*
 |--------------------------------------------------------------------------
@@ -51,6 +53,14 @@ Route::get('/harga', [HalamanHargaController::class, 'index'])->name('page.harga
 Route::get('/blog', [PageController::class, 'index'])->name('blog');
 Route::get('/page/{slug}', [PageController::class, 'show'])->name('front.page');
 Route::get('/category/{slug}', [CategoryController::class, 'show'])->name('category');
+
+Route::prefix('offline')->group(function(){
+
+	Route::get('registrasi', [PesertaOfflineController::class, 'registrasi'])->name('offline.registrasi');
+	Route::post('registrasi', [PesertaOfflineController::class, 'store'])->name('offline.registrasi.store');
+	Route::get('pembayaran/{transaction}', [PesertaOfflineController::class, 'pembayaran'])->name('offline.pembayaran');
+
+});
 
 Route::prefix('coba')->group(function(){
 
@@ -132,6 +142,8 @@ Route::middleware('auth')->group(function(){
 		Route::view('exam_events', 'livewire.exam-events.index');
 		Route::view('transactions', 'livewire.transactions.index')->name('admin.transactions');
 		Route::get('transaction/akses-user/{transaction}', AksesUser::class)->name('admin.transactions.akses_user');
+
+		Route::get('offline-registration', OfflineRegistrations::class)->name('admin.offline-registrations');
 		
 		
 		Route::view('payment_methods', 'livewire.payment-methods.index')->name('admin.payment_methods');

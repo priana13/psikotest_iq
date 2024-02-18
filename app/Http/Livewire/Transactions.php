@@ -23,16 +23,26 @@ class Transactions extends Component
     ];
 
     public function render()
-    {
-		$keyWord = '%'.$this->keyWord .'%';
+    {     
+
+        $transactions = Transaction::latest()->whereIn('lokasi_test' , ["online", 'Online']);
+    
+
+        if($this->keyWord){
+
+            $keyWord = '%'.$this->keyWord .'%';
+
+            $transactions = $transactions->orWhere('user_id', 'LIKE', $keyWord)
+                                ->orWhere('package_id', 'LIKE', $keyWord)
+                                ->orWhere('payment_method_id', 'LIKE', $keyWord)
+                                ->orWhere('nominal', 'LIKE', $keyWord)
+                                ->orWhere('status', 'LIKE', $keyWord);
+        }
+
+	
+
         return view('livewire.transactions.view', [
-            'transactions' => Transaction::latest()
-						->orWhere('user_id', 'LIKE', $keyWord)
-						->orWhere('package_id', 'LIKE', $keyWord)
-						->orWhere('payment_method_id', 'LIKE', $keyWord)
-						->orWhere('nominal', 'LIKE', $keyWord)
-						->orWhere('status', 'LIKE', $keyWord)
-						->paginate(10),
+            'transactions' => $transactions->paginate(10),
         ]);
     }
 	

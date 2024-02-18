@@ -11,7 +11,7 @@ class Show extends Component
     public $snapToken;
     public $status_transaksi;
 
-    public function mount($transaksi){
+    public function mount($transaksi){      
         
         $this->transaksi = $transaksi;
         $this->status_transaksi = $this->transaksi->status;
@@ -42,7 +42,31 @@ class Show extends Component
     }
 
 
-    public function payMidtrans(){       
+    public function payMidtrans(){   
+
+      if( $this->transaksi->lokasi_test == 'Offline' ){
+
+        $product = [
+            [
+                'id'       => \uniqid(),
+                'price'    => $this->transaksi->nominal,
+                'quantity' => 1,
+                'name'     => "Psikotes Offline",
+            ]
+        ];
+
+      }else{
+
+        $product = [
+            [
+                'id'       => $this->transaksi->package->id,
+                'price'    => $this->transaksi->package->price,
+                'quantity' => $this->transaksi->qty,
+                'name'     => $this->transaksi->package->name,
+            ]
+        ]; 
+
+      } 
        
 
         $payload = [
@@ -56,18 +80,13 @@ class Show extends Component
                 'phone'         => $this->transaksi->hp,
                 'address'       => $this->transaksi->alamat,
             ],
-            'item_details' => [
-                [
-                    'id'       => $this->transaksi->package->id,
-                    'price'    => $this->transaksi->package->price,
-                    'quantity' => $this->transaksi->qty,
-                    'name'     => $this->transaksi->package->name,
-                ]
-            ],
+            'item_details' => $product,
             // pilihan bank channel
             // 'enabled_payments'=> [$donation->channel]
 
         ];
+
+        // dd($payload);
       
 
         if($this->transaksi->midtrans->count() > 0){           
