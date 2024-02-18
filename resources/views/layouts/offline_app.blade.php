@@ -46,7 +46,7 @@
                                 <!-- Authentication Links -->
                                 {{-- @guest         --}}
                                
-                                <a href="{{ url('/') }}"><img src="/img/logo.png" alt="" class="img img-fluid" width="150px"></a>         
+                                <a href="{{ url('/') }}"><img src="/img/genius-media-aktiva.png" alt="" class="img img-fluid" width="180px"></a>         
         
                                 {{-- @else
 

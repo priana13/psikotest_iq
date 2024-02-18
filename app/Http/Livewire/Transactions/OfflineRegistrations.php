@@ -76,4 +76,13 @@ class OfflineRegistrations extends Component
             'position' => 'center'            
         ]);
     }
+
+    public function aprove($id){
+
+        $transaksi  = Transaction::find($id);
+
+        $transaksi->status = 'completed';
+
+        $transaksi->save();
+    }
 }

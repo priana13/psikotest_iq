@@ -69,7 +69,7 @@
                                 {{-- <td></td> --}}
 								<td>{{ $row->user->email }}</td>
 								<td class="text-center">
-									<span class="badge badge-{{ $warna_status[$row->status] }} text-dark">{{ $row->status }}</span>
+									<span class="badge badge-{{ $warna_status[$row->status] }} text-white">{{ $row->status }}</span>
 									
 								</td>
 								<td width="90">
