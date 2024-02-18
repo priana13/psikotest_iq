@@ -23,7 +23,8 @@ class SettingController extends Controller
             "app_name" => Setting::where('name','app_name')->first(),
             "app_bio" => Setting::where('name','app_bio')->first(),
             "pengumuman" => Setting::where('name','pengumuman')->first(),
-            "tips_and_trick" => Setting::where('name','tips_and_trick')->first()
+            "tips_and_trick" => Setting::where('name','tips_and_trick')->first(),
+            "biaya_offline" => Setting::where('name','biaya_offline')->first()
         ];  
 
         return view('setting', compact('list_post', 'setting', 'list_category'));
@@ -37,7 +38,8 @@ class SettingController extends Controller
             'tentang' => 'integer',
             'syarat_ketentuan' => 'integer',
             'kebijakan' => 'integer',
-            'pengumuman' => 'string'
+            'pengumuman' => 'string',
+            'biaya_offline' => 'integer'
         ]);
 
 
@@ -59,7 +61,12 @@ class SettingController extends Controller
         // setting Pengumuman
         $pengumuman = Setting::where('name','pengumuman')->first();           
         $pengumuman->value = $request->pengumuman; 
-        $pengumuman->save();      
+        $pengumuman->save();     
+        
+        // setting offline price
+        $pengumuman = Setting::where('name','biaya_offline')->first();           
+        $pengumuman->value = $request->biaya_offline; 
+        $pengumuman->save();
 
 
         // update kontak

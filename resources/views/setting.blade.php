@@ -20,7 +20,7 @@
                         <h5 class="mb-2"> <em>Global</em>  </h5>  
 
                         <div class="form-group row">
-                            <label class="col-md-2">App Name</label>
+                            <label class="col-md-2">Nama Aplikasi</label>
                             <input type="text" class="form-control form-control-sm col-md-8" name="app_name" value="{{ $setting["app_name"]->value }}">
                         </div>
 
@@ -133,6 +133,23 @@
                             @error('tips_and_trick') <span class="text-danger">{{ $message }}</span> @enderror
         
                         </div>   
+
+
+
+                        <div class="title mb-3 mt-5">
+                            <h5 class=""> <em>Setting Pendaftaran Offline</em>  </h5>                          
+                            {{-- <small id="" class="form-text text-muted">
+                                Jika Halaman belum tersedia, Anda Harus <a href="{{ route("admin.posts") }}" target="_blank">Membuat Page</a>  terlebih dahulu.
+                            </small> --}}
+                        </div>
+
+
+                        <div class="form-group row">
+                            <label class="col-md-2">Harga Test Offline</label>
+                            <input type="text" class="form-control form-control-sm col-md-8" name="biaya_offline" value="{{ $setting["biaya_offline"]->value }}">
+                        </div>
+
+                      
                         
                         
                       

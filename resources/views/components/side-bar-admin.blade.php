@@ -204,6 +204,14 @@
         </a>
     </li>
 
+    <li class="nav-item {{ Nav::isRoute('admin.transactions') }}">
+        <a class="nav-link py-2" href="{{ route('admin.offline-registrations') }}">
+            {{-- <i class="fas fa-fw fa-hands-helping"></i> --}}
+            <i class="fas fa-tasks"></i>
+            <span>Registrasi Offline</span> <span class="badge badge-danger rounded-pill mx-1">New</span>
+        </a>
+    </li>
+
 
     <li class="nav-item {{ Nav::isRoute('admin.confirmations') }}">
         <a class="nav-link py-2" href="{{ route('admin.confirmations') }}">

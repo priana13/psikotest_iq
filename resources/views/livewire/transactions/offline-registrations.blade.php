@@ -1,24 +1,40 @@
 @section('title', __('Transactions'))
-<div class="container-fluid">
+<div class="">
 	<div class="row justify-content-center">
 		<div class="col-md-12">
+
+			{{-- header --}}
+
+			<div class="d-flex justify-content-end">
+				<div>
+					<h4>Jumlah Data: {{ $transactions->count() }}</h4>
+				</div>
+
+				<div class="mx-2">
+					<a href="{{ route('offline.registrasi') }}" class="btn btn-sm btn-info" target="_blank">Formulir</a>
+				</div>
+
+			</div>
+
 			<div class="card">
 				<div class="card-header">
 					<div style="display: flex; justify-content: space-between; align-items: center;">
 						<div class="float-left">
 							<h4> <i class="fas fa-tasks"></i>
-							Transaksi </h4>
+							DAFTAR PESERTA REGISTRASI </h4>
 						</div>
 					
 						@if (session()->has('message'))
 						<div wire:poll.4s class="btn btn-sm btn-success" style="margin-top:0px; margin-bottom:0px;"> {{ session('message') }} </div>
 						@endif
-						<div>
+
+						{{-- <div>
 							<input wire:model='keyWord' type="text" class="form-control" name="search" id="search" placeholder="Cari Transaksi">
 						</div>
 						<div class="btn btn-sm btn-success" data-toggle="modal" data-target="#createDataModal">
 						<i class="fa fa-plus"></i>  Tambah Transaksi
-						</div>
+						</div> --}}
+
 					</div>
 				</div>
 				
@@ -29,31 +45,31 @@
 					<table class="table table-bordered table-sm">
 						<thead class="thead">
 							<tr> 
-								<td>#</td> 
-								<th>Nama Paket</th>
-								<th>Tipe</th>
-								<th>Tanggal</th>
-								<th>User</th>								
-								<th>Payment</th>
-								<th>Bulan/Qty</th>
-								<th>Nominal</th>
-								<th>Status</th>
+								<td>#Id</td> 								
+								<th>Nama</th>
+								<th>Jenis Kelamin</th>								
+								<th>No Hp</th>
+								<th>Minat</th>
+
+								<th>Alamat</th>
+                                <th>Email</th>
+								<th class="text-center">Status Pembayaran</th>
 								<td>ACTIONS</td>
 							</tr>
 						</thead>
 						<tbody>
 							@foreach($transactions as $row)
 							<tr>
-								<td>{{ $row->id }}</td> 
-								<td>{{ ($row->package) ? $row->package->name : '-' }}</td>
-								<td>{{ $row->lokasi_test }}</td>
-								<td>{{ $row->created_at->format('d M Y') }}</td>
-								<td>{{ $row->user->name }}</td>								
-								<td>{{ $row->payment_type }}</td>
-								<td>{{ $row->qty }}</td>
-								<td>{{ number_format($row->nominal) }}</td>
-								<td>
-									<span class="badge badge-{{ $warna_status[$row->status] }}">{{ $row->status }}</span>
+								<td>{{ $row->id }}</td> 								
+								<td>{{ $row->user->name}}</td>
+								<td>{{ $row->user->jenis_kelamin }}</td>								
+								<td>{{ $row->user->hp }}</td>
+								<td>{{ $row->user->minat }}</td>
+                                <td>{{ $row->user->alamat }}</td>
+                                {{-- <td></td> --}}
+								<td>{{ $row->user->email }}</td>
+								<td class="text-center">
+									<span class="badge badge-{{ $warna_status[$row->status] }} text-dark">{{ $row->status }}</span>
 									
 								</td>
 								<td width="90">
@@ -61,8 +77,7 @@
 									<button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 									Actions
 									</button>
-									<div class="dropdown-menu dropdown-menu-right">
-									<a href="#" data-toggle="modal" data-target="#updateModal" class="dropdown-item" wire:click="edit({{$row->id}})"><i class="fa fa-edit"></i> Edit </a>							 
+									<div class="dropdown-menu dropdown-menu-right">																 
 									<a href="#" class="dropdown-item" onclick="confirm('Confirm Delete Transaction id {{$row->id}}? \nDeleted Transactions cannot be recovered!')||event.stopImmediatePropagation()" wire:click="destroy({{$row->id}})"><i class="fa fa-trash"></i> Delete </a> 
 									
 									<a href="#" class="dropdown-item" onclick="confirm('Selesaikan Transaksi ini \n Akses Psikotes untuk transaksi ini akan di Aprove')||event.stopImmediatePropagation()" wire:click="aprove({{$row->id}})">
@@ -89,7 +104,30 @@
 					</table>						
 					{{ $transactions->links() }}
 					</div>
+
+					{{-- footer card --}}
+					<div class="d-flex justify-content-end mt-4">
+
+						@if($transactions->count() > 0)
+
+						<button class="btn btn-sm btn-danger mx-2" wire:click="hapus">
+							<i class="fa fa-trash"></i>  Hapus Data
+						</button>
+
+
+						<button class="btn btn-sm btn-success" wire:click="download">
+							<i class="fa fa-download"></i>  Download
+						</button>
+
+						@endif	
+
+					</div>
+					{{-- end footer card --}}
+	
+
 				</div>
+
+
 			</div>
 		</div>
 	</div>

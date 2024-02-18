@@ -44,7 +44,7 @@
       <div class="">
         {{-- <h1><a href="{{ route('home') }}">{{ config('app.name') }}</a></h1> --}}
         <!-- Uncomment below if you prefer to use an image logo -->
-        <a href="index.html"><img src="img/logo.png" alt="" class="img img-fluid" width="150px"></a>
+        <a href="{{ url('/') }}"><img src="img/logo.png" alt="" class="img img-fluid" width="150px"></a>
       </div>
 
       <nav id="navbar" class="navbar">

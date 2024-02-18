@@ -5,15 +5,15 @@
         <div class="card shadow pb-4">          
          
             <div class="card-body">
-             
+               
                 <div class="row">
 
                     <div class="col p-3 mb-5 text-center">
                        
-                       <h2 class="mb-3"><strong>Terimakasih sudah melakukan order Voucher Bulanan</strong></h2> 
+                       <h2 class="mb-3"><strong>Terimakasih sudah melakukan order Voucher</strong></h2> 
 
                        <h4 class="mb-3">Untuk menyelesaikan proses order, silahkan transfer sejumlah</h4>
-
+                     
                        <h1 class="text-success font-bold">
                         <strong>Rp {{ number_format($transaksi->nominal) }}</strong> 
                        </h1>
