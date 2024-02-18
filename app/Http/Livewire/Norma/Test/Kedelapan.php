@@ -55,7 +55,7 @@ class Kedelapan extends Component
     {
         $this->user_id = auth()->user()->id;    
         $no = $questionNumber; 
-        $listSoal = QuizWu::select('no')->orderBy('no', 'asc')->get();
+        $listSoal = QuizWu::select('no')->orderBy('no', 'desc')->get();
         $beforeNumber = null;
         foreach ($listSoal as $key => $value) {
             if ($value->no < $no) {
@@ -99,6 +99,8 @@ class Kedelapan extends Component
 
             $this->waktu_mulai = ($testLog) ? Carbon::parse($testLog->waktu_mulai) : null; // Convert to Carbon
             
+        }else{
+            $this->emit('reloadPage');    
         }
 
       
@@ -155,6 +157,8 @@ class Kedelapan extends Component
 
             $this->waktu_mulai = ($testLog) ? Carbon::parse($testLog->waktu_mulai) : null; // Convert to Carbon
             
+        }else{
+            $this->emit('reloadPage');    
         }
 
        
@@ -194,9 +198,9 @@ class Kedelapan extends Component
     public function updateDatabase($quizId,$questionNumber)
     {       
         $QuizWu =QuizWu::where('id','=',$quizId)->first();
-        $NormaWu =Norma::where('tipe','=',6)->first();
+        $NormaWu =Norma::where('tipe','=',8)->first();
        
-        NormaTest::updateOrCreate(
+        $UpdateData = NormaTest::updateOrCreate(
             [
                 'user_id' => $this->user_id,
                 'test_id' => $this->test_id,
@@ -208,7 +212,7 @@ class Kedelapan extends Component
                 'nilai' => ($QuizWu->k == $this->answer)? $NormaWu->nilai_min :null  
             ]
         );
-        $this->emit('reloadPage');      
+        
     }
 
 

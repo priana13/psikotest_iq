@@ -100,7 +100,7 @@ class Kelima extends Component
                 
             ]
         );
-         $this->emit('reloadPage');      
+         
     }
 
 

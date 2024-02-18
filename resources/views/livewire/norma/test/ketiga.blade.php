@@ -6,7 +6,7 @@
                     <div class="col-xl-8 col-md-6 mb-4">
                         <div class="card border-left-primary shadow-sm h-100 py-2">
                             <div class="card-body text-center">
-                                <a class="stretched-link text-primary font-weight-bold text-primary text-uppercase" href="#">PENUJUK WAKTU TEST</a>
+                                <a class="stretched-link text-primary font-weight-bold text-primary text-uppercase" href="#">PETUJUK WAKTU TEST</a>
                                 <div class="row no-gutters align-items-center">
                                    <p class="mt-2 text-center">{{$NormaAn['petunjuk_kedua']??''}}</p>
                                 </div>
@@ -18,6 +18,7 @@
                         <div class="card bg-primary text-white shadow">
                             <div class="card-body">
                                 <h1 class="timer text-white-100 text-center" data-seconds-left = {{$waktu_test}}></h1>  
+                                <h1 class="text-white-100 text-center" id="countdown"></h1>
 
                             </div>
                         </div>
@@ -81,9 +82,8 @@
                             @endif
 
                             <div class="card-body">
-                                <button id="finish" type="button" class="btn btn-primary pull-right" wire:click="anSelesai({{$test_id}})" >
-                                        NEXT
-                                    </button>
+                                <button id="finish" type="button" class="btn btn-primary text-right" wire:click="anSelesai({{$test_id}})" style="display: none;">NEXT</button>
+                                <button id="finish_" type="button" class="btn btn-primary text-right" onclick="confirm('Apakah anda ingin berpindah ke test tahap selanjutnya ? ')||event.stopImmediatePropagation()" wire:click="anSelesai({{$test_id}})" >NEXT</button>
                             </div>
                             
                             
@@ -106,7 +106,7 @@
                                 </div>                                
                                 <div class="card-body text-center">     
                                     @if($NormaAn['file_petunjuk'])                               
-                                     <img src="{{ url('storage/photos/'.$NormaAn['file_petunjuk'])}}" alt="no image" > 
+                                     <img src="{{ url('storage/photos/'.$NormaAn['file_petunjuk'])}}" alt="no image" style="width: 100%;height: auto;">  
                                      @endif
                                 </div>
                                 <div class="card-body">   

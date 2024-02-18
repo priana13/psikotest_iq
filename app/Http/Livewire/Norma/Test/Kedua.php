@@ -100,7 +100,7 @@ class Kedua extends Component
                 
             ]
         );
-        $this->emit('reloadPage');      
+        
     }
 
 

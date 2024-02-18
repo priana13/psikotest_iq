@@ -60,6 +60,20 @@
                                         <td>{{ $sw['wu'] }}</td>
                                         <td>{{ $sw['me'] }}</td> 
                                     </tr>                                    
+                                    @endif       
+                                    @if($kat)                               
+                                    <tr>                                    
+                                        <td>SW</td>
+                                        <td>{{ $kat['se'] }}</td>
+                                        <td>{{ $kat['wa'] }}</td>
+                                        <td>{{ $kat['an'] }}</td>
+                                        <td>{{ $kat['ge'] }}</td>
+                                        <td>{{ $kat['ra'] }}</td>
+                                        <td>{{ $kat['zr'] }}</td>
+                                        <td>{{ $kat['fa'] }}</td>
+                                        <td>{{ $kat['wu'] }}</td>
+                                        <td>{{ $kat['me'] }}</td> 
+                                    </tr>                                    
                                     @endif                              
                                     </tbody>
                                 </table>                               

@@ -98,7 +98,7 @@ class Kesatu extends Component
                 'nilai' => ($QuizSe->k == $answer)? $NormaSe->nilai_min :null                
             ]
         );
-         $this->emit('reloadPage');      
+         
     }
 
 

@@ -99,7 +99,7 @@ class Keenam extends Component
                 'nilai' => (json_decode($QuizZr->k,TRUE) == array_values($answer))? $NormaZr->nilai_min :null  
             ]
         );
-        $this->emit('reloadPage');      
+        
 
     }
 

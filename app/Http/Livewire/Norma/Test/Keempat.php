@@ -47,7 +47,7 @@ class Keempat extends Component
             );
         }
         $this->emit('reloadPage');        
-        //$this->prompt = json_encode($userNorma);
+       
     }
 
     public function geSelesai($testId){ 
@@ -108,7 +108,7 @@ class Keempat extends Component
                 
             ]
         );
-        $this->emit('reloadPage');      
+        
     }
 
 

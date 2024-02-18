@@ -13,23 +13,6 @@
                 });
 
                 Livewire.on('timerUpdated', (secondsLeft) => {
-                    document.addEventListener('DOMContentLoaded', function () {
-                        showCustomToastr();
-
-                        function showCustomToastr() {
-                            var customToastr = document.getElementById('customToastr');
-                            customToastr.style.display = 'block';
-
-                            // Add a click event listener to the customToastr element
-                            customToastr.addEventListener('click', function (event) {
-                                // Stop the click event from propagating to the document
-                                event.stopPropagation();
-                            });
-                        }                       
-                    });
-                    Livewire.hook('message.sent', () => {
-                            event.stopPropagation();
-                        });
                     $('.timer').hide();
                     const countdownInterval = setInterval(updateCountdown, 1000);
 
@@ -46,7 +29,6 @@
                             const formattedSeconds = String(seconds).padStart(2, '0');
 
                             const countdownElement = document.getElementById('countdown');
-                            
                             countdownElement.innerHTML = `${formattedHours}:${formattedMinutes}:${formattedSeconds}`;
                         } else {
                             
@@ -57,30 +39,11 @@
                     }
                 });
 
-
                 Livewire.on('reloadPage', function () {                    
                     location.reload();
                 });
-
-                document.addEventListener('DOMContentLoaded', function () {
-                    showCustomToastr();
-                    function showCustomToastr() {
-                        var customToastr = document.getElementById('customToastr');
-                        customToastr.style.display = 'block';                        
-                        customToastr.addEventListener('click', function (event) {                            
-                            event.stopPropagation();
-                        });
-                    }
-
-                   
-                });
-
-
-
-                
             </script>
         @endpush
     </div>
 </div>
-
 @endsection
