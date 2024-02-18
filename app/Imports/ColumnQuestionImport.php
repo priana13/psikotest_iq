@@ -5,8 +5,9 @@ namespace App\Imports;
 use App\Models\Question;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
+use Maatwebsite\Excel\Concerns\SkipsEmptyRows;
 
-class ColumnQuestionImport implements ToModel,WithHeadingRow
+class ColumnQuestionImport implements ToModel,WithHeadingRow , SkipsEmptyRows
 {
 
     public $examId;
@@ -28,7 +29,7 @@ class ColumnQuestionImport implements ToModel,WithHeadingRow
     {      
 
         // lakukan pengecekan soal tersedia di sini,
-        // jika nomor dari soal ini sudah ada, lakukan update / overwrite
+        // jika nomor dari soal ini sudah ada, lakukan update / overwrite     
 
         $question = Question::where('exam_id', $this->examId)->where('no', $row['no'])->where('exam_column_id' , $this->column_id)->first();
       
