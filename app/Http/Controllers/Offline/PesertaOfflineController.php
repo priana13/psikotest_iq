@@ -32,7 +32,8 @@ class PesertaOfflineController extends Controller
                 'alamat' => $request->alamat,
                 'hp' => $request->hp,
                 'jenis_kelamin' => $request->jenis_kelamin,
-                'level' => "user",               
+                'level' => "user",  
+                'lokasi_test' => "Offline"            
             ]);
         }           
 
