@@ -37,10 +37,10 @@
                     <span class="border py-2 px-4 border-primary text-success" style="font-size:36px;">{{ $examevent->nilai }}</span> 
                 </h3>
 
-                {{-- Table 1 --}}                 
+                {{-- Table 1 --}}  
                
 
-                @if($examevent->type == 'Akademik')
+                @if($examevent->type != "kepribadian")
 
                 {{-- hasil psikotes Akademik --}}
                 <div class="table-responsive mt-3">
