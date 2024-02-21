@@ -107,19 +107,22 @@ class MidtransController extends Controller
 
             $transaksi->status = 'completed';  
             
-            
-            // tambahkan langganan sesuai paket yang dipesan
-            $hari_ini = Carbon::now(); 
-            $bulan_depan = $hari_ini->addMonth($transaksi->qty);
+            if($transaksi->lokasi_test == 'Online'){
 
-            Membership::create([ 
-              'user_id' => $transaksi->user_id,
-              'member_type' => "Langganan",
-              'start' =>  Carbon::now(),
-              'end' => $bulan_depan,
-              'status' => "active",
-              'package_id' => $transaksi->package_id
-            ]);
+                // tambahkan langganan sesuai paket yang dipesan
+                $hari_ini = Carbon::now(); 
+                $bulan_depan = $hari_ini->addMonth($transaksi->qty);
+
+                Membership::create([ 
+                  'user_id' => $transaksi->user_id,
+                  'member_type' => "Langganan",
+                  'start' =>  Carbon::now(),
+                  'end' => $bulan_depan,
+                  'status' => "active",
+                  'package_id' => $transaksi->package_id
+                ]);
+
+            }
             
             /**Kirim notifikasi ke whatsap */
                 
@@ -130,9 +133,7 @@ class MidtransController extends Controller
 
                $this->send_completed_mail();
     
-          } elseif($transaction == 'pending'){    
-            
-                      
+          } elseif($transaction == 'pending'){ 
               
             
             // kiri pesan whatsapp pending                     
