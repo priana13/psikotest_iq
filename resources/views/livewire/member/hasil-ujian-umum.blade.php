@@ -40,7 +40,7 @@
                 {{-- Table 1 --}}  
                
 
-                @if($examevent->type != "kepribadian")
+                @if($examevent->type == "Akademik")
 
                 {{-- hasil psikotes Akademik --}}
                 <div class="table-responsive mt-3">
@@ -99,10 +99,10 @@
                         <tbody>
                             
                             <tr class="font-weight-bold">
-                                <td class="text-center">1-149</td> 
-                                <td class="text-center">150-160</td>                               
-                                <th class="text-center">161-179</th>
-                                <th class="text-center"> <span>180-200</span> </th>
+                                <td class="text-center"> {{ ($examevent->type == 'cerdas') ? "1-49" : "1-149" }} </td> 
+                                <td class="text-center">{{ ($examevent->type == 'cerdas') ? "50-60" : "150-160" }}</td>                               
+                                <th class="text-center"> {{ ($examevent->type == 'cerdas') ? "61-79" : "161-179" }}</th>
+                                <th class="text-center"> <span>{{ ($examevent->type == 'cerdas') ? "80-100" : "180-200" }}</span> </th>
                             </tr>                          
                         </tbody>
 
