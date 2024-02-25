@@ -52,7 +52,8 @@ class ExamController extends Controller
             'nilai_min' => 'string|required',
             'peraturan' => 'string',
             'type' => 'required|string',
-            'examcategory_id' => 'required|integer'
+            'examcategory_id' => 'required|integer',
+            'status' => 'required|string'
             ]);
 
         (!$request->type)?
@@ -65,7 +66,8 @@ class ExamController extends Controller
             'nilai_min' => $request->nilai_min,
             'peraturan' => $request->peraturan,
             'type' => $type,
-            'examcategory_id' => $request->examcategory_id
+            'examcategory_id' => $request->examcategory_id,
+            'status' => $request->status
 
         ]);           
          
@@ -112,7 +114,8 @@ class ExamController extends Controller
             'waktu' => 'required',
             'nilai_min' => 'required',
             'peraturan' => 'required',
-            'examcategory_id' => 'required|integer'
+            'examcategory_id' => 'required|integer',
+            'status' => 'required|string'
          ]);
     
           
@@ -124,7 +127,8 @@ class ExamController extends Controller
             'nilai_min' => $request->nilai_min,
             'peraturan' => $request->peraturan,
             'col_qty' => $request->col_qty,
-            'examcategory_id' => $request->examcategory_id
+            'examcategory_id' => $request->examcategory_id,
+            'status' => $request->status
             ]);
            
             return redirect()->route('admin.exams')->with('message', 'Data Psikotes Berhasil Diupdate');

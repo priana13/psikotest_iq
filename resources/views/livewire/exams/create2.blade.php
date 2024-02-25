@@ -56,6 +56,21 @@
                     @error('peraturan') <span class="text-danger">{{ $message }}</span> @enderror
                 </div>
     
+                <div class="row">
+
+                    <div class="form-group col-3">
+                        <Label>Status</Label>
+                        <select name="status" id="" class="form-control">
+                            <option value="Draft" {{ (old('status') == 'Draft')?'selected':'' }}>Draft</option>
+                            <option value="Aktif" {{ (old('status') == 'Aktif')?'selected':'' }}>Aktif</option>
+                            <option value="Off" {{ (old('status') == 'Off')?'selected':'' }}>Off</option>
+                        </select>
+    
+                        @error('status') <span class="text-danger">{{ $message }}</span> @enderror
+                    </div>
+
+                </div>                
+
                    
                 </div>
                 <div class="card-footer">
@@ -66,8 +81,7 @@
 
 
         </form>
-       
-
+             
 
 
     </div>     
