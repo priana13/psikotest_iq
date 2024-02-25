@@ -78,16 +78,22 @@
                     </form>
                 </div>
 
-                <div class="form-group">
-                    <Label>Status</Label>
-                    <select name="status" id="" class="form-control">
-                        <option value="Draft" {{ ($exam->status == 'Draft')?'selected':'' }}>Draft</option>
-                        <option value="Aktif" {{ ($exam->status == 'Aktif')?'selected':'' }}>Aktif</option>
-                        <option value="Off" {{ ($exam->status == 'Off')?'selected':'' }}>Off</option>
-                    </select>
+                <div class="row px-3">
 
-                    @error('status') <span class="text-danger">{{ $message }}</span> @enderror
+                    <div class="form-group col-3">
+                        <Label>Status</Label>
+                        <select name="status" id="" class="form-control">
+                            <option value="Draft" {{ ($exam->status == 'Draft')?'selected':'' }}>Draft</option>
+                            <option value="Aktif" {{ ($exam->status == 'Aktif')?'selected':'' }}>Aktif</option>
+                            <option value="Off" {{ ($exam->status == 'Off')?'selected':'' }}>Off</option>
+                        </select>
+    
+                        @error('status') <span class="text-danger">{{ $message }}</span> @enderror
+                    </div>
+
                 </div>
+
+
 
 
                 <div class="card-footer">
