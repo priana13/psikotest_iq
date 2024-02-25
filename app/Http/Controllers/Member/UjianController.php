@@ -177,6 +177,8 @@ class UjianController extends Controller
         'Akademik' => "AKADEMIK"
       ];
 
+      // dd($examevent);
+
       return view('livewire.member.hasil-ujian-umum', compact('examevent', 'type'));
     }
 

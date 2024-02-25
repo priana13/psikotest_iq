@@ -9,6 +9,7 @@ use App\Models\ExamItem;
 use App\Models\ExamEvent;
 use Carbon\Carbon;
 use App\Models\TempExam;
+use Illuminate\Support\Facades\Redirect;
 
 class Ujian extends Component
 {
@@ -292,6 +293,11 @@ class Ujian extends Component
         $this->examEvent->save();
 
         $this->emit('ujianSelesai');
+
+         Redirect::to(route('member.ujian', [
+            'exam' => $this->exam->id, 
+            'examevent' => $this->examEvent->id
+         ]));
 
          // kita bisa redirect page di sini ke halaman nilai
 

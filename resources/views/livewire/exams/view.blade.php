@@ -81,7 +81,8 @@
 								<th>Kategori</th>
 								<th>Waktu</th>
 								<th>Nilai Min</th>		
-								<th>Soal</th>						
+								<th>Soal</th>
+								<th>Status</th>						
 								<td>Action</td>
 							</tr>
 						</thead>
@@ -94,7 +95,11 @@
 								<td>{{ ($row->exam_category)?$row->exam_category->name:'' }}</td>
 								<td>{{ $row->waktu }}</td>								
 								<td>{{ $row->nilai_min }}</td>	
-								<td>{{ $row->questions->count() }}</td>							
+								<td>{{ $row->questions->count() }}</td>		
+								<td>
+									<span class="badge badge-{{ ($row->status == "Aktif")?"success":"secondary" }} px-2 py-1">{{ $row->status }}</span>
+									
+								</td>					
 								<td>									
 
 								@if($row->exam_category && $row->exam_category->type == 'Column')

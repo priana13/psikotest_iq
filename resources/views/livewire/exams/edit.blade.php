@@ -77,6 +77,25 @@
     
                     </form>
                 </div>
+
+                <div class="row px-3">
+
+                    <div class="form-group col-3">
+                        <Label>Status</Label>
+                        <select name="status" id="" class="form-control">
+                            <option value="Draft" {{ ($exam->status == 'Draft')?'selected':'' }}>Draft</option>
+                            <option value="Aktif" {{ ($exam->status == 'Aktif')?'selected':'' }}>Aktif</option>
+                            <option value="Off" {{ ($exam->status == 'Off')?'selected':'' }}>Off</option>
+                        </select>
+    
+                        @error('status') <span class="text-danger">{{ $message }}</span> @enderror
+                    </div>
+
+                </div>
+
+
+
+
                 <div class="card-footer">
                     <a type="button" class="btn btn-secondary" href="{{ route('admin.exams') }}">Batal</a>
                     <button type="submit" class="btn btn-primary">Save</button>

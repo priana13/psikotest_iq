@@ -18,18 +18,26 @@ class Users extends Component
 
     public function mount(){
 
-        $this->total = User::count();
+        $this->total = User::online()->count();
     }
 
     public function render()
     {
-		$keyWord = '%'.$this->keyWord .'%';
+
+        $users = User::online()->latest();        
+
+        $keyWord = '%'.$this->keyWord .'%';
+
+        if($this->keyWord){
+
+            $users = $users->where('name', 'LIKE' , $keyWord);
+
+        }  
+     
+        $users = $users->paginate(10);
+        
         return view('livewire.users.view', [
-            'users' => User::latest()
-						->orWhere('name', 'LIKE', $keyWord)
-						->orWhere('email', 'LIKE', $keyWord)
-						->orWhere('level', 'LIKE', $keyWord)
-						->paginate(10),
+            'users' => $users,
         ]);
     }
 	

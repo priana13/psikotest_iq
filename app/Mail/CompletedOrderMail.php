@@ -31,6 +31,11 @@ class CompletedOrderMail extends Mailable
      */
     public function build()
     {
-        return $this->markdown('mail.completed-order-mail');
+        ($this->transaksi->lokasi_test == 'Offline')?
+            $view = $this->markdown('mail.completed-offline-order-mail'):
+            $view = $this->markdown('mail.completed-order-mail');
+
+        return $view;    
+        
     }
 }

@@ -33,7 +33,8 @@ class PsikotesController extends Controller
             'peraturan' => 'required',
             'nilai_min' => 'required',
             'waktu' => 'required',   
-            'examcategory_id' => 'required|integer'        
+            'examcategory_id' => 'required|integer',
+            'status' => 'required'   
         ]);       
 
 
@@ -44,7 +45,8 @@ class PsikotesController extends Controller
             'nilai_min' => $request->nilai_min,
             'waktu' => $request->waktu,
             'col_qty' => $request->col_qty,
-            'examcategory_id' => $request->examcategory_id
+            'examcategory_id' => $request->examcategory_id,
+            'status' => $request->status
 
         ]);
 

@@ -47,4 +47,9 @@ class User extends Authenticatable
 
         return $this->hasMany(Membership::class, 'user_id');
     }
+
+    public function scopeOnline($query){
+
+        return $query->where('lokasi_test', 'Online');
+    }
 }

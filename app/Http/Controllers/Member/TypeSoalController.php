@@ -24,7 +24,7 @@ class TypeSoalController extends Controller
                             ->where('packages.type', 'full')
                             ->count();       
 
-        $exam = Exam::whereHas('questions')->where('examcategory_id',$type)->paginate(10);      
+        $exam = Exam::aktif()->whereHas('questions')->where('examcategory_id',$type)->paginate(10);      
 
         $examCategory = Examcategory::find($type);
         
