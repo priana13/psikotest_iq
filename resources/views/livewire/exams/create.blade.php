@@ -29,6 +29,7 @@
                 
                 @error('peraturan') <span class="text-danger">{{ $message }}</span> @enderror
             </div>
+           
 
                 </form>
             </div>
