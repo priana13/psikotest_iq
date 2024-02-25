@@ -55,6 +55,11 @@ class Exam extends Model
         
         return $query->whereIn('type' , $type);
      }
+
+    public function scopeAktif($query){
+
+        return $query->where('status', 'Aktif');
+    }
      
     
 }

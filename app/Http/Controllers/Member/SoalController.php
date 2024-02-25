@@ -20,7 +20,7 @@ class SoalController extends Controller
     {        
 
         $type = $request->type;
-        $exam = Exam::whereHas('questions');
+        $exam = Exam::aktif()->whereHas('questions');
 
         if($type){
 
