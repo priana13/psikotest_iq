@@ -108,7 +108,7 @@
                                     </div>
                                 @endforeach
                             @endif 
-                            <div class="card-body">
+                            <div class="card-body text-right">
                                 <button id="finish" type="button" class="btn btn-primary text-right" wire:click="zrSelesai({{$test_id}})" style="display: none;">NEXT</button>
                                 <button id="finish_" type="button" class="btn btn-primary text-right" onclick="confirm('Apakah anda ingin berpindah ke test tahap selanjutnya ? ')||event.stopImmediatePropagation()" wire:click="zrSelesai({{$test_id}})" >NEXT</button>
                             </div>                           

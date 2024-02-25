@@ -7,7 +7,7 @@
                             <div class="card-body text-center">
                                 <a class="stretched-link text-primary font-weight-bold text-primary text-uppercase" href="#">PETUJUK WAKTU TEST</a>
                                 <div class="row no-gutters align-items-center">
-                                    <p class="mt-2 text-center">{{$NormaMe['petunjuk_kedua']??''}}</p>
+                                    <p class="mt-2 text-center">{{$NormaMind['petunjuk_kedua']??''}}</p>
                                 </div>
                             </div>
                         </div>
@@ -79,7 +79,7 @@
                                     </div>
                                 @endforeach
                             @endif                            
-                            <div class="card-body">
+                            <div class="card-body text-right">
                                 <button id="finish" type="button" class="btn btn-primary text-right" wire:click="meSelesai({{$test_id}})" style="display: none;">SELESAI</button>
                                 <button id="finish_" type="button" class="btn btn-primary text-right" onclick="confirm('Apakah anda ingin mengakhiri test tahap ? ')||event.stopImmediatePropagation()" wire:click="meSelesai({{$test_id}})" >SELESAI</button>
                             </div>

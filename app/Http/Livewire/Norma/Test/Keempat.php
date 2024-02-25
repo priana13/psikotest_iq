@@ -85,8 +85,8 @@ class Keempat extends Component
         $QuizGe =QuizGe::where('id','=',$quizId)->first();
         $answer = $this->{'answer' . $questionNumber};      
 
-        $n1 = stripos($QuizGe->k1, $answer);
-        $n2 = stripos($QuizGe->k2, $answer);
+        $n1 = stripos($QuizGe->k1, trim($answer));
+        $n2 = stripos($QuizGe->k2, trim($answer));
         $nilai = 0;
         if ($n1 !== false) {
             $nilai = 2;

@@ -125,6 +125,9 @@ class Kesepuluh extends Component
                 $this->{'answer' . $t->no} = $t->j;                
             }
         }  
+
+        $NormaMind  = Norma::where('tipe','=',9)->first();
+        $this->NormaMind = json_decode(json_encode($NormaMind), true); 
     }    
     
    public function render()

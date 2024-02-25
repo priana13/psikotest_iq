@@ -7,7 +7,7 @@
                         <div class="card-body text-center">
                             <a class="stretched-link text-primary font-weight-bold text-primary text-uppercase" href="#">PETUJUK WAKTU TEST</a>
                             <div class="row no-gutters align-items-center">
-                                <p class="mt-2 text-center">{{$NormaMind['petunjuk_kedua']??''}}</p>
+                                <p class="mt-2 text-center">{{$NormaMind['petunjuk_kesatu']??''}}</p>
                             </div>
                         </div>
                     </div>

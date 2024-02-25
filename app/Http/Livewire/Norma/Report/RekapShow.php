@@ -153,7 +153,7 @@ class RekapShow extends Component
             $this->total_sw = ($total_sw)? $total_sw->{strtolower($tipe_usia)} : 'gagal'; 
             $iq = KunciIQ::select('iq','kategori')->where('rw',$this->total_sw)->first();
             $this->iq = ($iq)? $iq->iq:0;
-            $this->kat = [
+            /*$this->kat = [
                 'se' => ($normaTest->se) ? $this->getKategori($normaTest->se):$this->getKategori(0),
                 'wa' => ($normaTest->wa) ? $this->getKategori($normaTest->wa):$this->getKategori(0),
                 'an' => ($normaTest->an) ? $this->getKategori($normaTest->an):$this->getKategori(0),
@@ -163,7 +163,19 @@ class RekapShow extends Component
                 'fa' => ($normaTest->fa) ? $this->getKategori($normaTest->fa):$this->getKategori(0),
                 'wu' => ($normaTest->wu) ? $this->getKategori($normaTest->wu):$this->getKategori(0),
                 'me' => ($normaTest->me) ? $this->getKategori($normaTest->me):$this->getKategori(0)
-            ];   
+            ];*/   
+
+            $this->kat = [
+                'se' => ($se->se) ? $this->getKategori($se->se):$this->getKategori(0),
+                'wa' => ($wa->wa) ? $this->getKategori($wa->wa):$this->getKategori(0),
+                'an' => ($an->an) ? $this->getKategori($an->an):$this->getKategori(0),
+                'ge' => ($ge->ge) ? $this->getKategori($ge->ge):$this->getKategori(0),
+                'ra' => ($ra->ra) ? $this->getKategori($ra->ra):$this->getKategori(0),
+                'zr' => ($zr->zr) ? $this->getKategori($zr->zr):$this->getKategori(0),
+                'fa' => ($fa->fa) ? $this->getKategori($fa->fa):$this->getKategori(0),
+                'wu' => ($wu->wu) ? $this->getKategori($wu->wu):$this->getKategori(0),
+                'me' => ($me->me) ? $this->getKategori($me->me):$this->getKategori(0),
+            ]; 
           
             $this->kategori = ($this->iq > 0)? $iq->kategori:'MENTALLY DEFECTIVE';
 

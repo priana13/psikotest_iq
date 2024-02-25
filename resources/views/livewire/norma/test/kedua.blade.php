@@ -76,7 +76,7 @@
                             @endif
 
                                 <div class="card-body text-right">
-                                    <button id="finish" type="button" class="btn btn-primary text-right" wire:click="waSelesai({{$test_id}})" >
+                                    <button id="finish" type="button" class="btn btn-primary text-right" wire:click="waSelesai({{$test_id}})" style="display: none;">
                                         NEXT
                                     </button>
                                     <button id="finish_" type="button" class="btn btn-primary text-right" onclick="confirm('Apakah anda ingin berpindah ke test tahap selanjutnya ? ')||event.stopImmediatePropagation()" wire:click="waSelesai({{$test_id}})" >

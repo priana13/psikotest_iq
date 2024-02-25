@@ -63,7 +63,7 @@
                                     @endif       
                                     @if($kat)                               
                                     <tr>                                    
-                                        <td>SW</td>
+                                        <td>KAT</td>
                                         <td>{{ $kat['se'] }}</td>
                                         <td>{{ $kat['wa'] }}</td>
                                         <td>{{ $kat['an'] }}</td>

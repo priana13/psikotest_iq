@@ -138,7 +138,7 @@
                             </div>
                             @endif       
 
-                            <div class="card-body">
+                            <div class="card-body text-right">
                                 <button type="button" id="finish" class="btn btn-primary text-right" wire:click="faSelesai({{$test_id}})" style="display: none;">NEXT</button>
                                 <button type="button" id="finish_" class="btn btn-primary text-right" onclick="confirm('Apakah anda ingin berpindah ke test tahap selanjutnya ? ')||event.stopImmediatePropagation()" wire:click="faSelesai({{$test_id}})" >NEXT</button>
                             </div>        
