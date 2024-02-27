@@ -20,6 +20,8 @@ class SideBarAdmin extends Component
 
     public $is_full_access;
 
+    public $pengembangan;
+
     /**
      * Create a new component instance.
      *
@@ -75,12 +77,16 @@ class SideBarAdmin extends Component
 
             $this->akademik = Examcategory::where('exam_type', 'Akademik')->get(); 
 
+            $this->pengembangan = Examcategory::where('exam_type', 'Pengembangan')->get(); 
+
 
         }else{
 
             $this->psikotes = Examcategory::whereIn('id', $exam_categori_user)->where('exam_type', 'Psikotes')->orderBy('menu_order')->get();
 
             $this->akademik = Examcategory::whereIn('id', $exam_categori_user)->where('exam_type', 'Akademik')->get(); 
+
+            $this->pengembangan = Examcategory::whereIn('id', $exam_categori_user)->where('exam_type', 'Pengembangan')->get(); 
 
 
         }        

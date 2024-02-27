@@ -82,7 +82,7 @@
 
                         <div class="card border-left-warning shadow-sm h-100 py-2">
                             <div class="card-body text-center">
-                                <a class="stretched-link text-primary font-weight-bold text-primary text-uppercase " href="{{ route('dashboard.subtes') }}?type=Akademik">Pengembangan</a>
+                                <a class="stretched-link text-primary font-weight-bold text-primary text-uppercase " href="{{ route('dashboard.subtes') }}?type=Pengembangan">Pengembangan</a>
 
                                 <div class="row no-gutters align-items-center">                                   
 
