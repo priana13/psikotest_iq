@@ -32,7 +32,8 @@ class ExamController extends Controller
             "cerdas" => "Kecerdasan",
             "cermat" => "Kecermatan",
             "kepribadian" => "Kepribadian",
-            "Akademik" => "Akademik"
+            "Akademik" => "Akademik",
+            "Pengembangan" => "Pengembangan"
         ];  
 
         return view('livewire.exams.create2', compact('type','kategori','type_name'));
