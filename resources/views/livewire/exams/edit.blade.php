@@ -24,20 +24,38 @@
                     <input name="nama_tes" type="text" class="form-control" value="{{ $exam->nama_tes }}" id="nama_tes" placeholder="Nama Tes">@error('nama_tes') <span class="text-danger">{{ $message }}</span> @enderror
                 </div>
 
-                <div class="form-group">
-                    <Label>Categori Tes</Label>
-                    <select name="examcategory_id" id="" class="form-control">
-                        <option value="">Pilih</option>
-                        @foreach($kategori as $row)
-                            <option value="{{ $row->id }}" 
-                                {{ ($exam->examcategory_id == $row->id)?'selected':'' }}
-                                >{{ $row->name }}</option>
-                        @endforeach
-                    </select>
+                <div class="row">
 
-                    @error('examcategory_id') <span class="text-danger">{{ $message }}</span> @enderror
-                </div>
+
+                    <div class="form-group col-md-6">
+                        <Label>Categori Tes</Label>
+                        <select name="examcategory_id" id="" class="form-control">
+                            <option value="">Pilih</option>
+                            @foreach($kategori as $row)
+                                <option value="{{ $row->id }}" 
+                                    {{ ($exam->examcategory_id == $row->id)?'selected':'' }}
+                                    >{{ $row->name }}</option>
+                            @endforeach
+                        </select>
     
+                        @error('examcategory_id') <span class="text-danger">{{ $message }}</span> @enderror
+                    </div>
+
+
+                    <div class="form-group col-3">
+                        <Label>Skala Penilaian</Label>
+                        <select name="skala_penilaian" id="" class="form-control">
+                             <option value="Normal" {{ ($exam->skala_penilaian == 'Normal')?'selected':'' }}>Normal</option>
+                            <option value="Likert" {{ ($exam->skala_penilaian == 'Likert')?'selected':'' }}>Likert</option>
+                        </select>
+    
+                        @error('skala_penilaian') <span class="text-danger">{{ $message }}</span> @enderror
+                    </div>
+                    
+
+                </div>
+
+                
                 @if($exam->type == 'cermat')
     
                     <div class="row">
