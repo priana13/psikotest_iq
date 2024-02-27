@@ -55,7 +55,7 @@ class ExamController extends Controller
             'type' => 'required|string',
             'examcategory_id' => 'required|integer',
             'status' => 'required|string',
-            'skala_penilaian' => 'required|string|max:20'
+            'halaman_penilaian' => 'required|string|max:20'
             ]);
 
         (!$request->type)?
@@ -70,7 +70,7 @@ class ExamController extends Controller
             'type' => $type,
             'examcategory_id' => $request->examcategory_id,
             'status' => $request->status,
-            'skala_penilaian' => $request->skala_penilaian
+            'halaman_penilaian' => $request->halaman_penilaian
 
         ]);           
          
@@ -119,7 +119,7 @@ class ExamController extends Controller
             'peraturan' => 'required',
             'examcategory_id' => 'required|integer',
             'status' => 'required|string',
-            'skala_penilaian' => 'required|string|max:20'
+            'halaman_penilaian' => 'required|string|max:20'
          ]);
     
           
@@ -133,7 +133,7 @@ class ExamController extends Controller
             'col_qty' => $request->col_qty,
             'examcategory_id' => $request->examcategory_id,
             'status' => $request->status,
-            'skala_penilaian' => $request->skala_penilaian
+            'halaman_penilaian' => $request->halaman_penilaian
             ]);
            
             return redirect()->route('admin.exams')->with('message', 'Data Psikotes Berhasil Diupdate');

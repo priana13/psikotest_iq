@@ -40,13 +40,18 @@
                     </div>
 
                     <div class="form-group col-3">
-                        <Label>Skala Penilaian</Label>
-                        <select name="skala_penilaian" id="" class="form-control">
-                             <option value="Normal" {{ (old('skala_penilaian') == 'Normal')?'selected':'' }}>Normal</option>
-                            <option value="Likert" {{ (old('skala_penilaian') == 'Likert')?'selected':'' }}>Likert</option>
+                        <Label>Halaman Penilaian</Label>
+                        <select name="halaman_penilaian" id="" class="form-control">
+                            <option value="">Pilih Halaman</option>
+                            <option value="akademik" {{ (old('halaman_penilaian') == 'akademik')?'selected':'' }}>Akademik</option>
+                             <option value="kecerdasan" {{ (old('halaman_penilaian') == 'kecerdasan')?'selected':'' }}>Kecerdasan</option>
+                             <option value="kepribadian" {{ (old('halaman_penilaian') == 'kepribadian')?'selected':'' }}>Kepribadian</option>
+                             <option value="sikap_kerja" {{ (old('halaman_penilaian') == 'sikap_kerja')?'selected':'' }}>Sikap Kerja</option>
+
+                           
                         </select>
     
-                        @error('skala_penilaian') <span class="text-danger">{{ $message }}</span> @enderror
+                        @error('halaman_penilaian') <span class="text-danger">{{ $message }}</span> @enderror
                     </div>
 
 

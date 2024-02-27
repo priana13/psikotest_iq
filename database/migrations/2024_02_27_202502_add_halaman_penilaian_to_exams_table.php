@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddSkalaPenilaianToExamsTable extends Migration
+class AddHalamanPenilaianToExamsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,7 +14,7 @@ class AddSkalaPenilaianToExamsTable extends Migration
     public function up()
     {
         Schema::table('exams', function (Blueprint $table) {
-            $table->string('skala_penilaian')->default("Normal"); // Normal, Likert
+            $table->string('halaman_penilaian')->nullable(); // Akademik, Kecerdasan, Kepribadian, Sikap Kerja
         });
     }
 
@@ -26,7 +26,7 @@ class AddSkalaPenilaianToExamsTable extends Migration
     public function down()
     {
         Schema::table('exams', function (Blueprint $table) {
-            $table->dropColumn('skala_penilaian');
+            $table->dropColumn('halaman_penilaian');
         });
     }
 }
