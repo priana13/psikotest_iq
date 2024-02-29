@@ -41,19 +41,20 @@
                         @error('examcategory_id') <span class="text-danger">{{ $message }}</span> @enderror
                     </div>
 
+                   @if($exam->exam_category->exam_type == 'Pengembangan')
 
-                    <div class="form-group col-3">
-                        <Label>Halaman Penilaian</Label>
-                        <select name="halaman_penilaian" id="" class="form-control">
-                            <option value="">Pilih Halaman</option>
-                            <option value="akademik" {{ ($exam->halaman_penilaian == 'akademik')?'selected':'' }}>Akademik</option>
-                             <option value="kecerdasan" {{ ($exam->halaman_penilaian == 'kecerdasan')?'selected':'' }}>Kecerdasan</option>
-                             <option value="kepribadian" {{ ($exam->halaman_penilaian == 'kepribadian')?'selected':'' }}>Kepribadian</option>
-                             <option value="sikap_kerja" {{ ($exam->halaman_penilaian == 'sikap_kerja')?'selected':'' }}>Sikap Kerja</option>
+                    <div class="form-group col-4">
+                        <Label>Jenis Pengembangan</Label>
+                        <select name="jenis_pengembangan" id="" class="form-control">
+                            <option value="">Pilih Pengembangan</option>
+                            <option value="tkp-tkm" {{ ($exam->jenis_pengembangan == 'tkp-tkm')?'selected':'' }}>Kemampuan Kepolisian/Managerial</option>
+                             <option value="tkk" {{ ($exam->jenis_pengembangan == 'tkk')?'selected':'' }}>Keterampilan Komputer</option>
                         </select>
     
-                        @error('halaman_penilaian') <span class="text-danger">{{ $message }}</span> @enderror
+                        @error('jenis_pengembangan') <span class="text-danger">{{ $message }}</span> @enderror
                     </div>
+
+                    @endif
                     
 
                 </div>

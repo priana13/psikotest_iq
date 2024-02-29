@@ -30,8 +30,9 @@
                         <select name="examcategory_id" id="" class="form-control">
                             <option value="">Pilih</option>
                             @foreach($kategori as $row)
+                               
                                 <option value="{{ $row->id }}" 
-                                    {{ (old('examcategory_id') == $row->id || $type_name[$type] == $row->name)?'selected':'' }}
+                                    {{ (old('examcategory_id') == $row->id || $type_name[$type] == $row->exam_type)?'selected':'' }}
                                     >{{ $row->name }}</option>
                             @endforeach
                         </select>
@@ -39,21 +40,21 @@
                         @error('examcategory_id') <span class="text-danger">{{ $message }}</span> @enderror
                     </div>
 
-                    <div class="form-group col-3">
-                        <Label>Halaman Penilaian</Label>
-                        <select name="halaman_penilaian" id="" class="form-control">
-                            <option value="">Pilih Halaman</option>
-                            <option value="akademik" {{ (old('halaman_penilaian') == 'akademik')?'selected':'' }}>Akademik</option>
-                             <option value="kecerdasan" {{ (old('halaman_penilaian') == 'kecerdasan')?'selected':'' }}>Kecerdasan</option>
-                             <option value="kepribadian" {{ (old('halaman_penilaian') == 'kepribadian')?'selected':'' }}>Kepribadian</option>
-                             <option value="sikap_kerja" {{ (old('halaman_penilaian') == 'sikap_kerja')?'selected':'' }}>Sikap Kerja</option>
+                   @if($type == 'Pengembangan')
 
+                    <div class="form-group col-4">
+                        <Label>Jenis Pengembangan</Label>
+                        <select name="jenis_pengembangan" id="" class="form-control">
+                            <option value="">Pilih Pengembangan</option>
+                            <option value="tkp-tkm" {{ (old('jenis_pengembangan') == 'tkp-tkm')?'selected':'' }}>Kemampuan Kepolisian/Managerial</option>
+                            <option value="tkk" {{ (old('jenis_pengembangan') == 'tkk')?'selected':'' }}>Keteampilan Komputer</option>
                            
                         </select>
     
-                        @error('halaman_penilaian') <span class="text-danger">{{ $message }}</span> @enderror
+                        @error('jenis_pengembangan') <span class="text-danger">{{ $message }}</span> @enderror
                     </div>
 
+                    @endif
 
 
                 </div>

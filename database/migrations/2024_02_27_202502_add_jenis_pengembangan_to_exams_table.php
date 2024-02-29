@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddHalamanPenilaianToExamsTable extends Migration
+class AddJenisPengembanganToExamsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,7 +14,9 @@ class AddHalamanPenilaianToExamsTable extends Migration
     public function up()
     {
         Schema::table('exams', function (Blueprint $table) {
-            $table->string('halaman_penilaian')->nullable(); // Akademik, Kecerdasan, Kepribadian, Sikap Kerja
+            $table->string('jenis_pengembangan')->nullable(); 
+            // tkp-tkm => Kemampuan Kepolisian/Managerial; tkk => Test Kemampuan Komputer
+        
         });
     }
 
@@ -26,7 +28,7 @@ class AddHalamanPenilaianToExamsTable extends Migration
     public function down()
     {
         Schema::table('exams', function (Blueprint $table) {
-            $table->dropColumn('halaman_penilaian');
+            $table->dropColumn('jenis_pengembangan'); 
         });
     }
 }
