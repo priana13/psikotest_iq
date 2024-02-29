@@ -30,13 +30,16 @@ class Examevents extends Component
         (isset($count_history['cerdas']))?$kecerdasan = $count_history['cerdas']:$kecerdasan=0;
         (isset($count_history['kepribadian']))?$kepribadian = $count_history['kepribadian']:$kepribadian=0;
         (isset($count_history['Akademik']))?$akademik = $count_history['Akademik']:$akademik=0;
+        (isset($count_history['Pengembangan']))?$pengembangan = $count_history['Pengembangan']:$pengembangan=0;
+
 
         
         $count_history = [
             'cermat' => $cermat,
             'kecerdasan'=> $kecerdasan,
             'kepribadian' => $kepribadian,
-            'Akademik' => $akademik
+            'Akademik' => $akademik,
+            'Pengembangan' => $pengembangan
         ];      
 
         return view('livewire.examevents.view', [

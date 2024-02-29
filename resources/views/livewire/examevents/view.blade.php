@@ -22,7 +22,12 @@
 								</li>
 								<li class="nav-item">
 									<a class="nav-link {{ ($selected == 'Akademik')?'active':'' }}" wire:click.prevent="pilihHiostory('Akademik')" href="#">Akademik({{ $count_history['Akademik'] }})</a>
-								  </li>
+								</li>
+
+								<li class="nav-item">
+									<a class="nav-link {{ ($selected == 'Pengembangan')?'active':'' }}" wire:click.prevent="pilihHiostory('Pengembangan')" href="#">Pengembangan({{ $count_history['Pengembangan'] }})</a>
+								</li>
+
 							  </ul>
 
 						</div>
