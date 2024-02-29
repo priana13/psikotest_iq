@@ -176,10 +176,10 @@ class UjianController extends Controller
         'kepribadian' => "KEPRIBADIAN",
         'Akademik' => "AKADEMIK"
       ];
+         
+      return view('livewire.member.hasil-test.' . \strtolower($examevent->type) , compact('examevent', 'type'));
 
-      // dd($examevent);
-
-      return view('livewire.member.hasil-ujian-umum', compact('examevent', 'type'));
+      // return view('livewire.member.hasil-ujian-umum', compact('examevent', 'type'));
     }
 
     public function hasil_ujian_detail(Examevent $examevent){
