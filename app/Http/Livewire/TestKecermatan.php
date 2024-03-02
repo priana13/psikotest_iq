@@ -28,7 +28,7 @@ class TestKecermatan extends Component
 
     public function mount($id, $kolom = null){
 
-        $this->exam = Exam::find($id);
+        $this->exam = Exam::find($id);     
 
         if($kolom){
             $this->column = $kolom;
@@ -140,8 +140,6 @@ class TestKecermatan extends Component
 
         $this->list_soal = Question::where('exam_id' , $this->exam->id)->where('exam_column_id' , $this->examColumn->id)->get();        
 
-
-
         $this->soalTampil = TRUE;
     }
 
@@ -187,8 +185,16 @@ class TestKecermatan extends Component
                 $this->e = '';
         }else{
 
+            $this->a = $existExamColumn->a;
+            $this->b = $existExamColumn->b;
+            $this->c = $existExamColumn->c;
+            $this->d = $existExamColumn->d;
+            $this->e = $existExamColumn->e;
+
             $this->soalTampil = TRUE; 
         }
+
+        $this->list_soal = Question::where('exam_id' , $this->exam->id)->where('exam_column_id' , $existExamColumn->id)->get();
                   
 
     }
@@ -202,6 +208,15 @@ class TestKecermatan extends Component
         ($existExamColumn == null)?
             $this->soalTampil = FALSE:
             $this->soalTampil = TRUE; 
+
+        $this->a = $existExamColumn->a;
+        $this->b = $existExamColumn->b;
+        $this->c = $existExamColumn->c;
+        $this->d = $existExamColumn->d;
+        $this->e = $existExamColumn->e;
+
+
+        $this->list_soal = Question::where('exam_id' , $this->exam->id)->where('exam_column_id' , $existExamColumn->id)->get();
 
 
     }
@@ -264,8 +279,12 @@ class TestKecermatan extends Component
     public function updateKolom(){
 
         $existExamColumn = ExamColumn::where('exam_id' , $this->exam->id)->where('kolom' , $this->column)->first();
+       
+        // dd($existExamColumn);
 
         if(!$existExamColumn){
+
+           
 
             // create exam_column
             $this->examColumn = ExamColumn::create([
