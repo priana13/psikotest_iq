@@ -36,8 +36,8 @@
                                     <i class="bi bi-calculator-fill"></i>                                    
                                 </div>
                                 <div>
-                                    <a class="stretched-link text-primary font-weight-bold text-primary text-uppercase text-decoration-none" href="{{ route('member.soal.type' , $categori->first()->id) }}?jenis_pengembangan=tkp-tkm">TES TKP/TKM</a>
-                                    <p>Tes Kemampuan Kepolisian/Managerial</p>
+                                    <a class="stretched-link text-primary font-weight-bold text-primary text-uppercase text-decoration-none" href="{{ route('member.soal.type' , $categori->first()->id) }}?jenis_pengembangan=tkp-tkm">TES TKP</a>
+                                    <p>Tes Kemampuan Kepolisian</p>
                                 </div>  
                             
                             </div>
