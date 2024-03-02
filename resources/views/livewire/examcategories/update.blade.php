@@ -23,7 +23,8 @@
                 <select wire:model="exam_type" class="form-control" id="">
                     <option value="">Pilih Type Ujian</option>
                     <option value="Psikotes">Psikotes</option>
-                    <option value="Akademik">Akademik</option>                    
+                    <option value="Akademik">Akademik</option>  
+                    <option value="Pengembangan">Pengembangan</option>                   
                 </select>
                 
                 @error('type') <span class="text-danger">{{ $message }}</span> @enderror

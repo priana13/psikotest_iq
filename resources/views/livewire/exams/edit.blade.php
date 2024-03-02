@@ -24,20 +24,42 @@
                     <input name="nama_tes" type="text" class="form-control" value="{{ $exam->nama_tes }}" id="nama_tes" placeholder="Nama Tes">@error('nama_tes') <span class="text-danger">{{ $message }}</span> @enderror
                 </div>
 
-                <div class="form-group">
-                    <Label>Categori Tes</Label>
-                    <select name="examcategory_id" id="" class="form-control">
-                        <option value="">Pilih</option>
-                        @foreach($kategori as $row)
-                            <option value="{{ $row->id }}" 
-                                {{ ($exam->examcategory_id == $row->id)?'selected':'' }}
-                                >{{ $row->name }}</option>
-                        @endforeach
-                    </select>
+                <div class="row">
 
-                    @error('examcategory_id') <span class="text-danger">{{ $message }}</span> @enderror
-                </div>
+
+                    <div class="form-group col-md-6">
+                        <Label>Categori Tes</Label>
+                        <select name="examcategory_id" id="" class="form-control">
+                            <option value="">Pilih</option>
+                            @foreach($kategori as $row)
+                                <option value="{{ $row->id }}" 
+                                    {{ ($exam->examcategory_id == $row->id)?'selected':'' }}
+                                    >{{ $row->name }}</option>
+                            @endforeach
+                        </select>
     
+                        @error('examcategory_id') <span class="text-danger">{{ $message }}</span> @enderror
+                    </div>
+
+                   @if($exam->exam_category->exam_type == 'Pengembangan')
+
+                    <div class="form-group col-4">
+                        <Label>Jenis Pengembangan</Label>
+                        <select name="jenis_pengembangan" id="" class="form-control">
+                            <option value="">Pilih Pengembangan</option>
+                            <option value="tkp-tkm" {{ ($exam->jenis_pengembangan == 'tkp-tkm')?'selected':'' }}>Kemampuan Kepolisian/Managerial</option>
+                             <option value="tkk" {{ ($exam->jenis_pengembangan == 'tkk')?'selected':'' }}>Keterampilan Komputer</option>
+                        </select>
+    
+                        @error('jenis_pengembangan') <span class="text-danger">{{ $message }}</span> @enderror
+                    </div>
+
+                    @endif
+                    
+
+                </div>
+
+                
                 @if($exam->type == 'cermat')
     
                     <div class="row">

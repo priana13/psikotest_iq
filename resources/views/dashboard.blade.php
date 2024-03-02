@@ -67,34 +67,37 @@
 
                                     <p class="mt-2 text-center">Simulasi akademik yang meliputi tes pengetahuan umum, Bahasa Indonesia, Bahasa Inggris, Matematika</p>
                                    
-                                </div>
-
-                              
+                                </div>                             
 
 
-                            </div>
+                            </div>                          
+
+
                         </div>
                         
                     </div>
 
-                    <!--Col-->
-                    <div class="col-xl-4 col-md-6 mb-4 d-none">
-                        <div class="card border-left-success shadow-sm h-100 py-2">
-                            <div class="card-body">
-                                <div class="row no-gutters align-items-center">
-                                    <div class="col mr-2 text-center">
-                                        <a href="" class="font-weight-bold text-primary text-uppercase mb-1">POTENSI DIRI</a>
-                                        <div class="h5 mb-0 font-weight-bold text-danger text-uppercase">segera hadir</div>
-                                    </div>
 
-                                    <p class="mt-2 text-center">Ketahui potensi dan pengembangan dirimu</p>
-                                  
-                                </div>
-                            </div>
-                        </div>                      
+                    <div class="col-xl-4 col-md-6 mb-4">
+
+                        <div class="card border-left-warning shadow-sm h-100 py-2">
+                            <div class="card-body text-center">
+                                <a class="stretched-link text-primary font-weight-bold text-primary text-uppercase " href="{{ route('dashboard.subtes') }}?type=Pengembangan">Pengembangan</a>
+
+                                <div class="row no-gutters align-items-center">                                   
+
+                                    <p class="mt-2 text-center">Simulasi Tes Kemampuan Kepolisian  , Tes Ketrampilan Komputer</p>
+                                   
+                                </div>                             
 
 
+                            </div>                          
+
+
+                        </div>
+                        
                     </div>
+
 
 
             </div>

@@ -24,16 +24,18 @@ class TypeSoalController extends Controller
                             ->where('packages.type', 'full')
                             ->count();       
 
-        $exam = Exam::aktif()->whereHas('questions')->where('examcategory_id',$type)->paginate(10);      
-
-        $examCategory = Examcategory::find($type);
+        $exam = Exam::aktif()->whereHas('questions')->where('examcategory_id',$type);    
         
-        // $title = [
-        //     "cerdas" => "Kecerdasan",
-        //     "cermat" => "Sikap Kerja",
-        //     "kepribadian" => "Kepribadian",
-        //     'Akademik' => "Akademik"
-        // ];
+        if(\request()->jenis_pengembangan){
+
+            $exam = $exam->where('jenis_pengembangan' , \request()->jenis_pengembangan);
+
+        }
+
+        $exam = $exam->paginate(10);
+
+
+        $examCategory = Examcategory::find($type); 
 
         return view('member.soal.index' , [
             'exams' => $exam , 

@@ -80,6 +80,31 @@
 
     @endif
 
+
+
+    @if(count($pengembangan) > 0 || $is_full_access > 0)
+
+        <!-- Divider -->
+        <hr class="sidebar-divider">
+
+        <!-- Heading -->
+        <div class="sidebar-heading">
+        {{ __('PENGEMBANGAN') }}
+        </div>
+
+        @foreach ($pengembangan as $row)
+
+        <li class="nav-item my-0">
+            <a class="nav-link py-2" href="{{ route('member.soal.type', $row->id) }}">
+                <i class="fas fa-clipboard-list"></i>
+                <span>{{ $row->name }}</span>
+            </a>
+        </li>
+            
+        @endforeach  
+
+    @endif
+
   
 
     @if( $test_iq_access || auth()->user()->can('admin') )    

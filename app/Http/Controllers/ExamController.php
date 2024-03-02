@@ -32,7 +32,8 @@ class ExamController extends Controller
             "cerdas" => "Kecerdasan",
             "cermat" => "Kecermatan",
             "kepribadian" => "Kepribadian",
-            "Akademik" => "Akademik"
+            "Akademik" => "Akademik",
+            "Pengembangan" => "Pengembangan"
         ];  
 
         return view('livewire.exams.create2', compact('type','kategori','type_name'));
@@ -53,7 +54,8 @@ class ExamController extends Controller
             'peraturan' => 'string',
             'type' => 'required|string',
             'examcategory_id' => 'required|integer',
-            'status' => 'required|string'
+            'status' => 'required|string',
+            'jenis_pengembangan' => 'nullable|string|max:20'
             ]);
 
         (!$request->type)?
@@ -67,7 +69,8 @@ class ExamController extends Controller
             'peraturan' => $request->peraturan,
             'type' => $type,
             'examcategory_id' => $request->examcategory_id,
-            'status' => $request->status
+            'status' => $request->status,
+            'jenis_pengembangan' => $request->jenis_pengembangan
 
         ]);           
          
@@ -115,7 +118,8 @@ class ExamController extends Controller
             'nilai_min' => 'required',
             'peraturan' => 'required',
             'examcategory_id' => 'required|integer',
-            'status' => 'required|string'
+            'status' => 'required|string',
+            'jenis_pengembangan' => 'nullable|string|max:20'
          ]);
     
           
@@ -128,7 +132,8 @@ class ExamController extends Controller
             'peraturan' => $request->peraturan,
             'col_qty' => $request->col_qty,
             'examcategory_id' => $request->examcategory_id,
-            'status' => $request->status
+            'status' => $request->status,
+            'jenis_pengembangan' => $request->jenis_pengembangan
             ]);
            
             return redirect()->route('admin.exams')->with('message', 'Data Psikotes Berhasil Diupdate');

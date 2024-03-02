@@ -21,21 +21,44 @@
                 <div class="form-group">
                     <label for="nama_tes">Judul</label>
                     <input name="nama_tes" type="text" class="form-control" value="{{ old('nama_tes') }}" id="nama_tes" placeholder="Nama Tes">@error('nama_tes') <span class="text-danger">{{ $message }}</span> @enderror
-                </div>           
+                </div>   
+                
+                <div class="row">
 
-                <div class="form-group">
-                    <Label>Categori Tes</Label>
-                    <select name="examcategory_id" id="" class="form-control">
-                        <option value="">Pilih</option>
-                        @foreach($kategori as $row)
-                            <option value="{{ $row->id }}" 
-                                {{ (old('examcategory_id') == $row->id || $type_name[$type] == $row->name)?'selected':'' }}
-                                >{{ $row->name }}</option>
-                        @endforeach
-                    </select>
+                    <div class="form-group col-md-6">
+                        <Label>Categori Tes</Label>
+                        <select name="examcategory_id" id="" class="form-control">
+                            <option value="">Pilih</option>
+                            @foreach($kategori as $row)
+                               
+                                <option value="{{ $row->id }}" 
+                                    {{ (old('examcategory_id') == $row->id || $type_name[$type] == $row->exam_type)?'selected':'' }}
+                                    >{{ $row->name }}</option>
+                            @endforeach
+                        </select>
 
-                    @error('examcategory_id') <span class="text-danger">{{ $message }}</span> @enderror
+                        @error('examcategory_id') <span class="text-danger">{{ $message }}</span> @enderror
+                    </div>
+
+                   @if($type == 'Pengembangan')
+
+                    <div class="form-group col-4">
+                        <Label>Jenis Pengembangan</Label>
+                        <select name="jenis_pengembangan" id="" class="form-control">
+                            <option value="">Pilih Pengembangan</option>
+                            <option value="tkp-tkm" {{ (old('jenis_pengembangan') == 'tkp-tkm')?'selected':'' }}>Kemampuan Kepolisian/Managerial</option>
+                            <option value="tkk" {{ (old('jenis_pengembangan') == 'tkk')?'selected':'' }}>Keteampilan Komputer</option>
+                           
+                        </select>
+    
+                        @error('jenis_pengembangan') <span class="text-danger">{{ $message }}</span> @enderror
+                    </div>
+
+                    @endif
+
+
                 </div>
+
               
     
                 <div class="form-group">
@@ -55,6 +78,7 @@
                     >{{ old('peraturan') }}</textarea>
                     @error('peraturan') <span class="text-danger">{{ $message }}</span> @enderror
                 </div>
+            
     
                 <div class="row">
 
@@ -69,7 +93,9 @@
                         @error('status') <span class="text-danger">{{ $message }}</span> @enderror
                     </div>
 
-                </div>                
+                </div>   
+                
+                
 
                    
                 </div>

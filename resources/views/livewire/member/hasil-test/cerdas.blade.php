@@ -1,0 +1,104 @@
+@extends('layouts.admin_full')
+
+@section('main-content')
+
+<div class="container">
+    <div class="row" >
+
+        <div class="col m-auto p-3" style="max-width: 1024px;" id="halaman">
+
+            <div class="card bg-white shadow p-5" >
+
+                @if($examevent->exam)
+
+                <h3 class="text-center"> <strong>HASIL TES {{ strtoupper($examevent->exam->exam_category->name)  }}</strong> </h3>
+                
+                @else
+
+                <h3 class="text-center"> <strong>HASIL TES {{ strtoupper($type[$examevent->type])  }}</strong> </h3>
+
+                @endif
+
+                <div class="my-2 row">
+
+                    <ul class="list-group list-group-flush col-md-4">
+                        <li class="list-group-item">Nama: <strong>{{ $examevent->user->name }}</strong></li>
+                        <li class="list-group-item">Tanggal: <strong>{{ date('d-m-Y', strtotime($examevent->created_at))  }}</strong></li>
+                        <li class="list-group-item">No Ujian: <strong>#{{ $examevent->id }}</strong></li>                      
+                    </ul>
+
+                </div>
+
+                {{-- <h4>Data Tes Sikap Kerja</h4> --}}
+
+                <h4 class="text-center"> SKOR ANDA</h4>
+                <h3 class="text-center h3 d-block my-2"> 
+                    <span class="border py-2 px-4 border-primary text-success" style="font-size:36px;">{{ $examevent->nilai }}</span> 
+                </h3>
+
+                {{-- Table 1 --}}  
+               
+
+                {{-- hasil tes umum --}}
+                <div class="table-responsive mt-3">
+
+                    <table class="table table-bordered">
+                        <thead class="bg-primary text-white">
+                            <tr> 
+                                <th class="text-center">KS</th>                             
+                                <th class="text-center">K</th>
+                                <th class="text-center">C</th>
+                                <th class="text-center">B</th>
+                            </tr>
+
+                        </thead>
+
+                        <tbody>
+                            
+                            <tr class="font-weight-bold">
+                                <td class="text-center"> {{ ($examevent->type == 'cerdas') ? "1-49" : "1-149" }} </td> 
+                                <td class="text-center">{{ ($examevent->type == 'cerdas') ? "50-60" : "150-160" }}</td>                               
+                                <th class="text-center"> {{ ($examevent->type == 'cerdas') ? "61-79" : "161-179" }}</th>
+                                <th class="text-center"> <span>{{ ($examevent->type == 'cerdas') ? "80-100" : "180-200" }}</span> </th>
+                            </tr>                          
+                        </tbody>
+
+
+                    </table>
+
+                </div> 
+                
+
+                <div class="card-footer text-center mt-5">
+                    <button class="btn btn-primary btn-sm" onclick="printHalaman()">
+                        <i class="fas fa-print"></i>
+                        Print PDF</button>
+                </div>
+
+
+
+            </div>
+
+            
+
+            {{-- akhir card --}}
+        </div>
+
+    </div>
+</div>
+
+
+@push('scripts')
+
+<script>
+
+    function printHalaman(){
+        window.print();
+    }
+
+</script>
+
+@endpush
+
+
+@endsection

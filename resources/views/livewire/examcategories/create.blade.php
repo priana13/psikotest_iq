@@ -3,7 +3,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="createDataModalLabel">Create New</h5>
+                <h5 class="modal-title" id="createDataModalLabel">Tambah Baru</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                      <span aria-hidden="true close-btn">×</span>
                 </button>
@@ -21,7 +21,8 @@
                 <select wire:model="exam_type" class="form-control" id="">
                     <option value="">Pilih Type Ujian</option>
                     <option value="Psikotes">Psikotes</option>
-                    <option value="Akademik">Akademik</option>                    
+                    <option value="Akademik">Akademik</option>  
+                    <option value="Pengembangan">Pengembangan</option>                    
                 </select>
                 
                 @error('type') <span class="text-danger">{{ $message }}</span> @enderror
