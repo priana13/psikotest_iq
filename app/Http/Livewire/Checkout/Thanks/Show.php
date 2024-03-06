@@ -60,7 +60,7 @@ class Show extends Component
         $product = [
             [
                 'id'       => $this->transaksi->package->id,
-                'price'    => $this->transaksi->package->price,
+                'price'    => $this->transaksi->nominal,
                 'quantity' => $this->transaksi->qty,
                 'name'     => $this->transaksi->package->name,
             ]
@@ -72,7 +72,7 @@ class Show extends Component
         $payload = [
             'transaction_details' => [
                 'order_id'      => $this->transaksi->code,
-                'gross_amount'  => $this->transaksi->nominal,
+                'gross_amount'  => $this->transaksi->total,
             ],
             'customer_details' => [
                 'first_name'    => $this->transaksi->nama,

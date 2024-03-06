@@ -23,7 +23,7 @@ class CheckoutShow extends Component
             $list_payment_methods,
             $total,
             $disc=0,
-            $ppn=0;
+            $ppn= 4500;
     public $label_rekening_selected = 'Pilih Metode Pembayaran';
     public $rekening_selected;
     public $type = [
@@ -72,7 +72,7 @@ class CheckoutShow extends Component
         // $this->qty = $this->productSelected->qty;       
        
         $this->harga = $this->productSelected->price;
-        $this->total = $this->harga * $this->qty;  
+        $this->total = ($this->harga * $this->qty ) + $this->ppn;  
         
         $this->jumlah_bulan = $this->productSelected->qty * $this->qty;
 
@@ -88,6 +88,8 @@ class CheckoutShow extends Component
         
         $rekening = PaymentMethod::first();
 
+
+
         $transaksi = Transaction::create([
 
             'user_id' => auth()->user()->id,
@@ -100,6 +102,8 @@ class CheckoutShow extends Component
             'hp' => $this->hp, 
             'email' => $this->email,
             'alamat' => $this->alamat,
+            'ppn' => $this->ppn,
+            'total' => $this->total
         ]);
 
 
