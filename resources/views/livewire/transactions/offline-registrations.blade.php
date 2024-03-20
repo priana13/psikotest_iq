@@ -61,13 +61,13 @@
 							@foreach($transactions as $row)
 							<tr>
 								<td>{{ $row->id }}</td> 								
-								<td>{{ $row->user->name}}</td>
-								<td>{{ $row->user->jenis_kelamin }}</td>								
-								<td>{{ $row->user->hp }}</td>
-								<td>{{ $row->user->minat }}</td>
-                                <td>{{ $row->user->alamat }}</td>
+								<td>{{ $row->nama}}</td>
+								<td>{{ $row->jenis_kelamin }}</td>								
+								<td>{{ $row->hp }}</td>
+								<td>{{ $row->minat }}</td>
+                                <td>{{ $row->alamat }}</td>
                                 {{-- <td></td> --}}
-								<td>{{ $row->user->email }}</td>
+								<td>{{ $row->email }}</td>
 								<td class="text-center">
 									<span class="badge badge-{{ $warna_status[$row->status] }} text-white">{{ $row->status }}</span>
 									

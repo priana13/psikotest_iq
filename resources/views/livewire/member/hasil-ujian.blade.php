@@ -188,6 +188,9 @@
 
                 </div>    
                 
+
+                <a href="{{ route('member.hasil_ujian_detail', $examevent->id) }}" class="btn btn-danger mx-auto">Hasil Lengkap</a>
+
                 
 
                 <div class="card-footer text-center mt-5">

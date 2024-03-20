@@ -22,35 +22,42 @@ class PesertaOfflineController extends Controller
 
         // 1. insert ke table user 
 
-        $pendaftar = User::where('email', $request->email)->first();
+        // $pendaftar = User::where('email', $request->email)->first();
 
-        if(!$pendaftar){
-            $pendaftar = User::create([
-                'name' => $request->name,
-                'email' => $request->email,
-                'minat' => $request->minat,
-                'alamat' => $request->alamat,
-                'hp' => $request->hp,
-                'jenis_kelamin' => $request->jenis_kelamin,
-                'level' => "user",  
-                'lokasi_test' => "Offline"            
-            ]);
-        }           
+        // if(!$pendaftar){
+        //     $pendaftar = User::create([
+        //         'name' => $request->name,
+        //         'email' => $request->email,
+        //         'minat' => $request->minat,
+        //         'alamat' => $request->alamat,
+        //         'hp' => $request->hp,
+        //         'jenis_kelamin' => $request->jenis_kelamin,
+        //         'level' => "user",  
+        //         'lokasi_test' => "Offline"            
+        //     ]);
+        // }           
 
 
         // 2. insert ke table transaction 
 
         $biaya_offline = Setting::where('name','biaya_offline')->first();
 
-        $transaction = Transaction::create([ 
-			'user_id' => $pendaftar->id,
+        $transaction = Transaction::create([ 			
 			// 'package_id' => $this-> package_id,
             'code' => \uniqid(),
 			// 'payment_method_id' => 1,
 			'nominal' => $biaya_offline->value,
+            'total' => $biaya_offline->value,
 			'status' => "Pending",
             "lokasi_test" => "Offline",
             "qty" => 1,
+            "nama" => $request->name,
+            "email" => $request->email,
+            "alamat" => $request->alamat,
+            "minat" => $request->minat,
+            "hp" => $request->hp,
+            "minat" => $request->minat,
+            "jenis_kelamin" => $request->jenis_kelamin
         ]);
 
        return \redirect()->route('offline.pembayaran', $transaction->id);
