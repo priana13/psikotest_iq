@@ -83,9 +83,9 @@ class Keempat extends Component
     public function updateDatabase($quizId,$questionNumber)
     {       
         $QuizGe =QuizGe::where('id','=',$quizId)->first();
-        $answer = $this->{'answer' . $questionNumber};      
+        $answer = strtoupper($this->{'answer' . $questionNumber});      
 
-        $n1 = stripos($QuizGe->k1, trim($answer));
+        /*$n1 = stripos($QuizGe->k1, trim($answer));
         $n2 = stripos($QuizGe->k2, trim($answer));
         $nilai = 0;
         if ($n1 !== false) {
@@ -94,7 +94,17 @@ class Keempat extends Component
             $nilai = 1;
         } else {
             $nilai = 0;
-        } 
+        } */
+
+        $n1 = explode(", ", strtoupper($QuizGe->k1));
+        $n2 = explode(", ", strtoupper($QuizGe->k2));
+
+        $nilai = 0;
+        if (in_array(trim($answer), $n1, true)) {
+            $nilai = 2;
+        } elseif (in_array(trim($answer), $n2, true)) {
+            $nilai = 1;
+        }
         NormaTest::updateOrCreate(
             [
                 'user_id' => $this->user_id,
