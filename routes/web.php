@@ -25,6 +25,7 @@ use App\Http\Controllers\Norma\ReportController;
 use App\Http\Controllers\TrialPsikotestController;
 use App\Http\Controllers\Member\TypeSoalController;
 use App\Http\Controllers\Offline\PesertaOfflineController;
+use App\Http\Controllers\TryOut\TryOutController;
 use App\Http\Livewire\Transactions\OfflineRegistrations;
 
 /*
@@ -119,6 +120,8 @@ Route::middleware('auth')->group(function(){
 	Route::get('/test/petunjuk' , [TestController::class , 'petunjuk'])->name('norma.test.petunjuk');
 
 
+	// Try oute
+	Route::get('/tryout/test', [TryOutController::class, 'start'])->name('tryout.start');
 
 	Route::middleware('admin')->group(function(){
 
