@@ -271,19 +271,45 @@ class MidtransController extends Controller
 
       
     }
+    
+    /**
+     * Method sendPendingMail
+     *
+     * @return void
+     */
+    public function sendPendingMail(){       
 
-    public function sendPendingMail(){  
-
-      Mail::to($this->transaksi->user->email)->send(new OrderMail($this->transaksi , $this->notif , $this->va_number));
+      Mail::to($this->getEmail($this->transaksi))->send(new OrderMail($this->transaksi , $this->notif , $this->va_number));
 
     }
 
-
+    
+    /**
+     * Method send_completed_mail
+     *
+     * @return void
+     */
     public function send_completed_mail(){
+   
+      Mail::to( $this->getEmail($this->transaksi) )->send(new CompletedOrderMail($this->transaksi));
 
+    }
+    
+    /**
+     * Method getEmail
+     *
+     * @param $transaksi $transaksi [explicite description]
+     *
+     * @return string
+     */
+    public function getEmail($transaksi): string
+    {
 
-      Mail::to($this->transaksi->user->email)->send(new CompletedOrderMail($this->transaksi));
+      $email = ($transaksi->lokasi_test == 'Online')? 
+                $transaksi->user->email: 
+                $transaksi->email;  
 
+      return $email;
     }
 
 
