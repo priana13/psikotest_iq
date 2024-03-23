@@ -2,6 +2,7 @@
 
 @section('main-content')
 
+
 <div class="row">
     
     <div class="col text-center p-5">
@@ -15,7 +16,7 @@
 
         <p>Jika Anda sudah siap, silahkan klik tombol mulai!</p>
 
-        <button class="btn btn-warning btn-lg text-dark">Mulai</button>
+        <a href="{{ route('mulai-ujian' , 22) }}?is_tryout=1" class="btn btn-warning btn-lg text-dark">Mulai</a>
 
     </div>
 

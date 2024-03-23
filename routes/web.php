@@ -96,6 +96,11 @@ Route::middleware('auth')->group(function(){
 	Route::get('/member/hasil-ujian-umum/{examevent}', [UjianController::class,'hasil_ujian_umum'])->name('member.hasil_ujian_umum');
 	Route::get('/member/hasil-ujian-detail/{examevent}', [UjianController::class,'hasil_ujian_detail'])->name('member.hasil_ujian_detail');
 
+
+	// Try oute
+	Route::get('/tryout/test', [TryOutController::class, 'start'])->name('tryout.start');
+
+
 	Route::view('member/history', 'livewire.examevents.index')->name('member.history');
 	// checkout
 	Route::get('/checkout' , [CheckoutController::class , 'index'])->name('checkout');
@@ -119,9 +124,6 @@ Route::middleware('auth')->group(function(){
 
 	Route::get('/test/petunjuk' , [TestController::class , 'petunjuk'])->name('norma.test.petunjuk');
 
-
-	// Try oute
-	Route::get('/tryout/test', [TryOutController::class, 'start'])->name('tryout.start');
 
 	Route::middleware('admin')->group(function(){
 

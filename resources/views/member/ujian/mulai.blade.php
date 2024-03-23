@@ -2,7 +2,14 @@
 
 @section('main-content')
 
+@if(request()->is_tryout)
+
+    @livewire('header-tryout')
+
+@endif
+
 <div class="row">
+
 
     <div class="col">
 
@@ -39,7 +46,7 @@
                         Batal
                     </a>
                     @auth
-                    <a href="{{ route('member.buat_event' , $ujian->id) }}" class="btn btn-primary btn-sm" type="submit">
+                    <a href="{{ route('member.buat_event' , $ujian->id) }}?is_tryout={{ request()->is_tryout }}" class="btn btn-primary btn-sm" type="submit">
                         Mulai Sekarang
                     </a>
 

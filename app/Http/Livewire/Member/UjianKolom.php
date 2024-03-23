@@ -220,11 +220,11 @@ class UjianKolom extends Component
                 }else{
 
                     // redirect ke kolom berikutnya
-                    return redirect()->route('coba.ujian-kolom',[
+                    return redirect( route('coba.ujian-kolom',[
                         'exam' => $this->exam->id,
                         'examevent' => $this->examEvent->id,
                         'kolom' => $this->kolom + 1
-                    ]); 
+                    ]) . '?is_tryout=' . \request()->is_tryout ); 
 
 
                 }
@@ -290,11 +290,11 @@ class UjianKolom extends Component
             if(Auth::check()){
 
             // redirect ke kolom berikutnya
-            return redirect()->route('member.ujian-kolom',[
+            return redirect( route('member.ujian-kolom',[
                 'exam' => $this->exam->id,
                 'examevent' => $this->examEvent->id,
                 'kolom' => $this->kolom + 1
-             ]); 
+             ]) . '?is_tryout=' . \request()->is_tryout ); 
 
             }else{
 

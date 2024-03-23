@@ -44,21 +44,20 @@ class UjianController extends Controller
         if($exam->exam_category->type == 'Column'){
 
 
-          return redirect()->route('member.ujian-kolom',[
+          return redirect( route('member.ujian-kolom',[
             'exam' => $exam,
             'examevent' => $exam_event,
             'kolom' => 1
-          ]); 
+          ]) . '?is_tryout=' . \request()->is_tryout ); 
 
 
-        }else{
-          
+        }else{        
 
           // $type = 'pg'; // pilihan ganda
-          return redirect()->route('member.ujian',[
+          return redirect( route('member.ujian',[
             'exam' => $exam,
             'examevent' => $exam_event
-          ]); 
+          ]) . '?is_tryout=' . request()->is_tryout ); 
 
         }
 
@@ -66,7 +65,7 @@ class UjianController extends Controller
     }
 
     // ujian pilihan ganda
-    public function ujian($exam,$examevent){
+    public function ujian($exam,$examevent){     
 
       $exam = Exam::find($exam);     
       $examevent = Examevent::find($examevent); 
