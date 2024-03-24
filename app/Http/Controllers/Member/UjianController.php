@@ -41,6 +41,12 @@ class UjianController extends Controller
           'exam_id' => $exam->id
         ]);  
 
+        if(\request()->is_tryout){
+
+          $exam_event->is_tryout = true;
+          $exam_event->save();
+        }
+
         if($exam->exam_category->type == 'Column'){
 
 
