@@ -8,6 +8,7 @@ use App\Models\Exam;
 use Illuminate\Http\Request;
 use App\Models\Examevent;
 use App\Models\TempExam;
+use App\Models\TryOut;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Gate;
 
@@ -43,7 +44,14 @@ class UjianController extends Controller
 
         if(\request()->is_tryout){
 
+          // $tryout = TryOut::create([
+          //           'kode_tryout' => \uniqid(),
+          //           'user_id' => auth()->user()->id
+          //         ]);
+
+
           $exam_event->is_tryout = true;
+          $exam_event->kode_tryout = \request()->kode_tryout;
           $exam_event->save();
         }
 

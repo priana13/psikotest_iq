@@ -99,6 +99,8 @@ Route::middleware('auth')->group(function(){
 
 	// Try oute
 	Route::get('/tryout/test', [TryOutController::class, 'start'])->name('tryout.start');
+	Route::get('/tryout/create', [TryOutController::class, 'create'])->name('tryout.create');
+
 
 
 	Route::view('member/history', 'livewire.examevents.index')->name('member.history');

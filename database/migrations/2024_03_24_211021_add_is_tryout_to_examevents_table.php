@@ -15,6 +15,7 @@ class AddIsTryoutToExameventsTable extends Migration
     {
         Schema::table('examevents', function (Blueprint $table) {
             $table->boolean('is_tryout')->default(false);
+            $table->string('kode_tryout')->nullable();
         });
     }
 
@@ -27,6 +28,7 @@ class AddIsTryoutToExameventsTable extends Migration
     {
         Schema::table('examevents', function (Blueprint $table) {
             $table->dropColumn('is_tryout');
+            $table->dropColumn('kode_tryout');
         });
     }
 }

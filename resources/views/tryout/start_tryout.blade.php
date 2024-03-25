@@ -16,7 +16,7 @@
 
         <p>Jika Anda sudah siap, silahkan klik tombol mulai!</p>
 
-        <a href="{{ route('mulai-ujian' , $try_out_1->exam_id) }}?is_tryout=1" class="btn btn-warning btn-lg text-dark">Mulai</a>
+        <a href="{{ route('tryout.create') }}" class="btn btn-warning btn-lg text-dark">Mulai</a>
 
     </div>
 
