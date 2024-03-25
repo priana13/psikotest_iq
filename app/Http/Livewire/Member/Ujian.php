@@ -2,13 +2,14 @@
 
 namespace App\Http\Livewire\Member;
 
-use Livewire\Component;
-use App\Models\Question;
-use App\Models\Exam;
-use App\Models\ExamItem;
-use App\Models\ExamEvent;
 use Carbon\Carbon;
+use App\Models\Exam;
+use Livewire\Component;
+use App\Models\ExamItem;
+use App\Models\Question;
 use App\Models\TempExam;
+use App\Models\ExamEvent;
+use App\Models\TryoutExam;
 use Illuminate\Support\Facades\Redirect;
 
 class Ujian extends Component
@@ -294,10 +295,35 @@ class Ujian extends Component
 
         $this->emit('ujianSelesai');
 
-         Redirect::to(route('member.ujian', [
-            'exam' => $this->exam->id, 
-            'examevent' => $this->examEvent->id
-         ]));
+        if($this->examEvent->is_tryout){
+            // redirect ke try out tes kepribadian atau sikap kerja
+
+            if($this->exam->type == 'cerdas'){
+                // redirect ke test kepribadian
+
+                $try_out_2 = TryoutExam::where('name' , 'Kepribadian')->first(); 
+
+                Redirect::to( route('mulai-ujian', $try_out_2->exam_id ) . '?is_tryout=1' );
+
+            }else{
+                // redirect ke test sikap kerja
+                $try_out_3 = TryoutExam::where('name' , 'Sikap Kerja')->first(); 
+
+                Redirect::to( route('mulai-ujian', $try_out_3->exam_id ) . '?is_tryout=1' );
+            }
+
+
+        }else{
+
+
+            Redirect::to(route('member.ujian', [
+                'exam' => $this->exam->id, 
+                'examevent' => $this->examEvent->id
+             ]));
+
+        }
+
+
 
          // kita bisa redirect page di sini ke halaman nilai
 
