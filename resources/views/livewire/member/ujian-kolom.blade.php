@@ -31,33 +31,44 @@
 
                     @if($is_finish == TRUE)
 
+                    @if(request()->is_tryout)
 
+                        <div class="mx-auto text-center">
 
-                    <div class="mx-auto">
-                         <h2 class="text-center">Tes Telah Selesai</h2>
-                         <p>Terimakasih Telah Mengikuti Test ini dengan baik</p>
-                         {{-- <h1 class="text-center text-primary"> <strong>{{ number_format($nilai_akhir) }}</strong></h1> --}}
+                            <h2 class="text-center">TRYOUT TELAH SELESAI</h2>
 
-
-                         <div class="d-flex justify-content-center">
-                            <a href="{{ route('member.history') }}" class="btn btn-secondary btn-sm mr-3">
-                                History
+                            <a href="{{ route('tryout.hasil', $examEvent->kode_tryout) }}" class="btn btn-success"  type="submit">
+                                LIHAT NILAI
                             </a>
-                            <a href="{{ route('member.hasil_ujian', $examEvent) }}" class="btn btn-success btn-sm mr-3"  type="submit">
-                                Lihat Hasil
-                            </a>
-                            <a href="{{ route('member.soal') }}" class="btn btn-primary btn-sm"  type="submit">
-                                Test Lagi
-                            </a>
-        
+
                         </div>
+                       
 
-                        
-                    </div>  
-                    
-                    
+                    @else
+
+                        <div class="mx-auto">
+                            <h2 class="text-center">Tes Telah Selesai</h2>
+                            <p>Terimakasih Telah Mengikuti Test ini dengan baik</p>
+                            {{-- <h1 class="text-center text-primary"> <strong>{{ number_format($nilai_akhir) }}</strong></h1> --}}
 
 
+                            <div class="d-flex justify-content-center">
+                                <a href="{{ route('member.history') }}" class="btn btn-secondary btn-sm mr-3">
+                                    History
+                                </a>
+                                <a href="{{ route('member.hasil_ujian', $examEvent) }}" class="btn btn-success btn-sm mr-3"  type="submit">
+                                    Lihat Hasil
+                                </a>
+                                <a href="{{ route('member.soal') }}" class="btn btn-primary btn-sm"  type="submit">
+                                    Test Lagi
+                                </a>
+            
+                            </div>
+
+                            
+                        </div>  
+
+                    @endif 
 
 
                     @else

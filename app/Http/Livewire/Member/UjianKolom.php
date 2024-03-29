@@ -211,11 +211,11 @@ class UjianKolom extends Component
                 if(Auth::check()){
 
                     // redirect ke kolom berikutnya
-                    return redirect()->route('member.ujian-kolom',[
+                    return redirect( route('member.ujian-kolom',[
                         'exam' => $this->exam->id,
                         'examevent' => $this->examEvent->id,
                         'kolom' => $this->kolom + 1
-                    ]); 
+                    ]) . '?is_tryout=' . \request()->is_tryout . '&step=3' ); 
                     
                 }else{
 
@@ -267,7 +267,7 @@ class UjianKolom extends Component
 
     }
 
-    public function waktuHabis(){
+    public function waktuHabis(){       
 
         // clear interval waktu di javascript
         $this->emit('clearInterval');
@@ -284,17 +284,19 @@ class UjianKolom extends Component
             $this->examEvent->save();
 
             $this->tempexam->kolom_terakhir = $this->kolom;
-            $this->tempexam->save();  
+            $this->tempexam->save(); 
+            
+            $is_tryout = ($this->examEvent->kode_tryout) ? 1 : 0;
             
 
-            if(Auth::check()){
+            if(Auth::check()){          
 
             // redirect ke kolom berikutnya
             return redirect( route('member.ujian-kolom',[
                 'exam' => $this->exam->id,
                 'examevent' => $this->examEvent->id,
                 'kolom' => $this->kolom + 1
-             ]) . '?is_tryout=' . \request()->is_tryout ); 
+             ]) . '?is_tryout=' . $is_tryout . '&step=3' ); 
 
             }else{
 

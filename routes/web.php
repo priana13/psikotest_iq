@@ -26,6 +26,7 @@ use App\Http\Controllers\TrialPsikotestController;
 use App\Http\Controllers\Member\TypeSoalController;
 use App\Http\Controllers\Offline\PesertaOfflineController;
 use App\Http\Controllers\TryOut\TryOutController;
+use App\Http\Livewire\Member\HasilTest\HasilTryOut;
 use App\Http\Livewire\Transactions\OfflineRegistrations;
 
 /*
@@ -100,7 +101,7 @@ Route::middleware('auth')->group(function(){
 	// Try oute
 	Route::get('/tryout/test', [TryOutController::class, 'start'])->name('tryout.start');
 	Route::get('/tryout/create', [TryOutController::class, 'create'])->name('tryout.create');
-
+	Route::get('/tryout/hasil/{tryout:kode_tryout}', HasilTryOut::class)->name('tryout.hasil');
 
 
 	Route::view('member/history', 'livewire.examevents.index')->name('member.history');
