@@ -31,7 +31,7 @@
 
                     @if($is_finish == TRUE)
 
-                    @if(request()->is_tryout)
+                    @if($examEvent->kode_tryout)
 
                         <div class="mx-auto text-center">
 
