@@ -46,7 +46,7 @@
                         Batal
                     </a>
                     @auth
-                    <a href="{{ route('member.buat_event' , $ujian->id) }}?is_tryout={{ request()->is_tryout }}&kode_tryout={{ request()->kode_tryout }}" class="btn btn-primary btn-sm" type="submit">
+                    <a href="{{ route('member.buat_event' , $ujian->id) }}?is_tryout={{ request()->is_tryout }}&kode_tryout={{ request()->kode_tryout }}&step={{ request()->step }}" class="btn btn-primary btn-sm" type="submit">
                         Mulai Sekarang
                     </a>
 

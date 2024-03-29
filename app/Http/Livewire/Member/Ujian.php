@@ -303,13 +303,13 @@ class Ujian extends Component
 
                 $try_out_2 = TryoutExam::where('name' , 'Kepribadian')->first(); 
 
-                Redirect::to( route('mulai-ujian', $try_out_2->exam_id ) . '?is_tryout=1&kode_tryout=' . $this->examEvent->kode_tryout );
+                Redirect::to( route('mulai-ujian', $try_out_2->exam_id ) . '?is_tryout=1&kode_tryout=' . $this->examEvent->kode_tryout . '&step=2');
 
             }else{
                 // redirect ke test sikap kerja
                 $try_out_3 = TryoutExam::where('name' , 'Sikap Kerja')->first(); 
 
-                Redirect::to( route('mulai-ujian', $try_out_3->exam_id ) . '?is_tryout=1&kode_tryout=' . $this->examEvent->kode_tryout );
+                Redirect::to( route('mulai-ujian', $try_out_3->exam_id ) . '?is_tryout=1&kode_tryout=' . $this->examEvent->kode_tryout . '&step=3');
             }
 
 

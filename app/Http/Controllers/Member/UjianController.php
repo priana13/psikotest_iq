@@ -62,7 +62,7 @@ class UjianController extends Controller
             'exam' => $exam,
             'examevent' => $exam_event,
             'kolom' => 1
-          ]) . '?is_tryout=' . \request()->is_tryout ); 
+          ]) . '?is_tryout=' . \request()->is_tryout . '&step=' . \request()->step ); 
 
 
         }else{        
@@ -71,7 +71,7 @@ class UjianController extends Controller
           return redirect( route('member.ujian',[
             'exam' => $exam,
             'examevent' => $exam_event
-          ]) . '?is_tryout=' . request()->is_tryout ); 
+          ]) . '?is_tryout=' . request()->is_tryout . '&step=' . \request()->step); 
 
         }
 

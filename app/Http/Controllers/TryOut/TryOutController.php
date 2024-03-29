@@ -28,7 +28,7 @@ class TryOutController extends Controller
           $try_out_1 = TryoutExam::where('name' , 'Kecerdasan')->first();       
 
 
-         return \redirect( route('mulai-ujian' , $try_out_1->exam_id) . '?is_tryout=1&kode_tryout=' . $tryout->kode_tryout );
+         return \redirect( route('mulai-ujian' , $try_out_1->exam_id) . '?is_tryout=1&kode_tryout=' . $tryout->kode_tryout . '&step=1' );
 
     }
 }
