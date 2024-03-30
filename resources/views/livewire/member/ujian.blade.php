@@ -5,9 +5,9 @@
 
         <div class="header d-flex justify-content-between">
 
-            <button class="btn btn-sm btn-primary mb-1" onclick="listNo()" id="sidebarToggle">Nomor</button>
+            <button class="btn btn-sm btn-primary mb-1" onclick="listNo()" id="sidebarToggle">Nomor</button>         
 
-            @if(!$finish_status)
+            @if(!$finish_status && !$examEvent->is_tryout)
 
                 <button class="btn btn-sm btn-danger mb-1" onclick="akhiriTest();">Akhiri Tes</button>
 
