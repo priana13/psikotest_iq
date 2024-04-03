@@ -75,7 +75,7 @@
                     color: '#ffff',
                     didDestroy: function(){
                         {{-- Livewire.emit('mulaiTest'); --}}
-                        {{-- window.location.replace('http://127.0.0.1:8000/coba/ujian/23?is_tryout=1&kode_tryout=6608641197d32&step=1'); --}}
+                        window.location = '{{ route('member.buat_event' , $ujian->id) }}?is_tryout={{ request()->is_tryout }}&kode_tryout={{ request()->kode_tryout }}&step={{ request()->step }}';
                     }
                 });
                 
