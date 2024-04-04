@@ -31,11 +31,12 @@ class SettingController extends Controller
 
         $exams = Exam::get();
 
-        $tryout_1 = TryoutExam::where('name', 'Kecerdasan')->first();
+        $tryout_1 = TryoutExam::where('name', 'Kecerdasan')->first();        
+        $this->cekTryout($tryout_1);
 
-        $tryout_2 = TryoutExam::where('name', 'Kepribadian')->first();
+        $tryout_2 = TryoutExam::where('name', 'Kepribadian')->first();       
 
-        $tryout_3 = TryoutExam::where('name', 'Sikap Kerja')->first();
+        $tryout_3 = TryoutExam::where('name', 'Sikap Kerja')->first();      
 
         return view('setting', compact(
             'list_post', 
@@ -153,6 +154,31 @@ class SettingController extends Controller
         $tryout_3->save();         
         
         return back();
+
+
+    }
+
+    private function cekTryout($tryout){
+
+        if($tryout == null){
+
+            $exams = [
+                "Kecerdasan" => 23,
+                "Kepribadian" => 27,
+                "Sikap Kerja" => 39
+            ];
+    
+            foreach ($exams as $key => $value) {
+                
+                TryoutExam::create([
+                    'name' => $key,
+                    'exam_id' => $value
+                ]);
+    
+            }
+
+
+        }
 
 
     }

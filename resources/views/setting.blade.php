@@ -155,11 +155,14 @@
                             <small id="" class="form-text text-muted">
                                 Configurasi Test Tryout
                             </small>
-                        </div>
+                        </div>                       
 
                         <div class="form-group row">
-                            <label class="col-md-3" for="tryout_1">Tryout 1 (Kecerdasan)</label>
-                            <select class="form-control form-control-sm col-md-8" id="" name="tryout_1">
+
+                            <div class="col-md-8">
+
+                            <label class="col" for="tryout_1">Tryout 1 (Kecerdasan)</label>
+                            <select class="form-control form-control-sm" id="" name="tryout_1">
                                 <option value="0">Select</option>
                                 @foreach ($exams->where('type','cerdas') as $exam)                                  
 
@@ -170,7 +173,20 @@
                                  @endforeach       
                             </select>                            
                             @error('tryout_1') <span class="text-danger">{{ $message }}</span> @enderror
-        
+
+
+                            </div>
+                            
+
+                            <div class="col-md-2 ms-2">
+                                <label class="col" for="tryout_1">Waktu Petunjuk</label>                              
+
+                                <input type="text" class="form-control form-control-sm " name="waktu_tryout_1" value="60">
+
+                                
+                            </div>                                  
+
+
                         </div> 
                         
 

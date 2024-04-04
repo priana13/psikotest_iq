@@ -17,6 +17,7 @@ class CreateTryoutExamsTable extends Migration
             $table->id();
             $table->string('name'); // Kecerdasan , Kepribadian , Sikap Kerja
             $table->unsignedBigInteger('exam_id');
+            $table->integer('petunjuk_timmer')->default(60);
 
             $table->foreign('exam_id')->references('id')->on('exams')->cascadeOnDelete();
 
