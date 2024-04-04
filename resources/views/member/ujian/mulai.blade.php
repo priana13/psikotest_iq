@@ -11,7 +11,7 @@
         <div class="col d-flex justify-items-center"
         
         x-data="{
-            sisaWaktu: 60, // detik
+            sisaWaktu: {{ $timer->petunjuk_timmer }}, // detik
             textWaktu : ''    
         }"
     

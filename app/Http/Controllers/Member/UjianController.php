@@ -2,14 +2,15 @@
 
 namespace App\Http\Controllers\Member;
 
-use App\Charts\GrafikKetahanan;
-use App\Http\Controllers\Controller;
 use App\Models\Exam;
-use Illuminate\Http\Request;
-use App\Models\Examevent;
-use App\Models\TempExam;
 use App\Models\TryOut;
+use App\Models\TempExam;
+use App\Models\Examevent;
+use App\Models\TryoutExam;
+use Illuminate\Http\Request;
+use App\Charts\GrafikKetahanan;
 use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Gate;
 
 class UjianController extends Controller
@@ -22,9 +23,32 @@ class UjianController extends Controller
 
       abort_unless($response->allowed(), 403);
 
+      $timer = null;
+
+      if( request()->is_tryout ){
+        
+
+        if(\request()->step == 1){
+
+          $timer = TryoutExam::where('name', 'Kecerdasan')->first();
+
+
+        }else if(\request()->step == 2){
+
+          $timer = TryoutExam::where('name', 'Kepribadian')->first();
+
+        }else{
+
+          $timer = TryoutExam::where('name', 'Sikap Kerja')->first();
+
+        } 
+
+      }
+
 
       return view('member.ujian.mulai', [
-          'ujian' => Exam::find($exam)
+          'ujian' => Exam::find($exam),
+          'timer' => $timer
       ]);
 
     }

@@ -143,14 +143,17 @@ class SettingController extends Controller
 
         $tryout_1 = TryoutExam::where('name', 'Kecerdasan')->first();
         $tryout_1->exam_id = $request->tryout_1;
+        $tryout_1->petunjuk_timmer = $request->petunjuk_timmer_1;
         $tryout_1->save();
 
         $tryout_2 = TryoutExam::where('name', 'Kepribadian')->first();
         $tryout_2->exam_id = $request->tryout_2;
+        $tryout_2->petunjuk_timmer = $request->petunjuk_timmer_2;
         $tryout_2->save();
 
         $tryout_3 = TryoutExam::where('name', 'Sikap Kerja')->first();
         $tryout_3->exam_id = $request->tryout_3;
+        $tryout_3->petunjuk_timmer = $request->petunjuk_timmer_3;
         $tryout_3->save();         
         
         return back();

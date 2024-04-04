@@ -181,7 +181,7 @@
                             <div class="col-md-2 ms-2">
                                 <label class="col" for="tryout_1">Waktu Petunjuk</label>                              
 
-                                <input type="text" class="form-control form-control-sm " name="waktu_tryout_1" value="60">
+                                <input type="text" class="form-control form-control-sm " name="petunjuk_timmer_1" value="{{ $tryout_1->petunjuk_timmer }}">
 
                                 
                             </div>                                  
@@ -191,31 +191,59 @@
                         
 
                         <div class="form-group row">
-                            <label class="col-md-3" for="tryout_2">Tryout 2 (Kepribadian)</label>
-                            <select class="form-control form-control-sm col-md-8" id="" name="tryout_2">
-                                <option value="0">Select</option>
-                                @foreach ($exams->where('type','kepribadian') as $exam)
-                                <option value="{{ $exam->id }}"
-                                    {{ ($tryout_2->exam_id == $exam->id) ? "selected" : "" }}
-                                    >{{ $exam->nama_tes }}</option> 
-                                 @endforeach       
-                            </select>                            
-                            @error('tryout_2') <span class="text-danger">{{ $message }}</span> @enderror
+                            <div class="col-md-8">
+
+                                <label class="col" for="tryout_2">Tryout 2 (Kepribadian)</label>
+                                <select class="form-control form-control-sm col" id="" name="tryout_2">
+                                    <option value="0">Select</option>
+                                    @foreach ($exams->where('type','kepribadian') as $exam)
+                                    <option value="{{ $exam->id }}"
+                                        {{ ($tryout_2->exam_id == $exam->id) ? "selected" : "" }}
+                                        >{{ $exam->nama_tes }}</option> 
+                                     @endforeach       
+                                </select>                            
+                                @error('tryout_2') <span class="text-danger">{{ $message }}</span> @enderror
+
+
+                            </div>
+
+                            <div class="col-md-2 ms-2">
+                                <label class="col" for="tryout_1">Waktu Petunjuk</label>                              
+
+                                <input type="text" class="form-control form-control-sm " name="petunjuk_timmer_2" value="{{ $tryout_2->petunjuk_timmer }}">
+
+                                
+                            </div>  
+                          
         
                         </div> 
 
 
                         <div class="form-group row">
-                            <label class="col-md-3" for="tryout_3">Tryout 3 (Sikap Kerja)</label>
-                            <select class="form-control form-control-sm col-md-8" id="" name="tryout_3">
-                                <option value="0">Select</option>
-                                @foreach ($exams->where('type', 'cermat') as $exam)
-                                <option value="{{ $exam->id }}"
-                                    {{ ($tryout_3->exam_id == $exam->id) ? "selected" : "" }}
-                                    >{{ $exam->nama_tes }}</option> 
-                                 @endforeach       
-                            </select>                            
-                            @error('tryout_3') <span class="text-danger">{{ $message }}</span> @enderror
+                            <div class="col-md-8">
+
+                                <label class="col" for="tryout_3">Tryout 3 (Sikap Kerja)</label>
+                                <select class="form-control form-control-sm col" id="" name="tryout_3">
+                                    <option value="0">Select</option>
+                                    @foreach ($exams->where('type', 'cermat') as $exam)
+                                    <option value="{{ $exam->id }}"
+                                        {{ ($tryout_3->exam_id == $exam->id) ? "selected" : "" }}
+                                        >{{ $exam->nama_tes }}</option> 
+                                     @endforeach       
+                                </select>                            
+                                @error('tryout_3') <span class="text-danger">{{ $message }}</span> @enderror
+
+
+                            </div>
+
+                            <div class="col-md-2 ms-2">
+                                <label class="col" for="tryout_1">Waktu Petunjuk</label>                              
+
+                                <input type="text" class="form-control form-control-sm " name="petunjuk_timmer_3" value="{{ $tryout_3->petunjuk_timmer }}">
+
+                                
+                            </div>  
+                           
         
                         </div> 
                         
