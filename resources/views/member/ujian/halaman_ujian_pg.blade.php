@@ -72,7 +72,7 @@
 
             Swal.fire({
                 title: 'WAKTU HABIS',
-                text: 'Pindah kolom berikutnya',
+                text: 'Terimakasih',
                 timer: 3000, // 3 detik
                 timerProgressBar: true,
                 background: '#282A3A',

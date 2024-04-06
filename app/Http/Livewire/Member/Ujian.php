@@ -49,7 +49,7 @@ class Ujian extends Component
         }
 
         $this->exam = Exam::find($examid);       
-        $this->examEvent = $examEvent;
+        $this->examEvent = $examEvent;      
 
                 /**
          * Ambil soal terkhir
@@ -230,6 +230,37 @@ class Ujian extends Component
         $this->examEvent->status = "Selesai";
         $this->examEvent->sisa_waktu = 0;
         $this->examEvent->save();
+
+
+        if($this->examEvent->is_tryout){
+            // redirect ke try out tes kepribadian atau sikap kerja
+            
+
+            if($this->exam->type == 'cerdas'){
+                // redirect ke test kepribadian
+
+                $try_out_2 = TryoutExam::where('name' , 'Kepribadian')->first(); 
+
+                Redirect::to( route('mulai-ujian', $try_out_2->exam_id ) . '?is_tryout=1&kode_tryout=' . $this->examEvent->kode_tryout . '&step=2');
+
+            }else{
+                // redirect ke test sikap kerja
+                $try_out_3 = TryoutExam::where('name' , 'Sikap Kerja')->first(); 
+
+                Redirect::to( route('mulai-ujian', $try_out_3->exam_id ) . '?is_tryout=1&kode_tryout=' . $this->examEvent->kode_tryout . '&step=3');
+            }
+
+
+        }else{
+
+
+            Redirect::to(route('member.ujian', [
+                'exam' => $this->exam->id, 
+                'examevent' => $this->examEvent->id
+             ]));
+
+        }
+
 
 
     }
