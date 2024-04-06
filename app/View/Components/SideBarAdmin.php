@@ -90,7 +90,7 @@ class SideBarAdmin extends Component
 
             $this->pengembangan = Examcategory::whereIn('id', $exam_categori_user)->where('exam_type', 'Pengembangan')->get(); 
 
-            $this->tryout = Package::whereIn('id', $langganan)->get();          
+            $this->tryout = Package::whereIn('id', $langganan)->where('type', 'tryout')->get();          
 
 
         }        
