@@ -5,9 +5,9 @@
 
 			{{-- header --}}
 
-			<div class="d-flex justify-content-end">
+			<div class="d-flex justify-content-between">
 				<div>
-					<h4>Jumlah Data: {{ $transactions->count() }}</h4>
+					<h4>Jumlah Data: {{ $total_data }}</h4>
 				</div>
 
 				<div class="mx-2">

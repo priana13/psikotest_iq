@@ -19,6 +19,8 @@ class OfflineRegistrations extends Component
     public $selected_id, $keyWord, $user_id, $package_id, $payment_method_id, $nominal, $status;
     public $updateMode = false;
 
+    public $total_data;
+
     public $warna_status = [
         'Pending' => 'warning',
         'completed' => 'success',
@@ -33,6 +35,8 @@ class OfflineRegistrations extends Component
     {
 
         $transactions = Transaction::latest()->whereIn('lokasi_test' , ["Offline"]);
+
+        $this->total_data = Transaction::offline()->count();
     
 	       
         return view('livewire.transactions.offline-registrations',
