@@ -6,6 +6,7 @@ use App\Models\PaymentMethod;
 use App\Models\Package;
 use App\Models\Transaction;
 use Faker\Provider\ar_EG\Payment;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
 class CheckoutShow extends Component
@@ -79,16 +80,15 @@ class CheckoutShow extends Component
         return view('livewire.checkout.checkout-show');
     }
 
-    public function store(){
+    public function store(){      
 
         $this->validate([
-            'product' => 'required'            
+            'product' => 'required'               
         ]);
 
+        $email = (Auth::check()) ? auth()->user()->email : 'peserta@arstamedia.com';     
         
         $rekening = PaymentMethod::first();
-
-
 
         $transaksi = Transaction::create([
 
@@ -100,7 +100,7 @@ class CheckoutShow extends Component
             'package_id' => $this->product,
             'nama' => $this->nama,
             'hp' => $this->hp, 
-            'email' => $this->email,
+            'email' => $email,
             'alamat' => $this->alamat,
             'ppn' => $this->ppn,
             'total' => $this->total

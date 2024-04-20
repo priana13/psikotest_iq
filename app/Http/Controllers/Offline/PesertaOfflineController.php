@@ -7,6 +7,7 @@ use App\Models\Setting;
 use App\Models\Transaction;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class PesertaOfflineController extends Controller
 {
@@ -18,6 +19,13 @@ class PesertaOfflineController extends Controller
     public function store(Request $request){
 
         // return $request->all();
+
+        $request->validate([
+            'name' => 'required',
+            'email' => 'nullable|email',
+            'jenis_kelamin' => 'required',
+            ''
+        ]);
 
 
         // 1. insert ke table user 
@@ -42,6 +50,8 @@ class PesertaOfflineController extends Controller
 
         $biaya_offline = Setting::where('name','biaya_offline')->first();
 
+        $email = (Auth::check()) ? auth()->user()->email : 'peserta@arstamedia.com'; 
+
         $transaction = Transaction::create([ 			
 			// 'package_id' => $this-> package_id,
             'code' => \uniqid(),
@@ -52,7 +62,7 @@ class PesertaOfflineController extends Controller
             "lokasi_test" => "Offline",
             "qty" => 1,
             "nama" => $request->name,
-            "email" => $request->email,
+            "email" => $email,
             "alamat" => $request->alamat,
             "minat" => $request->minat,
             "hp" => $request->hp,

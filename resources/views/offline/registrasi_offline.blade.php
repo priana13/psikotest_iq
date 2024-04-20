@@ -25,7 +25,8 @@
                 <div class="form-group row">
                     <label for="" class="col-3">Nama</label>
                     <span class="col-1">:</span>
-                    <input type="text" class=" col-7 form-control form-control-user" name="name" placeholder="{{ __('Nama') }}" value="{{ old('name') }}" required autofocus>
+                    <input type="text" class=" col-7 form-control form-control-user" required name="name" placeholder="{{ __('Nama') }}" value="{{ old('name') }}" autofocus>
+                    @error('name') <span class="text-danger">{{ $message }}</span> @enderror
                 </div>  
                 
                 <div class="form-group row">
@@ -62,6 +63,7 @@
                     <label for="" class="col-3">Email</label>
                     <span class="col-1">:</span>
                     <input type="email" class="col-7 form-control form-control-user" name="email" placeholder="{{ __('Alamat Email') }}" value="{{ old('email') }}" required>
+                    @error('email') <span class="text-danger">{{ $message }}</span> @enderror
                 </div>
 
                 <div class="dropdown-divider"></div>

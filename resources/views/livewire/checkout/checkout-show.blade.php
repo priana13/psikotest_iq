@@ -87,6 +87,7 @@
 
                     <div class="form-group">
                         <input wire:model="nama" type="text" class="form-control" placeholder="Nama">
+                        @error('nama') <span>{{ $message }}</span> @enderror
                     </div>
 
 
@@ -96,7 +97,9 @@
 
 
                     <div class="form-group">
-                        <input wire:model="email" type="email" class="form-control" placeholder="Email">
+                        <input wire:model="email" wire:ignore type="email" class="form-control" placeholder="Email">
+                    
+                        @error('email') <span>{{ $message }}</span> @enderror
                     </div>
 
 
