@@ -38,7 +38,7 @@ class OrderMail extends Mailable
     {      
         $transaksi = [
             'code' => $this->transaksi->code,
-            "name" => $this->transaksi->user->name,
+            "name" => ($this->transaksi->user_id) ? $this->transaksi->user->name : $this->transaksi->nama,
             'nominal' => $this->transaksi->nominal, 
             'payment_type' => $this->notif->payment_type           
         ];
