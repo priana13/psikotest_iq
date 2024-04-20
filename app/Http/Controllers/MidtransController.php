@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Jobs\CompletedEmailJob;
 use App\Mail\CompletedOrderMail;
 use App\Mail\OrderMail;
 use Mail;
@@ -291,8 +292,10 @@ class MidtransController extends Controller
      */
     public function send_completed_mail(){
    
-      Mail::to( $this->getEmail($this->transaksi) )->send(new CompletedOrderMail($this->transaksi));
+      // Mail::to( $this->getEmail($this->transaksi) )->send(new CompletedOrderMail($this->transaksi));
 
+      CompletedEmailJob::dispatch($this->transaksi);
+      
     }
     
     /**
