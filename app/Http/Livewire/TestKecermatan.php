@@ -86,6 +86,8 @@ class TestKecermatan extends Component
 
     public function buatsoal(){
 
+        // dd('test');
+
         $this->validate([
             'a' => 'required', 
             'b' => 'required',
@@ -144,7 +146,7 @@ class TestKecermatan extends Component
     }
 
     public function berikutnya(){
-
+       
         if($this->column == 0){
 
             // insert ke table Exam jika exam belum dibuat
@@ -170,6 +172,7 @@ class TestKecermatan extends Component
         $this->column++;
 
         $this->emit('soalBerikutnya');
+      
 
         $existExamColumn = ExamColumn::where('exam_id' , $this->exam->id)->where('kolom' , $this->column)->first();
         // jika kolom belum dibuat sembunyikan soal
@@ -192,10 +195,14 @@ class TestKecermatan extends Component
             $this->e = $existExamColumn->e;
 
             $this->soalTampil = TRUE; 
+
+
+            $this->list_soal = Question::where('exam_id' , $this->exam->id)->where('exam_column_id' , $existExamColumn->id)->get();
+
+
         }
 
-        $this->list_soal = Question::where('exam_id' , $this->exam->id)->where('exam_column_id' , $existExamColumn->id)->get();
-                  
+        // dd( $existExamColumn );                  
 
     }
 
@@ -278,9 +285,12 @@ class TestKecermatan extends Component
 
     public function updateKolom(){
 
+        // dd($this->column);
+
         $existExamColumn = ExamColumn::where('exam_id' , $this->exam->id)->where('kolom' , $this->column)->first();
        
         // dd($existExamColumn);
+
 
         if(!$existExamColumn){
 
