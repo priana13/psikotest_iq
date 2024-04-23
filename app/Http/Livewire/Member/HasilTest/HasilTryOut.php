@@ -16,18 +16,47 @@ class HasilTryOut extends Component
 
     public $nilai;
 
+    public $kecerdasan;
+
+    public $kepribadian;
+
+    public $sikap_kerja;
+
     public function mount(TryOut $tryout){
 
         $this->tryout = $tryout;
 
         $this->exam_event = Examevent::where('kode_tryout' , $this->tryout->kode_tryout)->get();
 
+        $this->kecerdasan = Examevent::where('type', 'cerdas')->where('kode_tryout' , $this->tryout->kode_tryout)->first();
+        
+        $this->kepribadian = Examevent::where('type', 'kepribadian')->where('kode_tryout' , $this->tryout->kode_tryout)->first();
+
+        $this->sikap_kerja = Examevent::where('type', 'cermat')->where('kode_tryout' , $this->tryout->kode_tryout)->first();
+       
+       
     }
 
     public function render()
     {
 
-        $list_nilai = $this->exam_event->sum('nilai');
+        /**
+         * roles 
+         * Kecerdasan: 35%
+         * Kepribadian: 35%
+         * Sikap Kerja: 30%
+         * 
+         * http://127.0.0.1:8000/tryout/hasil/6628393171385
+         * 
+         */
+
+         $kecerdasan = $this->kecerdasan->benar * 35/100;        
+
+         $kepribadian = $this->kepribadian->benar * 35/100;
+
+         $sikap_kerja = $this->sikap_kerja->benar * 30/100;
+
+        $list_nilai = $kecerdasan + $kepribadian + $sikap_kerja;
 
         $this->nilai = floor($list_nilai / 3 );
 
