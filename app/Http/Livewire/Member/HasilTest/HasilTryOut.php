@@ -58,7 +58,7 @@ class HasilTryOut extends Component
 
         $list_nilai = $kecerdasan + $kepribadian + $sikap_kerja;
 
-        $this->nilai = floor($list_nilai / 3 );
+        $this->nilai = round( $list_nilai );
 
         return view('livewire.member.hasil-test.hasil-try-out')->extends('layouts.admin_full')->section('main-content');
     }
