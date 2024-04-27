@@ -103,10 +103,15 @@ class UjianController extends Controller
     }
 
     // ujian pilihan ganda
-    public function ujian($exam,$examevent){     
+    public function ujian($exam,$examevent){  
 
       $exam = Exam::find($exam);     
       $examevent = Examevent::find($examevent); 
+
+      if($examevent->status === "Selesai"){
+
+        return \redirect()->route('dashboard');
+      }
 
         return view('member.ujian.halaman_ujian_pg',
         ['exam' => $exam, 
