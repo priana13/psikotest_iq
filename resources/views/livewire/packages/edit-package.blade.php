@@ -53,6 +53,7 @@
                     <option value="kategori">Per Kategori</option>
                     <option value="satuan">Satuan</option>
                     <option value="iq">Test IQ</option>
+                    <option value="tryout">Try Out</option>
                 </select>
                 
                 @error('type') <span class="text-danger">{{ $message }}</span> @enderror

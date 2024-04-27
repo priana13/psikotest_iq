@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Post;
 use App\Models\Setting;
 use App\Models\Category;
+use App\Models\Exam;
 use App\Models\StaticPage;
+use App\Models\TryoutExam;
 use Illuminate\Http\Request;
 
 class SettingController extends Controller
@@ -27,7 +29,24 @@ class SettingController extends Controller
             "biaya_offline" => Setting::where('name','biaya_offline')->first()
         ];  
 
-        return view('setting', compact('list_post', 'setting', 'list_category'));
+        $exams = Exam::get();
+
+        $tryout_1 = TryoutExam::where('name', 'Kecerdasan')->first();        
+        $this->cekTryout($tryout_1);
+
+        $tryout_2 = TryoutExam::where('name', 'Kepribadian')->first();       
+
+        $tryout_3 = TryoutExam::where('name', 'Sikap Kerja')->first();      
+
+        return view('setting', compact(
+            'list_post', 
+            'setting', 
+            'list_category' , 
+            'exams',
+            'tryout_1',
+            'tryout_2',
+            'tryout_3'
+        ));
     }
 
     public function update(Request $request){
@@ -118,9 +137,51 @@ class SettingController extends Controller
             }
 
         }
-         
+
+
+        // Setting Tryout
+
+        $tryout_1 = TryoutExam::where('name', 'Kecerdasan')->first();
+        $tryout_1->exam_id = $request->tryout_1;
+        $tryout_1->petunjuk_timmer = $request->petunjuk_timmer_1;
+        $tryout_1->save();
+
+        $tryout_2 = TryoutExam::where('name', 'Kepribadian')->first();
+        $tryout_2->exam_id = $request->tryout_2;
+        $tryout_2->petunjuk_timmer = $request->petunjuk_timmer_2;
+        $tryout_2->save();
+
+        $tryout_3 = TryoutExam::where('name', 'Sikap Kerja')->first();
+        $tryout_3->exam_id = $request->tryout_3;
+        $tryout_3->petunjuk_timmer = $request->petunjuk_timmer_3;
+        $tryout_3->save();         
         
         return back();
+
+
+    }
+
+    private function cekTryout($tryout){
+
+        if($tryout == null){
+
+            $exams = [
+                "Kecerdasan" => 23,
+                "Kepribadian" => 27,
+                "Sikap Kerja" => 39
+            ];
+    
+            foreach ($exams as $key => $value) {
+                
+                TryoutExam::create([
+                    'name' => $key,
+                    'exam_id' => $value
+                ]);
+    
+            }
+
+
+        }
 
 
     }

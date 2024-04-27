@@ -16,7 +16,7 @@ class AddNamaToTransactionsTable extends Migration
         Schema::table('transactions', function (Blueprint $table) {
             $table->string('nama',100)->nullable();
             $table->string('hp',20)->nullable();
-            $table->string('email',30)->nullable();
+            $table->string('email',100)->nullable();
             $table->string('alamat')->nullable();
         });
     }

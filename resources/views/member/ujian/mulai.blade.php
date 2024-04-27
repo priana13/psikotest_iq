@@ -2,7 +2,107 @@
 
 @section('main-content')
 
+@if(request()->is_tryout)
+
+    <div class="row">
+
+        @livewire('header-tryout')
+
+        <div class="col d-flex justify-items-center"
+        
+        x-data="{
+            sisaWaktu: {{ $timer->petunjuk_timmer }}, // detik
+            textWaktu : ''    
+        }"
+    
+        x-init="
+    
+        {{-- let waktu = sisaWaktu; --}}
+    
+        {{-- if(waktu == null || waktu == 0){
+    
+            localStorage.setItem('sisaWaktu123', sisaWaktu);
+        } --}}
+    
+    
+        {{-- fetch('{{ url('/api/cek-waktu/' . $exam_event->id) }}')
+            .then(response => response.json())
+            .then(data => sisaWaktu = data); --}}
+    
+    
+        myinterval = setInterval(function() {  
+    
+            {{-- waktu = localStorage.getItem('sisaWaktu{{ $exam_event->id }}'); --}}
+
+            {{-- waktu = 60; --}}
+    
+            {{-- console.log(waktu); --}}
+    
+            var _detik = 1000;
+            var _menit = _detik * 60;
+            var _jam = _menit * 60;
+            var _hari = _jam * 24; 
+    
+            {{-- console.log(waktu) --}}
+    
+            if(sisaWaktu > 0){
+                sisaWaktu -= 1; 
+    
+                {{-- localStorage.setItem('sisaWaktu{{ $exam_event->id }}' , waktu - 1);    --}}
+                
+                {{-- sisaWaktu = waktu; --}}
+            
+                var jam = Math.floor((sisaWaktu * _detik % _hari) / _jam);
+                var menit = Math.floor((sisaWaktu * _detik % _jam) / _menit);
+                var detik = Math.floor((sisaWaktu * _detik % _menit) / _detik);            
+    
+                textWaktu = jam + ':';
+                textWaktu += menit + ':';
+                textWaktu += detik;
+    
+            }
+            
+            
+            if( sisaWaktu == 1){
+
+    
+                Swal.fire({
+                    title: 'Waktu Membaca Petunjuk Soal habis',
+                    text: 'Anda akan segera memulai Tes',
+                    timer: 3000, // 3 detik
+                    timerProgressBar: true,
+                    background: '#282A3A',
+                    color: '#ffff',
+                    didDestroy: function(){
+                        {{-- Livewire.emit('mulaiTest'); --}}
+                        window.location = '{{ route('member.buat_event' , $ujian->id) }}?is_tryout={{ request()->is_tryout }}&kode_tryout={{ request()->kode_tryout }}&step={{ request()->step }}';
+                    }
+                });
+                
+    
+            }      
+                    
+        }, 1000);   
+    
+              
+    "
+        
+        >
+
+            <h3 class="text-center my-auto"> 
+                    {{-- <i class="fas fa-fw fa-clock"></i>             --}}
+                <span class="btn btn-primary text-lg font-weight-bold" id="waktu2" x-text="textWaktu">0:0:0</span>        
+            </h3>  
+
+        </div>
+
+    </div>
+
+
+@endif
+
 <div class="row">
+
 
     <div class="col">
 
@@ -39,7 +139,7 @@
                         Batal
                     </a>
                     @auth
-                    <a href="{{ route('member.buat_event' , $ujian->id) }}" class="btn btn-primary btn-sm" type="submit">
+                    <a href="{{ route('member.buat_event' , $ujian->id) }}?is_tryout={{ request()->is_tryout }}&kode_tryout={{ request()->kode_tryout }}&step={{ request()->step }}" class="btn btn-primary btn-sm" type="submit">
                         Mulai Sekarang
                     </a>
 

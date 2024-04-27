@@ -22,6 +22,8 @@ class SideBarAdmin extends Component
 
     public $pengembangan;
 
+    public $tryout = [];
+
     /**
      * Create a new component instance.
      *
@@ -43,9 +45,9 @@ class SideBarAdmin extends Component
         $langganan = auth()->user()->memberships()->where('status' , 'active')->pluck('package_id');  
      
 
-        $akses_packages = PackageExam::whereIn('package_id', $langganan)->get();        
+        $akses_packages = PackageExam::whereIn('package_id', $langganan)->get();
         
-    
+
         $exam_categori_user = [];
 
         if(count($akses_packages) > 0){
@@ -87,6 +89,8 @@ class SideBarAdmin extends Component
             $this->akademik = Examcategory::whereIn('id', $exam_categori_user)->where('exam_type', 'Akademik')->get(); 
 
             $this->pengembangan = Examcategory::whereIn('id', $exam_categori_user)->where('exam_type', 'Pengembangan')->get(); 
+
+            $this->tryout = Package::whereIn('id', $langganan)->where('type', 'tryout')->get();          
 
 
         }        

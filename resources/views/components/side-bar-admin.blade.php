@@ -130,6 +130,8 @@
 
     @endif
 
+
+
     @can('admin')
     <li class="nav-item {{ Nav::isRoute('norma.quiz.dashboard') }}">
         <a class="nav-link py-2" href="{{ route('norma.quiz.dashboard') }}">
@@ -146,6 +148,26 @@
         </a>
     </li>
     @endcan
+
+    @if(count($tryout) > 0)
+
+    <!-- Try Oute Test -->
+    <hr class="sidebar-divider">
+
+    <!-- Heading -->
+    <div class="sidebar-heading">
+    {{ __('Tty Out') }}
+    </div>
+
+    <li class="nav-item my-0">
+        <a class="nav-link py-2" href="{{ route('tryout.start') }}">
+            <i class="fas fa-clipboard-list"></i>
+            <span>Test Try Out</span>
+        </a>
+    </li>
+
+    @endif
+        
 
     <!-- Divider -->
     <hr class="sidebar-divider">

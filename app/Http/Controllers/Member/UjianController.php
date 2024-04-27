@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers\Member;
 
-use App\Charts\GrafikKetahanan;
-use App\Http\Controllers\Controller;
 use App\Models\Exam;
-use Illuminate\Http\Request;
-use App\Models\Examevent;
+use App\Models\TryOut;
 use App\Models\TempExam;
+use App\Models\Examevent;
+use App\Models\TryoutExam;
+use Illuminate\Http\Request;
+use App\Charts\GrafikKetahanan;
 use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Gate;
 
 class UjianController extends Controller
@@ -21,9 +23,32 @@ class UjianController extends Controller
 
       abort_unless($response->allowed(), 403);
 
+      $timer = null;
+
+      if( request()->is_tryout ){
+        
+
+        if(\request()->step == 1){
+
+          $timer = TryoutExam::where('name', 'Kecerdasan')->first();
+
+
+        }else if(\request()->step == 2){
+
+          $timer = TryoutExam::where('name', 'Kepribadian')->first();
+
+        }else{
+
+          $timer = TryoutExam::where('name', 'Sikap Kerja')->first();
+
+        } 
+
+      }
+
 
       return view('member.ujian.mulai', [
-          'ujian' => Exam::find($exam)
+          'ujian' => Exam::find($exam),
+          'timer' => $timer
       ]);
 
     }
@@ -41,24 +66,36 @@ class UjianController extends Controller
           'exam_id' => $exam->id
         ]);  
 
+        if(\request()->is_tryout){
+
+          // $tryout = TryOut::create([
+          //           'kode_tryout' => \uniqid(),
+          //           'user_id' => auth()->user()->id
+          //         ]);
+
+
+          $exam_event->is_tryout = true;
+          $exam_event->kode_tryout = \request()->kode_tryout;
+          $exam_event->save();
+        }
+
         if($exam->exam_category->type == 'Column'){
 
 
-          return redirect()->route('member.ujian-kolom',[
+          return redirect( route('member.ujian-kolom',[
             'exam' => $exam,
             'examevent' => $exam_event,
             'kolom' => 1
-          ]); 
+          ]) . '?is_tryout=' . \request()->is_tryout . '&step=' . \request()->step ); 
 
 
-        }else{
-          
+        }else{        
 
           // $type = 'pg'; // pilihan ganda
-          return redirect()->route('member.ujian',[
+          return redirect( route('member.ujian',[
             'exam' => $exam,
             'examevent' => $exam_event
-          ]); 
+          ]) . '?is_tryout=' . request()->is_tryout . '&step=' . \request()->step); 
 
         }
 
@@ -66,7 +103,7 @@ class UjianController extends Controller
     }
 
     // ujian pilihan ganda
-    public function ujian($exam,$examevent){
+    public function ujian($exam,$examevent){     
 
       $exam = Exam::find($exam);     
       $examevent = Examevent::find($examevent); 
