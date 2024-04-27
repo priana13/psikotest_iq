@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Member\HasilTest;
 
 use App\Models\Examevent;
+use App\Models\ExamItem;
 use App\Models\TryOut;
 use App\Models\TryoutExam;
 use Livewire\Component;
@@ -34,6 +35,7 @@ class HasilTryOut extends Component
 
         $this->sikap_kerja = Examevent::where('type', 'cermat')->where('kode_tryout' , $this->tryout->kode_tryout)->first();
        
+        // dd($this->sikap_kerja);
        
     }
 
@@ -50,16 +52,33 @@ class HasilTryOut extends Component
          * 
          */
 
-         $kecerdasan = $this->kecerdasan->benar * 35/100;        
+         $kecerdasan = $this->kecerdasan->benar * 35/100;
 
-         $kepribadian = $this->kepribadian->benar * 35/100;
-
-         $sikap_kerja = $this->sikap_kerja->benar * 30/100;
+        //  $kepribadian = $this->kepribadian->benar * 35/100;
+        $kepribadian = $this->getNilaiKepribadian() * 35/100;
+       
+        // $sikap_kerja = $this->sikap_kerja->benar * 30/100;
+        $sikap_kerja = $this->getNilaiSikapKerja() * 30/100;
 
         $list_nilai = $kecerdasan + $kepribadian + $sikap_kerja;
 
         $this->nilai = round( $list_nilai );
 
         return view('livewire.member.hasil-test.hasil-try-out')->extends('layouts.admin_full')->section('main-content');
+    }
+
+    public function getNilaiKepribadian(){
+
+        $list_nilai = ExamItem::where('examevent_id' , $this->kepribadian->id)->sum("nilai");
+
+        return $list_nilai;
+    }
+
+    public function getNilaiSikapKerja(){
+
+        $list_nilai = ExamItem::where('examevent_id' , $this->sikap_kerja->id)->sum("is_true");
+
+        return $list_nilai;
+
     }
 }
