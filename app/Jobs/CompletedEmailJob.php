@@ -34,8 +34,15 @@ class CompletedEmailJob implements ShouldQueue
      */
     public function handle()
     {
+
+        $email = ($this->transaksi->lokasi_test == 'Online')? 
+                $this->transaksi->user->email: 
+                $this->transaksi->email;
         
-        Mail::to( $this->getEmail($this->transaksi) )->send(new CompletedOrderMail($this->transaksi));
+        Mail::to( $email )->send(new CompletedOrderMail($this->transaksi));
 
     }
+
+  
+
 }
