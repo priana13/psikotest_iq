@@ -62,7 +62,13 @@ class HasilTryOut extends Component
 
         $list_nilai = $kecerdasan + $kepribadian + $sikap_kerja;
 
-        $this->nilai = round( $list_nilai );
+        $this->nilai = round( $list_nilai );      
+
+        // update table tryout
+        $this->tryout->nilai = $this->nilai;
+        $this->tryout->save();
+       
+        // $tryout = TryOut::where('kode_tryout' , );
 
         return view('livewire.member.hasil-test.hasil-try-out')->extends('layouts.admin_full')->section('main-content');
     }

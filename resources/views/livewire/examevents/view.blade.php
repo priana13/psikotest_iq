@@ -7,7 +7,7 @@
 					<div style="display: flex; justify-content: space-between; align-items: center;">
 						<div class="float-left">
 							<h4 class="mb-3"><i class="fas fa-history"></i>
-							History Psikotes </h4>
+							History Psikotes {{ $selected }} </h4>
 
 
 							<ul class="nav nav-pills">
@@ -60,7 +60,7 @@
 									<th>Benar</th>
 									<th>Score</th>
 								@endif --}}
-								{{-- <th>User</th> --}}
+								<th>User</th>
 								<th>Status</th>
 								<th>Aksi</th>
 							</tr>
@@ -69,7 +69,7 @@
 							@foreach($examevents as $row)
 
 							<?php 
-
+							
 							if($row->nilai >= 80){
 								$tanda = 'success';
 							}elseif($row->nilai < 80 && $row->nilai > 70){
@@ -95,9 +95,9 @@
 										
 									</td>
 								@endif --}}
-								{{-- <td>
+								<td>
 									{{ $row->user->name }}
-								</td> --}}
+								</td>
 								<td>
 									{{ $row->status }}
 								</td>

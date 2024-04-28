@@ -18,13 +18,25 @@ class Examevents extends Component
     public $selected = "cermat";
 
     public function render()
-    {
+    {      
 
-		// $keyWord = '%'.$this->keyWord .'%';          
+		// $keyWord = '%'.$this->keyWord .'%';    
+        
+        if(auth()->user()->level == 'Admin'){
 
-        $histories = auth()->user()->examevents()->selesai()->type($this->selected)->orderBy('id' , 'desc')->paginate(10);
+            $histories = Examevent::where('is_tryout' , false)->selesai()->type($this->selected)->orderBy('id' , 'desc')->paginate(10);
 
-        $count_history = auth()->user()->examevents()->selesai()->groupType()->pluck('qty','type');    
+            $count_history = Examevent::where('is_tryout' , false)->selesai()->groupType()->pluck('qty','type'); 
+
+        }else{
+
+
+            $histories = auth()->user()->examevents()->where('is_tryout' , false)->selesai()->type($this->selected)->orderBy('id' , 'desc')->paginate(10);
+
+            $count_history = auth()->user()->examevents()->where('is_tryout' , false)->selesai()->groupType()->pluck('qty','type');  
+
+        }
+  
 
         (isset($count_history['cermat']))?$cermat = $count_history['cermat']:$cermat=0;
         (isset($count_history['cerdas']))?$kecerdasan = $count_history['cerdas']:$kecerdasan=0;
