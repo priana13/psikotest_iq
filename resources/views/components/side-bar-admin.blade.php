@@ -159,10 +159,20 @@
     {{ __('Tty Out') }}
     </div>
 
+
+    @if( auth()->user()->can('admin') )
     <li class="nav-item my-0">
         <a class="nav-link py-2" href="{{ route('tryout.start') }}">
             <i class="fas fa-clipboard-list"></i>
             <span>Test Try Out</span>
+        </a>
+    </li>
+    @endif
+
+    <li class="nav-item my-0">
+        <a class="nav-link py-2" href="{{ route('tryout.table') }}">
+            <i class="fas fa-clipboard-list"></i>
+            <span>Hasil Test</span>
         </a>
     </li>
 

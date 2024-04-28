@@ -12,4 +12,9 @@ class TryOut extends Model
     protected $table = 'tryouts';
 
     protected $guarded = [];
+
+    public function user(){
+
+        return $this->belongsTo(User::class, 'user_id');
+    }
 }
