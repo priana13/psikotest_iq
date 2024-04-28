@@ -172,7 +172,7 @@
     <li class="nav-item my-0">
         <a class="nav-link py-2" href="{{ route('tryout.table') }}">
             <i class="fas fa-clipboard-list"></i>
-            <span>Hasil Test</span>
+            <span>Hasil Test</span> <span class="badge badge-danger rounded-pill mx-1">New</span>
         </a>
     </li>
 
