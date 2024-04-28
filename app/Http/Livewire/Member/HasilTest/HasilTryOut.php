@@ -66,6 +66,7 @@ class HasilTryOut extends Component
 
         // update table tryout
         $this->tryout->nilai = $this->nilai;
+        $this->tryout->status = "Selesai";
         $this->tryout->save();
        
         // $tryout = TryOut::where('kode_tryout' , );

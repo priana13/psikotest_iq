@@ -149,8 +149,6 @@
     </li>
     @endcan
 
-    @if(count($tryout) > 0)
-
     <!-- Try Oute Test -->
     <hr class="sidebar-divider">
 
@@ -159,8 +157,8 @@
     {{ __('Tty Out') }}
     </div>
 
+    @if(count($tryout) > 0)
 
-    @if( auth()->user()->can('admin') )
     <li class="nav-item my-0">
         <a class="nav-link py-2" href="{{ route('tryout.start') }}">
             <i class="fas fa-clipboard-list"></i>
@@ -168,6 +166,8 @@
         </a>
     </li>
     @endif
+
+    @if( auth()->user()->can('admin') )
 
     <li class="nav-item my-0">
         <a class="nav-link py-2" href="{{ route('tryout.table') }}">
