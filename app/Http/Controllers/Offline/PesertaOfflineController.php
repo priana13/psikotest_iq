@@ -22,9 +22,8 @@ class PesertaOfflineController extends Controller
 
         $request->validate([
             'name' => 'required',
-            'email' => 'nullable|email',
-            'jenis_kelamin' => 'required',
-            ''
+            'email' => 'required',
+            'jenis_kelamin' => 'required',            
         ]);
 
 
@@ -50,7 +49,9 @@ class PesertaOfflineController extends Controller
 
         $biaya_offline = Setting::where('name','biaya_offline')->first();
 
-        $email = (Auth::check()) ? auth()->user()->email : 'peserta@arstamedia.com'; 
+        // $email = (Auth::check()) ? auth()->user()->email : 'peserta@arstamedia.com'; 
+        
+        $email = $request->email;     
 
         $transaction = Transaction::create([ 			
 			// 'package_id' => $this-> package_id,
