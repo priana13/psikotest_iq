@@ -13,6 +13,17 @@ class PesertaOfflineController extends Controller
 {
     public function registrasi(Request $request){
 
+        $form_status = Setting::where('name', 'form_status')->first();  
+        
+        // dd($form_status);
+
+        if($form_status->value !== "1"){
+
+            abort(403 , "Mohon maaf untuk sementara pendaftaran sudah melebihi kapasitas / ditutup");
+
+        }
+
+
         return view('offline.registrasi_offline');
     }
 

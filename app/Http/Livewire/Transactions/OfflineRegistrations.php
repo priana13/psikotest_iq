@@ -7,6 +7,7 @@ use App\Models\Transaction;
 use Livewire\WithPagination;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\ExportPesertaOffline;
+use App\Models\Setting;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 
 
@@ -19,6 +20,8 @@ class OfflineRegistrations extends Component
     public $selected_id, $keyWord, $user_id, $package_id, $payment_method_id, $nominal, $status;
     public $updateMode = false;
 
+    public $form_status = true;
+
     public $total_data;
 
     public $warna_status = [
@@ -30,6 +33,21 @@ class OfflineRegistrations extends Component
     protected $listeners = [
         'confirmed'
     ];
+
+    public function mount(){
+
+        $form_status = Setting::where('name', 'form_status')->first();       
+
+        if(!$form_status){
+
+            Setting::create([
+                'name' => 'form_status', 
+                'value' => 'on'
+            ]);
+        }
+
+        $this->form_status = ($form_status->value == 1) ? true : false;
+    }
     
     public function render()
     {
@@ -37,7 +55,7 @@ class OfflineRegistrations extends Component
         $transactions = Transaction::latest()->whereIn('lokasi_test' , ["Offline"]);
 
         $this->total_data = Transaction::offline()->count();
-    
+
 	       
         return view('livewire.transactions.offline-registrations',
         [
@@ -88,5 +106,13 @@ class OfflineRegistrations extends Component
         $transaksi->status = 'completed';
 
         $transaksi->save();
+    }
+
+    public function ubah_status(){
+
+        $setting = Setting::where('name' , 'form_status')->first();
+        $setting->value = $this->form_status;
+        $setting->save();
+
     }
 }
