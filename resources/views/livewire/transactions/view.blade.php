@@ -29,7 +29,7 @@
 					<table class="table table-bordered table-sm">
 						<thead class="thead">
 							<tr> 
-								<td>#</td> 
+								<td>#ID</td> 
 								<th>Nama Paket</th>
 								<th>Tipe</th>
 								<th>Tanggal</th>
@@ -44,7 +44,9 @@
 						<tbody>
 							@foreach($transactions as $row)
 							<tr>
-								<td>{{ $row->id }}</td> 
+								<td>#{{ $row->id }} <br>
+									{{ $row->code }}
+								</td> 
 								<td>{{ ($row->package) ? $row->package->name : '-' }}</td>
 								<td>{{ $row->lokasi_test }}</td>
 								<td>{{ $row->created_at->format('d M Y') }}</td>

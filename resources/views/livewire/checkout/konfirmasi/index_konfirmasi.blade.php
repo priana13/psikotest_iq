@@ -42,7 +42,7 @@
                                          
                         <div class="form-group">
                          <label for=""><strong>Transfer ke</strong> </label>
-                         <input type="text" class="form-control form-control-lg" name="rek_tujuan" value="{{ old('rek_tujuan') }}">
+                         <input type="text" class="form-control form-control-lg" name="rek_tujuan" value="Midtrans" placeholder="Midtrans">
 
                          @error('rek_tujuan')
                          <div class="text-danger">{{ $message }}</div>
@@ -60,7 +60,7 @@
                                       
                         <div class="form-group">
                          <label for=""><strong>Jumlah Transfer</strong> </label>
-                         <input type="text" class="form-control form-control-lg" name="jumlah" value="{{ old('jumlah') }}">
+                         <input type="number" class="form-control form-control-lg" name="jumlah" value="{{ old('jumlah') }}">
                          @error('jumlah')
                          <div class="text-danger">{{ $message }}</div>
                          @enderror
