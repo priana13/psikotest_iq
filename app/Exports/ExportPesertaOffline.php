@@ -25,14 +25,15 @@ class ExportPesertaOffline implements FromCollection , WithMapping , WithHeading
     */
     public function map($transaksi): array
     {
+        
         return [
             $transaksi->id,
-            $transaksi->user->name, 
-            $transaksi->user->jenis_kelamin,
-            $transaksi->user->hp,
-            $transaksi->user->minat,
-            $transaksi->user->alamat,
-            $transaksi->user->email,
+            $transaksi->nama, 
+            $transaksi->jenis_kelamin,
+            $transaksi->hp,
+            $transaksi->minat,
+            $transaksi->alamat,
+            $transaksi->email,
             $transaksi->status,
             $transaksi->created_at->format('d-m-Y')
 
