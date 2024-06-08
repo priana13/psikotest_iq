@@ -26,6 +26,7 @@ use App\Http\Controllers\TrialPsikotestController;
 use App\Http\Controllers\Member\TypeSoalController;
 use App\Http\Controllers\Offline\PesertaOfflineController;
 use App\Http\Controllers\TryOut\TryOutController;
+use App\Http\Livewire\ExamTryOut;
 use App\Http\Livewire\Member\HasilTest\HasilTryOut;
 use App\Http\Livewire\Member\HasilTest\TableHasilTryOut;
 use App\Http\Livewire\Transactions\OfflineRegistrations;
@@ -175,6 +176,10 @@ Route::middleware('auth')->group(function(){
 		Route::get('tes-cermat/create' ,[PsikotesController::class, 'createCermat'])->name('admin.createCermat');
 		Route::post('tes-cermat/create' ,[PsikotesController::class, 'storeCermat'])->name('admin.storeCermat');
 		Route::post('tes-cermat/import' ,[PsikotesController::class, 'import'])->name('admin.cermat.import');
+
+		// list soal tryout
+		Route::get('soal-tryout', ExamTryOut::class)->name('admin.soal-tryout');
+
 
 		Route::get('tes-cermat/{id}/{kolom?}' ,[PsikotesController::class, 'soalKecermatan'])->name('admin.tes-kecermatan');
 

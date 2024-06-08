@@ -158,7 +158,7 @@
     </div>
 
       <li class="nav-item my-0">
-        <a class="nav-link py-2" href="{{ route('tryout.start') }}">
+        <a class="nav-link py-2" href="{{ route('admin.soal-tryout') }}">
             <i class="fas fa-clipboard-list"></i>
             <span>Soal Tryout</span> <span class="badge badge-danger rounded-pill mx-1">New</span>
         </a>
