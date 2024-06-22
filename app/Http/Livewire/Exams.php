@@ -96,7 +96,7 @@ class Exams extends Component
     public function edit($id)
     {
       
-        $record = Exam::findOrFail($id);
+        $record = Exam::findOrFail($id);      
 
         $this->selected_id = $id; 
 		$this->nama_tes = $record-> nama_tes;

@@ -64,14 +64,6 @@
                                             Kepribadian
                                         </a>
 
-                                        <a href="{{ route('admin.exams.create') }}?type=Akademik" class="dropdown-item" >
-                                            Akademik
-                                        </a>
-
-                                        <a href="{{ route('admin.exams.create') }}?type=Pengembangan" class="dropdown-item" >
-                                            Pengembangan
-                                        </a>
-
 
                                     </div>
                                 </div>
