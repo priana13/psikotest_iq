@@ -291,6 +291,13 @@
         </a>
     </li>
 
+    <li class="nav-item {{ Nav::isRoute('admin.downloads') }}">
+        <a class="nav-link py-2" href="{{ route('admin.downloads') }}">
+            <i class="fas fa-clipboard-list""></i>
+            <span>{{ __('Download') }}</span>
+        </a>
+    </li>
+
 
 
     <!-- Configurasi -->

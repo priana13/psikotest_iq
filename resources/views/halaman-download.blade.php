@@ -73,15 +73,21 @@
         </tr>
         </thead>
         <tbody>
+        <?php $i = 1; ?>
+        @foreach( $data_download as $d)
         <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>4MB</td>
+            <th scope="row">{{$i}}</th>
+            <td>{{$d->judul}}</td>
+            <td>{{$d->ukuran_file}}</td>
             <td>
-                <button class="btn btn-primary btn-sm">Download</button>
+                <a href="{{asset($d->file)}}" class="btn btn-primary btn-sm" target="_blank">Download</a>
             </td>
             <td>1</td>
         </tr>
+
+
+        <?php $i++; ?>
+        @endforeach
         </tbody>
     </table>
     
