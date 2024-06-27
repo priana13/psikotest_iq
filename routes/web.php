@@ -12,6 +12,7 @@ use App\Http\Controllers\SettingController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\CkEditorController;
+use App\Http\Controllers\DownloadController;
 use App\Http\Controllers\MidtransController;
 use App\Http\Controllers\PsikotesController;
 use App\Http\Controllers\QuestionController;
@@ -22,13 +23,13 @@ use App\Http\Controllers\Member\SoalController;
 use App\Http\Controllers\HalamanHargaController;
 use App\Http\Controllers\Member\UjianController;
 use App\Http\Controllers\Norma\ReportController;
+use App\Http\Controllers\TryOut\TryOutController;
 use App\Http\Controllers\TrialPsikotestController;
 use App\Http\Controllers\Member\TypeSoalController;
-use App\Http\Controllers\Offline\PesertaOfflineController;
-use App\Http\Controllers\TryOut\TryOutController;
 use App\Http\Livewire\Member\HasilTest\HasilTryOut;
 use App\Http\Livewire\Member\HasilTest\TableHasilTryOut;
 use App\Http\Livewire\Transactions\OfflineRegistrations;
+use App\Http\Controllers\Offline\PesertaOfflineController;
 
 /*
 |--------------------------------------------------------------------------
@@ -64,6 +65,8 @@ Route::prefix('offline')->group(function(){
 	Route::get('pembayaran/{transaction}', [PesertaOfflineController::class, 'pembayaran'])->name('offline.pembayaran');
 
 });
+
+Route::get('/halaman-download' , [DownloadController::class, 'index'])->name('download');
 
 Route::prefix('coba')->group(function(){
 
