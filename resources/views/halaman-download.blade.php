@@ -78,7 +78,7 @@
         <tr>
             <th scope="row">{{$i}}</th>
             <td>{{$d->judul}}</td>
-            <td>{{$d->ukuran_file}}</td>
+            <td>{{ number_format( intval($d->ukuran_file) / 1000,1) }}MB</td>
             <td>
                 <a href="{{ route('download.file', $d->id) }}" class="btn btn-primary btn-sm" target="_blank">Download</a>
             </td>
