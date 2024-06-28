@@ -34,7 +34,7 @@ class DownloadController extends Controller
       $download->jumlah_download += 1;
       $download->save();
 
-       return redirect( asset($download->file) );
+       return redirect( asset( 'storage/' . $download->file) );
 
     }
 }
