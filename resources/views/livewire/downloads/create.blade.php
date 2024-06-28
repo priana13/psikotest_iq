@@ -12,23 +12,23 @@
 				<form>
             <div class="form-group">
                 <label for="judul"></label>
-                <input wire:model="judul" type="text" class="form-control" id="judul" placeholder="Judul">@error('judul') <span class="error text-danger">{{ $message }}</span> @enderror
+                <input wire:model="judul" type="text" class="form-control" id="judul" placeholder="Judul/Uraian">@error('judul') <span class="text-danger">{{ $message }}</span> @enderror
             </div>
             {{-- <div class="form-group">
                 <label for="ukuran_file"></label>
-                <input wire:model="ukuran_file" type="text" class="form-control" id="ukuran_file" placeholder="Ukuran File">@error('ukuran_file') <span class="error text-danger">{{ $message }}</span> @enderror
+                <input wire:model="ukuran_file" type="text" class="form-control" id="ukuran_file" placeholder="Ukuran File">@error('ukuran_file') <span class="text-danger">{{ $message }}</span> @enderror
             </div> --}}
             <div class="form-group">
                 <label for="file"></label>
-                <input wire:model="file" type="file" class="form-control" id="file" placeholder="File">@error('file') <span class="error text-danger">{{ $message }}</span> @enderror
+                <input wire:model="file" type="file" class="form-control" id="file" placeholder="File">@error('file') <span class="text-danger">{{ $message }}</span> @enderror
             </div>
             {{-- <div class="form-group">
                 <label for="jumlah_download"></label>
-                <input wire:model="jumlah_download" type="text" class="form-control" id="jumlah_download" placeholder="Jumlah Download">@error('jumlah_download') <span class="error text-danger">{{ $message }}</span> @enderror
+                <input wire:model="jumlah_download" type="text" class="form-control" id="jumlah_download" placeholder="Jumlah Download">@error('jumlah_download') <span class="text-danger">{{ $message }}</span> @enderror
             </div> --}}
             <div class="form-group">
                 <label for="keterangan"></label>
-                <input wire:model="keterangan" type="text" class="form-control" id="keterangan" placeholder="Keterangan">@error('keterangan') <span class="error text-danger">{{ $message }}</span> @enderror
+                <input wire:model="keterangan" type="text" class="form-control" id="keterangan" placeholder="Keterangan">@error('keterangan') <span class="text-danger">{{ $message }}</span> @enderror
             </div>
 
                 </form>

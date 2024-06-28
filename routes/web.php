@@ -67,6 +67,8 @@ Route::prefix('offline')->group(function(){
 });
 
 Route::get('/halaman-download' , [DownloadController::class, 'index'])->name('download');
+Route::get('/halaman-download/{download}' , [DownloadController::class, 'download'])->name('download.file');
+
 
 Route::prefix('coba')->group(function(){
 

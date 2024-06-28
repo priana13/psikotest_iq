@@ -66,7 +66,7 @@
         <thead>
         <tr>
             <th scope="col">No</th>
-            <th scope="col">Urian</th>
+            <th scope="col">Uraian</th>
             <th scope="col">Ukuran File</th>
             <th scope="col"></th>
             <th scope="col">Status</th>
@@ -80,9 +80,9 @@
             <td>{{$d->judul}}</td>
             <td>{{$d->ukuran_file}}</td>
             <td>
-                <a href="{{asset($d->file)}}" class="btn btn-primary btn-sm" target="_blank">Download</a>
+                <a href="{{ route('download.file', $d->id) }}" class="btn btn-primary btn-sm" target="_blank">Download</a>
             </td>
-            <td>1</td>
+            <td>{{ $d->jumlah_download }}</td>
         </tr>
 
 

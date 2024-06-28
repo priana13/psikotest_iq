@@ -30,7 +30,7 @@
 						<thead class="thead">
 							<tr> 
 								<td>No</td> 
-								<th>Judul</th>
+								<th>Judul/Uraian</th>
 								<th>Ukuran File</th>
 								{{-- <th>File</th> --}}
 								<th>Jumlah Download</th>

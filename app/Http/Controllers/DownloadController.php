@@ -13,4 +13,16 @@ class DownloadController extends Controller
 
         return view('halaman-download' , compact('data_download'));
     }
+
+
+    public function download(Download $download){
+
+        // $download = Download::where('download', $download)->first();
+
+      $download->jumlah_download += 1;
+      $download->save();
+
+       return redirect( asset($download->file) );
+
+    }
 }
