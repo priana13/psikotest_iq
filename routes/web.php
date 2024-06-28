@@ -138,7 +138,7 @@ Route::middleware('auth')->group(function(){
 	Route::middleware('admin')->group(function(){
 
 		//Route Hooks - Do not delete//
-		Route::view('downloads', 'livewire.Downloads.index')->middleware('auth')->name('admin.downloads');
+		Route::view('downloads', 'livewire.downloads.index')->middleware('auth')->name('admin.downloads');
 		Route::view('examcategory', 'livewire.examcategories.index')->middleware('auth')->name('admin.examcategory');
 		Route::view('confirmations', 'livewire.confirmations.index')->middleware('auth')->name('admin.confirmations');		
 		Route::get('packages', [PackageController::class, 'index'])->middleware('auth')->name('admin.packages');
