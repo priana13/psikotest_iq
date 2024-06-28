@@ -2,9 +2,10 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Setting;
 use Livewire\Component;
-use Livewire\WithPagination;
 use App\Models\Download;
+use Livewire\WithPagination;
 use Livewire\WithFileUploads;
 
 class Downloads extends Component
@@ -15,6 +16,24 @@ class Downloads extends Component
 	protected $paginationTheme = 'bootstrap';
     public $selected_id, $keyWord, $judul, $ukuran_file, $file, $jumlah_download, $keterangan;
     public $updateMode = false;
+
+    public $halaman_download = true;
+
+    public function mount(){
+
+        $halaman_download = Setting::where('name', 'halaman_download')->first();       
+
+        if(!$halaman_download){
+
+            Setting::create([
+                'name' => 'halaman_download', 
+                'value' => 'on'
+            ]);
+        }
+
+        $this->halaman_download = ($halaman_download->value == 1) ? true : false;
+
+    }
 
     public function render()
     {
@@ -123,5 +142,14 @@ class Downloads extends Component
             $record = Download::where('id', $id);
             $record->delete();
         }
+    }
+
+
+    public function ubah_status(){
+
+        $setting = Setting::where('name' , 'halaman_download')->first();
+        $setting->value = $this->halaman_download;
+        $setting->save();
+
     }
 }
