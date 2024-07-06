@@ -1,5 +1,5 @@
 <div>     
-   @if(($waktu_mulai !==null))
+   @if(!$mulai)
         <div class="container-fluid">
             <div class="row">
                 <div class="col-xl-8 col-md-6 mb-4">
@@ -44,7 +44,7 @@
                             
                         
                         <div class="card-footer">
-                            <button id="finish" type="button" class="btn btn-primary text-right" wire:click="mindSelesai({{$test_id}})" style="display: none;">
+                            <button id="finish" type="button" class="btn btn-primary text-right" wire:click="mulaiSekarang()" style="display: none;">
                                     NEXT
                                 </button>
                         </div>
@@ -75,7 +75,7 @@
                                     <p>JIKA ANDA SUDAH SIAP SILAHKAN KLIK TOMBOL</p>                                    
                                 </div>
                                 <div class="card-body text-right">                                    
-                                    <button type="button" class="btn btn-primary text-right" wire:click="mindMulai({{$test_id}})">
+                                    <button type="button" class="btn btn-primary text-right" wire:click="mindSelesai({{$test_id}})">
                                         NEXT
                                     </button>
                                 </div>

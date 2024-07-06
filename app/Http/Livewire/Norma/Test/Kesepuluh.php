@@ -71,8 +71,7 @@ class Kesepuluh extends Component
 
     public function mount()
     {
-        $this->user_id = auth()->user()->id;
-            
+        $this->user_id = auth()->user()->id;            
 
         $testLog = DB::table('norma_test_log')
             ->join('norma', 'norma.id', '=', 'norma_test_log.test_id')
