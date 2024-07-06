@@ -109,7 +109,7 @@ class Kesembilan extends Component
 
             // dd($testLog->waktu_test);
 
-            $this->waktu_test = $testLog->waktu_test * 60;
+            $this->waktu_test = 1 * 60;
 
             if ($testLog->waktu_mulai != null) {
                 $waktu_test = ($testLog->waktu_test * 60);
