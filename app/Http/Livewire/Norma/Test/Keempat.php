@@ -171,7 +171,7 @@ class Keempat extends Component
             $batas_waktu = $waktu_mulai->addSeconds($waktu_test);
 
             if ($batas_waktu->isPast()) {
-                // $this->geSelesai($this->test_id);
+                $this->geSelesai($this->test_id);
             } else {
                 $this->waktu_test = max(0, $batas_waktu->diffInSeconds(Carbon::now()));                
             }
