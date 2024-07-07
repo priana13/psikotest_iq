@@ -37,9 +37,19 @@
                         
                         <div class="card-footer pt-4 col-md-6 mx-auto" >   
                             @if($QuizMind)
+                            <table>
+                           
                                 @foreach($QuizMind as $QG => $q)
-                                <h6 class="" style="margin-top:15px; word-spacing: 5px;" > <strong>{{$q['quiz']}}</strong>  : {{$q['uraian']}}</h6> 
+                              
+                                    <tr style="margin-top:15px; word-spacing: 5px;">
+                                        <td style="width:100px;" class="py-1"><strong>{{$q['quiz']}}</strong></td>
+                                        <td>:</td>
+                                        <td class="px-1"> <span>{{$q['uraian']}}</span></td>
+                                    </tr>                              
+
+                                
                                 @endforeach
+                            </table>
                             @endif
                         </div>
                             
