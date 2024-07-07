@@ -1,5 +1,6 @@
-<div>     
-   @if(!$mulai)
+<div>  
+       
+   @if($status == 0)
         <div class="container-fluid">
             <div class="row">
                 <div class="col-xl-8 col-md-6 mb-4">
