@@ -35,10 +35,10 @@
                             <p> HAFALKAN KELOMPOK KATA-KATA DIBAWAH INI</p>
                         </div>
                         
-                        <div class="card-footer  px-4 pt-4 text-center" >   
+                        <div class="card-footer pt-4 col-md-6 mx-auto" >   
                             @if($QuizMind)
                                 @foreach($QuizMind as $QG => $q)
-                                <h6> {{$q['quiz']}} : {{$q['uraian']}}</h6> 
+                                <h6 class="" style="margin-top:15px; word-spacing: 5px;" > <strong>{{$q['quiz']}}</strong>  : {{$q['uraian']}}</h6> 
                                 @endforeach
                             @endif
                         </div>
