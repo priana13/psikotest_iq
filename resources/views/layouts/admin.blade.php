@@ -302,8 +302,16 @@
 		$('#createDataModal').modal('hide');
         $('#importDataModal').modal('hide');
         $('#hapusModal').modal('hide');
-	});
+	}); 
+   
+  
 
+    @if( in_array( \Request::route()->getName() , [
+        "admin.questions.edit",
+        "posts.create",
+        "posts.edit",
+       " admin.packages.create"
+    ]))
 
     $(document).ready(function () {      
        
@@ -360,6 +368,7 @@
 
     });   
 
+    @endif
 
 
 </script>
