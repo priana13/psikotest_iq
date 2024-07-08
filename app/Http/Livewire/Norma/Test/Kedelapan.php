@@ -188,8 +188,10 @@ class Kedelapan extends Component
         NormaTestLog::updateOrCreate(
             ['user_id' => $this->user_id,'test_id' => $this->test_id],
             [
+                'waktu_test' => $norma->waktu,
                 'nomor_test'    => $userNorma->nomor_test,                
-                'status'        => 1
+                'status'        => 0,
+                'waktu_mulai'   => Carbon::now(),
             ]
         );
         $this->emit('reloadPage');        

@@ -30,7 +30,7 @@ class MainNorma extends Component
         $userId = auth()->user()->id;
 
         $testLog = DB::table('norma_test_log')
-            ->where('status', '=', 1)
+            ->whereIn('status', [0,1])
             ->where('user_id', '=', $userId)
             ->join('norma', 'norma.id', '=', 'norma_test_log.test_id')
             ->select('norma_test_log.*','norma.id' ,'norma.tipe')

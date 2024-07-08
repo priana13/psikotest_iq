@@ -28,6 +28,9 @@ class Kesembilan extends Component
     public $NormaMind;
     public $user_id;
 
+    public $mulai = false;
+
+    public $status = 0;
 
     public function mindMulai($testId){        
         $this->user_id = auth()->user()->id;
@@ -49,7 +52,24 @@ class Kesembilan extends Component
         $this->emit('reloadPage');       
     }
 
+    public function mulaiSekarang(){
+
+        $this->mulai = true;
+
+        NormaTestLog::where('user_id', $this->user_id)->where('test_id', $this->test_id)
+                      ->update(['status' => 1]);
+        
+        $this->emit('reloadPage');     
+        // NormaTestLog::updateOrCreate(
+        //     ['user_id' => $this->user_id,'test_id'=>$this->test_id],
+        //     [                    
+        //         'status' => 1
+        //     ]
+        // );
+    }
+
     public function mindSelesai($testId){ 
+        
         $this->user_id = auth()->user()->id;
         $this->test_id = $testId;     
 
@@ -82,25 +102,35 @@ class Kesembilan extends Component
     }
 
     public function mount()
-    {
+    { 
         $this->user_id = auth()->user()->id;
 
         $testLog = DB::table('norma_test_log')
             ->join('norma', 'norma.id', '=', 'norma_test_log.test_id')
-            ->where('norma_test_log.status', '=', 1)
+            ->whereIn('norma_test_log.status', [0,1])
             ->where('norma_test_log.user_id', '=', $this->user_id)
             ->where('norma.tipe', '=', 9)
             ->select('norma_test_log.*', 'norma.id', 'norma.tipe', 'norma.waktu', 'norma.nama')
             ->first();
 
+        $this->status = $testLog->status; 
+
+        // dd($testLog);
+
         if ($testLog) { // Check if $testLog is not null
             $this->test_id = $testLog->test_id;
             $this->nama_test = $testLog->nama;
+
+            // dd($testLog->waktu_test);
+
+            $this->waktu_test = $testLog->waktu_test * 60;
 
             if ($testLog->waktu_mulai != null) {
                 $waktu_test = ($testLog->waktu_test * 60);
                 $waktu_mulai = Carbon::parse($testLog->waktu_mulai);
                 $batas_waktu = $waktu_mulai->addSeconds($waktu_test);
+
+                // dd($batas_waktu->isPast());
 
                 if ($batas_waktu->isPast()) {
                     $this->mindSelesai($this->test_id);

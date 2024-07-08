@@ -56,6 +56,9 @@ class Keempat extends Component
 
         $userNorma = DataUserNorma::where('user_id','=',$this->user_id)->first();
         $norma = Norma::where('id','=',$this->test_id)->first();
+
+        // dd($userNorma, $norma);
+
         if($norma){
             NormaTestLog::updateOrCreate(
                 ['user_id' => $this->user_id,'test_id'=>$this->test_id],
@@ -82,9 +85,14 @@ class Keempat extends Component
 
     public function updateDatabase($quizId,$questionNumber)
     {       
-        $QuizGe =QuizGe::where('id','=',$quizId)->first();
-        $answer = strtoupper($this->{'answer' . $questionNumber});      
+        // dd( $this->answer . $questionNumber );
 
+        $QuizGe =QuizGe::where('id','=',$quizId)->first();
+        // dd($QuizGe);
+        $answer = strtoupper($this->{'answer' . $questionNumber});   
+        
+        
+        // dd($this->{'answer'});
         /*$n1 = stripos($QuizGe->k1, trim($answer));
         $n2 = stripos($QuizGe->k2, trim($answer));
         $nilai = 0;
@@ -96,8 +104,27 @@ class Keempat extends Component
             $nilai = 0;
         } */
 
-        $n1 = explode(", ", strtoupper($QuizGe->k1));
-        $n2 = explode(", ", strtoupper($QuizGe->k2));
+        // $kunci1 = str_replace(' ', "", $QuizGe->k1);
+        // $kunci2 = str_replace(' ', "", $QuizGe->k2);
+
+
+        $kunci1 = $QuizGe->k1;
+        $kunci2 = $QuizGe->k2;
+
+        // dd($QuizGe->k1,$kunci1);
+
+        $data_n1 = explode(",", strtoupper($kunci1));
+        $data_n2 = explode(",", strtoupper($kunci2));      
+
+       // hilangkan spasi awal dan akhir jawaban dari database
+
+       foreach ($data_n1 as $key => $value) {
+        $n1[] = trim($value);
+       }
+
+       foreach ($data_n2 as $key => $value) {
+        $n2[] = trim($value);
+       }      
 
         $nilai = 0;
         if (in_array(trim($answer), $n1, true)) {
@@ -164,8 +191,12 @@ class Keempat extends Component
                     ->where('norma.tipe', '=', 4)
                     ->select('quiz_ge.*', 'norma.tipe', 'norma.waktu')
                     ->get(); 
+        
+        // $this->QuizGe = $QuizGe->toArray();
 
         $this->QuizGe = json_decode(json_encode($QuizGe), true); 
+
+        // dd($QuizGe->toArray());
 
         $TestGe = DB::table('norma_test')
                     ->join('quiz_ge', 'quiz_ge.id', '=', 'norma_test.quiz_id')           
