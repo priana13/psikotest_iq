@@ -5,7 +5,10 @@ use App\Http\Controllers\Norma\QuizController;
 use App\Http\Controllers\Norma\TestController;
 use App\Http\Controllers\Norma\ReportController;
 
-/*
+
+
+	Route::middleware('auth')->group(function(){
+		/*
 	/*-- Norma Test ---*/
 	Route::get('/test' , [TestController::class , 'index'])->name('norma.test');
 	// Route::get('/test/main' , [TestController::class , 'main'])->name('norma.test.main');
@@ -20,8 +23,7 @@ use App\Http\Controllers\Norma\ReportController;
 	// Route::get('/test/kesembilan' , [TestController::class , 'kesembilan'])->name('norma.test.kesembilan');
 
 	Route::get('/test/petunjuk' , [TestController::class , 'petunjuk'])->name('norma.test.petunjuk');
-
-	Route::middleware('auth')->group(function(){
+		
 
 	Route::middleware('admin')->group(function(){	
 
