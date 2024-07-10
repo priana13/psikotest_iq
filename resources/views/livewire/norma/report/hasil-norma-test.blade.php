@@ -1,26 +1,47 @@
-<div>    
-    <div class="container-fluid">
-        <div class="row ">
+<div >    
+    <div class="container">
+        <div class="row " >
             <div class="col-md-12">
-                <div class="card">
+                <div class="card" style="padding:80px;">
                     <div class="card-title px-4 pt-4 text-center">
-                        <h5>HASIL INTELEGENCE STRUCTURE TEST</h5>
+                        <h3 class=""> <strong>HASIL INTELEGENCE STRUCTURE TEST</strong> </h3>
+                        <h5 class=""> <strong>Arsta Media</strong> </h5>
                     </div>
-                    <div class="card-body">                        
-                        <p><strong>NO. TEST</strong> : {{isset($userNorma['nomor_test']) ?$userNorma['nomor_test']: ''}}</p>
-                        <p><strong>TGL. TEST</strong> : {{isset($userNorma['created_at']) ? \Carbon\Carbon::parse($userNorma['created_at'])->format('Y-m-d') : ''}}</p>
-                        <p><strong>NAMA</strong> : {{isset($name) ? $name: ''}}</p>
-                        <p><strong>TGL. LAHIR</strong> : {{isset($userNorma['tgl_lahir']) ? \Carbon\Carbon::parse($userNorma['tgl_lahir'])->format('Y-m-d') : ''}}</p>
-                        <p><strong>USIA</strong> : {{ isset($userNorma['tgl_lahir']) ? \Carbon\Carbon::parse($userNorma['tgl_lahir'])->age : '' }}</p>
-                        <p><strong>INSTANSI / SEKOLAH</strong> : {{isset($userNorma['instansi']) ?$userNorma['instansi']: ''}}</p>
+                    <div class="card-body">  
+
+                        <table>
+                            <tr>
+                                <td><strong>NO. TEST</strong></td> 
+                                <td class="pr-2">:</td> 
+                                <td>
+                                    {{isset($userNorma['nomor_test']) ?$userNorma['nomor_test']: ''}} 
+                                </td>                                
+                            </tr>
+                            <tr>
+                                <td><strong>TGL. TEST</strong></td> <td>:</td> <td> {{isset($userNorma['created_at']) ? \Carbon\Carbon::parse($userNorma['created_at'])->format('d-m-Y') : ''}}</td>
+                            </tr>
+                            <tr>
+                                <td><strong>NAMA</strong></td> <td>:</td> <td>{{isset($name) ? $name: ''}}</td>
+                            </tr>
+                            <tr>
+                                <td><strong>TGL. LAHIR</strong></td> <td>:</td> <td>{{isset($userNorma['tgl_lahir']) ? \Carbon\Carbon::parse($userNorma['tgl_lahir'])->format('d-m-Y') : ''}}</td>
+                            </tr>
+                            <tr>
+                                <td><strong>USIA</strong></td> <td>:</td> <td>{{ isset($userNorma['tgl_lahir']) ? \Carbon\Carbon::parse($userNorma['tgl_lahir'])->age : '' }}</td>
+                            </tr>
+                            <tr>
+                                <td><strong>INSTANSI / SEKOLAH</strong></td> <td>:</td> <td>{{isset($userNorma['instansi']) ?$userNorma['instansi']: ''}}</td>
+                            </tr>
+                        </table>
+
                     </div>
                     <div class="card-body row">                        
                         <div class="pt-3 col-md-12"> 
                             <div class="table-responsive">
-                                <table class="table table-bordered table-sm">
+                                <table class="table table-bordered table-sm text-center">
                                     <thead class="thead">
-                                        <tr>                                            
-                                            <th></th>
+                                        <tr class="bg-primary text-white">                                            
+                                            <th class="width:80px;"></th>
                                             <th>SE</th>
                                             <th>WA</th>
                                             <th>AN</th>
@@ -35,7 +56,7 @@
                                     <tbody>
                                     @if($normaTest)                               
                                     <tr>                                    
-                                        <td>RW</td>
+                                        <td class="px-3">RW</td>
                                         <td>{{ $normaTest['se'] }}</td>
                                         <td>{{ $normaTest['wa'] }}</td>
                                         <td>{{ $normaTest['an'] }}</td>
@@ -49,7 +70,7 @@
                                     @endif           
                                     @if($sw)                               
                                     <tr>                                    
-                                        <td>SW</td>
+                                        <td class="px-3">SW</td>
                                         <td>{{ $sw['se'] }}</td>
                                         <td>{{ $sw['wa'] }}</td>
                                         <td>{{ $sw['an'] }}</td>
@@ -62,8 +83,8 @@
                                     </tr>                                    
                                     @endif       
                                     @if($kat)                               
-                                    <tr>                                    
-                                        <td>KAT</td>
+                                    <tr class="font-weight-bold">                                    
+                                        <td class="px-3">KAT</td>
                                         <td>{{ $kat['se'] }}</td>
                                         <td>{{ $kat['wa'] }}</td>
                                         <td>{{ $kat['an'] }}</td>
@@ -81,15 +102,31 @@
                         </div>
                     </div>   
 
-                    <div class="card-body">                        
-                        <p><strong>TOTAL RW</strong> : {{$total_rw}}</p>
-                        <p><strong>TOTAL SW</strong> : {{$total_sw}}</p>
-                        <p><strong>IQ</strong> : {{$iq}}</p>
-                        <p><strong>KATEGORI</strong> : {{$kategori}}</p>
+                    <div class="card-body">       
+                        <table>
+                            <tr>
+                                <td>TOTAL RW</td> <td class="px-2">:</td> <td>{{$total_rw}}</td>                               
+                            </tr>
+                            <tr>
+                                <td>TOTAL SW</td> <td>:</td> <td>{{$total_sw}}</td>
+                            </tr>
+                            <tr>
+                                <td>IQ</td> <td>:</td> <td> <strong>{{$iq}}</strong> </td>
+                            </tr>
+                            <tr>
+                                <td>TOTAL RW</td> <td>:</td> <td>{{$kategori}}</td>
+                            </tr>
+                        </table>                
+                    
                        
                     </div>
                 </div>                            
             </div>
         </div>
+
+        <div class="text-center mt-3">
+            <button onclick="window.print()" class="btn-primary btn-sm">Print</button>
+        </div>
+        
     </div>
 </div>
