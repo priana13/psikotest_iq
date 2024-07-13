@@ -1,5 +1,6 @@
-<div>     
-   @if(($waktu_mulai !==null))
+<div>  
+       
+   @if($status == 0)
         <div class="container-fluid">
             <div class="row">
                 <div class="col-xl-8 col-md-6 mb-4">
@@ -34,17 +35,27 @@
                             <p> HAFALKAN KELOMPOK KATA-KATA DIBAWAH INI</p>
                         </div>
                         
-                        <div class="card-footer  px-4 pt-4 text-center" >   
+                        <div class="card-footer pt-4 col-md-6 mx-auto" >   
                             @if($QuizMind)
+                            <table>
+                           
                                 @foreach($QuizMind as $QG => $q)
-                                <h6> {{$q['quiz']}} : {{$q['uraian']}}</h6> 
+                              
+                                    <tr style="margin-top:15px; word-spacing: 5px;">
+                                        <td style="width:100px;" class="py-1"><strong>{{$q['quiz']}}</strong></td>
+                                        <td>:</td>
+                                        <td class="px-1"> <span>{{$q['uraian']}}</span></td>
+                                    </tr>                              
+
+                                
                                 @endforeach
+                            </table>
                             @endif
                         </div>
                             
                         
                         <div class="card-footer">
-                            <button id="finish" type="button" class="btn btn-primary text-right" wire:click="mindSelesai({{$test_id}})" style="display: none;">
+                            <button id="finish" type="button" class="btn btn-primary text-right" wire:click="mulaiSekarang()" style="display: none;">
                                     NEXT
                                 </button>
                         </div>
@@ -75,7 +86,7 @@
                                     <p>JIKA ANDA SUDAH SIAP SILAHKAN KLIK TOMBOL</p>                                    
                                 </div>
                                 <div class="card-body text-right">                                    
-                                    <button type="button" class="btn btn-primary text-right" wire:click="mindMulai({{$test_id}})">
+                                    <button type="button" class="btn btn-primary text-right" wire:click="mindSelesai({{$test_id}})">
                                         NEXT
                                     </button>
                                 </div>

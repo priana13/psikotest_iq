@@ -1,0 +1,209 @@
+@section('title', __('Downloads'))
+<div class="container-fluid">
+
+
+	<style>
+		@supports (-webkit-appearance: none) or (-moz-appearance: none) {
+		  .checkbox-wrapper-14 input[type=checkbox] {
+			--active: #275EFE;
+			--active-inner: #fff;
+			--focus: 2px rgba(39, 94, 254, .3);
+			--border: #BBC1E1;
+			--border-hover: #275EFE;
+			--background: #fff;
+			--disabled: #F6F8FF;
+			--disabled-inner: #E1E6F9;
+			-webkit-appearance: none;
+			-moz-appearance: none;
+			height: 21px;
+			outline: none;
+			display: inline-block;
+			vertical-align: top;
+			position: relative;
+			margin: 0;
+			cursor: pointer;
+			border: 1px solid var(--bc, var(--border));
+			background: var(--b, var(--background));
+			transition: background 0.3s, border-color 0.3s, box-shadow 0.2s;
+		  }
+		  .checkbox-wrapper-14 input[type=checkbox]:after {
+			content: "";
+			display: block;
+			left: 0;
+			top: 0;
+			position: absolute;
+			transition: transform var(--d-t, 0.3s) var(--d-t-e, ease), opacity var(--d-o, 0.2s);
+		  }
+		  .checkbox-wrapper-14 input[type=checkbox]:checked {
+			--b: var(--active);
+			--bc: var(--active);
+			--d-o: .3s;
+			--d-t: .6s;
+			--d-t-e: cubic-bezier(.2, .85, .32, 1.2);
+		  }
+		  .checkbox-wrapper-14 input[type=checkbox]:disabled {
+			--b: var(--disabled);
+			cursor: not-allowed;
+			opacity: 0.9;
+		  }
+		  .checkbox-wrapper-14 input[type=checkbox]:disabled:checked {
+			--b: var(--disabled-inner);
+			--bc: var(--border);
+		  }
+		  .checkbox-wrapper-14 input[type=checkbox]:disabled + label {
+			cursor: not-allowed;
+		  }
+		  .checkbox-wrapper-14 input[type=checkbox]:hover:not(:checked):not(:disabled) {
+			--bc: var(--border-hover);
+		  }
+		  .checkbox-wrapper-14 input[type=checkbox]:focus {
+			box-shadow: 0 0 0 var(--focus);
+		  }
+		  .checkbox-wrapper-14 input[type=checkbox]:not(.switch) {
+			width: 21px;
+		  }
+		  .checkbox-wrapper-14 input[type=checkbox]:not(.switch):after {
+			opacity: var(--o, 0);
+		  }
+		  .checkbox-wrapper-14 input[type=checkbox]:not(.switch):checked {
+			--o: 1;
+		  }
+		  .checkbox-wrapper-14 input[type=checkbox] + label {
+			display: inline-block;
+			vertical-align: middle;
+			cursor: pointer;
+			margin-left: 4px;
+		  }
+	  
+		  .checkbox-wrapper-14 input[type=checkbox]:not(.switch) {
+			border-radius: 7px;
+		  }
+		  .checkbox-wrapper-14 input[type=checkbox]:not(.switch):after {
+			width: 5px;
+			height: 9px;
+			border: 2px solid var(--active-inner);
+			border-top: 0;
+			border-left: 0;
+			left: 7px;
+			top: 4px;
+			transform: rotate(var(--r, 20deg));
+		  }
+		  .checkbox-wrapper-14 input[type=checkbox]:not(.switch):checked {
+			--r: 43deg;
+		  }
+		  .checkbox-wrapper-14 input[type=checkbox].switch {
+			width: 38px;
+			border-radius: 11px;
+		  }
+		  .checkbox-wrapper-14 input[type=checkbox].switch:after {
+			left: 2px;
+			top: 2px;
+			border-radius: 50%;
+			width: 17px;
+			height: 17px;
+			background: var(--ab, var(--border));
+			transform: translateX(var(--x, 0));
+		  }
+		  .checkbox-wrapper-14 input[type=checkbox].switch:checked {
+			--ab: var(--active-inner);
+			--x: 17px;
+		  }
+		  .checkbox-wrapper-14 input[type=checkbox].switch:disabled:not(:checked):after {
+			opacity: 0.6;
+		  }
+		}
+	  
+		.checkbox-wrapper-14 * {
+		  box-sizing: inherit;
+		}
+		.checkbox-wrapper-14 *:before,
+		.checkbox-wrapper-14 *:after {
+		  box-sizing: inherit;
+		}
+	  </style>
+
+	<div class="row justify-content-center">
+		<div class="col-md-12">
+			<div class="card">
+				<div class="card-header">
+					<div style="display: flex; justify-content: space-between; align-items: center;">
+						<div class="float-left">
+							<h4>
+								{{-- <i class="fab fa-download text-info"></i> --}}
+							Download </h4>
+						</div>						
+						@if (session()->has('message'))
+						<div wire:poll.4s class="btn btn-sm btn-success" style="margin-top:0px; margin-bottom:0px;"> {{ session('message') }} </div>
+						@endif
+						<div>
+							<input wire:model='keyWord' type="text" class="form-control" name="search" id="search" placeholder="Search Downloads">
+						</div>
+
+						<div class="d-flex">
+							<div class="btn btn-sm btn-info mx-1" data-toggle="modal" data-target="#createDataModal">
+							<i class="fa fa-plus"></i> Tambah File
+							</div>
+
+							<a class="btn btn-sm btn-warning mx-1"  href="{{route('download')}}" target="_blank">
+								Lihat Halaman
+							</a>
+
+							<div class="checkbox-wrapper-14 mx-1">
+								<input wire:model="halaman_download" id="s1-14" type="checkbox" class="switch"
+									wire:change='ubah_status'
+								>
+								<label for="s1-14">Aktifkan</label>
+							</div>
+
+						</div>
+						
+
+					</div>
+				</div>
+				
+				<div class="card-body">
+						@include('livewire.downloads.create')
+						@include('livewire.downloads.update')
+				<div class="table-responsive">
+					<table class="table table-bordered table-sm">
+						<thead class="thead">
+							<tr> 
+								<td>No</td> 
+								<th>Judul/Uraian</th>
+								<th>Ukuran File</th>
+								{{-- <th>File</th> --}}
+								<th>Jumlah Download</th>
+								<th>Keterangan</th>
+								<td></td>
+							</tr>
+						</thead>
+						<tbody>
+							@foreach($downloads as $row)
+							<tr>
+								<td>{{ $loop->iteration }}</td> 
+								<td>{{ $row->judul }}</td>
+								<td>{{ $row->ukuran_file }}KB</td>
+								{{-- <td>{{ $row->file }}</td> --}}
+								<td>{{ $row->jumlah_download }}</td>
+								<td>{{ $row->keterangan }}</td>
+								<td width="90">
+								<div class="btn-group">
+									<button type="button" class="btn btn-info btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+									Actions
+									</button>
+									<div class="dropdown-menu dropdown-menu-right">
+									<a data-toggle="modal" data-target="#updateModal" class="dropdown-item" wire:click="edit({{$row->id}})"><i class="fa fa-edit"></i> Edit </a>							 
+									<a class="dropdown-item" onclick="confirm('Confirm Delete Download id {{$row->id}}? \nDeleted Downloads cannot be recovered!')||event.stopImmediatePropagation()" wire:click="destroy({{$row->id}})"><i class="fa fa-trash"></i> Delete </a>   
+									</div>
+								</div>
+								</td>
+							@endforeach
+						</tbody>
+					</table>						
+					{{ $downloads->links() }}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

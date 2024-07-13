@@ -71,8 +71,7 @@ class Kesepuluh extends Component
 
     public function mount()
     {
-        $this->user_id = auth()->user()->id;
-            
+        $this->user_id = auth()->user()->id;            
 
         $testLog = DB::table('norma_test_log')
             ->join('norma', 'norma.id', '=', 'norma_test_log.test_id')
@@ -91,7 +90,7 @@ class Kesepuluh extends Component
             $batas_waktu = $waktu_mulai->addSeconds($waktu_test);
 
             if ($batas_waktu->isPast()) {
-                $this->seSelesai($this->test_id);
+                $this->meSelesai($this->test_id);
             } else {
                 $this->waktu_test = max(0, $batas_waktu->diffInSeconds(Carbon::now()));                
             }

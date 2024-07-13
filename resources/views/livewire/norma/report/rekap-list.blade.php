@@ -36,6 +36,7 @@
                                 <tbody>
                                    
                                     @foreach($rekap as $row)
+                                 
                                     <tr>
                                         <td>{{ $loop->iteration }}</td> 
                                         <td>{{ $row->email }}</td>
@@ -54,7 +55,11 @@
                                                     Actions
                                                 </button>
                                                 <div class="dropdown-menu dropdown-menu-right">
+
+                                                    <a class="dropdown-item"  href="{{route('norma.report.detail' , $row->user_id)}}" target="_blank"><i class="fa fa-eye"></i> Download </a>
+                                                    
                                                     <a class="dropdown-item" href="#" data-toggle="modal" data-target="#rekapModal" wire:click="showRekap({{$row->user_id}})"><i class="fa fa-eye"></i> Lihat </a>
+
                                                     <a class="dropdown-item" href="#" onclick="confirm('Confirm Delete Norma Test User  {{$row->email}}? \nDeleted Exams cannot be recovered!')||event.stopImmediatePropagation()" wire:click="deleteRekap({{$row->user_id}})"><i class="fa fa-trash"></i> Delete </a>
                                                 </div>
                                             </div>
