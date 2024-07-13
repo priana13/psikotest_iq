@@ -26,11 +26,7 @@ use App\Http\Controllers\Norma\ReportController;
 use App\Http\Controllers\TryOut\TryOutController;
 use App\Http\Controllers\TrialPsikotestController;
 use App\Http\Controllers\Member\TypeSoalController;
-
-use App\Http\Controllers\Offline\PesertaOfflineController;
-use App\Http\Controllers\TryOut\TryOutController;
 use App\Http\Livewire\ExamTryOut;
-
 use App\Http\Livewire\Member\HasilTest\HasilTryOut;
 use App\Http\Livewire\Member\HasilTest\TableHasilTryOut;
 use App\Http\Livewire\Transactions\OfflineRegistrations;
