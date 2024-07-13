@@ -46,7 +46,7 @@
 
 
 
-                                <div class="dropdown">
+                                <div class="dropdown d-none">
                                     <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownTambah" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         <i class="fa fa-plus"></i>
                                         Tambah Tes
@@ -96,35 +96,37 @@
                                     @foreach($exams as $row)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td> 
-                                        <td>{{ $row->nama_tes }}</td>
-                                        <td>{{ ($row->exam_category)?$row->exam_category->type:'' }}</td>
-                                        <td>{{ ($row->exam_category)?$row->exam_category->name:'' }}</td>
-                                        <td>{{ $row->waktu }}</td>								
-                                        <td>{{ $row->nilai_min }}</td>	
-                                        <td>{{ $row->questions->count() }}</td>		
+                                        <td>{{ $row->exam->nama_tes }}</td>
+                                        <td>{{ ($row->exam->exam_category)?$row->exam->exam_category->type:'' }}</td>
+                                        <td>{{ ($row->exam->exam_category)?$row->exam->exam_category->name:'' }}</td>
+                                        <td>{{ $row->exam->waktu }}</td>								
+                                        <td>{{ $row->exam->nilai_min }}</td>	
+                                        <td>{{ $row->exam->questions->count() }}</td>		
                                         <td>
-                                            <span class="badge badge-{{ ($row->status == "Aktif")?"success":"secondary" }} px-2 py-1">{{ $row->status }}</span>
+                                            <span class="badge badge-{{ ($row->exam->status == "Aktif")?"success":"secondary" }} px-2 py-1">{{ $row->exam->status }}</span>
                                             
                                         </td>					
                                         <td>									
 
-                                        @if($row->exam_category && $row->exam_category->type == 'Column')
+                                        @if($row->exam->exam_category && $row->exam->exam_category->type == 'Column')
 
-                                        <a class="btn btn-sm btn-primary" href="{{ route('admin.tes-kecermatan' , $row->id) }}">Soal</a>
+                                        <a class="btn btn-sm btn-primary" href="{{ route('admin.tes-kecermatan' , $row->exam->id) }}">Soal</a>
                                         
                                         @else
 
-                                        <a class="btn btn-sm btn-primary" href="{{ route('admin.exam_soal' , $row->id) }}">Soal</a>
+                                        <a class="btn btn-sm btn-primary" href="{{ route('admin.exam_soal' , $row->exam->id) }}">Soal</a>
 
                                         @endif
 
-                                        <div class="btn-group">
+                                        <a class="btn btn-success btn-sm" href="{{ route('admin.exams.edit', $row->exam->id) }}"><i class="fa fa-edit"></i> Edit </a>
+
+                                        <div class="btn-group d-none">
                                             <button type="button" class="btn btn-info btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             Actions
                                             </button>
                                             <div class="dropdown-menu dropdown-menu-right">
-                                            <a class="dropdown-item" href="{{ route('admin.exams.edit', $row->id) }}"><i class="fa fa-edit"></i> Edit </a>							 
-                                            <a class="dropdown-item" onclick="confirm('Confirm Delete Exam id {{$row->id}}? \nDeleted Exams cannot be recovered!')||event.stopImmediatePropagation()" wire:click="destroy({{$row->id}})"><i class="fa fa-trash"></i> Delete </a>   
+                                            <a class="dropdown-item" href="{{ route('admin.exams.edit', $row->exam->id) }}"><i class="fa fa-edit"></i> Edit </a>							 
+                                            {{-- <a class="dropdown-item" onclick="confirm('Confirm Delete Exam id {{$row->exam->id}}? \nDeleted Exams cannot be recovered!')||event.stopImmediatePropagation()" wire:click="destroy({{$row->exam->id}})"><i class="fa fa-trash"></i> Delete </a>    --}}
                                             </div>
                                         </div>
                                         </td>

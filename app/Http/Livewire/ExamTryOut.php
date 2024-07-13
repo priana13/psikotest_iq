@@ -42,7 +42,9 @@ class ExamTryOut extends Component
 
         }else{
 
-            $exams = Exam::whereIn('id' , $tyout_exam)->latest()->paginate(10);
+            $exams = TryoutExam::paginate(10);
+
+            // $exams = Exam::whereIn('id' , $tyout_exam)->latest()->paginate(10);
 
         }
      

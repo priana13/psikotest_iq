@@ -119,7 +119,11 @@
 
 
                 <div class="card-footer">
-                    <a type="button" class="btn btn-secondary" href="{{ route('admin.exams') }}">Batal</a>
+                    @if($is_try_out > 0)
+                        <a type="button" class="btn btn-secondary" href="{{ route('admin.soal-tryout') }}">Batal</a>
+                    @else 
+                        <a type="button" class="btn btn-secondary" href="{{ route('admin.exams') }}">Batal</a>
+                    @endif
                     <button type="submit" class="btn btn-primary">Save</button>
                 </div>
            </div>

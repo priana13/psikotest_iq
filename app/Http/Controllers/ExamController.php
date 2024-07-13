@@ -101,7 +101,9 @@ class ExamController extends Controller
         $exam = Exam::find($id);
         $kategori = Examcategory::all();
 
-        return view('livewire.exams.edit', compact('exam', 'kategori'));
+        $is_try_out = TryoutExam::where('exam_id' ,$id)->count();
+
+        return view('livewire.exams.edit', compact('exam', 'kategori', 'is_try_out'));
     }
 
     /**
@@ -139,6 +141,8 @@ class ExamController extends Controller
 
 
             $is_try_out = TryoutExam::where('exam_id' ,$id)->count();
+
+            // dd($is_try_out);
 
             if($is_try_out > 0){
 
