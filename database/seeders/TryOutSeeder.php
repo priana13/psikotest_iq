@@ -17,9 +17,9 @@ class TryOutSeeder extends Seeder
     {
 
         $exams = [
-            "Kecerdasan" => 23,
-            "Kepribadian" => 27,
-            "Sikap Kerja" => 39
+            "Kecerdasan" => 18,
+            "Kepribadian" => 19,
+            "Sikap Kerja" => 20
         ];
 
         foreach ($exams as $key => $value) {

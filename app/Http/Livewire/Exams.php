@@ -2,12 +2,13 @@
 
 namespace App\Http\Livewire;
 
-use Livewire\Component;
-use Livewire\WithPagination;
-use App\Models\Exam;
-use App\Models\Examcategory;
-use App\Models\Question;
 use DB;
+use App\Models\Exam;
+use Livewire\Component;
+use App\Models\Question;
+use App\Models\TryoutExam;
+use App\Models\Examcategory;
+use Livewire\WithPagination;
 
 class Exams extends Component
 {
@@ -26,7 +27,9 @@ class Exams extends Component
 
         $this->examcategory = Examcategory::all();
 
-		$keyWord = '%'.$this->keyWord .'%';      
+		$keyWord = '%'.$this->keyWord .'%';  
+        
+        $tyout_exam = TryoutExam::pluck('exam_id');
 
         if($this->keyWord){
 
@@ -35,17 +38,18 @@ class Exams extends Component
             ->orWhere('waktu', 'LIKE', $keyWord)
             ->orWhere('nilai_min', 'LIKE', $keyWord)
             ->orWhere('peraturan', 'LIKE', $keyWord)
+            ->whereNotIn('id' , $tyout_exam)
             ->paginate(10);
 
         }else{     
             
             if($this->selected == 'all'){
 
-                $exams = Exam::latest()->paginate(10);
+                $exams = Exam::whereNotIn('id' , $tyout_exam)->latest()->paginate(10);
  
             }else{
 
-                $exams = Exam::latest()->where('examcategory_id' , $this->selected)->paginate(10);
+                $exams = Exam::whereNotIn('id' , $tyout_exam)->latest()->where('examcategory_id' , $this->selected)->paginate(10);
 
             }
 
@@ -96,7 +100,7 @@ class Exams extends Component
     public function edit($id)
     {
       
-        $record = Exam::findOrFail($id);
+        $record = Exam::findOrFail($id);      
 
         $this->selected_id = $id; 
 		$this->nama_tes = $record-> nama_tes;

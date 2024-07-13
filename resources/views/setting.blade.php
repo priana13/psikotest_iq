@@ -164,7 +164,7 @@
                             <label class="col" for="tryout_1">Tryout 1 (Kecerdasan)</label>
                             <select class="form-control form-control-sm" id="" name="tryout_1">
                                 <option value="0">Select</option>
-                                @foreach ($exams->where('type','cerdas') as $exam)                                  
+                                @foreach ($exams_kecerdasan as $exam)                                  
 
 
                                 <option value="{{ $exam->id }}"
@@ -188,7 +188,7 @@
 
 
                         </div> 
-                        
+                        {{-- {{dd('test')}} --}}
 
                         <div class="form-group row">
                             <div class="col-md-8">
@@ -196,7 +196,12 @@
                                 <label class="col" for="tryout_2">Tryout 2 (Kepribadian)</label>
                                 <select class="form-control form-control-sm col" id="" name="tryout_2">
                                     <option value="0">Select</option>
-                                    @foreach ($exams->where('type','kepribadian') as $exam)
+
+                                  
+                                    @foreach ($exams_kepribadian as $row)
+
+                                    
+
                                     <option value="{{ $exam->id }}"
                                         {{ ($tryout_2->exam_id == $exam->id) ? "selected" : "" }}
                                         >{{ $exam->nama_tes }}</option> 
@@ -225,7 +230,7 @@
                                 <label class="col" for="tryout_3">Tryout 3 (Sikap Kerja)</label>
                                 <select class="form-control form-control-sm col" id="" name="tryout_3">
                                     <option value="0">Select</option>
-                                    @foreach ($exams->where('type', 'cermat') as $exam)
+                                    @foreach ($exams_sikap_kerja as $exam)
                                     <option value="{{ $exam->id }}"
                                         {{ ($tryout_3->exam_id == $exam->id) ? "selected" : "" }}
                                         >{{ $exam->nama_tes }}</option> 

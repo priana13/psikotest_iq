@@ -154,10 +154,19 @@
 
     <!-- Heading -->
     <div class="sidebar-heading">
-    {{ __('Tty Out') }}
+    {{ __('Tty Out') }} 
     </div>
 
+      <li class="nav-item my-0">
+        <a class="nav-link py-2" href="{{ route('admin.soal-tryout') }}">
+            <i class="fas fa-clipboard-list"></i>
+            <span>Soal Tryout</span> <span class="badge badge-danger rounded-pill mx-1">New</span>
+        </a>
+    </li>
+
     @if(count($tryout) > 0)
+
+
 
     <li class="nav-item my-0">
         <a class="nav-link py-2" href="{{ route('tryout.start') }}">
@@ -172,7 +181,7 @@
     <li class="nav-item my-0">
         <a class="nav-link py-2" href="{{ route('tryout.table') }}">
             <i class="fas fa-clipboard-list"></i>
-            <span>Hasil Test</span> <span class="badge badge-danger rounded-pill mx-1">New</span>
+            <span>Hasil Test</span> 
         </a>
     </li>
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Exam;
 use App\Models\Examcategory;
+use App\Models\TryoutExam;
 use Illuminate\Http\Request;
 
 class ExamController extends Controller
@@ -100,7 +101,9 @@ class ExamController extends Controller
         $exam = Exam::find($id);
         $kategori = Examcategory::all();
 
-        return view('livewire.exams.edit', compact('exam', 'kategori'));
+        $is_try_out = TryoutExam::where('exam_id' ,$id)->count();
+
+        return view('livewire.exams.edit', compact('exam', 'kategori', 'is_try_out'));
     }
 
     /**
@@ -135,8 +138,19 @@ class ExamController extends Controller
             'status' => $request->status,
             'jenis_pengembangan' => $request->jenis_pengembangan
             ]);
-           
-            return redirect()->route('admin.exams')->with('message', 'Data Psikotes Berhasil Diupdate');
+
+
+            $is_try_out = TryoutExam::where('exam_id' ,$id)->count();
+
+            // dd($is_try_out);
+
+            if($is_try_out > 0){
+
+                return redirect()->route('admin.soal-tryout')->with('message', 'Data Psikotes Berhasil Diupdate');
+            }
+
+            return redirect()->route('admin.exams')->with('message', 'Data Psikotes Berhasil Diupdate');           
+            
            
 
     }

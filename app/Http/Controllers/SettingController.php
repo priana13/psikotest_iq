@@ -29,20 +29,28 @@ class SettingController extends Controller
             "biaya_offline" => Setting::where('name','biaya_offline')->first()
         ];  
 
-        $exams = Exam::get();
+        $exams_kecerdasan = Exam::type('cerdas')->get();
+        $exams_kepribadian = Exam::type('kepribadian')->get();
+        $exams_sikap_kerja = Exam::type('cermat')->get();
+
+        // dd($exams_kecerdasan);
 
         $tryout_1 = TryoutExam::where('name', 'Kecerdasan')->first();        
         $this->cekTryout($tryout_1);
 
         $tryout_2 = TryoutExam::where('name', 'Kepribadian')->first();       
 
-        $tryout_3 = TryoutExam::where('name', 'Sikap Kerja')->first();      
+        $tryout_3 = TryoutExam::where('name', 'Sikap Kerja')->first(); 
+        
+        // dd($tryout_1, $tryout_2, $tryout_3);
 
         return view('setting', compact(
             'list_post', 
             'setting', 
-            'list_category' , 
-            'exams',
+            'list_category' ,            
+            'exams_kecerdasan',
+            'exams_kepribadian',
+            'exams_sikap_kerja',
             'tryout_1',
             'tryout_2',
             'tryout_3'
