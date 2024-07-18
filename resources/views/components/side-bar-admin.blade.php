@@ -147,6 +147,15 @@
             <span>{{ __('Hasil') }}</span>
         </a>
     </li>
+
+    <li class="nav-item {{ Nav::isRoute('generate-user') }}">
+        <a class="nav-link py-2" href="{{ route('generate-user') }}">
+            {{-- <i class="fas fa-fw fa-user"></i> --}}
+            <i class="fas fa-list"></i>
+            <span>Generate User</span>
+        </a>
+    </li>
+
     @endcan
 
     <!-- Try Oute Test -->

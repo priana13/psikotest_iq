@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Norma\QuizController;
 use App\Http\Controllers\Norma\TestController;
 use App\Http\Controllers\Norma\ReportController;
+use App\Http\Livewire\Norma\GenerateUser;
 use App\Http\Livewire\Norma\Report\HasilNormaTest;
 
 	Route::middleware('auth')->group(function(){
@@ -73,6 +74,7 @@ use App\Http\Livewire\Norma\Report\HasilNormaTest;
 		Route::get('/report/rekap/list' , [ReportController::class , 'rekapList'])->name('norma.report.rekap.list');
 		Route::get('/report/norma-test/{user}' , HasilNormaTest::class)->name('norma.report.detail');
 
+		Route::get('/generate-user', GenerateUser::class)->name('generate-user');
 
 
 	});
