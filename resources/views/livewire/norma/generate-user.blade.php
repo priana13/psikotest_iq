@@ -4,11 +4,11 @@
     <div class="card p-3">
 
         <div class="">
-            <h5 class="modal-title" id="createDataModalLabel">Generate User</h5>
+            <h5 class="" id="">Generate User</h5>
            
         </div>
 
-        <div class="row">
+        <div class="row px-2">
             <div class="col-md-6">
 
                 <form action="">
