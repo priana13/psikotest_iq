@@ -65,7 +65,8 @@
             </div>
 
             <div class="col-md-6">
-                <p>
+                <h4>Silahkan Salin File Berikut:</h4>
+                <p class="border rounded p-3">
                     {!!$hasil!!}
 
                 </p>

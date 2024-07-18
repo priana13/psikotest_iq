@@ -6,6 +6,7 @@ use App\Models\User;
 use Livewire\Component;
 use Illuminate\Support\Facades\Hash;
 use PhpOffice\PhpSpreadsheet\Calculation\TextData\Replace;
+use Illuminate\Support\Facades\File;
 
 class GenerateUser extends Component
 {
@@ -88,6 +89,17 @@ class GenerateUser extends Component
        }
 
        $this->hasil = $hasil . "</br>Password: " . $this->password;
+
+
+        // Tentukan nama file dan isi konten
+        $filename = time() . '_generate_user.txt';
+
+        // Tentukan path penyimpanan file
+        $path = storage_path('app/public/' . $filename);
+
+        // Buat file dan tulis konten ke dalamnya
+        File::put($path, $this->hasil);
+
 
        $this->resetValue();
 
