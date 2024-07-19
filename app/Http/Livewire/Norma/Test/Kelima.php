@@ -26,10 +26,7 @@ class Kelima extends Component
     public $nama;
     public $QuizRa;
     public $NormaRa;
-    public $user_id;
-
-
-    
+    public $user_id;    
 
     public function raMulai($testId){        
         $this->user_id = auth()->user()->id;
@@ -83,10 +80,18 @@ class Kelima extends Component
 
     public function updateDatabase($quizId,$questionNumber)
     {       
+
+        // dd($quizId , $questionNumber);
+
         $QuizRa =QuizRa::where('id','=',$quizId)->first();
         $NormaRa =Norma::where('tipe','=',5)->first();
-        $answer = array_map('intval',$this->{'answer' . $questionNumber});     
+        // $answer = array_map('intval',$this->{'answer' . $questionNumber});
        
+        $jawaban  = intval(  $this->{'jawaban' . $questionNumber} );
+
+        // $nilai1 = (json_decode($QuizRa->k,TRUE) == array_values($answer))? $NormaRa->nilai_min :null ;
+        $nilai2 =( $QuizRa->k2 == $jawaban) ? 1 : 0 ;
+      
         NormaTest::updateOrCreate(
             [
                 'user_id' => $this->user_id,
@@ -94,9 +99,10 @@ class Kelima extends Component
                 'quiz_id' => $quizId,
             ],
             [
-                'k' => ($QuizRa->k)?? null,
-                'j' => json_encode($answer),
-                'nilai' => (json_decode($QuizRa->k,TRUE) == array_values($answer))? $NormaRa->nilai_min :null  
+                'k' => ($QuizRa->k2)?? null,
+                // 'j' => json_encode($answer),
+                'j' => $jawaban,
+                'nilai' => $nilai2 
                 
             ]
         );
@@ -106,8 +112,8 @@ class Kelima extends Component
 
     public function mount()
     {
-        $this->user_id = auth()->user()->id;
-            
+        $this->user_id = auth()->user()->id;           
+      
 
         $testLog = DB::table('norma_test_log')
             ->join('norma', 'norma.id', '=', 'norma_test_log.test_id')
@@ -137,6 +143,9 @@ class Kelima extends Component
 
         for ($i = 77; $i < 97; $i++) { 
             $this->{'answer' . $i} = [];
+
+            $this->{'jawaban' . $i} = 0;
+
             $this->{'quiz' . $i} = null;
         }    
 
@@ -154,10 +163,14 @@ class Kelima extends Component
                     ->where('norma_test.user_id', '=', $this->user_id)
                     ->select('norma_test.*', 'quiz_ra.no')
                     ->get();        
+
+                    // dd($TestRa);
         
         if($TestRa){
             foreach ($TestRa as $TS => $t) {                
-                $this->{'answer' . $t->no} = json_decode($t->j);                
+                // $this->{'answer' . $t->no} = json_decode($t->j); 
+                $this->{'jawaban' . $t->no} = json_decode($t->j);  
+
             }
         }  
         $NormaRa  = Norma::where('tipe','=',5)->first();
