@@ -40,9 +40,18 @@
                                                 <h5>{{$q['no']}}</h5>
                                             </label>
                                             <h5><em>{{$q['quiz']}}</em></h5>                                            
-                                        </div>                                       
+                                        </div>   
                                         
-                                        <div class="form-group row">
+                                        <div class="" style="padding:0px 85px;">
+                                            <label class="text-center">Jawaban:</label>
+                                            <input
+                                             wire:model="jawaban{{$q['no']}}"
+                                             value="1"  
+                                             wire:change="updateDatabase({{$q['id']}},{{$q['no']}})" 
+                                             type="number" class="form-control col-2">
+                                        </div>
+                                        
+                                        <div class="form-group row d-none">
                                             <label class="col-1 text-center"></label>
                                             <div class="col-1 form-group">
                                                 <label class="form-control text-center">1</label>
