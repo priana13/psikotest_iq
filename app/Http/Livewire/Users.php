@@ -16,6 +16,8 @@ class Users extends Component
     public $updateMode = false;
     public $total;
 
+    public $password;
+
     public function mount(){
 
         $this->total = User::online()->count();
@@ -62,13 +64,16 @@ class Users extends Component
 		'level' => 'required',
         ]);
 
+        $default_password = "123456";
+
         User::create([ 
 			'name' => $this-> name,
 			'email' => $this-> email,
 			'level' => $this-> level,
             'hp' => $this->hp,
             'kota' => $this->kota,
-            'password' => Hash::make('123456')
+            'password' => Hash::make($default_password),
+            'string_password' => $default_password
         ]);
         
         $this->resetInput();
@@ -86,6 +91,8 @@ class Users extends Component
         $this->hp = $record->hp;
         $this->kota = $record->kota;
 		$this->level = $record-> level;
+
+        $this->password = $record->string_password;
 		
         $this->updateMode = true;
     }

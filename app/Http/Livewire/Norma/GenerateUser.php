@@ -44,8 +44,7 @@ class GenerateUser extends Component
     public function generate(){
 
         $this->validate([           
-            'list_nama' => 'required',
-            'password' =>'required'
+            'list_nama' => 'required'           
         ]);
 
         $array_nama = preg_split ("/\n/", $this->list_nama);
@@ -54,41 +53,39 @@ class GenerateUser extends Component
 
        foreach ($array_nama as $nama) {
 
-        $nama_email = strtolower( str_replace(' ','',$nama) );    
-        
-        // dd($nama_email);
+                $nama_email = strtolower( str_replace(' ','',$nama) );    
+                
+                // dd($nama_email);
 
-        $cek = User::where('email' , $nama_email . "@arstamedia.com")->first();
+                $cek = User::where('email' , $nama_email . "@arstamedia.com")->first();
 
-        // dd($cek);
+                // dd($cek);
 
-        if($cek){
+                if($cek){
+                    $rand = rand(10,1000);
+                    $email =  $nama_email . $rand .'@arstamedia.com';
+                }else{
+                    $email =  $nama_email . '@arstamedia.com';
+                }
 
-            $rand = rand(10,1000);
+                $rand_password = rand(50000, 400000);
 
-            $email =  $nama_email . $rand .'@arstamedia.com';
+                User::create([ 
+                    'name' => $nama,
+                    'email' => $email,
+                    'level' => 'user',
+                    // 'hp' => $this->hp,
+                    // 'kota' => $this->kota,
+                    'password' => Hash::make( $rand_password ),
+                    'string_password' => $rand_password
+                ]);
 
-        }else{
-
-            $email =  $nama_email . '@arstamedia.com';
-
-        }
-
-        User::create([ 
-			'name' => $nama,
-			'email' => $email,
-			'level' => 'user',
-            // 'hp' => $this->hp,
-            // 'kota' => $this->kota,
-            'password' => Hash::make( $this->password )
-        ]);
-
-        $hasil .= $email . '</br>';
+                $hasil .= "Nama: " . $nama . "</br> Email: " .  $email . '</br>Password: ' . $rand_password . '</br> </br>';              
 
 
        }
 
-       $this->hasil = $hasil . "</br>Password: " . $this->password;
+       $this->hasil = $hasil;
 
 
         // Tentukan nama file dan isi konten

@@ -42,7 +42,7 @@
                     </div>
         
         
-                    <div class="row">
+                    {{-- <div class="row">
         
                         <div class="form-group">
                             <label for="password">Password</label>
@@ -52,7 +52,7 @@
                             @enderror
                         </div>
         
-                    </div>
+                    </div> --}}
         
                     <div class="">
                         <a href="{{ route('generate-user') }}" class="btn btn-secondary">Batal</a>
