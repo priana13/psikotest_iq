@@ -11,7 +11,7 @@ class QuizMe extends Model
     public $timestamps = true;
     protected $table = 'quiz_me';
     protected $guarded = [];
-    protected $fillable = ['test_id','no','quiz','a','b','c','d','e','k'];
+    // protected $fillable = ['test_id','no','quiz','a','b','c','d','e','k'];
 
     public function test(){
         return $this->belongsTo(NormaTest::class, 'test_id');
