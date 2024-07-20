@@ -83,9 +83,10 @@ class ProfileController extends Controller
         $user->hp = $request->hp;
         $user->alamat = $request->alamat;
 
-        if($request->password != 'lama'){
+        if($request->password != 'lama'){          
 
             $user->password = Hash::make($request->password);
+            $user->string_password = $request->password;
 
         }
       
