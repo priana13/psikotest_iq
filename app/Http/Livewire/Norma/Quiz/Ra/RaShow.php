@@ -21,8 +21,8 @@ class RaShow extends Component
     public $quiz;
     public $quiz_id;    
     public $k = [];
-    public $raquiz;
-
+    public $k2;
+    public $raquiz;  
 
     public function getQuizRaById($QuizId)
     {   
@@ -32,21 +32,50 @@ class RaShow extends Component
         $this->quiz = optional($this->raquiz)->quiz ?? null; 
         $this->k = (optional($this->raquiz)->k) ? array_values(json_decode(optional($this->raquiz)->k)) :[];       
         //$this->k = optional($this->raquiz)->k ?? [];
+        $this->k2 = $this->raquiz->k2;
         
     }
 
-    public function simpanQuizRa(){
+    public function simpanQuizRa(){       
 
         $this->k = array_map('intval', $this->k);
-        $raquiz = QuizRa::updateOrCreate(
-            ['id' => $this->quiz_id, 'test_id' => $this->test_id],
-            [
+
+        if($this->quiz_id){
+
+            $raquiz = QuizRa::find($this->quiz_id);
+            $raquiz->k2 = $this->k2;
+            $raquiz->quiz = $this->quiz;
+            $raquiz->save();
+
+        }else{
+
+            // dd($this->k2);
+
+            $raquiz = QuizRa::create([
                 'test_id'   => $this->test_id,
                 'no'        => $this->no,
                 'quiz'      => $this->quiz,                
-                'k'         => json_encode($this->k)
-            ]
-        );
+                'k'         => json_encode($this->k),
+                'k2' => $this->k2
+            ]);
+
+        }
+
+
+
+        // dd($raquiz);
+
+        // dd($this->quiz_id);
+        // $raquiz = QuizRa::updateOrCreate(
+        //     ['id' => $this->quiz_id, 'test_id' => $this->test_id],
+        //     [
+        //         'test_id'   => $this->test_id,
+        //         'no'        => $this->no,
+        //         'quiz'      => $this->quiz,                
+        //         'k'         => json_encode($this->k),
+        //         'k2' => $this->k2
+        //     ]
+        // );
 
         session()->flash($raquiz ? 'success' : 'error', $raquiz ? 'Berhasil !' : 'Gagal !');
         $this->emit('reloadPage');
@@ -57,7 +86,8 @@ class RaShow extends Component
     public function render()
     {
         $this->test = Norma::where('tipe', '=', 5)->first();
-        $this->test_id = optional($this->test)->id;       
+        $this->test_id = optional($this->test)->id;  
+          
         $listNo = [];
         for ($i=77; $i < 97; $i++) { 
             if(! QuizRa::where('no','=',$i)->where('test_id','=',$this->test_id)->exists()){

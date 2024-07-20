@@ -85,7 +85,13 @@ class Keenam extends Component
     {       
         $QuizZr =QuizZr::where('id','=',$quizId)->first();
         $NormaZr =Norma::where('tipe','=',6)->first();
-        $answer = array_map('intval',$this->{'answer' . $questionNumber});     
+        $answer = array_map('intval',$this->{'answer' . $questionNumber}); 
+        
+        $jawaban  = intval(  $this->{'jawaban' . $questionNumber} );
+
+        // $nilai1 = (json_decode($QuizZr->k,TRUE) == array_values($answer))? $NormaZr->nilai_min :null ;
+        $nilai2 =( $QuizZr->k2 == $jawaban) ? 1 : 0 ;
+
        
         NormaTest::updateOrCreate(
             [
@@ -95,8 +101,9 @@ class Keenam extends Component
             ],
             [
                 'k' => ($QuizZr->k)?? null,
-                'j' => json_encode($answer),
-                'nilai' => (json_decode($QuizZr->k,TRUE) == array_values($answer))? $NormaZr->nilai_min :null  
+                // 'j' => json_encode($answer),
+                'j' => $jawaban,
+                'nilai' => $nilai2 
             ]
         );
         
@@ -137,6 +144,9 @@ class Keenam extends Component
 
         for ($i = 97; $i < 117; $i++) { 
             $this->{'answer' . $i} = [];
+
+            $this->{'jawaban' . $i} = 0;
+
             $this->{'quiz' . $i} = null;
         }  
 
@@ -157,7 +167,10 @@ class Keenam extends Component
         
         if($TestZr){
             foreach ($TestZr as $TS => $t) {                
-                 $this->{'answer' . $t->no} = json_decode($t->j);     
+                //  $this->{'answer' . $t->no} = json_decode($t->j); 
+                 
+                 $this->{'jawaban' . $t->no} = json_decode($t->j);  
+
             }
         }  
         $NormaZr  = Norma::where('tipe','=',6)->first();

@@ -11,7 +11,6 @@ class QuizRa extends Model
     public $timestamps = true;
     protected $table = 'quiz_ra';
     protected $guarded = [];
-    protected $fillable = ['test_id','no','quiz','k'];
 
     public function test(){
         return $this->belongsTo(NormaTest::class, 'test_id');

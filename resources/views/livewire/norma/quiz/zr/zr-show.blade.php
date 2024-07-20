@@ -26,8 +26,10 @@
             </div>
              <label for="a">Kunci Jawaban</label>
             <div class="form-group card shadow p-3">
+
+                <input wire:model="k2" type="number" class="form-control col-sm-2">
               
-                <div class="form-group row">
+                <div class="form-group row d-none">
                     <label class="col-1 text-center"></label>
                     <div class="col-1 form-group">
                         <label class="form-control text-center">1</label>
