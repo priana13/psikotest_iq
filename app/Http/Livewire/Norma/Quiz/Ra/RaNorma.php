@@ -20,7 +20,7 @@ class RaNorma extends Component
     public $petunjuk_kesatu;
     public $petunjuk_kedua;
     public $file_petunjuk;
-    public $test_id;
+    public $test_id;  
     
 
     public function simpanTestRa(){      

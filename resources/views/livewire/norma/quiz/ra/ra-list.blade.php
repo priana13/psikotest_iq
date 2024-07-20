@@ -32,7 +32,7 @@
                                     <tr>
                                         <td>{{ $row->no }}</td>
                                         <td>{{ $row->quiz }}</td>                                       
-                                        <td>{{ $row->k }}</td>
+                                        <td>{{ $row->k2 }}</td>
                                         <td>
                                             <div class="btn-group">
                                                 <button type="button" class="btn btn-info btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
