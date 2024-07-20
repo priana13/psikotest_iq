@@ -24,6 +24,7 @@
                                         <td>No</td>
                                         <th>Soal</th>                                        
                                         <td>Kunci</td>
+                                        <td>Kunci2</td>
                                         <td></td>
                                     </tr>
                                 </thead>
@@ -31,7 +32,8 @@
                                     @foreach($ra as $row)
                                     <tr>
                                         <td>{{ $row->no }}</td>
-                                        <td>{{ $row->quiz }}</td>                                       
+                                        <td>{{ $row->quiz }}</td>  
+                                        <td>{{ $row->k }}</td>                                     
                                         <td>{{ $row->k2 }}</td>
                                         <td>
                                             <div class="btn-group">

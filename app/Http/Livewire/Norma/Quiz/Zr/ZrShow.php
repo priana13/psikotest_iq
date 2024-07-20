@@ -21,6 +21,7 @@ class ZrShow extends Component
     public $quiz;
     public $quiz_id;    
     public $k = [];
+    public $k2;
     public $zrquiz;
 
 
@@ -30,7 +31,9 @@ class ZrShow extends Component
         $this->quiz_id = optional($this->zrquiz)->id ?? $this->quiz_id ;
         $this->no = optional($this->zrquiz)->no ?? null;
         $this->quiz = optional($this->zrquiz)->quiz ?? null; 
-        $this->k = (optional($this->zrquiz)->k) ? array_values(json_decode(optional($this->zrquiz)->k)) :[];       
+        $this->k = (optional($this->zrquiz)->k) ? array_values(json_decode(optional($this->zrquiz)->k)) :[];  
+        
+        $this->k2 = $this->zrquiz->k2;
        
         
     }
@@ -38,15 +41,39 @@ class ZrShow extends Component
     public function simpanQuizZr(){
 
         $this->k = array_map('intval', $this->k);
-        $zrquiz = QuizZr::updateOrCreate(
-            ['id' => $this->quiz_id, 'test_id' => $this->test_id],
-            [
+        
+        if($this->quiz_id){
+
+            $zrquiz = QuizZr::find($this->quiz_id);
+            $zrquiz->k2 = $this->k2;
+            $zrquiz->quiz = $this->quiz;
+            $zrquiz->save();
+
+        }else{
+
+            // dd($this->k2);
+
+            $zrquiz = QuizZr::create([
                 'test_id'   => $this->test_id,
                 'no'        => $this->no,
                 'quiz'      => $this->quiz,                
-                'k'         => json_encode($this->k)
-            ]
-        );
+                'k'         => json_encode($this->k),
+                'k2' => $this->k2
+            ]);
+
+        }
+
+        // $zrquiz = QuizZr::updateOrCreate(
+        //     ['id' => $this->quiz_id, 'test_id' => $this->test_id],
+        //     [
+        //         'test_id'   => $this->test_id,
+        //         'no'        => $this->no,
+        //         'quiz'      => $this->quiz,                
+        //         'k'         => json_encode($this->k)
+        //     ]
+        // );
+
+
 
         session()->flash($zrquiz ? 'success' : 'error', $zrquiz ? 'Berhasil !' : 'Gagal !');
         $this->emit('reloadPage');
