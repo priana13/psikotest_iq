@@ -81,8 +81,23 @@ class Keenam extends Component
         $this->emit('reloadPage');        
     }
 
+    public function getValidation(){
+
+        for ($i = 97; $i < 117; $i++) {          
+
+            $rules ["jawaban" . $i] =  "numeric";
+           
+        } 
+
+        return $rules;
+    }
+
+
     public function updateDatabase($quizId,$questionNumber)
     {       
+
+        $this->validate( $this->getValidation() );   
+
         $QuizZr =QuizZr::where('id','=',$quizId)->first();
         $NormaZr =Norma::where('tipe','=',6)->first();
         $answer = array_map('intval',$this->{'answer' . $questionNumber}); 
@@ -145,7 +160,7 @@ class Keenam extends Component
         for ($i = 97; $i < 117; $i++) { 
             $this->{'answer' . $i} = [];
 
-            $this->{'jawaban' . $i} = 0;
+            $this->{'jawaban' . $i} = '';
 
             $this->{'quiz' . $i} = null;
         }  

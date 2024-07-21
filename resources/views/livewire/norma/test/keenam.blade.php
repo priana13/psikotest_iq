@@ -48,7 +48,10 @@
                                              wire:model="jawaban{{$q['no']}}"
                                              value="1"  
                                              wire:change="updateDatabase({{$q['id']}},{{$q['no']}})" 
-                                             type="number" class="form-control col-2">
+                                             type="text" class="form-control col-2">
+
+                                             @error("jawaban" . $q['no']) <span class="text-danger">{{$message}}</span>@enderror
+
                                         </div>
                                         
                                         <div class="form-group row d-none">
