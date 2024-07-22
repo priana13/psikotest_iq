@@ -2,16 +2,18 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\KunciNormaResource\Pages;
-use App\Filament\Resources\KunciNormaResource\RelationManagers;
-use App\Models\KunciNorma;
 use Filament\Forms;
-use Filament\Resources\Form;
-use Filament\Resources\Resource;
-use Filament\Resources\Table;
 use Filament\Tables;
+use App\Models\KunciNorma;
+use Filament\Resources\Form;
+use Filament\Resources\Table;
+use Filament\Resources\Resource;
+use Filament\Forms\Components\TextInput;
+use Filament\Tables\Filters\SelectFilter;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use App\Filament\Resources\KunciNormaResource\Pages;
+use App\Filament\Resources\KunciNormaResource\RelationManagers;
 
 class KunciNormaResource extends Resource
 {
@@ -57,7 +59,7 @@ class KunciNormaResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('tipe_usia'),
+                Tables\Columns\TextColumn::make('tipe_usia')->searchable(),
                 Tables\Columns\TextColumn::make('rw'),
                 Tables\Columns\TextColumn::make('se'),
                 Tables\Columns\TextColumn::make('wa'),
@@ -70,7 +72,22 @@ class KunciNormaResource extends Resource
                 Tables\Columns\TextColumn::make('me'),
             ])
             ->filters([
-                //
+                SelectFilter::make("tipe_usia")->options([
+                    "A" => "A",
+                    "B" => "B",
+                    "C" => "C",
+                    "D" => "D",
+                    "E" => "E",
+                    "F" => "F",
+                    "G" => "G",
+                    "H" => "H",
+                    "I" => "I",
+                    "J" => "J",
+                    "K" => "K",
+                    "L" => "L",
+                    "M" => "M",
+                ]),
+                // TextInput::make("rw")
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
