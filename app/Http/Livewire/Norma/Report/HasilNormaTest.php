@@ -51,7 +51,11 @@ class HasilNormaTest extends Component
         $this->name = $user->name;  
         $userNorma = DataUserNorma::where('user_id',$userId)->first();
         $umur = ($userNorma)? Carbon::parse($userNorma->tgl_lahir)->age:null;
-        $tipe_usia = '';
+        $tipe_usia = ''; 
+        
+        // dd($user->id , $umur);
+    
+
         if($umur ==13){
             $tipe_usia = 'A';
         }elseif($umur ==14){
@@ -62,6 +66,9 @@ class HasilNormaTest extends Component
             $tipe_usia = 'D';
         }elseif($umur ==17){
             $tipe_usia = 'E';
+
+            // dd($tipe_usia);
+
         }elseif($umur ==18){
             $tipe_usia = 'F';
         }elseif($umur ==19 || $umur == 20){
@@ -82,6 +89,8 @@ class HasilNormaTest extends Component
             $tipe_usia = 'N';
         }
 
+
+        // dd($tipe_usia , $umur);
 
 
         $this->userNorma = ($userNorma) ? json_decode(json_encode($userNorma), true) : null;
@@ -109,6 +118,8 @@ class HasilNormaTest extends Component
                             ->where('norma_test_log.user_id',$this->user_id)
                             ->groupBy('users.email', 'norma_test_log.user_id')
                             ->orderBy('norma_test_log.user_id', 'asc')->first();
+        // dd( $normaTest );
+        
         /*$normaTest = DB::table('norma_test')
                     ->leftJoin('norma', 'norma.id', '=', 'norma_test.test_id')
                     ->leftJoin('users', 'users.id', '=', 'norma_test.user_id')
@@ -129,8 +140,14 @@ class HasilNormaTest extends Component
                     ->orderBy('norma_test.user_id', 'asc')->first();*/
         $this->normaTest = ($normaTest) ? json_decode(json_encode($normaTest), true) : null;
 
+        // dd($normaTest->ge);
+
         if($normaTest){
             $se = KunciNorma::select('se')->where('rw',$normaTest->se)->where('tipe_usia',$tipe_usia)->first();
+
+
+            // dd($se);
+
             $wa = KunciNorma::select('wa')->where('rw',$normaTest->wa)->where('tipe_usia',$tipe_usia)->first();
             $an = KunciNorma::select('an')->where('rw',$normaTest->an)->where('tipe_usia',$tipe_usia)->first();
             $ge = KunciNorma::select('ge')->where('rw',$normaTest->ge)->where('tipe_usia',$tipe_usia)->first();
@@ -139,11 +156,12 @@ class HasilNormaTest extends Component
             $fa = KunciNorma::select('fa')->where('rw',$normaTest->fa)->where('tipe_usia',$tipe_usia)->first();
             $wu = KunciNorma::select('wu')->where('rw',$normaTest->wu)->where('tipe_usia',$tipe_usia)->first();
             $me = KunciNorma::select('me')->where('rw',$normaTest->me)->where('tipe_usia',$tipe_usia)->first();
+           
             $this->sw = [
                 'se' => $se->se,
                 'wa' => $wa->wa,
                 'an' => $an->an,
-                'ge' => $ge->ge,
+                'ge' => ($ge) ? $ge->ge : 0,
                 'ra' => $ra->ra,
                 'zr' => $zr->zr,
                 'fa' => $fa->fa,
@@ -172,7 +190,7 @@ class HasilNormaTest extends Component
                 'se' => ($se->se) ? $this->getKategori($se->se):$this->getKategori(0),
                 'wa' => ($wa->wa) ? $this->getKategori($wa->wa):$this->getKategori(0),
                 'an' => ($an->an) ? $this->getKategori($an->an):$this->getKategori(0),
-                'ge' => ($ge->ge) ? $this->getKategori($ge->ge):$this->getKategori(0),
+                'ge' => ($ge) ? $this->getKategori($ge->ge):$this->getKategori(0),
                 'ra' => ($ra->ra) ? $this->getKategori($ra->ra):$this->getKategori(0),
                 'zr' => ($zr->zr) ? $this->getKategori($zr->zr):$this->getKategori(0),
                 'fa' => ($fa->fa) ? $this->getKategori($fa->fa):$this->getKategori(0),
