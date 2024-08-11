@@ -146,7 +146,7 @@
 
                 const soal = this.list_soal_baru.find(row => row.no === this.nomor_saat_ini);             
 
-                console.log(soal);
+                {{-- console.log(soal); --}}
 
                 this.jawaban.push({
                     soal: this.nomor_saat_ini,
@@ -157,8 +157,7 @@
 
                 localStorage.setItem('jawaban', JSON.stringify(this.jawaban));
 
-                console.log(localStorage.getItem('jawaban'));
-
+                {{-- console.log(localStorage.getItem('jawaban')); --}}
 
                 this.soal_a = soal.a;
                 this.soal_b = soal.b;
@@ -166,21 +165,35 @@
                 this.soal_d = soal.d;
 
                 this.nomor_saat_ini ++;
+                {{-- console.log(this.nomor_saat_ini); --}}
+
+                localStorage.setItem('nomor_saat_ini', this.nomor_saat_ini);
+
+                {{-- console.log( parseInt( localStorage.getItem('nomor_saat_ini') )  === this.nomor_saat_ini); --}}
 
                 {{-- this.jawaban.push('a');
 
                 console.log(this.jawaban); --}}
             },
-            getListSoal() {
+            getSoal() {
 
-                {{-- console.log( this.list_soal_baru ); --}}
+                const soal = this.list_soal_baru.find(row => row.no === this.nomor_saat_ini); 
+
+                this.soal_a = soal.a;
+                this.soal_b = soal.b;
+                this.soal_c = soal.c;
+                this.soal_d = soal.d;
+
+            },
+            setNomorSaatIni(){
+
+                this.nomor_saat_ini = parseInt( localStorage.getItem('nomor_saat_ini') );
             }
         }"
 
-        x-init="
-       
-              getListSoal()
-             
+        x-init="       
+              getSoal();
+              setNomorSaatIni();            
         
         "
     
