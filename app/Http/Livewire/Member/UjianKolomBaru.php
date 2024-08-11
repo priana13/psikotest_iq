@@ -400,9 +400,20 @@ class UjianKolomBaru extends Component
     }
 
 
-    public function pilihJawaban(){
+    public function kirimJawaban($jawaban){
 
-        return 'Jawaban Akan dipilih';
+       $list_jawaban = json_decode( $jawaban );
+
+       foreach ($list_jawaban as $key => $value) {
+
+        // insert jawaban ke database d sini 
+
+            dd($value);
+       
+       }
+
+
+       
     }
 
   

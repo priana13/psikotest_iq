@@ -71,6 +71,8 @@
                 color: '#ffff',
                 didDestroy: function(){
                     Livewire.emit('waktuHabis');
+
+                    $wire.kirimJawaban( localStorage.getItem('jawaban') );
                 }
             });
             
