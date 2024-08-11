@@ -2,35 +2,22 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SeoController;
-use App\Http\Controllers\ExamController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PageController;
-use App\Http\Controllers\CronJobController;
-use App\Http\Controllers\PackageController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\SettingController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CheckoutController;
-use App\Http\Controllers\CkEditorController;
 use App\Http\Controllers\DownloadController;
-use App\Http\Controllers\MidtransController;
-use App\Http\Controllers\PsikotesController;
-use App\Http\Controllers\QuestionController;
-use App\Http\Livewire\Transactions\AksesUser;
-use App\Http\Controllers\Norma\QuizController;
-use App\Http\Controllers\Norma\TestController;
 use App\Http\Controllers\Member\SoalController;
 use App\Http\Controllers\HalamanHargaController;
 use App\Http\Controllers\Member\UjianController;
-use App\Http\Controllers\Norma\ReportController;
 use App\Http\Controllers\TryOut\TryOutController;
 use App\Http\Controllers\TrialPsikotestController;
 use App\Http\Controllers\Member\TypeSoalController;
-use App\Http\Livewire\ExamTryOut;
 use App\Http\Livewire\Member\HasilTest\HasilTryOut;
 use App\Http\Livewire\Member\HasilTest\TableHasilTryOut;
-use App\Http\Livewire\Transactions\OfflineRegistrations;
 use App\Http\Controllers\Offline\PesertaOfflineController;
+use App\Http\Livewire\Member\UjianKolomBaru;
 
 /*
 |--------------------------------------------------------------------------
@@ -99,7 +86,12 @@ Route::middleware('auth')->group(function(){
 	Route::get('/member/ujian/{exam}' , [UjianController::class , 'buat_event'])->name('member.buat_event');
 
 	Route::get('/member/ujian/{exam}/{examevent}' , [UjianController::class , 'ujian'])->name('member.ujian');
+
 	Route::get('/member/ujian/{exam}/{examevent}/{kolom}' , [UjianController::class , 'ujian_kolom'])->name('member.ujian-kolom');
+
+	// ujian kolom baru
+	Route::get('/member/ujian-baru/{exam}/{examEvent}/{kolom}', UjianKolomBaru::class)->name('member.ujian-kolom-baru');
+
 	Route::get('/member/hasil-ujian/{examevent}', [UjianController::class,'hasil_ujian'])->name('member.hasil_ujian');
 	Route::get('/member/hasil-ujian-umum/{examevent}', [UjianController::class,'hasil_ujian_umum'])->name('member.hasil_ujian_umum');
 	Route::get('/member/hasil-ujian-detail/{examevent}', [UjianController::class,'hasil_ujian_detail'])->name('member.hasil_ujian_detail');
