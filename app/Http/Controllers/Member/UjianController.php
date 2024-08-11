@@ -79,11 +79,14 @@ class UjianController extends Controller
           $exam_event->save();
         }
 
+      
+
         if($exam->exam_category->type == 'Column'){
+         
 
           return redirect( route('member.ujian-kolom-baru',[
             'exam' => $exam,
-            'examevent' => $exam_event,
+            'examEvent' => $exam_event,
             'kolom' => 1
           ]) . '?is_tryout=' . \request()->is_tryout . '&step=' . \request()->step ); 
 

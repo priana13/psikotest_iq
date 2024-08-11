@@ -128,8 +128,52 @@
     'kolom' => $kolom
     ]) --}}
 
+
+
     {{-- start section soal kolom --}}
-    <div>
+    <div
+
+
+        x-data="{
+            list_soal_baru: @entangle('list_soal_baru'),
+            nomor_saat_ini: 1,
+            jawaban: [],
+            soal_a: '',
+            soal_b:'',
+            soal_c:'',
+            soal_d:'',
+            pilihJawaban() {               
+
+                const soal = this.list_soal_baru.find(row => row.no === this.nomor_saat_ini);             
+
+                console.log(soal);
+
+                this.soal_a = soal.a;
+                this.soal_b = soal.b;
+                this.soal_c = soal.c;
+                this.soal_d = soal.d;
+
+                this.nomor_saat_ini ++;
+
+                {{-- this.jawaban.push('a');
+
+                console.log(this.jawaban); --}}
+            },
+            getListSoal() {
+
+                console.log( this.list_soal_baru );
+            }
+        }"
+
+        x-init="
+       
+              getListSoal()
+             
+        
+        "
+    
+    
+    >
 
             <style>
 
@@ -203,7 +247,7 @@
                             @else
 
                             <div class="col-md-7 mx-auto text-center">
-                                <h4>Kolom {{ $kolom }} </h4>
+                                <h4>Kolom {{ $kolom }} - No: <span x-text="nomor_saat_ini"></span></h4>
 
                                 <table class="table table-striped">
                                     <tr class="bg-primary text-light h3">
@@ -236,15 +280,28 @@
 
                                 <div class="my-4">                          
 
-                                    <h3 class="font-bold" style="font-size:40px;margin-bottom:10px;">{{ $list_nomor }}</h3> <br>
+                                    <h3 class="font-bold" style="font-size:40px;margin-bottom:10px;">
+                                        <span x-text="soal_a"></span>
+                                        <span x-text="soal_b"></span>
+                                        <span x-text="soal_c"></span>
+                                        <span x-text="soal_d"></span>
+                                        {{-- {{ $list_nomor }} --}}
+                                    </h3> <br>
                                     
-                                    <div class="my-3">
-                                        <button class="btn btn-secondary btn-lg tombol" wire:click.prevent="jawab('A')" style="font-size:20px;">A</button>
+                                    <div class="my-3">                                     
+
+                                        <button class="btn btn-secondary btn-lg tombol"  x-on:click="pilihJawaban" style="font-size:20px;">A</button>
+                                        <button class="btn btn-secondary btn-lg tombol" x-on:click="pilihJawaban" style="font-size:20px;">B</button>
+                                        <button class="btn btn-secondary btn-lg tombol" x-on:click="pilihJawaban" style="font-size:20px;">C</button>
+                                        <button class="btn btn-secondary btn-lg tombol" x-on:click="pilihJawaban" style="font-size:20px;">D</button>
+                                        <button class="btn btn-secondary btn-lg tombol" x-on:click="pilihJawaban" style="font-size:20px;">E</button>
+                                        
+                                        {{-- <button class="btn btn-secondary btn-lg tombol" wire:click.prevent="jawab('A')" style="font-size:20px;">A</button>
                                         <button class="btn btn-secondary btn-lg tombol" wire:click.prevent="jawab('B')" style="font-size:20px;">B</button>
                                         <button class="btn btn-secondary btn-lg tombol" wire:click.prevent="jawab('C')" style="font-size:20px;">C</button>
                                         <button class="btn btn-secondary btn-lg tombol" wire:click.prevent="jawab('D')" style="font-size:20px;">D</button>
                                         <button class="btn btn-secondary btn-lg tombol" wire:click.prevent="jawab('E')" style="font-size:20px;">E</button>
-                                        
+                                         --}}
                                     </div>                          
 
 

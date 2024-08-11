@@ -29,6 +29,8 @@ class UjianKolomBaru extends Component
 
     public $popup_langganan = false;
 
+    public $list_soal_baru;
+
     protected $listeners = [
         'kurangiWaktu' , 'waktuHabis'
     ];
@@ -77,7 +79,9 @@ class UjianKolomBaru extends Component
 
         }
 
+        $this->exam_column = ExamColumn::where('exam_id' , $this->exam->id)->where('kolom' , $this->kolom)->first();     
 
+        $this->list_soal_baru = Question::select(['id', 'soal' , 'no' , 'a', 'b', 'c' , 'd', 'e'])->where('exam_column_id' , $this->exam_column->id)->get()->toArray();       
 
 
     }
@@ -212,9 +216,9 @@ class UjianKolomBaru extends Component
                 if(Auth::check()){
 
                     // redirect ke kolom berikutnya
-                    return redirect( route('member.ujian-kolom',[
+                    return redirect( route('member.ujian-kolom-baru',[
                         'exam' => $this->exam->id,
-                        'examevent' => $this->examEvent->id,
+                        'examEvent' => $this->examEvent->id,
                         'kolom' => $this->kolom + 1
                     ]) . '?is_tryout=' . \request()->is_tryout . '&step=3' ); 
                     
@@ -293,9 +297,9 @@ class UjianKolomBaru extends Component
             if(Auth::check()){          
 
             // redirect ke kolom berikutnya
-            return redirect( route('member.ujian-kolom',[
+            return redirect( route('member.ujian-kolom-baru',[
                 'exam' => $this->exam->id,
-                'examevent' => $this->examEvent->id,
+                'examEvent' => $this->examEvent->id,
                 'kolom' => $this->kolom + 1
              ]) . '?is_tryout=' . $is_tryout . '&step=3' ); 
 
@@ -396,6 +400,10 @@ class UjianKolomBaru extends Component
     }
 
 
+    public function pilihJawaban(){
+
+        return 'Jawaban Akan dipilih';
+    }
 
   
 
