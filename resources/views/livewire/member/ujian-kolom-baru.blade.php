@@ -73,6 +73,10 @@
                     Livewire.emit('waktuHabis');
 
                     $wire.kirimJawaban( localStorage.getItem('jawaban') );
+
+                    localStorage.setItem('nomor_saat_ini' , 1);
+
+                    localStorage.setItem('jawaban', JSON.stringify([]));
                 }
             });
             
@@ -144,14 +148,15 @@
             soal_b:'',
             soal_c:'',
             soal_d:'',
-            pilihJawaban(jawabanBaru) {               
-
+            pilihJawaban(jawabanBaru) {                   
+            
                 const soal = this.list_soal_baru.find(row => row.no === this.nomor_saat_ini);             
 
                 {{-- console.log(soal); --}}
 
-                this.jawaban.push({
-                    soal: this.nomor_saat_ini,
+                this.jawaban.push({   
+                    id: soal.id,              
+                    nomor: this.nomor_saat_ini,
                     jawaban: jawabanBaru
                 })
 
@@ -317,11 +322,11 @@
                                     
                                     <div class="my-3">                                     
 
-                                        <button class="btn btn-secondary btn-lg tombol"  x-on:click="pilihJawaban('a')" style="font-size:20px;">A</button>
-                                        <button class="btn btn-secondary btn-lg tombol" x-on:click="pilihJawaban('b')" style="font-size:20px;">B</button>
-                                        <button class="btn btn-secondary btn-lg tombol" x-on:click="pilihJawaban('c')" style="font-size:20px;">C</button>
-                                        <button class="btn btn-secondary btn-lg tombol" x-on:click="pilihJawaban('d')" style="font-size:20px;">D</button>
-                                        <button class="btn btn-secondary btn-lg tombol" x-on:click="pilihJawaban('e')" style="font-size:20px;">E</button>
+                                        <button class="btn btn-secondary btn-lg tombol"  x-on:click="pilihJawaban('A')" style="font-size:20px;">A</button>
+                                        <button class="btn btn-secondary btn-lg tombol" x-on:click="pilihJawaban('B')" style="font-size:20px;">B</button>
+                                        <button class="btn btn-secondary btn-lg tombol" x-on:click="pilihJawaban('C')" style="font-size:20px;">C</button>
+                                        <button class="btn btn-secondary btn-lg tombol" x-on:click="pilihJawaban('D')" style="font-size:20px;">D</button>
+                                        <button class="btn btn-secondary btn-lg tombol" x-on:click="pilihJawaban('E')" style="font-size:20px;">E</button>
                                         
                                         {{-- <button class="btn btn-secondary btn-lg tombol" wire:click.prevent="jawab('A')" style="font-size:20px;">A</button>
                                         <button class="btn btn-secondary btn-lg tombol" wire:click.prevent="jawab('B')" style="font-size:20px;">B</button>
