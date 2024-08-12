@@ -272,7 +272,9 @@
                             @else
 
                             <div class="col-md-7 mx-auto text-center">
-                                <h4>Kolom {{ $kolom }} - No: <span x-text="nomor_saat_ini"></span></h4>
+                                <h4>Kolom {{ $kolom }} 
+                                    {{-- - No:  <span x-text="nomor_saat_ini"></span> --}}
+                                </h4>
 
                                 <table class="table table-striped">
                                     <tr class="bg-primary text-light h3">
