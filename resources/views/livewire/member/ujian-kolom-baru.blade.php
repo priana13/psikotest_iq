@@ -164,23 +164,16 @@
 
                 localStorage.setItem('jawaban', JSON.stringify(this.jawaban));
 
-                {{-- console.log(localStorage.getItem('jawaban')); --}}
+               // setting nomor saat ini lagi
+               this.nomor_saat_ini ++;
+               localStorage.setItem('nomor_saat_ini', this.nomor_saat_ini);
+               const soalBaru = this.list_soal_baru.find(row => row.no === this.nomor_saat_ini);  
 
-                this.soal_a = soal.a;
-                this.soal_b = soal.b;
-                this.soal_c = soal.c;
-                this.soal_d = soal.d;
-
-                this.nomor_saat_ini ++;
-                {{-- console.log(this.nomor_saat_ini); --}}
-
-                localStorage.setItem('nomor_saat_ini', this.nomor_saat_ini);
-
-                {{-- console.log( parseInt( localStorage.getItem('nomor_saat_ini') )  === this.nomor_saat_ini); --}}
-
-                {{-- this.jawaban.push('a');
-
-                console.log(this.jawaban); --}}
+                this.soal_a = soalBaru.a;
+                this.soal_b = soalBaru.b;
+                this.soal_c = soalBaru.c;
+                this.soal_d = soalBaru.d;              
+                
             },
             getSoal() {
 
@@ -322,11 +315,11 @@
                                     
                                     <div class="my-3">                                     
 
-                                        <button class="btn btn-secondary btn-lg tombol"  x-on:click="pilihJawaban('A')" style="font-size:20px;">A</button>
-                                        <button class="btn btn-secondary btn-lg tombol" x-on:click="pilihJawaban('B')" style="font-size:20px;">B</button>
-                                        <button class="btn btn-secondary btn-lg tombol" x-on:click="pilihJawaban('C')" style="font-size:20px;">C</button>
-                                        <button class="btn btn-secondary btn-lg tombol" x-on:click="pilihJawaban('D')" style="font-size:20px;">D</button>
-                                        <button class="btn btn-secondary btn-lg tombol" x-on:click="pilihJawaban('E')" style="font-size:20px;">E</button>
+                                        <button class="btn btn-secondary btn-lg tombol"  x-on:click="pilihJawaban('{{ $exam_column->a }}')" style="font-size:20px;">A</button>
+                                        <button class="btn btn-secondary btn-lg tombol" x-on:click="pilihJawaban('{{ $exam_column->b }}')" style="font-size:20px;">B</button>
+                                        <button class="btn btn-secondary btn-lg tombol" x-on:click="pilihJawaban('{{ $exam_column->c }}')" style="font-size:20px;">C</button>
+                                        <button class="btn btn-secondary btn-lg tombol" x-on:click="pilihJawaban('{{ $exam_column->d }}')" style="font-size:20px;">D</button>
+                                        <button class="btn btn-secondary btn-lg tombol" x-on:click="pilihJawaban('{{ $exam_column->e }}')" style="font-size:20px;">E</button>
                                         
                                         {{-- <button class="btn btn-secondary btn-lg tombol" wire:click.prevent="jawab('A')" style="font-size:20px;">A</button>
                                         <button class="btn btn-secondary btn-lg tombol" wire:click.prevent="jawab('B')" style="font-size:20px;">B</button>
