@@ -9,7 +9,7 @@ use Livewire\Component;
 use App\Models\ExamItem;
 use App\Models\Question;
 use App\Models\TempExam;
-use App\Models\ExamEvent;
+use App\Models\Examevent;
 use App\Models\ExamColumn;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -50,7 +50,7 @@ class UjianKolomBaru extends Component
     
 
         $this->exam = Exam::find($exam);    
-        $this->examEvent = ExamEvent::find($examEvent);
+        $this->examEvent = Examevent::find($examEvent);
       
 
         $this->jumlahSoal = $this->exam->questions->count();
