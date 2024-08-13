@@ -150,7 +150,7 @@
             soal_d:'',
             pilihJawaban(jawabanBaru) {                   
             
-                const soal = this.list_soal_baru.find(row => row.no === this.nomor_saat_ini);             
+                const soal = this.list_soal_baru.find(row => row.no == this.nomor_saat_ini);             
 
                 {{-- console.log(soal); --}}
 
@@ -167,7 +167,7 @@
                // setting nomor saat ini lagi
                this.nomor_saat_ini ++;
                localStorage.setItem('nomor_saat_ini', this.nomor_saat_ini);
-               const soalBaru = this.list_soal_baru.find(row => row.no === this.nomor_saat_ini);  
+               const soalBaru = this.list_soal_baru.find(row => row.no == this.nomor_saat_ini);  
 
                 this.soal_a = soalBaru.a;
                 this.soal_b = soalBaru.b;
@@ -177,7 +177,7 @@
             },
             getSoal() {
 
-                const soal = this.list_soal_baru.find(row => row.no === this.nomor_saat_ini); 
+                const soal = this.list_soal_baru.find(row => row.no == this.nomor_saat_ini); 
 
                 this.soal_a = soal.a;
                 this.soal_b = soal.b;
