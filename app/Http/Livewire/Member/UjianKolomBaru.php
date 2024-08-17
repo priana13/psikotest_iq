@@ -416,52 +416,61 @@ class UjianKolomBaru extends Component
 
        
 
-            $list_jawaban = json_decode( $jawaban  , true );       
-
-            foreach ($list_jawaban as $value) {
-                
-
-                    // insert jawaban ke database d sini 
-                    // jawaban di sini   
-                    
-                    // $soal = Question::where('exam_column_id' , $this->exam_column->id)->where('no' , $value['nomor'])->first();
-                    $soal = Question::find( intval($value['id']) ); 
-                
-
-                    // $nilai_jawaban = $this->pilihanJawaban[$value['jawaban']];
-                    $nilai_jawaban = $value['jawaban'];
-                    
-                    ($soal->kc_jawaban == $nilai_jawaban)? $hasil = true : $hasil = false;              
-
-                    $user =  auth()->user();           
-
-                    $exam_item = ExamItem::create([
-
-                        'examevent_id' => $this->examEvent->id,
-                        'user_id' => $user->id,
-                        'question_id' => $soal->id,
-                        'jawaban' => $nilai_jawaban,
-                        'is_true' => $hasil,
-                        // 'kc' => $soal->kc_jawaban
-
-                    ]);
-
-
+            $list_jawaban = json_decode( $jawaban  , true ); 
             
-            } // akhir foreach
+            if(count($list_jawaban) > 0){
 
 
-        if($this->kolom < $this->kolom_terakhir) {
+                foreach ($list_jawaban as $value) {
+                
+
+                        // insert jawaban ke database d sini 
+                        // jawaban di sini   
+                        
+                        // $soal = Question::where('exam_column_id' , $this->exam_column->id)->where('no' , $value['nomor'])->first();
+                        $soal = Question::find( intval($value['id']) ); 
+                    
+
+                        // $nilai_jawaban = $this->pilihanJawaban[$value['jawaban']];
+                        $nilai_jawaban = $value['jawaban'];
+                        
+                        ($soal->kc_jawaban == $nilai_jawaban)? $hasil = true : $hasil = false;              
+
+                        $user =  auth()->user();           
+
+                        $exam_item = ExamItem::create([
+
+                            'examevent_id' => $this->examEvent->id,
+                            'user_id' => $user->id,
+                            'question_id' => $soal->id,
+                            'jawaban' => $nilai_jawaban,
+                            'is_true' => $hasil,
+                            // 'kc' => $soal->kc_jawaban
+
+                        ]);
+
+
+                
+                } // akhir foreach
+
+            }            
+
+
+        if($this->kolom < $this->kolom_terakhir ) {
 
             $is_tryout = ($this->examEvent->kode_tryout) ? 1 : 0;
 
+            if( count($list_jawaban) > 0){
+                
+                // redirect ke kolom berikutnya
+                return redirect( route('member.ujian-kolom-baru',[
+                    'exam' => $this->exam->id,
+                    'examEvent' => $this->examEvent->id,
+                    'kolom' => $this->kolom + 1
+                    ]) . '?is_tryout=' . $is_tryout . '&step=3' ); 
 
-            // redirect ke kolom berikutnya
-            return redirect( route('member.ujian-kolom-baru',[
-                'exam' => $this->exam->id,
-                'examEvent' => $this->examEvent->id,
-                'kolom' => $this->kolom + 1
-                ]) . '?is_tryout=' . $is_tryout . '&step=3' ); 
+            }
+
         
         }else{
             // jika kolom teraakhir sudah selesai
