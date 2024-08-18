@@ -436,18 +436,30 @@ class UjianKolomBaru extends Component
                         
                         ($soal->kc_jawaban == $nilai_jawaban)? $hasil = true : $hasil = false;              
 
-                        $user =  auth()->user();           
+                        $user =  auth()->user();  
+                        
+                        $cek = ExamItem::where('examevent_id', $this->examEvent->id)->where('question_id', $soal->id)->first();
 
-                        $exam_item = ExamItem::create([
+                        if(!$cek){
+                            
+                            $exam_item = ExamItem::create([
+    
+                                'examevent_id' => $this->examEvent->id,
+                                'user_id' => $user->id,
+                                'question_id' => $soal->id,
+                                'jawaban' => $nilai_jawaban,
+                                'is_true' => $hasil,
+                                'kolom' => $soal->examColumn->kolom,
+                                // 'kc' => $soal->kc_jawaban
+    
+                            ]);
 
-                            'examevent_id' => $this->examEvent->id,
-                            'user_id' => $user->id,
-                            'question_id' => $soal->id,
-                            'jawaban' => $nilai_jawaban,
-                            'is_true' => $hasil,
-                            // 'kc' => $soal->kc_jawaban
+                        }else{
 
-                        ]);
+                            $cek->jawaban = $nilai_jawaban;
+                            $cek->is_true = $hasil;
+                            $cek->save();
+                        }
 
 
                 
