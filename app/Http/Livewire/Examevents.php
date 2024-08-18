@@ -5,10 +5,13 @@ namespace App\Http\Livewire;
 use Livewire\Component;
 use Livewire\WithPagination;
 use App\Models\Examevent;
+use App\Models\ExamItem;
+use Jantinnerezo\LivewireAlert\LivewireAlert;
 
 class Examevents extends Component
 {
     use WithPagination;
+    use LivewireAlert;
 
 	protected $paginationTheme = 'bootstrap';
     public $selected_id, $keyWord, $name, $salah, $nilai, $benar;
@@ -19,6 +22,7 @@ class Examevents extends Component
 
     public function render()
     {      
+        // dd(auth()->user()->id);
 
 		// $keyWord = '%'.$this->keyWord .'%';    
         
@@ -138,6 +142,32 @@ class Examevents extends Component
     public function pilihHiostory($type){
 
        $this->selected = $type;
+
+    }
+
+    public function koreksiHasil($id){
+
+        // $examevent = Examevent::find($id);
+
+        $exam_items = ExamItem::where('examevent_id' , $id)->get();
+
+        foreach ($exam_items as $item) {
+
+            $cari_yg_double = ExamItem::where('examevent_id', $id)->where('question_id' , $item->question_id)->whereNotIn('id', [$item->id])->pluck('id');
+         
+            if(count($cari_yg_double) == 0){
+
+                continue;
+
+            }
+
+           ExamItem::whereIn('id', $cari_yg_double)->delete();
+  
+            // dd($cari_yg_double);
+
+        }
+
+        return redirect()->route('member.hasil_ujian', $id);
 
     }
 }
