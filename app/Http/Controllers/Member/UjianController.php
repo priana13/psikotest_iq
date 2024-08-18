@@ -155,7 +155,7 @@ class UjianController extends Controller
                     ->join('questions', 'question_id', 'questions.id')
                     ->join('exam_columns', 'exam_column_id', 'exam_columns.id')
                     ->where('examevent_id', $examevent->id)
-                    ->groupBy('exam_columns.kolom')
+                    ->groupBy('kolom')
                     ->groupBy('is_true')
                     ->get();
 
@@ -165,8 +165,8 @@ class UjianController extends Controller
                     ->join('questions', 'question_id', 'questions.id')
                     ->join('exam_columns', 'exam_column_id', 'exam_columns.id')
                     ->where('examevent_id', $examevent->id)
-                    ->groupBy('exam_columns.kolom')  
-                    ->orderBy('exam_columns.kolom','asc')                 
+                    ->groupBy('kolom')  
+                    ->orderBy('kolom','asc')                 
                     ->get();
 
         $sort = [1,2,3,4,5,6,7,8,9,10];
@@ -175,7 +175,7 @@ class UjianController extends Controller
 
         foreach ($sort as $row) {
 
-          $data = $data_ujian->where('exam_columns.kolom', $row)->first();
+          $data = $data_ujian->where('kolom', $row)->first();
 
           if($data){
 
