@@ -176,7 +176,7 @@
                 
             },
             getSoal() {
-
+            
                 const soal = this.list_soal_baru.find(row => row.no == this.nomor_saat_ini); 
 
                 this.soal_a = soal.a;
@@ -186,6 +186,12 @@
 
             },
             setNomorSaatIni(){
+
+                nomor_local = parseInt( localStorage.getItem('nomor_saat_ini') );
+
+                if(!nomor_local){
+                    localStorage.setItem('nomor_saat_ini' , 1);
+                }
 
                 this.nomor_saat_ini = parseInt( localStorage.getItem('nomor_saat_ini') );
             }
