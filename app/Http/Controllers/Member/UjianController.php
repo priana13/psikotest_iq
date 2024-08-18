@@ -150,23 +150,23 @@ class UjianController extends Controller
     public function hasil_ujian(Examevent $examevent){      
 
       $nilai_kolom = DB::table('exam_items')
-                    ->select(['kolom','is_true',DB::raw('count(*) as qty')])
+                    ->select(['exam_columns.kolom','is_true',DB::raw('count(*) as qty')])
                     ->join('users', 'user_id', 'users.id')
                     ->join('questions', 'question_id', 'questions.id')
                     ->join('exam_columns', 'exam_column_id', 'exam_columns.id')
                     ->where('examevent_id', $examevent->id)
-                    ->groupBy('kolom')
+                    ->groupBy('exam_columns.kolom')
                     ->groupBy('is_true')
                     ->get();
 
         $data_ujian = DB::table('exam_items')
-                    ->select(['kolom',DB::raw('count(*) as qty')])
+                    ->select(['exam_columns.kolom',DB::raw('count(*) as qty')])
                     ->join('users', 'user_id', 'users.id')
                     ->join('questions', 'question_id', 'questions.id')
                     ->join('exam_columns', 'exam_column_id', 'exam_columns.id')
                     ->where('examevent_id', $examevent->id)
-                    ->groupBy('kolom')  
-                    ->orderBy('kolom','asc')                 
+                    ->groupBy('exam_columns.kolom')  
+                    ->orderBy('exam_columns.kolom','asc')                 
                     ->get();
 
         $sort = [1,2,3,4,5,6,7,8,9,10];
@@ -175,7 +175,7 @@ class UjianController extends Controller
 
         foreach ($sort as $row) {
 
-          $data = $data_ujian->where('kolom', $row)->first();
+          $data = $data_ujian->where('exam_columns.kolom', $row)->first();
 
           if($data){
 
