@@ -37,6 +37,7 @@
                         <option value="L">Laki-laki</option>
                         <option value="P">Perempuan</option>
                     </select>
+                    @error('jenis_kelamin') <span class="text-danger">{{ $message }}</span> @enderror
                 </div>  
 
                 <div class="form-group row">
@@ -49,12 +50,14 @@
                     <label for="" class="col-3">Minat</label>
                     <span class="col-1">:</span>
                     <input type="text" class="col-7 form-control form-control-user" name="minat" placeholder="minat" value="{{ old('minat') }}" required>
+                    @error('minat') <span class="text-danger">{{ $message }}</span> @enderror
                 </div>
 
                 <div class="form-group row">
                     <label for="" class="col-3">Alamat</label>
                     <span class="col-1">:</span>
                     <input type="text" class="col-7 form-control form-control-user" name="alamat" placeholder="Alamat" value="{{ old('alamat') }}" required>
+                    @error('alamat') <span class="text-danger">{{ $message }}</span> @enderror
                 </div>
 
 
@@ -62,7 +65,7 @@
                 <div class="form-group row">
                     <label for="" class="col-3">Email</label>
                     <span class="col-1">:</span>
-                    <input type="email" class="col-7 form-control form-control-user" name="email" placeholder="{{ __('Alamat Email') }}" value="{{ old('email') }}" required>
+                    <input type="email"pattern="/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/" class="col-7 form-control form-control-user" name="email" placeholder="{{ __('Alamat Email') }}" value="{{ old('email') }}" >
                     @error('email') <span class="text-danger">{{ $message }}</span> @enderror
                 </div>
 
