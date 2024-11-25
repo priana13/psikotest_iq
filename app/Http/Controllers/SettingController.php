@@ -66,7 +66,10 @@ class SettingController extends Controller
             'syarat_ketentuan' => 'integer',
             'kebijakan' => 'integer',
             'pengumuman' => 'string',
-            'biaya_offline' => 'integer'
+            'biaya_offline' => 'integer',
+            'tryout_1' => 'required',
+            'tryout_2' => 'required',
+            'tryout_3' => 'required',
         ]);
 
 
