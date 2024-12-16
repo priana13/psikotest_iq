@@ -8,6 +8,7 @@ use App\Models\KunciNorma;
 use Filament\Resources\Form;
 use Filament\Resources\Table;
 use Filament\Resources\Resource;
+use Filament\Tables\Filters\Filter;
 use Filament\Forms\Components\TextInput;
 use Filament\Tables\Filters\SelectFilter;
 use Illuminate\Database\Eloquent\Builder;
@@ -25,23 +26,24 @@ class KunciNormaResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\Select::make('tipe_usia')
-                    ->required()
-                    ->options([
-                        "A" => "A",
-                        "B" => "B",
-                        "C" => "C",
-                        "D" => "D",
-                        "E" => "E",
-                        "F" => "F",
-                        "G" => "G",
-                        "H" => "H",
-                        "I" => "I",
-                        "J" => "J",
-                        "K" => "K",
-                        "L" => "L",
-                        "M" => "M",
-                    ]),
+                // Forms\Components\Select::make('tipe_usia')
+                //     ->required()
+                //     ->options([
+                //         "A" => "A",
+                //         "B" => "B",
+                //         "C" => "C",
+                //         "D" => "D",
+                //         "E" => "E",
+                //         "F" => "F",
+                //         "G" => "G",
+                //         "H" => "H",
+                //         "I" => "I",
+                //         "J" => "J",
+                //         "K" => "K",
+                //         "L" => "L",
+                //         "M" => "M",
+                //     ]),
+                Forms\Components\TextInput::make('usia')->required()->numeric(),
                 Forms\Components\TextInput::make('rw')->required(),
                 Forms\Components\TextInput::make('se'),
                 Forms\Components\TextInput::make('wa'),
@@ -60,6 +62,7 @@ class KunciNormaResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('tipe_usia')->searchable(),
+                Tables\Columns\TextColumn::make('usia'),              
                 Tables\Columns\TextColumn::make('rw'),
                 Tables\Columns\TextColumn::make('se'),
                 Tables\Columns\TextColumn::make('wa'),
@@ -87,7 +90,18 @@ class KunciNormaResource extends Resource
                     "L" => "L",
                     "M" => "M",
                 ]),
-                // TextInput::make("rw")
+                Filter::make('usia')
+                ->form([
+                    Forms\Components\TextInput::make('usia')->numeric(),                   
+                ])
+                ->query(function (Builder $query, array $data): Builder {
+                    return $query
+                        ->when(
+                            $data['usia'],
+                            fn (Builder $query, $usia): Builder => $query->where('usia', $usia),
+                        );                    
+                })
+
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),

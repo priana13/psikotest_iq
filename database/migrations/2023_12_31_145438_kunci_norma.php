@@ -15,7 +15,7 @@ class KunciNorma extends Migration
     {
        Schema::create('kunci_norma', function (Blueprint $table) {
             $table->id();
-            $table->enum('tipe_usia',['A','B','C','D','E','F','G','H','I','J','K','L','M']);    
+            $table->enum('tipe_usia',['A','B','C','D','E','F','G','H','I','J','K','L','M'])->nullable();    
             $table->integer('rw');
             $table->integer('se');
             $table->integer('wa');
