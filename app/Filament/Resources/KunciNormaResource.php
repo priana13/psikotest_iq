@@ -122,8 +122,8 @@ class KunciNormaResource extends Resource
     {
         return [
             'index' => Pages\ListKunciNormas::route('/'),
-            // 'create' => Pages\CreateKunciNorma::route('/create'),
-            // 'edit' => Pages\EditKunciNorma::route('/{record}/edit'),
+            'create' => Pages\CreateKunciNorma::route('/create'),
+            'edit' => Pages\EditKunciNorma::route('/{record}/edit'),
         ];
     }    
 }
