@@ -23,6 +23,11 @@ class Question extends Model
         return $this->hasOne('App\Models\Exam', 'id', 'exam_id');
     }
 
+    public function examColumn(){
+
+        return $this->belongsTo(ExamColumn::class, 'exam_column_id');
+    }
+
     public function questionImages(){
         
         return $this->hasMany('App\Models\QuestionImage' , 'question_id');

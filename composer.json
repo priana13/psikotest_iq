@@ -13,6 +13,7 @@
         "devmarketer/easynav": "^1.0",
         "doctrine/dbal": "^3.8",
         "filament/filament": "*",
+        "flightsadmin/livewire-crud": "^1.0",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
         "jantinnerezo/livewire-alert": "^3.0",

@@ -31,12 +31,11 @@ class PesertaOfflineController extends Controller
 
         // return $request->all();
 
-        $request->validate([
-            'name' => 'required',
-            'email' => 'required',
+        $validationData = $request->validate([
+            'name' => 'required|string',
+            'email' => 'required|email',
             'jenis_kelamin' => 'required',            
         ]);
-
 
         // 1. insert ke table user 
 

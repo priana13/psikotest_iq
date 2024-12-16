@@ -163,7 +163,7 @@
 
                             <label class="col" for="tryout_1">Tryout 1 (Kecerdasan)</label>
                             <select class="form-control form-control-sm" id="" name="tryout_1">
-                                <option value="0">Select</option>
+                                <option value="">Select</option>
                                 @foreach ($exams_kecerdasan as $exam)                                  
 
 
@@ -195,7 +195,7 @@
 
                                 <label class="col" for="tryout_2">Tryout 2 (Kepribadian)</label>
                                 <select class="form-control form-control-sm col" id="" name="tryout_2">
-                                    <option value="0">Select</option>
+                                    <option value="">Select</option>
 
                                   
                                     @foreach ($exams_kepribadian as $row)
@@ -229,7 +229,7 @@
 
                                 <label class="col" for="tryout_3">Tryout 3 (Sikap Kerja)</label>
                                 <select class="form-control form-control-sm col" id="" name="tryout_3">
-                                    <option value="0">Select</option>
+                                    <option value="">Select</option>
                                     @foreach ($exams_sikap_kerja as $exam)
                                     <option value="{{ $exam->id }}"
                                         {{ ($tryout_3->exam_id == $exam->id) ? "selected" : "" }}

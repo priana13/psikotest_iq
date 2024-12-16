@@ -113,6 +113,15 @@
 
 										<a class="btn btn-sm btn-danger" onclick="confirm('Confirm Delete Examevent id {{$row->id}}? \nDeleted Examevents cannot be recovered!')||event.stopImmediatePropagation()" wire:click="destroy({{$row->id}})">HAPUS</a>
 									</form>
+
+									{{-- jika user it --}}
+									@if(auth()->user()->id === 1)
+									<a wire:click="koreksiHasil({{ $row->id }})" class="btn btn-sm btn-warning mx-2" target="_blank">
+										Koreksi Hasil
+									</a>
+
+									@endif
+
 									</nav>					
 
 							

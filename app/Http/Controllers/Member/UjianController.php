@@ -79,14 +79,23 @@ class UjianController extends Controller
           $exam_event->save();
         }
 
+      
+
         if($exam->exam_category->type == 'Column'){
+         
 
-
-          return redirect( route('member.ujian-kolom',[
+          return redirect( route('member.ujian-kolom-baru',[
             'exam' => $exam,
-            'examevent' => $exam_event,
+            'examEvent' => $exam_event,
             'kolom' => 1
           ]) . '?is_tryout=' . \request()->is_tryout . '&step=' . \request()->step ); 
+
+
+          // return redirect( route('member.ujian-kolom',[
+          //   'exam' => $exam,
+          //   'examevent' => $exam_event,
+          //   'kolom' => 1
+          // ]) . '?is_tryout=' . \request()->is_tryout . '&step=' . \request()->step ); 
 
 
         }else{        
@@ -141,7 +150,7 @@ class UjianController extends Controller
     public function hasil_ujian(Examevent $examevent){      
 
       $nilai_kolom = DB::table('exam_items')
-                    ->select(['kolom','is_true',DB::raw('count(*) as qty')])
+                    ->select(['exam_columns.kolom','is_true',DB::raw('count(*) as qty')])
                     ->join('users', 'user_id', 'users.id')
                     ->join('questions', 'question_id', 'questions.id')
                     ->join('exam_columns', 'exam_column_id', 'exam_columns.id')
@@ -151,7 +160,7 @@ class UjianController extends Controller
                     ->get();
 
         $data_ujian = DB::table('exam_items')
-                    ->select(['kolom',DB::raw('count(*) as qty')])
+                    ->select(['exam_columns.kolom',DB::raw('count(*) as qty')])
                     ->join('users', 'user_id', 'users.id')
                     ->join('questions', 'question_id', 'questions.id')
                     ->join('exam_columns', 'exam_column_id', 'exam_columns.id')

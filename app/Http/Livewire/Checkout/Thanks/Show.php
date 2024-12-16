@@ -76,7 +76,7 @@ class Show extends Component
             ],
             'customer_details' => [
                 'first_name'    => $this->transaksi->nama,
-                'email'         => $this->transaksi->email,
+                'email'         => "peserta@arstamedia.com",
                 'phone'         => $this->transaksi->hp,
                 'address'       => $this->transaksi->alamat,
             ],
