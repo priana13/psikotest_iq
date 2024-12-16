@@ -114,7 +114,7 @@
                                 <td>IQ</td> <td>:</td> <td> <strong>{{$iq}}</strong> </td>
                             </tr>
                             <tr>
-                                <td>TOTAL RW</td> <td>:</td> <td>{{$kategori}}</td>
+                                <td>KAT</td> <td>:</td> <td>{{$kategori}}</td>
                             </tr>
                         </table>                
                     
