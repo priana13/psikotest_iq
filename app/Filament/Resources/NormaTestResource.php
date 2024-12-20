@@ -49,15 +49,22 @@ class NormaTestResource extends Resource
                 Tables\Columns\TextColumn::make('k'),
                 Tables\Columns\TextColumn::make('j'),
                 Tables\Columns\BadgeColumn::make('nilai')->formatStateUsing(function($state){
-
+                    // return $state;
                     return ($state > 0)? 'Benar' : 'Salah';
-                }),
+                })->colors([
+                    "success" => "1",                   
+                   
+                ]),
                 Tables\Columns\TextColumn::make('created_at')->label("Tanggal")
                     ->dateTime(),
             ])
             ->filters([
-                SelectFilter::make('user_id')->relationship('user' , 'name')->searchable()->label("Peserta"),
-                SelectFilter::make('test_id')->relationship('norma' , 'nama')->searchable(),
+                SelectFilter::make('user_id')->relationship('user' , 'name' , function($query){
+
+                    return $query->whereHas('norma_test');
+
+                })->searchable()->label("Peserta"),
+                SelectFilter::make('test_id')->relationship('norma' , 'nama')->searchable()->label("Norma"),
             ])
             ->actions([
                 // Tables\Actions\EditAction::make(),

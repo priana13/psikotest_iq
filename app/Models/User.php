@@ -52,4 +52,9 @@ class User extends Authenticatable
 
         return $query->where('lokasi_test', 'Online');
     }
+
+    public function norma_test(){
+
+        return $this->hasMany(NormaTest::class, 'user_id');
+    }
 }
