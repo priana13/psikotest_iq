@@ -120,8 +120,8 @@
 
     <!-- Nav Item - List Norma Test -->
     
-    <li class="nav-item {{ Nav::isRoute('norma.test') }}">
-        <a class="nav-link py-2" href="{{ route('norma.test') }}">
+    <li class="nav-item {{ Nav::isRoute('norma.test.welcome') }}">
+        <a class="nav-link py-2" href="{{ route('norma.test.welcome') }}">
             {{-- <i class="fas fa-fw fa-user"></i> --}}
             <i class="fas fa-list"></i>
             <span>{{ __('Test IQ') }}</span>

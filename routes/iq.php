@@ -1,18 +1,27 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Norma\BiodataController;
+use App\Http\Controllers\Norma\PetunjukController;
 use App\Http\Controllers\Norma\QuizController;
-use App\Http\Controllers\Norma\TestController;
 use App\Http\Controllers\Norma\ReportController;
+use App\Http\Controllers\Norma\TestController;
 use App\Http\Livewire\Norma\GenerateUser;
 use App\Http\Livewire\Norma\Report\HasilNormaTest;
+use Illuminate\Support\Facades\Route;
 
 	Route::middleware('auth')->group(function(){
 		/*
 	/*-- Norma Test ---*/
+	Route::view('/iq/welcome' , 'test-iq.welcome')->name('norma.test.welcome');
+	Route::get('/iq/biodata' , [BiodataController::class, 'index'])->name('norma.test.biodata');
+	Route::post('/iq/biodata' , [BiodataController::class, 'store'])->name('norma.test.biodata.store');
+
+	// petunjuk
+	Route::get('/iq/petunjuk' , [PetunjukController::class , 'index'])->name('norma.test.petunjuk');
+
 	Route::get('/test' , [TestController::class , 'index'])->name('norma.test');
 
-	Route::get('/test/petunjuk' , [TestController::class , 'petunjuk'])->name('norma.test.petunjuk');		
+	// Route::get('/test/petunjuk' , [TestController::class , 'petunjuk'])->name('norma.test.petunjuk');		
 
 	Route::middleware('admin')->group(function(){	
 
