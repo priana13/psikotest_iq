@@ -78,6 +78,6 @@ class MainNorma extends Component
     public function render()
     {
         
-        return view('livewire.norma.test.main-norma')->extends('layouts.admin')->section('main-content');
+        return view('livewire.norma.test.main-norma')->extends('layouts.admin-new')->section('main-content');
     }
 }
