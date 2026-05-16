@@ -32,9 +32,9 @@
 								<td>#</td> 
 								<th>Nama</th>
 								<th>Email</th>
-								<th>HP</th>
+								{{-- <th>HP</th>
 								<th>Kota</th>
-								<th>Alamat</th>								
+								<th>Alamat</th>								 --}}
 								<th>Level</th>
 								<th>Mendaftar</th>
 								<td>Aksi</td>
@@ -46,15 +46,15 @@
 								<td>{{ $loop->iteration }}</td> 
 								<td>{{ $row->name }}</td>
 								<td>{{ $row->email }}</td>
-								<td>{{ $row->hp }}</td>
+								{{-- <td>{{ $row->hp }}</td>
 								<td>{{ $row->kota }}</td>
-								<td>{{ $row->alamat }}</td>
+								<td>{{ $row->alamat }}</td> --}}
 								<td>{{ $row->level }}</td>
 								<td>{{ $row->created_at->diffForHumans() }}</td>
 								<td width="90">
 								<div class="btn-group">
 									<button type="button" class="btn btn-info btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-									Actions
+									Aksi
 									</button>
 									<div class="dropdown-menu dropdown-menu-right">
 									<a data-toggle="modal" data-target="#updateModal" class="dropdown-item" wire:click="edit({{$row->id}})"><i class="fa fa-edit"></i> Edit </a>							 

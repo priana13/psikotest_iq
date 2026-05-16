@@ -21,6 +21,21 @@
     </div>
 </div>
 
+{{-- tampilkan semua error --}}
+
+@if ($errors->any())
+    <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+        <strong class="font-bold">Oops!</strong>
+        <span class="block sm:inline">Ada beberapa masalah dengan input Anda.</span>
+
+        <ul class="list-disc pl-5">
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+
 <div class="max-w-lg mx-auto py-4">
     <div class="card-white p-6 fade-up">
 
@@ -37,7 +52,7 @@
 
             <div class="flex items-center gap-3">
                 <label class="text-sm font-bold w-36 shrink-0" style="color:var(--blue-deep)">
-                    Tanggal sekarang
+                    Tanggal Tes
                 </label>
                 <input id="bio-tanggal" name="tanggal" type="date"
                        value="{{ old('tanggal', date('Y-m-d')) }}"
@@ -48,6 +63,20 @@
                 @enderror
             </div>
 
+            <div class="flex items-center gap-3">
+                <label class="text-sm font-bold w-36 shrink-0" style="color:var(--blue-deep)">Nomor</label>
+                <div class="flex-1">
+                    <input id="bio-nomor" name="nomor" type="text" placeholder="nomor"
+                        value="{{ old('nomor') }}"
+                        x-model="nomor"
+                        class="form-input">
+                
+                    @error('nomor')
+                    <div class="text-red-500 text-xs mt-1">{{ $message }}</div>
+                    @enderror
+                    
+                </div>
+            </div>
             <div class="flex items-center gap-3">
                 <label class="text-sm font-bold w-36 shrink-0" style="color:var(--blue-deep)">Nama</label>
                 <div class="flex-1">
@@ -63,6 +92,21 @@
                 </div>
             </div>
 
+            <div class="flex items-center gap-3">
+                <label class="text-sm font-bold w-36 shrink-0" style="color:var(--blue-deep)">Pangkat</label>
+                <div class="flex-1">
+                    <input id="bio-pangkat" name="pangkat" type="text" placeholder="Pangkat"
+                        value="{{ old('pangkat') }}"
+                        x-model="pangkat"
+                        class="form-input">
+
+                    @error('pangkat')
+                    <div class="text-red-500 text-xs mt-1">{{ $message }}</div>
+                    @enderror
+                    
+                </div>
+            </div>
+{{-- 
             <div class="flex items-center gap-3">
                 <label class="text-sm font-bold w-36 shrink-0" style="color:var(--blue-deep)">Jenis Kelamin</label>
                 <div class="flex-1">
@@ -80,19 +124,19 @@
                         <div class="text-red-500 text-xs mt-1">{{ $message }}</div>
                     @enderror
                 </div>
-            </div>
+            </div> --}}
 
             <div class="flex items-center gap-3">
                 <label class="text-sm font-bold w-36 shrink-0" style="color:var(--blue-deep)">Tanggal Lahir</label>
 
                 <div class="flex-1">
-                    <input id="bio-tgl-lahir" name="tanggal_lahir" type="date"
-                           value="{{ old('tanggal_lahir') }}"
+                    <input id="bio-tgl-lahir" name="tgl_lahir" type="date"
+                           value="{{ old('tgl_lahir') }}"
                            x-model="tanggalLahir"
                            @change="hitungUsia()"
                            class="form-input">
 
-                    @error('tanggal_lahir')
+                    @error('tgl_lahir')
                         <div class="text-red-500 text-xs mt-1">{{ $message }}</div>
                     @enderror
                     
@@ -113,26 +157,35 @@
             </div>
 
             <div class="flex items-center gap-3">
-                <label class="text-sm font-bold w-36 shrink-0" style="color:var(--blue-deep)">Pendidikan</label>
+                <label class="text-sm font-bold w-36 shrink-0" style="color:var(--blue-deep)">Instansi / Sekolah</label>
 
                 <div class="flex-1">
-                    <select id="bio-pendidikan" name="pendidikan" class="form-input">
-                        <option value="">-- Pilih --</option>
-                            @foreach(['SD','SMP','SMA/SMK','D3','S1','S2','S3'] as $edu)
-                                <option value="{{ $edu }}" {{ old('pendidikan') === $edu ? 'selected' : '' }}>
-                                    {{ $edu }}
-                                </option>
-                            @endforeach
+                    <input id="bio-instansi" name="instansi" type="text" placeholder="Instansi / Sekolah"
+                           value="{{ old('instansi') }}"
+                           class="form-input">
 
-                    </select>
                     <div class="text-red-500 text-xs mt-1">
-                        @error('pendidikan')
+                        @error('instansi')
                             {{ $message }}
                         @enderror
                     </div>
                 </div>
 
             </div>
+
+            <div class="flex items-center gap-3">
+                <label class="text-sm font-bold w-36 shrink-0" style="color:var(--blue-deep)">Angkatan Tahun</label>
+                <div class="flex-1">
+                    <input id="bio-angkatan" name="angkatan_tahun" type="number" placeholder="Angkatan Tahun"
+                           x-model.number="angkatanTahun"
+                           class="form-input">
+                    @error('angkatan_tahun')
+                        <div class="text-red-500 text-xs mt-1">{{ $message }}</div>
+                    @enderror
+                </div>
+            </div>
+
+
 
             <div class="mt-5 p-3 rounded-lg text-center text-sm font-bold"
                  style="background:#fff9c4; color:#f57f17">

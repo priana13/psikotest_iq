@@ -25,7 +25,7 @@ class RedirectIfAuthenticated
             if (Auth::guard($guard)->check()) {              
 
                 if (Auth::user()->level === "Admin") {
-                    return redirect()->route('admin.dashboard');
+                    return redirect()->route('norma.quiz.dashboard');
                 } else {
                     return redirect()->route('norma.test.welcome');
                 }
