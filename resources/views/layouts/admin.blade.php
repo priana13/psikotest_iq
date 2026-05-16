@@ -97,13 +97,17 @@
                     <i class="fa fa-bars"></i>
                 </button>
 
-                <div class="nav-item">
+                {{-- <div class="nav-item">
                     <a href="{{ route('page.harga') }}" class="btn btn-danger">Beli Paket</a>
                 </div>
 
                 <div class="nav-item ml-2 d-sm-block d-none">
                     <a href="/page/cara-membayar" class="btn btn-warning text-dark">Cara Membayar</a>
-                </div>
+                </div> --}}
+
+                <p class="text-center h4">
+                    System Psikotest Terpadu
+                </p>
 
                
                 <!-- Topbar Navbar -->
