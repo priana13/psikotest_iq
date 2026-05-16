@@ -57,4 +57,20 @@ class LoginController extends Controller
         ]);
     }
 
+    /**
+     * Override redirect berdasarkan level user.
+     */
+    protected function redirectTo()
+    {
+        $user = auth()->user();
+
+        if ($user->level === 'Admin') {
+            return '/dashboard';
+        }
+
+        return route('norma.test.welcome');
+    }
+
+
+
 }
