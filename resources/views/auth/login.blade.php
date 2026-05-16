@@ -19,10 +19,10 @@
                                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
                                     <div class="form-group">
-                                        <label for="email">{{ __('User Name') }}</label>
-                                        <input type="email" class="form-control form-control-user" name="email" placeholder="Username" value="{{ old('email') }}" required autofocus>
+                                        <label for="login">{{ __('User Name') }}</label>
+                                        <input type="login" class="form-control form-control-user" name="login" placeholder="Username" value="{{ old('login') }}" required autofocus>
 
-                                        @error('email')
+                                        @error('login')
                                             <p class="text-danger">{{ $message }}</p>
                                         @enderror
 

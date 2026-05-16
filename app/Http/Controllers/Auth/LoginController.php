@@ -58,6 +58,33 @@ class LoginController extends Controller
     }
 
     /**
+     * Ganti field login dari 'email' ke 'login'
+     */
+    public function username()
+    {
+        return 'login';
+    }
+
+
+    /**
+     * Cek apakah input adalah email atau username,
+     * lalu sesuaikan kolom yang dicari di database.
+     */
+    protected function credentials(Request $request)
+    {
+        $login = $request->input('login');
+
+        $field = filter_var($login, FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
+
+        return [
+            $field     => $login,
+            'password' => $request->input('password'),
+        ];
+    }
+
+
+
+    /**
      * Override redirect berdasarkan level user.
      */
     protected function redirectTo()
