@@ -12,7 +12,7 @@ class Users extends Component
     use WithPagination;
 
 	protected $paginationTheme = 'bootstrap';
-    public $selected_id, $keyWord, $name, $email, $level, $hp, $kota;
+    public $selected_id, $keyWord, $name, $username, $email, $level, $hp, $kota;
     public $updateMode = false;
     public $total;
 
@@ -62,6 +62,7 @@ class Users extends Component
 		'name' => 'required',
 		'email' => 'required',
 		'level' => 'required',
+        'username' => 'required'
         ]);
 
         $default_password = "123456";
@@ -69,6 +70,7 @@ class Users extends Component
         User::create([ 
 			'name' => $this-> name,
 			'email' => $this-> email,
+            'username' => $this->username,
 			'level' => $this-> level,
             'hp' => $this->hp,
             'kota' => $this->kota,
@@ -87,6 +89,7 @@ class Users extends Component
 
         $this->selected_id = $id; 
 		$this->name = $record-> name;
+        $this->username = $record->username;
 		$this->email = $record-> email;
         $this->hp = $record->hp;
         $this->kota = $record->kota;
@@ -101,6 +104,7 @@ class Users extends Component
     {
         $this->validate([
 		'name' => 'required',
+		'username' => 'required',
 		'email' => 'required',
 		'level' => 'required',
         ]);
@@ -109,6 +113,7 @@ class Users extends Component
 			$record = User::find($this->selected_id);
             $record->update([ 
 			'name' => $this-> name,
+            'username' => $this->username,
 			'email' => $this-> email,
             'hp' => $this->hp,
             'kota' => $this->kota,
