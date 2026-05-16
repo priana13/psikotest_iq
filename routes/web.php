@@ -33,9 +33,7 @@ use App\Http\Livewire\Member\UjianKolomBaru;
 // cron job
 // Route::get('/cron', [CronJobController::class, 'expired']);
 
-Route::get('/', function () {
-    return view('home_page');
-})->name('home');
+Route::redirect('/', 'login')->name('home');
 
 Route::get('/sitemap.xml', [SeoController::class,'index'])->name('sitemap');
 
