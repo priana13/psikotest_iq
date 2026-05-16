@@ -109,7 +109,8 @@
                 <!-- Topbar Navbar -->
                 <ul class="navbar-nav ml-auto">
 
-                    <x-membership-icon />
+                    {{-- <x-membership-icon /> --}}
+                    <x-link-to-test />
     
                     <!-- Nav Item - Search Dropdown (Visible Only XS) -->
                     <li class="nav-item dropdown no-arrow d-sm-none">

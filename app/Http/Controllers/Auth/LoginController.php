@@ -65,7 +65,7 @@ class LoginController extends Controller
         $user = auth()->user();
 
         if ($user->level === 'Admin') {
-            return '/dashboard';
+            return '/quiz/dashboard';
         }
 
         return route('norma.test.welcome');
