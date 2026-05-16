@@ -31,7 +31,7 @@
 							<tr> 
 								<td>#</td> 
 								<th>Nama</th>
-								<th>Email</th>
+								<th>Username</th>
 								{{-- <th>HP</th>
 								<th>Kota</th>
 								<th>Alamat</th>								 --}}
@@ -45,7 +45,10 @@
 							<tr>
 								<td>{{ $loop->iteration }}</td> 
 								<td>{{ $row->name }}</td>
-								<td>{{ $row->email }}</td>
+								<td>
+								{{ $row->username }} <br>
+								{{-- {{ $row->email }} --}}
+								</td>
 								{{-- <td>{{ $row->hp }}</td>
 								<td>{{ $row->kota }}</td>
 								<td>{{ $row->alamat }}</td> --}}
