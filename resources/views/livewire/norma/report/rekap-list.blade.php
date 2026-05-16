@@ -18,7 +18,7 @@
                             <table class="table table-bordered table-sm">
                                 <thead class="thead">
                                     <tr>
-                                        <td>No</td>
+                                        <td>ID</td>
                                         <th>Email User</th>
                                         <th>SE</th>
                                         <th>WA</th>
@@ -38,7 +38,7 @@
                                     @foreach($rekap as $row)
                                  
                                     <tr>
-                                        <td>{{ $loop->iteration }}</td> 
+                                        <td>{{ $row->user_id }}</td> 
                                         <td>{{ $row->email }}</td>
                                         <td>{{ $row->se }}</td>
                                         <td>{{ $row->wa }}</td>

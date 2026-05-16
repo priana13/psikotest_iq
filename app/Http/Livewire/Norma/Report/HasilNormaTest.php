@@ -118,35 +118,12 @@ class HasilNormaTest extends Component
                             ->where('norma_test_log.user_id',$this->user_id)
                             ->groupBy('users.email', 'norma_test_log.user_id')
                             ->orderBy('norma_test_log.user_id', 'asc')->first();
-        // dd( $normaTest );
-        
-        /*$normaTest = DB::table('norma_test')
-                    ->leftJoin('norma', 'norma.id', '=', 'norma_test.test_id')
-                    ->leftJoin('users', 'users.id', '=', 'norma_test.user_id')
-                    ->select(
-                        'norma_test.user_id','users.email',
-                        DB::raw('SUM(CASE WHEN norma.tipe = 1 THEN norma_test.nilai ELSE 0 END) AS se'),
-                        DB::raw('SUM(CASE WHEN norma.tipe = 2 THEN norma_test.nilai ELSE 0 END) AS wa'),
-                        DB::raw('SUM(CASE WHEN norma.tipe = 3 THEN norma_test.nilai ELSE 0 END) AS an'),
-                        DB::raw('SUM(CASE WHEN norma.tipe = 4 THEN norma_test.nilai ELSE 0 END) AS ge'),
-                        DB::raw('SUM(CASE WHEN norma.tipe = 5 THEN norma_test.nilai ELSE 0 END) AS ra'),
-                        DB::raw('SUM(CASE WHEN norma.tipe = 6 THEN norma_test.nilai ELSE 0 END) AS zr'),
-                        DB::raw('SUM(CASE WHEN norma.tipe = 7 THEN norma_test.nilai ELSE 0 END) AS fa'),
-                        DB::raw('SUM(CASE WHEN norma.tipe = 8 THEN norma_test.nilai ELSE 0 END) AS wu'),
-                        DB::raw('SUM(CASE WHEN norma.tipe = 10 THEN norma_test.nilai ELSE 0 END) AS me')
-                    )
-                    ->where('norma_test.user_id',$this->user_id)
-                    ->groupBy('users.email', 'norma_test.user_id') 
-                    ->orderBy('norma_test.user_id', 'asc')->first();*/
+     
+    
         $this->normaTest = ($normaTest) ? json_decode(json_encode($normaTest), true) : null;
-
-        // dd($normaTest->ge);
 
         if($normaTest){
             $se = KunciNorma::select('se')->where('rw',$normaTest->se)->where('tipe_usia',$tipe_usia)->first();
-
-
-            // dd($se);
 
             $wa = KunciNorma::select('wa')->where('rw',$normaTest->wa)->where('tipe_usia',$tipe_usia)->first();
             $an = KunciNorma::select('an')->where('rw',$normaTest->an)->where('tipe_usia',$tipe_usia)->first();
@@ -174,18 +151,7 @@ class HasilNormaTest extends Component
             $this->total_sw = ($total_sw)? $total_sw->{strtolower($tipe_usia)} : 'gagal'; 
             $iq = KunciIQ::select('iq','kategori')->where('rw',$this->total_sw)->first();
             $this->iq = ($iq)? $iq->iq:0;
-            /*$this->kat = [
-                'se' => ($normaTest->se) ? $this->getKategori($normaTest->se):$this->getKategori(0),
-                'wa' => ($normaTest->wa) ? $this->getKategori($normaTest->wa):$this->getKategori(0),
-                'an' => ($normaTest->an) ? $this->getKategori($normaTest->an):$this->getKategori(0),
-                'ge' => ($normaTest->ge) ? $this->getKategori($normaTest->ge):$this->getKategori(0),
-                'ra' => ($normaTest->ra) ? $this->getKategori($normaTest->ra):$this->getKategori(0),
-                'zr' => ($normaTest->zr) ? $this->getKategori($normaTest->zr):$this->getKategori(0),
-                'fa' => ($normaTest->fa) ? $this->getKategori($normaTest->fa):$this->getKategori(0),
-                'wu' => ($normaTest->wu) ? $this->getKategori($normaTest->wu):$this->getKategori(0),
-                'me' => ($normaTest->me) ? $this->getKategori($normaTest->me):$this->getKategori(0)
-            ];*/   
-
+       
             $this->kat = [
                 'se' => ($se->se) ? $this->getKategori($se->se):$this->getKategori(0),
                 'wa' => ($wa->wa) ? $this->getKategori($wa->wa):$this->getKategori(0),
