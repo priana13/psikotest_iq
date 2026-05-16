@@ -11,14 +11,16 @@
                         <div class="col">
                             <div class="p-5">
                                 <div class="text-center">
-                                    <h1 class="h4 text-gray-900 mb-4">{{ __('Login') }}</h1>
+                                    <h1 class="h4 text-gray-900 mb-4">{{ __('LOGIN') }}</h1>
+                                    <p></p>
                                 </div>                            
 
                                 <form method="POST" action="{{ route('login') }}" class="user">
                                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
                                     <div class="form-group">
-                                        <input type="email" class="form-control form-control-user" name="email" placeholder="{{ __('E-Mail Address') }}" value="{{ old('email') }}" required autofocus>
+                                        <label for="email">{{ __('User Name') }}</label>
+                                        <input type="email" class="form-control form-control-user" name="email" placeholder="Username" value="{{ old('email') }}" required autofocus>
 
                                         @error('email')
                                             <p class="text-danger">{{ $message }}</p>
@@ -28,6 +30,7 @@
                                     </div>
 
                                     <div class="form-group">
+                                        <label for="password">{{ __('Password') }}</label>
                                         <input type="password" class="form-control form-control-user" name="password" placeholder="{{ __('Password') }}" required>
 
                                         @error('password')
@@ -37,14 +40,8 @@
 
                                     </div>                                  
 
-                                    @livewire('captcha')
-                                    
-                                    <div class="form-group">
-                                        <div class="custom-control custom-checkbox small">
-                                            <input type="checkbox" class="custom-control-input" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-                                            <label class="custom-control-label" for="remember">{{ __('Remember Me') }}</label>
-                                        </div>
-                                    </div>
+                                    @livewire('captcha')                                   
+                                
 
 
                                     <div class="form-group">
@@ -53,19 +50,8 @@
                                         </button>
                                     </div>
 
-                                    <hr>                                
-
-                                    <div class="form-group">
-                                        <button type="button" class="btn btn-google btn-user btn-block">
-                                            <i class="fab fa-google fa-fw"></i> {{ __('Login with Google') }}
-                                        </button>
-                                    </div>
-
-                                    {{-- <div class="form-group">
-                                        <button type="button" class="btn btn-facebook btn-user btn-block">
-                                            <i class="fab fa-facebook-f fa-fw"></i> {{ __('Login with Facebook') }}
-                                        </button>
-                                    </div> --}}
+                                    <hr>  
+                               
                                 </form>
 
                                 <hr>

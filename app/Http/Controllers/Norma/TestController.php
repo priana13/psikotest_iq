@@ -3,10 +3,7 @@
 namespace App\Http\Controllers\Norma;
 
 use App\Models\Package;
-use App\Models\PackageExam;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use PhpOffice\PhpSpreadsheet\Calculation\Logical\Boolean;
 
 class TestController extends Controller
 {
@@ -19,12 +16,14 @@ class TestController extends Controller
 
 
     public function index(){
-
+     
 
         if( !$this->cekAksesTestIQ() ){
 
            return redirect( route('checkout') . '/?paket=' . '4' );
         }
+
+
 
         return view ('livewire.norma.test.index');
     }

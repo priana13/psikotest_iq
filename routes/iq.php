@@ -11,19 +11,8 @@ use App\Http\Livewire\Norma\Report\HasilNormaTest;
 		/*
 	/*-- Norma Test ---*/
 	Route::get('/test' , [TestController::class , 'index'])->name('norma.test');
-	// Route::get('/test/main' , [TestController::class , 'main'])->name('norma.test.main');
-	// Route::get('/test/kesatu' , [TestController::class , 'kesatu'])->name('norma.test.kesatu');
-	// Route::get('/test/kedua' , [TestController::class , 'kedua'])->name('norma.test.kedua');
-	// Route::get('/test/ketiga' , [TestController::class , 'ketiga'])->name('norma.test.ketiga');
-	// Route::get('/test/keempat' , [TestController::class , 'keempat'])->name('norma.test.keempat');
-	// Route::get('/test/kelima' , [TestController::class , 'kelima'])->name('norma.test.kelima');
-	// Route::get('/test/keenam' , [TestController::class , 'keenam'])->name('norma.test.keenam');
-	// Route::get('/test/ketujuh' , [TestController::class , 'ketujuh'])->name('norma.test.ketujuh');
-	// Route::get('/test/kedelapan' , [TestController::class , 'kedelapan'])->name('norma.test.kedelapan');
-	// Route::get('/test/kesembilan' , [TestController::class , 'kesembilan'])->name('norma.test.kesembilan');
 
-	Route::get('/test/petunjuk' , [TestController::class , 'petunjuk'])->name('norma.test.petunjuk');
-		
+	Route::get('/test/petunjuk' , [TestController::class , 'petunjuk'])->name('norma.test.petunjuk');		
 
 	Route::middleware('admin')->group(function(){	
 
