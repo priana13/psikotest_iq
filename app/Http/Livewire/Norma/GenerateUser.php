@@ -19,6 +19,8 @@ class GenerateUser extends Component
 
     public $hasil;
 
+    public string $generate_by = 'qty';
+
     public function mount(){
 
         $this->list_nama = '';
@@ -42,6 +44,60 @@ class GenerateUser extends Component
     }
 
     public function generate(){
+
+        if($this->generate_by === 'list') {
+            $this->generateListName();
+        } else {
+            $this->generateByQty();
+        }
+    }
+
+    public function generateByQty(){
+
+        $this->validate([           
+            'qty' => 'required|numeric|min:1'           
+        ]);
+
+        $hasil = "";
+
+        for ($i=0; $i < $this->qty; $i++) { 
+            
+            $username  = $this->randomAlphanumeric(7);
+
+            $email =  $username . "@arstamedia.com";
+
+            $cek = User::where('email' , $email)->orWhere('username', $username)->first();
+
+            if($cek){
+                $username = $this->randomAlphanumeric(7);
+                $email =  $username . "@arstamedia.com";
+            }
+
+            $rand_password = $this->randomNumeric(6);
+
+            User::create([ 
+                'name' => 'Anonim',
+                'email' => $email,
+                'level' => 'user',
+                'username' => $username,
+                // 'hp' => $this->hp,
+                // 'kota' => $this->kota,
+                'password' => Hash::make( $rand_password ),
+                'string_password' => $rand_password
+            ]);
+
+            $hasil .= "Username: " . $username . "</br> Email: " .  $email . '</br>Password: ' . $rand_password . '</br> </br>';
+
+        }
+
+        $this->hasil = $hasil;
+
+        session()->flash('message', 'Generate user berhasil');
+
+        $this->resetValue();
+    }
+
+    public function generateListName(){
 
         $this->validate([           
             'list_nama' => 'required'           
@@ -71,9 +127,10 @@ class GenerateUser extends Component
                 $rand_password = rand(50000, 400000);
 
                 User::create([ 
-                    'name' => $nama,
+                    'name' => 'Anonim',
                     'email' => $email,
                     'level' => 'user',
+                    'username' => $nama_email,
                     // 'hp' => $this->hp,
                     // 'kota' => $this->kota,
                     'password' => Hash::make( $rand_password ),
@@ -109,4 +166,22 @@ class GenerateUser extends Component
         $this->password = '';
         $this->qty = 0;
     }
+
+
+    // 1. Kombinasi angka dan huruf (alphanumeric)
+    function randomAlphanumeric(int $length = 8): string
+    {
+        $chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+        return substr(str_shuffle(str_repeat($chars, $length)), 0, $length);
+    }
+
+    // 2. Angka saja
+    function randomNumeric(int $length = 8): string
+    {
+        $min = (int) str_pad('1', $length, '0');         // 10000000
+        $max = (int) str_pad('9', $length, '9');         // 99999999
+        return (string) random_int($min, $max);
+    }
+
+
 }

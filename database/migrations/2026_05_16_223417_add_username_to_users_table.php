@@ -15,6 +15,8 @@ class AddUsernameToUsersTable extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->string('username')->after('id');
+            // buat email nullable
+            $table->string('email')->nullable()->change();
         });
 
 

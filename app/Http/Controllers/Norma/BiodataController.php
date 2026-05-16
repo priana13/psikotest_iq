@@ -31,7 +31,16 @@ class BiodataController extends Controller
                 'angkatan_tahun' => 'nullable|integer',
         ]);
 
-        $user_id = auth()->user()->id;
+        $user = auth()->user();
+
+        if($user->name == 'Anonim'){
+
+            $user->update([
+                'name' => $request->nama
+            ]);
+        }
+
+        $user_id = $user->id;
 
         $normaTest = DataUserNorma::updateOrCreate(
             ['user_id' => $user_id],
