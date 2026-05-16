@@ -81,7 +81,11 @@
 <!-- Page Wrapper -->
 <div id="wrapper">
 
+    @can('admin')
+
     <x-side-bar-admin />
+
+    @endcan
 
     <!-- Content Wrapper -->
     <div id="content-wrapper" class="d-flex flex-column">
@@ -193,7 +197,7 @@
                         <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ Auth::user()->name }}</span>
                             
-                            <img class="img-profile rounded-circle avatar font-weight-bold" src="{{ '/storage/' . auth()->user()->avatar }}" alt="" onerror="this.onerror=null;this.src='/storage/avatar/1.png';"
+                            <img class="img-profile rounded-circle avatar font-weight-bold" src="{{ '/storage/' . auth()->user()->avatar }}" alt="" onerror="this.onerror=null;this.src='{{ asset('img/user.png') }}';"
                             >
                            
                         </a>

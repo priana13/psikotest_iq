@@ -20,12 +20,15 @@ class BiodataController extends Controller
     {
         // Validasi dan simpan data biodata
 
+        // dd($request->all());
+
         $request->validate([
-               'nomor' => 'string|required',            
+                'nomor' => 'required',  
+                'nama' => 'required|string',          
                 'tgl_lahir' => 'date|required',               
-                'instansi' => 'string|required',
-                'pangkat' => 'string|nullable',
-                'angkatan_tahun' => 'integer|nullable',
+                'instansi' => 'required|string',
+                'pangkat' => 'nullable|string',
+                'angkatan_tahun' => 'nullable|integer',
         ]);
 
         $user_id = auth()->user()->id;

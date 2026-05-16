@@ -18,15 +18,14 @@ class TestController extends Controller
     public function index(){
      
 
-        if( !$this->cekAksesTestIQ() ){
+        // if( !$this->cekAksesTestIQ() ){
 
-           return redirect( route('checkout') . '/?paket=' . '4' );
-        }
-
-
+        //    return redirect( route('checkout') . '/?paket=' . '4' );
+        // }
 
         return view ('livewire.norma.test.index');
     }
+
     public function petunjuk(){
         return view ('livewire.norma.petunjuk');
     }

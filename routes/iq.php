@@ -21,8 +21,6 @@ use Illuminate\Support\Facades\Route;
 
 	Route::get('/test' , [TestController::class , 'index'])->name('norma.test');
 
-	// Route::get('/test/petunjuk' , [TestController::class , 'petunjuk'])->name('norma.test.petunjuk');		
-
 	Route::middleware('admin')->group(function(){	
 
 

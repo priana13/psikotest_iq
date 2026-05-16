@@ -14,7 +14,7 @@ class MainNorma extends Component
     protected $listeners = ['mainCallBack'];  
 
     public $prompt;
-    public $tipe;
+    public $tipe = 1;
     public $clue;
     
 
