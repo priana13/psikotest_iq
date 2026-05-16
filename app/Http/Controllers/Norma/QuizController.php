@@ -13,9 +13,9 @@ class QuizController extends Controller
             'test' => Norma::all()
         ]);        
     }
-    public function se(){
-        return view ('livewire.norma.quiz.se.index');
-    }
+    // public function se(){
+    //     return view ('livewire.norma.quiz.se.index');
+    // }
     public function seList(){
         return view ('livewire.norma.quiz.se.se-list');
     }

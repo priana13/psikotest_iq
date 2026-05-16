@@ -4,9 +4,9 @@ use App\Http\Controllers\Norma\BiodataController;
 use App\Http\Controllers\Norma\PetunjukController;
 use App\Http\Controllers\Norma\QuizController;
 use App\Http\Controllers\Norma\ReportController;
-use App\Http\Controllers\Norma\TestController;
 use App\Http\Livewire\Norma\GenerateUser;
 use App\Http\Livewire\Norma\Report\HasilNormaTest;
+use App\Http\Livewire\Norma\Test\MainNorma;
 use Illuminate\Support\Facades\Route;
 
 	Route::middleware('auth')->group(function(){
@@ -19,14 +19,14 @@ use Illuminate\Support\Facades\Route;
 	// petunjuk
 	Route::get('/iq/petunjuk' , [PetunjukController::class , 'index'])->name('norma.test.petunjuk');
 
-	Route::get('/test' , [TestController::class , 'index'])->name('norma.test');
+	Route::get('/test' , MainNorma::class)->name('norma.test');
 
 	Route::middleware('admin')->group(function(){	
 
 
 		Route::get('/quiz/dashboard' , [QuizController::class , 'dashboard'])->name('norma.quiz.dashboard');
 	
-		Route::get('/quiz/se' , [QuizController::class , 'se'])->name('norma.quiz.se');
+		Route::view('/quiz/se' , 'livewire.norma.quiz.se.index')->name('norma.quiz.se');
 		Route::get('/quiz/se/list' , [QuizController::class , 'seList'])->name('norma.quiz.se.list');
 		Route::get('/quiz/se/show' , [QuizController::class , 'seShow'])->name('norma.quiz.se.show');
 

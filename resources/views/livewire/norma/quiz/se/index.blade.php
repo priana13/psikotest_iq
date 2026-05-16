@@ -11,10 +11,7 @@
                 Livewire.on('reloadPage', function () {
                     // Reload the entire page
                     location.reload();
-                });
-
-                
-
+                });              
                 
 
             </script>

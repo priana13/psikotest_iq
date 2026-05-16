@@ -6,13 +6,7 @@ use App\Models\Package;
 use App\Http\Controllers\Controller;
 
 class TestController extends Controller
-{
-
-    public function __construct(){     
-
-   
-
-    }
+{   
 
 
     public function index(){
