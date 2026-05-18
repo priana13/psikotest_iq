@@ -6,7 +6,6 @@
                     <div class="col-xl-8 col-md-6 mb-4">
                         <div class="card border-left-primary shadow-sm h-100 py-2">
                             <div class="card-body text-center">
-                                <a class="stretched-link text-primary font-weight-bold text-primary text-uppercase" href="#">PETUJUK WAKTU TEST</a>
                                 <div class="row no-gutters align-items-center">
                                     <p class="mt-2 text-center">{{$NormaRa['petunjuk_kedua']??''}}</p>
                                 </div>

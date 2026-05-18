@@ -64,13 +64,13 @@ class GenerateUser extends Component
             
             $username  = $this->randomAlphanumeric(7);
 
-            $email =  $username . "@arstamedia.com";
+            $email =  $username . "@gemapersona.com";
 
             $cek = User::where('email' , $email)->orWhere('username', $username)->first();
 
             if($cek){
                 $username = $this->randomAlphanumeric(7);
-                $email =  $username . "@arstamedia.com";
+                $email =  $username . "@gemapersona.com";
             }
 
             $rand_password = $this->randomNumeric(6);
@@ -113,15 +113,15 @@ class GenerateUser extends Component
                 
                 // dd($nama_email);
 
-                $cek = User::where('email' , $nama_email . "@arstamedia.com")->first();
+                $cek = User::where('email' , $nama_email . "@gemapersona.com")->first();
 
                 // dd($cek);
 
                 if($cek){
                     $rand = rand(10,1000);
-                    $email =  $nama_email . $rand .'@arstamedia.com';
+                    $email =  $nama_email . $rand .'@gemapersona.com';
                 }else{
-                    $email =  $nama_email . '@arstamedia.com';
+                    $email =  $nama_email . '@gemapersona.com';
                 }
 
                 $rand_password = rand(50000, 400000);
