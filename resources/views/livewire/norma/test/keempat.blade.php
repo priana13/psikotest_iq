@@ -68,39 +68,7 @@
             <div class="container-fluid">
                 <div class="row ">
                     <div class="col-md-12">
-                        <!-- <div class="card">
-                            <div class="card-title px-4 pt-4 text-center">
-                                <h5>PETUNJUK DAN CONTOH SOAL 04</h5>
-                            </div>
-                            <div class="card-body">
-                                <p>Soal 04 terdiri dari 16 pertanyaan .............................</p>
-                                                           
-                            </div>
-                            <div class="card-body">              
-                                <div class="form-group row">
-                                    <label class="col-1 form-control text-center"><h5>61.</h5></label>
-                                    <label class="col-1"></label>
-                                    <label class="col-6 form-control text-center"><h5>Ayam - Itik</h5></label>
-                                </div>      
-                                <div class="form-group row">
-                                    <label class="col-1"></label>
-                                    <label class="col-1"></label>
-                                    <label class="col-6 text-center p-0"><h5>Jawaban :</h5></label>
-                                </div>
-                                
-                                <div class="form-group row">
-                                    <label class="col-1"></label>
-                                    <label class="col-1"></label>
-                                    <label class="col-6 form-control text-center" >Burung</label>
-                                </div> 
-                                <div class="card-body"> 
-                                    <p>JIKA ANDA SUDAH SIAP SILAHKAN KLIK TOMBOL</p>                                           
-                                    <button type="button" class="btn btn-primary text-right" wire:click="geMulai({{$test_id}})">
-                                        NEXT
-                                    </button>
-                                </div>
-                            </div>
-                        </div> -->
+                       
                         <div class="card">
                             <div class="card-title px-4 pt-4 text-center">
                                 <h5>PETUNJUK DAN CONTOH SOAL {{$NormaGe['nama']??'INTELLIGENCE STRUCTURE TEST GE - 04'}}</h5>
@@ -113,11 +81,11 @@
                                  <img src="{{ url('storage/photos/'.$NormaGe['file_petunjuk'])}}" alt="no image" style="width: 100%;height: auto;">  
                                  @endif
                             </div>
-                            <div class="card-body">   
-                                <p>JIKA ANDA SUDAH SIAP SILAHKAN KLIK TOMBOL</p>                                    
+                            <div class="card-body text-center">   
+                                <p class="h3">JIKA ANDA SUDAH SIAP SILAHKAN KLIK TOMBOL</p>                                    
                             </div>
-                            <div class="card-body text-right">                                    
-                                <button type="button" class="btn btn-primary text-right" wire:click="geMulai({{$test_id}})">
+                            <div class="card-body text-right text-center">
+                                <button type="button" class="btn btn-primary btn-lg" wire:click="waMulai({{$test_id}})">
                                     NEXT
                                 </button>
                             </div>

@@ -153,106 +153,7 @@
                 <div class="container-fluid">
                     <div class="row ">
                         <div class="col-md-12">
-                            <!-- <div class="card">
-                                <div class="card-title px-4 pt-4 text-center">
-                                    <h5>PETUNJUK DAN CONTOH SOAL 07</h5>
-                                </div>
-                                <div class="card-body">
-                                    <p>Soal 07 terdiri dari 20 pertanyaan .............................</p>
-                                    <p>Soal potongan gambar. Carilah potongan gambar yang dapat membentuk gambar utuh</p>
-                                    <p>Contoh Soal</p>
-                                </div>
-                                <div class="card-body">                                    
-                                    <div class="card-body align-items-center">   
-                                        <div class="form-group row align-items-center">
-                                            <label class="col-md-3 text-center"></label>
-                                            <div class="col-1 form-group">
-                                                <img src="{{url('/img/118_A.png')}}" alt="no image" style="width: 60px;height: 60px;">
-                                                <label class="text-center"><span></span></label>
-                                                <div class="icheck-primary icheck-inline text-center">
-                                                    <label class="form-control text-center">A</label>                              
-                                                </div>
-                                            </div>
-                                            <div class="col-1 form-group">
-                                                <img src="{{url('/img/118_B.png')}}" alt="no image" style="width: 60px;height: 60px;">
-                                                <label class="text-center"><span></span></label>
-                                                <div class="icheck-primary icheck-inline text-center">
-                                                    <label class="form-control text-center">B</label>                              
-                                                </div>
-                                            </div>    
-                                            <div class="col-1 form-group">
-                                                <img src="{{url('/img/118_C.png')}}" alt="no image" style="width: 60px;height: 60px;">
-                                                <label class="text-center"><span></span></label>
-                                                <div class="icheck-primary icheck-inline text-center">
-                                                    <label class="form-control text-center">C</label>                              
-                                                </div>
-                                            </div>
-                                            <div class="col-1 form-group">
-                                                <img src="{{url('/img/118_D.png')}}" alt="no image" style="width: 60px;height: 60px;">
-                                                <label class="text-center"><span></span></label>
-                                                <div class="icheck-primary icheck-inline text-center">
-                                                    <label class="form-control text-center">D</label>                              
-                                                </div>
-                                            </div>
-                                            <div class="col-1 form-group">
-                                                <img src="{{url('/img/118_E.png')}}" alt="no image" style="width: 60px;height: 60px;">
-                                                <label class="text-center"><span></span></label>
-                                                <div class="icheck-primary icheck-inline text-center">
-                                                    <label class="form-control text-center">E</label>                              
-                                                </div>
-                                            </div>
-                                                             
-                                        </div>                    
-                                    </div>
-                                </div>
-                                <div class="card-body">
-                                    <div class="card-title px-4 pt-4 text-center">
-                                        <h5>SOAL 117</h5>
-                                        <img src="{{url('/img/118.png')}}" alt="no image" style="width: 150px;height: 150px;">
-                                    </div>
-                                    <div class="card-body align-items-center">   
-                                        <div class="form-group row align-items-center">
-                                            <label class="col-md-3 text-center"></label>
-                                            <div class="col-1 form-group">
-                                                <label class="form-control text-center">A</label>
-                                                <div class="icheck-primary icheck-inline text-center">
-                                                    <input type="checkbox" id="angka1" name="answer1" checked disabled />                                
-                                                </div>
-                                            </div>
-                                            <div class="col-1 form-group">
-                                                <label class="form-control text-center">B</label>
-                                                <div class="icheck-primary icheck-inline text-center">
-                                                    <input type="checkbox" id="angka2" name="answer2" disabled />                                
-                                                </div>
-                                            </div>     
-                                            <div class="col-1 form-group">
-                                                <label class="form-control text-center">C</label>
-                                                <div class="icheck-primary icheck-inline text-center">
-                                                    <input type="checkbox" id="angka3" name="answer3" disabled />                                
-                                                </div>
-                                            </div>
-                                            <div class="col-1 form-group">
-                                                <label class="form-control text-center">D</label>
-                                                <div class="icheck-primary icheck-inline text-center">
-                                                    <input type="checkbox" id="angka4" name="answer4" disabled />                                
-                                                </div>
-                                            </div>
-                                            <div class="col-1 form-group">
-                                                <label class="form-control text-center">E</label>
-                                                <div class="icheck-primary icheck-inline text-center">
-                                                    <input type="checkbox" id="angka5" name="answer5" disabled />                                
-                                                </div>
-                                            </div>                                                             
-                                        </div>                    
-                                    </div>                                    
-                                </div>
-                                <div class="card-body">                                   
-                                    <p>JIKA ANDA SUDAH SIAP SILAHKAN KLIK TOMBOL</p>
-                                    <button type="button" class="btn btn-primary text-right" wire:click="faMulai({{$test_id}})">
-                                        NEXT
-                                    </button>
-                                </div>
-                            </div> -->
+                            
                             <div class="card">
                                 <div class="card-title px-4 pt-4 text-center">
                                     <h5>PETUNJUK DAN CONTOH SOAL {{$NormaFa['nama']??'INTELLIGENCE STRUCTURE TEST FA - 07'}}</h5>
@@ -265,11 +166,11 @@
                                      <img src="{{ url('storage/photos/'.$NormaFa['file_petunjuk'])}}" alt="no image" style="width: 100%;height: auto;">  
                                      @endif
                                 </div>
-                                <div class="card-body">   
-                                    <p>JIKA ANDA SUDAH SIAP SILAHKAN KLIK TOMBOL</p>                                    
+                                <div class="card-body text-center">   
+                                    <p class="h3">JIKA ANDA SUDAH SIAP SILAHKAN KLIK TOMBOL</p>                                    
                                 </div>
-                                <div class="card-body text-right">                                    
-                                    <button type="button" class="btn btn-primary text-right" wire:click="faMulai({{$test_id}})">
+                                <div class="card-body text-right text-center">
+                                    <button type="button" class="btn btn-primary btn-lg" wire:click="waMulai({{$test_id}})">
                                         NEXT
                                     </button>
                                 </div>

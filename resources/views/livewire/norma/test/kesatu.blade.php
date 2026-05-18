@@ -109,11 +109,11 @@
                                      <img src="{{ url('storage/photos/'.$NormaSe['file_petunjuk'])}}" alt="no image" style="width: 100%;height: auto;"> 
                                      @endif
                                 </div>
-                                <div class="card-body">   
-                                    <p>JIKA ANDA SUDAH SIAP SILAHKAN KLIK TOMBOL</p>                                    
+                                <div class="card-body text-center">   
+                                    <p class="h3">JIKA ANDA SUDAH SIAP SILAHKAN KLIK TOMBOL</p>                                    
                                 </div>
-                                <div class="card-body text-right"> 
-                                    <button type="button" class="btn btn-primary text-right" wire:click="seMulai({{$test_id}})">
+                                <div class="card-body text-right text-center"> 
+                                    <button type="button" class="btn btn-primary btn-lg text-right" wire:click="seMulai({{$test_id}})">
                                         NEXT
                                     </button>
                                 </div>

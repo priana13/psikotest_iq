@@ -24,7 +24,13 @@
             @elseif($tipe == 10)    
                 @livewire('norma.test.kesepuluh')   
             @elseif($tipe == 11)    
-                @livewire('norma.user-norma')   
+                {{-- @livewire('norma.user-norma')    --}}
+                {{-- link ke welcome --}}
+                <div class="text-center my-4">
+
+                    <a href="{{ route('norma.test.welcome') }}" class="btn btn-primary">Kembali ke Beranda</a>
+                
+                </div>
             @else
                 @livewire('norma.test.petunjuk')   
             @endif
