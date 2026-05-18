@@ -117,8 +117,9 @@
                 <!-- Topbar Navbar -->
                 <ul class="navbar-nav ml-auto">
 
-                    {{-- <x-membership-icon /> --}}
+                    @can('admin')
                     <x-link-to-test />
+                    @endcan
     
                     <!-- Nav Item - Search Dropdown (Visible Only XS) -->
                     <li class="nav-item dropdown no-arrow d-sm-none">

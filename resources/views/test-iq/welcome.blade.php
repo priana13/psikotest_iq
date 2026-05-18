@@ -4,7 +4,7 @@
      ===================================================== --}}
 @extends('layouts.app-iq')
 
-@section('title', 'Selamat Datang – SIMKESMEN')
+@section('title', 'Gema Persona')
 
 @push('styles')
 <style>
