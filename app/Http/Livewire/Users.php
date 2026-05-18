@@ -18,15 +18,19 @@ class Users extends Component
 
     public $password;
 
+    public $level_filter = "User";
+
     public function mount(){
 
-        $this->total = User::online()->count();
+        $this->level_filter = (request()->level) ? request()->level : "User";
+
+        $this->total = User::online()->where("level" , $this->level_filter)->count();
     }
 
     public function render()
     {
 
-        $users = User::online()->latest();        
+        $users = User::online()->where("level" , $this->level_filter)->latest();
 
         $keyWord = '%'.$this->keyWord .'%';
 

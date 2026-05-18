@@ -46,10 +46,17 @@
     </li>            
 
     <!-- Nav Item - About -->
-    <li class="nav-item {{ Nav::isRoute('admin.users') }}">
-        <a class="nav-link py-2" href="{{ route('admin.users') }}">
+    <li class="nav-item {{ (request()->level == 'User') ? 'active' : '' }}">
+        <a class="nav-link py-2" href="{{ route('admin.users') }}?level=User">
             <i class="fas fa-fw fa-users"></i>
-            <span>{{ __('USER/PENGGUNA') }}</span>
+            <span>{{ __('PESERTA') }}</span>
+        </a>
+    </li> 
+
+    <li class="nav-item {{ (request()->level == 'Admin') ? 'active' : '' }}">
+        <a class="nav-link py-2" href="{{ route('admin.users') }}?level=Admin">
+            <i class="fas fa-fw fa-users"></i>
+            <span>{{ __('ADMIN') }}</span>
         </a>
     </li> 
 

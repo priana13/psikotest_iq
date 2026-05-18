@@ -7,7 +7,7 @@
 					<div style="display: flex; justify-content: space-between; align-items: center;">
 						<div class="float-left">
 							<h4><i class="fas fa-fw fa-users"></i>
-							User {{ number_format($total) }}</h4>
+							{{ $level_filter ?? "User" }} {{ number_format($total) }}</h4>
 						</div>
 						
 						@if (session()->has('message'))

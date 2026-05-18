@@ -52,7 +52,7 @@
                                         <td>
                                             <div class="btn-group">
                                                 <button type="button" class="btn btn-info btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                    Actions
+                                                    Aksi
                                                 </button>
                                                 <div class="dropdown-menu dropdown-menu-right">
 
