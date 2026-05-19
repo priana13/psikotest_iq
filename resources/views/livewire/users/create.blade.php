@@ -42,6 +42,7 @@
                     <option value="">Pilih Level</option>
                     <option value="user">User</option>
                     <option value="Admin">Admin</option>
+                    <option value="Super Admin">Super Admin</option>
                 </select>
 
                 @error('level') <span class="text-danger">{{ $message }}</span> @enderror
