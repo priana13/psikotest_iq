@@ -156,7 +156,7 @@
                                 <p class="h3">JIKA ANDA SUDAH SIAP SILAHKAN KLIK TOMBOL</p>                                    
                             </div>
                             <div class="card-body text-right text-center">
-                                <button type="button" class="btn btn-primary btn-lg" wire:click="waMulai({{$test_id}})">
+                                <button type="button" class="btn btn-primary btn-lg" wire:click="raMulai({{$test_id}})">
                                     NEXT
                                 </button>
                             </div>
