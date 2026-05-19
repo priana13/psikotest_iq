@@ -79,7 +79,7 @@
                                 </div>
                             </div>
                             <div class="card-body">
-                                <div class="card-title px-4 pt-4 text-center">
+                                <div class="card-title px-4 text-center">
                                     <h5>SOAL {{$QuizWu['no']}}</h5>
                                     <img src="{{url('storage/photos/'.$QuizWu['quiz'])}}" alt="no image" style="width: 250px;height: 250px;">
                                 </div>
@@ -87,37 +87,37 @@
                                     <div class="form-group row align-items-center">
                                         <label class="col-md-3 text-center"></label>
                                         <div class="col-1 form-group">
-                                            <label class="form-control text-center">A</label>
+                                            <label class="form-control text-center" for="option_a">A</label>
                                             <div class="icheck-primary icheck-inline text-center">
-                                                <input type="radio" wire:model="answer" value="a" 
+                                                <input type="radio" wire:model="answer" value="a" id="option_a" 
                                                 wire:change="updateDatabase({{$QuizWu['id']}},{{$QuizWu['no']}})"/>
                                             </div>
                                         </div>
                                         <div class="col-1 form-group">
-                                            <label class="form-control text-center">B</label>
+                                            <label class="form-control text-center" for="option_b">B</label>
                                             <div class="icheck-primary icheck-inline text-center">
-                                                <input type="radio"  wire:model="answer" value="b" 
+                                                <input type="radio"  wire:model="answer" value="b" id="option_b" 
                                                 wire:change="updateDatabase({{$QuizWu['id']}},{{$QuizWu['no']}})"/>                         
                                             </div>
                                         </div>     
                                         <div class="col-1 form-group">
-                                            <label class="form-control text-center">C</label>
+                                            <label class="form-control text-center" for="option_c">C</label>
                                             <div class="icheck-primary icheck-inline text-center">
-                                                <input type="radio" wire:model="answer" value="c" 
+                                                <input type="radio" wire:model="answer" value="c" id="option_c"
                                                 wire:change="updateDatabase({{$QuizWu['id']}},{{$QuizWu['no']}})"/>                             
                                             </div>
                                         </div>
                                         <div class="col-1 form-group">
-                                            <label class="form-control text-center">D</label>
+                                            <label class="form-control text-center" for="option_d">D</label>
                                             <div class="icheck-primary icheck-inline text-center">
-                                                <input type="radio" wire:model="answer" value="d" 
+                                                <input type="radio" wire:model="answer" value="d" id="option_d"
                                                 wire:change="updateDatabase({{$QuizWu['id']}},{{$QuizWu['no']}})"/>                         
                                             </div>
                                         </div>
                                         <div class="col-1 form-group">
-                                            <label class="form-control text-center">E</label>
+                                            <label class="form-control text-center" for="option_e">E</label>
                                             <div class="icheck-primary icheck-inline text-center">
-                                                <input type="radio" wire:model="answer" value="e" 
+                                                <input type="radio" wire:model="answer" value="e" id="option_e"
                                                 wire:change="updateDatabase({{$QuizWu['id']}},{{$QuizWu['no']}})"/>                            
                                             </div>
                                         </div>
@@ -125,7 +125,7 @@
                                     </div>                    
                                 </div>
                             </div>
-                            <div class="card-body">
+                            <div class="card-body mx-auto">
                                 <button type="button" class="btn btn-primary pull-right" wire:click="wuSebelumnya({{$test_id}},{{$QuizWu['no']}})">
                                     Soal Sebelumnya
                                 </button>
