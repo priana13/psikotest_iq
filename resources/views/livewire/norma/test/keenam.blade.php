@@ -13,16 +13,12 @@
                     </div>
                     <br>
                     <div class="col-xl-4 col-md-6 mb-4">
-                        <div class="card bg-primary text-white shadow">
-                            <div class="card-body">
-                                <h1 class="timer text-white-100 text-center" data-seconds-left = {{$waktu_test}}></h1>  
-                                <h1 class="text-white-100 text-center" id="countdown"></h1>
+                        <x-card-timer>
 
-                            </div>
-                        </div>
-                        <!-- <div id="customToastr" class="custom-toastr">
                             <h1 class="timer text-white-100 text-center" data-seconds-left = {{$waktu_test}}></h1>  
-                        </div> -->
+                            <h1 class="text-white-100 text-center" id="countdown"></h1>
+
+                        </x-card-timer>
                     </div>
                 </div>
                 <div class="row justify-content-center">

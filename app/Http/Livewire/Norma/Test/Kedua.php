@@ -117,10 +117,14 @@ class Kedua extends Component
             ->select('norma_test_log.*', 'norma.id', 'norma.tipe', 'norma.waktu','norma.nama')
             ->first();
 
+        
+       
+
         $this->test_id = ($testLog) ? $testLog->test_id : null;        
         $this->nama_test = ($testLog) ? $testLog->nama : null;       
 
         if($testLog->waktu_mulai != null){
+
             $waktu_test = intval($testLog->waktu_test) * 60;
             $waktu_mulai = Carbon::parse($testLog->waktu_mulai) ;
             $batas_waktu = $waktu_mulai->addSeconds($waktu_test);
