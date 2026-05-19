@@ -42,36 +42,36 @@
                                         <div class="form-group row">
                                             <label class="col-md-1"></label>
                                             <div class="icheck-primary icheck-inline">
-                                                <input type="radio" id="option1_{{$q['no']}}" wire:model="answer{{$q['no']}}" value="a" wire:change="updateDatabase({{$q['id']}},{{$q['no']}})" />
-                                                <label for="option1_1">a. {{$q['a']}}</label>
+                                                <input type="radio" id="option_a_{{$q['no']}}" wire:model="answer{{$q['no']}}" value="a" wire:change="updateDatabase({{$q['id']}},{{$q['no']}})" />
+                                                <label for="option_a_{{$q['no']}}">a. {{$q['a']}}</label>
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label class="col-md-1"></label>
                                             <div class="icheck-primary icheck-inline">
-                                                <input type="radio" id="option1_{{$q['no']}}" wire:model="answer{{$q['no']}}" value="b" wire:change="updateDatabase({{$q['id']}},{{$q['no']}})" />
-                                                <label for="option1_1">b. {{$q['b']}}</label>
+                                                <input type="radio" id="option_b_{{$q['no']}}" wire:model="answer{{$q['no']}}" value="b" wire:change="updateDatabase({{$q['id']}},{{$q['no']}})" />
+                                                <label for="option_b_{{$q['no']}}">b. {{$q['b']}}</label>
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label class="col-md-1"></label>
                                             <div class="icheck-primary icheck-inline">
-                                                <input type="radio" id="option1_{{$q['no']}}" wire:model="answer{{$q['no']}}" value="c" wire:change="updateDatabase({{$q['id']}},{{$q['no']}})" />
-                                                <label for="option1_1">c. {{$q['c']}}</label>
+                                                <input type="radio" id="option_c_{{$q['no']}}" wire:model="answer{{$q['no']}}" value="c" wire:change="updateDatabase({{$q['id']}},{{$q['no']}})" />
+                                                <label for="option_c_{{$q['no']}}">c. {{$q['c']}}</label>
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label class="col-md-1"></label>
                                             <div class="icheck-primary icheck-inline">
-                                                <input type="radio" id="option1_{{$q['no']}}" wire:model="answer{{$q['no']}}" value="d" wire:change="updateDatabase({{$q['id']}},{{$q['no']}})" />
-                                                <label for="option1_1">d. {{$q['d']}}</label>
+                                                <input type="radio" id="option_d_{{$q['no']}}" wire:model="answer{{$q['no']}}" value="d" wire:change="updateDatabase({{$q['id']}},{{$q['no']}})" />
+                                                <label for="option_d_{{$q['no']}}">d. {{$q['d']}}</label>
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label class="col-md-1"></label>
                                             <div class="icheck-primary icheck-inline">
-                                                <input type="radio" id="option1_{{$q['no']}}" wire:model="answer{{$q['no']}}" value="e" wire:change="updateDatabase({{$q['id']}},{{$q['no']}})" />
-                                                <label for="option1_1">e. {{$q['e']}}</label>
+                                                <input type="radio" id="option_e_{{$q['no']}}" wire:model="answer{{$q['no']}}" value="e" wire:change="updateDatabase({{$q['id']}},{{$q['no']}})" />
+                                                <label for="option_e_{{$q['no']}}">e. {{$q['e']}}</label>
                                             </div>
                                         </div>                                        
                                     </div>

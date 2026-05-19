@@ -3,6 +3,8 @@
 
         <div>
 
+           {{-- <p>Tipe : {{ $tipe }}</p> --}}
+
             @if($tipe == 1)    
                 @livewire('norma.test.kesatu')   
             @elseif($tipe == 2)    

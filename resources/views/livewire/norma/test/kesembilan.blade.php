@@ -28,9 +28,8 @@
             <div class="row justify-content-center">
                 <div class="col-md-12">
                     <div class="card">
-                        <div class="card-title px-4 pt-4 text-center">
-                            <!-- <h5>{{$nama_test}}</h5> -->
-                            <p> HAFALKAN KELOMPOK KATA-KATA DIBAWAH INI</p>
+                        <div class="card-title px-4 pt-4 text-center">                          
+                            <p class="h5"> HAFALKAN KELOMPOK KATA-KATA DIBAWAH INI</p>
                         </div>
                         
                         <div class="card-footer pt-4 col-md-6 mx-auto" >   
