@@ -3,7 +3,7 @@
    @if($status == 0)
         <div class="container-fluid">
             <div class="row">
-                <div class="col-xl-8 col-md-6 mb-4">
+                {{-- <div class="col-xl-8 col-md-6 mb-4">
                     <div class="card border-left-primary shadow-sm h-100 py-2">
                         <div class="card-body text-center">
                             <div class="row no-gutters align-items-center">
@@ -11,7 +11,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> --}}
                 <br>
                 <div class="col-xl-4 col-md-6 mb-4">
                         <x-card-timer>
