@@ -37,6 +37,7 @@
 								<th>Alamat</th>								 --}}
 								<th>Level</th>
 								<th>Mendaftar</th>
+								<th>Status</th>
 								<td>Aksi</td>
 							</tr>
 						</thead>
@@ -54,15 +55,24 @@
 								<td>{{ $row->alamat }}</td> --}}
 								<td>{{ $row->level }}</td>
 								<td>{{ $row->created_at->diffForHumans() }}</td>
+								<td>
+								   <span class="badge badge-{{ $row->status == "Aktif" ? "success" : "danger"}}">
+										{{ $row->status }} 								   
+								   </span>
+								</td>
 								<td width="90">
 								<div class="btn-group">
 									<button type="button" class="btn btn-info btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-									Aksi
+										Aksi
 									</button>
 									<div class="dropdown-menu dropdown-menu-right">
-									<a data-toggle="modal" data-target="#updateModal" class="dropdown-item" wire:click="edit({{$row->id}})"><i class="fa fa-edit"></i> Edit </a>							 
-									<a class="dropdown-item" onclick="confirm('Confirm Delete User id {{$row->id}}? \nDeleted Users cannot be recovered!')||event.stopImmediatePropagation()" wire:click="destroy({{$row->id}})"><i class="fa fa-trash"></i> Delete </a>   
+										<a href="javascript:void(0);" data-toggle="modal" data-target="#updateModal" class="dropdown-item" wire:click="edit({{$row->id}})"><i class="fa fa-edit"></i> Edit </a>							 
+										<a href="javascript:void(0);" class="dropdown-item" onclick="confirm('Confirm Delete User id {{$row->id}}? \nDeleted Users cannot be recovered!')||event.stopImmediatePropagation()" wire:click="destroy({{$row->id}})"><i class="fa fa-trash"></i> Delete </a>   
+										
+										<a href="#" class="dropdown-item" onclick="confirm('Update Status User {{$row->name}}?')||event.stopImmediatePropagation()" wire:click="updateStatus({{$row->id}})"><i class="fa fa-power-off" ></i> {{ ($row->status == 'Aktif') ? 'Nonaktifkan' : 'Aktifkan'}} </a>   
 									</div>
+								
+
 								</div>
 								</td>
 							@endforeach
@@ -74,4 +84,5 @@
 			</div>
 		</div>
 	</div>
+
 </div>

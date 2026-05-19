@@ -137,4 +137,16 @@ class Users extends Component
             $record->delete();
         }
     }
+
+    public function updateStatus($id){
+       
+        $user = User::find($id);
+
+        $status = ($user->status == 'Aktif') ? 'Off' : 'Aktif';
+
+        $user->status = $status;
+
+        $user->save();
+
+    }
 }
