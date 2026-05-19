@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
+use Illuminate\Validation\ValidationException;
 
 class LoginController extends Controller
 {
@@ -79,6 +81,7 @@ class LoginController extends Controller
         return [
             $field     => $login,
             'password' => $request->input('password'),
+            'status'   => 'Aktif'
         ];
     }
 
@@ -96,6 +99,27 @@ class LoginController extends Controller
         }
 
         return route('norma.test.welcome');
+    }
+
+    protected function sendFailedLoginResponse(Request $request)
+    {
+        $login = $request->login;
+
+        $field = filter_var($login, FILTER_VALIDATE_EMAIL)
+            ? 'email'
+            : 'username';
+
+        $user = User::where($field, $login)->first();
+
+        if ($user && $user->status != 'Aktif') {
+            throw ValidationException::withMessages([
+                'login' => ['Akun anda belum aktif.'],
+            ]);
+        }
+
+        throw ValidationException::withMessages([
+            'login' => [trans('auth.failed')],
+        ]);
     }
 
 

@@ -67,9 +67,12 @@
 									</button>
 									<div class="dropdown-menu dropdown-menu-right">
 										<a href="javascript:void(0);" data-toggle="modal" data-target="#updateModal" class="dropdown-item" wire:click="edit({{$row->id}})"><i class="fa fa-edit"></i> Edit </a>							 
+										
+										@if($row->id !== auth()->user()->id)
 										<a href="javascript:void(0);" class="dropdown-item" onclick="confirm('Confirm Delete User id {{$row->id}}? \nDeleted Users cannot be recovered!')||event.stopImmediatePropagation()" wire:click="destroy({{$row->id}})"><i class="fa fa-trash"></i> Delete </a>   
 										
-										<a href="#" class="dropdown-item" onclick="confirm('Update Status User {{$row->name}}?')||event.stopImmediatePropagation()" wire:click="updateStatus({{$row->id}})"><i class="fa fa-power-off" ></i> {{ ($row->status == 'Aktif') ? 'Nonaktifkan' : 'Aktifkan'}} </a>   
+										<a href="#" class="dropdown-item" onclick="confirm('Update Status User {{$row->name}}?')||event.stopImmediatePropagation()" wire:click="updateStatus({{$row->id}})"><i class="fa fa-power-off" ></i> {{ ($row->status == 'Aktif') ? 'Nonaktifkan' : 'Aktifkan'}} </a> 
+										@endif  
 									</div>
 								
 
