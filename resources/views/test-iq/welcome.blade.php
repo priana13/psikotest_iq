@@ -47,7 +47,7 @@
     {{-- Gambar --}}
     <div class="fade-up flex justify-center w-full h-32" style="animation-delay:.15s">
         {{-- <img src="{{ asset('gambar/1.png') }}"
-             alt="SIMKESMEN"
+             alt="GEMAPERSONA"
              class="w-2/3 sm:w-1/2 object-contain rounded-2xl drop-shadow-xl"> --}}
     </div>
 

@@ -1,6 +1,6 @@
 @extends('layouts.app-iq')
 
-@section('title', 'Petunjuk – SIMKESMEN')
+@section('title', 'Petunjuk – GEMAPERSONA')
 
 @push('styles')
 <style>

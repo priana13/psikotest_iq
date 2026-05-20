@@ -1,6 +1,6 @@
 @extends('layouts.app-iq')
 
-@section('title', 'Biodata – SIMKESMEN')
+@section('title', 'Biodata – GEMAPERSONA')
 
 @push('styles')
 <style>
