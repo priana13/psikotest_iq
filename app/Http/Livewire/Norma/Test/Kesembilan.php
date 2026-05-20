@@ -57,9 +57,11 @@ class Kesembilan extends Component
         $this->mulai = true;
 
         NormaTestLog::where('user_id', $this->user_id)->where('test_id', $this->test_id)
-                      ->update(['status' => 1]);
+                      ->update(['status' => 1 ]);
         
-        $this->emit('reloadPage');     
+        $this->status = 1;
+
+        // $this->emit('reloadPage');     
         // NormaTestLog::updateOrCreate(
         //     ['user_id' => $this->user_id,'test_id'=>$this->test_id],
         //     [                    
