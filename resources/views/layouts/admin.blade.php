@@ -71,6 +71,23 @@
                 display: none;
                 z-index: 9999;
             }
+
+            /* Highlight jawaban yang dipilih */
+            .quiz-radio:checked + .quiz-option {
+                background-color: #E6F1FB;
+                border-color: #185FA5 !important;
+                color: #0C447C;
+            }
+
+            .quiz-radio:checked + .quiz-option span.text-muted {
+                color: #185FA5 !important;
+            }
+
+            .quiz-option:hover {
+                background-color: var(--bs-light);
+                border-color: #aaa !important;
+            }
+
         </style>
 
 
