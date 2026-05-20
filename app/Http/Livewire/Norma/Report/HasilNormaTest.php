@@ -44,10 +44,10 @@ class HasilNormaTest extends Component
             ->where('norma_test_log.user_id', '=', $userId)
             ->where('norma.tipe', '=', 4)
             ->select('norma_test_log.*', 'norma.id', 'norma.tipe', 'norma.waktu','norma.nama')
-            ->first();
-        $this->test_id = ($testLog) ? $testLog->test_id : null;     
+            ->first();   
 
-        $user = User::find($userId);
+        $this->test_id = ($testLog) ? $testLog->test_id : null; 
+      
         $this->name = $user->name;  
         $userNorma = DataUserNorma::where('user_id',$userId)->first();
         $umur = ($userNorma)? Carbon::parse($userNorma->tgl_lahir)->age:null;
@@ -94,6 +94,7 @@ class HasilNormaTest extends Component
 
 
         $this->userNorma = ($userNorma) ? json_decode(json_encode($userNorma), true) : null;
+
          $normaTest = DB::table('norma_test_log')
                             ->leftJoin('norma_test', function($join) {
                                 $join->on('norma_test.user_id', '=', 'norma_test_log.user_id')
@@ -163,7 +164,16 @@ class HasilNormaTest extends Component
                 'wu' => ($wu->wu) ? $this->getKategori($wu->wu):$this->getKategori(0),
                 'me' => ($me->me) ? $this->getKategori($me->me):$this->getKategori(0),
             ]; 
-          
+
+         
+            // update iq user di database
+            $user = User::find($userId);
+            if ($user && $user->iq == null) {
+                $user->iq = $this->iq;
+                $user->test_iq_date = date('Y-m-d', strtotime($userNorma->created_at));
+                $user->save();
+            }
+
             $this->kategori = ($this->iq > 0)? $iq->kategori:'MENTALLY DEFECTIVE';
 
         }
