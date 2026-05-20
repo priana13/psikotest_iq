@@ -28,6 +28,29 @@ class Kesepuluh extends Component
     public $user_id;
 
 
+    public function meMulai($testId){   
+
+        $this->user_id = auth()->user()->id;
+        $this->test_id = $testId;
+
+        $userNorma = DataUserNorma::where('user_id','=',$this->user_id)->first();
+        $norma = Norma::where('id','=',$this->test_id)->first();
+        if($norma && $userNorma){
+            NormaTestLog::updateOrCreate(
+                ['user_id' => $this->user_id,'test_id'=>$this->test_id],
+                [
+                    'nomor_test'    => $userNorma->nomor_test,
+                    'waktu_test'    => $norma->waktu,
+                    'waktu_mulai'   => Carbon::now(),                      
+                    'status'        => 1
+                ]
+            );
+        }
+        $this->emit('reloadPage');               
+    }
+
+
+
     public function meSelesai($testId){ 
         $this->user_id = auth()->user()->id;
         $this->test_id = $testId;     
@@ -130,7 +153,8 @@ class Kesepuluh extends Component
     }    
     
    public function render()
-    {       
+    {  
+
         return view('livewire.norma.test.kesepuluh');
         
     }

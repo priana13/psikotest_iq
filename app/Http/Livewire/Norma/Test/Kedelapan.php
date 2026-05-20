@@ -29,7 +29,6 @@ class Kedelapan extends Component
     public $user_id;
     public $answer;
 
-
     
 
     public function wuMulai($testId){        
@@ -51,6 +50,7 @@ class Kedelapan extends Component
         }
         $this->emit('reloadPage');               
     }
+
     public function wuSebelumnya($testId, $questionNumber)
     {
         $this->user_id = auth()->user()->id;    
@@ -181,7 +181,7 @@ class Kedelapan extends Component
             );
         }
 
-        
+        // buat norma berikut nya , norma 9
         $norma = Norma::where('tipe','=',9)->first();
         $this->test_id = ($norma)? ($norma->id):0;
 

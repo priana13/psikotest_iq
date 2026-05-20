@@ -19,7 +19,8 @@
                                 <thead class="thead">
                                     <tr>
                                         <td>ID</td>
-                                        <th>Email User</th>
+                                        <td>Tgl</td>
+                                        <th>Peserta</th>
                                         <th>SE</th>
                                         <th>WA</th>
                                         <th>AN</th>
@@ -35,11 +36,14 @@
                                 </thead>
                                 <tbody>
                                    
-                                    @foreach($rekap as $row)
+                                    @foreach($rekap as $row) 
+
+                                   
                                  
                                     <tr>
                                         <td>{{ $row->user_id }}</td> 
-                                        <td>{{ $row->email }}</td>
+                                        <td>{{ date("d-m-Y" , strtotime($row->created_at))}}</td>
+                                        <td>{{ $row->name }}</td>
                                         <td>{{ $row->se }}</td>
                                         <td>{{ $row->wa }}</td>
                                         <td>{{ $row->an }}</td>
@@ -60,7 +64,7 @@
                                                     
                                                     <a class="dropdown-item" href="#" data-toggle="modal" data-target="#rekapModal" wire:click="showRekap({{$row->user_id}})"><i class="fa fa-eye"></i> Lihat </a>
 
-                                                    <a class="dropdown-item" href="#" onclick="confirm('Confirm Delete Norma Test User  {{$row->email}}? \nDeleted Exams cannot be recovered!')||event.stopImmediatePropagation()" wire:click="deleteRekap({{$row->user_id}})"><i class="fa fa-trash"></i> Delete </a>
+                                                    <a class="dropdown-item" href="#" onclick="confirm('Confirm Delete Norma Test User  {{$row->name}}? \nDeleted Exams cannot be recovered!')||event.stopImmediatePropagation()" wire:click="deleteRekap({{$row->user_id}})"><i class="fa fa-trash"></i> Delete </a>
                                                 </div>
                                             </div>
                                         </td>

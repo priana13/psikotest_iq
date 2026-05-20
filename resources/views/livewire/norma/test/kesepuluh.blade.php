@@ -86,6 +86,41 @@
                 </div>
             </div>
    
+    @else 
+
+            {{-- <div>
+                <div class="container-fluid">
+                    <div class="row ">
+                        <div class="col-md-12">
+                            
+                            <div class="card">
+                                <div class="card-title px-4 pt-4 text-center">
+                                    <h5>PETUNJUK DAN CONTOH SOAL {{$NormaMind['nama']??'INTELLIGENCE STRUCTURE TEST ME - 09'}}</h5>
+                                </div>
+                                <div class="card-body">
+                                   <p>{!! nl2br($NormaMind['petunjuk_kesatu'] ?? '') !!}</p>                                 
+                                </div>                                
+                                <div class="card-body text-center">     
+                                    @if($NormaMind['file_petunjuk'])                               
+                                     <img src="{{ url('storage/photos/'.$NormaMind['file_petunjuk'])}}" alt="no image" style="width: 100%;height: auto;">  
+                                     @endif
+                                </div>
+                                <div class="card-body text-center">   
+                                    <p class="h3">JIKA ANDA SUDAH SIAP SILAHKAN KLIK TOMBOL</p>                                    
+                                </div>
+                                <div class="card-body text-right text-center">
+                                    <button type="button" class="btn btn-primary btn-lg" wire:click="meMulai({{$test_id}})">
+                                        NEXT
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> --}}
+
+
+
     @endif
 </div>
 
