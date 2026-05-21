@@ -25,7 +25,7 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-title px-4 pt-4 text-center">
-                                <h5>{{$nama_test}} {{$answer}}</h5>
+                                <h5>{{$nama_test}}</h5>
                             </div>
                             
                             @if($QuizFa)
