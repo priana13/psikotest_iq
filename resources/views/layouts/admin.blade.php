@@ -1,140 +1,406 @@
-@extends('layouts.admin')
+<!DOCTYPE html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Psikotes">
+    <meta name="author" content="Priana S">
 
-@section('main-content')
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
-<div class="row justify-content-center">
-    <div class="col-md-12">
+    <title>{{ config('app.name', 'Psikotest') }}</title>
 
-        <h1 class="mb-4">Rekap Biodata</h1>
+    <!-- Fonts -->
+    {{-- <link href="{{ asset('vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet"> --}}
 
-        <div class="row justify-content-center">
-            <div class="col-md-12">
-                <div class="card shadow">
-                    <div class="card-body">
-                        <div class="pt-2">
-                            <div class="table-responsive">
-                                <table id="tableRekap" class="table table-bordered table-sm table-hover w-100">
-                                    <thead class="thead-dark">
-                                        <tr>
-                                            <th>ID</th>
-                                            <th>Nama</th>
-                                            <th>Nomor</th>
-                                            <th>Pangkat</th>
-                                            <th>Tgl Lahir</th>
-                                            <th>Umur</th>
-                                            <th>Instansi</th>
-                                            <th>Angkatan</th>
-                                            <th>IQ</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach($user_norma as $row)
-                                        <tr>
-                                            <td>{{ $row->user_id }}</td>
-                                            <td>{{ $row->nama ?? $row->user->name }}</td>
-                                            <td>{{ $row->nomor_test }}</td>
-                                            <td>{{ $row->pangkat }}</td>
-                                            <td>{{ $row->tgl_lahir }}</td>
-                                            <td>{{ $row->usia }}</td>
-                                            <td>{{ $row->instansi }}</td>
-                                            <td>{{ $row->angkatan }}</td>
-                                            <td>{{ $row->user?->iq }}</td>
-                                        </tr>
-                                        @endforeach
-                                    </tbody>
-                                </table>
-                            </div>
+    <link href="/fontawesome5/css/fontawesome.css" rel="stylesheet">
+    <link href="/fontawesome5/css/brands.css" rel="stylesheet">
+    <link href="/fontawesome5/css/solid.css" rel="stylesheet">
+
+    <link href="/fontawesome5/css/v5-font-face.css" rel="stylesheet">
+
+    <link href=" {{ asset('assets/vendor/bootstrap-icons/bootstrap-icons.css') }} " rel="stylesheet">
+    <link href="{{ asset('assets/vendor/boxicons/css/boxicons.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/vendor/swiper/swiper-bundle.min.css') }}" rel="stylesheet">
+  
+    <!-- Template Main CSS File -->
+    {{-- <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet"> --}}
+  
+    
+
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+    <!-- Styles -->
+    <link href="{{ asset('css/sb-admin-2.min.css') }}" rel="stylesheet">
+    <script src="{{ asset('assets/vendor/bootsrap/css/bootsrap.min.css') }}"></script>
+
+    {{-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous"> --}}
+    <!-- Favicon -->
+    <link href=" {{ asset('assets/img/favicon.png') }}" rel="icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/trix/1.3.1/trix.min.css" />
+
+
+
+   
+    <style type="text/css">
+            .jst-hours {
+              float: left;
+            }
+            .jst-minutes {
+              float: left;
+            }
+            .jst-seconds {
+              float: left;
+            }
+            .jst-clearDiv {
+              clear: both;
+            }
+            .jst-timeout {
+              color: red;
+            }
+            .custom-toastr {
+                position: fixed;
+                top: 100px;
+                right: 120px;
+                background-color: #007bff;
+                color: #fff;
+                padding: 15px;
+                border-radius: 5px;
+                display: none;
+                z-index: 9999;
+            }
+
+            /* Highlight jawaban yang dipilih */
+            .quiz-radio:checked + .quiz-option {
+                background-color: #E6F1FB;
+                border-color: #185FA5 !important;
+                color: #0C447C;
+            }
+
+            .quiz-radio:checked + .quiz-option span.text-muted {
+                color: #185FA5 !important;
+            }
+
+            .quiz-option:hover {
+                background-color: var(--bs-light);
+                border-color: #aaa !important;
+            }
+
+        </style>
+
+
+    @livewireStyles
+</head>
+<body id="page-top">
+
+<!-- Page Wrapper -->
+<div id="wrapper">
+
+    @can('admin')
+
+    <x-side-bar-admin />
+
+    @endcan
+
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+
+        <!-- Main Content -->
+        <div id="content">
+
+            <!-- Topbar -->
+            <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+
+                <!-- Sidebar Toggle (Topbar) -->
+                <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+                    <i class="fa fa-bars"></i>
+                </button>
+
+                {{-- <div class="nav-item">
+                    <a href="{{ route('page.harga') }}" class="btn btn-danger">Beli Paket</a>
+                </div>
+
+                <div class="nav-item ml-2 d-sm-block d-none">
+                    <a href="/page/cara-membayar" class="btn btn-warning text-dark">Cara Membayar</a>
+                </div> --}}
+
+                <p class="text-center h4">
+                    System Psikotest Terpadu
+                </p>
+
+               
+                <!-- Topbar Navbar -->
+                <ul class="navbar-nav ml-auto">
+
+                    @can('admin')
+                    <x-link-to-test />
+                    @endcan
+    
+                    <!-- Nav Item - Search Dropdown (Visible Only XS) -->
+                    <li class="nav-item dropdown no-arrow d-sm-none">
+                        <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <!-- Dropdown - Messages -->
+                        <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in" aria-labelledby="searchDropdown">
+                            <form class="form-inline mr-auto w-100 navbar-search">
+                                <div class="input-group">
+                                    <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+                                    <div class="input-group-append">
+                                        <button class="btn btn-primary" type="button">
+                                            <i class="fas fa-search fa-sm"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
                         </div>
-                    </div>
+                    </li>
+
+                    <!-- Nav Item - Alerts -->
+                    <li class="nav-item dropdown no-arrow mx-1 d-none">
+                        <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-bell fa-fw"></i>
+                            <!-- Counter - Alerts -->
+                            <span class="badge badge-danger badge-counter">3+</span>
+                        </a>
+                        <!-- Dropdown - Alerts -->
+                        <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
+                            <h6 class="dropdown-header">
+                                Alerts Center
+                            </h6>
+                            <a class="dropdown-item d-flex align-items-center" href="#">
+                                <div class="mr-3">
+                                    <div class="icon-circle bg-primary">
+                                        <i class="fas fa-file-alt text-white"></i>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="small text-gray-500">December 12, 2019</div>
+                                    <span class="font-weight-bold">A new monthly report is ready to download!</span>
+                                </div>
+                            </a>
+                            <a class="dropdown-item d-flex align-items-center" href="#">
+                                <div class="mr-3">
+                                    <div class="icon-circle bg-success">
+                                        <i class="fas fa-donate text-white"></i>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="small text-gray-500">December 7, 2019</div>
+                                    $290.29 has been deposited into your account!
+                                </div>
+                            </a>
+                            <a class="dropdown-item d-flex align-items-center" href="#">
+                                <div class="mr-3">
+                                    <div class="icon-circle bg-warning">
+                                        <i class="fas fa-exclamation-triangle text-white"></i>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="small text-gray-500">December 2, 2019</div>
+                                    Spending Alert: We've noticed unusually high spending for your account.
+                                </div>
+                            </a>
+                            <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
+                        </div>
+                    </li>                    
+                    
+
+                    <div class="topbar-divider d-none d-sm-block"></div>
+
+                    <!-- Nav Item - User Information -->
+                    <li class="nav-item dropdown no-arrow">
+                        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ Auth::user()->name }}</span>
+                            
+                            <img class="img-profile rounded-circle avatar font-weight-bold" src="{{ '/storage/' . auth()->user()->avatar }}" alt="" onerror="this.onerror=null;this.src='{{ asset('img/user.png') }}';"
+                            >
+                           
+                        </a>
+                        <!-- Dropdown - User Information -->
+                        <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                            <a class="dropdown-item" href="{{ route('myprofile') }}">
+                                <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                                {{ __('My Profile') }}
+                            </a>
+                            @can('admin')
+                            <a class="dropdown-item" href="javascript:void(0)">
+                                <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+                                {{ __('Settings') }}
+                            </a>
+                            @endcan
+                       
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                                <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                {{ __('Logout') }}
+                            </a>
+                        </div>
+                    </li>
+
+                </ul>
+
+            </nav>
+            <!-- End of Topbar -->
+
+            <!-- Begin Page Content -->
+            <div class="container-fluid">
+
+                @yield('main-content')
+
+            </div>
+            <!-- /.container-fluid -->
+
+        </div>
+        <!-- End of Main Content -->
+
+        <!-- Footer -->
+        <footer class="sticky-footer bg-white">
+            <div class="container my-auto">
+                <div class="copyright text-center my-auto">
+                    <span>Copyright &copy; {{ config('app.name') }} {{ now()->year }}</span>
                 </div>
             </div>
-        </div>
+        </footer>
+        <!-- End of Footer -->
 
+    </div>
+    <!-- End of Content Wrapper -->
+
+</div>
+
+<!-- Scroll to Top Button-->
+<a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+</a>
+
+<!-- Logout Modal-->
+<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Anda Yakin ingin logout?</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">Klik Tombol Logout untuk Keluar dari halaman ini</div>
+            <div class="modal-footer">
+                <button class="btn btn-link" type="button" data-dismiss="modal">{{ __('Cancel') }}</button>
+                <a class="btn btn-danger" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">{{ __('Logout') }}</a>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    @csrf
+                </form>
+            </div>
+        </div>
     </div>
 </div>
 
-@endsection
 
 
-{{-- CSS: masuk ke <head> via push jika layout mendukung @stack('styles'),
-     atau taruh langsung di sini (Bootstrap 4 izinkan style di body) --}}
-@push('scripts')
+@livewireScripts
 
-{{-- DataTables CSS (boleh di sini karena Bootstrap 4 toleran) --}}
-{{-- <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap4.min.css">
-<link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.4.1/css/buttons.bootstrap4.min.css"> --}}
-<style>
-    #tableRekap thead th { background-color: #343a40; color: #fff; vertical-align: middle; white-space: nowrap; }
-    #tableRekap tbody tr:hover { background-color: #f1f3f5; }
-    div.dataTables_wrapper div.dataTables_filter input { border-radius: 20px; padding: 4px 12px; }
-    .dt-buttons .btn { border-radius: 6px !important; font-size: 13px; }
-</style>
+{{-- <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script> --}}
+<script src="{{ asset('vendor/livewire-alert/livewire-alert.js') }}"></script> 
+  
+<x-livewire-alert::scripts />
 
-{{-- DataTables JS — TANPA jQuery karena sudah di-load layout --}}
-<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap4.min.js"></script>
+<!-- Scripts -->
+<script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
+<script src="{{asset('js/jquery.simple.timer.js')}}" type="text/javascript"></script>
+<script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+<script src="{{ asset('vendor/jquery-easing/jquery.easing.min.js') }}"></script>
+<script src="{{asset('vendor/bootstrap-toastr/toastr.min.js')}}" type="text/javascript"></script>
+<script src="{{ asset('js/sb-admin-2.min.js') }}"></script>
 
-{{-- Buttons & Export --}}
-{{-- <script src="https://cdn.datatables.net/buttons/2.4.1/js/dataTables.buttons.min.js"></script>
-<script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.bootstrap4.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js"></script>
-<script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.html5.min.js"></script>
-<script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.print.min.js"></script> --}}
-
+{{-- <script src="{{ asset('vendor/ckeditor/ckeditor.js') }}"></script> --}}
+<script src="https://cdn.ckeditor.com/4.22.1/standard/ckeditor.js"></script>
 <script>
-$(document).ready(function () {
-    $('#tableRekap').DataTable({
-        language: {
-            search:       "Cari:",
-            lengthMenu:   "Tampilkan _MENU_ data",
-            info:         "Menampilkan _START_ - _END_ dari _TOTAL_ data",
-            infoEmpty:    "Tidak ada data",
-            infoFiltered: "(difilter dari _MAX_ total data)",
-            zeroRecords:  "Data tidak ditemukan",
-            paginate: { first: "Pertama", last: "Terakhir", next: "»", previous: "«" }
-        },
-        pageLength: 25,
-        lengthMenu: [10, 25, 50, 100, { label: 'Semua', value: -1 }],
-        dom: '<"row mb-2"<"col-sm-6"B><"col-sm-6"f>>' +
-             '<"row"<"col-sm-12"tr>>' +
-             '<"row mt-2"<"col-sm-5"i><"col-sm-7"p>>',
-        buttons: [
-            {
-                extend: 'excelHtml5',
-                text: '<i class="fas fa-file-excel mr-1"></i> Excel',
-                className: 'btn btn-success btn-sm',
-                title: 'Rekap Biodata',
-                exportOptions: { columns: ':visible' }
-            },
-            {
-                extend: 'csvHtml5',
-                text: '<i class="fas fa-file-csv mr-1"></i> CSV',
-                className: 'btn btn-info btn-sm',
-                title: 'Rekap Biodata',
-                exportOptions: { columns: ':visible' }
-            },
-            {
-                extend: 'pdfHtml5',
-                text: '<i class="fas fa-file-pdf mr-1"></i> PDF',
-                className: 'btn btn-danger btn-sm',
-                title: 'Rekap Biodata',
-                orientation: 'landscape',
-                pageSize: 'A4',
-                exportOptions: { columns: ':visible' }
-            },
-            {
-                extend: 'print',
-                text: '<i class="fas fa-print mr-1"></i> Print',
-                className: 'btn btn-secondary btn-sm',
-                title: 'Rekap Biodata',
-                exportOptions: { columns: ':visible' }
-            }
-        ],
-        order: [[0, 'asc']]
-    });
-});
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/trix/1.3.1/trix.min.js"></script>   
+
+
+
+
+<script type="text/javascript">
+	window.livewire.on('closeModal', () => {
+		$('#createDataModal').modal('hide');
+        $('#importDataModal').modal('hide');
+        $('#hapusModal').modal('hide');
+	}); 
+   
+  
+
+    @if( in_array( \Request::route()->getName() , [
+        "admin.questions.edit",
+        "posts.create",
+        "posts.edit",
+       " admin.packages.create"
+    ]))
+
+    $(document).ready(function () {      
+       
+
+        CKEDITOR.replace( 'ckeditor' , {
+
+            filebrowserUploadUrl: "{{route('ckeditor.image-upload', ['_token' => csrf_token() ])}}",
+            filebrowserUploadMethod: 'form'
+
+        });
+
+        CKEDITOR.inline( 'ckeditor-a' , {
+
+            filebrowserUploadUrl: "{{route('ckeditor.image-upload', ['_token' => csrf_token() ])}}",
+            filebrowserUploadMethod: 'form'
+
+        });
+
+
+        CKEDITOR.inline( 'ckeditor-b' , {
+
+        filebrowserUploadUrl: "{{route('ckeditor.image-upload', ['_token' => csrf_token() ])}}",
+        filebrowserUploadMethod: 'form'
+
+        });
+
+
+        CKEDITOR.inline( 'ckeditor-c' , {
+
+        filebrowserUploadUrl: "{{route('ckeditor.image-upload', ['_token' => csrf_token() ])}}",
+        filebrowserUploadMethod: 'form'
+
+        });
+
+        CKEDITOR.inline( 'ckeditor-d' , {
+
+        filebrowserUploadUrl: "{{route('ckeditor.image-upload', ['_token' => csrf_token() ])}}",
+        filebrowserUploadMethod: 'form'
+
+        });
+
+
+        CKEDITOR.inline( 'ckeditor-e' , {
+
+        filebrowserUploadUrl: "{{route('ckeditor.image-upload', ['_token' => csrf_token() ])}}",
+        filebrowserUploadMethod: 'form'
+
+        });
+
+
+
+
+     
+
+    });   
+
+    @endif
+
+
 </script>
 
-@endpush
+@stack('scripts')
+
+</body>
+</html>

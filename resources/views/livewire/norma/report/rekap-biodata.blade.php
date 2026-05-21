@@ -1,17 +1,6 @@
 @extends('layouts.admin')
+
 @section('main-content')
-
-{{-- DataTables CSS --}}
-<link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap4.min.css">
-<link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.4.1/css/buttons.bootstrap4.min.css">
-
-<style>
-    #tableRekap thead th { background-color: #343a40; color: #fff; vertical-align: middle; white-space: nowrap; }
-    #tableRekap tbody tr:hover { background-color: #f1f3f5; }
-    div.dataTables_wrapper div.dataTables_filter input { border-radius: 20px; padding: 4px 12px; border: 1px solid #ced4da; }
-    .dt-buttons .btn { border-radius: 6px !important; font-size: 13px; }
-    .dataTables_info, .dataTables_paginate { margin-top: 8px; }
-</style>
 
 <div class="row justify-content-center">
     <div class="col-md-12">
@@ -22,13 +11,12 @@
             <div class="col-md-12">
                 <div class="card shadow">
                     <div class="card-body">
-
                         <div class="pt-2">
                             <div class="table-responsive">
                                 <table id="tableRekap" class="table table-bordered table-sm table-hover w-100">
                                     <thead class="thead-dark">
                                         <tr>
-                                            <th>ID</th>
+                                            <th>No</th>
                                             <th>Nama</th>
                                             <th>Nomor</th>
                                             <th>Pangkat</th>
@@ -37,13 +25,14 @@
                                             <th>Instansi</th>
                                             <th>Angkatan</th>
                                             <th>IQ</th>
+                                            <th>Tgl Test</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @foreach($user_norma as $row)
                                         <tr>
-                                            <td>{{ $row->user_id }}</td>
-                                            <td>{{ $row->nama ?? $row->user->name }}</td>
+                                            <td>{{ $loop->iteration }}</td>
+                                            <td>{{ ($row->nama) ? $row->nama : $row->user->name }}</td>
                                             <td>{{ $row->nomor_test }}</td>
                                             <td>{{ $row->pangkat }}</td>
                                             <td>{{ $row->tgl_lahir }}</td>
@@ -51,13 +40,13 @@
                                             <td>{{ $row->instansi }}</td>
                                             <td>{{ $row->angkatan }}</td>
                                             <td>{{ $row->user?->iq }}</td>
+                                            <td>{{ date("d-m-Y" , strtotime($row->created_at)) }}</td>
                                         </tr>
                                         @endforeach
                                     </tbody>
                                 </table>
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>
@@ -66,14 +55,28 @@
     </div>
 </div>
 
-{{-- jQuery (skip jika sudah ada di layout) --}}
-<script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+@endsection
 
-{{-- DataTables JS --}}
+
+{{-- CSS: masuk ke <head> via push jika layout mendukung @stack('styles'),
+     atau taruh langsung di sini (Bootstrap 4 izinkan style di body) --}}
+@push('scripts')
+
+{{-- DataTables CSS (boleh di sini karena Bootstrap 4 toleran) --}}
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap4.min.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.4.1/css/buttons.bootstrap4.min.css">
+<style>
+    #tableRekap thead th { background-color: #343a40; color: #fff; vertical-align: middle; white-space: nowrap; }
+    #tableRekap tbody tr:hover { background-color: #f1f3f5; }
+    div.dataTables_wrapper div.dataTables_filter input { border-radius: 20px; padding: 4px 12px; }
+    .dt-buttons .btn { border-radius: 6px !important; font-size: 13px; }
+</style>
+
+{{-- DataTables JS — TANPA jQuery karena sudah di-load layout --}}
 <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap4.min.js"></script>
 
-{{-- Buttons (Export) --}}
+{{-- Buttons & Export --}}
 <script src="https://cdn.datatables.net/buttons/2.4.1/js/dataTables.buttons.min.js"></script>
 <script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.bootstrap4.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
@@ -86,18 +89,13 @@
 $(document).ready(function () {
     $('#tableRekap').DataTable({
         language: {
-            search:         "Cari:",
-            lengthMenu:     "Tampilkan _MENU_ data",
-            info:           "Menampilkan _START_ - _END_ dari _TOTAL_ data",
-            infoEmpty:      "Tidak ada data",
-            infoFiltered:   "(difilter dari _MAX_ total data)",
-            zeroRecords:    "Data tidak ditemukan",
-            paginate: {
-                first:    "Pertama",
-                last:     "Terakhir",
-                next:     "»",
-                previous: "«"
-            }
+            search:       "Cari:",
+            lengthMenu:   "Tampilkan _MENU_ data",
+            info:         "Menampilkan _START_ - _END_ dari _TOTAL_ data",
+            infoEmpty:    "Tidak ada data",
+            infoFiltered: "(difilter dari _MAX_ total data)",
+            zeroRecords:  "Data tidak ditemukan",
+            paginate: { first: "Pertama", last: "Terakhir", next: "»", previous: "«" }
         },
         pageLength: 25,
         lengthMenu: [10, 25, 50, 100, { label: 'Semua', value: -1 }],
@@ -111,14 +109,7 @@ $(document).ready(function () {
                 className: 'btn btn-success btn-sm',
                 title: 'Rekap Biodata',
                 exportOptions: { columns: ':visible' }
-            },
-            {
-                extend: 'csvHtml5',
-                text: '<i class="fas fa-file-csv mr-1"></i> CSV',
-                className: 'btn btn-info btn-sm',
-                title: 'Rekap Biodata',
-                exportOptions: { columns: ':visible' }
-            },
+            },           
             {
                 extend: 'pdfHtml5',
                 text: '<i class="fas fa-file-pdf mr-1"></i> PDF',
@@ -136,10 +127,9 @@ $(document).ready(function () {
                 exportOptions: { columns: ':visible' }
             }
         ],
-        order: [[0, 'asc']],
-        responsive: true
+        order: [[0, 'asc']]
     });
 });
 </script>
 
-@endsection
+@endpush

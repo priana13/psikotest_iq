@@ -60,6 +60,13 @@
         </a>
     </li> 
 
+    <li class="nav-item {{ Nav::isRoute('norma.report.rekap-biodata') }}">
+        <a class="nav-link py-2" href="{{ route('norma.report.rekap-biodata') }}">
+            <i class="fas fa-fw fa-users"></i>
+            <span>{{ __('REKAP') }}</span>
+        </a>
+    </li> 
+
     @endcan
 
     {{-- <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
