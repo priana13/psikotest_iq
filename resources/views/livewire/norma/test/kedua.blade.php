@@ -29,26 +29,43 @@
                             </div>
                             @if($QuizWa)
                                 @foreach($QuizWa as $QW => $q)
-                                    
-                                    <div class="card-body">                                               
-                                         {{-- Pilihan Jawaban --}}
-                                        @foreach (['a','b','c','d','e'] as $opt)
-                                        <div class="mb-2">
-                                            <input type="radio"
-                                                id="option_{{ $q['no'] }}{{ $opt }}"
-                                                wire:model="answer{{ $q['no'] }}"
-                                                value="{{ $opt }}"
-                                                wire:change="updateDatabase({{ $q['id'] }},{{ $q['no'] }})"
-                                                class="d-none quiz-radio">
 
-                                            <label for="option_{{ $q['no'] }}{{ $opt }}"
-                                                class="quiz-option d-flex align-items-center gap-2 px-3 py-2 rounded border w-100"
-                                                style="cursor:pointer;transition:background .15s,border-color .15s;">
-                                                <span class="fw-medium text-muted" style="min-width:20px;">{{ $opt }}.</span>
-                                                <span>{{ $q[$opt] }}</span>
-                                            </label>
-                                        </div>
-                                        @endforeach
+                                 {{-- Nomor & Pertanyaan --}}
+                                
+                                    
+                                    <div class="card-body">    
+
+                                        <div class="d-flex align-items-start gap-2 mb-3 pb-3">
+                                            <span class="badge rounded-circle bg-secondary text-white d-flex align-items-center justify-content-center mr-3"
+                                                style="width:32px;height:32px;font-size:14px;flex-shrink:0;">
+                                                {{ $q['no'] }}
+                                            </span>
+
+                                            <div>
+                                            
+                                              {{-- Pilihan Jawaban --}}
+                                                @foreach (['a','b','c','d','e'] as $opt)
+                                                <div class="mb-2">
+                                                    <input type="radio"
+                                                        id="option_{{ $q['no'] }}{{ $opt }}"
+                                                        wire:model="answer{{ $q['no'] }}"
+                                                        value="{{ $opt }}"
+                                                        wire:change="updateDatabase({{ $q['id'] }},{{ $q['no'] }})"
+                                                        class="d-none quiz-radio">
+
+                                                    <label for="option_{{ $q['no'] }}{{ $opt }}"
+                                                        class="quiz-option d-flex align-items-center gap-2 px-3 py-2 rounded border w-100"
+                                                        style="cursor:pointer;transition:background .15s,border-color .15s;">
+                                                        <span class="fw-medium text-muted" style="min-width:20px;">{{ $opt }}.</span>
+                                                        <span>{{ $q[$opt] }}</span>
+                                                    </label>
+                                                </div>
+                                                @endforeach
+
+                                            
+                                            </div>  
+
+                                        </div>                                      
 
                                     </div>
                                 @endforeach
