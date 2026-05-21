@@ -3,6 +3,7 @@
 use App\Http\Controllers\Norma\BiodataController;
 use App\Http\Controllers\Norma\PetunjukController;
 use App\Http\Controllers\Norma\QuizController;
+use App\Http\Controllers\Norma\RekapDataController;
 use App\Http\Controllers\Norma\ReportController;
 use App\Http\Livewire\Norma\GenerateUser;
 use App\Http\Livewire\Norma\Report\HasilNormaTest;
@@ -69,6 +70,9 @@ use Illuminate\Support\Facades\Route;
 		Route::view('/report/rekap' , 'livewire.norma.report.index')->name('norma.report.rekap');	
 		Route::view('/report/rekap/list' , 'livewire.norma.report.rekap-list')->name('norma.report.rekap.list');
 		Route::get('/report/norma-test/{user}' , HasilNormaTest::class)->name('norma.report.detail');
+
+		Route::get('/report/rekap-biodata' , [RekapDataController::class , 'rekapBiodata'])->name('norma.report.rekap-biodata');	
+
 
 		Route::get('/generate-user', GenerateUser::class)->name('generate-user');
 
