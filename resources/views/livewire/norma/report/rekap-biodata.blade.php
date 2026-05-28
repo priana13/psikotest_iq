@@ -27,7 +27,8 @@
 
                                             @foreach($kriteria_test as $kriteria)
 
-                                            <th>{{ $kriteria }}</th>
+                                            <th>{{ $kriteria }}-rw</th>
+                                            <th>{{ $kriteria }}-sw</th>                                          
 
                                             @endforeach
 
@@ -58,7 +59,8 @@
 
                                                 ?>
 
-                                                <td>RW: {{ $score->$kriteria }} <br> SW: {{ $getKunciNorma($row->usia, $kriteria, $score->$kriteria) }}</td>
+                                                <td>{{ $score->$kriteria }}</td>
+                                                <td>{{ $getKunciNorma($row->usia, $kriteria, $score->$kriteria) }}</td>
 
                                             @endforeach
 
