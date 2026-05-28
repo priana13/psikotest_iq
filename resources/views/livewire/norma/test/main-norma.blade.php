@@ -1,9 +1,7 @@
 <div class="row justify-content-center">
     <div class="col-md-12"> 
 
-        <div>
-
-           {{-- <p>Tipe : {{ $tipe }}</p> --}}
+        <div>         
 
             @if($tipe == 1)    
                 @livewire('norma.test.kesatu')   

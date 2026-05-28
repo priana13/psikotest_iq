@@ -28,6 +28,15 @@
                         Test Selesai
                     </span>
 
+
+                    {{-- tombol ke test 16PF --}}
+                    <div class="text-center mt-4">
+                        <p>Lanjutkan ke Test 16PF?</p>
+
+                        <a class="btn btn-primary" href="https://16pf.gemapersona.com/?nama=&usia=">Test 16PF</a>
+                    
+                    </div>
+
                 </div>
             </div>
         </div>
