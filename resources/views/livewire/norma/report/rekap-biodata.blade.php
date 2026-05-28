@@ -30,15 +30,17 @@
                                     </thead>
                                     <tbody>
                                         @foreach($user_norma as $row)
+
+                                     
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
                                             <td>{{ ($row->nama) ? $row->nama : $row->user->name }}</td>
                                             <td>{{ $row->nomor_test }}</td>
                                             <td>{{ $row->pangkat }}</td>
                                             <td>{{ $row->tgl_lahir }}</td>
-                                            <td>{{ $row->usia }}</td>
+                                            <td>{{ ($row->usia) ? $row->usia . 'th' : '' }}</td>
                                             <td>{{ $row->instansi }}</td>
-                                            <td>{{ $row->angkatan }}</td>
+                                            <td>{{ $row->angkatan_tahun }}</td>
                                             <td>{{ $row->user?->iq }}</td>
                                             <td>{{ date("d-m-Y" , strtotime($row->created_at)) }}</td>
                                         </tr>
