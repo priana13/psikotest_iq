@@ -24,6 +24,14 @@
                                             <th>Umur</th>
                                             <th>Instansi</th>
                                             <th>Angkatan</th>
+
+                                            @foreach($kriteria_test as $kriteria)
+
+                                            <th>{{ $kriteria }}</th>
+
+                                            @endforeach
+
+
                                             <th>IQ</th>
                                             <th>Tgl Test</th>
                                         </tr>
@@ -41,6 +49,21 @@
                                             <td>{{ ($row->usia) ? $row->usia . 'th' : '' }}</td>
                                             <td>{{ $row->instansi }}</td>
                                             <td>{{ $row->angkatan_tahun }}</td>
+
+                                            @foreach($kriteria_test as $kriteria)
+
+                                            <?php 
+
+                                                $score = $score_subtes->where('nomor_test', $row->nomor_test)->where('user_id', $row->user_id)->first();                                              
+
+                                            ?>
+
+                                            <td>{{ $score->$kriteria }}</td>
+
+                                            @endforeach
+
+
+
                                             <td>{{ $row->user?->iq }}</td>
                                             <td>{{ date("d-m-Y" , strtotime($row->created_at)) }}</td>
                                         </tr>

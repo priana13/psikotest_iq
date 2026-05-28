@@ -82,7 +82,7 @@ class RekapList extends Component
                     ->paginate(10);
                  
             
-        return view('livewire.norma.report.rekap-list',['rekap' => $rekapRecords]);        
+        return view('livewire.norma.report.rekap-list',['rekap' => $rekapRecords])->extends('layouts.admin')->section('main-content');        
     }
 
 }
