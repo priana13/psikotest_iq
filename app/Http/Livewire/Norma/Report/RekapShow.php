@@ -49,35 +49,49 @@ class RekapShow extends Component
         $userNorma = DataUserNorma::where('user_id',$userId)->first();
         $umur = ($userNorma)? Carbon::parse($userNorma->tgl_lahir)->age:null;
         $tipe_usia = '';
-        if($umur ==13){
-            $tipe_usia = 'A';
-        }elseif($umur ==14){
-            $tipe_usia = 'B';
-        }elseif($umur ==15){
-            $tipe_usia = 'C';
-        }elseif($umur ==16){
-            $tipe_usia = 'D';
-        }elseif($umur ==17){
-            $tipe_usia = 'E';
-        }elseif($umur ==18){
-            $tipe_usia = 'F';
-        }elseif($umur ==19 || $umur == 20){
-            $tipe_usia = 'G';
-        }elseif($umur > 20 && $umur < 25){
-            $tipe_usia = 'H';
-        }elseif($umur > 24 && $umur < 29){
-            $tipe_usia = 'I';
-        }elseif($umur > 28 && $umur < 34){
-            $tipe_usia = 'J';
-        }elseif($umur > 33 && $umur < 40){
-            $tipe_usia = 'K';
-        }elseif($umur > 39 && $umur <46){
-            $tipe_usia = 'L';
-        }elseif($umur > 44){
-            $tipe_usia = 'M';
-        }else{
-            $tipe_usia = 'N';
-        }
+        // if($umur ==13){
+        //     $tipe_usia = 'A';
+        // }elseif($umur ==14){
+        //     $tipe_usia = 'B';
+        // }elseif($umur ==15){
+        //     $tipe_usia = 'C';
+        // }elseif($umur ==16){
+        //     $tipe_usia = 'D';
+        // }elseif($umur ==17){
+        //     $tipe_usia = 'E';
+        // }elseif($umur ==18){
+        //     $tipe_usia = 'F';
+        // }elseif($umur ==19 || $umur == 20){
+        //     $tipe_usia = 'G';
+        // }elseif($umur > 20 && $umur < 25){
+        //     $tipe_usia = 'H';
+        // }elseif($umur > 24 && $umur < 29){
+        //     $tipe_usia = 'I';
+        // }elseif($umur > 28 && $umur < 34){
+        //     $tipe_usia = 'J';
+        // }elseif($umur > 33 && $umur < 40){
+        //     $tipe_usia = 'K';
+        // }elseif($umur > 39 && $umur <46){
+        //     $tipe_usia = 'L';
+        // }elseif($umur > 44){
+        //     $tipe_usia = 'M';
+        // }else{
+        //     $tipe_usia = 'N';
+        // }
+
+        $map = [13=>'A', 14=>'B', 15=>'C', 16=>'D', 17=>'E', 18=>'F'];
+
+        $tipe_usia = match(true) {
+            isset($map[$umur])     => $map[$umur],
+            $umur <= 20            => 'G',
+            $umur <= 24            => 'H',
+            $umur <= 28            => 'I',
+            $umur <= 33            => 'J',
+            $umur <= 39            => 'K',
+            $umur <= 45            => 'L',
+            $umur > 45             => 'M',
+            default                => 'N',
+        };
 
 
 

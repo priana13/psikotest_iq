@@ -52,13 +52,13 @@
 
                                             @foreach($kriteria_test as $kriteria)
 
-                                            <?php 
+                                                <?php 
 
-                                                $score = $score_subtes->where('nomor_test', $row->nomor_test)->where('user_id', $row->user_id)->first();                                              
+                                                    $score = $score_subtes->where('nomor_test', $row->nomor_test)->where('user_id', $row->user_id)->first();                                              
 
-                                            ?>
+                                                ?>
 
-                                            <td>{{ $score->$kriteria }}</td>
+                                                <td>RW: {{ $score->$kriteria }} <br> SW: {{ $getKunciNorma($row->usia, $kriteria, $score->$kriteria) }}</td>
 
                                             @endforeach
 

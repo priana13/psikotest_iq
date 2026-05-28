@@ -3,25 +3,31 @@
 namespace App\Http\Controllers\Norma;
 
 use App\Http\Controllers\Controller;
+use App\Models\KunciNorma;
 use App\Models\UserNorma;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class RekapDataController extends Controller
 {
+    public function getKriteria(){
+
+        return ["se","wa","an","ge","ra","zr","fa","wu","me"];
+    }
     public function rekapBiodata(Request $request){
 
         $user_norma = UserNorma::get();
 
         $scoreSubtes = $this->getScoreSubtes();
 
-        $kriteria_test = ["se","wa","an","ge","ra","zr","fa","wu","me"];
+        $kriteria_test = $this->getKriteria();
 
 
         return view('livewire.norma.report.rekap-biodata' , [
             'user_norma' => $user_norma,
             'score_subtes' => $scoreSubtes,
-            'kriteria_test' => $kriteria_test,            
+            'kriteria_test' => $kriteria_test,  
+            'getKunciNorma' => fn($umur, $kriteria, $nilai) => $this->getKunciNorma($umur, $kriteria, $nilai),          
         ]);
 
     }
@@ -59,6 +65,29 @@ class RekapDataController extends Controller
 
         return $rekapRecords;
 
+
+    }
+
+    public function getKunciNorma($umur , $kriteria , $nilai_norma)
+    {
+
+        $map = [13=>'A', 14=>'B', 15=>'C', 16=>'D', 17=>'E', 18=>'F'];
+
+        $tipe_usia = match(true) {
+            isset($map[$umur])     => $map[$umur],
+            $umur <= 20            => 'G',
+            $umur <= 24            => 'H',
+            $umur <= 28            => 'I',
+            $umur <= 33            => 'J',
+            $umur <= 39            => 'K',
+            $umur <= 45            => 'L',
+            $umur > 45             => 'M',
+            default                => 'N',
+        };
+      
+        $nilai_sw = KunciNorma::select($kriteria)->where('rw',$nilai_norma)->where('tipe_usia',$tipe_usia)->value($kriteria);
+
+        return $nilai_sw;
 
     }
 
