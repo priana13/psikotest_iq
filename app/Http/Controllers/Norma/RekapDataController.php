@@ -10,7 +10,7 @@ class RekapDataController extends Controller
 {
     public function rekapBiodata(Request $request){
 
-        $user_norma = UserNorma::paginate(100);
+        $user_norma = UserNorma::get();
 
         return view('livewire.norma.report.rekap-biodata' , [
             'user_norma' => $user_norma

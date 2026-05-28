@@ -17,11 +17,7 @@ class BiodataController extends Controller
     }
 
     public function store(Request $request)
-    {
-        // Validasi dan simpan data biodata
-
-        // dd($request->all());
-
+    {  
         $request->validate([
                 'nomor' => 'required',  
                 'nama' => 'required|string',          
@@ -51,7 +47,8 @@ class BiodataController extends Controller
                 'pendidikan'    => $request->instansi,
                 'instansi'      => $request->instansi,
                 'pangkat'      => $request->pangkat,
-                'angkatan_tahun' => $request->angkatan_tahun
+                'angkatan_tahun' => $request->angkatan_tahun,
+                'usia' => $request->usia
             ]
         );
 
