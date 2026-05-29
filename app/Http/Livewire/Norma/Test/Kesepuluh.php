@@ -67,7 +67,12 @@ class Kesepuluh extends Component
             );
         }
 
-      
+        if($userNorma){
+            $userNorma->update([
+                'status' => "Selesai"
+            ]);
+        }
+
         $this->emit('reloadPage');        
     }
 
@@ -88,7 +93,15 @@ class Kesepuluh extends Component
                 'nilai' => ($QuizMe->k == $answer)? $NormaMe->nilai_min :null                
             ]
         );
-         
+
+        $userNorma = DataUserNorma::where('user_id','=',$this->user_id)->first();
+
+        if($userNorma){
+            $userNorma->update([
+                'status' => "Selesai"
+            ]);
+        }
+
     }
 
 

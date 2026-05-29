@@ -16,7 +16,7 @@ class RekapDataController extends Controller
     }
     public function rekapBiodata(Request $request){
 
-        $user_norma = UserNorma::get();
+        $user_norma = UserNorma::whereStatus('Selesai')->get();
 
         $scoreSubtes = $this->getScoreSubtes();
 

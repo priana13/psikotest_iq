@@ -18,6 +18,7 @@ class BiodataController extends Controller
 
     public function store(Request $request)
     {  
+        
         $request->validate([
                 'nomor' => 'required',  
                 'nama' => 'required|string',          
@@ -32,7 +33,8 @@ class BiodataController extends Controller
         if($user->name == 'Anonim'){
 
             $user->update([
-                'name' => $request->nama
+                'name' => $request->nama,
+                'jenis_kelamin' => $request->jenis_kelamin
             ]);
         }
 
@@ -44,11 +46,14 @@ class BiodataController extends Controller
                 'nama' => $request->nama,
                 'nomor_test'    => $request->nomor,
                 'tgl_lahir'     => $request->tgl_lahir,
-                'pendidikan'    => $request->instansi,
+                'pendidikan'    => $request->pendidikan,
+                'bidang_studi'  => $request->bidang_studi,
+                'jenis_kelamin' => $request->jenis_kelamin,
                 'instansi'      => $request->instansi,
                 'pangkat'      => $request->pangkat,
                 'angkatan_tahun' => $request->angkatan_tahun,
-                'usia' => $request->usia
+                'usia' => $request->usia,
+                'status' => "Pending"
             ]
         );
 

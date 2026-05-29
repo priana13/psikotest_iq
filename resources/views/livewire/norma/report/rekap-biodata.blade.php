@@ -22,6 +22,9 @@
                                             <th>Pangkat</th>
                                             <th>Tgl Lahir</th>
                                             <th>Umur</th>
+                                            <th>Jenis Kelamin</th>
+                                            <th>Pendidikan</th>
+                                            <th>Bidang Studi</th>
                                             <th>Instansi</th>
                                             <th>Angkatan</th>
 
@@ -49,6 +52,9 @@
                                             <td>{{ $row->pangkat }}</td>
                                             <td>{{ $row->tgl_lahir }}</td>
                                             <td>{{ ($row->usia) ? $row->usia . 'th' : '' }}</td>
+                                            <td>{{ $row->jenis_kelamin }}</td>
+                                            <td>{{ $row->pendidikan }}</td>
+                                            <td>{{ $row->bidang_studi }}</td>
                                             <td>{{ $row->instansi }}</td>
                                             <td>{{ $row->angkatan_tahun }}</td>
 

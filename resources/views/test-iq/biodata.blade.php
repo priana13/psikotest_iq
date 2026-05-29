@@ -106,7 +106,7 @@
                     
                 </div>
             </div>
-{{-- 
+
             <div class="flex items-center gap-3">
                 <label class="text-sm font-bold w-36 shrink-0" style="color:var(--blue-deep)">Jenis Kelamin</label>
                 <div class="flex-1">
@@ -124,7 +124,7 @@
                         <div class="text-red-500 text-xs mt-1">{{ $message }}</div>
                     @enderror
                 </div>
-            </div> --}}
+            </div>
 
             <div class="flex items-center gap-3">
                 <label class="text-sm font-bold w-36 shrink-0" style="color:var(--blue-deep)">Tanggal Lahir</label>
@@ -155,6 +155,45 @@
                     @enderror
                 </div>
             </div>
+
+            <div class="flex items-center gap-3">
+                <label class="text-sm font-bold w-36 shrink-0" style="color:var(--blue-deep)">Pendidikan</label>
+
+                <div class="flex-1">
+                    <select id="bio-pendidikan" name="pendidikan" class="form-input">
+                        <option value="">-- Pilih --</option>
+                            @foreach(['SD','SMP','SMA/SMK','D3','S1','S2','S3'] as $edu)
+                                <option value="{{ $edu }}" {{ old('pendidikan') === $edu ? 'selected' : '' }}>
+                                    {{ $edu }}
+                                </option>
+                            @endforeach
+
+                    </select>
+                    <div class="text-red-500 text-xs mt-1">
+                        @error('pendidikan')
+                            {{ $message }}
+                        @enderror
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="flex items-center gap-3">
+                <label class="text-sm font-bold w-36 shrink-0" style="color:var(--blue-deep)">Bidang Study</label>
+                <div class="flex-1">
+                    <input name="bidang_studi" type="text" placeholder="Bidang Study (Optional)"
+                        value="{{ old('bidang_studi') }}"
+                        x-model="bidang_studi"
+                        class="form-input">
+                
+                    @error('bidang_studi')
+                    <div class="text-red-500 text-xs mt-1">{{ $message }}</div>
+                    @enderror
+                    
+                </div>
+            </div>
+
+
 
             <div class="flex items-center gap-3">
                 <label class="text-sm font-bold w-36 shrink-0" style="color:var(--blue-deep)">Instansi / Sekolah</label>
