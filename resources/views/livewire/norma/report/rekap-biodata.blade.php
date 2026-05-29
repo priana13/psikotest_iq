@@ -32,6 +32,7 @@
 
                                             @endforeach
 
+                                            <th>Total RW</th>
 
                                             <th>IQ</th>
                                             <th>Tgl Test</th>
@@ -51,11 +52,14 @@
                                             <td>{{ $row->instansi }}</td>
                                             <td>{{ $row->angkatan_tahun }}</td>
 
+                                            <?php $total_rw = 0; ?>
+
                                             @foreach($kriteria_test as $kriteria)
 
                                                 <?php 
 
-                                                    $score = $score_subtes->where('nomor_test', $row->nomor_test)->where('user_id', $row->user_id)->first();                                              
+                                                    $score = $score_subtes->where('nomor_test', $row->nomor_test)->where('user_id', $row->user_id)->first();  
+                                                    $total_rw += $score->$kriteria;                                            
 
                                                 ?>
 
@@ -64,7 +68,7 @@
 
                                             @endforeach
 
-
+                                            <td>{{ $total_rw }}</td>
 
                                             <td>{{ $row->user?->iq }}</td>
                                             <td>{{ date("d-m-Y" , strtotime($row->created_at)) }}</td>
