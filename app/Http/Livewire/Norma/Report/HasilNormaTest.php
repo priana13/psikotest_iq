@@ -86,7 +86,7 @@ class HasilNormaTest extends Component
         }elseif($umur > 44){
             $tipe_usia = 'M';
         }else{
-            $tipe_usia = 'N';
+            $tipe_usia = 'M';
         }
 
 

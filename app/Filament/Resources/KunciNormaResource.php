@@ -73,6 +73,7 @@ class KunciNormaResource extends Resource
                 Tables\Columns\TextColumn::make('fa'),
                 Tables\Columns\TextColumn::make('wu'),
                 Tables\Columns\TextColumn::make('me'),
+                Tables\Columns\TextColumn::make('ket'),
             ])
             ->filters([
                 SelectFilter::make("tipe_usia")->options([
