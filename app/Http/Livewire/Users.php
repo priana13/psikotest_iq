@@ -29,8 +29,18 @@ class Users extends Component
 
     public function render()
     {
-
-        $users = User::online()->where("level" , $this->level_filter)->latest();
+        
+        $users = User::online()->latest();
+        
+        if($this->level_filter == 'Admin'){
+            
+            $users = $users->whereIn('level', ["Admin", "Super Admin"]);
+            
+        }else{
+            
+            $users = $users->whereIn('level', ["User"]);
+            
+        }
 
         $keyWord = '%'.$this->keyWord .'%';
 
@@ -64,9 +74,9 @@ class Users extends Component
     {
         $this->validate([
 		'name' => 'required',
-		'email' => 'required',
+		'email' => 'required|email|unique:users,email',
 		'level' => 'required',
-        'username' => 'required'
+        'username' => 'required|unique:users,username'
         ]);
 
         $default_password = "123456";
