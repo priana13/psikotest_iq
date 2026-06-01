@@ -33,7 +33,15 @@
                     <div class="text-center mt-4">
                         <p>Lanjutkan ke Test 16PF?</p>
 
-                        <a class="btn btn-primary" href="https://16pf.gemapersona.com/?nama=&usia=">Test 16PF</a>
+                            {{-- Form logout tersembunyi --}}
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>
+
+                            {{-- Tombol Logout --}}
+                            <button class="btn btn-primary" onclick="logoutAndRedirect()">
+                                Test 16PF
+                            </button>
                     
                     </div>
 
@@ -41,4 +49,22 @@
             </div>
         </div>
     </div>
+
+    <script>
+        function logoutAndRedirect() {
+            const form = document.getElementById('logout-form');
+            const redirectUrl = 'https://16pf.gemapersona.com/?nama=&usia=';
+
+            // Tambahkan input hidden untuk redirect setelah logout
+            const input = document.createElement('input');
+            input.type = 'hidden';
+            input.name = 'redirect_to';
+            input.value = redirectUrl;
+            form.appendChild(input);
+
+            form.submit();
+        }
+    </script>
+
+
 </div>
