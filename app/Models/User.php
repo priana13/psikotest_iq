@@ -57,4 +57,9 @@ class User extends Authenticatable
 
         return $this->hasMany(NormaTest::class, 'user_id');
     }
+
+    public function sessions()
+    {
+        return $this->hasMany(Session::class, 'user_id');
+    }
 }

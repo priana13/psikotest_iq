@@ -39,11 +39,13 @@
 								<th>Level</th>
 								<th>Mendaftar</th>
 								<th>Status</th>
+								<th>Login</th>
 								<td>Aksi</td>
 							</tr>
 						</thead>
 						<tbody>
 							@foreach($users as $row)
+							
 							<tr>
 								<td>{{ $row->id }}</td> 
 								<td>{{ $row->name }}</td>
@@ -62,6 +64,11 @@
 										{{ $row->status }} 								   
 								   </span>
 								</td>
+								<td>
+								   <span class="badge badge-{{ $row->sessions_count > 0  ? "success" : "danger"}}">
+										{{ ($row->sessions_count > 0 ? 'Online' : 'Offline') }}
+								   </span>
+								</td>
 								<td width="90">
 								<div class="btn-group">
 									<button type="button" class="btn btn-info btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -75,6 +82,11 @@
 										
 										<a href="#" class="dropdown-item" onclick="confirm('Update Status User {{$row->name}}?')||event.stopImmediatePropagation()" wire:click="updateStatus({{$row->id}})"><i class="fa fa-power-off" ></i> {{ ($row->status == 'Aktif') ? 'Nonaktifkan' : 'Aktifkan'}} </a> 
 										@endif  
+
+										{{-- hapus session user jika sedang login --}}
+										@if($row->sessions_count > 0 && $row->id !== auth()->user()->id)
+											<a href="javascript:void(0);" class="dropdown-item" onclick="confirm('Hapus semua session user {{$row->name}}?')||event.stopImmediatePropagation()" wire:click="destroySession({{$row->id}})"><i class="fa fa-trash"></i> Hapus Session Login </a>
+										@endif
 									</div>
 								
 

@@ -30,7 +30,7 @@ class Users extends Component
     public function render()
     {
         
-        $users = User::online()->latest();
+        $users = User::withCount('sessions')->online()->latest();
         
         if($this->level_filter == 'Admin'){
             
@@ -158,5 +158,15 @@ class Users extends Component
 
         $user->save();
 
+    }
+
+    public function destroySession($id)
+    {
+        $user = User::find($id);
+
+        if ($user) {
+            $user->sessions()->delete();
+            session()->flash('message', 'User sessions deleted successfully.');
+        }
     }
 }
