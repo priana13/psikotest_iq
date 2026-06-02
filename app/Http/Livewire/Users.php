@@ -20,6 +20,12 @@ class Users extends Component
 
     public $level_filter = "User";
 
+    public $filterStatus = '';
+    public $filterLogin = '';
+
+    // Di queryString (opsional, agar filter tersimpan di URL)
+    protected $queryString = ['keyWord', 'filterStatus', 'filterLogin'];
+
     public function mount(){
 
         $this->level_filter = (request()->level) ? request()->level : "User";
@@ -30,7 +36,17 @@ class Users extends Component
     public function render()
     {
         
-        $users = User::withCount('sessions')->online()->latest();
+        $users = User::withCount('sessions')->online()
+                ->when($this->filterStatus, fn($q) =>
+                    $q->where('status', $this->filterStatus)
+                )
+                ->when($this->filterLogin === 'online', fn($q) =>
+                    $q->has('sessions')
+                )
+                ->when($this->filterLogin === 'offline', fn($q) =>
+                    $q->doesntHave('sessions')
+                )
+                ->latest();
         
         if($this->level_filter == 'Admin'){
             
@@ -169,4 +185,13 @@ class Users extends Component
             session()->flash('message', 'User sessions deleted successfully.');
         }
     }
+
+    // Method reset filter
+    public function resetFilter()
+    {
+        $this->keyWord = '';
+        $this->filterStatus = '';
+        $this->filterLogin = '';
+    }
+
 }
