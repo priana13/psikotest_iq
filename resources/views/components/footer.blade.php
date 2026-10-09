@@ -18,6 +18,7 @@
                 <li><a href="{{ route('page.harga') }}">Harga</a></li>
                 <li><a href="{{ route('page.fitur') }}">Fitur</a></li>
                 <li><a href="{{ route('blog') }}">Blog</a></li>
+                <li><a href="https://github.com/priana13/psikotest_iq" target="_blank" rel="noopener noreferrer">GitHub Repository</a></li>
                 <li><a href="/page/{{ ($kontak)?$kontak->slug:"#" }}">{{ ($kontak)?$kontak->title:"Kontak" }}</a></li>
               </ul>
             </div>

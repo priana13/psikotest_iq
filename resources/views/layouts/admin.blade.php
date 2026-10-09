@@ -261,6 +261,7 @@
             <div class="container my-auto">
                 <div class="copyright text-center my-auto">
                     <span>Copyright &copy; {{ config('app.name') }} {{ now()->year }}</span>
+                    <a class="ml-2" href="https://github.com/priana13/psikotest_iq" target="_blank" rel="noopener noreferrer">GitHub Repository</a>
                 </div>
             </div>
         </footer>

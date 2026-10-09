@@ -178,7 +178,7 @@
         <footer class="sticky-footer bg-white">
             <div class="container my-auto">
                 <div class="copyright text-center my-auto">
-                    
+                    <a href="https://github.com/priana13/psikotest_iq" target="_blank" rel="noopener noreferrer">GitHub Repository</a>
                 </div>
             </div>
         </footer>
