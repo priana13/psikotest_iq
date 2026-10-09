@@ -10,9 +10,28 @@
                         <h5 class="m-0 font-weight-bold text-primary text-center"><strong>LIST JAWABAN BENAR (RW) </strong></h5>
                     </div>
                     <div class="card-body row">
-                        <div class="col-md-10">
-                            <!-- Adjusted column size -->
-                            <!-- Your existing content here -->
+                        <div class="col-md-3 mb-3">
+                            <label for="rekap-search">Cari nama peserta</label>
+                            <input id="rekap-search" type="search" class="form-control form-control-sm" placeholder="Nama peserta" wire:model.debounce.300ms="search">
+                        </div>
+                        <div class="col-md-2 mb-3">
+                            <label for="rekap-start-date">Tanggal mulai</label>
+                            <input id="rekap-start-date" type="date" class="form-control form-control-sm" wire:model="startDate">
+                            @error('startDate') <small class="text-danger">{{ $message }}</small> @enderror
+                        </div>
+                        <div class="col-md-2 mb-3">
+                            <label for="rekap-end-date">Tanggal akhir</label>
+                            <input id="rekap-end-date" type="date" class="form-control form-control-sm" wire:model="endDate">
+                            @error('endDate') <small class="text-danger">{{ $message }}</small> @enderror
+                        </div>
+                        <div class="col-md-5 mb-3 d-flex align-items-end justify-content-md-end">
+                            <button type="button" class="btn btn-secondary btn-sm mr-2" wire:click="resetFilters">Reset filter</button>
+                            <button type="button" class="btn btn-success btn-sm" wire:click="exportExcel" wire:loading.attr="disabled" wire:target="exportExcel">
+                                <i class="fa fa-file-excel"></i> Export Excel
+                            </button>
+                        </div>
+                        <div class="col-md-12">
+                            <small class="d-block text-muted">Filter tanggal berdasarkan aktivitas tes terakhir. Export mencakup semua hasil sesuai filter.</small>
                         </div>
                         
                         @if(isset($rekap))
@@ -39,7 +58,7 @@
                                     </thead>
                                     <tbody>
                                     
-                                        @foreach($rekap as $row) 
+                                        @forelse($rekap as $row)
 
                                     
                                     
@@ -72,7 +91,10 @@
                                                 </div>
                                             </td>
                                             
-                                            @endforeach                                        
+                                        </tr>
+                                        @empty
+                                        <tr><td colspan="13" class="text-center">Tidak ada data yang sesuai filter.</td></tr>
+                                        @endforelse
                                     </tbody>
                                 </table>
                                 {{$rekap->links()}} 

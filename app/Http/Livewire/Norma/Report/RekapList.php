@@ -8,6 +8,8 @@ use App\Models\NormaTestLog;
 use App\Models\DataUserNorma;
 use Livewire\WithPagination;
 use DB;
+use App\Exports\RekapRwExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class RekapList extends Component
 {
@@ -15,6 +17,42 @@ class RekapList extends Component
     protected $paginationTheme = 'bootstrap';
     protected $debug = true;
     public $prompt;
+    public $search = '';
+    public $startDate = '';
+    public $endDate = '';
+
+    protected $rules = [
+        'startDate' => 'nullable|date_format:Y-m-d',
+        'endDate' => 'nullable|date_format:Y-m-d',
+    ];
+
+    public function updated($property)
+    {
+        if (in_array($property, ['search', 'startDate', 'endDate'])) {
+            $this->resetPage();
+        }
+    }
+
+    public function resetFilters()
+    {
+        $this->reset(['search', 'startDate', 'endDate']);
+        $this->resetValidation();
+        $this->resetPage();
+    }
+
+    public function exportExcel()
+    {
+        $rules = $this->rules;
+        if ($this->startDate && $this->endDate) {
+            $rules['endDate'] .= '|after_or_equal:startDate';
+        }
+        $this->validate($rules);
+
+        return Excel::download(
+            new RekapRwExport($this->rekapQuery()->get()),
+            'rekap-rw-' . now()->format('Y-m-d') . '.xlsx'
+        );
+    }
 
     protected $listeners = ['showKoreksiGe','showRekap'];
 
@@ -54,9 +92,9 @@ class RekapList extends Component
    
     
 
-    public function render()
-    {        
-        $rekapRecords = DB::table('norma_test_log')
+    protected function rekapQuery()
+    {
+        $scores = DB::table('norma_test_log')
                     ->leftJoin('norma_test', function($join) {
                         $join->on('norma_test.user_id', '=', 'norma_test_log.user_id')
                              ->on('norma_test.test_id', '=', 'norma_test_log.test_id');
@@ -77,9 +115,24 @@ class RekapList extends Component
                         DB::raw('SUM(CASE WHEN norma.tipe = 8 THEN norma_test.nilai ELSE 0 END) AS wu'),
                         DB::raw('SUM(CASE WHEN norma.tipe = 10 THEN norma_test.nilai ELSE 0 END) AS me')
                     )
-                    ->groupBy('users.name', 'norma_test_log.user_id')
-                    ->orderBy('norma_test_log.user_id', 'asc')
-                    ->paginate(10);
+                    ->groupBy('users.name', 'norma_test_log.user_id');
+
+        return DB::query()->fromSub($scores, 'rekap')
+            ->when(trim($this->search) !== '', function ($query) {
+                $query->where('name', 'like', '%' . trim($this->search) . '%');
+            })
+            ->when($this->startDate, function ($query) {
+                $query->whereDate('created_at', '>=', $this->startDate);
+            })
+            ->when($this->endDate, function ($query) {
+                $query->whereDate('created_at', '<=', $this->endDate);
+            })
+            ->orderBy('user_id', 'asc');
+    }
+
+    public function render()
+    {
+        $rekapRecords = $this->rekapQuery()->paginate(10);
                  
             
         return view('livewire.norma.report.rekap-list',['rekap' => $rekapRecords])->extends('layouts.admin')->section('main-content');        
